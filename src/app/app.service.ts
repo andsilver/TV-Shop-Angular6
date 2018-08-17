@@ -46,7 +46,7 @@ export class AppService {
 
         var params = new HttpParams();
         params = params.append('mode', type)
-        if ( mode == "category" )
+        if ( type == "category" )
             params = params.append('category_id', categoryId)
         if ( limit > -1 )
             params = params.append("limit", `${limit}`);
