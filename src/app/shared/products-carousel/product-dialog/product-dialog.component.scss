@@ -1,0 +1,19 @@
+.product-dialog{
+    .mat-dialog-container{
+        overflow: visible !important;
+        .close-btn-outer{
+            position: relative;
+            button{
+                position: absolute;
+                right: -44px;
+                top: -44px;
+            }
+        }
+        .swiper-slide{
+            text-align: center;
+            img{
+                max-width: 100%;
+            }
+        }        
+    }
+}

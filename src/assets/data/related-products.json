@@ -1,0 +1,176 @@
+[    
+    { 
+        "id": 1,
+        "name": "Product 1",
+        "images": [
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 1",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 1",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 1"
+            },
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 1",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 1",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 1"
+            },
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 1",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 1",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 1"
+            }
+        ],
+        "oldPrice": null,
+        "newPrice": 475,
+        "discount": null,
+        "ratingsCount": 7,
+        "ratingsValue": 550,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+        "availibilityCount": 5,
+        "categoryId": 100
+    },
+    { 
+        "id": 2,
+        "name": "Product 2",
+        "images": [
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 2",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 2",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 2"
+            },
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 2",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 2",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 2"
+            },
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 2",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 2",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 2"
+            }
+        ],
+        "oldPrice": 510,
+        "newPrice": 179.99,
+        "discount": 5,
+        "ratingsCount": 6,
+        "ratingsValue": 600,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+        "availibilityCount": 3,
+        "categoryId": 100
+    },    
+    { 
+        "id": 3,
+        "name": "Product 3",
+        "images": [
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 3",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 3",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 3"
+            },
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 3",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 3",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 3"
+            },
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 3",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 3",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 3"
+            }
+        ],
+        "oldPrice": null,
+        "newPrice": 30,
+        "discount": null,
+        "ratingsCount": 11,
+        "ratingsValue": 1050,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+        "availibilityCount": 5,
+        "categoryId": 100
+    },   
+    { 
+        "id": 4,
+        "name": "Product 4",
+        "images": [
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 4",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 4",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 4"
+            },
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 4",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 4",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 4"
+            },
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 4",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 4",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 4"
+            }
+        ],
+        "oldPrice": 655,
+        "newPrice": 379.99,
+        "discount": 20,
+        "ratingsCount": 6,
+        "ratingsValue": 500,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+        "availibilityCount": 2,
+        "categoryId": 100
+    },
+    { 
+        "id": 5,
+        "name": "Product 5",
+        "images": [
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 5",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 5",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 5"
+            },
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 5",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 5",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 5"
+            },
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 5",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 5",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 5"
+            }
+        ],
+        "oldPrice": null,
+        "newPrice": 876,
+        "discount": null,
+        "ratingsCount": 2,
+        "ratingsValue": 200,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+        "availibilityCount": 0,
+        "categoryId": 100
+    },
+    { 
+        "id": 6,
+        "name": "Product 6",
+        "images": [
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 6",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 6",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 6"
+            },
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 6",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 6",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 6"
+            },
+            {
+                "small": "https://via.placeholder.com/180x135/4DB6AC/fff/?text=Related Product 6",
+                "medium": "https://via.placeholder.com/480x365/4DB6AC/fff/?text=Related Product 6",
+                "big": "https://via.placeholder.com/960x720/4DB6AC/fff/?text=Related Product 6"
+            }
+        ],
+        "oldPrice": null,
+        "newPrice": 450,
+        "discount": null,
+        "ratingsCount": 4,
+        "ratingsValue": 300,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+        "availibilityCount": 3,
+        "categoryId": 100
+    }
+]

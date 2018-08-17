@@ -1,0 +1,64 @@
+<div class="banners-container" fxLayout="column" fxLayout.gt-sm="row" *ngIf="banners.length > 0">
+    <div fxLayout="row" fxLayout.gt-sm="column" fxLayout.xs="column" fxFlex="100" fxFlex.gt-sm="40">
+        <div class="banner" fxFlex="50" fxFlex.gt-sm="67" [ngStyle]="getBgImage(0)">
+            <div class="info" fxLayoutAlign="start start">
+                <div class="px-2" fxLayout="column" fxLayoutAlign="center center">
+                    <h1 class="title">{{getBanner(0).title}}</h1>
+                    <h3 class="subtitle">{{getBanner(0).subtitle}}</h3>
+                    <a [routerLink]="['/products']" mat-raised-button color="primary" class="mt-2">Shop now</a>
+                </div> 
+            </div> 
+        </div>
+        <div fxLayout="row" fxFlex="50" fxFlex.gt-sm="33">
+            <div class="banner" fxFlex [ngStyle]="getBgImage(1)">
+                <div class="info" fxLayoutAlign="center center">
+                    <div class="px-2" fxLayout="column" fxLayoutAlign="end center">
+                      <h2 class="title">{{getBanner(1).title}}</h2>
+                      <h4 class="subtitle">{{getBanner(1).subtitle}}</h4>
+                      <a [routerLink]="['/products']" mat-raised-button color="primary" class="mt-2">Shop now</a>
+                    </div> 
+                </div> 
+            </div>
+            <div class="banner" fxFlex [ngStyle]="getBgImage(2)">
+                <div class="info" fxFlex fxLayoutAlign="center center">
+                    <div class="px-2" fxLayout="column" fxLayoutAlign="end center">
+                      <h2 class="title">{{getBanner(2).title}}</h2>
+                      <h4 class="subtitle">{{getBanner(2).subtitle}}</h4>
+                      <a [routerLink]="['/products']" mat-raised-button color="primary" class="mt-2">Shop now</a>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayout.gt-sm="column" fxLayout.xs="column" fxFlex="100" fxFlex.gt-sm="60">
+        <div fxLayout="row" fxFlexOrder="2" fxFlexOrder.gt-sm="1" fxFlex="50" fxFlex.gt-sm="33">
+            <div class="banner" fxFlex [ngStyle]="getBgImage(3)">
+                <div class="info" fxLayoutAlign="space-around center">
+                    <div class="px-2" fxLayout="column" fxLayoutAlign="end center">
+                      <h2 class="title">{{getBanner(3).title}}</h2>
+                      <h4 class="subtitle">{{getBanner(3).subtitle}}</h4>
+                      <a [routerLink]="['/products']" mat-raised-button color="primary" class="mt-2">Shop now</a>
+                    </div>                    
+                </div>
+            </div>
+            <div class="banner" fxFlex [ngStyle]="getBgImage(4)">
+                <div class="info" fxLayoutAlign="center center">
+                    <div class="px-2" fxLayout="column" fxLayoutAlign="end center">
+                      <h2 class="title">{{getBanner(4).title}}</h2>
+                      <h4 class="subtitle">{{getBanner(4).subtitle}}</h4>
+                      <a [routerLink]="['/products']" mat-raised-button color="primary" class="mt-2">Shop now</a>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="banner" fxFlexOrder="1" fxFlexOrder.gt-sm="2" fxFlex="50" fxFlex.gt-sm="67" [ngStyle]="getBgImage(5)">
+            <div class="info" fxLayout="column" fxLayoutAlign="center end">
+                <div class="px-2" fxLayout="column" fxLayoutAlign="center center">
+                  <h1 class="title">{{getBanner(5).title}}</h1>
+                  <h3 class="subtitle">{{getBanner(5).subtitle}}</h3>
+                  <a [routerLink]="['/products']" mat-raised-button color="primary" class="mt-2">Shop now</a>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

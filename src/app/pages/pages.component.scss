@@ -1,0 +1,27 @@
+.main{
+    min-height: 400px;
+    min-height: calc(100vh - 288px);
+    padding: 16px;
+}
+.sidenav{
+    width: 250px;
+    padding: 8px 16px;
+    position: fixed;
+    .close{
+        margin-left: 178px;
+    }
+    .divider{
+        margin: 8px 0;
+    }
+}
+.cart-items-count{
+    position: absolute;
+    top: -3px;
+    left: 26px;
+    background: #f44336;
+    height: 18px;
+    width: 18px;
+    line-height: 18px;
+    border-radius: 50%;
+    font-size: 11px;
+}

@@ -1,0 +1,46 @@
+.filter-sidenav{
+    width: 280px;
+    padding: 2px;
+    //background: transparent !important;
+    .mat-expansion-panel-header-title {
+        text-transform: uppercase;
+    }
+}
+.filter-row{
+    background: #fff;
+    padding: 8px 12px;
+}
+.all-products{
+    min-height: 400px;
+    padding: 2px;
+    overflow: hidden;
+    &.p-left{
+        padding-left: 16px;
+    }
+}
+
+.products-wrapper{
+    margin: 8px -8px;
+    .col{
+        padding: 8px;
+    }
+}
+
+.categories-wrapper{
+    position: relative;
+    max-height: 300px;
+}
+
+.filter-buttons{
+    button{
+        min-width: 36px;
+        margin: 0 6px 10px 0;
+        padding: 0;
+    }
+}
+
+.filter-price{
+    .mat-slider-horizontal{
+        min-width: 110px;
+    }
+}

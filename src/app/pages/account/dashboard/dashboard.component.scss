@@ -1,0 +1,15 @@
+.flex-wrapper{
+    margin: 8px -8px;
+    .col{
+        padding: 8px;
+    }
+}
+.account-card-content{
+    height: 134px;
+    a{
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

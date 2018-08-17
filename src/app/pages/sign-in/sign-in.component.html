@@ -1,0 +1,73 @@
+<mat-card>
+    <div fxLayout="row wrap">
+        <div fxFlex="100" fxFlex.gt-sm="50" class="p-2">
+            <h2 class="text-muted text-center">Sign In</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit(loginForm.value)">
+                <mat-form-field class="w-100 mt-2">
+                    <input matInput placeholder="Email" formControlName="email" required>
+                    <mat-error *ngIf="loginForm.controls.email.errors?.required">Email is required</mat-error>
+                    <mat-error *ngIf="loginForm.controls.email.hasError('invalidEmail')">Invalid email address</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100 mt-1">
+                    <input matInput placeholder="Password" formControlName="password" required>
+                    <mat-error *ngIf="loginForm.controls.password.errors?.required">Password is required</mat-error>
+                    <mat-error *ngIf="loginForm.controls.password.hasError('minlength')">Password isn't long enough, minimum of 6 characters</mat-error>
+                </mat-form-field> 
+                <div class="text-center mt-2">
+                    <button mat-fab color="primary" class="mat-elevation-z6" (click)="onLoginFormSubmit(loginForm.value)">
+                        <mat-icon>exit_to_app</mat-icon>
+                    </button>
+                </div> 
+
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="mt-2">
+                    <div class="divider w-100"></div>
+                    <h3 class="text-muted auth">or Sign in with one click</h3>
+                    <div class="divider w-100"></div>
+                </div>               
+                
+                <div class="text-center py-2">                   
+                    <svg class="social-icon" viewBox="0 0 24 24" matTooltip="Facebook">
+                        <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M18,5H15.5A3.5,3.5 0 0,0 12,8.5V11H10V14H12V21H15V14H18V11H15V9A1,1 0 0,1 16,8H18V5Z" />
+                    </svg>
+                    <svg class="social-icon" viewBox="0 0 24 24" matTooltip="Twitter">
+                        <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M17.71,9.33C18.19,8.93 18.75,8.45 19,7.92C18.59,8.13 18.1,8.26 17.56,8.33C18.06,7.97 18.47,7.5 18.68,6.86C18.16,7.14 17.63,7.38 16.97,7.5C15.42,5.63 11.71,7.15 12.37,9.95C9.76,9.79 8.17,8.61 6.85,7.16C6.1,8.38 6.75,10.23 7.64,10.74C7.18,10.71 6.83,10.57 6.5,10.41C6.54,11.95 7.39,12.69 8.58,13.09C8.22,13.16 7.82,13.18 7.44,13.12C7.81,14.19 8.58,14.86 9.9,15C9,15.76 7.34,16.29 6,16.08C7.15,16.81 8.46,17.39 10.28,17.31C14.69,17.11 17.64,13.95 17.71,9.33Z" />
+                    </svg>
+                    <svg class="social-icon" viewBox="0 0 24 24" matTooltip="Google">
+                        <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M19.5,12H18V10.5H17V12H15.5V13H17V14.5H18V13H19.5V12M9.65,11.36V12.9H12.22C12.09,13.54 11.45,14.83 9.65,14.83C8.11,14.83 6.89,13.54 6.89,12C6.89,10.46 8.11,9.17 9.65,9.17C10.55,9.17 11.13,9.56 11.45,9.88L12.67,8.72C11.9,7.95 10.87,7.5 9.65,7.5C7.14,7.5 5.15,9.5 5.15,12C5.15,14.5 7.14,16.5 9.65,16.5C12.22,16.5 13.96,14.7 13.96,12.13C13.96,11.81 13.96,11.61 13.89,11.36H9.65Z" />
+                    </svg>
+                </div> 
+
+            </form>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
+            <h2 class="text-muted text-center">Don't have an account? Sign up now!</h2>
+            <form [formGroup]="registerForm" (ngSubmit)="onRegisterFormSubmit(registerForm.value)">
+                <mat-form-field class="w-100 mt-2">
+                  <input matInput placeholder="Full Name" formControlName="name" required>
+                  <mat-error *ngIf="registerForm.controls.name.errors?.required">Full Name is required</mat-error>
+                  <mat-error *ngIf="registerForm.controls.name.hasError('minlength')">Full Name isn't long enough, minimum of 3 characters</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100 mt-1">
+                    <input matInput placeholder="Email" formControlName="email" required>
+                    <mat-error *ngIf="registerForm.controls.email.errors?.required">Email is required</mat-error>
+                    <mat-error *ngIf="registerForm.controls.email.hasError('invalidEmail')">Invalid email address</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100 mt-1">
+                    <input matInput placeholder="Password" formControlName="password" type="password" minlength="6" required>
+                    <mat-error *ngIf="registerForm.controls.password.errors?.required">Password is required</mat-error>
+                    <mat-error *ngIf="registerForm.controls.password.hasError('minlength')">Password isn't long enough, minimum of 6 characters</mat-error>
+                </mat-form-field> 
+                <mat-form-field class="w-100 mt-1">
+                  <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
+                  <mat-error *ngIf="registerForm.controls.confirmPassword.errors?.required">Confirm Password is required</mat-error>
+                  <mat-error *ngIf="registerForm.controls.confirmPassword.hasError('mismatchedPasswords')">Passwords do not match</mat-error>
+                </mat-form-field>
+                <div class="text-center mt-2">
+                    <button mat-fab color="primary" class="mat-elevation-z6" (click)="onRegisterFormSubmit(registerForm.value)">
+                        <mat-icon>person_add</mat-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div> 
+</mat-card>

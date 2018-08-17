@@ -1,0 +1,42 @@
+{ 
+    "id": 6,
+    "name": "All-in-One Printer",
+    "images": [
+        {
+            "small": "assets/images/products/printer/1-small.png",
+            "medium": "assets/images/products/printer/1-medium.png",
+            "big": "assets/images/products/printer/1-big.png"
+        },
+        {
+            "small": "assets/images/products/printer/2-small.png",
+            "medium": "assets/images/products/printer/2-medium.png",
+            "big": "assets/images/products/printer/2-big.png"
+        },
+        {
+            "small": "assets/images/products/printer/3-small.png",
+            "medium": "assets/images/products/printer/3-medium.png",
+            "big": "assets/images/products/printer/3-big.png"
+        },
+        {
+            "small": "assets/images/products/printer/4-small.png",
+            "medium": "assets/images/products/printer/4-medium.png",
+            "big": "assets/images/products/printer/4-big.png"
+        },
+        {
+            "small": "assets/images/products/printer/5-small.png",
+            "medium": "assets/images/products/printer/5-medium.png",
+            "big": "assets/images/products/printer/5-big.png"
+        }
+    ],
+    "oldPrice": null,
+    "newPrice": 450,
+    "discount": null,
+    "ratingsCount": 4,
+    "ratingsValue": 300,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+    "availibilityCount": 3,
+    "color": ["#464646","#F3F3F3","#E6E6E6"],
+    "size": null,
+    "weight": 9750,
+    "categoryId": 100
+}

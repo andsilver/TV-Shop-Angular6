@@ -1,0 +1,28 @@
+.brands-carousel{
+    background: rgba(0,0,0,0.03);
+    position: relative;
+    padding: 8px 0;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    .swiper-container{
+        padding: 8px 2px;
+        margin: 0 14px;
+        .brand-item{
+            height: 80px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            img{
+                max-width: 100%;
+                max-height: 100%;
+                margin: 0 auto;
+            }
+        }        
+    }
+    .swiper-button-prev{
+        left: -10px;
+    }
+    .swiper-button-next{
+        right: -10px;
+    }
+}

@@ -1,0 +1,32 @@
+{ 
+    "id": 1,
+    "name": "Keyboard",
+    "images": [
+        {
+            "small": "assets/images/products/keyboard/1-small.png",
+            "medium": "assets/images/products/keyboard/1-medium.png",
+            "big": "assets/images/products/keyboard/1-big.png"
+        },
+        {
+            "small": "assets/images/products/keyboard/2-small.png",
+            "medium": "assets/images/products/keyboard/2-medium.png",
+            "big": "assets/images/products/keyboard/2-big.png"
+        },
+        {
+            "small": "assets/images/products/keyboard/3-small.png",
+            "medium": "assets/images/products/keyboard/3-medium.png",
+            "big": "assets/images/products/keyboard/3-big.png"
+        }
+    ],
+    "oldPrice": null,
+    "newPrice": 175,
+    "discount": null,
+    "ratingsCount": 4,
+    "ratingsValue": 350,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+    "availibilityCount": 5,
+    "color": ["#5C6BC0","#66BB6A","#90A4AE"],
+    "size": ["S","M","L", "XL"],
+    "weight": 150,
+    "categoryId": 100
+}

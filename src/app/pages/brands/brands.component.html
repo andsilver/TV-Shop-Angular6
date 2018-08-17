@@ -1,0 +1,26 @@
+<div fxLayout="column" fxLayoutAlign="center stretch">
+    <h3 class="py-1 text-center">We've Got The Brands You're Looking For</h3>    
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field  fxFlex="100" fxFlex.gt-sm="50" class="w-100 brand-search">
+            <input matInput placeholder="Search For Brands..." [(ngModel)]="searchText">
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-button-toggle-group #group="matButtonToggleGroup" class="letters mt-2">
+            <mat-button-toggle value="all" checked="true" class="letter">
+              Show All Brands
+            </mat-button-toggle>
+            <mat-button-toggle *ngFor="let letter of letters" [value]="letter" class="letter">
+              {{letter}}
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+</div>
+
+<div class="brands-container">
+    <div class="brand-block text-center" *ngFor="let brand of brands | brandSearchPipe : searchText  | filterBrands: group.value">
+        <a [routerLink]="['/brands', brand.name]" class="brand mat-elevation-z3">
+            <img [src]="brand.image">
+        </a>
+    </div>
+</div>
