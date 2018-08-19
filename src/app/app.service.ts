@@ -24,25 +24,15 @@ export class AppService {
     public url = "assets/data/";
     constructor(public http:HttpClient, public snackBar: MatSnackBar) { }
 
+    /***
+    *  ---------------- New Apis -----------------------------------------------------------
+    **/
+
     public getCategories(): Observable<Category[]>{
-        return this.http.get<Category[]>(this.url + 'categories.json');
-    }
-
-    public getProducts(type): Observable<Product[]>{
-        return this.http.get<Product[]>(this.url + type + '-products.json');
-    }
-
-    public getProductById(id): Observable<Product>{
-        return this.http.get<Product>(this.url + 'product-' + id + '.json');
-    }
-
-    // Added
-    public _getCategories(): Observable<Category[]>{
         return this.http.get<Category[]>('/categories');
     }
 
-    // Added
-    public _getProducts(type: string, categoryId: string, limit: number = -1, page: number = -1): Observable<Product[]>{
+    public getProducts(type: string, categoryId: string = '', limit: number = -1, page: number = -1): Observable<Product[]>{
 
         var params = new HttpParams();
         params = params.append('mode', type)
@@ -56,9 +46,26 @@ export class AppService {
         return this.http.get<Product[]>(`/products/listing`, { params: params });
     }
 
-    // Added
-    public _getProductById(id): Observable<Product> {
-        return this.http.get<Product>(`/products/listing/${id}/detail`);
+    public getProductById(id): Observable<Product> {
+        return this.http.get<Product>(`/products/${id}/detail`);
+    }
+
+    public _getUserById(id): Observable<any> {
+        return this.http.get<any>(`/users/${id}/info`);
+    }
+
+    // ---------------------------------------------------------------------------------------
+
+    public _getCategories(): Observable<Category[]>{
+        return this.http.get<Category[]>(this.url + 'categories.json');
+    }
+
+    public _getProducts(type): Observable<Product[]>{
+        return this.http.get<Product[]>(this.url + type + '-products.json');
+    }
+
+    public _getProductById(id): Observable<Product>{
+        return this.http.get<Product>(this.url + 'product-' + id + '.json');
     }
 
     public getBanners(): Observable<any[]>{

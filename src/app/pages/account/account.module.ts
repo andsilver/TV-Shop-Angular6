@@ -8,14 +8,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { InformationComponent } from './information/information.component';
 import { AddressesComponent } from './addresses/addresses.component';
 import { OrdersComponent } from './orders/orders.component';
+import { AccountService } from './account.service';
 
 export const routes = [
   { 
       path: '', 
-      component: AccountComponent, children: [
+      component: AccountComponent,
+      resolve: { user: AccountService },
+      children: [
           { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
           { path: 'dashboard', component: DashboardComponent, data: {  breadcrumb: 'Dashboard' } },
-          { path: 'information', component: InformationComponent, data: {  breadcrumb: 'Information' } },
+          { path: 'information', component: InformationComponent, data: {  breadcrumb: 'Information' }},
           { path: 'addresses', component: AddressesComponent, data: {  breadcrumb: 'Addresses' } },
           { path: 'orders', component: OrdersComponent, data: {  breadcrumb: 'Orders' } }
       ]
@@ -35,6 +38,9 @@ export const routes = [
     InformationComponent,
     AddressesComponent,
     OrdersComponent
+  ],
+  providers: [
+    AccountService
   ]
 })
 export class AccountModule { }
