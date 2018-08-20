@@ -56,7 +56,7 @@
         description
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
-        <span class="text-muted lh">{{product.description}}</span>
+        <span class="text-muted lh" [innerHTML]="product.description"></span>
       </div>
     </div>
 

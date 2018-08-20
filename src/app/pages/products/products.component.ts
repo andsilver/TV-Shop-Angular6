@@ -50,7 +50,7 @@ export class ProductsComponent implements OnInit {
   }
 
   public getAllProducts(){
-    this.appService.getProducts("featured").subscribe(data=>{
+    this.appService.getProducts("sale").subscribe(data=>{
       this.products = data; 
       //for show more product  
       for (var index = 0; index < 3; index++) {

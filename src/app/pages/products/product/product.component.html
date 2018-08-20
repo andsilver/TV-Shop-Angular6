@@ -37,7 +37,7 @@
         <div class="py-1">
             <app-rating [ratingsCount]="product?.ratingsCount" [ratingsValue]="product?.ratingsValue" [direction]="'row'"></app-rating>
         </div>
-        <p class="py-1 text-muted lh">{{product?.description}}</p>
+        <p class="py-1 text-muted lh" [innerHTML]="product?.description"></p>
 
         <div class="divider mt-1"></div>
         <h2 class="py-2 new-price">${{product?.newPrice}}</h2>

@@ -88,7 +88,7 @@ export class AppService {
 
     public addToWishList(product:Product){
         let message, status;
-        if(this.Data.wishList.filter(item=>item.id == product.id)[0]){
+        if(this.Data.wishList.some(item=>item.id == product.id)){
             message = 'The product ' + product.name + ' already added to wish list.';
             status = 'error';
         }
@@ -102,7 +102,7 @@ export class AppService {
 
     public addToCart(product:Product){
         let message, status;
-        if(this.Data.cartList.filter(item=>item.id == product.id)[0]){
+        if(this.Data.cartList.some(item=>item.id == product.id)){
             message = 'The product ' + product.name + ' already added to cart.';
             status = 'error';
         }
