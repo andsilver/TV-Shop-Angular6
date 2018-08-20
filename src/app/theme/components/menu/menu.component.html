@@ -49,11 +49,19 @@
         </div>
            
     </mat-menu>
+
+    <a *ngFor="let category of categories"
+        mat-button
+        [routerLink]="['/products', category.name.toLowerCase()]"
+        routerLinkActive="horizontal-active-link"
+        [routerLinkActiveOptions]="{exact:true}">
+        {{category.name}}
+    </a>
     
-    <a mat-button [routerLink]="['/products', 'jewellery']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Jewellery</a>
+   <!--  <a mat-button [routerLink]="['/products', 'jewellery']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Jewellery</a>
     <a mat-button [routerLink]="['/products', 'electronics']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Electronics</a>
     <a mat-button [routerLink]="['/products', 'sports']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Sports</a>
-    <a mat-button [routerLink]="['/products', 'motors']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Motors</a>
+    <a mat-button [routerLink]="['/products', 'motors']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Motors</a> -->
 
     <a mat-button [matMenuTriggerFor]="animals">Pages<mat-icon class="caret">arrow_drop_down</mat-icon></a>
     <mat-menu #animals="matMenu" [overlapTrigger]="false" class="app-dropdown"> 

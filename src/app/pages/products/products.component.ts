@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product, Category } from "../../app.models";
+import { forkJoin, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',
@@ -22,6 +24,7 @@ export class ProductsComponent implements OnInit {
   public sort:any;
   public products: Array<Product> = [];
   public categories:Category[];
+  public category: string;
   public brands = [];
   public priceFrom: number = 750;
   public priceTo: number = 1599;
@@ -34,40 +37,52 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.count = this.counts[0];
     this.sort = this.sortings[0];
-    this.sub = this.activatedRoute.params.subscribe(params => {
-      //console.log(params['name']);
-    });
     if(window.innerWidth < 960){
       this.sidenavOpen = false;
     };
     if(window.innerWidth < 1280){
       this.viewCol = 33.3;
     };
-
-    this.getCategories();
     this.getBrands();
-    this.getAllProducts();   
+    this.sub = this.getCategories()
+                .pipe(
+                  switchMap((categories) => {
+                    this.categories = categories;
+                    this.appService.Data.categories = categories;
+                    return this.activatedRoute.paramMap;
+                  })
+                )
+                .subscribe((params) => {
+                  const category = params.get("name");
+                  if(category && category != this.category) {
+                    this.category = category;
+                    const id = this.categories.find( c => c.name.toLowerCase() == category ).id;
+                    this.appService.getProducts("category", id).subscribe((products) => {
+                      this.products = products;
+                      console.log(products)
+                    })
+                  }
+                  else
+                    this.getAllProducts();
+                })
   }
 
   public getAllProducts(){
     this.appService.getProducts("sale").subscribe(data=>{
       this.products = data; 
-      //for show more product  
-      for (var index = 0; index < 3; index++) {
-        this.products = this.products.concat(this.products);        
-      }
     });
+  }
+
+  public getProductsByCategory() {
+
   }
 
   public getCategories(){  
     if(this.appService.Data.categories.length == 0) { 
-      this.appService.getCategories().subscribe(data => {
-        this.categories = data;
-        this.appService.Data.categories = data;
-      });
+      return this.appService.getCategories()
     }
     else{
-      this.categories = this.appService.Data.categories;
+      return of(this.appService.Data.categories);
     }
   }
 

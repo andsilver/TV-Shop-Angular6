@@ -1,4 +1,6 @@
 import { Component, OnInit} from '@angular/core';
+import { AppService } from 'app/app.service';
+import { Category } from 'app/app.models';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,15 @@ import { Component, OnInit} from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  categories: Category[];
 
-  ngOnInit() { }
+  constructor(private appService: AppService) { }
+
+  ngOnInit() {
+    this.appService.getCategoriesByParentId(0).subscribe( categories => {
+      this.categories = categories;
+    })
+  }
 
   openMegaMenu(){
     let pane = document.getElementsByClassName('cdk-overlay-pane');

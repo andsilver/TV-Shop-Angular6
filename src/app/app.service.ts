@@ -32,12 +32,21 @@ export class AppService {
         return this.http.get<Category[]>('/categories');
     }
 
-    public getProducts(type: string, categoryId: string = '', limit: number = -1, page: number = -1): Observable<Product[]>{
+    public getCategoriesByParentId( parentId, limit: number = -1 ): Observable<Category[]> {
+        var params = new HttpParams();
+        params = params.append('mode', 'parent');
+        params = params.append('parentId', parentId);
+        if(limit > -1)
+           params = params.append('limit', `${limit}`);
+        return this.http.get<Category[]>(`/categories`, { params: params });
+    }
+
+    public getProducts(type: string, categoryId: number = -1, limit: number = -1, page: number = -1): Observable<Product[]>{
 
         var params = new HttpParams();
         params = params.append('mode', type)
         if ( type == "category" )
-            params = params.append('category_id', categoryId)
+            params = params.append('category_id', `${categoryId}`)
         if ( limit > -1 )
             params = params.append("limit", `${limit}`);
         if ( page > -1 )
