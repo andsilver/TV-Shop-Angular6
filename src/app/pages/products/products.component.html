@@ -20,8 +20,8 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted">
-                    <span>From: <b>${{priceFrom}}</b></span>
-                    <span>To: <b>${{priceTo}}</b></span>
+                    <span>From: <b>{{cc.currency.unit}}{{priceFrom}}</b></span>
+                    <span>To: <b>{{cc.currency.unit}}{{priceTo}}</b></span>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="filter-price">
                     <mat-slider color="primary" max="2000" min="1" thumb-label="true" [(ngModel)]="priceFrom"></mat-slider>
@@ -146,8 +146,11 @@
                     </a>
                     <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
                         <div fxLayout="column" fxLayoutAlign="center start">
-                            <p class="old-price text-muted"><span *ngIf="product.oldPrice">${{product.oldPrice | number : '1.2-2'}}</span></p>
-                            <p class="new-price">${{product.newPrice | number : '1.2-2'}}</p>
+                            <p class="old-price text-muted">
+                                <span *ngIf="product.oldPrice">{{product.oldPrice | currency:cc.currency.name:'symbol':'1.2-2'}}</span>
+                            </p>
+                            <!-- <p class="new-price">${{product.newPrice | number : '1.2-2'}}</p> -->
+                            <p class="new-price">{{product.newPrice | currency:cc.currency.name:'symbol':'1.2-2'}}</p>
                         </div>
                         <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating>
                     </div>                            

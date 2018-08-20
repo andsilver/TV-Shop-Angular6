@@ -5,6 +5,7 @@ import { Settings, AppSettings } from '../app.settings';
 import { AppService } from '../app.service';
 import { Category } from '../app.models';
 import { SidenavMenuService } from '../theme/components/sidenav-menu/sidenav-menu.service';
+import { RoutingHandlerService } from 'app/services';
 
 @Component({
   selector: 'app-pages',
@@ -23,7 +24,8 @@ export class PagesComponent implements OnInit {
   constructor(public appSettings:AppSettings, 
               public appService:AppService, 
               public sidenavMenuService:SidenavMenuService,
-              public router:Router) { 
+              public router:Router,
+              public route:RoutingHandlerService) { 
     this.settings = this.appSettings.settings; 
   }
 
@@ -43,6 +45,7 @@ export class PagesComponent implements OnInit {
   public changeCategory(event){
     if(event.target){
       this.category = this.categories.filter(category => category.name == event.target.innerText)[0];
+      this.route.productsPage(this.category.name);
     }
     if(window.innerWidth < 960){
       this.stopClickPropagate(event);

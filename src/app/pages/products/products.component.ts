@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
-import { AppService } from '../../app.service';
-import { Product, Category } from "../../app.models";
 import { forkJoin, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
+import { AppService } from '../../app.service';
+import { CurrencyService } from 'app/services';
+import { Product, Category } from "../../app.models";
 
 @Component({
   selector: 'app-products',
@@ -32,7 +33,7 @@ export class ProductsComponent implements OnInit {
   public sizes = ["S","M","L","XL","2XL","32","36","38","46","52","13.3\"","15.4\"","17\"","21\"","23.4\""];
   public page:any;
 
-  constructor(private activatedRoute: ActivatedRoute, public appService:AppService, public dialog: MatDialog, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, public appService:AppService, public dialog: MatDialog, public cc: CurrencyService, private router: Router) { }
 
   ngOnInit() {
     this.count = this.counts[0];
