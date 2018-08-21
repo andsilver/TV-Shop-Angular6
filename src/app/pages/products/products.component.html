@@ -138,7 +138,7 @@
                         <mat-chip color="warn" selected="true">{{product.discount}}% OFF</mat-chip>
                     </mat-chip-list>
                     <a [routerLink]="['/products', product.id, product.name]" class="image-link">
-                        <img [src]="product.images[0]" alt="">
+                        <img [src]="product.images[0].medium" alt="">
                     </a>
                     <h4 class="category text-muted">{{ ( appService.Data.categories | filterById : product.categoryId )?.name }}</h4>                                                                     
                     <a [routerLink]="['/products', product.id, product.name]" class="title text-truncate">

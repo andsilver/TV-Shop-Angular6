@@ -24,7 +24,7 @@ export class CategoryListComponent {
     if(window.innerWidth < 960){
       event.stopPropagation();
       event.preventDefault();
-    }    
+    }
   }
 
   public changeCategory(event){
