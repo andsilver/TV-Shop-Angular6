@@ -31,13 +31,13 @@
 
         <h2>{{product?.name}}</h2>
         <div class="py-1 lh">
-            <p><span class="text-muted fw-500">Category: </span><span>{{ ( appService.Data.categories | filterById : product?.categoryId )?.name }}</span></p>
+            <p><span class="text-muted fw-500">Category: </span><span>{{ product?.category_name }}</span></p>
             <p><span class="text-muted fw-500">Availibility: </span><span>{{ (product?.availibilityCount > 0) ? 'In stock':'Unavailable'}}</span></p>
         </div>                 
         <div class="py-1">
             <app-rating [ratingsCount]="product?.ratingsCount" [ratingsValue]="product?.ratingsValue" [direction]="'row'"></app-rating>
         </div>
-        <p class="py-1 text-muted lh" [innerHTML]="product?.short_description"></p>
+        <p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription"></p>
 
         <div class="divider mt-1"></div>
         <h2 class="py-2 new-price">{{product?.newPrice | currency:cc.currency.name:'symbol':'1.2-2'}}</h2>
@@ -120,29 +120,7 @@
                 </mat-tab>
                 <mat-tab label="Additional information">
                     <div class="full-desc lh">
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <ul class="px-2 mt-1">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Aenean vehicula, tortor gravida elementum tincidunt, justo lorem vestibulum ex, eget egestas arcu tellus in magna. Vivamus gravida, ipsum vel luctus luctus, nisi felis vestibulum est, nec interdum tellus leo quis tellus. Sed sit amet convallis enim, in laoreet orci.</li>
-                            <li>Donec et elit at nulla congue interdum sit amet varius erat.</li>
-                            <li>Nulla sit amet risus pellentesque, dignissim massa ut, dignissim arcu.</li>
-                            <li>Morbi dapibus ligula at faucibus tempus. Aenean vehicula, tortor gravida elementum tincidunt, justo lorem vestibulum ex, eget egestas arcu tellus in magna. Vivamus gravida, ipsum vel luctus luctus, nisi felis vestibulum est, nec interdum tellus leo quis tellus. Sed sit amet convallis enim, in laoreet orci.</li>
-                            <li>Nunc sodales justo ut nisi euismod, quis condimentum leo varius.</li>
-                        </ul>
-                        <ul class="px-2 mt-1">
-                            <li>Phasellus eu justo dictum, varius eros ut, posuere sapien.</li>
-                            <li>Nulla eu erat sit amet enim lobortis rhoncus.</li>
-                            <li>Etiam eu mauris in massa convallis ornare non id ex.</li>
-                            <li>Nam sagittis augue at pretium pharetra.</li>
-                            <li>Sed a sem id massa egestas porta a sit amet felis.</li>
-                            <li>Duis aliquam urna in sapien cursus consequat. Aenean vehicula, tortor gravida elementum tincidunt, justo lorem vestibulum ex, eget egestas arcu tellus in magna. Vivamus gravida, ipsum vel luctus luctus, nisi felis vestibulum est, nec interdum tellus leo quis tellus. Sed sit amet convallis enim, in laoreet orci.</li>
-                        </ul>
-                    </div>
-                </mat-tab>
-                <mat-tab label="Extra Description">
-                    <div class="full-desc lh">
-                        <p>abdfadf</p>
-                        <p [innerHTML]="product?.extraDescription"></p>
+                        <p [innerHTML]="product?.extra_description"></p>
                     </div>
                 </mat-tab>
                 <mat-tab label="Reviews">
