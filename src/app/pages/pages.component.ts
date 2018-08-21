@@ -44,7 +44,7 @@ export class PagesComponent implements OnInit {
 
   public changeCategory(event){
     if(event.target){
-      this.category = this.categories.filter(category => category.name == event.target.innerText)[0];
+      this.category = this.categories.filter(category => category.name.toLowerCase() == event.target.innerText.toLowerCase())[0];
       this.route.productsPage(this.category.name);
     }
     if(window.innerWidth < 960){
@@ -57,13 +57,12 @@ export class PagesComponent implements OnInit {
       if (index !== -1) {
           this.appService.Data.cartList.splice(index, 1);
           this.appService.Data.totalPrice = this.appService.Data.totalPrice - product.newPrice;
-      }        
+      }
   }
 
   public clear(){
     this.appService.Data.cartList.length = 0;
   }
-
 
   public changeTheme(theme){
     this.settings.theme = theme;       
@@ -76,7 +75,6 @@ export class PagesComponent implements OnInit {
 
   public search(){}
 
- 
   public scrollToTop(){
     var scrollDuration = 200;
     var scrollStep = -window.pageYOffset  / (scrollDuration / 20);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Data, AppService } from '../../app.service';
+import { CurrencyService } from 'app/services';
 
 @Component({
   selector: 'app-cart',
@@ -9,7 +10,7 @@ import { Data, AppService } from '../../app.service';
 export class CartComponent implements OnInit {
   total = [];
   grandTotal = 0;
-  constructor(public appService:AppService) { }
+  constructor(public appService:AppService, public cc: CurrencyService) { }
 
   ngOnInit() {
     this.appService.Data.cartList.forEach(product=>{

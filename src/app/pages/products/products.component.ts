@@ -57,21 +57,32 @@ export class ProductsComponent implements OnInit {
                   const category = params.get("name");
                   if(category && category != this.category) {
                     this.category = category;
+                    console.log(this.categories, category);
                     const id = this.categories.find( c => c.name.toLowerCase() == category ).id;
-                    this.appService.getProducts("category", id).subscribe((products) => {
+                    this.appService.getProductsByCategory(id).subscribe((products) => {
                       this.products = products;
                       console.log(products)
                     })
                   }
-                  else
+                  else {
+                    this.category = null;
                     this.getAllProducts();
+                  }
                 })
   }
 
   public getAllProducts(){
-    this.appService.getProducts("sale").subscribe(data=>{
-      this.products = data; 
-    });
+    if(!this.category){
+      this.appService.getAllProducts().subscribe(data=>{
+        this.products = data; 
+      });
+    } else {
+      const id = this.categories.find( c => c.name.toLowerCase() == this.category ).id;
+      this.appService.getProductsByCategory(id).subscribe((products) => {
+        this.products = products;
+        console.log(products)
+      })
+    }
   }
 
   public getProductsByCategory() {
@@ -129,7 +140,8 @@ export class ProductsComponent implements OnInit {
 
   public onPageChanged(event){
       this.page = event;
-      this.getAllProducts(); 
+      console.log(event)
+      this.getAllProducts();
       window.scrollTo(0,0); 
   }
 

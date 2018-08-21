@@ -29,12 +29,13 @@ export class AppService {
     /***
     *  ---------------- New Apis -----------------------------------------------------------
     **/
-
-    public getCategories(): Observable<Category[]>{
-        return this.http.get<Category[]>('/categories');
+    public getCategories(limit: number = 999): Observable<Category[]>{
+        var params = new HttpParams();
+        params = params.append('limit', `${limit}`);
+        return this.http.get<Category[]>('/categories', { params: params });
     }
 
-    public getCategoriesByParentId( parentId, limit: number = -1 ): Observable<Category[]> {
+    public getCategoriesByParentId( parentId, limit: number = 999 ): Observable<Category[]> {
         var params = new HttpParams();
         params = params.append('mode', 'parent');
         params = params.append('parentId', parentId);
@@ -43,17 +44,30 @@ export class AppService {
         return this.http.get<Category[]>(`/categories`, { params: params });
     }
 
-    public getProducts(type: string, categoryId: number = -1, limit: number = -1, page: number = -1): Observable<Product[]>{
-
+    public getProducts(mode: string, categoryId: number = -1, limit: number = 999, page: number = 1): Observable<Product[]>{
         var params = new HttpParams();
-        params = params.append('mode', type)
-        if ( type == "category" )
-            params = params.append('category_id', `${categoryId}`)
-        if ( limit > -1 )
-            params = params.append("limit", `${limit}`);
-        if ( page > -1 )
-            params = params.append("page", `${page}`);
+        params = params.append('mode', mode)
+        return this.productPagination(limit, page, params);
+    }
 
+    public getProductsByCategory( categoryId: number, limit: number = 999, page: number = 1 ) {
+        var params = new HttpParams();
+        params = params.append('mode', 'category');
+        params = params.append('category_id', `${categoryId}`);
+        return this.productPagination(limit, page, params);
+    }
+
+    public productPagination( limit, page, params ){
+        params = params.append("limit", `${limit}`);
+        params = params.append("page", `${page}`);
+        return this.http.get<Product[]>(`/products/listing`, { params: params });
+    }
+
+    public getAllProducts(limit: number = 999, page: number = 1) {
+        var params = new HttpParams();
+        params = params.append('mode', 'all');
+        params = params.append("limit", `${limit}`);
+        params = params.append("page", `${page}`);
         return this.http.get<Product[]>(`/products/listing`, { params: params });
     }
 
