@@ -6,7 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { CurrencyService } from 'app/services';
-import { Product, Category } from "../../app.models";
+import { Product, Category, Products } from "../../app.models";
 
 @Component({
   selector: 'app-products',
@@ -31,7 +31,8 @@ export class ProductsComponent implements OnInit {
   public priceTo: number = 1599;
   public colors = ["#5C6BC0","#66BB6A","#EF5350","#BA68C8","#FF4081","#9575CD","#90CAF9","#B2DFDB","#DCE775","#FFD740","#00E676","#FBC02D","#FF7043","#F5F5F5","#000000"];
   public sizes = ["S","M","L","XL","2XL","32","36","38","46","52","13.3\"","15.4\"","17\"","21\"","23.4\""];
-  public page:any;
+  public page:any = 0;
+  public totalProducts: number = 0;
 
   constructor(private activatedRoute: ActivatedRoute, public appService:AppService, public dialog: MatDialog, public cc: CurrencyService, private router: Router) { }
 
@@ -57,36 +58,29 @@ export class ProductsComponent implements OnInit {
                   const category = params.get("name");
                   if(category && category != this.category) {
                     this.category = category;
-                    console.log(this.categories, category);
-                    const id = this.categories.find( c => c.name.toLowerCase() == category ).id;
-                    this.appService.getProductsByCategory(id).subscribe((products) => {
-                      this.products = products;
-                      console.log(products)
-                    })
+                    this.page = 1;
+                    this.getProducts();
                   }
                   else {
                     this.category = null;
-                    this.getAllProducts();
+                    this.page = 1;
+                    this.getProducts();
                   }
                 })
   }
 
-  public getAllProducts(){
+  public getProducts(){
+    const setResource = (data) => {
+      this.products = data.products;
+      this.totalProducts = data.total;
+      console.log(data);
+    }
     if(!this.category){
-      this.appService.getAllProducts().subscribe(data=>{
-        this.products = data; 
-      });
+      this.appService.getProducts('all', this.count, this.page).subscribe(data=> setResource(data));
     } else {
       const id = this.categories.find( c => c.name.toLowerCase() == this.category ).id;
-      this.appService.getProductsByCategory(id).subscribe((products) => {
-        this.products = products;
-        console.log(products)
-      })
+      this.appService.getProductsByCategory(id, this.count, this.page).subscribe((data) => setResource(data));
     }
-  }
-
-  public getProductsByCategory() {
-
   }
 
   public getCategories(){  
@@ -114,11 +108,21 @@ export class ProductsComponent implements OnInit {
 
   public changeCount(count){
     this.count = count;
-    this.getAllProducts(); 
+    this.page = 1;
+    this.getProducts();
   }
 
   public changeSorting(sort){
     this.sort = sort;
+    this.products.sort((p1,p2) => {
+        if (sort == 'Lowest first') {
+          return Number(p1.newPrice) < Number(p2.newPrice) ? -1 : 1;
+        }
+        else if (sort == 'Highest first'){
+          return Number(p1.newPrice) > Number(p2.newPrice) ? -1 : 1;
+        }
+      });
+    console.log(this.products)
   }
 
   public changeViewType(viewType, viewCol){
@@ -140,8 +144,7 @@ export class ProductsComponent implements OnInit {
 
   public onPageChanged(event){
       this.page = event;
-      console.log(event)
-      this.getAllProducts();
+      this.getProducts();
       window.scrollTo(0,0); 
   }
 

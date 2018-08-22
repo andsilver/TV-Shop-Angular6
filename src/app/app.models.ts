@@ -24,3 +24,11 @@ export class Product {
               public categoryId: number,
               public category_name: string){ }
 }
+
+export interface Products {
+  products: Product[];
+  limit: number;
+  page: number;
+  total: number;
+  total_pages: number;
+}

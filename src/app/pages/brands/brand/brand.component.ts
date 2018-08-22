@@ -50,7 +50,7 @@ export class BrandComponent implements OnInit {
 
   public getAllProducts(){
     this.appService.getProducts("brand").subscribe(data=>{
-      this.products = data; 
+      this.products = data.products; 
       //for show more product  
       for (var index = 0; index < 3; index++) {
         this.products = this.products.concat(this.products);        

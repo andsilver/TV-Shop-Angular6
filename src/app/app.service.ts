@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { MatSnackBar } from '@angular/material';
-import { Category, Product } from './app.models';
+import { Category, Product, Products } from './app.models';
 import * as countries from 'assets/data/countries.json';
 import * as brands from 'assets/data/brands.json';
 
@@ -29,13 +29,13 @@ export class AppService {
     /***
     *  ---------------- New Apis -----------------------------------------------------------
     **/
-    public getCategories(limit: number = 999): Observable<Category[]>{
+    public getCategories(limit: number = 6): Observable<Category[]>{
         var params = new HttpParams();
         params = params.append('limit', `${limit}`);
         return this.http.get<Category[]>('/categories', { params: params });
     }
 
-    public getCategoriesByParentId( parentId, limit: number = 999 ): Observable<Category[]> {
+    public getCategoriesByParentId( parentId, limit: number = 6 ): Observable<Category[]> {
         var params = new HttpParams();
         params = params.append('mode', 'parent');
         params = params.append('parentId', parentId);
@@ -44,35 +44,27 @@ export class AppService {
         return this.http.get<Category[]>(`/categories`, { params: params });
     }
 
-    public getProducts(mode: string, categoryId: number = -1, limit: number = 999, page: number = 1): Observable<Product[]>{
+    public getProducts(mode: string, limit: number = 6, page: number = 1): Observable<Products>{
         var params = new HttpParams();
         params = params.append('mode', mode)
         return this.productPagination(limit, page, params);
     }
 
-    public getProductsByCategory( categoryId: number, limit: number = 999, page: number = 1 ) {
+    public getProductsByCategory( categoryId: number, limit: number = 6, page: number = 1 ) {
         var params = new HttpParams();
         params = params.append('mode', 'category');
         params = params.append('category_id', `${categoryId}`);
         return this.productPagination(limit, page, params);
     }
 
-    public productPagination( limit, page, params ){
-        params = params.append("limit", `${limit}`);
-        params = params.append("page", `${page}`);
-        return this.http.get<Product[]>(`/products/listing`, { params: params });
-    }
-
-    public getAllProducts(limit: number = 999, page: number = 1) {
-        var params = new HttpParams();
-        params = params.append('mode', 'all');
-        params = params.append("limit", `${limit}`);
-        params = params.append("page", `${page}`);
-        return this.http.get<Product[]>(`/products/listing`, { params: params });
-    }
-
     public getProductById(id): Observable<Product> {
         return this.http.get<Product>(`/products/${id}/detail`);
+    }
+
+    public productPagination( limit, page, params ): Observable<Products>{
+        params = params.append("limit", `${limit}`);
+        params = params.append("page", `${page}`);
+        return this.http.get<Products>(`/products/listing`, { params: params });
     }
 
     public _getUserById(id): Observable<any> {

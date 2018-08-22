@@ -40,22 +40,22 @@ export class HomeComponent implements OnInit {
   public getProducts(type){
     if(type == "featured" && !this.featuredProducts){
       this.appService.getProducts("featured").subscribe(data=>{
-        this.featuredProducts = data;      
+        this.featuredProducts = data.products;      
       }) 
     }
     if(type == "on sale" && !this.onSaleProducts){
       this.appService.getProducts("on-sale").subscribe(data=>{
-        this.onSaleProducts = data;      
+        this.onSaleProducts = data.products;      
       })
     }
     if(type == "top rated" && !this.topRatedProducts){
       this.appService.getProducts("top-rated").subscribe(data=>{
-        this.topRatedProducts = data;      
+        this.topRatedProducts = data.products;      
       })
     }
     if(type == "new arrivals" && !this.newArrivalsProducts){
       this.appService.getProducts("new-arrivals").subscribe(data=>{
-        this.newArrivalsProducts = data;      
+        this.newArrivalsProducts = data.products;      
       })
     }
    
