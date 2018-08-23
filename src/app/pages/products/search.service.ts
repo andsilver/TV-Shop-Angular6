@@ -23,6 +23,9 @@ export class SearchService {
   			this.routing.productsPage(paths[2]);
   			this.searchPerformed.next(this.keyword);
   		}
+  	} else {
+  		this.routing.productsPage();
+  		this.searchPerformed.next(this.keyword);
   	}
   }
 }
