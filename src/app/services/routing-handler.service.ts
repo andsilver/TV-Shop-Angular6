@@ -21,7 +21,7 @@ export class RoutingHandlerService {
   	this.redirectTo(routes.homePage);
   }
 
-  public productsPage( category: string ) {
+  public productsPage( category: string = '' ) {
   	if ( category )
   		this.redirectTo(`${routes.productsPage}/${category.toLowerCase()}`);
   	else

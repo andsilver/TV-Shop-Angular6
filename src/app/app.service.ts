@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { MatSnackBar } from '@angular/material';
 import { Category, Product, Products } from './app.models';
@@ -23,6 +23,7 @@ export class AppService {
         [],  // cartList
         null //totalPrice
     )
+    public filter: any = {};
     public url = "assets/data/";
     constructor(public http:HttpClient, public snackBar: MatSnackBar) { }
 
@@ -55,6 +56,16 @@ export class AppService {
         params = params.append('mode', 'category');
         params = params.append('category_id', `${categoryId}`);
         return this.productPagination(limit, page, params);
+    }
+
+    public getProductsByFilter( filter: any ): Observable<Products> {
+        var httpHeaders = new HttpHeaders({
+            'Content-Type' : 'application/json'
+        });
+        var options = {
+            headers: httpHeaders
+        };        
+        return this.http.post<Products>('/products/search', filter, options);
     }
 
     public getProductById(id): Observable<Product> {

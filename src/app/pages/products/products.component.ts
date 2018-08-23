@@ -7,6 +7,7 @@ import { ProductDialogComponent } from '../../shared/products-carousel/product-d
 import { AppService } from '../../app.service';
 import { CurrencyService } from 'app/services';
 import { Product, Category, Products } from "../../app.models";
+import { SearchService } from './search.service';
 
 @Component({
   selector: 'app-products',
@@ -27,14 +28,24 @@ export class ProductsComponent implements OnInit {
   public categories:Category[];
   public category: string;
   public brands = [];
+  public selectedBrands = [];
   public priceFrom: number = 750;
   public priceTo: number = 1599;
   public colors = ["#5C6BC0","#66BB6A","#EF5350","#BA68C8","#FF4081","#9575CD","#90CAF9","#B2DFDB","#DCE775","#FFD740","#00E676","#FBC02D","#FF7043","#F5F5F5","#000000"];
+  public selectedColors = [];
   public sizes = ["S","M","L","XL","2XL","32","36","38","46","52","13.3\"","15.4\"","17\"","21\"","23.4\""];
+  public selectedSizes = [];
   public page:any = 0;
   public totalProducts: number = 0;
 
-  constructor(private activatedRoute: ActivatedRoute, public appService:AppService, public dialog: MatDialog, public cc: CurrencyService, private router: Router) { }
+  public filter: any = {};
+
+  constructor(private activatedRoute: ActivatedRoute,
+              public appService:AppService,
+              public dialog: MatDialog,
+              public cc: CurrencyService,
+              private router: Router,
+              private search: SearchService) { }
 
   ngOnInit() {
     this.count = this.counts[0];
@@ -46,41 +57,60 @@ export class ProductsComponent implements OnInit {
       this.viewCol = 33.3;
     };
     this.getBrands();
-    this.sub = this.getCategories()
-                .pipe(
-                  switchMap((categories) => {
-                    this.categories = categories;
-                    this.appService.Data.categories = categories;
-                    return this.activatedRoute.paramMap;
-                  })
-                )
-                .subscribe((params) => {
-                  const category = params.get("name");
-                  if(category && category != this.category) {
-                    this.category = category;
-                    this.page = 1;
-                    this.getProducts();
-                  }
-                  else {
-                    this.category = null;
-                    this.page = 1;
-                    this.getProducts();
-                  }
-                })
+    this.sub 
+      = this.getCategories()
+        .pipe(
+          switchMap((categories) => {
+            this.categories = categories;
+            this.appService.Data.categories = categories;
+            return this.activatedRoute.paramMap;
+          })
+        )
+        .subscribe((params) => {
+          const category = params.get("name");
+          if(category && category != this.category) {
+            this.category = category;
+            this.page = 1;
+            this.getProducts();
+          }
+          else {
+            this.category = null;
+            this.page = 1;
+            this.getProducts();
+          }
+        })
+    this.search.searchPerformed.subscribe(keyword=> this.getProducts());
   }
 
   public getProducts(){
-    const setResource = (data) => {
-      this.products = data.products;
+    this.filter = {
+      keyword: this.search.keyword,
+      categoryId: !this.category ? 0 : this.categories.find( c => c.name.toLowerCase() == this.category ).id,
+      filterAttributes: {
+        brands: this.selectedBrands.map(b=>b.name)
+      },
+      sort: this.sort,
+      limit: this.count,
+      page: this.page
+    }
+
+    this.appService.getProductsByFilter(this.filter).subscribe(data=>{
+      this.products = data.products ? data.products : [];
       this.totalProducts = data.total;
-      console.log(data);
-    }
-    if(!this.category){
-      this.appService.getProducts('all', this.count, this.page).subscribe(data=> setResource(data));
-    } else {
-      const id = this.categories.find( c => c.name.toLowerCase() == this.category ).id;
-      this.appService.getProductsByCategory(id, this.count, this.page).subscribe((data) => setResource(data));
-    }
+      console.log(data)
+    })
+
+    // const setResource = (data) => {
+    //   this.products = data.products;
+    //   this.totalProducts = data.total;
+    //   console.log(data);
+    // }
+    // if(!this.category){
+    //   this.appService.getProducts('all', this.count, this.page).subscribe(data=> setResource(data));
+    // } else {
+    //   const id = this.categories.find( c => c.name.toLowerCase() == this.category ).id;
+    //   this.appService.getProductsByCategory(id, this.count, this.page).subscribe((data) => setResource(data));
+    // }
   }
 
   public getCategories(){  
@@ -152,6 +182,31 @@ export class ProductsComponent implements OnInit {
     if(event.target){
       this.router.navigate(['/products', event.target.innerText.toLowerCase()]); 
     }   
+  }
+
+  public selectSize(size) {
+    var index = this.selectedSizes.indexOf(size);
+    if(index > -1) 
+      this.selectedSizes.splice(index, 1);
+    else
+      this.selectedSizes.push(size);
+  }
+
+  public selectColor(color) {
+    var index = this.selectedColors.indexOf(color);
+    if(index > -1) 
+      this.selectedColors.splice(index, 1);
+    else
+      this.selectedColors.push(color);
+  }
+
+  public selectBrand(brand) {
+    var index = this.selectedBrands.indexOf(brand);
+    if(index > -1) 
+      this.selectedBrands.splice(index, 1);
+    else
+      this.selectedBrands.push(brand);
+    this.getProducts();
   }
 
 }

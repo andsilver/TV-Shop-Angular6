@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 import { MatAutocompleteModule,
          MatButtonModule,
          MatButtonToggleModule,
@@ -57,6 +58,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     SwiperModule,
     FlexLayoutModule,
     MatAutocompleteModule,
@@ -96,6 +98,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
   exports: [
     RouterModule,
     SwiperModule,
+    FormsModule,
     FlexLayoutModule,
     MatAutocompleteModule,
     MatButtonModule,

@@ -36,7 +36,12 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="filter-buttons">
-                    <button mat-raised-button *ngFor="let color of colors" [style.background]="color">&nbsp;</button>
+                    <button 
+                        mat-raised-button *ngFor="let color of colors" 
+                        [style.background]="color" [ngClass]="{'filter-selected-button': selectedColors.indexOf(color) > -1}"
+                        (click)="selectColor(color)">
+                        &nbsp;
+                    </button>
                 </div>
             </mat-expansion-panel>
 
@@ -47,7 +52,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="filter-buttons">
-                    <button mat-raised-button *ngFor="let size of sizes">{{size}}</button>
+                    <button mat-raised-button *ngFor="let size of sizes" [ngClass]="{'filter-selected-button': selectedSizes.indexOf(size) > -1}" (click)="selectSize(size)">{{size}}</button>
                 </div>
             </mat-expansion-panel>
 
@@ -71,7 +76,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="filter-brands">                  
-                    <button mat-raised-button *ngFor="let brand of brands">
+                    <button mat-raised-button *ngFor="let brand of brands" [ngClass]="{'filter-selected-button': selectedBrands.indexOf(brand) > -1}" (click)="selectBrand(brand)">
                         <img [src]="brand.image"/>
                     </button>
                 </div>
