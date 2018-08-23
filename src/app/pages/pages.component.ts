@@ -19,6 +19,7 @@ export class PagesComponent implements OnInit {
   public categories:Category[];
   public category:Category;
   public sidenavMenuItems:Array<any>;
+  public keyword: string;
   @ViewChild('sidenav') sidenav:any;
 
   public settings: Settings;
@@ -27,7 +28,7 @@ export class PagesComponent implements OnInit {
               public sidenavMenuService:SidenavMenuService,
               public router: Router,
               public route:RoutingHandlerService,
-              public filter: SearchService) {
+              public searchService: SearchService) {
     this.settings = this.appSettings.settings; 
   }
 
@@ -60,6 +61,11 @@ export class PagesComponent implements OnInit {
           this.appService.Data.cartList.splice(index, 1);
           this.appService.Data.totalPrice = this.appService.Data.totalPrice - product.newPrice;
       }
+  }
+
+  public search() {
+    this.searchService.keyword = this.keyword;
+    this.searchService.search();
   }
 
   public clear(){
