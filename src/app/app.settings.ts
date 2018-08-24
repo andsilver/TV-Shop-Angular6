@@ -9,6 +9,6 @@ export class Settings {
 export class AppSettings {
     public settings = new Settings(
         'PlatteTV',  // theme name
-        'grey'     // green, blue, red, pink, purple, grey
+        'dark'     // green, blue, red, pink, purple, grey
     )
 }
