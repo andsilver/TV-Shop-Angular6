@@ -9,7 +9,7 @@ export class CurrencyService {
   public currencies = [
     {
       name: 'EUR',
-      unit: '€',
+      unit: '€ ',
       chunkDelimiter: '.',
       decimalDelimiter: ',',
       chunkLength: 3

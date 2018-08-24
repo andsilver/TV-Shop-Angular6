@@ -19,22 +19,20 @@ export class AccountService implements Resolve<any> {
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<any> | Promise<any> | any {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
        // return this.appService._getUserById( 1 );
 
        return new Promise(( resolve, reject ) => {
-       		this.appService._getUserById(1)
-       			.subscribe(user => {
-       				console.log(user)
-       				this.user = user;
-       				this.userUpdated.next(this.user);
-       				resolve(user);
-       			}, reject)
+          this.appService._getUserById(1).subscribe(user => {
+            this.user = user;
+            this.userUpdated.next(this.user);
+            resolve(user);
+          }, reject);
        });
     }
 
     updateUser( user ) {
-    	this.user = user;
-    	this.userUpdated.next(this.user);
+      this.user = user;
+      this.userUpdated.next(this.user);
     }
 }

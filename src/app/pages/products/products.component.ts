@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { forkJoin, of } from 'rxjs';
+import { of, Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { switchMap } from 'rxjs/operators';
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
@@ -16,7 +17,8 @@ import { SearchService } from './search.service';
 export class ProductsComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav') sidenav: any;
   public sidenavOpen = true;
-  private sub: any;
+  private routingSub: Subscription;
+  private searchSub: Subscription;
   public viewType = 'grid';
   public viewCol = 25;
   public counts = [12, 24, 36];
@@ -25,7 +27,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public sort: any;
   public products: Array<Product> = [];
   public categories: Category[];
-  public category: string;
+  public categoryId: number;
   public brands = [];
   public selectedBrands = [];
   public priceFrom = 750;
@@ -53,35 +55,22 @@ export class ProductsComponent implements OnInit, OnDestroy {
     if (window.innerWidth < 1280) {
       this.viewCol = 33.3;
     }
-    this.getBrands();
-    this.sub
-      = this.getCategories()
-        .pipe(
-          switchMap((categories) => {
-            this.categories = categories;
-            this.appService.Data.categories = categories;
-            return this.activatedRoute.paramMap;
-          })
-        )
-        .subscribe((params) => {
-          const category = params.get('name');
-          if (category) {
-            this.category = category;
-            this.page = 1;
-            this.getProducts();
-          } else {
-            this.category = null;
-            this.page = 1;
-            this.getProducts();
-          }
+    this.brands = this.search.brands.manufacturer;
+    this.categories = this.search.categories;
+    this.searchSub = this.search.searchPerformed.subscribe(() => this.getProducts());
+    this.routingSub = this.activatedRoute.paramMap.subscribe((params) => {
+          const category = this.categories.find(c => c.name.toLowerCase() === params.get('name'));
+          this.categoryId = category ? category.id : 0;
+          this.page = 1;
+          this.search.searchPerformed.next();
         });
-    this.search.searchPerformed.subscribe(keyword => this.getProducts());
+    console.log(this.brands, this.categories);
   }
 
   public getProducts() {
     const filter = {
       keyword: this.search.keyword,
-      categoryId: !this.category ? 0 : this.categories.find( c => c.name.toLowerCase() === this.category ).id,
+      categoryId: this.categoryId,
       fromPrice: this.priceFrom,
       toPrice: this.priceTo,
       filterAttributes: {
@@ -93,12 +82,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
       limit: this.count,
       page: this.page
     };
-    console.log(filter);
 
     this.appService.getProductsByFilter(filter).subscribe((data: Products) => {
       this.products = data.products ? data.products : [];
       this.totalProducts = data.total;
-      // console.log(data);
     });
   }
 
@@ -111,11 +98,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   public getBrands() {
-    this.brands = this.appService.getBrands();
+    this.appService._getBrands().subscribe(brands => {
+      this.brands = brands;
+    });
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.searchSub.unsubscribe();
+    this.routingSub.unsubscribe();
   }
 
   @HostListener('window:resize')

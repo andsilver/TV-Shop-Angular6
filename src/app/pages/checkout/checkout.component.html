@@ -154,9 +154,9 @@
           <div *ngFor="let product of appService.Data.cartList" class="mat-row">
             <div class="mat-cell"><img [src]="product.images[0].small"></div>
             <div class="mat-cell">{{product.name}}</div>
-            <div class="mat-cell">${{product.newPrice | number : '1.2-2'}}</div>      
+            <div class="mat-cell">{{product.newPrice | customCurrency:0:999}}</div>      
             <div class="mat-cell text-muted"> 1 </div>
-            <div class="mat-cell">${{product.newPrice | number : '1.2-2'}}</div>
+            <div class="mat-cell">{{product.newPrice | customCurrency:0:999}}</div>
           </div>
         </div>
       </div> 
@@ -390,9 +390,9 @@
           <div *ngFor="let product of appService.Data.cartList" class="mat-row">
             <div class="mat-cell"><img [src]="product.images[0].small"></div>
             <div class="mat-cell">{{product.name}}</div>
-            <div class="mat-cell">${{product.newPrice | number : '1.2-2'}}</div>      
+            <div class="mat-cell">{{product.newPrice | customCurrency:0:999}}</div>      
             <div class="mat-cell text-muted"> 1 </div>
-            <div class="mat-cell">${{product.newPrice | number : '1.2-2'}}</div>
+            <div class="mat-cell">{{product.newPrice | customCurrency:0:999}}</div>
           </div>
         </div>
       </div> 
@@ -450,7 +450,7 @@
       </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="p-1"> 
-       <h2><span class="text-muted mr-1">Total Price:</span><span>${{grandTotal | number : '1.2-2'}}</span></h2>    
+       <h2><span class="text-muted mr-1">Total Price:</span><span>{{grandTotal | customCurrency}}</span></h2>    
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
       <button mat-mini-fab matStepperPrevious color="primary" matTooltip="Back" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>

@@ -75,24 +75,18 @@ export class AppService {
         return this.http.get<Products>(`/products/listing`, { params: params });
     }
 
+    public _getBrands(limit: number = 10, page: number = 1) {
+        let params = new HttpParams();
+        params = params.append('limit', `${limit}`);
+        params = params.append('page', `${page}`);
+        return this.http.get<any>('/manufacturers', {params: params});
+    }
+
     public _getUserById(id): Observable<any> {
         return this.http.get<any>(`/users/${id}/info`);
     }
 
     // ---------------------------------------------------------------------------------------
-
-    public _getCategories(): Observable<Category[]> {
-        return this.http.get<Category[]>(this.url + 'categories.json');
-    }
-
-    public _getProducts(type): Observable<Product[]> {
-        return this.http.get<Product[]>(this.url + type + '-products.json');
-    }
-
-    public _getProductById(id): Observable<Product> {
-        return this.http.get<Product>(this.url + 'product-' + id + '.json');
-    }
-
     public getBanners(): Observable<any[]> {
         return this.http.get<any[]>(this.url + 'banners.json');
     }
@@ -131,9 +125,10 @@ export class AppService {
         } else {
             this.Data.totalPrice = 0;
             this.Data.cartList.push(product);
-            this.Data.cartList.forEach( p => {
-                this.Data.totalPrice = this.Data.totalPrice + p.newPrice;
-            });
+            for ( const c of this.Data.cartList) {
+                this.Data.totalPrice += c.newPrice;
+            }
+            console.log(this.Data.totalPrice);
             message = 'The product ' + product.name + ' has been added to cart.';
             status = 'success';
         }
