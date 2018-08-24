@@ -5,11 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --base-href=https://www.bvbmedia.nl/angular_shop/",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postbuild": "scp -r dist/. root@vm1node6.bvb.vg:/var/www/bvbmedia.nl/web/angular_shop/"
+    "postbuild": "scp -r dist/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/"
   },
   "private": true,
   "dependencies": {
