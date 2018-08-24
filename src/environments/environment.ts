@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://apinl.dev.bvb.vg"
+  apiUrl: 'https://api-buyminl.deb1.bvb.vg'
 };
