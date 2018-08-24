@@ -38,8 +38,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public page: any = 0;
   public totalProducts = 0;
 
-  public filter: any = {};
-
   constructor(private activatedRoute: ActivatedRoute,
               public appService: AppService,
               public dialog: MatDialog,
@@ -67,7 +65,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         )
         .subscribe((params) => {
           const category = params.get('name');
-          if (category && category !== this.category) {
+          if (category) {
             this.category = category;
             this.page = 1;
             this.getProducts();
@@ -81,21 +79,26 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   public getProducts() {
-    this.filter = {
+    const filter = {
       keyword: this.search.keyword,
       categoryId: !this.category ? 0 : this.categories.find( c => c.name.toLowerCase() === this.category ).id,
+      fromPrice: this.priceFrom,
+      toPrice: this.priceTo,
       filterAttributes: {
-        brands: this.selectedBrands.map(b => b.name)
+        brands: this.selectedBrands.map(b => b.name),
+        color: this.selectedColors,
+        size: this.selectedSizes
       },
       sort: this.sort,
       limit: this.count,
       page: this.page
     };
+    console.log(filter);
 
-    this.appService.getProductsByFilter(this.filter).subscribe((data: Products) => {
+    this.appService.getProductsByFilter(filter).subscribe((data: Products) => {
       this.products = data.products ? data.products : [];
       this.totalProducts = data.total;
-      console.log(data);
+      // console.log(data);
     });
   }
 
@@ -136,7 +139,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
           return Number(p1.newPrice) > Number(p2.newPrice) ? -1 : 1;
         }
       });
-    console.log(this.products);
   }
 
   public changeViewType(viewType, viewCol) {

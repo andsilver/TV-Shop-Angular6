@@ -13,25 +13,23 @@ export class ControlsComponent implements OnInit {
   @Input() type: string;
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
   @Output() onQuantityChange: EventEmitter<any> = new EventEmitter<any>();
-  public count:number = 1;
+  public count = 1;
   public align = 'center center';
-  constructor(public appService:AppService, public snackBar: MatSnackBar) { }
+  constructor(public appService: AppService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    if(this.product){
+    if (this.product) {
      // console.log(this.product);
-    }  
-    this.layoutAlign(); 
+    }
+    this.layoutAlign();
   }
 
-  public layoutAlign(){
-    if(this.type == 'all'){
+  public layoutAlign() {
+    if (this.type === 'all') {
       this.align = 'space-between center';
-    }
-    else if(this.type == 'wish'){
+    } else if (this.type === 'wish') {
       this.align = 'start center';
-    }
-    else{
+    } else {
       this.align = 'center center';
     }
   }
