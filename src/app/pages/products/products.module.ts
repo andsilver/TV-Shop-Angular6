@@ -28,11 +28,11 @@ export const routes = [
     PipesModule
   ],
   declarations: [
-    ProductsComponent, 
-    ProductComponent, 
+    ProductsComponent,
+    ProductComponent,
     ProductZoomComponent
   ],
-  entryComponents:[
+  entryComponents: [
     ProductZoomComponent
   ]
 })

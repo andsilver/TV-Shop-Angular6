@@ -4,24 +4,27 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CurrencyService {
-  public default: string = "EUR";
+  public default = 'EUR';
   public currency;
   public currencies = [
-  	{
-  		name: "EUR",
-  		unit: "€"
-  	},
-  	{
-  		name: "USD",
-  		unit: "$"
- 	}
-  ]
+    {
+      name: 'EUR',
+      unit: '€',
+      chunkDelimiter: '.',
+      decimalDelimiter: ',',
+      chunkLength: 3
+    },
+    // {
+    //   name: 'USD',
+    //   unit: '$'
+    // }
+  ];
 
-  constructor() { 
-  	this.currency = this.currencies.find( c => c.name == this.default);
+  constructor() {
+    this.currency = this.currencies.find( c => c.name === this.default);
   }
 
   currencyChanged( cc ) {
-  	this.currency = cc;
+    this.currency = cc;
   }
 }

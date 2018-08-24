@@ -23,11 +23,11 @@
     <div *ngFor="let product of appService.Data.cartList" class="mat-row">
       <div class="mat-cell"><img [src]="product.images[0].small"></div>
       <div class="mat-cell"><a [routerLink]="['/products', product.id, product.name]" class="product-name">{{product.name}}</a></div>
-      <div class="mat-cell">{{product.newPrice | currency:cc.currency.name:'symbol':'1.2-2'}}</div>      
+      <div class="mat-cell">{{product.newPrice | customCurrency}}</div>      
       <div class="mat-cell text-muted">
         <app-controls [product]="product" [type]="'wish'" (onQuantityChange)="getTotalPrice($event)"></app-controls>
       </div>
-      <div class="mat-cell">{{total[product.id] | currency:cc.currency.name:'symbol':'1.2-2'}}</div>
+      <div class="mat-cell">{{total[product.id] | customCurrency}}</div>
       <div class="mat-cell text-center">
         <div class="p-1">
           <button mat-mini-fab color="warn" (click)="remove(product)" matTooltip="Clear">

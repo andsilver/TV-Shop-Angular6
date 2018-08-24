@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Data, AppService } from '../../app.service';
-import { CurrencyService } from 'app/services';
+import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -9,7 +8,7 @@ import { CurrencyService } from 'app/services';
 })
 export class WishlistComponent implements OnInit {
 
-  constructor(public appService:AppService, public cc: CurrencyService) { }
+  constructor(public appService: AppService) { }
 
   ngOnInit() { }
 
@@ -17,15 +16,15 @@ export class WishlistComponent implements OnInit {
     const index: number = this.appService.Data.wishList.indexOf(product);
     if (index !== -1) {
         this.appService.Data.wishList.splice(index, 1);
-    }     
+    }
   }
 
-  public clear(){
+  public clear() {
     this.appService.Data.wishList.length = 0;
-  } 
+  }
 
-  public addToCart(product){
+  public addToCart(product) {
     this.appService.addToCart(product);
-  } 
+  }
 
 }

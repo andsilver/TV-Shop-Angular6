@@ -40,7 +40,7 @@
         <p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription"></p>
 
         <div class="divider mt-1"></div>
-        <h2 class="py-2 new-price">{{product?.newPrice | currency:cc.currency.name:'symbol':'1.2-2'}}</h2>
+        <h2 class="py-2 new-price">{{product?.newPrice | customCurrency}}</h2>
 
         <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="details text-muted py-1">
             <div *ngIf="product?.color" class="color">
@@ -171,21 +171,21 @@
                             <div fxFlex="100" class="px-1 mt-1">
                                 <mat-form-field class="w-100">
                                     <textarea matInput placeholder="Your review" formControlName="review" required></textarea>
-                                    <mat-error *ngIf="form.controls.review.errors?.required">Review is required</mat-error>
+                                    <mat-error *ngIf="form.controls['review'].errors?.required">Review is required</mat-error>
                                 </mat-form-field>
                             </div>
                             <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
                                 <mat-form-field class="w-100">
                                     <input matInput placeholder="Your name" formControlName="name" required>
-                                    <mat-error *ngIf="form.controls.name.errors?.required">Name is required</mat-error>
-                                    <mat-error *ngIf="form.controls.name.hasError('minlength')">Name isn't long enough, minimum of 4 characters</mat-error>
+                                    <mat-error *ngIf="form.controls['name'].errors?.required">Name is required</mat-error>
+                                    <mat-error *ngIf="form.controls['name'].hasError('minlength')">Name isn't long enough, minimum of 4 characters</mat-error>
                                 </mat-form-field> 
                             </div>
                             <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
                                 <mat-form-field class="w-100">
                                     <input matInput placeholder="Your email" formControlName="email" required>
-                                    <mat-error *ngIf="form.controls.email.errors?.required">Email is required</mat-error>
-                                    <mat-error *ngIf="form.controls.email.hasError('invalidEmail')">Invalid email address</mat-error>
+                                    <mat-error *ngIf="form.controls['email'].errors?.required">Email is required</mat-error>
+                                    <mat-error *ngIf="form.controls['email'].hasError('invalidEmail')">Invalid email address</mat-error>
                                 </mat-form-field> 
                             </div>
                             <div fxFlex="100" class="mt-2 text-center w-100">

@@ -38,50 +38,49 @@ export class ControlsComponent implements OnInit {
 
 
 
-  public increment(count){
-    if(this.count < this.product.availibilityCount){
+  public increment(count) {
+    if (this.count < this.product.availibilityCount) {
       this.count++;
-      let obj = {
+      const obj = {
         productId: this.product.id,
         soldQuantity: this.count,
         total: this.count * this.product.newPrice
-      }
+      };
       this.changeQuantity(obj);
-    }
-    else{
+    } else {
       this.snackBar.open('You can not choose more items than available. In stock ' + this.count + ' items.', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
-    }    
+    }
   }
 
-  public decrement(count){
-    if(this.count > 1){
+  public decrement(count) {
+    if (this.count > 1) {
       this.count--;
-      let obj = {
+      const obj = {
         productId: this.product.id,
         soldQuantity: this.count,
         total: this.count * this.product.newPrice
-      }
+      };
       this.changeQuantity(obj);
     }
   }
 
-  public addToCompare(product:Product){
+  public addToCompare(product: Product) {
     this.appService.addToCompare(product);
   }
 
-  public addToWishList(product:Product){
+  public addToWishList(product: Product) {
     this.appService.addToWishList(product);
   }
 
-  public addToCart(product:Product){
+  public addToCart(product: Product) {
     this.appService.addToCart(product);
   }
 
-  public openProductDialog(event){
+  public openProductDialog(event) {
     this.onOpenProductDialog.emit(event);
   }
 
-  public changeQuantity(value){
+  public changeQuantity(value) {
       this.onQuantityChange.emit(value);
   }
 

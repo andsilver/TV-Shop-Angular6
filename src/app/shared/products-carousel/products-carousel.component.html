@@ -16,9 +16,9 @@
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
                     <div fxLayout="column" fxLayoutAlign="center start">
                         <p class="old-price text-muted">
-                            <span *ngIf="product.oldPrice">{{product.oldPrice | currency:cc.currency.name:'symbol':'1.2-2'}}</span>
+                            <span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency}}</span>
                         </p>
-                        <p class="new-price">{{product.newPrice | currency:cc.currency.name:'symbol':'1.2-2'}}</p>
+                        <p class="new-price">{{product.newPrice | customCurrency}}</p>
                     </div>
                     <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating>
                 </div>

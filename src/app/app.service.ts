@@ -21,60 +21,57 @@ export class AppService {
         [], // compareList
         [],  // wishList
         [],  // cartList
-        null //totalPrice
-    )
+        null // totalPrice
+    );
     public filter: any = {};
-    public url = "assets/data/";
-    constructor(public http:HttpClient, public snackBar: MatSnackBar) { }
+    public url = 'assets/data/';
+    constructor(public http: HttpClient, public snackBar: MatSnackBar) { }
 
     /***
     *  ---------------- New Apis -----------------------------------------------------------
     **/
-    public getCategories(limit: number = 6): Observable<Category[]>{
-        var params = new HttpParams();
+    public getCategories(limit: number = 6): Observable<Category[]> {
+        let params = new HttpParams();
         params = params.append('limit', `${limit}`);
         return this.http.get<Category[]>('/categories', { params: params });
     }
 
     public getCategoriesByParentId( parentId, limit: number = 6 ): Observable<Category[]> {
-        var params = new HttpParams();
+        let params = new HttpParams();
         params = params.append('mode', 'parent');
         params = params.append('parentId', parentId);
-        if(limit > -1)
+        if (limit > -1) {
            params = params.append('limit', `${limit}`);
+        }
         return this.http.get<Category[]>(`/categories`, { params: params });
     }
 
-    public getProducts(mode: string, limit: number = 6, page: number = 1): Observable<Products>{
-        var params = new HttpParams();
-        params = params.append('mode', mode)
+    public getProducts(mode: string, limit: number = 6, page: number = 1): Observable<Products> {
+        let params = new HttpParams();
+        params = params.append('mode', mode);
         return this.productPagination(limit, page, params);
     }
 
     public getProductsByCategory( categoryId: number, limit: number = 6, page: number = 1 ) {
-        var params = new HttpParams();
+        let params = new HttpParams();
         params = params.append('mode', 'category');
         params = params.append('category_id', `${categoryId}`);
         return this.productPagination(limit, page, params);
     }
 
     public getProductsByFilter( filter: any ): Observable<Products> {
-        var httpHeaders = new HttpHeaders({
-            'Content-Type' : 'application/json'
-        });
-        var options = {
-            headers: httpHeaders
-        };        
-        return this.http.post<Products>('/products/search', filter, options);
+        // const httpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
+        // const options = {headers: httpHeaders};
+        return this.http.post<Products>('/products/search', filter);
     }
 
     public getProductById(id): Observable<Product> {
         return this.http.get<Product>(`/products/${id}/detail`);
     }
 
-    public productPagination( limit, page, params ): Observable<Products>{
-        params = params.append("limit", `${limit}`);
-        params = params.append("page", `${page}`);
+    public productPagination( limit, page, params ): Observable<Products> {
+        params = params.append('limit', `${limit}`);
+        params = params.append('page', `${page}`);
         return this.http.get<Products>(`/products/listing`, { params: params });
     }
 
@@ -84,29 +81,28 @@ export class AppService {
 
     // ---------------------------------------------------------------------------------------
 
-    public _getCategories(): Observable<Category[]>{
+    public _getCategories(): Observable<Category[]> {
         return this.http.get<Category[]>(this.url + 'categories.json');
     }
 
-    public _getProducts(type): Observable<Product[]>{
+    public _getProducts(type): Observable<Product[]> {
         return this.http.get<Product[]>(this.url + type + '-products.json');
     }
 
-    public _getProductById(id): Observable<Product>{
+    public _getProductById(id): Observable<Product> {
         return this.http.get<Product>(this.url + 'product-' + id + '.json');
     }
 
-    public getBanners(): Observable<any[]>{
+    public getBanners(): Observable<any[]> {
         return this.http.get<any[]>(this.url + 'banners.json');
     }
 
-    public addToCompare(product:Product){
+    public addToCompare(product: Product) {
         let message, status;
-        if(this.Data.compareList.filter(item=>item.id == product.id)[0]){
+        if (this.Data.compareList.filter(item => item.id === product.id)[0]) {
             message = 'The product ' + product.name + ' already added to comparison list.';
             status = 'error';
-        }
-        else{
+        } else {
             this.Data.compareList.push(product);
             message = 'The product ' + product.name + ' has been added to comparison list.';
             status = 'success';
@@ -114,13 +110,12 @@ export class AppService {
         this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
     }
 
-    public addToWishList(product:Product){
+    public addToWishList(product: Product) {
         let message, status;
-        if(this.Data.wishList.some(item=>item.id == product.id)){
+        if (this.Data.wishList.some(item => item.id === product.id)) {
             message = 'The product ' + product.name + ' already added to wish list.';
             status = 'error';
-        }
-        else{
+        } else {
             this.Data.wishList.push(product);
             message = 'The product ' + product.name + ' has been added to wish list.';
             status = 'success';
@@ -128,33 +123,32 @@ export class AppService {
         this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
     }
 
-    public addToCart(product:Product){
+    public addToCart(product: Product) {
         let message, status;
-        if(this.Data.cartList.some(item=>item.id == product.id)){
+        if (this.Data.cartList.some(item => item.id === product.id)) {
             message = 'The product ' + product.name + ' already added to cart.';
             status = 'error';
-        }
-        else{
-            this.Data.totalPrice = null;
+        } else {
+            this.Data.totalPrice = 0;
             this.Data.cartList.push(product);
-            this.Data.cartList.forEach(product=>{
-                this.Data.totalPrice = this.Data.totalPrice + product.newPrice;
-            })
+            this.Data.cartList.forEach( p => {
+                this.Data.totalPrice = this.Data.totalPrice + p.newPrice;
+            });
             message = 'The product ' + product.name + ' has been added to cart.';
             status = 'success';
         }
         this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
     }
 
-    public getBrands(){
+    public getBrands() {
         return brands['brands'];
     }
 
-    public getCountries(){
+    public getCountries() {
         return countries['countries'];
     }
 
-    public getMonths(){
+    public getMonths() {
         return [
             { value: '01', name: 'January' },
             { value: '02', name: 'February' },
@@ -168,19 +162,19 @@ export class AppService {
             { value: '10', name: 'October' },
             { value: '11', name: 'November' },
             { value: '12', name: 'December' }
-        ]
+        ];
     }
 
-    public getYears(){
-        return ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" ]
+    public getYears() {
+        return ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'];
     }
 
-    public getDeliveryMethods(){
+    public getDeliveryMethods() {
         return [
             { value: 'free', name: 'Free Delivery', desc: '$0.00 / Delivery in 7 to 14 business Days' },
             { value: 'standard', name: 'Standard Delivery', desc: '$7.99 / Delivery in 5 to 7 business Days' },
             { value: 'express', name: 'Express Delivery', desc: '$29.99 / Delivery in 1 business Days' }
-        ]
+        ];
     }
 
 }

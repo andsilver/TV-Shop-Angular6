@@ -7,25 +7,27 @@ import { ActivatedRoute, Router } from '@angular/router';
   providedIn: 'root'
 })
 export class SearchService {
-  public keyword: string = '';
+  public keyword = '';
   public searchPerformed: Subject<string> = new Subject<string>();
-  
+
   constructor( private routing: RoutingHandlerService, private route: ActivatedRoute, private router: Router ) { }
 
-  public search() {
-  	if(this.router.url.indexOf('products') > 0){
-  		var paths = this.router.url.split('/');
-  		if(paths.length < 3 || +paths[2]){
-  			this.routing.productsPage();
-  			this.searchPerformed.next(this.keyword);
-  		}
-  		else{
-  			this.routing.productsPage(paths[2]);
-  			this.searchPerformed.next(this.keyword);
-  		}
-  	} else {
-  		this.routing.productsPage();
-  		this.searchPerformed.next(this.keyword);
-  	}
+  public search(keyword: string) {
+    if (keyword === this.keyword && keyword !== '') {
+      return;
+    }
+    if (this.router.url.indexOf('products') > 0) {
+      const paths = this.router.url.split('/');
+    if (paths.length < 3 || +paths[2]) {
+        this.routing.productsPage();
+        this.searchPerformed.next(this.keyword);
+    } else {
+        this.routing.productsPage(paths[2]);
+        this.searchPerformed.next(this.keyword);
+      }
+    } else {
+      this.routing.productsPage();
+      this.searchPerformed.next(this.keyword);
+    }
   }
 }
