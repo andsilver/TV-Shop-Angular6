@@ -126,7 +126,7 @@ export class AppService {
             this.Data.totalPrice = 0;
             this.Data.cartList.push(product);
             for ( const c of this.Data.cartList) {
-                this.Data.totalPrice += c.newPrice;
+                this.Data.totalPrice += Number(c.newPrice);
             }
             console.log(this.Data.totalPrice);
             message = 'The product ' + product.name + ' has been added to cart.';
