@@ -16,6 +16,7 @@ export class SearchService {
     if (keyword === this.keyword && keyword !== '') {
       return;
     }
+    this.keyword = keyword;
     if (this.router.url.indexOf('products') > 0) {
       const paths = this.router.url.split('/');
     if (paths.length < 3 || +paths[2]) {

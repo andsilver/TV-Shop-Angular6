@@ -11,8 +11,8 @@ import { Product } from '../../app.models';
 export class ControlsComponent implements OnInit {
   @Input() product: Product;
   @Input() type: string;
-  @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
-  @Output() onQuantityChange: EventEmitter<any> = new EventEmitter<any>();
+  onOpenProductDialog: EventEmitter<any> = new EventEmitter();
+  onQuantityChange: EventEmitter<any> = new EventEmitter<any>();
   public count = 1;
   public align = 'center center';
   constructor(public appService: AppService, public snackBar: MatSnackBar) { }
@@ -46,7 +46,8 @@ export class ControlsComponent implements OnInit {
       };
       this.changeQuantity(obj);
     } else {
-      this.snackBar.open('You can not choose more items than available. In stock ' + this.count + ' items.', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+      this.snackBar.open('You can not choose more items than available. In stock '
+      + this.count + ' items.', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
     }
   }
 
