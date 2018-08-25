@@ -20,12 +20,12 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted">
-                    <span>From: <b>${{priceFrom}}</b></span>
-                    <span>To: <b>${{priceTo}}</b></span>
+                    <span>From: <b>{{priceFrom | customCurrency:0:999}}</b></span>
+                    <span>To: <b>{{priceTo | customCurrency:0:999}}</b></span>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="filter-price">
-                    <mat-slider color="primary" max="2000" min="1" thumb-label="true" [(ngModel)]="priceFrom"></mat-slider>
-                    <mat-slider color="warn" max="2000" min="1" thumb-label="true" [(ngModel)]="priceTo"></mat-slider>
+                    <mat-slider color="primary" max="2000" min="1" thumb-label="true" [(ngModel)]="priceFrom" (change)="getProducts()"></mat-slider>
+                    <mat-slider color="warn" max="2000" min="1" thumb-label="true" [(ngModel)]="priceTo" (change)="getProducts()"></mat-slider>
                 </div>
             </mat-expansion-panel>
 
@@ -36,7 +36,12 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="filter-buttons">
-                    <button mat-raised-button *ngFor="let color of colors" [style.background]="color">&nbsp;</button>
+                    <button 
+                        mat-raised-button *ngFor="let color of colors" 
+                        [style.background]="color" [ngClass]="{'filter-selected-button': selectedColors.indexOf(color) > -1}"
+                        (click)="selectColor(color)">
+                        &nbsp;
+                    </button>
                 </div>
             </mat-expansion-panel>
 
@@ -47,7 +52,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="filter-buttons">
-                    <button mat-raised-button *ngFor="let size of sizes">{{size}}</button>
+                    <button mat-raised-button *ngFor="let size of sizes" [ngClass]="{'filter-selected-button': selectedSizes.indexOf(size) > -1}" (click)="selectSize(size)">{{size}}</button>
                 </div>
             </mat-expansion-panel>
 
@@ -119,7 +124,7 @@
         </div>
 
         <div *ngIf="viewType == 'grid'" fxLayout="row wrap" class="products-wrapper">
-            <div *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page }" fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="col">
+            <div *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }" fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="col">
                 <mat-card class="product-item text-center">
                     <mat-chip-list *ngIf="product.discount">
                         <mat-chip color="warn" selected="true">{{product.discount}}% OFF</mat-chip>
@@ -133,8 +138,8 @@
                     </a>
                     <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
                         <div fxLayout="column" fxLayoutAlign="center start">
-                            <p class="old-price text-muted"><span *ngIf="product.oldPrice">${{product.oldPrice | number : '1.2-2'}}</span></p>
-                            <p class="new-price">${{product.newPrice | number : '1.2-2'}}</p>
+                            <p class="old-price text-muted"><span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency}}</span></p>
+                            <p class="new-price">${{product.newPrice | customCurrency}}</p>
                         </div>
                         <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating>
                     </div>                            
@@ -147,7 +152,7 @@
         </div>
 
         <div *ngIf="viewType == 'list'" fxLayout="row wrap" class="products-wrapper">
-            <div  *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page }" fxFlex="100" class="col">
+            <div  *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }" fxFlex="100" class="col">
                 <mat-card class="product-item">
                     <div fxLayout="row wrap">
                         <div fxFlex="100" fxFlex.gt-xs="40" class="p-2">
@@ -166,8 +171,8 @@
                             <p class="py-1 text-muted lh">{{product.description}}</p>
                             <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
                                 <div fxLayout="column" fxLayoutAlign="center start">
-                                    <p class="old-price text-muted"><span *ngIf="product.oldPrice">${{product.oldPrice | number : '1.2-2'}}</span></p>
-                                    <p class="new-price">${{product.newPrice | number : '1.2-2'}}</p>
+                                    <p class="old-price text-muted"><span *ngIf="product.oldPrice">${{product.oldPrice | customCurrency}}</span></p>
+                                    <p class="new-price">${{product.newPrice | customCurrency}}</p>
                                 </div>
                                 <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating>
                             </div>                            

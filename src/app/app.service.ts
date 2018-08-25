@@ -60,13 +60,18 @@ export class AppService {
     }
 
     public getProductsByFilter( filter: any ): Observable<Products> {
-        // const httpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
-        // const options = {headers: httpHeaders};
         return this.http.post<Products>('/products/search', filter);
     }
 
     public getProductById(id): Observable<Product> {
         return this.http.get<Product>(`/products/${id}/detail`);
+    }
+
+    public getProductsByBrand( brand: string, limit: number = 6, page: number = 1 ) {
+        let params = new HttpParams();
+        params = params.append('mode', 'brand');
+        params = params.append('brands_name', brand);
+        return this.productPagination(limit, page, params);
     }
 
     public productPagination( limit, page, params ): Observable<Products> {
@@ -75,7 +80,7 @@ export class AppService {
         return this.http.get<Products>(`/products/listing`, { params: params });
     }
 
-    public _getBrands(limit: number = 10, page: number = 1) {
+    public getBrands(limit: number = 10, page: number = 1) {
         let params = new HttpParams();
         params = params.append('limit', `${limit}`);
         params = params.append('page', `${page}`);
@@ -133,10 +138,6 @@ export class AppService {
             status = 'success';
         }
         this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
-    }
-
-    public getBrands() {
-        return brands['brands'];
     }
 
     public getCountries() {

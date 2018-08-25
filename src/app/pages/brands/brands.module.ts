@@ -7,10 +7,11 @@ import { SharedModule } from '../../shared/shared.module';
 import { PipesModule } from '../../theme/pipes/pipes.module';
 import { BrandsComponent } from './brands.component';
 import { BrandComponent } from './brand/brand.component';
+import { BrandsService } from './brands.service';
 
 export const routes = [
   { path: '', component: BrandsComponent, pathMatch: 'full' },
-  { path: ':name', component: BrandComponent }
+  { path: ':name', component: BrandComponent, resolve: { data: BrandsService } }
 ];
 
 @NgModule({

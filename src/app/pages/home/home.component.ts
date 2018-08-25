@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../app.service';
-import { Product } from "../../app.models";
+import { Product } from '../../app.models';
 
 @Component({
   selector: 'app-home',
@@ -25,50 +25,52 @@ export class HomeComponent implements OnInit {
   public newArrivalsProducts: Array<Product>;
 
 
-  constructor(public appService:AppService) { }
+  constructor(public appService: AppService) { }
 
   ngOnInit() {
     this.getBanners();
-    this.getProducts("featured");
+    this.getProducts('featured');
     this.getBrands();
   }
 
-  public onLinkClick(e){
-    this.getProducts(e.tab.textLabel.toLowerCase()); 
+  public onLinkClick(e) {
+    this.getProducts(e.tab.textLabel.toLowerCase());
   }
 
-  public getProducts(type){
-    if(type == "featured" && !this.featuredProducts){
-      this.appService.getProducts("featured").subscribe(data=>{
-        this.featuredProducts = data.products;      
-      }) 
+  public getProducts(type) {
+    if (type === 'featured' && !this.featuredProducts) {
+      this.appService.getProducts('featured').subscribe(data => {
+        this.featuredProducts = data.products;
+      });
     }
-    if(type == "on sale" && !this.onSaleProducts){
-      this.appService.getProducts("on-sale").subscribe(data=>{
-        this.onSaleProducts = data.products;      
-      })
+    if (type === 'on sale' && !this.onSaleProducts) {
+      this.appService.getProducts('on-sale').subscribe(data => {
+        this.onSaleProducts = data.products;
+      });
     }
-    if(type == "top rated" && !this.topRatedProducts){
-      this.appService.getProducts("top-rated").subscribe(data=>{
-        this.topRatedProducts = data.products;      
-      })
+    if (type === 'top rated' && !this.topRatedProducts) {
+      this.appService.getProducts('top-rated').subscribe(data => {
+        this.topRatedProducts = data.products;
+      });
     }
-    if(type == "new arrivals" && !this.newArrivalsProducts){
-      this.appService.getProducts("new-arrivals").subscribe(data=>{
-        this.newArrivalsProducts = data.products;      
-      })
+    if (type === 'new arrivals' && !this.newArrivalsProducts) {
+      this.appService.getProducts('new-arrivals').subscribe(data => {
+        this.newArrivalsProducts = data.products;
+      });
     }
-   
+
   }
 
-  public getBanners(){
-    this.appService.getBanners().subscribe(data=>{
+  public getBanners() {
+    this.appService.getBanners().subscribe(data => {
       this.banners = data;
-    })
+    });
   }
 
-  public getBrands(){
-    this.brands = this.appService.getBrands();
+  public getBrands() {
+    this.appService.getBrands().subscribe(data => {
+      this.brands = data.manufacturer;
+    });
   }
 
 }

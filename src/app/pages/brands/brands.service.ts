@@ -7,11 +7,10 @@ import { AppService } from 'app/app.service';
 @Injectable({
   providedIn: 'root'
 })
-export class SearchService implements Resolve<any> {
+export class BrandsService implements Resolve<any> {
   public keyword = '';
   public searchPerformed = new Subject();
   public categories = [];
-  public brands;
 
   constructor(private appService: AppService,
               private routing: RoutingHandlerService,
@@ -26,10 +25,9 @@ export class SearchService implements Resolve<any> {
    */
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
     return new Promise(( resolve, reject ) => {
-        forkJoin([this.appService.getCategories(), this.appService.getBrands()]).subscribe(subs => {
-          this.categories = subs[0];
-          this.brands = subs[1];
-          resolve(subs);
+       this.appService.getCategories().subscribe(data => {
+          this.categories = data;
+          resolve(data);
         }, reject);
     });
   }

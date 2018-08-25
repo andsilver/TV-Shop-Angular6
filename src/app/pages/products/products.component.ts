@@ -2,8 +2,6 @@ import { Component, OnInit, OnDestroy, ViewChild, HostListener } from '@angular/
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { of, Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
-import { switchMap } from 'rxjs/operators';
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product, Category, Products } from '../../app.models';
@@ -30,14 +28,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public categoryId: number;
   public brands = [];
   public selectedBrands = [];
-  public priceFrom = 750;
-  public priceTo = 1599;
+  public priceFrom = 0;
+  public priceTo = 2000;
   public colors = [ '#5C6BC0', '#66BB6A', '#EF5350', '#BA68C8', '#FF4081', '#9575CD', '#90CAF9', '#B2DFDB', '#DCE775',
                     '#FFD740', '#00E676', '#FBC02D', '#FF7043', '#F5F5F5', '#000000'];
   public selectedColors = [];
   public sizes = ['S', 'M', 'L', 'XL', '2XL', '32', '36', '38', '46', '52', '13.3\'', '15.4\'', '17\'', '21\'', '23.4\''];
   public selectedSizes = [];
-  public page: any = 0;
+  public page = 0;
   public totalProducts = 0;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -98,7 +96,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   public getBrands() {
-    this.appService._getBrands().subscribe(brands => {
+    this.appService.getBrands().subscribe(brands => {
       this.brands = brands;
     });
   }
@@ -167,6 +165,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     } else {
       this.selectedSizes.push(size);
     }
+    this.getProducts();
   }
 
   public selectColor(color) {
@@ -176,6 +175,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     } else {
       this.selectedColors.push(color);
     }
+    this.getProducts();
   }
 
   public selectBrand(brand) {
