@@ -26,6 +26,7 @@ export const routes = [
   declarations: [
     BrandsComponent,
     BrandComponent
-  ]
+  ],
+  providers: [BrandsService]
 })
 export class BrandsModule { }

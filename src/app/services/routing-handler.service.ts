@@ -13,7 +13,7 @@ export class RoutingHandlerService {
 
   constructor(private router: Router) { }
 
-  private redirectTo(commands: string) {
+  public redirectTo(commands: string) {
     this.router.navigate([commands]);
   }
 

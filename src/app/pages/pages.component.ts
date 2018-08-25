@@ -4,8 +4,8 @@ import { Settings, AppSettings } from '../app.settings';
 import { AppService } from '../app.service';
 import { Category } from '../app.models';
 import { SidenavMenuService } from '../theme/components/sidenav-menu/sidenav-menu.service';
-import { RoutingHandlerService } from 'app/services';
-import { SearchService } from './products/search.service';
+import { RoutingHandlerService, FilterService } from 'app/services';
+import { ProductsService } from './products/products.service';
 
 @Component({
   selector: 'app-pages',
@@ -27,7 +27,7 @@ export class PagesComponent implements OnInit, AfterViewInit {
               public sidenavMenuService: SidenavMenuService,
               public router: Router,
               public route: RoutingHandlerService,
-              public searchService: SearchService) {
+              public filter: FilterService) {
     this.settings = this.appSettings.settings;
   }
 
@@ -72,7 +72,7 @@ export class PagesComponent implements OnInit, AfterViewInit {
   }
 
   public search() {
-    this.searchService.search(this.keyword);
+    this.filter.search(this.keyword);
   }
 
   public clear() {

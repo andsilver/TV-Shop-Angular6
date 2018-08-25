@@ -46,11 +46,11 @@ import { FooterComponent } from './theme/components/footer/footer.component';
     SidenavMenuComponent,
     BreadcrumbComponent,
     OptionsComponent,
-    FooterComponent    
-  ], 
+    FooterComponent
+  ],
   providers: [
     AppSettings,
-    AppService,   
+    AppService,
     { provide: OverlayContainer, useClass: CustomOverlayContainer },
     { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }
   ],

@@ -168,7 +168,7 @@
                             <a [routerLink]="['/products', product.id, product.name]" class="title">
                                 {{product.name}}
                             </a>
-                            <p class="py-1 text-muted lh">{{product.description}}</p>
+                            <p class="py-1 text-muted lh" [innerHTML]="product.shortdescription"></p>
                             <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
                                 <div fxLayout="column" fxLayoutAlign="center start">
                                     <p class="old-price text-muted"><span *ngIf="product.oldPrice">${{product.oldPrice | customCurrency}}</span></p>

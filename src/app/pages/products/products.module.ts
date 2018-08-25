@@ -9,11 +9,11 @@ import { PipesModule } from '../../theme/pipes/pipes.module';
 import { ProductsComponent } from './products.component';
 import { ProductComponent } from './product/product.component';
 import { ProductZoomComponent } from './product/product-zoom/product-zoom.component';
-import { SearchService } from './search.service';
+import { ProductsService } from './products.service';
 
 export const routes = [
-  { path: '', component: ProductsComponent, pathMatch: 'full', resolve: { data: SearchService } },
-  { path: ':name', component: ProductsComponent, resolve: { data: SearchService } },
+  { path: '', component: ProductsComponent, pathMatch: 'full', resolve: { data: ProductsService } },
+  { path: ':name', component: ProductsComponent, resolve: { data: ProductsService } },
   { path: ':id/:name', component: ProductComponent }
 ];
 
@@ -35,6 +35,7 @@ export const routes = [
   ],
   entryComponents: [
     ProductZoomComponent
-  ]
+  ],
+  providers: [ ProductsService ]
 })
 export class ProductsModule { }

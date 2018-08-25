@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { of, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product, Category, Products } from '../../app.models';
-import { SearchService } from './search.service';
+import { ProductsService } from './products.service';
+import { FilterService } from 'app/services';
 
 @Component({
   selector: 'app-products',
@@ -28,7 +29,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public categoryId: number;
   public brands = [];
   public selectedBrands = [];
-  public priceFrom = 0;
+  public priceFrom = 1;
   public priceTo = 2000;
   public colors = [ '#5C6BC0', '#66BB6A', '#EF5350', '#BA68C8', '#FF4081', '#9575CD', '#90CAF9', '#B2DFDB', '#DCE775',
                     '#FFD740', '#00E676', '#FBC02D', '#FF7043', '#F5F5F5', '#000000'];
@@ -42,7 +43,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
               public appService: AppService,
               public dialog: MatDialog,
               private router: Router,
-              private search: SearchService) { }
+              private productsService: ProductsService,
+              private filter: FilterService) { }
 
   ngOnInit() {
     this.count = this.counts[0];
@@ -53,21 +55,32 @@ export class ProductsComponent implements OnInit, OnDestroy {
     if (window.innerWidth < 1280) {
       this.viewCol = 33.3;
     }
-    this.brands = this.search.brands.manufacturer;
-    this.categories = this.search.categories;
-    this.searchSub = this.search.searchPerformed.subscribe(() => this.getProducts());
+    this.brands = this.productsService.brands.manufacturer;
+    this.categories = this.productsService.categories;
+    this.searchSub = this.filter.searchPerformed.subscribe(() => this.getProducts());
     this.routingSub = this.activatedRoute.paramMap.subscribe((params) => {
           const category = this.categories.find(c => c.name.toLowerCase() === params.get('name'));
           this.categoryId = category ? category.id : 0;
           this.page = 1;
-          this.search.searchPerformed.next();
+          this.filter.searchPerformed.next();
         });
     console.log(this.brands, this.categories);
   }
 
+  ngOnDestroy() {
+    this.searchSub.unsubscribe();
+    this.routingSub.unsubscribe();
+  }
+
+  @HostListener('window:resize')
+  public onWindowResize(): void {
+    (window.innerWidth < 960) ? this.sidenavOpen = false : this.sidenavOpen = true;
+    (window.innerWidth < 1280) ? this.viewCol = 33.3 : this.viewCol = 25;
+  }
+
   public getProducts() {
     const filter = {
-      keyword: this.search.keyword,
+      keyword: this.filter.keyword,
       categoryId: this.categoryId,
       fromPrice: this.priceFrom,
       toPrice: this.priceTo,
@@ -87,46 +100,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
     });
   }
 
-  public getCategories() {
-    if (this.appService.Data.categories.length === 0) {
-      return this.appService.getCategories();
-    } else {
-      return of(this.appService.Data.categories);
-    }
-  }
-
-  public getBrands() {
-    this.appService.getBrands().subscribe(brands => {
-      this.brands = brands;
-    });
-  }
-
-  ngOnDestroy() {
-    this.searchSub.unsubscribe();
-    this.routingSub.unsubscribe();
-  }
-
-  @HostListener('window:resize')
-  public onWindowResize(): void {
-    (window.innerWidth < 960) ? this.sidenavOpen = false : this.sidenavOpen = true;
-    (window.innerWidth < 1280) ? this.viewCol = 33.3 : this.viewCol = 25;
-  }
-
   public changeCount(count) {
     this.count = count;
-    this.page = 1;
-    this.getProducts();
+    this.filterChanged();
   }
 
   public changeSorting(sort) {
     this.sort = sort;
-    this.products.sort((p1, p2) => {
-        if (sort === 'Lowest first') {
-          return Number(p1.newPrice) < Number(p2.newPrice) ? -1 : 1;
-        } else if (sort === 'Highest first') {
-          return Number(p1.newPrice) > Number(p2.newPrice) ? -1 : 1;
-        }
-      });
+    this.filterChanged();
   }
 
   public changeViewType(viewType, viewCol) {
@@ -165,7 +146,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     } else {
       this.selectedSizes.push(size);
     }
-    this.getProducts();
+    this.filterChanged();
   }
 
   public selectColor(color) {
@@ -175,7 +156,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     } else {
       this.selectedColors.push(color);
     }
-    this.getProducts();
+    this.filterChanged();
   }
 
   public selectBrand(brand) {
@@ -185,6 +166,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
     } else {
       this.selectedBrands.push(brand);
     }
+    this.filterChanged();
+  }
+
+  public filterChanged() {
+    this.page = 1;
     this.getProducts();
   }
 
