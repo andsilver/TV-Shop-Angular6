@@ -5,6 +5,7 @@ import { FilterByIdPipe } from './filter-by-id.pipe';
 import { FilterBrandsPipe } from './filter-brands.pipe';
 import { BrandSearchPipe } from './brand-search.pipe';
 import { CustomCurrencyPipe } from './custom-currency.pipe';
+import { JsonLoopPipe } from './json-loop.pipe';
 
 @NgModule({
     imports: [
@@ -14,13 +15,15 @@ import { CustomCurrencyPipe } from './custom-currency.pipe';
         FilterByIdPipe,
         FilterBrandsPipe,
         BrandSearchPipe,
-        CustomCurrencyPipe
+        CustomCurrencyPipe,
+        JsonLoopPipe
     ],
     exports: [
         FilterByIdPipe,
         FilterBrandsPipe,
         BrandSearchPipe,
-        CustomCurrencyPipe
+        CustomCurrencyPipe,
+        JsonLoopPipe
     ]
 })
 export class PipesModule { }
