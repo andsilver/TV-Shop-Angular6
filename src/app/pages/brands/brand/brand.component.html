@@ -29,7 +29,7 @@
                 </div>
             </mat-expansion-panel>
 
-            <mat-expansion-panel expanded>
+            <!-- <mat-expansion-panel expanded>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         <h4>Color</h4>
@@ -54,22 +54,9 @@
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="filter-buttons">
                     <button mat-raised-button *ngFor="let size of sizes" [ngClass]="{'filter-selected-button': selectedSizes.indexOf(size) > -1}" (click)="selectSize(size)">{{size}}</button>
                 </div>
-            </mat-expansion-panel>
+            </mat-expansion-panel> -->
 
-            <mat-expansion-panel expanded>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        <h4>Condition</h4>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div fxLayout="column">
-                    <mat-checkbox color="primary">New</mat-checkbox>
-                    <mat-checkbox color="primary">Used</mat-checkbox>
-                    <mat-checkbox color="primary">Not Specified</mat-checkbox>
-                </div>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel expanded>
+            <!-- <mat-expansion-panel expanded>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         <h4>Now starting at $1379</h4>
@@ -78,7 +65,7 @@
                 <div fxLayout="row wrap" fxLayoutAlign="center center">
                    <a [routerLink]="['/products/electronics']"><img src="assets/images/products/probook/2-medium.png" alt="" class="mw-100"></a>
                 </div>
-            </mat-expansion-panel>
+            </mat-expansion-panel> -->
 
         </mat-accordion>
 
@@ -139,7 +126,7 @@
                     <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
                         <div fxLayout="column" fxLayoutAlign="center start">
                             <p class="old-price text-muted"><span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency}}</span></p>
-                            <p class="new-price">${{product.newPrice | customCurrency}}</p>
+                            <p class="new-price">{{product.newPrice | customCurrency}}</p>
                         </div>
                         <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating>
                     </div>                            
@@ -171,8 +158,8 @@
                             <p class="py-1 text-muted lh" [innerHTML]="product.shortdescription"></p>
                             <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
                                 <div fxLayout="column" fxLayoutAlign="center start">
-                                    <p class="old-price text-muted"><span *ngIf="product.oldPrice">${{product.oldPrice | customCurrency}}</span></p>
-                                    <p class="new-price">${{product.newPrice | customCurrency}}</p>
+                                    <p class="old-price text-muted"><span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency}}</span></p>
+                                    <p class="new-price">{{product.newPrice | customCurrency}}</p>
                                 </div>
                                 <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating>
                             </div>                            

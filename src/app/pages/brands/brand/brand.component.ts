@@ -36,7 +36,6 @@ export class BrandComponent implements OnInit, OnDestroy {
   public selectedColors = [];
   public selectedSizes = [];
   public totalProducts = 0;
-  // public categoryId;
 
   constructor(private activatedRoute: ActivatedRoute,
               public appService: AppService,
@@ -73,8 +72,8 @@ export class BrandComponent implements OnInit, OnDestroy {
       toPrice: this.priceTo,
       filterAttributes: {
         brands: [this.brand],
-        color: this.selectedColors,
-        size: this.selectedSizes
+        // color: this.selectedColors,
+        // size: this.selectedSizes
       },
       sort: this.sort,
       limit: this.count,

@@ -86,8 +86,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
       toPrice: this.priceTo,
       filterAttributes: {
         brands: this.selectedBrands.map(b => b.name),
-        color: this.selectedColors,
-        size: this.selectedSizes
+        // color: this.selectedColors,
+        // size: this.selectedSizes
       },
       sort: this.sort,
       limit: this.count,
