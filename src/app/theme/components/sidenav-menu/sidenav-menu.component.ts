@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { SidenavMenuService } from './sidenav-menu.service';
 
 @Component({
@@ -7,20 +7,20 @@ import { SidenavMenuService } from './sidenav-menu.service';
   styleUrls: ['./sidenav-menu.component.scss'],
   providers: [ SidenavMenuService ]
 })
-export class SidenavMenuComponent implements OnInit {
-  @Input('menuItems') menuItems;
-  @Input('menuParentId') menuParentId;
-  parentMenu:Array<any>;
+export class SidenavMenuComponent implements OnChanges {
+  @Input() menuItems;
+  @Input() menuParentId;
+  parentMenu: Array<any>;
 
-  constructor(private sidenavMenuService:SidenavMenuService ) { }
+  constructor(private sidenavMenuService: SidenavMenuService ) { }
 
-  ngOnInit() {
-    this.parentMenu = this.menuItems.filter(item => item.parentId == this.menuParentId);
+  ngOnChanges() {
+    this.parentMenu = this.menuItems.filter(item => item.parentId === this.menuParentId);
   }
 
-  onClick(menuId){
+  onClick(menuId) {
     this.sidenavMenuService.toggleMenuItem(menuId);
-    this.sidenavMenuService.closeOtherSubMenus(this.menuItems, menuId);    
+    this.sidenavMenuService.closeOtherSubMenus(this.menuItems, menuId);
   }
 
 }

@@ -6,4 +6,4 @@ export class SidenavMenu {
                 public target: string,
                 public hasSubMenu: boolean,
                 public parentId: number) { }
-} 
+}

@@ -16,17 +16,17 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.appService.getCategoriesByParentId(0).subscribe( categories => {
       this.categories = categories;
-    })
+    });
   }
 
-  openMegaMenu(){
-    let pane = document.getElementsByClassName('cdk-overlay-pane');
+  openMegaMenu() {
+    const pane = document.getElementsByClassName('cdk-overlay-pane');
     [].forEach.call(pane, function (el) {
-        if(el.children.length > 0){
-          if(el.children[0].classList.contains('mega-menu')){
+        if (el.children.length > 0) {
+          if (el.children[0].classList.contains('mega-menu')) {
             el.classList.add('mega-menu-pane');
           }
-        }        
+        }
     });
   }
 

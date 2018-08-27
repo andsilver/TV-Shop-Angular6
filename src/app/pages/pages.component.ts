@@ -4,8 +4,8 @@ import { Settings, AppSettings } from '../app.settings';
 import { AppService } from '../app.service';
 import { Category } from '../app.models';
 import { SidenavMenuService } from '../theme/components/sidenav-menu/sidenav-menu.service';
+import { SidenavMenu } from '../theme/components/sidenav-menu/sidenav-menu.model';
 import { RoutingHandlerService, FilterService } from 'app/services';
-import { ProductsService } from './products/products.service';
 
 @Component({
   selector: 'app-pages',
@@ -17,7 +17,7 @@ export class PagesComponent implements OnInit, AfterViewInit {
   public showBackToTop = false;
   public categories: Category[];
   public category: Category;
-  public sidenavMenuItems: Array<any>;
+  public sidenavMenuItems: Array<any> = [];
   public keyword = '';
   @ViewChild('sidenav') sidenav: any;
 
@@ -33,7 +33,7 @@ export class PagesComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getCategories();
-    this.sidenavMenuItems = this.sidenavMenuService.getSidenavMenuItems();
+    // this.sidenavMenuItems = this.sidenavMenuService.getSidenavMenuItems();
   }
 
   ngAfterViewInit() {
@@ -50,6 +50,8 @@ export class PagesComponent implements OnInit, AfterViewInit {
       this.categories = data;
       this.category = data[0];
       this.appService.Data.categories = data;
+      this.sidenavMenuItems = data.map(c =>
+        new SidenavMenu(c.id, c.name, `/products/${c.name.toLowerCase()}`, null, null, c.hasSubCategory, c.parentId));
     });
   }
 
