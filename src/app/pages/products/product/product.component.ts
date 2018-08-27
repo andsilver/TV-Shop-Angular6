@@ -16,11 +16,11 @@ import { ProductZoomComponent } from './product-zoom/product-zoom.component';
 export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('zoomViewer') zoomViewer;
   @ViewChild(SwiperDirective) directiveRef: SwiperDirective;
+  private sub: any;
   public config: SwiperConfigInterface = {};
   public product: Product;
   public image: any;
   public zoomImage: any;
-  private sub: any;
   public form: FormGroup;
   public relatedProducts: Array<Product>;
 
@@ -126,5 +126,9 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.form.valid) {
       // email sent
     }
+  }
+
+  public attributeSelected(index, event) {
+    this.product.attributes[index]['selected'] = event.value;
   }
 }

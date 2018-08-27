@@ -11,7 +11,8 @@
     <div class="mat-header-row">
       <div class="mat-header-cell">Product</div>
       <div class="mat-header-cell">Name</div>
-      <div class="mat-header-cell">Price</div>      
+      <div class="mat-header-cell">Price</div>
+      <!-- <div class="mat-header-cell"></div> -->
       <div class="mat-header-cell">Quantity</div>
       <div class="mat-header-cell">Total</div>
       <div class="mat-header-cell text-center">
@@ -50,9 +51,9 @@
       </div>
       <div class="mat-cell">
         <div fxLayout="column" fxLayoutAlign="center start" class="grand-total">
-          <span>${{ grandTotal | number : '1.2-2'}}</span>
+          <span>{{ grandTotal | customCurrency}}</span>
           <span class="text-muted">15%</span>
-          <span class="new-price">${{ (grandTotal - (grandTotal*0.15)) | number : '1.2-2'}}</span>
+          <span class="new-price">{{ (grandTotal - (grandTotal*0.15)) | customCurrency}}</span>
         </div>
       </div>
       <div class="mat-cell text-center"><a [routerLink]="['/checkout']" mat-raised-button color="primary">Proceed To Checkout</a></div>

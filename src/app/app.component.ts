@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, AfterViewInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Settings, AppSettings } from './app.settings';
 
@@ -7,22 +7,22 @@ import { Settings, AppSettings } from './app.settings';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  loading: boolean = false;
+export class AppComponent implements OnInit, AfterViewInit {
+  loading = false;
   public settings: Settings;
-  constructor(public appSettings:AppSettings, public router: Router){
+  constructor(public appSettings: AppSettings, public router: Router) {
     this.settings = this.appSettings.settings;
   }
 
-  ngOnInit() {
-   // this.router.navigate(['']);  //redirect other pages to homepage on browser refresh    
+  ngOnInit () {
+   // this.router.navigate(['']);  //redirect other pages to homepage on browser refresh
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-          window.scrollTo(0,0);
+          window.scrollTo(0, 0);
       }
-    })  
+    });
   }
 }

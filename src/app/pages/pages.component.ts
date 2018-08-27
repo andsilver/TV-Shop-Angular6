@@ -113,4 +113,8 @@ export class PagesComponent implements OnInit, AfterViewInit {
     }
   }
 
+  public getAttributeName(product, id, value) {
+    return product.attributes[id].values.find(v => v.products_options_values_id === value).products_options_values_name;
+  }
+
 }
