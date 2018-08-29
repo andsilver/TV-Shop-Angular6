@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../app.service';
+import { addObjectToArray } from 'app/theme/utils';
 
 @Component({
   selector: 'app-wishlist',
@@ -7,6 +8,8 @@ import { AppService } from '../../app.service';
   styleUrls: ['./wishlist.component.scss']
 })
 export class WishlistComponent implements OnInit {
+
+  quantities = [];
 
   constructor(public appService: AppService) { }
 
@@ -24,7 +27,16 @@ export class WishlistComponent implements OnInit {
   }
 
   public addToCart(product) {
-    this.appService.addToCart(product);
+    const quantity = this.quantities.find( p => p.productId === product.id);
+    this.appService.addToCart(product, quantity ? quantity.soldQuantity : 1 );
+  }
+
+  public getAttributeName(product, id, value) {
+    return product.attributes[id].values.find(v => v.products_options_values_id === value).products_options_values_name;
+  }
+
+  public saveQuantity(event) {
+    this.quantities = addObjectToArray(this.quantities, event, 'productId');
   }
 
 }

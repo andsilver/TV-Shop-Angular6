@@ -77,11 +77,11 @@
                                 <mat-list-item *ngFor="let product of appService.Data.cartList">                                   
                                     <h3 matLine class="text-muted"> {{product.name}} </h3>
                                     <p matLine class="text-muted">
-                                        <span> 1 x {{product.newPrice | customCurrency}} </span>
+                                        <span> {{product.quantity }} x {{product.newPrice | customCurrency}} </span>
                                     </p>
                                     <p matLine class="text-muted" *ngFor="let attribute of product.attributes; let i=index;">
                                         <ng-container *ngIf="attribute.selected">
-                                            <span>{{getAttributeName(product, i, attribute.selected)}}</span>
+                                            <span>{{attribute.products_options_name}}:{{getAttributeName(product, i, attribute.selected)}}</span>
                                         </ng-container>
                                     </p>
                                     <img  [src]="product.images[0].small" alt="image">

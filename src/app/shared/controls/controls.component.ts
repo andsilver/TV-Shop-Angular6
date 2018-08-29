@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Data, AppService } from '../../app.service';
 import { Product } from '../../app.models';
@@ -8,7 +8,7 @@ import { Product } from '../../app.models';
   templateUrl: './controls.component.html',
   styleUrls: ['./controls.component.scss']
 })
-export class ControlsComponent implements OnInit {
+export class ControlsComponent implements OnChanges {
   @Input() product: Product;
   @Input() type: string;
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
@@ -17,9 +17,10 @@ export class ControlsComponent implements OnInit {
   public align = 'center center';
   constructor(public appService: AppService, public snackBar: MatSnackBar) { }
 
-  ngOnInit() {
+  ngOnChanges() {
     if (this.product) {
-     // console.log(this.product);
+      const product = this.appService.Data.cartList.find(p => p.id === this.product.id);
+      this.count = product ? product.quantity : 1;
     }
     this.layoutAlign();
   }
@@ -36,7 +37,7 @@ export class ControlsComponent implements OnInit {
 
 
 
-  public increment(count) {
+  public increment() {
     if (this.count < this.product.availibilityCount) {
       this.count++;
       const obj = {
@@ -51,7 +52,7 @@ export class ControlsComponent implements OnInit {
     }
   }
 
-  public decrement(count) {
+  public decrement() {
     if (this.count > 1) {
       this.count--;
       const obj = {
@@ -72,7 +73,7 @@ export class ControlsComponent implements OnInit {
   }
 
   public addToCart(product: Product) {
-    this.appService.addToCart(product);
+    this.appService.addToCart(product, this.count);
   }
 
   public openProductDialog(event) {

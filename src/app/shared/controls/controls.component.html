@@ -11,7 +11,7 @@
         <button mat-icon-button matTooltip="Add to compare" (click)="addToCompare(product)"><mat-icon>compare</mat-icon></button>
         <button *ngIf="type!='all'" mat-icon-button matTooltip="Quick view" (click)="openProductDialog(product)"><mat-icon>remove_red_eye</mat-icon></button>
     </div>
-</div> 
-<div *ngIf="product?.availibilityCount == 0 && type=='all'" class="bg-warn p-1 mt-2">
-    Sorry, this item is unavailable. Please choose a different one.
 </div>
+<!-- <div *ngIf="product?.availibilityCount == 0 && type=='all'" class="bg-warn p-1 mt-2">
+    Sorry, this item is unavailable. Please choose a different one.
+</div> -->

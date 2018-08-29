@@ -12,37 +12,31 @@ export class CartComponent implements OnInit {
   constructor(public appService: AppService) { }
 
   ngOnInit() {
-    this.appService.Data.cartList.forEach(product => {
-      this.total[product.id] = product.newPrice;
-      this.grandTotal += product.newPrice;
-    });
+    this.grandTotal = this.appService.Data.totalPrice;
   }
 
   public getTotalPrice(value) {
     if (value) {
-      this.total[value.productId] = value.total;
-      this.grandTotal = 0;
-      this.total.forEach(price => {
-        this.grandTotal += price;
-      });
+      const product = this.appService.Data.cartList.find(p => p.id === value.productId);
+      this.appService.addToCart(product, value.soldQuantity);
+      this.grandTotal = this.appService.Data.totalPrice;
     }
   }
 
   public remove(product) {
     const index: number = this.appService.Data.cartList.indexOf(product);
     if (index !== -1) {
-      this.appService.Data.cartList.splice(index, 1);
-      this.grandTotal = this.grandTotal - this.total[product.id];
-      this.total.forEach(val => {
-        if (val === this.total[product.id]) {
-          this.total[product.id] = 0;
-        }
-      });
+      this.appService.removeFromCart(product.id);
+      this.grandTotal = this.appService.Data.totalPrice;
     }
   }
 
   public clear() {
     this.appService.Data.cartList.length = 0;
+  }
+
+  public getAttributeName(product, id, value) {
+    return product.attributes[id].values.find(v => v.products_options_values_id === value).products_options_values_name;
   }
 
 }

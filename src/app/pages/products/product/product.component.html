@@ -33,7 +33,7 @@
         <div class="py-1 lh">
             <p><span class="text-muted fw-500">Category: </span><span>{{ product?.category_name }}</span></p>
             <p><span class="text-muted fw-500">Availibility: </span><span>{{ (product?.availibilityCount > 0) ? 'In stock':'Unavailable'}}</span></p>
-        </div>                 
+        </div>
         <div class="py-1">
             <app-rating [ratingsCount]="product?.ratingsCount" [ratingsValue]="product?.ratingsValue" [direction]="'row'"></app-rating>
         </div>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="py-1">
-            <app-controls [product]="product" [type]="'all'"></app-controls> 
+            <app-controls [product]="product" [type]="'all'"></app-controls>
         </div>
 
         <div class="divider"></div>

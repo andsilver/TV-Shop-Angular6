@@ -23,7 +23,8 @@ export class Product {
               public weight: number,
               public categoryId: number,
               public category_name: string,
-              public attributes: Array<any>) { }
+              public attributes: Array<any>,
+              public quantity: number = 1) { }
 }
 
 export interface Products {

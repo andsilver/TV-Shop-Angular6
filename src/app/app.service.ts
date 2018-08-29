@@ -111,9 +111,13 @@ export class AppService {
 
     public addToWishList(product: Product) {
         let message, status;
-        if (this.Data.wishList.some(item => item.id === product.id)) {
-            message = 'The product ' + product.name + ' already added to wish list.';
-            status = 'error';
+        const index = this.Data.wishList.findIndex(item => item.id === product.id);
+        if (index > -1) {
+            this.Data.wishList[index] = product;
+            message = 'The product ' + product.name + ' on wish list is updated.';
+            status = 'success';
+            // message = 'The product ' + product.name + ' already added to wish list.';
+            // status = 'error';
         } else {
             this.Data.wishList.push(product);
             message = 'The product ' + product.name + ' has been added to wish list.';
@@ -122,22 +126,53 @@ export class AppService {
         this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
     }
 
-    public addToCart(product: Product) {
+    public addToCart(product: Product, count: number = 1) {
         let message, status;
-        if (this.Data.cartList.some(item => item.id === product.id)) {
-            message = 'The product ' + product.name + ' already added to cart.';
+        if (product.attributes && product.attributes.find(attr => attr.required && !attr.selected)) {
+            message = 'Required attributes are not selected.';
             status = 'error';
+            this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
+            return;
+        }
+        product.quantity = count;
+        if (this.Data.cartList.some(item => item.id === product.id)) {
+            const index = this.Data.cartList.findIndex( p => p.id === product.id);
+            this.Data.cartList[index] = product;
+            message = 'The product ' + product.name + ' on cart is updated.';
+            status = 'success';
         } else {
-            this.Data.totalPrice = 0;
             this.Data.cartList.push(product);
-            for ( const c of this.Data.cartList) {
-                this.Data.totalPrice += Number(c.newPrice);
-            }
-            console.log(this.Data.totalPrice);
             message = 'The product ' + product.name + ' has been added to cart.';
             status = 'success';
         }
+
+        this.calculateTotalPrice();
+
+        // this.Data.totalPrice = 0;
+        // this.Data.cartList.push(product);
+        // for ( const c of this.Data.cartList) {
+        //     this.Data.totalPrice += Number(c.newPrice);
+        // }
+        // console.log(this.Data.totalPrice);
+        // message = 'The product ' + product.name + ' has been added to cart.';
+        // status = 'success';
         this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
+    }
+
+    public removeFromCart(productId) {
+        const index = this.Data.cartList.findIndex( p => p.id === productId );
+        if (index > -1) {
+            this.Data.cartList.splice(index, 1);
+            this.calculateTotalPrice();
+        }
+    }
+
+    public calculateTotalPrice() {
+        this.Data.totalPrice = 0;
+        for ( const c of this.Data.cartList) {
+            this.Data.totalPrice += Number(c.newPrice) * c.quantity;
+        }
+        console.log(this.Data.totalPrice);
     }
 
     public getCountries() {

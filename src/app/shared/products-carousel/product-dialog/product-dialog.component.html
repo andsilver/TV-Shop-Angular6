@@ -30,6 +30,19 @@
             </div>              
             <div class="divider"></div>
             <h2 class="mt-2 new-price">{{product.newPrice | customCurrency}}</h2>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="details text-muted py-1">
+                <div *ngFor="let attribute of product?.attributes; let i=index;">
+                    <ng-container *ngIf="attribute.listtype == 'select'">
+                        <mat-form-field>
+                            <mat-select [placeholder]="attribute.products_options_name" (selectionChange)="attributeSelected(i, $event)">
+                                <mat-option *ngFor="let option of attribute.values" [value]="option.products_options_values_id">
+                                    {{option.products_options_values_name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </ng-container>
+                </div>
+            </div>
             <app-controls [product]="product" [type]="'all'"></app-controls>
         </div>
     </div>
