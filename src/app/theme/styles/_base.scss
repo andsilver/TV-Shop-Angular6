@@ -609,6 +609,10 @@ a:focus {
         }
     }
 }
+footer .mat-toolbar.usp-list {
+    border-top:1px solid #cdcdcd;
+    background-color: #fff!important;
+}
 
 /******* Top navbar (menu) *******/
 .top-navbar.mat-toolbar {
@@ -947,4 +951,10 @@ button.swipe-arrow{
     .theme-container{
         max-width: 1400px;
     }
+}
+
+.mat-toolbar {
+    font-family: $font-family!important;
+    font-size: .8125rem!important;
+    line-height: 1.45!important;
 }
