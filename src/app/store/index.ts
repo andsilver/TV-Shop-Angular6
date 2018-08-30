@@ -5,8 +5,8 @@ import {
   createSelector,
   MetaReducer
 } from '@ngrx/store';
-import { environment } from '../../../environments/environment';
-import * as fromProducts from './products.reducer';
+import { environment } from '../../environments/environment';
+import * as fromProducts from './reducers/products.reducer';
 
 export interface State {
   products: fromProducts.State;

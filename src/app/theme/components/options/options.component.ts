@@ -7,13 +7,13 @@ import { Settings, AppSettings } from '../../../app.settings';
   styleUrls: ['./options.component.scss']
 })
 export class OptionsComponent {
-  public showOptions:boolean = false;
+  public showOptions = false;
   public settings: Settings;
-  constructor(public appSettings:AppSettings) { 
-    this.settings = this.appSettings.settings; 
+  constructor(public appSettings: AppSettings) {
+    this.settings = this.appSettings.settings;
   }
 
-  public changeTheme(theme){
-    this.settings.theme = theme;       
-  } 
+  public changeTheme(theme) {
+    this.settings.theme = theme;
+  }
 }
