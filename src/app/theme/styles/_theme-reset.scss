@@ -42,6 +42,9 @@
             color: mat-color($primary, 100);
         }
     }
+    .app.dark .top-navbar.mat-toolbar a.mat-button {
+        color: #212226!important;
+    }
 
     .top-navbar{
        // background: mat-color($primary, lighter);
