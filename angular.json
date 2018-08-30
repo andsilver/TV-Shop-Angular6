@@ -145,5 +145,8 @@
     "@schematics/angular:service": {
       "spec": false
     }
+  },
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
   }
 }

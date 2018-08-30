@@ -23,6 +23,12 @@ import { AppService } from './app.service';
 import { AppInterceptor } from './theme/utils/app-interceptor';
 import { OptionsComponent } from './theme/components/options/options.component';
 import { FooterComponent } from './theme/components/footer/footer.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store/reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './store/effects/app.effects';
 
 
 @NgModule({
@@ -35,7 +41,10 @@ import { FooterComponent } from './theme/components/footer/footer.component';
       apiKey: 'AIzaSyDe_oVpi9eRSN99G4o6TwVjJbFBNr58NxE'
     }),
     SharedModule,
-    routing
+    routing,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([AppEffects])
   ],
   declarations: [
     AppComponent,
