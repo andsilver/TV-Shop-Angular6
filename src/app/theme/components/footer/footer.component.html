@@ -1,15 +1,101 @@
 <footer class="bg-primary footer">
-    <div fxLayout="column" fxLayout.gt-sm="row wrap" fxLayoutAlign="center center" class="border-bottom-mute subscribe-block theme-container">
-        <div fxFlex="100" fxFlex.gt-sm="40" fxLayout="column" fxLayoutAlign="center center"> 
-            <h1 class="fw-500">Subscribe our Newsletter</h1>
-            <h3 class="fw-300 secondary-color">Stay up to date with our latest new and products</h3>
-        </div>
-        <form method="get" class="subscribe-search-form" fxLayout="row" fxFlex="100" fxFlex.gt-sm="42.4" ngClass.sm="mt-2" ngClass.xs="mt-2">
-            <input type="text" placeholder="Your email address..." fxFlex>
-            <button mat-raised-button color="accent" (click)="subscribe()" type="button" class="mat-elevation-z0 text-muted">Subscribe</button>
-        </form>
-    </div>
-    <div fxLayout="row wrap" fxLayoutAlign="space-between" class="py-3 border-bottom-mute theme-container">        
+    <mat-toolbar class="usp-list top-usp-list" fxLayoutAlign="flex-start center">
+        <mat-toolbar-row class="theme-container" fxLayoutAlign="flex-start center">
+            <div><a href="https://www.plattetv.nl/">Dé TV-winkel van Nederland</a></div>
+            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#winkels"><i class="fas fa-check-circle"></i>8 vestigingen</a></div>
+            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/installatie-op-maat-learning-center-1864.html"><i class="fas fa-check-circle"></i>Installatie en montage</a></div>
+            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/verzending-en-bezorging-109.html#gratisbezorgen"><i class="fas fa-check-circle"></i>Gratis bezorgd</a></div>
+            <div class="review"><span class="review--score">9,4</span><span class="review--text"><span class="review--label">Klantenbeoordeling</span><br><span class="review--total-reviews"><a href="https://www.kieskeurig.nl/winkels/plattetv/reviews" target="_blank">20.510 reviews</a></span></span></div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-toolbar class="footer-info">
+        <mat-toolbar-row class="theme-container" fxLayout="row wrap" fxLayoutAlign="center flex-start">
+            <div fxFlex="100" class="footer-info--representative" fxFlex.gt-md="30">
+                <a href="#" fxFlex="100"></a>
+            </div>
+            <div fxFlex="100" class="footer-info--contact"  fxFlex.gt-md="35">
+                <div class="footer-info--text">
+                    <strong>HULP NODIG?</strong><br>
+                    <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html">Klantenservice vandaag open tot 21:00</a>
+                </div>
+                <div class="footer-info--contact-list">
+                    <ul>
+                        <li class="footer-info--chat"><a onclick="LC_API.open_chat_window();return false;" href="https://www.plattetv.nl/"><i class="far fa-comment"></i><span><strong>CHAT LIVE</strong>Reactie binnen 30 sec.</span></a></li>
+                        <li class="footer-info--email"><a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS"><i class="far fa-envelope"></i><span><strong>VUL FORMULIER IN</strong>Reactie binnen 10 min.</span></a></li>
+                        <li class="footer-info--whatsapp"><a href="https://api.whatsapp.com/send?phone=31633444433"><i class="fab fa-whatsapp"></i><span><strong>Whatsapp ons</strong>Reactie binnen 30 sec.</span></a></li>
+                        <li class="footer-info--phone"><a href="tel:0268454658"><i class="fas fa-phone"></i><span><strong>BEL 026 - 84 54 658</strong>Direct reactie</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div fxFlex="100" class="footer-info--newsletter" fxFlex.gt-md="35">
+                <div fxLayout="column">
+                    <div class="footer-info--text">
+                        <strong>AANMELDEN NIEUWSBRIEF</strong><br>
+                        Mis geen acties, nieuws en voordeel
+                    </div>
+                    <form method="get" class="subscribe-search-form" fxLayout="column">
+                        <input type="text" placeholder="E-mailadres" fxFlex>
+                        <button mat-raised-button color="accent" (click)="subscribe()" type="button" class="mat-elevation-z0 text-muted">Ja, ik meld me aan</button>
+                    </form>
+                </div>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-toolbar class="footer-nav">
+        <mat-toolbar-row class="theme-container" fxLayout="row wrap" fxLayoutAlign="center flex-start">
+            <div fxFlex="100" fxFlex.gt-md="25">
+                <strong>PlatteTV</strong>
+                <ul>
+                    <li><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html">Contact</a></li><li>
+                </li><li><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#klantenservice">Klantenservice</a></li>
+                    <li><a href="https://www.plattetv.nl/bestelstatus">Bestelstatus</a></li>
+                    <li><a href="https://www.plattetv.nl/extrainfo/learning-center-1756.html">Learning Center</a></li>
+                    <li><a href="https://www.plattetv.nl/extrainfo/zakelijk-2019.html">Zakelijk</a></li>
+                    <li><a href="https://www.plattetv.nl/extrainfo/vacatures-2320.html">Vacatures</a></li>
+                </ul>
+            </div>
+            <div fxFlex="100" fxFlex.gt-md="25">
+                <strong>Onze winkels</strong>
+                <ul>
+                    <li><a href="/extrainfo/winkel-amsterdam-6.html">Amsterdam</a></li>
+                    <li><a href="/extrainfo/winkel-arnhem-1.html">Arnhem</a></li>
+                    <li><a href="/extrainfo/winkel-breda-3.html">Breda</a></li>
+                    <li><a href="/extrainfo/winkel-doesburg-12.html">Doesburg</a></li>
+                    <li><a href="/extrainfo/winkel-doetinchem-4.html">Doetinchem</a></li>
+                    <li><a href="/extrainfo/winkel-eindhoven-9.html">Eindhoven</a></li>
+                    <li><a href="/extrainfo/winkel-nijmegen-2.html">Nijmegen</a></li>
+                    <li><a href="/extrainfo/winkel-utrecht-14.html">Utrecht</a></li>
+                </ul>
+            </div>
+            <div fxFlex="100" fxFlex.gt-md="25">
+                <strong>Populaire categorieën</strong>
+                <ul>
+                    <li><a href="https://www.plattetv.nl/categorie/oled-tv-809.html">OLED TV</a></li>
+                    <li><a href="https://www.plattetv.nl/categorie/4k-uhd-tv-721.html">4K UHD TV</a></li>
+                    <li><a href="https://www.plattetv.nl/categorie/led-tv-345.html">LED TV</a></li>
+                    <li><a href="https://www.plattetv.nl/categorie/qled-tv-1202.html">QLED TV</a></li>
+                    <li><a href="https://www.plattetv.nl/categorie/smart-tv-823.html">Smart TV</a></li>
+                    <li><a href="https://www.plattetv.nl/categorie/alle-tvs-894.html">Alle TV's</a></li>
+                    <li><a href="https://www.plattetv.nl/categorie/soundbars-765.html">Soundbars</a></li>
+                </ul>
+            </div>
+            <div fxFlex="100" fxFlex.gt-md="25">
+                <strong>Populaire merken</strong>
+                <ul>
+                    <li><a href="https://www.plattetv.nl/leverancier/samsung-18.html">Samsung</a></li>
+                    <li><a href="https://www.plattetv.nl/leverancier/lg-19.html">LG</a></li>
+                    <li><a href="https://www.plattetv.nl/leverancier/sony-10.html">Sony</a></li>
+                    <li><a href="https://www.plattetv.nl/leverancier/philips-9.html">Philips</a></li>
+                    <li><a href="https://www.plattetv.nl/leverancier/panasonic-5.html">Panasonic</a></li>
+                    <li><a href="https://www.plattetv.nl/leverancier/sonos-190.html">Sonos</a></li>
+                    <li><a href="https://www.plattetv.nl/leverancier/heos-by-denon-207.html">HEOS</a></li>
+                    <li><a href="https://www.plattetv.nl/leverancier/denon-203.html">Denon</a></li>
+                </ul>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <!-- <div fxLayout="row wrap" fxLayoutAlign="space-between" class="py-3 border-bottom-mute theme-container">
         <div fxFlex="100" fxFlex.gt-sm="20" fxFlex.sm="40"> 
             <h3 class="col-title">USEFUL LINKS</h3>
             <p class="mt-2"><a href="javascript:void(0);" class="link secondary-color">My Account</a></p>
@@ -52,8 +138,20 @@
             </agm-map>
         </div>
     </div>
-    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="copyright secondary-color theme-container">
-        <p ngClass.xs="mt-1">Copyright © 2018 All Rights Reserved</p>
-        <p>Designed & Developed by <a mat-button href="http://bvb.media/" target="_blank">BVB Media B.V.</a></p>
-    </div>
+    -->
+    <mat-toolbar class="footer-payment">
+        <mat-toolbar-row class="theme-container" fxLayout="column" fxLayoutAlign="flex-start center">
+            <ul fxLayout="row wrap" fxLayoutAlign="center center">
+                <li><img src="/assets/images/others/icons_footer_ideal.png"></li>
+                <li><img src="/assets/images/others/icons_footer_bancontact.png"></li>
+                <li><img src="/assets/images/others/icons_footer_mastercard.png"></li>
+                <li><img src="/assets/images/others/icons_footer_visa.png"></li>
+                <li><img src="/assets/images/others/icons_footer_findio.png"></li>
+                <li><img src="/assets/images/others/icons_footer_postnl.png"></li>
+                <li><img src="/assets/images/others/icons_footer_q.png"></li>
+            </ul>
+            <p class="extra-footer-menu-wrapper"><a href="#">Algemene voorwaarden</a> | <a href="#">Privacy</a> | <a href="#">Cookies</a></p>
+            <p>Alle vermelde prijzen zijn incl. BTW.</p>
+        </mat-toolbar-row>
+    </mat-toolbar>
 </footer>
