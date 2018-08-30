@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { MatSnackBar } from '@angular/material';
 import { Category, Product, Products } from './app.models';
 import * as countries from 'assets/data/countries.json';
-import * as brands from 'assets/data/brands.json';
 
 export class Data {
     constructor(public categories: Category[],

@@ -8,7 +8,9 @@ import { Product, Category, Products } from '../../app.models';
 import { ProductsService } from './products.service';
 import { FilterService } from 'app/services';
 
-// import {  }
+import { Store } from '@ngrx/store';
+import { State } from 'app/store';
+import * as fromProducts from 'app/store/actions/products.action';
 
 @Component({
   selector: 'app-products',
@@ -46,7 +48,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
               public dialog: MatDialog,
               private router: Router,
               private productsService: ProductsService,
-              private filter: FilterService) { }
+              private filter: FilterService,
+              private store: Store<State>) { }
 
   ngOnInit() {
     this.count = this.counts[0];
@@ -59,18 +62,21 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }
     this.brands = this.productsService.brands.manufacturer;
     this.categories = this.productsService.categories;
-    this.searchSub = this.filter.searchPerformed.subscribe(() => this.getProducts());
     this.routingSub = this.activatedRoute.paramMap.subscribe((params) => {
           const category = this.categories.find(c => c.name.toLowerCase() === params.get('name'));
           this.categoryId = category ? category.id : 0;
-          this.page = 1;
-          this.filter.searchPerformed.next();
+          this.filterChanged();
         });
+
+    this.store.select(state => state.products).subscribe( data => {
+      const p = data.data;
+      this.products = p ? p.products : [];
+      this.totalProducts = p ? p.total : 0;
+    });
     console.log(this.brands, this.categories);
   }
 
   ngOnDestroy() {
-    this.searchSub.unsubscribe();
     this.routingSub.unsubscribe();
   }
 
@@ -87,19 +93,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
       fromPrice: this.priceFrom,
       toPrice: this.priceTo,
       filterAttributes: {
-        brands: this.selectedBrands.map(b => b.name),
-        // color: this.selectedColors,
-        // size: this.selectedSizes
+        brands: this.selectedBrands.map(b => b.name)
       },
       sort: this.sort,
       limit: this.count,
       page: this.page
     };
-
-    this.appService.getProductsByFilter(filter).subscribe((data: Products) => {
-      this.products = data.products ? data.products : [];
-      this.totalProducts = data.total;
-    });
+    this.store.dispatch(new fromProducts.FilterProducts(filter));
   }
 
   public changeCount(count) {
