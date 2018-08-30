@@ -7,7 +7,7 @@ html{
 body{
     height: 100%;
     margin:0; padding: 0;
-    font-family: $font-family;
+    font-family: $font-family!important;
     font-size: 14px;
     line-height: 1.5;
 }
@@ -324,17 +324,68 @@ a{
 }
 
 .logo-toolbar.mat-toolbar-row{
-    height: 104px;
+    height: auto;
+    padding-left: 0;
+    padding-right: 0;
 }
 .logo{
-    font-size: 28px;
-    font-weight: 900;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: inherit;
+    line-height:0;
 }
+.top-toolbar-header { margin-top:2rem; margin-bottom:2rem; }
+#links_city {
+    margin-bottom: 1rem;
+    list-style:none;
+
+    li {
+        text-align:center;
+        margin-left:9px;
+
+        &:before {
+            float: left;
+            width: 1px;
+            height: 32px;
+            background: #fff;
+            content: "";
+            margin-right: 10px;
+        }
+        &:first-child {
+            margin-left: 0;
+        }
+        &:first-child:before {
+            display: none;
+        }
+
+        a {
+            display: block;
+            color: #fff;
+            text-align: center;
+            -webkit-transition: color .3s ease;
+            text-decoration: none;
+            transition: color .3s ease;
+
+            &:hover,
+            &:focus {
+                color:#fdc642;
+                text-decoration: none;
+            }
+            span {
+                display: block;
+
+                &.link_city_top {
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 18px;
+                }
+                &.link_city_bottom {
+                    font-size: 12px;
+                    line-height: 17px;
+                }
+            }
+        }
+    }
+}
+
 .search-form{
-    border-radius: 22px;
     overflow: hidden;
     .categories{
         height: 40px;
@@ -367,17 +418,91 @@ a{
     }
 }
 
+.usp-list.mat-toolbar {
+    height: auto;
+    padding-left:0;
+    padding-right:0;
+
+    ul {
+        width: 100%;
+        list-style: none;
+        margin-bottom: .25rem;
+        margin-top: .25rem;
+
+        li {
+            font-weight: 500;
+            font-size: .875rem;
+            line-height: 2.5rem;
+
+            &:first-child {
+                font-weight: 600;
+            }
+            &+li {
+                margin-left: 24px;
+            }
+            .fas {
+                color: #38a5bf;
+                margin-right: .5rem;
+            }
+            a {
+                color: #212226;
+                text-decoration: none;
+            }
+        }
+        li.review {
+            display: -ms-flexbox!important;
+            display: flex!important;
+            -ms-flex-align: center!important;
+            align-items: center!important;
+            -ms-flex-wrap: nowrap!important;
+            flex-wrap: nowrap!important;
+            height:2.5rem;
+            margin-left:auto;
+
+            .review--score {
+                display: inline-block;
+                width: 2rem;
+                height: 2rem;
+                background-color: #2da6c1;
+                line-height: 2rem;
+                color: #fff;
+                text-align: center;
+                margin-right: 5px;
+                border-radius: 50%;
+            }
+            .review--text {
+                display: inline-block;
+                line-height: 1.125rem;
+                vertical-align: middle;
+            }
+            .review--label {
+                font-weight: 600;
+            }
+            .review--total-reviews {
+                font-weight: 400;
+                font-size: .75rem;
+            }
+        }
+    }
+}
 
 /******* Top navbar (menu) *******/
 .top-navbar.mat-toolbar {
-    height: 48px;
+    height: auto;
     padding: 0;
     a{
+        width:100%;
         min-width: 70px;
         border-radius: 0;
         text-transform: uppercase;
-        padding: 6px 16px;
+        padding:0;
     }
+}
+.app.dark .top-navbar.mat-toolbar {
+    background-color: #e6e6dc;
+}
+.top-navbar-container {
+    width: 100%;
 }
 .cdk-overlay-pane.mega-menu-pane{
     left: 0 !important;
