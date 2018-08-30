@@ -34,3 +34,7 @@ export interface Products {
   total: number;
   total_pages: number;
 }
+
+export interface Error {
+  message: string;
+}
