@@ -8,7 +8,7 @@ export interface State {
 
 export const initialState: State = { data: null, error: null };
 
-export const reducer = ( state = initialState, action: ProductsActions.Actions ): State => {
+export function reducer ( state = initialState, action: ProductsActions.Actions ): State {
 
     switch (action.type) {
         case ProductsActions.SUCCESS_GET_PRODUCTS: {
@@ -23,7 +23,7 @@ export const reducer = ( state = initialState, action: ProductsActions.Actions )
         default:
             return state;
     }
-};
+}
 
 export const getProducts = (state: State) => state.data;
 
