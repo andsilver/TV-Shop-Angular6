@@ -1,70 +1,170 @@
 <div fxLayout="row wrap">
-    <div fxFlex="100" fxFlex.gt-md="35" fxFlex.md="45">
-        
-        <mat-card class="product-image">
-            <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><mat-icon>fullscreen</mat-icon></button>
-            <img *ngIf="image" [src]="image" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)"/>
-        </mat-card>       
 
-        <div class="small-carousel"> 
-            <div class="swiper-container" [swiper]="config">
-                <div class="swiper-wrapper"> 
-                    <div *ngFor="let image of product?.images" class="swiper-slide">
-                        <mat-card (click)="selectImage(image)" class="p-1">
-                            <img [attr.data-src]="image.small" class="swiper-lazy"/>
-                            <div class="swiper-lazy-preloader"></div>
-                        </mat-card>
-                    </div>                    
+    <div fxFlex="100" fxFlex.gt-md="80" fxLayout="row wrap">
+
+        <div fxLayout="column">
+
+            <div fxLayout="row wrap">
+
+                <div fxFlex="100" fxFlex.gt-md="45" fxFlex.md="45">
+                    <mat-card class="product-image">
+                        <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><mat-icon>fullscreen</mat-icon></button>
+                        <img *ngIf="image" [src]="image" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)"/>
+                    </mat-card>
+
+                    <div class="small-carousel">
+                        <div class="swiper-container" [swiper]="config">
+                            <div class="swiper-wrapper">
+                                <div *ngFor="let image of product?.images" class="swiper-slide">
+                                    <mat-card (click)="selectImage(image)" class="p-1">
+                                        <img [attr.data-src]="image.small" class="swiper-lazy"/>
+                                        <div class="swiper-lazy-preloader"></div>
+                                    </mat-card>
+                                </div>
+                            </div>
+                            <button mat-icon-button class="swiper-button-prev swipe-arrow"><mat-icon>keyboard_arrow_left</mat-icon></button>
+                            <button mat-icon-button class="swiper-button-next swipe-arrow"><mat-icon>keyboard_arrow_right</mat-icon></button>
+                        </div>
+                    </div>
                 </div>
-                <button mat-icon-button class="swiper-button-prev swipe-arrow"><mat-icon>keyboard_arrow_left</mat-icon></button>
-                <button mat-icon-button class="swiper-button-next swipe-arrow"><mat-icon>keyboard_arrow_right</mat-icon></button> 
+                <div fxFlex="100" fxFlex.gt-md="55" fxFlex.md="55" ngClass.gt-sm="px-3 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
+                    <div #zoomViewer fxShow="false" fxShow.gt-md>
+                        <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18" [ngStyle]="{'background-image': 'url(' + zoomImage + ')'}"></mat-card>
+                    </div>
+
+                    <h2>{{product?.name}}</h2>
+                    <div class="py-1 lh">
+                        <p><span class="text-muted fw-500">Category: </span><span>{{ product?.category_name }}</span></p>
+                        <p><span class="text-muted fw-500">Availibility: </span><span>{{ (product?.availibilityCount > 0) ? 'In stock':'Unavailable'}}</span></p>
+                    </div>
+                    <div class="py-1">
+                        <app-rating [ratingsCount]="product?.ratingsCount" [ratingsValue]="product?.ratingsValue" [direction]="'row'"></app-rating>
+                    </div>
+                    <p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription"></p>
+
+                    <div class="divider mt-1"></div>
+                    <h2 class="py-2 new-price">{{product?.newPrice | customCurrency}}</h2>
+
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="details text-muted py-1">
+                        <div *ngFor="let attribute of product?.attributes; let i=index;">
+                            <ng-container *ngIf="attribute.listtype == 'select'">
+                                <mat-form-field>
+                                    <mat-select [placeholder]="attribute.products_options_name" (selectionChange)="attributeSelected(i, $event)">
+                                        <mat-option *ngFor="let option of attribute.values" [value]="option.products_options_values_id">
+                                            {{option.products_options_values_name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                    <div class="py-1">
+                        <app-controls [product]="product" [type]="'all'"></app-controls>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted py-1">
+                        <button mat-button><mat-icon>mail_outline</mat-icon> Email to a Friend</button>
+                        <button mat-icon-button><mat-icon>share</mat-icon></button>
+                    </div>
+                </div>
+
             </div>
-        </div>
+            <div class="mt-2">
 
+                <div class="pr-3">
+                    <div fxFlex>
+                        <mat-card>
+                            <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
+                                <mat-tab label="Description">
+                                    <div class="full-desc lh">
+                                        <p [innerHTML]="product?.description"></p>
+                                    </div>
+                                </mat-tab>
+                                <mat-tab label="Additional information">
+                                    <div class="full-desc lh">
+                                        <p [innerHTML]="product?.extra_description"></p>
+                                    </div>
+                                </mat-tab>
+                                <mat-tab label="Reviews">
+                                    <div class="full-desc lh">
+                                        <mat-list class="reviews">
+                                            <mat-list-item class="h-100 py-1">
+                                                <img matListAvatar [src]="'assets/images/avatars/avatar-1.png'" alt="image" class="review-author">
+                                                <p matLine fxLayoutAlign="start center">
+                                                    <span class="fw-500">Bruno Vespa</span>
+                                                    <mat-icon class="text-muted px-1" matTooltip="Dissatisfied" matTooltipPosition="after">sentiment_dissatisfied</mat-icon>
+                                                </p>
+                                                <p matLine class="text-muted"><small>13 January, 2018 at 7:09</small></p>
+                                                <p matLine class="text">Integer id eros et mi fringilla imperdiet. In dictum turpis eget magna viverra condimentum. Ut malesuada interdum ultrices. Proin tristique sem pellentesque, posuere dui in, maximus magna. Aenean vehicula, tortor gravida elementum tincidunt, justo lorem vestibulum ex, eget egestas arcu tellus in magna.</p>
+                                            </mat-list-item>
+                                            <mat-list-item class="h-100 py-1">
+                                                <img matListAvatar [src]="'assets/images/avatars/avatar-2.png'" alt="image" class="review-author">
+                                                <p matLine fxLayoutAlign="start center">
+                                                    <span class="fw-500">Julia Aniston</span>
+                                                    <mat-icon class="text-muted px-1" matTooltip="Very Satisfied" matTooltipPosition="after">sentiment_very_satisfied</mat-icon>
+                                                </p>
+                                                <p matLine class="text-muted"><small>04 February, 2018 at 10:22</small></p>
+                                                <p matLine class="text">Nulla accumsan, lacus sed suscipit rutrum, turpis augue accumsan metus, in accumsan urna mi vehicula lorem. Pellentesque semper nibh vitae augue placerat finibus. Nulla sed porttitor nunc, quis tristique sem. Quisque in varius nisl. Integer turpis lorem, ultricies sed sem nec, commodo molestie arcu. Nulla finibus ex tortor, et suscipit magna semper consectetur. Cras sit amet metus dui. Maecenas eget dui at ex varius malesuada vel non felis.</p>
+                                            </mat-list-item>
+                                            <mat-list-item class="h-100 py-1">
+                                                <img matListAvatar [src]="'assets/images/avatars/avatar-3.png'" alt="image" class="review-author">
+                                                <p matLine fxLayoutAlign="start center">
+                                                    <span class="fw-500">Andy Warhol</span>
+                                                    <mat-icon class="text-muted px-1" matTooltip="Neutral" matTooltipPosition="after">sentiment_neutral</mat-icon>
+                                                </p>
+                                                <p matLine class="text-muted"><small>14 February, 2018 at 11:10</small></p>
+                                                <p matLine class="text">Pellentesque hendrerit vel turpis aliquam placerat. Suspendisse ullamcorper congue feugiat. Etiam gravida metus ac massa posuere venenatis. Pellentesque vehicula lobortis dolor, ac pretium dolor maximus quis. Fusce vitae iaculis mauris, quis posuere ex. Mauris vitae convallis nibh. Etiam eget enim at orci interdum maximus nec in ante.</p>
+                                            </mat-list-item>
+                                        </mat-list>
 
-    </div>
-    <div fxFlex="100" fxFlex.gt-md="45" fxFlex.md="55" ngClass.gt-sm="px-3 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
-        
-        <div #zoomViewer fxShow="false" fxShow.gt-md>
-            <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18" [ngStyle]="{'background-image': 'url(' + zoomImage + ')'}"></mat-card>
-        </div>
+                                        <h3 class="mt-2">LEAVE YOUR REVIEW</h3>
+                                        <div class="divider"></div>
+                                        <p class="mt-2 text-muted">Your email address will not be published. Required fields are marked *</p>
+                                        <h3 fxLayoutAlign="start center" class="mt-2">
+                                            <span>Your Rating:</span>
+                                            <button mat-icon-button matTooltip="Very Dissatisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_very_dissatisfied</mat-icon></button>
+                                            <button mat-icon-button matTooltip="Dissatisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_dissatisfied</mat-icon></button>
+                                            <button mat-icon-button matTooltip="Neutral" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_neutral</mat-icon></button>
+                                            <button mat-icon-button matTooltip="Satisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_satisfied</mat-icon></button>
+                                            <button mat-icon-button matTooltip="Very Satisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_very_satisfied</mat-icon></button>
+                                        </h3>
 
-        <h2>{{product?.name}}</h2>
-        <div class="py-1 lh">
-            <p><span class="text-muted fw-500">Category: </span><span>{{ product?.category_name }}</span></p>
-            <p><span class="text-muted fw-500">Availibility: </span><span>{{ (product?.availibilityCount > 0) ? 'In stock':'Unavailable'}}</span></p>
-        </div>
-        <div class="py-1">
-            <app-rating [ratingsCount]="product?.ratingsCount" [ratingsValue]="product?.ratingsValue" [direction]="'row'"></app-rating>
-        </div>
-        <p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription"></p>
+                                        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxLayout="row wrap">
+                                            <div fxFlex="100" class="px-1 mt-1">
+                                                <mat-form-field class="w-100">
+                                                    <textarea matInput placeholder="Your review" formControlName="review" required></textarea>
+                                                    <mat-error *ngIf="form.controls['review'].errors?.required">Review is required</mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
+                                                <mat-form-field class="w-100">
+                                                    <input matInput placeholder="Your name" formControlName="name" required>
+                                                    <mat-error *ngIf="form.controls['name'].errors?.required">Name is required</mat-error>
+                                                    <mat-error *ngIf="form.controls['name'].hasError('minlength')">Name isn't long enough, minimum of 4 characters</mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
+                                                <mat-form-field class="w-100">
+                                                    <input matInput placeholder="Your email" formControlName="email" required>
+                                                    <mat-error *ngIf="form.controls['email'].errors?.required">Email is required</mat-error>
+                                                    <mat-error *ngIf="form.controls['email'].hasError('invalidEmail')">Invalid email address</mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                            <div fxFlex="100" class="mt-2 text-center w-100">
+                                                <button mat-raised-button color="primary" type="submit">SUBMIT REVIEW</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </mat-tab>
+                            </mat-tab-group>
+                        </mat-card>
+                    </div>
+                </div>
 
-        <div class="divider mt-1"></div>
-        <h2 class="py-2 new-price">{{product?.newPrice | customCurrency}}</h2>
-
-        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="details text-muted py-1">
-            <div *ngFor="let attribute of product?.attributes; let i=index;">
-                <ng-container *ngIf="attribute.listtype == 'select'">
-                    <mat-form-field>
-                        <mat-select [placeholder]="attribute.products_options_name" (selectionChange)="attributeSelected(i, $event)">
-                            <mat-option *ngFor="let option of attribute.values" [value]="option.products_options_values_id">
-                                {{option.products_options_values_name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </ng-container>
             </div>
-        </div>
-
-        <div class="py-1">
-            <app-controls [product]="product" [type]="'all'"></app-controls>
-        </div>
-
-        <div class="divider"></div>
-
-        <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted py-1">
-            <button mat-button><mat-icon>mail_outline</mat-icon> Email to a Friend</button>
-            <button mat-icon-button><mat-icon>share</mat-icon></button>
         </div>
 
     </div>
@@ -72,140 +172,141 @@
 
         <div fxLayout="row wrap" class="info-bar" ngClass.gt-md="m-0">
             <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
-                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <mat-icon class="mat-icon-xlg text-muted m-0">card_giftcard</mat-icon>
-                    <div class="content">
-                        <p>BONUS PLUS</p> 
-                        <span class="text-muted m-0">Make fun of shopping and collect bonuses</span>
+                <mat-card class="branch-office">
+                    <mat-card-title><h4>Onze Winkels</h4></mat-card-title>
+                    <mat-card-content>
+                        <div class="branch_opening_hours_box">
+                            <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-amsterdam-6.html"><img src="https://www.plattetv.nl/var/store_images/amsterdam.png" width="55" height="55"></a></div>
+                            <div class="branch_opening_hours">
+                                <div class="adbox_opening_times city_name"><a href="https://www.plattetv.nl/extrainfo/winkel-amsterdam-6.html"> <strong>Amsterdam</strong> </a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-amsterdam-6.html">Vandaag open</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-amsterdam-6.html">tot 21:00</a></div>
+                            </div>
+                        </div>
+                        <div class="branch_opening_hours_box">
+                            <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-arnhem-1.html"><img src="https://www.plattetv.nl/var/store_images/arnhem.png" width="55" height="55"></a></div>
+                            <div class="branch_opening_hours">
+                                <div class="adbox_opening_times city_name"><a href="https://www.plattetv.nl/extrainfo/winkel-arnhem-1.html"> <strong>Arnhem</strong> </a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-arnhem-1.html">Vandaag open</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-arnhem-1.html">tot 21:00</a></div>
+                            </div>
+                        </div>
+                        <div class="branch_opening_hours_box">
+                            <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-breda-3.html"><img src="https://www.plattetv.nl/var/store_images/breda.png" width="55" height="55"></a></div>
+                            <div class="branch_opening_hours"><div class="adbox_opening_times city_name"><a href="https://www.plattetv.nl/extrainfo/winkel-breda-3.html"> <strong>Breda</strong> </a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-breda-3.html">Vandaag open</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-breda-3.html">tot 21:00</a></div>
+                            </div>
+                        </div>
+                        <div class="branch_opening_hours_box">
+                            <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-doesburg-12.html"><img src="https://www.plattetv.nl/var/store_images/doesburg.png" width="55" height="55"></a></div>
+                            <div class="branch_opening_hours">
+                                <div class="adbox_opening_times city_name"><a href="https://www.plattetv.nl/extrainfo/winkel-doesburg-12.html"> <strong>Doesburg</strong> </a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-doesburg-12.html">Vandaag open</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-doesburg-12.html">tot 18:00</a></div>
+                            </div>
+                        </div>
+                        <div class="branch_opening_hours_box">
+                            <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-doetinchem-4.html"><img src="https://www.plattetv.nl/var/store_images/doetinchem.png" width="55" height="55"></a></div>
+                            <div class="branch_opening_hours">
+                                <div class="adbox_opening_times city_name"><a href="https://www.plattetv.nl/extrainfo/winkel-doetinchem-4.html"> <strong>Doetinchem</strong> </a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-doetinchem-4.html">Vandaag open</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-doetinchem-4.html">tot 18:00</a></div></div>
+                        </div>
+                        <div class="branch_opening_hours_box">
+                            <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-eindhoven-9.html"><img src="https://www.plattetv.nl/var/store_images/eindhoven-thumb.jpg" width="55" height="55"></a></div>
+                            <div class="branch_opening_hours">
+                                <div class="adbox_opening_times city_name"><strong><a href="https://www.plattetv.nl/extrainfo/winkel-eindhoven-9.html">Eindhoven</a>&nbsp;</strong></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-eindhoven-9.html">Vandaag open</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-eindhoven-9.html">tot 18:00</a></div>
+                            </div>
+                            <div class="image_overlay"><a href="extrainfo/winkel-eindhoven-9.html">nieuw!</a></div>
+                        </div>
+                        <div class="branch_opening_hours_box">
+                            <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-nijmegen-2.html"><img src="https://www.plattetv.nl/var/store_images/nijmegen.png" width="55" height="55"></a></div>
+                            <div class="branch_opening_hours"><div class="adbox_opening_times city_name"><a href="https://www.plattetv.nl/extrainfo/winkel-nijmegen-2.html"> <strong>Nijmegen</strong> </a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-nijmegen-2.html">Vandaag open</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-nijmegen-2.html">tot 21:00</a></div>
+                            </div>
+                        </div>
+                        <div class="branch_opening_hours_box">
+                            <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-utrecht-14.html"><img src="https://www.plattetv.nl/var/store_images/PlatteTV_Utrecht_vierkant_Thumbnail_Samsung.jpg" width="55" height="55"></a></div>
+                            <div class="branch_opening_hours">
+                                <div class="adbox_opening_times city_name"><strong><a href="https://www.plattetv.nl/extrainfo/winkel-utrecht-14.html">Utrecht</a>&nbsp;</strong></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-utrecht-14.html">Vandaag open</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-utrecht-14.html">tot 21:00</a></div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
+                <mat-card id="advice-and-contact">
+                    <mat-card-title>
+                        <h4>ADVIES EN CONTACT</h4>
+                    </mat-card-title>
+                    <mat-card-content>
+                        <div class="adbox_opening_times"><strong> <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html">Vandaag open</a> </strong></div>
+                        <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html">tot 21:00 uur</a></div>
+                        <div class="contact_box contact_chat_live"><a onclick="LC_API.open_chat_window(); return false;" href="https://www.plattetv.nl/"> <em class="fa fa-comment"></em><strong>CHAT LIVE</strong> <span>Reactie binnen 30 sec.</span> </a></div>
+                        <div class="contact_box contact_form"><a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS"> <em class="fa fa-envelope-o"></em><strong>VUL FORMULIER IN</strong> <span>Reactie binnen 10 min.</span> </a></div>
+                        <div class="contact_box contact_whatsapp"><a href="https://api.whatsapp.com/send?phone=31633444433"> <em class="fa fa-whatsapp"></em><strong>WHATSAPP ONS</strong> <span>Reactie binnen 30 sec.</span> </a></div>
+                        <div class="contact_box contact_bel"><a href="tel:0268454658"> <em class="fa fa-phone"></em><strong>BEL 026-84 54 658</strong> <span>Direct reactie</span> </a></div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
+            <mat-card id="extra-open">
+                <mat-card-title>
+                    <h4>EXTRA VOOR U OPEN</h4>
+                </mat-card-title>
+                <mat-card-content>
+                    <div class="extra_open_hours_box">
+                        <div class="special_open_time"><span>ZONDAG 2 SEP</span></div>
+                        <div class="city_open_time"><a href="https://www.plattetv.nl/extrainfo/winkel-amsterdam-6.html">Amsterdam</a></div>
+                        <div class="city_open_time"><a href="https://www.plattetv.nl/extrainfo/winkel-Arnhem-1.html">Arnhem</a></div>
+                        <div class="city_open_time"><a href="https://www.plattetv.nl/extrainfo/winkel-breda-3.html">Breda</a></div>
+                        <div class="city_open_time"><a href="https://www.plattetv.nl/extrainfo/winkel-eindhoven-9.html">Eindhoven</a></div>
+                        <div class="city_open_time"><a href="https://www.plattetv.nl/extrainfo/winkel-nijmegen-2.html">Nijmegen</a></div>
+                        <div class="city_open_time"><a href="https://www.plattetv.nl/extrainfo/winkel-utrecht-14.html">Utrecht</a></div>
                     </div>
-                </mat-card>
+                    <div class="city_open_time" style="text-align: center;"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#winkels">open van 12:00 tot 17:00</a></div>
+                </mat-card-content>
+            </mat-card>
             </div>
-            <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16"> 
-                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <mat-icon class="mat-icon-xlg text-muted m-0">local_shipping</mat-icon>
-                    <div class="content">
-                        <p>FREE SHIPPING</p> 
-                        <span class="text-muted m-0">Free shipping on all orders over $99</span>
-                    </div> 
-                </mat-card>
+            <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
+            <mat-card id="customer-review">
+                <mat-card-title>
+                    <h4>KLANTENBEOORDELING</h4>
+                </mat-card-title>
+                <mat-card-content>
+                    <div class="reviewbox reviewbox-kieskeurig">
+                        <span class="reviewbox--score">9,4</span>
+                        <span class="reviewbox--text">
+                            <span class="reviewbox--label">Kieskeurig.nl</span>
+                            <span class="reviewbox--total-reviews"><a href="https://www.kieskeurig.nl/winkels/plattetv/reviews" target="_blank">20.510 reviews</a></span>
+                        </span>
+                    </div>
+                    <div class="reviewbox reviewbox-tweakers">
+                        <span class="reviewbox--title">Tweakers</span>
+                        <span class="reviewbox--star-40"></span>
+                        <span class="reviewboox--total-reviews"><a href="https://tweakers.net/shopreview/6924/plattetv/shopreviews/" target="_blank">234 reviews</a></span>
+                    </div>
+                    <div class="reviewbox reviewbox-trustpilot">
+                        <span class="reviewbox--title">Trustpilot</span>
+                        <span class="reviewbox--star-40"></span>
+                        <span class="reviewboox--total-reviews"><a href="https://nl.trustpilot.com/review/www.plattetv.nl" target="_blank">889 reviews</a></span>
+                    </div>
+                </mat-card-content>
+            </mat-card>
             </div>
-            <div fxFlex="100" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <mat-icon class="mat-icon-xlg text-muted m-0">monetization_on</mat-icon>
-                    <div class="content">
-                        <p>MONEY BACK GUARANTEE</p> 
-                        <span class="text-muted m-0">30 Days money return guarantee</span>
-                    </div> 
-                </mat-card>
-            </div>
-            <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16"> 
-                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <mat-icon class="mat-icon-xlg text-muted m-0">history</mat-icon>
-                    <div class="content">
-                        <p>ONLINE SUPPORT 24/7</p> 
-                        <span class="text-muted m-0">Call us: (0418) 82 02 11</span>
-                    </div> 
-                </mat-card>
-            </div>
+
         </div>
 
     </div>
 </div>
 
-<div fxLayout="row wrap" class="mt-2">
-    <div fxFlex="100" fxFlex.gt-md="78" fxFlex.md="74">
-        <mat-card> 
-            <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
-                <mat-tab label="Description">
-                    <div class="full-desc lh">
-                        <p [innerHTML]="product?.description"></p>
-                    </div>
-                </mat-tab>
-                <mat-tab label="Additional information">
-                    <div class="full-desc lh">
-                        <p [innerHTML]="product?.extra_description"></p>
-                    </div>
-                </mat-tab>
-                <mat-tab label="Reviews">
-                    <div class="full-desc lh">
-                        <mat-list class="reviews">
-                            <mat-list-item class="h-100 py-1">
-                                <img matListAvatar [src]="'assets/images/avatars/avatar-1.png'" alt="image" class="review-author">
-                                <p matLine fxLayoutAlign="start center">
-                                    <span class="fw-500">Bruno Vespa</span>
-                                    <mat-icon class="text-muted px-1" matTooltip="Dissatisfied" matTooltipPosition="after">sentiment_dissatisfied</mat-icon>
-                                </p>
-                                <p matLine class="text-muted"><small>13 January, 2018 at 7:09</small></p>
-                                <p matLine class="text">Integer id eros et mi fringilla imperdiet. In dictum turpis eget magna viverra condimentum. Ut malesuada interdum ultrices. Proin tristique sem pellentesque, posuere dui in, maximus magna. Aenean vehicula, tortor gravida elementum tincidunt, justo lorem vestibulum ex, eget egestas arcu tellus in magna.</p>
-                            </mat-list-item>
-                            <mat-list-item class="h-100 py-1">
-                                <img matListAvatar [src]="'assets/images/avatars/avatar-2.png'" alt="image" class="review-author">
-                                <p matLine fxLayoutAlign="start center">
-                                    <span class="fw-500">Julia Aniston</span> 
-                                    <mat-icon class="text-muted px-1" matTooltip="Very Satisfied" matTooltipPosition="after">sentiment_very_satisfied</mat-icon>
-                                </p>
-                                <p matLine class="text-muted"><small>04 February, 2018 at 10:22</small></p>
-                                <p matLine class="text">Nulla accumsan, lacus sed suscipit rutrum, turpis augue accumsan metus, in accumsan urna mi vehicula lorem. Pellentesque semper nibh vitae augue placerat finibus. Nulla sed porttitor nunc, quis tristique sem. Quisque in varius nisl. Integer turpis lorem, ultricies sed sem nec, commodo molestie arcu. Nulla finibus ex tortor, et suscipit magna semper consectetur. Cras sit amet metus dui. Maecenas eget dui at ex varius malesuada vel non felis.</p>
-                            </mat-list-item>
-                            <mat-list-item class="h-100 py-1">
-                                <img matListAvatar [src]="'assets/images/avatars/avatar-3.png'" alt="image" class="review-author">
-                                <p matLine fxLayoutAlign="start center">
-                                    <span class="fw-500">Andy Warhol</span> 
-                                    <mat-icon class="text-muted px-1" matTooltip="Neutral" matTooltipPosition="after">sentiment_neutral</mat-icon>
-                                </p>
-                                <p matLine class="text-muted"><small>14 February, 2018 at 11:10</small></p>
-                                <p matLine class="text">Pellentesque hendrerit vel turpis aliquam placerat. Suspendisse ullamcorper congue feugiat. Etiam gravida metus ac massa posuere venenatis. Pellentesque vehicula lobortis dolor, ac pretium dolor maximus quis. Fusce vitae iaculis mauris, quis posuere ex. Mauris vitae convallis nibh. Etiam eget enim at orci interdum maximus nec in ante.</p>
-                            </mat-list-item>
-                        </mat-list>
-                        
-                        <h3 class="mt-2">LEAVE YOUR REVIEW</h3>
-                        <div class="divider"></div>
-                        <p class="mt-2 text-muted">Your email address will not be published. Required fields are marked *</p>
-                        <h3 fxLayoutAlign="start center" class="mt-2">
-                            <span>Your Rating:</span>
-                            <button mat-icon-button matTooltip="Very Dissatisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_very_dissatisfied</mat-icon></button>
-                            <button mat-icon-button matTooltip="Dissatisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_dissatisfied</mat-icon></button>
-                            <button mat-icon-button matTooltip="Neutral" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_neutral</mat-icon></button>
-                            <button mat-icon-button matTooltip="Satisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_satisfied</mat-icon></button>
-                            <button mat-icon-button matTooltip="Very Satisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_very_satisfied</mat-icon></button>
-                        </h3>
 
-                        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxLayout="row wrap">
-                            <div fxFlex="100" class="px-1 mt-1">
-                                <mat-form-field class="w-100">
-                                    <textarea matInput placeholder="Your review" formControlName="review" required></textarea>
-                                    <mat-error *ngIf="form.controls['review'].errors?.required">Review is required</mat-error>
-                                </mat-form-field>
-                            </div>
-                            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
-                                <mat-form-field class="w-100">
-                                    <input matInput placeholder="Your name" formControlName="name" required>
-                                    <mat-error *ngIf="form.controls['name'].errors?.required">Name is required</mat-error>
-                                    <mat-error *ngIf="form.controls['name'].hasError('minlength')">Name isn't long enough, minimum of 4 characters</mat-error>
-                                </mat-form-field> 
-                            </div>
-                            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
-                                <mat-form-field class="w-100">
-                                    <input matInput placeholder="Your email" formControlName="email" required>
-                                    <mat-error *ngIf="form.controls['email'].errors?.required">Email is required</mat-error>
-                                    <mat-error *ngIf="form.controls['email'].hasError('invalidEmail')">Invalid email address</mat-error>
-                                </mat-form-field> 
-                            </div>
-                            <div fxFlex="100" class="mt-2 text-center w-100">
-                                <button mat-raised-button color="primary" type="submit">SUBMIT REVIEW</button>
-                            </div>
-                        </form>                        
-                    </div>
-                </mat-tab>
-            </mat-tab-group>
-        </mat-card>
-    </div>
-    <div fxFlex="100" fxFlex.gt-md="22" fxFlex.md="26" ngClass.gt-sm="pl-3" fxHide fxShow.gt-sm>
-        <img src="https://via.placeholder.com/400x320/EEEEEE/9E9E9E/?text=Banner%201" alt="" class="mw-100 d-block">
-        <img src="https://via.placeholder.com/400x320/EEEEEE/9E9E9E/?text=Banner%202" alt="" class="mw-100 d-block mt-3">
-        <img src="https://via.placeholder.com/400x320/EEEEEE/9E9E9E/?text=Banner%203" alt="" class="mw-100 d-block mt-3">
-    </div>
-</div>
 
 <div class="py-2 mt-2">
     <h2>Related Products</h2>
