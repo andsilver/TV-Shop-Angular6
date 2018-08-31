@@ -639,9 +639,11 @@ footer .mat-toolbar.usp-list {
 }
 
 /******* Top navbar (menu) *******/
-.top-navbar.mat-toolbar {
-    height: auto;
-    padding: 0;
+.top-navbar.mat-toolbar-multiple-rows {
+    min-height: auto;
+    .mat-toolbar-row {
+        height: auto;
+    }
     a{
         width:100%;
         min-width: 70px;
