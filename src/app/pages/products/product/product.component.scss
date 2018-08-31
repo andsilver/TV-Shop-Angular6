@@ -117,3 +117,43 @@ h2.product-detail-title,
         color: #212226;
     }
 }
+
+.bezorg-title,
+.winkel-title {
+    font-weight: 600;
+}
+.new-stock-info-bezorg {
+    margin-bottom:1rem;
+}
+
+.r-row {
+    margin-left: -.5rem;
+    margin-right: -.5rem;
+}
+.r-row.r-col-2 > div {
+    float: left;
+    width: 50%;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+.r-row.r-col-2 > div .fa-circle,
+.bezorg-cms-title .fa-circle {
+    font-size: .5rem;
+    color: #5AAD49;
+    margin-right: .25rem;
+    vertical-align: top;
+    line-height: 1.25rem;
+}
+.product-detail-control .mat-button.control-add-to-cart .fas {
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    line-height: 3.125rem;
+}
+.product-detail-control .mat-button.control-normal .fas,
+.product-detail-control .mat-button.control-deal .fas {
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    line-height: 2.25rem;
+}

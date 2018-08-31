@@ -63,33 +63,31 @@
 
                     <div fxLayout="column" class="product-detail-control mb-2">
                         <!-- <app-controls [product]="product" [type]="'all'"></app-controls> -->
-                        <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="addToCart(product)">In winkelwagen</button>
-                        <button class="control-normal" mat-button>Afhalen in de winkel</button>
-                        <button class="control-deal" mat-button>ZOMERDEAL</button>
-                        <button class="control-normal" mat-button>Actie: Ruil uw TV in</button>
+                        <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="addToCart(product)">In winkelwagen <i class="fas fa-shopping-cart"></i></button>
+                        <button class="control-normal" mat-button>Afhalen in de winkel <i class="fas fa-chevron-circle-right"></i></button>
+                        <button class="control-deal" mat-button>ZOMERDEAL <i class="fas fa-chevron-circle-right"></i></button>
+                        <button class="control-normal" mat-button>Actie: Ruil uw TV in <i class="fas fa-chevron-circle-right"></i></button>
                     </div>
 
                     <div class="new-stock-info-wrapper">
                         <div class="bezorg-title">Bezorgvoorraad</div>
                         <div class="new-stock-info-bezorg">
-                            <div class="bezorg-stock-value-green dot-green-icon">
-                                <link itemprop="availability" href="https://schema.org/InStock">
-                                GREEN</div>
                             <div class="bezorg-cms-title">
-                                <p><a href="/pagina_cms?type=delivery-time-template&amp;template_id=16&amp;cid=2032" rel="lyteframe" title="Vandaag voor 23:59 besteld, morgen in huis" rev="width: 640px; height: 480px; scrolling: yes;">Vandaag voor 23:59 besteld, morgen in huis</a></p>
+                                <p><a href="#"><i class="fas fa-circle"></i> Vandaag voor 23:59 besteld, morgen in huis</a></p>
                             </div>
                         </div>
                         <div class="new-stock-info-winkel">
                             <div class="winkel-title">Winkelvoorraad</div>
-                            <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
-                            <div class="winkel-branch-city-stock overlib-popup"><span class="dot-green-icon">GREEN</span> <a href="/pagina_cms?type=amsterdam-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Amsterdam</span></a></div>
-                            <div class="winkel-branch-city-stock overlib-popup"><span class="dot-green-icon">GREEN</span> <a href="/pagina_cms?type=utrecht-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Utrecht</span></a></div>
-                            <div class="winkel-branch-city-stock overlib-popup"><span class="dot-green-icon">GREEN</span> <a href="/pagina_cms?type=breda-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Breda</span></a></div>
-                            <div class="winkel-branch-city-stock overlib-popup"><span class="dot-green-icon">GREEN</span> <a href="/pagina_cms?type=arnhem-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Arnhem</span></a></div>
-                            <div class="winkel-branch-city-stock overlib-popup"><span class="dot-green-icon">GREEN</span> <a href="/pagina_cms?type=doetinchem-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Doetinchem</span></a></div>
-                            <div class="winkel-branch-city-stock overlib-popup"><span class="dot-green-icon">GREEN</span> <a href="/pagina_cms?type=nijmegen-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Nijmegen</span></a></div>
-                            <div class="winkel-branch-city-stock overlib-popup"><span class="dot-green-icon">GREEN</span> <a href="/pagina_cms?type=doesburg-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Doesburg</span></a></div>
-                            <div class="winkel-branch-city-stock overlib-popup"><span class="dot-green-icon">GREEN</span> <a href="/pagina_cms?type=eindhoven-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Eindhoven</span></a></div>
+                            <div class="r-row r-col-2">
+                                <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa-circle"></i> <a href="/pagina_cms?type=amsterdam-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Amsterdam</span></a></div>
+                                <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa-circle"></i> <a href="/pagina_cms?type=utrecht-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Utrecht</span></a></div>
+                                <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa-circle"></i> <a href="/pagina_cms?type=breda-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Breda</span></a></div>
+                                <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa-circle"></i> <a href="/pagina_cms?type=arnhem-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Arnhem</span></a></div>
+                                <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa-circle"></i> <a href="/pagina_cms?type=doetinchem-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Doetinchem</span></a></div>
+                                <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa-circle"></i> <a href="/pagina_cms?type=nijmegen-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Nijmegen</span></a></div>
+                                <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa-circle"></i> <a href="/pagina_cms?type=doesburg-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Doesburg</span></a></div>
+                                <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa-circle"></i> <a href="/pagina_cms?type=eindhoven-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Eindhoven</span></a></div>
+                            </div>
                         </div>
                     </div>
 
