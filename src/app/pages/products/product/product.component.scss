@@ -75,3 +75,45 @@
         cursor:url('../../../../assets/images/others/zoom.svg') 10 10, zoom-in;
     }
 }
+
+h2.product-detail-title {
+    text-transform: uppercase;
+}
+h2.product-detail-title,
+.new-price {
+    font-weight: bold;
+    font-size: 2.5rem;
+    line-height: 1;
+    font-family: "PT Sans Narrow";
+    letter-spacing: -.05rem;
+    color:#000!important;
+}
+
+.product-detail-control .mat-button {
+    width: 100%;
+    font-family: "Poppins";
+    text-align: left;
+    padding: 0 1rem;
+
+    &+.mat-button {
+        margin-top:.5rem;
+    }
+    &.control-add-to-cart {
+        height: 3.125rem;
+        font-size: 1.375rem;
+        background-color: #5AAD49;
+        font-weight: 500;
+        font-family: "PT Sans Narrow";
+        text-transform: uppercase;
+        color:#fff;
+        border-radius: .5rem;
+    }
+    &.control-normal {
+        background-color: #ebebe3;
+        color: #212226;
+    }
+    &.control-deal {
+        background-color: #FDC642;
+        color: #212226;
+    }
+}
