@@ -52,16 +52,23 @@ export class ProductsComponent implements OnInit, OnDestroy {
               private store: Store<State>) { }
 
   ngOnInit() {
+
     this.count = this.counts[0];
     this.sort = this.sortings[0];
+
     if (window.innerWidth < 960) {
       this.sidenavOpen = false;
     }
+
     if (window.innerWidth < 1280) {
       this.viewCol = 33.3;
     }
+
     this.brands = this.productsService.brands.manufacturer;
     this.categories = this.productsService.categories;
+
+    this.searchSub = this.filter.searchPerformed.subscribe(() => this.filterChanged());
+
     this.routingSub = this.activatedRoute.paramMap.subscribe((params) => {
           const category = this.categories.find(c => c.name.toLowerCase() === params.get('name'));
           this.categoryId = category ? category.id : 0;
@@ -73,10 +80,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
       this.products = p ? p.products : [];
       this.totalProducts = p ? p.total : 0;
     });
-    console.log(this.brands, this.categories);
   }
 
   ngOnDestroy() {
+    this.searchSub.unsubscribe();
     this.routingSub.unsubscribe();
   }
 
