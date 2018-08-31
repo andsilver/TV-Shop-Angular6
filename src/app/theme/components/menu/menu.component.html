@@ -62,6 +62,7 @@
 
     <a *ngFor="let category of categories"
         mat-button
+        (mouseenter)="triggerSubCategoryMenu(category)"
         [routerLink]="['/products', category.name.toLowerCase()]"
         routerLinkActive="horizontal-active-link"
         [routerLinkActiveOptions]="{exact:true}">

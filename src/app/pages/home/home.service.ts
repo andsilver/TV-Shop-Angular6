@@ -4,9 +4,11 @@ import { ActivatedRouteSnapshot, Router, Resolve, RouterStateSnapshot } from '@a
 import { AppService } from 'app/app.service';
 
 @Injectable()
-export class ProductsService implements Resolve<any> {
-  public categories = [];
-  public brands;
+export class HomeService implements Resolve<any> {
+
+  featuredProducts = [];
+  banners = [];
+  brands = [];
 
   constructor(private appService: AppService, private router: Router ) { }
 
@@ -18,10 +20,17 @@ export class ProductsService implements Resolve<any> {
    */
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
     return new Promise(( resolve, reject ) => {
-        forkJoin([this.appService.getCategories(), this.appService.getBrands()]).subscribe(subs => {
-          this.categories = subs[0];
-          this.brands = subs[1].manufacturer;
-          resolve(subs);
+
+        forkJoin([
+          this.appService.getBanners(),
+          this.appService.getBrands(),
+          this.appService.getProducts('featured')
+        ])
+        .subscribe(res => {
+          this.banners = res[0];
+          this.brands = res[1].manufacturer;
+          this.featuredProducts = res[2].products;
+          resolve(res);
         }, reject);
     });
   }

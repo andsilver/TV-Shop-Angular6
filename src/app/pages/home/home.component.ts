@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../app.service';
 import { Product } from '../../app.models';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -25,12 +26,15 @@ export class HomeComponent implements OnInit {
   public newArrivalsProducts: Array<Product>;
 
 
-  constructor(public appService: AppService) { }
+  constructor(public appService: AppService, private homeService: HomeService) { }
 
   ngOnInit() {
-    this.getBanners();
-    this.getProducts('featured');
-    this.getBrands();
+    this.featuredProducts = this.homeService.featuredProducts;
+    this.banners = this.homeService.banners;
+    this.brands = this.homeService.brands;
+    // this.getBanners();
+    // this.getProducts('featured');
+    // this.getBrands();
   }
 
   public onLinkClick(e) {

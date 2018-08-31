@@ -10,12 +10,14 @@ import { Category } from 'app/app.models';
 export class MenuComponent implements OnInit {
 
   categories: Category[];
+  allCategories: Category[];
 
   constructor(private appService: AppService) { }
 
   ngOnInit() {
-    this.appService.getCategoriesByParentId(0).subscribe( categories => {
-      this.categories = categories;
+    this.appService.getCategories().subscribe( categories => {
+      this.allCategories = categories;
+      this.categories = categories.filter( c => c.parentId === 0 );
     });
   }
 
@@ -28,6 +30,10 @@ export class MenuComponent implements OnInit {
           }
         }
     });
+  }
+
+  triggerSubCategoryMenu(category) {
+    console.log(category);
   }
 
 }

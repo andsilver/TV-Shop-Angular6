@@ -29,13 +29,13 @@ export class AppService {
     /***
     *  ---------------- New Apis -----------------------------------------------------------
     **/
-    public getCategories(limit: number = 10): Observable<Category[]> {
+    public getCategories(): Observable<Category[]> {
         let params = new HttpParams();
-        params = params.append('limit', `${limit}`);
+        params = params.append('mode', 'tree');
         return this.http.get<Category[]>('/categories', { params: params });
     }
 
-    public getCategoriesByParentId( parentId, limit: number = 10 ): Observable<Category[]> {
+    public getCategoriesByParentId( parentId, limit: number = 110 ): Observable<Category[]> {
         let params = new HttpParams();
         params = params.append('mode', 'parent');
         params = params.append('parentId', parentId);
@@ -43,7 +43,7 @@ export class AppService {
         return this.http.get<Category[]>(`/categories`, { params: params });
     }
 
-    public getProducts(mode: string, limit: number = 6, page: number = 1): Observable<Products> {
+    public getProducts(mode: string, limit: number = 10, page: number = 1): Observable<Products> {
         let params = new HttpParams();
         params = params.append('mode', mode);
         return this.productPagination(limit, page, params);
