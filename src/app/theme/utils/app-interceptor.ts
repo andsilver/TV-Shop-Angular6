@@ -4,7 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 
-import { environment } from 'environments/environment'
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
@@ -14,7 +14,7 @@ export class AppInterceptor implements HttpInterceptor {
 
         this.spinner.show();
 
-        const local = "assets/data"
+        const local = 'assets/data';
         const url = req.url.indexOf(environment.apiUrl) > -1 ? req.url : `${environment.apiUrl}${req.url}`;
         const apiReq = req.clone({ url: url });
 
@@ -29,6 +29,6 @@ export class AppInterceptor implements HttpInterceptor {
             console.log(`Request for ${req.urlWithParams} failed after ${elapsed} ms.`);
            // debugger;
           }
-        })
+        });
     }
 }

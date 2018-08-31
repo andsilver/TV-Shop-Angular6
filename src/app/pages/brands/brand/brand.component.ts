@@ -7,6 +7,9 @@ import { Product, Category } from '../../../app.models';
 import { BrandsService } from '../brands.service';
 import { FilterService } from 'app/services';
 
+import { Store } from '@ngrx/store';
+import { State } from 'app/store';
+
 @Component({
   selector: 'app-brand',
   templateUrl: './brand.component.html',
@@ -42,7 +45,8 @@ export class BrandComponent implements OnInit, OnDestroy {
               public dialog: MatDialog,
               private router: Router,
               private brandsService: BrandsService,
-              private filter: FilterService) { }
+              private filter: FilterService,
+              private store: Store<State>) { }
 
   ngOnInit() {
     this.count = this.counts[0];
@@ -56,34 +60,32 @@ export class BrandComponent implements OnInit, OnDestroy {
     }
 
     this.categories = this.brandsService.categories;
-    this.searchSub = this.filter.searchPerformed.subscribe(() => this.getProducts());
+    this.searchSub = this.filter.searchPerformed.subscribe(() => this.filterChanged());
     this.routingSub = this.activatedRoute.paramMap.subscribe((params) => {
-          this.brand = params.get('name');
-          this.page = 1;
-          this.filter.searchPerformed.next();
-        });
+      this.brand = params.get('name');
+      this.filterChanged();
+    });
+
+    this.store.select(state => state.products).subscribe( res => {
+      this.products = res.products;
+      this.totalProducts = res.total;
+    });
   }
 
   public getProducts() {
     const filter = {
-      keyword: this.filter.keyword,
-      categoryId: '',
+      categoryId: 0,
       fromPrice: this.priceFrom,
       toPrice: this.priceTo,
       filterAttributes: {
-        brands: [this.brand],
-        // color: this.selectedColors,
-        // size: this.selectedSizes
+        brands: [this.brand]
       },
       sort: this.sort,
       limit: this.count,
       page: this.page
     };
 
-    this.appService.getProductsByFilter(filter).subscribe(data => {
-      this.products = data.products ? data.products : [];
-      this.totalProducts = data.total;
-    });
+    this.filter.runFilter(filter);
   }
 
   ngOnDestroy() {
@@ -99,7 +101,7 @@ export class BrandComponent implements OnInit, OnDestroy {
 
   public changeCount(count) {
     this.count = count;
-    this.getProducts();
+    this.filterChanged();
   }
 
   public changeSorting(sort) {
@@ -142,7 +144,7 @@ export class BrandComponent implements OnInit, OnDestroy {
     } else {
       this.selectedSizes.push(size);
     }
-    this.getProducts();
+    this.filterChanged();
   }
 
   public selectColor(color) {
@@ -152,6 +154,11 @@ export class BrandComponent implements OnInit, OnDestroy {
     } else {
       this.selectedColors.push(color);
     }
+    this.filterChanged();
+  }
+
+  public filterChanged() {
+    this.page = 1;
     this.getProducts();
   }
 

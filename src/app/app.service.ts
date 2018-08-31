@@ -29,19 +29,17 @@ export class AppService {
     /***
     *  ---------------- New Apis -----------------------------------------------------------
     **/
-    public getCategories(limit: number = 6): Observable<Category[]> {
+    public getCategories(limit: number = 10): Observable<Category[]> {
         let params = new HttpParams();
         params = params.append('limit', `${limit}`);
         return this.http.get<Category[]>('/categories', { params: params });
     }
 
-    public getCategoriesByParentId( parentId, limit: number = 6 ): Observable<Category[]> {
+    public getCategoriesByParentId( parentId, limit: number = 10 ): Observable<Category[]> {
         let params = new HttpParams();
         params = params.append('mode', 'parent');
         params = params.append('parentId', parentId);
-        if (limit > -1) {
-           params = params.append('limit', `${limit}`);
-        }
+        params = params.append('limit', `${limit}`);
         return this.http.get<Category[]>(`/categories`, { params: params });
     }
 

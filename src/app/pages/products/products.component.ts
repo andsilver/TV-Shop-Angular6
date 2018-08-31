@@ -1,16 +1,16 @@
 import { Component, OnInit, OnDestroy, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { Subscription } from 'rxjs';
+import { Subscription, forkJoin, Observable } from 'rxjs';
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
-import { Product, Category, Products } from '../../app.models';
+import { Product, Category } from '../../app.models';
 import { ProductsService } from './products.service';
 import { FilterService } from 'app/services';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
-import * as fromProducts from 'app/store/actions/products.action';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',
@@ -22,14 +22,15 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public sidenavOpen = true;
   private routingSub: Subscription;
   private searchSub: Subscription;
+  private storeSub: Subscription;
   public viewType = 'grid';
   public viewCol = 25;
   public counts = [12, 24, 36];
-  public count: any;
+  public count: number;
   public sortings = ['Sort by Default', 'Best match', 'Lowest first', 'Highest first'];
   public sort: any;
   public products: Array<Product> = [];
-  public categories: Category[];
+  public categories;
   public categoryId: number;
   public brands = [];
   public selectedBrands = [];
@@ -42,6 +43,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public selectedSizes = [];
   public page = 0;
   public totalProducts = 0;
+
+  public time = 0;
 
   constructor(private activatedRoute: ActivatedRoute,
               public appService: AppService,
@@ -64,27 +67,29 @@ export class ProductsComponent implements OnInit, OnDestroy {
       this.viewCol = 33.3;
     }
 
-    this.brands = this.productsService.brands.manufacturer;
+    this.brands = this.productsService.brands;
     this.categories = this.productsService.categories;
 
     this.searchSub = this.filter.searchPerformed.subscribe(() => this.filterChanged());
 
-    this.routingSub = this.activatedRoute.paramMap.subscribe((params) => {
-          const category = this.categories.find(c => c.name.toLowerCase() === params.get('name'));
-          this.categoryId = category ? category.id : 0;
-          this.filterChanged();
-        });
+    this.routingSub = this.activatedRoute.paramMap.subscribe( params => {
+      const categoryName = params.get('name');
+      const category = this.categories.find(c => c.name.toLowerCase() === categoryName);
+      this.categoryId =  category ? category.id : 0;
+      this.filterChanged();
+    });
 
-    this.store.select(state => state.products).subscribe( data => {
-      const p = data.data;
-      this.products = p ? p.products : [];
-      this.totalProducts = p ? p.total : 0;
+    this.storeSub = this.store.select(state => state.products)
+    .subscribe( res => {
+      this.products = res.products;
+      this.totalProducts = res.total;
     });
   }
 
   ngOnDestroy() {
     this.searchSub.unsubscribe();
     this.routingSub.unsubscribe();
+    this.storeSub.unsubscribe();
   }
 
   @HostListener('window:resize')
@@ -94,8 +99,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   public getProducts() {
+    console.log(this.time);
+    this.time ++;
     const filter = {
-      keyword: this.filter.keyword,
       categoryId: this.categoryId,
       fromPrice: this.priceFrom,
       toPrice: this.priceTo,
@@ -106,7 +112,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       limit: this.count,
       page: this.page
     };
-    this.store.dispatch(new fromProducts.FilterProducts(filter));
+    this.filter.runFilter(filter);
   }
 
   public changeCount(count) {

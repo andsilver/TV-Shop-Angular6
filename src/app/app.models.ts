@@ -1,39 +1,56 @@
-export class Category {
-  constructor(public id: number,
-              public name: string,
-              public hasSubCategory: boolean,
-              public parentId: number) { }
+export interface Category {
+  id: number;
+  name: string;
+  hasSubCategory: boolean;
+  parentId: number;
 }
 
 export class Product {
-  constructor(public id: number,
-              public name: string,
-              public images: Array<any>,
-              public oldPrice: number,
-              public newPrice: number,
-              public discount: number,
-              public ratingsCount: number,
-              public ratingsValue: number,
-              public description: string,
-              public shortdescription: string,
-              public extra_description: string,
-              public availibilityCount: number,
-              public color: Array<string>,
-              public size: Array<string>,
-              public weight: number,
-              public categoryId: number,
-              public category_name: string,
-              public attributes: Array<any>,
-              public quantity: number = 1) { }
+  id: number;
+  name: string;
+  images: Array<any>;
+  oldPrice: number;
+  newPrice: number;
+  discount: number;
+  ratingsCount: number;
+  ratingsValue: number;
+  description: string;
+  shortdescription: string;
+  extra_description: string;
+  availibilityCount: number;
+  color: Array<string>;
+  size: Array<string>;
+  weight: number;
+  categoryId: number;
+  category_name: string;
+  attributes: Array<any>;
+  quantity: number;
 }
 
-export interface Products {
-  products: Product[];
+export interface Brand {
+  id: number;
+  name: string;
+  image: string;
+  description: string;
+  shortdescription: string;
+  footer_description: string;
+}
+
+export interface Response {
   limit: number;
   page: number;
   total: number;
   total_pages: number;
 }
+
+export interface Brands extends Response {
+  manufacturer: Brand[];
+}
+
+export interface Products extends Response {
+  products: Product[];
+}
+
 
 export interface Error {
   message: string;

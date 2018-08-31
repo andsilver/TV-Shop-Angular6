@@ -8,7 +8,7 @@ export const FAILED_GET_PRODUCTS = '[PRODUCTS] Failed';
 
 export class FilterProducts implements Action {
     readonly type = FILTER_PRODUCTS;
-    constructor(public payload: any) {}
+    constructor(public payload: number = 0) {}
 }
 
 export class CategoryProducts implements Action {

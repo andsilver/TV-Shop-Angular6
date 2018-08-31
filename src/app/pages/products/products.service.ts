@@ -21,7 +21,7 @@ export class ProductsService implements Resolve<any> {
     return new Promise(( resolve, reject ) => {
         forkJoin([this.appService.getCategories(), this.appService.getBrands()]).subscribe(subs => {
           this.categories = subs[0];
-          this.brands = subs[1];
+          this.brands = subs[1].manufacturer;
           resolve(subs);
         }, reject);
     });

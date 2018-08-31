@@ -23,13 +23,12 @@ import { AppService } from './app.service';
 import { AppInterceptor } from './theme/utils/app-interceptor';
 import { OptionsComponent } from './theme/components/options/options.component';
 import { FooterComponent } from './theme/components/footer/footer.component';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, INITIAL_STATE } from '@ngrx/store';
 import { reducers, metaReducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './store/effects/app.effects';
-
 
 @NgModule({
    imports: [
@@ -61,7 +60,8 @@ import { AppEffects } from './store/effects/app.effects';
     AppSettings,
     AppService,
     { provide: OverlayContainer, useClass: CustomOverlayContainer },
-    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
+    // { provide: INITIAL_STATE, useFactory:  }
   ],
   bootstrap: [AppComponent]
 })
