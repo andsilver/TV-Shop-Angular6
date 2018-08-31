@@ -1,5 +1,5 @@
 <footer class="bg-primary footer">
-    <mat-toolbar class="usp-list top-usp-list" fxLayoutAlign="flex-start center">
+    <mat-toolbar class="usp-list top-usp-list" fxLayoutAlign="flex-start center" fxShow="false" fxShow.gt-sm>
         <mat-toolbar-row class="theme-container" fxLayoutAlign="flex-start center">
             <div><a href="https://www.plattetv.nl/">Dé TV-winkel van Nederland</a></div>
             <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#winkels"><i class="fas fa-check-circle"></i>8 vestigingen</a></div>
@@ -10,10 +10,10 @@
     </mat-toolbar>
     <mat-toolbar class="footer-info">
         <mat-toolbar-row class="theme-container" fxLayout="row wrap" fxLayoutAlign="center flex-start">
-            <div fxFlex="100" class="footer-info--representative" fxFlex.gt-md="30">
+            <div fxFlex="100" class="footer-info--representative" fxFlex.gt-sm="20" fxHide.lt-md>
                 <a href="#" fxFlex="100"></a>
             </div>
-            <div fxFlex="100" class="footer-info--contact"  fxFlex.gt-md="35">
+            <div fxFlex="100" class="footer-info--contact" fxFlex.sm="60" fxFlex.gt-sm="45" ngClass.sm="mb-2">
                 <div class="footer-info--text">
                     <strong>HULP NODIG?</strong><br>
                     <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html">Klantenservice vandaag open tot 21:00</a>
@@ -27,7 +27,7 @@
                     </ul>
                 </div>
             </div>
-            <div fxFlex="100" class="footer-info--newsletter" fxFlex.gt-md="35">
+            <div fxFlex="100" class="footer-info--newsletter" fxFlex.sm="40" fxFlex.gt-sm="35" ngClass.lt-lg="mb-2">
                 <div fxLayout="column">
                     <div class="footer-info--text">
                         <strong>AANMELDEN NIEUWSBRIEF</strong><br>
@@ -43,18 +43,18 @@
     </mat-toolbar>
     <mat-toolbar class="footer-nav">
         <mat-toolbar-row class="theme-container" fxLayout="row wrap" fxLayoutAlign="center flex-start">
-            <div fxFlex="100" fxFlex.gt-md="25">
+            <div fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25" ngClass.lt-md="mb-2">
                 <strong>PlatteTV</strong>
                 <ul>
                     <li><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html">Contact</a></li><li>
-                </li><li><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#klantenservice">Klantenservice</a></li>
+                    </li><li><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#klantenservice">Klantenservice</a></li>
                     <li><a href="https://www.plattetv.nl/bestelstatus">Bestelstatus</a></li>
                     <li><a href="https://www.plattetv.nl/extrainfo/learning-center-1756.html">Learning Center</a></li>
                     <li><a href="https://www.plattetv.nl/extrainfo/zakelijk-2019.html">Zakelijk</a></li>
                     <li><a href="https://www.plattetv.nl/extrainfo/vacatures-2320.html">Vacatures</a></li>
                 </ul>
             </div>
-            <div fxFlex="100" fxFlex.gt-md="25">
+            <div fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25" ngClass.lt-md="mb-2">
                 <strong>Onze winkels</strong>
                 <ul>
                     <li><a href="/extrainfo/winkel-amsterdam-6.html">Amsterdam</a></li>
@@ -67,7 +67,7 @@
                     <li><a href="/extrainfo/winkel-utrecht-14.html">Utrecht</a></li>
                 </ul>
             </div>
-            <div fxFlex="100" fxFlex.md="25" fxFlex.gt-md="25">
+            <div fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25" ngClass.lt-sm="mb-2">
                 <strong>Populaire categorieën</strong>
                 <ul>
                     <li><a href="https://www.plattetv.nl/categorie/oled-tv-809.html">OLED TV</a></li>
@@ -79,7 +79,7 @@
                     <li><a href="https://www.plattetv.nl/categorie/soundbars-765.html">Soundbars</a></li>
                 </ul>
             </div>
-            <div fxFlex="100" fxFlex.gt-md="25">
+            <div fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25">
                 <strong>Populaire merken</strong>
                 <ul>
                     <li><a href="https://www.plattetv.nl/leverancier/samsung-18.html">Samsung</a></li>
