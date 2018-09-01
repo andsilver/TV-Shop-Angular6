@@ -1,8 +1,8 @@
 <div *ngIf="appService.Data.cartList.length == 0">
   <mat-chip-list>
-      <mat-chip color="warn" selected="true">YOU HAVE NO ITEMS IN YOUR SHOPPING CART.</mat-chip>
+      <mat-chip color="warn" selected="true">U HEEFT NOG GEEN PRODUCTEN IN UW WINKELWAGEN GEPLAATST.</mat-chip>
   </mat-chip-list>
-  <a [routerLink]="['/']" mat-raised-button color="primary" class="mt-2">Continue shopping</a>
+  <a [routerLink]="['/']" mat-raised-button color="primary" class="mt-2">Verder winkelen</a>
 </div>
 
 <mat-card *ngIf="appService.Data.cartList?.length > 0" class="p-0">
