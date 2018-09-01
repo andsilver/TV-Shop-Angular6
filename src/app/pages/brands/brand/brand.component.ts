@@ -24,7 +24,7 @@ export class BrandComponent implements OnInit, OnDestroy {
   public viewCol = 25;
   public counts = [12, 24, 36];
   public count: any;
-  public sortings = ['Sort by Default', 'Best match', 'Lowest first', 'Highest first'];
+  public sortings = ['Relevantie', 'Best verkocht', 'Prijs laag-hoog', 'Prijs hoog-laag'];
   public sort: any;
   public products: Array<Product> = [];
   public categories: Category[];
