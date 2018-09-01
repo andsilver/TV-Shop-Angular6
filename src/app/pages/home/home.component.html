@@ -44,22 +44,17 @@
 <div class="products-tabs">  
 
     <mat-tab-group mat-stretch-tabs (selectedTabChange)="onLinkClick($event)">
-       
-        <mat-tab label="Featured">           
-           <app-products-carousel [products]="featuredProducts"></app-products-carousel>
-        </mat-tab>
-        <mat-tab label="On Sale">
+
+        <mat-tab label="In de aanbieding">
            <app-products-carousel [products]="onSaleProducts"></app-products-carousel>
         </mat-tab>
-        <mat-tab label="Top Rated">
+        <mat-tab label="Best gewaardeerd">
             <app-products-carousel [products]="topRatedProducts"></app-products-carousel>
         </mat-tab>
-        <mat-tab label="New Arrivals">
+        <mat-tab label="Nieuwste producten">
             <app-products-carousel [products]="newArrivalsProducts"></app-products-carousel>
         </mat-tab>
     </mat-tab-group> 
 
 
 </div>
-
-<app-brands-carousel [brands]="brands"></app-brands-carousel> 
