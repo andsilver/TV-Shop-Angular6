@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public viewCol = 25;
   public counts = [12, 24, 36];
   public count: number;
-  public sortings = ['Sort by Default', 'Best match', 'Lowest first', 'Highest first'];
+  public sortings = ['Relevantie', 'Best verkocht', 'Prijs laag-hoog', 'Prijs hoog-laag'];
   public sort: any;
   public products: Array<Product> = [];
   public categories: Category[];
@@ -47,12 +47,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   public showMoreBrandsType = {
     show_more: {
-      text: 'Show More',
+      text: 'Toon meer',
       icon: 'keyboard_arrow_down',
       count: 10
     },
     show_less: {
-      text: 'Show Less',
+      text: 'Toon minder',
       icon: 'keyboard_arrow_up',
       count: 9999
     }
