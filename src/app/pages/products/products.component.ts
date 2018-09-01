@@ -1,16 +1,16 @@
 import { Component, OnInit, OnDestroy, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { Subscription, forkJoin, Observable } from 'rxjs';
-import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
-import { AppService } from '../../app.service';
-import { Product, Category } from '../../app.models';
-import { ProductsService } from './products.service';
-import { FilterService } from 'app/services';
+import { Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
-import { switchMap } from 'rxjs/operators';
+
+import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
+import { AppService } from '../../app.service';
+import { Product, Category } from '../../app.models';
+import { FilterService } from 'app/services';
 
 @Component({
   selector: 'app-products',
@@ -20,9 +20,7 @@ import { switchMap } from 'rxjs/operators';
 export class ProductsComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav') sidenav: any;
   public sidenavOpen = true;
-  private routingSub: Subscription;
-  private searchSub: Subscription;
-  private storeSub: Subscription;
+  private Subscriptions: Subscription[];
   public viewType = 'grid';
   public viewCol = 25;
   public counts = [12, 24, 36];
@@ -30,7 +28,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public sortings = ['Sort by Default', 'Best match', 'Lowest first', 'Highest first'];
   public sort: any;
   public products: Array<Product> = [];
-  public categories;
+  public categories: Category[];
   public categoryId: number;
   public brands = [];
   public selectedBrands = [];
@@ -50,7 +48,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
               public appService: AppService,
               public dialog: MatDialog,
               private router: Router,
-              private productsService: ProductsService,
               private filter: FilterService,
               private store: Store<State>) { }
 
@@ -67,39 +64,39 @@ export class ProductsComponent implements OnInit, OnDestroy {
       this.viewCol = 33.3;
     }
 
-    this.brands = this.productsService.brands;
-    this.categories = this.productsService.categories;
-
-    this.searchSub = this.filter.searchPerformed.subscribe(() => this.filterChanged());
-
-    this.routingSub = this.activatedRoute.paramMap.subscribe( params => {
-      const categoryName = params.get('name');
-      const category = this.categories.find(c => c.name.toLowerCase() === categoryName);
-      this.categoryId =  category ? category.id : 0;
-      this.filterChanged();
-    });
-
-    this.storeSub = this.store.select(state => state.products)
-    .subscribe( res => {
-      this.products = res.products;
-      this.totalProducts = res.total;
-      // this.brands = [];
-      // this.products.forEach(p => {
-      //   p.
-      // });
-    });
+    this.Subscriptions = [
+      this.filter.searchPerformed.subscribe(() => this.filterChanged()),
+      this.store.select(state => state.brands).subscribe(res => this.brands = res.manufacturer),
+      this.store.select(state => state.products).subscribe( res => this.setProducts(res)),
+      this.store.select(state => state.categories)
+        .pipe(
+          switchMap(res => {
+            this.categories = res.categories;
+            return this.activatedRoute.paramMap;
+          })
+        )
+        .subscribe( params => {
+            const categoryName = params.get('name');
+            const category = this.categories.find(c => c.name.toLowerCase() === categoryName);
+            this.categoryId =  category ? category.id : 0;
+            this.filterChanged();
+        })
+      ];
   }
 
   ngOnDestroy() {
-    this.searchSub.unsubscribe();
-    this.routingSub.unsubscribe();
-    this.storeSub.unsubscribe();
+    this.Subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   @HostListener('window:resize')
   public onWindowResize(): void {
     (window.innerWidth < 960) ? this.sidenavOpen = false : this.sidenavOpen = true;
     (window.innerWidth < 1280) ? this.viewCol = 33.3 : this.viewCol = 25;
+  }
+
+  public setProducts(res) {
+    this.products = res.products;
+    this.totalProducts = res.total;
   }
 
   public getProducts() {

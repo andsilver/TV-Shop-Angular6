@@ -1,19 +1,20 @@
-import { Products } from '../../app.models';
-import * as ProductsActions from '../actions/products.action';
+import { Category } from '../../app.models';
+import * as CategoriesActions from '../actions/categories.action';
 
-export interface State extends Products {
+export interface State {
     error: String | null;
+    categories: Category[];
 }
 
-export const initialState: State = { products: [], error: null, limit: 10, page: 0, total: 0, total_pages: 0 };
+export const initialState: State = { categories: [], error: null };
 
-export function reducer ( state = initialState, action: ProductsActions.Actions ): State {
+export function reducer ( state = initialState, action: CategoriesActions.Actions ): State {
 
     switch (action.type) {
-        case ProductsActions.SUCCESS_GET_PRODUCTS: {
-            return { ...action.payload, error: null };
+        case CategoriesActions.SUCCESS_GET_CATEGORIES: {
+            return { categories: action.payload, error: null };
         }
-        case ProductsActions.FAILED_GET_PRODUCTS: {
+        case CategoriesActions.FAILED_GET_CATEGORIES: {
             return {
                 ...state,
                 error: action.payload.message

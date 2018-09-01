@@ -11,8 +11,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { AccountService } from './account.service';
 
 export const routes = [
-  { 
-      path: '', 
+  {
+      path: '',
       component: AccountComponent,
       resolve: { user: AccountService },
       children: [

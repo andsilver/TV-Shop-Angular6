@@ -1,13 +1,17 @@
 import { Routes, RouterModule, PreloadAllModules  } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
+import { InitStateService } from 'app/services';
+
 import { PagesComponent } from './pages/pages.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: PagesComponent, children: [
+        component: PagesComponent,
+        resolve: { data: InitStateService },
+        children: [
             { path: '', loadChildren: 'app/pages/home/home.module#HomeModule' },
             { path: 'account', loadChildren: 'app/pages/account/account.module#AccountModule', data: { breadcrumb: 'Account Settings' } },
             { path: 'compare', loadChildren: 'app/pages/compare/compare.module#CompareModule', data: { breadcrumb: 'Compare' } },

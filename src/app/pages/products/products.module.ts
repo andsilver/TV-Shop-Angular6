@@ -12,8 +12,8 @@ import { ProductZoomComponent } from './product/product-zoom/product-zoom.compon
 import { ProductsService } from './products.service';
 
 export const routes = [
-  { path: '', component: ProductsComponent, pathMatch: 'full', resolve: { data: ProductsService } },
-  { path: ':name', component: ProductsComponent, resolve: { data: ProductsService } },
+  { path: '', component: ProductsComponent, pathMatch: 'full' },
+  { path: ':name', component: ProductsComponent },
   { path: ':id/:name', component: ProductComponent }
 ];
 
