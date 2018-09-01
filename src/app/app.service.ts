@@ -35,7 +35,7 @@ export class AppService {
         return this.http.get<Category[]>('/categories', { params: params });
     }
 
-    public getCategoriesByParentId( parentId, limit: number = 110 ): Observable<Category[]> {
+    public getCategoriesByParentId( parentId, limit: number = 10 ): Observable<Category[]> {
         let params = new HttpParams();
         params = params.append('mode', 'parent');
         params = params.append('parentId', parentId);
@@ -77,7 +77,7 @@ export class AppService {
         return this.http.get<Products>(`/products/listing`, { params: params });
     }
 
-    public getBrands(limit: number = 10, page: number = 1) {
+    public getBrands(limit: number = 100, page: number = 1) {
         let params = new HttpParams();
         params = params.append('limit', `${limit}`);
         params = params.append('page', `${page}`);

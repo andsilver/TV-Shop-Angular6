@@ -83,6 +83,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
     .subscribe( res => {
       this.products = res.products;
       this.totalProducts = res.total;
+      // this.brands = [];
+      // this.products.forEach(p => {
+      //   p.
+      // });
     });
   }
 
@@ -99,8 +103,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   public getProducts() {
-    console.log(this.time);
-    this.time ++;
     const filter = {
       categoryId: this.categoryId,
       fromPrice: this.priceFrom,

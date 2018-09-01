@@ -9,7 +9,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="categories-wrapper categories-dropdown" perfectScrollbar>
-                    <app-category-list [categories]="categories" [categoryParentId]="0" [selectedCategory]="categoryId" (change)="onChangeCategory($event)"></app-category-list>
+                    <app-category-list [categories]="categories" [categoryParentId]="categoryId" [selectedCategory]="categoryId" (change)="onChangeCategory($event)"></app-category-list>
                 </div>
             </mat-expansion-panel>
 
@@ -62,10 +62,10 @@
                         <h4>Brands</h4>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="filter-brands">                  
-                    <button mat-raised-button *ngFor="let brand of brands" [ngClass]="{'filter-selected-button': selectedBrands.indexOf(brand) > -1}" (click)="selectBrand(brand)">
-                        <img [src]="brand.image"/>
-                    </button>
+                <div fxLayout="column" fxLayoutGap="10px" class="filter-brands">                  
+                   <div *ngFor="let brand of brands">
+                       <mat-checkbox (change)="selectBrand(brand)">{{brand.name}}</mat-checkbox>
+                   </div>
                 </div>
             </mat-expansion-panel>
 

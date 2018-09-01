@@ -7,6 +7,7 @@ import { AppService } from 'app/app.service';
 export class ProductsService implements Resolve<any> {
   public categories = [];
   public brands;
+  public categoryId;
 
   constructor(private appService: AppService, private router: Router ) { }
 
@@ -18,9 +19,11 @@ export class ProductsService implements Resolve<any> {
    */
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
     return new Promise(( resolve, reject ) => {
+        console.log(route.params);
         forkJoin([this.appService.getCategories(), this.appService.getBrands()]).subscribe(subs => {
           this.categories = subs[0];
           this.brands = subs[1].manufacturer;
+          // this.categoryId = route.params.name ? this.categories.find( c => c.name === route.params.name ).id : 0;
           resolve(subs);
         }, reject);
     });

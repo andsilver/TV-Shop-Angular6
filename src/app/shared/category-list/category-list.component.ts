@@ -1,11 +1,11 @@
-import { Component, Input, DoCheck, Output, EventEmitter } from '@angular/core';
+import { Component, Input, DoCheck, OnChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.scss']
 })
-export class CategoryListComponent implements DoCheck {
+export class CategoryListComponent implements OnChanges {
 
   @Input() categories;
   @Input() categoryParentId;
@@ -15,9 +15,11 @@ export class CategoryListComponent implements DoCheck {
 
   constructor() { }
 
-  public ngDoCheck() {
-    if (this.categories && !this.mainCategories) {
+  public ngOnChanges() {
+    // console.log(this.categoryParentId);
+    if (this.categories) {
       this.mainCategories = this.categories.filter(category => category.parentId === this.categoryParentId);
+      console.log(this.mainCategories);
     }
   }
 
