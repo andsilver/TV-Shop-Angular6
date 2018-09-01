@@ -30,6 +30,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public products: Array<Product> = [];
   public categories: Category[];
   public categoryId = 0;
+  public category;
+  public topParentCategoryId = 0;
+  public topParentCategory;
   public brands = [];
   public selectedBrands = [];
   public priceFrom = 1;
@@ -91,8 +94,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
         )
         .subscribe( params => {
             const categoryName = params.get('name');
-            const category = this.categories.find(c => c.name.toLowerCase() === categoryName);
-            this.categoryId =  category ? category.id : 0;
+            this.category = this.categories.find(c => c.name.toLowerCase() === categoryName);
+            this.categoryId =  this.category ? this.category.id : 0;
+            this.findTopCategoryId();
             this.filterChanged();
         })
       ];
@@ -207,6 +211,24 @@ export class ProductsComponent implements OnInit, OnDestroy {
       = (this.showMoreBrandsStatus === this.showMoreBrandsType.show_more)
       ? this.showMoreBrandsType.show_less
       : this.showMoreBrandsType.show_more;
+  }
+
+  public findTopCategoryId() {
+
+    if (this.categoryId === 0) {
+      this.topParentCategoryId = 0;
+      return;
+    }
+
+    let parent = this.category;
+    while ( parent.parentId !== 0 ) {
+      parent = this.categories.find(c => c.id === parent.parentId);
+    }
+
+    console.log(parent.id);
+
+    this.topParentCategory = parent;
+    this.topParentCategoryId = parent.id;
   }
 
 }

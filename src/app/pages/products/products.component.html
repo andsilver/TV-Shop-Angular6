@@ -2,14 +2,14 @@
     <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
         
         <mat-accordion displayMode="flat" multi="true">
-            <mat-expansion-panel expanded>
+            <mat-expansion-panel expanded *ngIf="topParentCategoryId === 0 || topParentCategory.hasSubCategory">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         <h4>Categories</h4>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="categories-wrapper categories-dropdown" perfectScrollbar>
-                    <app-category-list [categories]="categories" [categoryParentId]="categoryId" [selectedCategory]="categoryId" (change)="onChangeCategory($event)"></app-category-list>
+                    <app-category-list [categories]="categories" [categoryParentId]="topParentCategoryId" [selectedCategory]="categoryId" (change)="onChangeCategory($event)"></app-category-list>
                 </div>
             </mat-expansion-panel>
 
