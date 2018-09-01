@@ -1,5 +1,5 @@
 <mat-chip-list *ngIf="appService.Data.compareList.length == 0">
-    <mat-chip color="warn" selected="true">YOU HAVE NO ITEMS TO COMPARE.</mat-chip>
+    <mat-chip color="warn" selected="true">U HEEFT NOG GEEN PRODUCTEN GESELECTEERD OM TE VERGELIJKEN.</mat-chip>
 </mat-chip-list>
 
 <mat-card *ngIf="appService.Data.compareList?.length > 0" class="p-0">
@@ -17,7 +17,7 @@
 
     <div class="mat-row">
       <div class="mat-cell">
-        name
+        naam
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <a [routerLink]="['/products', product.id, product.name]" class="product-name">{{product.name}}</a>
@@ -26,7 +26,7 @@
 
     <div class="mat-row">
       <div class="mat-cell">
-        price
+        prijs
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <b class="new-price">{{product.newPrice | customCurrency}}</b>
@@ -35,7 +35,7 @@
 
     <div class="mat-row">
       <div class="mat-cell">
-        availability
+        beschikbaarheid
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
           <b class="text-muted">{{ (product.availibilityCount > 0) ? 'In stock':'Unavailable'}}</b>
@@ -44,7 +44,7 @@
 
     <div class="mat-row">
       <div class="mat-cell">
-        rating
+        beoordeling
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue"></app-rating>
@@ -53,7 +53,7 @@
 
     <div class="mat-row">
       <div class="mat-cell">
-        description
+        beschrijving
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <span class="text-muted lh" [innerHTML]="product.description"></span>
@@ -62,7 +62,7 @@
 
     <div class="mat-row">
       <div class="mat-cell">
-        color
+        kleur
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <button mat-raised-button *ngFor="let color of product.color" [style.background]="color" class="color">&nbsp;</button>              
@@ -71,7 +71,7 @@
 
     <div class="mat-row">
       <div class="mat-cell">
-        size
+        grootte
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <span *ngFor="let size of product.size" class="size">{{size}}</span>
@@ -80,7 +80,7 @@
 
     <div class="mat-row">
       <div class="mat-cell">
-        weight
+        gewicht
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <span *ngIf="product.weight">{{product.weight}} g</span>
@@ -89,11 +89,11 @@
 
     <div class="mat-row">
       <div class="mat-cell">
-        <button mat-raised-button color="warn" (click)="clear()">Clear All</button>
+        <button mat-raised-button color="warn" (click)="clear()">Leeg winkelwagen</button>
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <button mat-raised-button color="primary" class="add" (click)="addToCart(product)">
-          <mat-icon>shopping_cart</mat-icon>Add to cart</button>
+          <mat-icon>shopping_cart</mat-icon>In winkelwagen</button>
       </div>
     </div>
 
