@@ -5,7 +5,7 @@
             <mat-expansion-panel expanded>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        <h4>Categories</h4>
+                        <h4>Rubrieken</h4>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="categories-wrapper categories-dropdown" perfectScrollbar>
@@ -16,12 +16,12 @@
             <mat-expansion-panel expanded>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        <h4>Price</h4>
+                        <h4>Filter op prijs</h4>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted">
-                    <span>From: <b>{{priceFrom | customCurrency:0:999}}</b></span>
-                    <span>To: <b>{{priceTo | customCurrency:0:999}}</b></span>
+                    <span>Van: <b>{{priceFrom | customCurrency:0:999}}</b></span>
+                    <span>Tot: <b>{{priceTo | customCurrency:0:999}}</b></span>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="filter-price">
                     <mat-slider color="primary" max="2000" min="1" thumb-label="true" [(ngModel)]="priceFrom" (change)="filterChanged()"></mat-slider>
@@ -59,17 +59,13 @@
             <mat-expansion-panel expanded>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        <h4>Brands</h4>
+                        <h4>Filter op merk</h4>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <div fxLayout="column" fxLayoutGap="10px" class="filter-brands">                  
-                   <div *ngFor="let brand of brands | slice:0:showMoreBrandsStatus.count">
+                <div fxLayout="column" fxLayoutGap="10px" class="filter-brands">
+                   <div *ngFor="let brand of brands">
                        <mat-checkbox (change)="selectBrand(brand)">{{brand.name}}</mat-checkbox>
                    </div>
-                   <a mat-button (click)="changeShowMoreBrands()">
-                       <span>{{showMoreBrandsStatus.text}}</span>
-                       <mat-icon class="pl-2">{{showMoreBrandsStatus.icon}}</mat-icon>
-                    </a>
                 </div>
             </mat-expansion-panel>
 
