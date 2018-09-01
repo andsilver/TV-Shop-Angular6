@@ -150,44 +150,6 @@
                                                 <p matLine class="text">Pellentesque hendrerit vel turpis aliquam placerat. Suspendisse ullamcorper congue feugiat. Etiam gravida metus ac massa posuere venenatis. Pellentesque vehicula lobortis dolor, ac pretium dolor maximus quis. Fusce vitae iaculis mauris, quis posuere ex. Mauris vitae convallis nibh. Etiam eget enim at orci interdum maximus nec in ante.</p>
                                             </mat-list-item>
                                         </mat-list>
-
-                                        <h3 class="mt-2">LEAVE YOUR REVIEW</h3>
-                                        <div class="divider"></div>
-                                        <p class="mt-2 text-muted">Your email address will not be published. Required fields are marked *</p>
-                                        <h3 fxLayoutAlign="start center" class="mt-2">
-                                            <span>Your Rating:</span>
-                                            <button mat-icon-button matTooltip="Very Dissatisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_very_dissatisfied</mat-icon></button>
-                                            <button mat-icon-button matTooltip="Dissatisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_dissatisfied</mat-icon></button>
-                                            <button mat-icon-button matTooltip="Neutral" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_neutral</mat-icon></button>
-                                            <button mat-icon-button matTooltip="Satisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_satisfied</mat-icon></button>
-                                            <button mat-icon-button matTooltip="Very Satisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_very_satisfied</mat-icon></button>
-                                        </h3>
-
-                                        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxLayout="row wrap">
-                                            <div fxFlex="100" class="px-1 mt-1">
-                                                <mat-form-field class="w-100">
-                                                    <textarea matInput placeholder="Your review" formControlName="review" required></textarea>
-                                                    <mat-error *ngIf="form.controls['review'].errors?.required">Review is required</mat-error>
-                                                </mat-form-field>
-                                            </div>
-                                            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
-                                                <mat-form-field class="w-100">
-                                                    <input matInput placeholder="Your name" formControlName="name" required>
-                                                    <mat-error *ngIf="form.controls['name'].errors?.required">Name is required</mat-error>
-                                                    <mat-error *ngIf="form.controls['name'].hasError('minlength')">Name isn't long enough, minimum of 4 characters</mat-error>
-                                                </mat-form-field>
-                                            </div>
-                                            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
-                                                <mat-form-field class="w-100">
-                                                    <input matInput placeholder="Your email" formControlName="email" required>
-                                                    <mat-error *ngIf="form.controls['email'].errors?.required">Email is required</mat-error>
-                                                    <mat-error *ngIf="form.controls['email'].hasError('invalidEmail')">Invalid email address</mat-error>
-                                                </mat-form-field>
-                                            </div>
-                                            <div fxFlex="100" class="mt-2 text-center w-100">
-                                                <button mat-raised-button color="primary" type="submit">SUBMIT REVIEW</button>
-                                            </div>
-                                        </form>
                                     </div>
                                 </mat-tab>
                             </mat-tab-group>
