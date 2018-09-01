@@ -42,7 +42,20 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public page = 0;
   public totalProducts = 0;
 
-  public time = 0;
+  public showMoreBrandsType = {
+    show_more: {
+      text: 'Show More',
+      icon: 'keyboard_arrow_down',
+      count: 10
+    },
+    show_less: {
+      text: 'Show Less',
+      icon: 'keyboard_arrow_up',
+      count: 9999
+    }
+  };
+
+  public showMoreBrandsStatus;
 
   constructor(private activatedRoute: ActivatedRoute,
               public appService: AppService,
@@ -55,6 +68,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
     this.count = this.counts[0];
     this.sort = this.sortings[0];
+    this.showMoreBrandsStatus = this.showMoreBrandsType.show_more;
 
     if (window.innerWidth < 960) {
       this.sidenavOpen = false;
@@ -186,6 +200,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public filterChanged() {
     this.page = 1;
     this.getProducts();
+  }
+
+  public changeShowMoreBrands() {
+    this.showMoreBrandsStatus
+      = (this.showMoreBrandsStatus === this.showMoreBrandsType.show_more)
+      ? this.showMoreBrandsType.show_less
+      : this.showMoreBrandsType.show_more;
   }
 
 }

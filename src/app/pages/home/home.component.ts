@@ -32,9 +32,6 @@ export class HomeComponent implements OnInit {
     this.featuredProducts = this.homeService.featuredProducts;
     this.banners = this.homeService.banners;
     this.brands = this.homeService.brands;
-    // this.getBanners();
-    // this.getProducts('featured');
-    // this.getBrands();
   }
 
   public onLinkClick(e) {
@@ -63,18 +60,6 @@ export class HomeComponent implements OnInit {
       });
     }
 
-  }
-
-  public getBanners() {
-    this.appService.getBanners().subscribe(data => {
-      this.banners = data;
-    });
-  }
-
-  public getBrands() {
-    this.appService.getBrands().subscribe(data => {
-      this.brands = data.manufacturer;
-    });
   }
 
 }

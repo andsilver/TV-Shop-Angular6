@@ -9,7 +9,6 @@ import { PipesModule } from '../../theme/pipes/pipes.module';
 import { ProductsComponent } from './products.component';
 import { ProductComponent } from './product/product.component';
 import { ProductZoomComponent } from './product/product-zoom/product-zoom.component';
-import { ProductsService } from './products.service';
 
 export const routes = [
   { path: '', component: ProductsComponent, pathMatch: 'full' },
@@ -35,7 +34,6 @@ export const routes = [
   ],
   entryComponents: [
     ProductZoomComponent
-  ],
-  providers: [ ProductsService ]
+  ]
 })
 export class ProductsModule { }
