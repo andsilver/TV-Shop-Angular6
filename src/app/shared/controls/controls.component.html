@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayout.xs="column" [fxLayoutAlign]="align" class="text-muted">
     <div *ngIf="product?.availibilityCount > 0 && (type=='all' || type=='wish')">
-        <span *ngIf="type!='wish'" class="fw-500">Quantity:</span> 
+        <span *ngIf="type!='wish'" class="fw-500">Aantal:</span>
         <button mat-icon-button matTooltip="Verwijder" (click)="decrement()"><mat-icon>remove</mat-icon></button>
         <span> {{count}} </span>
         <button mat-icon-button matTooltip="Toevoegen" (click)="increment()"><mat-icon>add</mat-icon></button>
