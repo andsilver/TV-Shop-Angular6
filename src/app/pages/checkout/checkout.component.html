@@ -71,7 +71,7 @@
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperNext color="primary" matTooltip="Next" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary" matTooltip="Volgende" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -81,8 +81,8 @@
         <mat-radio-button *ngFor="let method of deliveryMethods" color="primary" [value]="method" class="mt-1"><b>{{method.name}}</b> {{method.desc}}</mat-radio-button>
       </mat-radio-group> 
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperPrevious color="primary" matTooltip="Back" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary" matTooltip="Next" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
+        <button mat-mini-fab matStepperPrevious color="primary" matTooltip="Vorige" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary" matTooltip="Volgende" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -133,8 +133,8 @@
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperPrevious color="primary" matTooltip="Back" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary" matTooltip="Next" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>       
+        <button mat-mini-fab matStepperPrevious color="primary" matTooltip="Vorige" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary" matTooltip="Volgende" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -217,7 +217,7 @@
        <h2><span class="text-muted mr-1">Totaalbedrag:</span><span>${{grandTotal | number : '1.2-2'}}</span></h2>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-      <button mat-mini-fab matStepperPrevious color="primary" matTooltip="Back" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
+      <button mat-mini-fab matStepperPrevious color="primary" matTooltip="Vorige" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
       <button mat-raised-button matStepperNext color="primary" (click)="placeOrder()">Plaats uw bestelling</button>
     </div>     
   </mat-step>
@@ -307,7 +307,7 @@
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperNext color="primary" matTooltip="Next" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary" matTooltip="Volgende" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -317,8 +317,8 @@
         <mat-radio-button *ngFor="let method of deliveryMethods" color="primary" [value]="method" class="mt-1"><b>{{method.name}}</b> {{method.desc}}</mat-radio-button>
       </mat-radio-group> 
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperPrevious color="primary" matTooltip="Back" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary" matTooltip="Next" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
+        <button mat-mini-fab matStepperPrevious color="primary" matTooltip="Vorige" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary" matTooltip="Volgende" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -369,8 +369,8 @@
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperPrevious color="primary" matTooltip="Back" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary" matTooltip="Next" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>       
+        <button mat-mini-fab matStepperPrevious color="primary" matTooltip="Vorige" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary" matTooltip="Volgende" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -453,7 +453,7 @@
        <h2><span class="text-muted mr-1">Total Price:</span><span>{{grandTotal | customCurrency}}</span></h2>    
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-      <button mat-mini-fab matStepperPrevious color="primary" matTooltip="Back" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
+      <button mat-mini-fab matStepperPrevious color="primary" matTooltip="Vorige" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
       <button mat-raised-button matStepperNext color="primary" (click)="placeOrder()">Definitief bestelling plaatsen</button>
     </div>     
   </mat-step>

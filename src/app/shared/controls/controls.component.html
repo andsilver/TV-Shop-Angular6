@@ -1,15 +1,15 @@
 <div fxLayout="row" fxLayout.xs="column" [fxLayoutAlign]="align" class="text-muted">
     <div *ngIf="product?.availibilityCount > 0 && (type=='all' || type=='wish')">
         <span *ngIf="type!='wish'" class="fw-500">Quantity:</span> 
-        <button mat-icon-button matTooltip="Remove" (click)="decrement()"><mat-icon>remove</mat-icon></button>
+        <button mat-icon-button matTooltip="Verwijder" (click)="decrement()"><mat-icon>remove</mat-icon></button>
         <span> {{count}} </span>
-        <button mat-icon-button matTooltip="Add" (click)="increment()"><mat-icon>add</mat-icon></button>
+        <button mat-icon-button matTooltip="Toevoegen" (click)="increment()"><mat-icon>add</mat-icon></button>
     </div>
     <div *ngIf="type!='wish'">
         <button mat-icon-button matTooltip="Toevoegen aan wensenlijst" (click)="addToWishList(product)"><mat-icon>favorite</mat-icon></button>
         <button mat-icon-button matTooltip="Toevoegen aan winkelwagen" *ngIf="product?.availibilityCount > 0" (click)="addToCart(product)"><mat-icon>shopping_cart</mat-icon></button>
         <button mat-icon-button matTooltip="Toevoegen aan vergelijkingslijst" (click)="addToCompare(product)"><mat-icon>compare</mat-icon></button>
-        <button *ngIf="type!='all'" mat-icon-button matTooltip="Quick view" (click)="openProductDialog(product)"><mat-icon>remove_red_eye</mat-icon></button>
+        <button *ngIf="type!='all'" mat-icon-button matTooltip="Snel bekijken" (click)="openProductDialog(product)"><mat-icon>remove_red_eye</mat-icon></button>
     </div>
 </div>
 <!-- <div *ngIf="product?.availibilityCount == 0 && type=='all'" class="bg-warn p-1 mt-2">
