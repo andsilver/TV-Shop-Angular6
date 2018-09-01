@@ -29,7 +29,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public sort: any;
   public products: Array<Product> = [];
   public categories: Category[];
-  public categoryId: number;
+  public categoryId = 0;
   public brands = [];
   public selectedBrands = [];
   public priceFrom = 1;
