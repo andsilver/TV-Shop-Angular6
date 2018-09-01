@@ -30,7 +30,7 @@ export const sidenavMenuItems = [
     new SidenavMenu (52, 'Sports', '/products/sports', null, null, false, 0),
     new SidenavMenu (52, 'Motors', '/products/motors', null, null, false, 0),
     new SidenavMenu (60, 'Pages', null, null, null, true, 0), 
-    new SidenavMenu (61, 'All products', '/products', null, null, false, 60), 
+    new SidenavMenu (61, 'Alle producten', '/products', null, null, false, 60),
     new SidenavMenu (62, 'Product detail', '/products/2/PC All-in-One', null, null, false, 60), 
     new SidenavMenu (63, 'Sign in', '/sign-in', null, null, false, 60), 
     new SidenavMenu (64, '404 Error', '/404', null, null, false, 60), 
