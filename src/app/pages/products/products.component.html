@@ -24,8 +24,8 @@
                     <span>Tot: <b>{{priceTo | customCurrency:0:999}}</b></span>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="filter-price">
-                    <mat-slider color="primary" max="2000" min="1" thumb-label="true" [(ngModel)]="priceFrom" (change)="filterChanged()"></mat-slider>
-                    <mat-slider color="warn" max="2000" min="1" thumb-label="true" [(ngModel)]="priceTo" (change)="filterChanged()"></mat-slider>
+                    <mat-slider color="primary" max="10000" min="1" thumb-label="true" [(ngModel)]="priceFrom" (change)="filterChanged()"></mat-slider>
+                    <mat-slider color="warn" max="10000" min="1" thumb-label="true" [(ngModel)]="priceTo" (change)="filterChanged()"></mat-slider>
                 </div>
             </mat-expansion-panel>
 

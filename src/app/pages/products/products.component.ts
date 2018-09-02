@@ -97,6 +97,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
             this.categoryId =  this.category ? this.category.id : 0;
             this.findTopCategoryId();
             this.getBrands();
+            this.initFilter();
             this.filterChanged();
         })
       ];
@@ -237,6 +238,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
     this.topParentCategory = parent;
     this.topParentCategoryId = parent.id;
+  }
+
+  public initFilter() {
+    this.selectedBrands = [];
+    this.priceFrom = 1;
+    this.priceTo = 10000;
+    this.sort = this.sortings[0];
   }
 
 }
