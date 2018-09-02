@@ -36,7 +36,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public brands = [];
   public selectedBrands = [];
   public priceFrom = 1;
-  public priceTo = 2000;
+  public priceTo = 10000;
   public colors = [ '#5C6BC0', '#66BB6A', '#EF5350', '#BA68C8', '#FF4081', '#9575CD', '#90CAF9', '#B2DFDB', '#DCE775',
                     '#FFD740', '#00E676', '#FBC02D', '#FF7043', '#F5F5F5', '#000000'];
   public selectedColors = [];

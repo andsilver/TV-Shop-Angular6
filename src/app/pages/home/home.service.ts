@@ -23,7 +23,7 @@ export class HomeService implements Resolve<any> {
 
         forkJoin([
           this.appService.getBanners(),
-          this.appService.getBrands(),
+          this.appService.getBrandsByCategoryId(0),
           this.appService.getProducts('featured')
         ])
         .subscribe(res => {
