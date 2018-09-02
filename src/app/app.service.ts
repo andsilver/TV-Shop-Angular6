@@ -85,8 +85,8 @@ export class AppService {
     }
 
     public getBrandsByCategoryId( id: number ) {
-        const params = new HttpParams();
-        params.append('categoryId', `${id}` );
+        let params = new HttpParams();
+        params = params.append('categoryId', `${id}` );
         return this.http.get<any>('/manufacturers', {params: params});
     }
 
