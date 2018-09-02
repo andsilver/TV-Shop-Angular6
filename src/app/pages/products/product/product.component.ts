@@ -70,7 +70,7 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
       this.product = data;
       console.log(data);
       this.image = data.images[0].medium;
-      this.zoomImage = data.images[0].medium;
+      this.zoomImage = data.images[0].big;
       setTimeout(() => {
         this.config.observer = true;
        // this.directiveRef.setIndex(0);

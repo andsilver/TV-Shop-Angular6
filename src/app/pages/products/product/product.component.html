@@ -121,7 +121,12 @@
                                 </mat-tab>
                                 <mat-tab label="Reviews">
                                     <div class="full-desc lh">
-                                        <p [innerHTML]="product?.reviews"></p>
+                                        <div *ngFor="let review of product?.reviews" style="margin-bottom: 20px">
+                                            <p [innerHTML]="review.reviewAuthor"></p>
+                                            <p [innerHTML]="review.reviewContent"></p>
+                                            <p [innerHTML]="review.reviewMood"></p>
+                                            <p [innerHTML]="review.dateAdded"></p>
+                                        </div>
                                     </div>
                                 </mat-tab>
                             </mat-tab-group>
