@@ -157,3 +157,13 @@ h2.product-detail-title,
     top: 0;
     line-height: 2.25rem;
 }
+
+.small-carousel span {
+    display: -ms-flexbox!important;
+    display: flex!important;
+    -ms-flex-align: center!important;
+    align-items: center!important;
+    -ms-flex-pack: center!important;
+    justify-content: center!important;
+    height:107px;
+}
