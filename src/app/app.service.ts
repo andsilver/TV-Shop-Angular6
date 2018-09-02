@@ -102,11 +102,11 @@ export class AppService {
     public addToCompare(product: Product) {
         let message, status;
         if (this.Data.compareList.filter(item => item.id === product.id)[0]) {
-            message = 'The product ' + product.name + ' already added to comparison list.';
+            message = 'Product ' + product.name + ' is reeds toegevoegd aan uw vergelijkingslijst.';
             status = 'error';
         } else {
             this.Data.compareList.push(product);
-            message = 'The product ' + product.name + ' has been added to comparison list.';
+            message = 'Product ' + product.name + ' is toegevoegd aan uw vergelijkingslijst.';
             status = 'success';
         }
         this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
