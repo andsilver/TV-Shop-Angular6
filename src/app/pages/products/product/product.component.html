@@ -27,7 +27,9 @@
                             <div class="swiper-wrapper">
                                 <div *ngFor="let image of product?.images" class="swiper-slide">
                                     <mat-card (click)="selectImage(image)" class="p-1">
-                                        <img [src]="image.small" class="swiper-lazy"/>
+                                        <span>
+                                            <img [src]="image.small" class="swiper-lazy"/>
+                                        </span>
                                         <!-- <div class="swiper-lazy-preloader"></div> -->
                                     </mat-card>
                                 </div>
@@ -145,7 +147,7 @@
     </div>
     <div fxFlex="100" fxFlex.gt-md="20" fxHide fxShow.gt-md> 
 
-        <div fxLayout="row wrap" class="info-bar" ngClass.gt-md="m-0">
+        <div fxLayout="row wrap" class="misc-bar" ngClass.gt-md="m-0">
             <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
                 <mat-card class="branch-office">
                     <mat-card-title><h4>Onze Winkels</h4></mat-card-title>
