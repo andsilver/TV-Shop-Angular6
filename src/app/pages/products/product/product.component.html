@@ -38,7 +38,7 @@
                     <h2 class="mb-2 new-price">{{product?.newPrice | customCurrency}}</h2>
 
                     <div #zoomViewer fxShow="false" fxShow.gt-md>
-                        <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18" [ngStyle]="{'background-image': 'url(' + zoomImage + ')'}"></mat-card>
+                        <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18" [ngStyle]="{'background': 'url(' + zoomImage + ')'}"></mat-card>
                     </div>
 
                     <!-- <div class="py-1 lh">
