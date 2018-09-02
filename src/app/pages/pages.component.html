@@ -69,7 +69,7 @@
                                     <span *ngIf="appService.Data.cartList.length > 0" class="cart-items-count">{{appService.Data.cartList.length}}</span>
                                     <div fxLayout="column" fxLayoutAlign="center center" fxShow="false" fxShow.gt-xs class="top-cart">
                                         <span>Winkelwagen</span>
-                                        <span *ngIf="appService.Data.cartList.length > 0">{{appService.Data.cartList.length}} item<span *ngIf="appService.Data.cartList.length > 1">s</span> -
+                                        <span *ngIf="appService.Data.cartList.length > 0">{{appService.Data.cartList.length}} product<span *ngIf="appService.Data.cartList.length > 1">en</span> -
                                             <span>{{appService.Data.totalPrice | customCurrency}}</span>
                                         </span>
                                     </div>
@@ -78,7 +78,7 @@
                                 <mat-menu #cartMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="top-menu-dropdown cart-dropdown">
                                     <span (mouseleave)="cartMenuTrigger.closeMenu()" class="d-block">
                                         <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted">
-                                            <b><span>{{appService.Data.cartList.length}} ITEM<span *ngIf="appService.Data.cartList.length > 1">S</span></span></b>
+                                            <b><span>{{appService.Data.cartList.length}} PRODUCT<span *ngIf="appService.Data.cartList.length > 1">EN</span></span></b>
                                             <b><a [routerLink]="['/cart']" class="text-muted">BEKIJK INHOUD WINKELWAGEN</a></b>
                                         </div>
                                         <div class="divider mt-1"></div>
@@ -103,7 +103,7 @@
                                         <div *ngIf="appService.Data.cartList.length > 0" class="cart-dropdown-footer">
                                             <div class="divider mt-1"></div>
                                             <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted mt-1">
-                                                <b>TOTAL:</b>
+                                                <b>TOTAAL:</b>
                                                 <b class="new-price">{{appService.Data.totalPrice | customCurrency}}</b>
                                             </div>
                                             <div class="divider mt-1"></div>
@@ -111,7 +111,7 @@
                                                 <button mat-mini-fab color="warn" (click)="clear();stopClickPropagate($event)" matTooltip="Leeg winkelwagen" matTooltipPosition="after">
                                                     <mat-icon>remove_shopping_cart</mat-icon>
                                                 </button>
-                                                <a [routerLink]="['/checkout']" mat-mini-fab color="primary" matTooltip="Checkout" matTooltipPosition="before">
+                                                <a [routerLink]="['/checkout']" mat-mini-fab color="primary" matTooltip="Bestellen" matTooltipPosition="before">
                                                     <mat-icon>check</mat-icon>
                                                 </a>
                                             </div>
