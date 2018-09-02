@@ -7,6 +7,9 @@ import { SidenavMenuService } from '../theme/components/sidenav-menu/sidenav-men
 import { SidenavMenu } from '../theme/components/sidenav-menu/sidenav-menu.model';
 import { RoutingHandlerService, FilterService } from 'app/services';
 
+import { Store } from '@ngrx/store';
+import { State } from 'app/store';
+
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
@@ -27,7 +30,8 @@ export class PagesComponent implements OnInit, AfterViewInit {
               public sidenavMenuService: SidenavMenuService,
               public router: Router,
               public route: RoutingHandlerService,
-              public filter: FilterService) {
+              public filter: FilterService,
+              public store: Store<State>) {
     this.settings = this.appSettings.settings;
   }
 
@@ -46,11 +50,10 @@ export class PagesComponent implements OnInit, AfterViewInit {
   }
 
   public getCategories() {
-    this.appService.getCategories().subscribe(data => {
-      this.categories = data;
-      this.category = data[0];
-      this.appService.Data.categories = data;
-      this.sidenavMenuItems = data.map(c =>
+    this.store.select(state => state.categories ).subscribe(data => {
+      this.categories = data.categories;
+      this.category = data.categories[0];
+      this.sidenavMenuItems = this.categories.map(c =>
         new SidenavMenu(c.id, c.name, `/products/${c.name.toLowerCase()}`, null, null, c.hasSubCategory, c.parentId));
     });
   }

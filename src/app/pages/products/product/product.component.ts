@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
@@ -7,7 +6,9 @@ import { AppService } from '../../../app.service';
 import { Product } from '../../../app.models';
 import { emailValidator } from '../../../theme/utils/app-validators';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
-import { ProductService } from './product.service';
+
+import { Store } from '@ngrx/store';
+import { State } from 'app/store';
 
 @Component({
   selector: 'app-product',
@@ -26,16 +27,15 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   public relatedProducts: Array<Product>;
 
   constructor(
-    public productService: ProductService,
+    private store: Store<State>,
     public appService: AppService,
-    private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
     public formBuilder: FormBuilder) {  }
 
   ngOnInit() {
-    this.sub = this.activatedRoute.params.subscribe(params => {
+    this.sub = this.store.select(state => state.product).subscribe(res => {
       this.product = null;
-      this.product = this.productService.product;
+      this.product = res.product;
       this.image = this.product.images[0].medium;
       this.zoomImage = this.product.images[0].big;
       setTimeout(() => {

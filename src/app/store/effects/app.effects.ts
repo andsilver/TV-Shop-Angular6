@@ -7,6 +7,7 @@ import { AppService } from 'app/app.service';
 import * as ProductsActions from '../actions/products.action';
 import * as BrandsActions from '../actions/brands.action';
 import * as CategoriesActions from '../actions/categories.action';
+import * as ProductActions from '../actions/product.action';
 
 @Injectable()
 export class AppEffects {
@@ -59,6 +60,20 @@ export class AppEffects {
           }),
           map(data => new CategoriesActions.SuccessGetCategories(data)),
           catchError(err => of(new CategoriesActions.FailedGetCategories({ message: err.message })))
+        );
+
+  @Effect()
+  GetProduct: Observable<any>
+    = this.actions
+        .ofType(ProductActions.GET_PRODUCT)
+        .pipe(
+          map((action: any) => action.payload),
+          switchMap(payload => {
+            return this.appService.getProductById(payload)
+              .pipe(
+                map(data => new ProductActions.SaveProduct(data))
+              );
+          })
         );
 }
 

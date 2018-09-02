@@ -5,8 +5,10 @@ import { switchMap } from 'rxjs/operators';
 import { Settings, AppSettings } from '../../../app.settings';
 import { SidenavMenuService } from '../../../theme/components/sidenav-menu/sidenav-menu.service';
 import { AppService } from 'app/app.service';
+
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
+import * as fromProduct from 'app/store/actions/product.action';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -65,9 +67,9 @@ export class BreadcrumbComponent {
 
                 if (node.params.name) {
                     if (node.params.id) {
-                        this.appService.getProductById(node.params.id)
+                        this.store.select(state => state.product)
                             .subscribe(p => {
-                                const category = this.categories.find(c => c.id === p.categoryId);
+                                const category = this.categories.find(c => c.id === p.product.categoryId);
                                 urlSegments.pop();
                                 urlSegments.pop();
                                 this.breadcrumbs.push({

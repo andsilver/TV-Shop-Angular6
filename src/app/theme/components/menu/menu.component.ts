@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppService } from 'app/app.service';
 import { Category } from 'app/app.models';
+
+import { Store } from '@ngrx/store';
+import { State } from 'app/store';
 
 @Component({
   selector: 'app-menu',
@@ -14,12 +16,12 @@ export class MenuComponent implements OnInit {
   allCategories: Category[];
   parentCategory: Category;
 
-  constructor(private appService: AppService, private router: Router) { }
+  constructor(private router: Router, private store: Store<State>) { }
 
   ngOnInit() {
-    this.appService.getCategories().subscribe( categories => {
-      this.allCategories = categories;
-      this.categories = categories.filter( c => c.parentId === 0 );
+    this.store.select(state => state.categories).subscribe( data => {
+      this.allCategories = data.categories;
+      this.categories = this.allCategories.filter( c => c.parentId === 0 );
     });
   }
 
@@ -35,7 +37,7 @@ export class MenuComponent implements OnInit {
   }
 
   triggerSubCategoryMenu(category, event) {
-    if(!category.hasSubCategory) {
+    if (!category.hasSubCategory) {
       return;
     }
     const ele = event.target.getBoundingClientRect();
