@@ -26,6 +26,7 @@ export class Product {
   attributes: Array<any>;
   quantity: number;
   reviews: string;
+  expertReview: any;
 }
 
 export interface Brand {
