@@ -111,13 +111,13 @@ export class AppService {
         const index = this.Data.wishList.findIndex(item => item.id === product.id);
         if (index > -1) {
             this.Data.wishList[index] = product;
-            message = 'The product ' + product.name + ' on wish list is updated.';
+            message = 'Product ' + product.name + ' is aangepast op uw wensenlijst.';
             status = 'success';
             // message = 'The product ' + product.name + ' already added to wish list.';
             // status = 'error';
         } else {
             this.Data.wishList.push(product);
-            message = 'The product ' + product.name + ' has been added to wish list.';
+            message = 'Product ' + product.name + ' is toegevoegd aan uw wensenlijst.';
             status = 'success';
         }
         this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
@@ -126,7 +126,7 @@ export class AppService {
     public addToCart(product: Product, count: number = 1) {
         let message, status;
         if (product.attributes && product.attributes.find(attr => attr.required && !attr.selected)) {
-            message = 'Required attributes are not selected.';
+            message = 'Verplichte attributen zijn niet geselecteerd.';
             status = 'error';
             this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
             return;
