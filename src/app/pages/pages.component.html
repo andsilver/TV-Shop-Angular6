@@ -22,18 +22,19 @@
 
 
     <mat-toolbar color="primary">
-         <!-- <mat-toolbar-row fxLayoutAlign="space-between center" class="top-toolbar theme-container">
-             <span fxHide="false" fxHide.gt-sm>
-                <button mat-button (click)="sidenav.toggle()" class="sidenav-toggle">
-                    <mat-icon>menu</mat-icon>
-                </button> 
-            </span>
+        <!-- <mat-toolbar-row fxLayoutAlign="space-between center" class="top-toolbar theme-container">
+             
             <span fxShow="false" fxShow.gt-xs fxLayoutAlign="center center"><mat-icon class="mat-icon-sm">call</mat-icon>  Hotline: (0418) 82 02 11 </span>
             <span fxShow="false" fxShow.gt-sm>Welcome to our market!</span>
             <app-top-menu></app-top-menu>
         </mat-toolbar-row> -->
         <mat-toolbar-row fxLayoutAlign="space-between center" class="logo-toolbar theme-container">
             <a class="logo" routerLink="/" (click)="closeSubMenus()"><img src="assets/images/others/logo_plattetv.png" width="226"></a>
+            <span fxHide="false" fxHide.gt-sm>
+                    <button mat-button (click)="sidenav.toggle()" class="sidenav-toggle">
+                        <mat-icon>menu</mat-icon>
+                    </button> 
+            </span>
             <div fxFlex fxFlexOffset.gt-sm="10" fxShow="false" fxShow.gt-sm class="top-toolbar-header">
                 <div fxFlex fxLayout="column">
                     <ul fxLayout="row" fxlayoutalign="space-between center" id="links_city">
@@ -61,8 +62,6 @@
                             </form>
                         </div>
                         <div fxFlexOffset="5" fxLayout="row" fxLayoutAlign="center center" class="shopping-cart">
-
-
 
                             <div fxLayoutAlign="center center">
                                 <button mat-button [matMenuTriggerFor]="cartMenu" #cartMenuTrigger="matMenuTrigger" class="flex-row-button">
