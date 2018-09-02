@@ -83,7 +83,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
     this.Subscriptions = [
       this.filter.searchPerformed.subscribe(() => this.filterChanged()),
-      this.store.select(state => state.brands).subscribe(res => this.brands = res.manufacturer),
       this.store.select(state => state.products).subscribe( res => this.setProducts(res)),
       this.store.select(state => state.categories)
         .pipe(
@@ -97,6 +96,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
             this.category = this.categories.find(c => c.name.toLowerCase() === categoryName);
             this.categoryId =  this.category ? this.category.id : 0;
             this.findTopCategoryId();
+            this.getBrands();
             this.filterChanged();
         })
       ];
@@ -110,6 +110,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public onWindowResize(): void {
     (window.innerWidth < 960) ? this.sidenavOpen = false : this.sidenavOpen = true;
     (window.innerWidth < 1280) ? this.viewCol = 33.3 : this.viewCol = 25;
+  }
+
+  public getBrands() {
+    this.appService.getBrandsByCategoryId(this.categoryId)
+      .subscribe(res => {
+        console.log(res);
+        this.brands = res.manufacturer;
+      });
   }
 
   public setProducts(res) {

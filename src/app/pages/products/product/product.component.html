@@ -18,6 +18,10 @@
                         <img *ngIf="image" [src]="image" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)"/>
                     </mat-card>
 
+                    <div #zoomViewer fxShow="false" fxShow.gt-md>
+                        <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18" [ngStyle]="{'background': 'url(' + zoomImage + ')'}"></mat-card>
+                    </div>
+
                     <div class="small-carousel" *ngIf="product">
                         <div class="swiper-container" [swiper]="config">
                             <div class="swiper-wrapper">
@@ -36,10 +40,6 @@
                 <div fxFlex="100" fxFlex.gt-md="30" fxFlex.md="55" ngClass.gt-sm="px-3 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
 
                     <h2 class="mb-2 new-price">{{product?.newPrice | customCurrency}}</h2>
-
-                    <div #zoomViewer fxShow="false" fxShow.gt-md>
-                        <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18" [ngStyle]="{'background': 'url(' + zoomImage + ')'}"></mat-card>
-                    </div>
 
                     <!-- <div class="py-1 lh">
                         <p><span class="text-muted fw-500">Category: </span><span>{{ product?.category_name }}</span></p>
