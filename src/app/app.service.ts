@@ -137,13 +137,15 @@ export class AppService {
             this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
             return;
         }
-        product.quantity = count;
         if (this.Data.cartList.some(item => item.id === product.id)) {
             const index = this.Data.cartList.findIndex( p => p.id === product.id);
+            count += this.Data.cartList[index].quantity;
+            product.quantity = count;
             this.Data.cartList[index] = product;
             message = 'Product ' + product.name + ' in uw winkelwagen is aangepast.';
             status = 'success';
         } else {
+            product.quantity = count;
             this.Data.cartList.push(product);
             message = 'Product ' + product.name + ' is toegevoegd aan uw winkelwagen.';
             status = 'success';
