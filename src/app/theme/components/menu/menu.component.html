@@ -9,8 +9,8 @@
 </mat-toolbar>
 <mat-toolbar class="top-navbar mat-elevation-z2" fxLayoutAlign="center center">
     <mat-toolbar-row fxLayoutAlign="space-between center" class="theme-container top-navbar-container">
-    <!-- <a mat-button routerLink="/" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Home</a> -->
-    <!-- <a mat-button [matMenuTriggerFor]="menu" (click)="openMegaMenu()">Fashion<mat-icon class="caret">arrow_drop_down</mat-icon></a> -->
+    <!-- <a mat-button routerLink="/" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Home</a>
+    <a mat-button [matMenuTriggerFor]="menu" (click)="openMegaMenu()">Fashion<mat-icon class="caret">arrow_drop_down</mat-icon></a> -->
     <mat-menu #menu="matMenu" [overlapTrigger]="false" class="mega-menu app-dropdown">
         <div fxLayout="row wrap">
             <div fxFlex="20" fxLayout="column" class="p-1"> 
@@ -62,12 +62,16 @@
 
     <a *ngFor="let category of categories"
         mat-button
-        (mouseenter)="triggerSubCategoryMenu(category)"
+        (mouseenter)="triggerSubCategoryMenu(category, $event)"
+        (mouseleave)="hideSubCategoryMenu($event)"
         [routerLink]="['/products', category.name.toLowerCase()]"
         routerLinkActive="horizontal-active-link"
         [routerLinkActiveOptions]="{exact:true}">
         {{category.name}}
     </a>
+    <mat-card id="subCategories" (mouseleave)="hideSubCategoryMenu($event, false)">
+        <app-category-list *ngIf="parentCategory" [categories]="allCategories" [categoryParentId]="parentCategory.id" (change)="onChangeCategory($event)"></app-category-list>
+    </mat-card>
    <!--  <a mat-button [routerLink]="['/products', 'jewellery']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Jewellery</a>
     <a mat-button [routerLink]="['/products', 'electronics']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Electronics</a>
     <a mat-button [routerLink]="['/products', 'sports']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Sports</a>

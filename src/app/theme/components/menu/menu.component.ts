@@ -1,4 +1,5 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppService } from 'app/app.service';
 import { Category } from 'app/app.models';
 
@@ -11,8 +12,9 @@ export class MenuComponent implements OnInit {
 
   categories: Category[];
   allCategories: Category[];
+  parentCategory: Category;
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private router: Router) { }
 
   ngOnInit() {
     this.appService.getCategories().subscribe( categories => {
@@ -32,8 +34,38 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  triggerSubCategoryMenu(category) {
-    console.log(category);
+  triggerSubCategoryMenu(category, event) {
+    if(!category.hasSubCategory) {
+      return;
+    }
+    const ele = event.target.getBoundingClientRect();
+    // console.log(ele.getBoundingClientRect());
+    this.parentCategory = category;
+    const sub = document.getElementById('subCategories');
+    sub.style.position = 'absolute';
+    sub.style.left = `${ele.left}px`;
+    sub.style.top = `${ele.bottom}px`;
+    sub.style.display = 'block';
+  }
+
+  hideSubCategoryMenu(event, openBottom: boolean = true) {
+    const ele = event.target.getBoundingClientRect();
+    const x = event.clientX, y = event.clientY;
+    if ( openBottom && x >= ele.left && x <= ele.right && y >= ele.bottom) {
+      return;
+    }
+    this.parentCategory = null;
+    const sub = document.getElementById('subCategories');
+    sub.style.display = 'none';
+  }
+
+  public onChangeCategory(event) {
+    if (event.target) {
+      this.parentCategory = null;
+      const sub = document.getElementById('subCategories');
+      sub.style.display = 'none';
+      this.router.navigate(['/products', event.target.innerText.toLowerCase()]);
+    }
   }
 
 }
