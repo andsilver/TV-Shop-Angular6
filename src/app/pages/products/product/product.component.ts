@@ -7,6 +7,7 @@ import { AppService } from '../../../app.service';
 import { Product } from '../../../app.models';
 import { emailValidator } from '../../../theme/utils/app-validators';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
+import { ProductService } from './product.service';
 
 @Component({
   selector: 'app-product',
@@ -25,6 +26,7 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   public relatedProducts: Array<Product>;
 
   constructor(
+    public productService: ProductService,
     public appService: AppService,
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
@@ -33,7 +35,13 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.product = null;
-      this.getProductById(params['id']);
+      this.product = this.productService.product;
+      this.image = this.product.images[0].medium;
+      this.zoomImage = this.product.images[0].big;
+      setTimeout(() => {
+        this.config.observer = true;
+       // this.directiveRef.setIndex(0);
+      });
     });
     this.form = this.formBuilder.group({
       'review': [null, Validators.required],

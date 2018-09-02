@@ -18,13 +18,13 @@
                         <img *ngIf="image" [src]="image" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)"/>
                     </mat-card>
 
-                    <div class="small-carousel">
+                    <div class="small-carousel" *ngIf="product">
                         <div class="swiper-container" [swiper]="config">
                             <div class="swiper-wrapper">
                                 <div *ngFor="let image of product?.images" class="swiper-slide">
                                     <mat-card (click)="selectImage(image)" class="p-1">
-                                        <img [attr.data-src]="image.small" class="swiper-lazy"/>
-                                        <div class="swiper-lazy-preloader"></div>
+                                        <img [src]="image.small" class="swiper-lazy"/>
+                                        <!-- <div class="swiper-lazy-preloader"></div> -->
                                     </mat-card>
                                 </div>
                             </div>
