@@ -27,7 +27,9 @@
                             <div class="swiper-wrapper">
                                 <div *ngFor="let image of product?.images" class="swiper-slide">
                                     <mat-card (click)="selectImage(image)" class="p-1">
-                                        <img [src]="image.small" class="swiper-lazy"/>
+                                        <span>
+                                            <img [src]="image.small" class="swiper-lazy"/>
+                                        </span>
                                         <!-- <div class="swiper-lazy-preloader"></div> -->
                                     </mat-card>
                                 </div>
