@@ -1013,3 +1013,12 @@ button.swipe-arrow{
     font-size: .8125rem!important;
     line-height: 1.45!important;
 }
+
+.mat-tab-body-wrapper ul {
+    list-style:none;
+
+    li {
+        background:url(/assets/images/others/content_li.gif) left 10px no-repeat;
+        padding-left:12px;
+    }
+}
