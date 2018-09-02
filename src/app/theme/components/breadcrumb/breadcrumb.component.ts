@@ -9,6 +9,7 @@ import { AppService } from 'app/app.service';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import * as fromProduct from 'app/store/actions/product.action';
+import { nodeChildrenAsMap } from '@angular/router/src/utils/tree';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -24,6 +25,7 @@ export class BreadcrumbComponent {
         url: string
     }[] = [];
     public categories;
+    public setTitle = false;
 
     public settings: Settings;
     constructor(public appSettings: AppSettings,
@@ -49,7 +51,10 @@ export class BreadcrumbComponent {
                         this.breadcrumbs.forEach(breadcrumb => {
                             this.pageTitle += ' > ' + breadcrumb.name;
                         });
-                        this.title.setTitle(this.settings.name + this.pageTitle);
+                        // this.title.setTitle(this.settings.name + this.pageTitle);
+                        if (this.setTitle) {
+                            this.title.setTitle(this.settings.name + this.pageTitle);
+                        }
                     }
                 });
     }
@@ -66,6 +71,7 @@ export class BreadcrumbComponent {
                 }).join('/');
 
                 if (node.params.name) {
+
                     if (node.params.id) {
                         this.store.select(state => state.product)
                             .subscribe(p => {
@@ -80,9 +86,14 @@ export class BreadcrumbComponent {
                                     name: node.params.name,
                                     url: '/' + url
                                 });
+                                this.title.setTitle(this.breadcrumbs[this.breadcrumbs.length - 1].name);
+                                this.setTitle = false;
                             });
+                    } else {
+                        this.setTitle = true;
                     }
                 } else {
+                    this.setTitle = true;
                     this.breadcrumbs.push({
                         name: node.data['breadcrumb'],
                         url: '/' + url
