@@ -84,6 +84,12 @@ export class AppService {
         return this.http.get<any>('/manufacturers', {params: params});
     }
 
+    public getBrandsByCategoryId( id: number ) {
+        const params = new HttpParams();
+        params.append('categoryId', `${id}` );
+        return this.http.get<any>('/manufacturers', {params: params});
+    }
+
     public _getUserById(id): Observable<any> {
         return this.http.get<any>(`/users/${id}/info`);
     }
