@@ -1,5 +1,5 @@
 <mat-chip-list *ngIf="appService.Data.wishList.length == 0">
-    <mat-chip color="warn" selected="true">YOU HAVE NO ITEMS IN WISH LIST.</mat-chip>
+    <mat-chip color="warn" selected="true">U HEEFT NOG GEEN PRODUCTEN TOEGEVOEGD AAN UW WENSENLIJST.</mat-chip>
 </mat-chip-list>
 
 <mat-card *ngIf="appService.Data.wishList?.length > 0" class="p-0">
@@ -7,13 +7,13 @@
   <div class="mat-table wishlist-table">
     <div class="mat-header-row">
       <div class="mat-header-cell">Product</div>
-      <div class="mat-header-cell">Name</div>
-      <div class="mat-header-cell">Price</div>
-      <div class="mat-header-cell">Availability</div>
-      <div class="mat-header-cell">Quantity</div>
+      <div class="mat-header-cell">Naam</div>
+      <div class="mat-header-cell">Prijs</div>
+      <div class="mat-header-cell">Beschikbaarheid</div>
+      <div class="mat-header-cell">Aantal</div>
       <div class="mat-header-cell">
         <div class="px-1">
-          <button mat-raised-button color="warn" (click)="clear()">Clear All</button>
+          <button mat-raised-button color="warn" (click)="clear()">Leeg lijst</button>
         </div>
       </div>
     </div>
@@ -34,10 +34,10 @@
       </div>
       <div class="mat-cell">
         <div class="p-1">          
-          <button mat-mini-fab color="primary" (click)="addToCart(product)" matTooltip="Add to cart">
+          <button mat-mini-fab color="primary" (click)="addToCart(product)" matTooltip="In winkelwagen">
               <mat-icon>add_shopping_cart</mat-icon>
           </button>
-          <button mat-mini-fab color="warn" (click)="remove(product)" matTooltip="Clear" class="remove">
+          <button mat-mini-fab color="warn" (click)="remove(product)" matTooltip="Verwijder" class="remove">
               <mat-icon>close</mat-icon>
           </button>
         </div>

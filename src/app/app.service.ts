@@ -135,11 +135,11 @@ export class AppService {
         if (this.Data.cartList.some(item => item.id === product.id)) {
             const index = this.Data.cartList.findIndex( p => p.id === product.id);
             this.Data.cartList[index] = product;
-            message = 'The product ' + product.name + ' on cart is updated.';
+            message = 'Product ' + product.name + ' in uw winkelwagen is aangepast.';
             status = 'success';
         } else {
             this.Data.cartList.push(product);
-            message = 'The product ' + product.name + ' has been added to cart.';
+            message = 'Product ' + product.name + ' is toegevoegd aan uw winkelwagen.';
             status = 'success';
         }
 
@@ -199,9 +199,8 @@ export class AppService {
 
     public getDeliveryMethods() {
         return [
-            { value: 'free', name: 'Free Delivery', desc: '$0.00 / Delivery in 7 to 14 business Days' },
-            { value: 'standard', name: 'Standard Delivery', desc: '$7.99 / Delivery in 5 to 7 business Days' },
-            { value: 'express', name: 'Express Delivery', desc: '$29.99 / Delivery in 1 business Days' }
+            { value: 'free', name: 'Gratis levering via PostNL', desc: '$0.00 / Vandaag besteld, morgen in huis' },
+            { value: 'express', name: 'Spoedlevering via PostNL', desc: '$29.99 / Vandaag besteld, dezelfde dag bezorgd' }
         ];
     }
 
