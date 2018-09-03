@@ -485,6 +485,13 @@ a:focus {
     } 
     .cart-dropdown-footer{
         font-size: 14px;
+
+        .cart-dropdown-submit {
+            background-color: #5AAD49;
+            font-family: "Poppins";
+            color: #fff!important;
+            text-decoration: none!important;
+        }
     }
 }
 
