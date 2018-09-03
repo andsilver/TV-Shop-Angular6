@@ -60,10 +60,6 @@ export class AppService {
         return this.http.post<Products>('/products/search', filter);
     }
 
-    public getProductById(id): Observable<Product> {
-        return this.http.get<Product>(`/products/${id}/detail`);
-    }
-
     public getProductsByBrand( brand: string, limit: number = 6, page: number = 1 ) {
         let params = new HttpParams();
         params = params.append('mode', 'brand');
@@ -75,6 +71,15 @@ export class AppService {
         params = params.append('limit', `${limit}`);
         params = params.append('page', `${page}`);
         return this.http.get<Products>(`/products/listing`, { params: params });
+    }
+
+
+    public getProduct(id, categoryId) {
+        return this.http.post<any>(`/products/listing`, {categoryId: categoryId});
+    }
+
+    public getProductById(id): Observable<Product> {
+        return this.http.get<Product>(`/products/${id}/detail`);
     }
 
     public getBrands(limit: number = 100, page: number = 1) {
@@ -177,7 +182,7 @@ export class AppService {
         for ( const c of this.Data.cartList) {
             this.Data.totalPrice += Number(c.newPrice) * c.quantity;
         }
-        //console.log(this.Data.totalPrice);
+        // console.log(this.Data.totalPrice);
     }
 
     public getCountries() {

@@ -6,6 +6,8 @@ import { FilterBrandsPipe } from './filter-brands.pipe';
 import { BrandSearchPipe } from './brand-search.pipe';
 import { CustomCurrencyPipe } from './custom-currency.pipe';
 import { JsonLoopPipe } from './json-loop.pipe';
+import { UrlSantitizerPipe } from './url-santitizer.pipe';
+import { HtmlSantitizerPipe } from './html-santitizer.pipe';
 
 @NgModule({
     imports: [
@@ -16,14 +18,18 @@ import { JsonLoopPipe } from './json-loop.pipe';
         FilterBrandsPipe,
         BrandSearchPipe,
         CustomCurrencyPipe,
-        JsonLoopPipe
+        JsonLoopPipe,
+        UrlSantitizerPipe,
+        HtmlSantitizerPipe
     ],
     exports: [
         FilterByIdPipe,
         FilterBrandsPipe,
         BrandSearchPipe,
         CustomCurrencyPipe,
-        JsonLoopPipe
+        JsonLoopPipe,
+        UrlSantitizerPipe,
+        HtmlSantitizerPipe
     ]
 })
 export class PipesModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
 import { AppService } from '../../../app.service';
@@ -23,10 +24,12 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   public product: Product;
   public image: any;
   public zoomImage: any;
+  public selectedImage: any;
   public form: FormGroup;
   public relatedProducts: Array<Product>;
 
   constructor(
+    public santitizer: DomSanitizer,
     private store: Store<State>,
     public appService: AppService,
     public dialog: MatDialog,
@@ -36,11 +39,12 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
     this.sub = this.store.select(state => state.product).subscribe(res => {
       this.product = null;
       this.product = res.product;
+      this.selectedImage = this.product.images[0];
       this.image = this.product.images[0].medium;
       this.zoomImage = this.product.images[0].big;
       setTimeout(() => {
         this.config.observer = true;
-       // this.directiveRef.setIndex(0);
+        // this.directiveRef.setIndex(0);
       });
     });
     this.form = this.formBuilder.group({
@@ -76,7 +80,8 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   public getProductById(id) {
     this.appService.getProductById(id).subscribe(data => {
       this.product = data;
-      //console.log(data);
+      // console.log(data);
+      this.selectedImage = data.images[0];
       this.image = data.images[0].medium;
       this.zoomImage = data.images[0].big;
       setTimeout(() => {
@@ -93,8 +98,10 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public selectImage(image) {
+    this.selectedImage = image;
     this.image = image.medium;
     this.zoomImage = image.big;
+    console.log(this.selectedImage);
   }
 
   public onMouseMove(e) {

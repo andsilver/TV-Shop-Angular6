@@ -19,7 +19,7 @@ export class ProductDialogComponent implements OnInit, AfterViewInit {
               @Inject(MAT_DIALOG_DATA) public product: Product) { }
 
   ngOnInit() {
-    //console.log(this.product);
+    // console.log(this.product);
   }
 
   ngAfterViewInit() {

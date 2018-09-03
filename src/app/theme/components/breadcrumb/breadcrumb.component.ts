@@ -76,6 +76,9 @@ export class BreadcrumbComponent {
                         this.store.select(state => state.product)
                             .subscribe(p => {
                                 const category = this.categories.find(c => c.id === p.product.categoryId);
+                                if (!category) {
+                                    return;
+                                }
                                 urlSegments.pop();
                                 urlSegments.pop();
                                 this.breadcrumbs.push({

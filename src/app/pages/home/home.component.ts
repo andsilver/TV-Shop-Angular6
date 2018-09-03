@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
 
     this.products = this.onSaleProducts;
 
-    //console.log(this.newArrivalsProducts);
+    // console.log(this.newArrivalsProducts);
   }
 
   public onLinkClick(e) {
