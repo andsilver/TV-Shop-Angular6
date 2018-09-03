@@ -10,7 +10,7 @@ import { State } from 'app/store';
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product, Category } from '../../app.models';
-import { FilterService } from 'app/services';
+import { FilterService, ErrorHandlerService } from 'app/services';
 
 @Component({
   selector: 'app-products',
@@ -44,6 +44,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public selectedSizes = [];
   public page = 0;
   public totalProducts = 0;
+  public emptyMessage = '';
 
   public showMoreBrandsType = {
     show_more: {
@@ -62,6 +63,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   constructor(private activatedRoute: ActivatedRoute,
               public appService: AppService,
+              public errorHandlerService: ErrorHandlerService,
               public dialog: MatDialog,
               private router: Router,
               private filter: FilterService,
@@ -124,9 +126,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public setProducts(res) {
     this.products = res.products;
     this.totalProducts = res.total;
+    if (!this.products.length) {
+      this.emptyMessage = 'De opgegeven zoekopdracht heeft geen resultaten opgeleverd.';
+    }
   }
 
   public getProducts() {
+    this.emptyMessage = '';
     const filter = {
       categoryId: this.categoryId,
       fromPrice: this.priceFrom,

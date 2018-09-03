@@ -15,7 +15,7 @@ export class RatingComponent {
 
   ngDoCheck() {
     if(this.ratingsCount && this.ratingsValue && !this.avg) {
-      this.calculateAvgValue();      
+      this.calculateAvgValue();
     }
   }
 
@@ -32,19 +32,19 @@ export class RatingComponent {
       case this.avg > 0 && this.avg < 20 : {
           this.stars = ['star_half', 'star_border', 'star_border', 'star_border', 'star_border'];
           break;
-      }      
-      case this.avg == 20 : {
+      }
+      case this.avg === 20 : {
           this.stars = ['star', 'star_border', 'star_border', 'star_border', 'star_border'];
           break;
-      }      
+      }
       case this.avg > 20 && this.avg < 40 : {
           this.stars = ['star', 'star_half', 'star_border', 'star_border', 'star_border'];
           break;
-      }      
-      case this.avg == 40 : {
+      }
+      case this.avg === 40 : {
         this.stars = ['star', 'star', 'star_border', 'star_border', 'star_border'];
           break;
-      } 
+      }
       case this.avg > 40 && this.avg < 60 : {
           this.stars = ['star', 'star', 'star_half', 'star_border', 'star_border'];
           break;

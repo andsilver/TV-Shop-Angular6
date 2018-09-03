@@ -125,7 +125,7 @@
 
         <div *ngIf="viewType == 'grid'" fxLayout="row wrap" class="products-wrapper">
             <div *ngIf="!products.length" class="text-not-found">
-                De opgegeven zoekopdracht heeft geen resultaten opgeleverd.
+                {{emptyMessage}}
             </div>
             <div *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }" fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="col">
                 <mat-card class="product-item text-center">
@@ -158,7 +158,7 @@
 
         <div *ngIf="viewType == 'list'" fxLayout="row wrap" class="products-wrapper">
             <div *ngIf="!products.length">
-                De opgegeven zoekopdracht heeft geen resultaten opgeleverd.
+                {{emptyMessage}}
             </div>
             <div  *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }" fxFlex="100" class="col">
                 <mat-card class="product-item">
