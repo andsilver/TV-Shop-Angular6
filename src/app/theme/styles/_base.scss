@@ -1024,3 +1024,97 @@ button.swipe-arrow{
         padding-left:12px;
     }
 }
+
+.mat-tab-specificaties {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        td {
+            border-bottom: 1px solid #e4e7e8;
+
+            &:first-child {
+                width: 25%;
+                padding-right: 1rem;
+            }
+        }
+    }
+}
+
+.mat-tab-plus-en-min {
+    .expert_review_wrapper {
+        display: -ms-flexbox!important;
+        display: flex!important;
+        line-height: 1.45;
+
+        .expert_review_cell_wrapper {
+            padding-left: 2rem;
+            -ms-flex-order: 1;
+            order: 1;
+
+            .expert_cell_review_content > span {
+                display: block;
+            }
+            .expert_cell_review_image {
+                line-height: 0;
+            }
+        }
+        .expert_cell_review_points {
+            -ms-flex-positive: 1!important;
+            flex-grow: 1!important;
+            border-right: 1px solid #e4e7e8;
+            padding-right: 2rem;
+
+            ul li {
+                background-image:none;
+                padding-left:0;
+            }
+            ul li.plus_point_header,
+            ul li.minus_point_header {
+                font-weight:600;
+            }
+            ul+ul { margin-top: 1rem; }
+            ul.plus_point_list li:not(.plus_point_header):before {
+                font-family:"fontAwesome"; content:"\f067"; color:#5aad49;
+                margin-right: .5rem;
+            }
+            ul.minus_point_list li:not(.minus_point_header):before {
+                font-family:"fontAwesome"; content:"\f068"; color:#f00;
+                margin-right: .5rem;
+            }
+        }
+    }
+}
+
+.mat-tab-reviews {
+    .reviews-item {
+        &+.reviews-item {
+            margin-top: 1rem;
+        }
+        .reviews-item--author {
+            font-weight: bold;
+        }
+        .reviews-item--date {
+            color: #6b6b6b;
+        }
+        .reviews-item--rate {
+            font-weight: bold;
+            font-size: 1rem;
+            font-family: "Poppins";
+            color: #212226;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
