@@ -109,8 +109,8 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
       if (zoomer) {
         zoomer.style.backgroundPosition = x + '% ' + y + '%';
         zoomer.style.display = 'block';
-        zoomer.style.height = image.height + 'px';
-        zoomer.style.width = image.width + 'px';
+        zoomer.style.height = image.height * 2 + 'px';
+        zoomer.style.width = image.width * 2 + 'px';
       }
     }
   }
