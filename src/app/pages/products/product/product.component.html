@@ -110,17 +110,17 @@
                         <mat-card>
                             <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
                                 <mat-tab label="Beschrijving" class="mat-tab-beschrijving" *ngIf="product?.description">
-                                    <div class="full-desc mat-tab-beschrijving">
+                                    <div class="full-desc mat-tab-beschrijving" ngClass.xs="py-2" ngClass.lt-md="p-2">
                                         <p [innerHTML]="product?.description"></p>
                                     </div>
                                 </mat-tab>
                                 <mat-tab label="Specificaties" *ngIf="product?.extra_description">
-                                    <div class="full-desc mat-tab-specificaties">
+                                    <div class="full-desc mat-tab-specificaties" ngClass.xs="py-2" ngClass.lt-md="p-2">
                                         <p [innerHTML]="product?.extra_description"></p>
                                     </div>
                                 </mat-tab>
                                 <mat-tab label="Reviews" *ngIf="product?.reviews.length">
-                                    <div class="full-desc mat-tab-reviews">
+                                    <div class="full-desc mat-tab-reviews" ngClass.xs="py-2" ngClass.lt-md="p-2">
                                         <div *ngFor="let review of product?.reviews" class="reviews-item">
                                             <p [innerHTML]="review.reviewAuthor" class="reviews-item--author"></p>
                                             <p [innerHTML]="review.reviewContent" class="reviews-item--content"></p>
@@ -130,7 +130,7 @@
                                     </div>
                                 </mat-tab>
                                 <mat-tab label="Plus- en minpunten" *ngIf="product?.expertReview">
-                                    <div class="full-desc mat-tab-plus-en-min">
+                                    <div class="full-desc mat-tab-plus-en-min" ngClass.xs="py-2" ngClass.lt-md="p-2">
                                         <p [innerHTML]="product?.expertReview"></p>
                                     </div>
                                 </mat-tab>
