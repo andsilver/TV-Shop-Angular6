@@ -347,9 +347,18 @@ a:focus {
 #advice-and-contact .contact_box > span { display:block; border:1px solid #E6E6DC; background:#e6e6dc; margin-bottom:5px; padding:10px 0 10px 6px; }
 #advice-and-contact .contact_box > span { cursor:default; }
 #advice-and-contact .contact_box > a:hover { background:#212226; color:#fff; text-decoration:none; }
-#advice-and-contact .contact_box > a:hover .fa { color:#000; }
+#advice-and-contact .contact_box > a:hover .fa,
+#advice-and-contact .contact_box > a:hover .far,
+#advice-and-contact .contact_box > a:hover .fas,
+#advice-and-contact .contact_box > a:hover .fab { color:#000; }
 #advice-and-contact .contact_box > a > .fa,
-#advice-and-contact .contact_box > span > .fa { float:left; width:30px; height:30px; background:#fff; font-size:17px; line-height:30px; text-align:center; margin-right:10px; border-radius:50%; }
+#advice-and-contact .contact_box > span > .fa,
+#advice-and-contact .contact_box > a > .far,
+#advice-and-contact .contact_box > span > .far,
+#advice-and-contact .contact_box > a > .fas,
+#advice-and-contact .contact_box > span > .fas,
+#advice-and-contact .contact_box > a > .fab,
+#advice-and-contact .contact_box > span > .fab { float:left; width:30px; height:30px; background:#fff; font-size:17px; line-height:30px; text-align:center; margin-right:10px; border-radius:50%; }
 #advice-and-contact .contact_box > a > strong,
 #advice-and-contact .contact_box > a > span,
 #advice-and-contact .contact_box > span > strong,
@@ -364,7 +373,7 @@ a:focus {
 .extra_open_hours_box > div a,
 .extra_open_hours_box > div.special_open_time span { display:block; border:1px solid #E6E6DC; font-weight:600; font-size:16px; line-height:32px; font-family:"Poppins"; text-align:center; margin-bottom:5px; }
 .extra_open_hours_box > div.special_open_time a,
-.extra_open_hours_box > div.special_open_time span { background:#2da6c1; font-weight:bold; font-size:31px; line-height:44px; font-family:"Gotham Condensed"; letter-spacing:.02em; color:#fff; }
+.extra_open_hours_box > div.special_open_time span { background:#2da6c1; font-weight:bold; font-size:31px; line-height:44px; font-family:"PT Sans Narrow"; letter-spacing:.02em; color:#fff; }
 .extra_open_hours_box > div.special_open_time span { cursor:default; }
 .extra_open_hours_box > div.special_open_time a:hover { text-decoration:none; }
 .extra_open_hours_box > div.city_open_time:hover a { background:#212226; color:#fff; text-decoration:none; }
@@ -1029,7 +1038,7 @@ button.swipe-arrow{
     list-style:none;
 
     li {
-        background:url(/assets/images/others/content_li.gif) left 10px no-repeat;
+        background:url(/assets/images/others/content_li.gif) left 6px no-repeat;
         padding-left:12px;
     }
 }
@@ -1085,11 +1094,17 @@ button.swipe-arrow{
             }
             ul+ul { margin-top: 1rem; }
             ul.plus_point_list li:not(.plus_point_header):before {
-                font-family:"Font Awesome 5 Free"; content:"\f067"; color:#5aad49;
+                font-family:"Font Awesome 5 Free";
+                content:"\f067";
+                font-weight: 900;
+                color:#5aad49;
                 margin-right: .5rem;
             }
             ul.minus_point_list li:not(.minus_point_header):before {
-                font-family:"Font Awesome 5 Free"; content:"\f068"; color:#f00;
+                font-family:"Font Awesome 5 Free";
+                content:"\f068";
+                font-weight: 900;
+                color:#f00;
                 margin-right: .5rem;
             }
         }
@@ -1116,15 +1131,13 @@ button.swipe-arrow{
     }
 }
 
+#subCategories .mat-menu-item {
+    height:24px;
+    font-size:14px;
+    line-height:24px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+.text-not-found {
+    padding-left: 8px;
+    padding-right: 8px;
+}
