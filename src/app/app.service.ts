@@ -177,7 +177,7 @@ export class AppService {
         for ( const c of this.Data.cartList) {
             this.Data.totalPrice += Number(c.newPrice) * c.quantity;
         }
-        console.log(this.Data.totalPrice);
+        //console.log(this.Data.totalPrice);
     }
 
     public getCountries() {
