@@ -19,7 +19,6 @@ export class CustomCurrencyPipe implements PipeTransform {
     const fn = (decimalDelimiter ? num.replace('.', decimalDelimiter) : num).replace(new RegExp(result, 'g'), '$&' + chunkDelimiter);
 
     let res = currencySign + fn;
-    console.log(v);
     if ( Number.isInteger(v) && chunkLength !== 999 ) {
       res = res.substring(0, res.length - 2);
       res += '-';

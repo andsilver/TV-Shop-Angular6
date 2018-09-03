@@ -25,6 +25,8 @@ export class HomeComponent implements OnInit {
   public topRatedProducts: Array<Product>;
   public newArrivalsProducts: Array<Product>;
 
+  public products: Array<Product>;
+
 
   constructor(public appService: AppService, private homeService: HomeService) { }
 
@@ -35,6 +37,10 @@ export class HomeComponent implements OnInit {
     this.newArrivalsProducts = this.homeService.newArrivalsProducts;
     this.banners = this.homeService.banners;
     this.brands = this.homeService.brands;
+
+    this.products = this.onSaleProducts;
+
+    console.log(this.newArrivalsProducts);
   }
 
   public onLinkClick(e) {
@@ -42,28 +48,18 @@ export class HomeComponent implements OnInit {
   }
 
   public getProducts(type) {
-    if (type === 'featured' && !this.featuredProducts) {
-      this.appService.getProducts('featured').subscribe(data => {
-        this.featuredProducts = data.products;
-      });
+    if (type === 'featured') {
+      this.products = this.featuredProducts;
     }
-    if (type === 'on sale' && !this.onSaleProducts) {
-      this.appService.getProducts('on-sale').subscribe(data => {
-        this.onSaleProducts = data.products;
-        console.log(data.products);
-      });
+    if (type === 'on sale') {
+      this.products = this.onSaleProducts;
     }
-    if (type === 'top rated' && !this.topRatedProducts) {
-      this.appService.getProducts('top-rated').subscribe(data => {
-        this.topRatedProducts = data.products;
-      });
+    if (type === 'top rated') {
+      this.products = this.topRatedProducts;
     }
-    if (type === 'new arrivals' && !this.newArrivalsProducts) {
-      this.appService.getProducts('new-arrivals').subscribe(data => {
-        this.newArrivalsProducts = data.products;
-      });
+    if (type === 'new arrivals') {
+      this.products = this.newArrivalsProducts;
     }
-
   }
 
 }
