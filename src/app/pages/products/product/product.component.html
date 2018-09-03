@@ -1,10 +1,8 @@
-<div fxLayout="row wrap">
+<div fxLayout="row">
 
-    <div fxFlex="100" fxFlex.gt-md="80" fxLayout="row wrap">
+    <div fxFlex="100" fxFlex.gt-md="80" fxLayout="column">
 
-        <div fxLayout="column wrap">
-
-            <div fxLayout="row wrap">
+            <div fxLayout="row" fxLayout.lt-md="column">
 
                 <div fxFlex="100" fxFlex.gt-md="70" fxFlex.md="65">
 
@@ -35,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-                <div fxFlex="100" fxFlex.gt-md="30" fxFlex.md="35" ngClass.gt-sm="px-3 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
+                <div fxFlex="100" fxFlex.gt-md="30" fxFlex.md="35" ngClass.gt-sm="px-3 m-0" ngClass.md="pl-3" ngClass.sm="mt-2" ngClass.xs="mt-2">
 
                     <h2 class="mb-2 new-price">{{product?.newPrice | customCurrency}}</h2>
 
@@ -104,7 +102,7 @@
             </div>
             <div class="mt-2">
 
-                <div class="pr-3">
+                <div ngClass.gt-md="pr-3">
 
                     <div class="shortdesc"><p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription"></p></div>
 
@@ -142,12 +140,11 @@
                 </div>
 
             </div>
-        </div>
 
     </div>
     <div fxFlex="100" fxFlex.gt-md="20" fxHide fxShow.gt-md> 
 
-        <div fxLayout="row wrap" class="misc-bar" ngClass.gt-md="m-0">
+        <div fxLayout="column" class="misc-bar" ngClass.gt-md="m-0">
             <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
                 <mat-card class="branch-office">
                     <mat-card-title><h4>Onze Winkels</h4></mat-card-title>

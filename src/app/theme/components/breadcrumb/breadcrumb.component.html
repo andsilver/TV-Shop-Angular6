@@ -1,6 +1,6 @@
 <div fxLayout="row wrap" *ngIf="router.url != '/'">
     <div fxFlex="100">
-        <mat-card fxLayout="row" class="breadcrumb light-block">
+        <mat-card fxLayout="row wrap" class="breadcrumb light-block">
             <a *ngIf="router.url != '/'" routerLink="/" class="breadcrumb-item" fxLayout="row" fxLayoutAlign="start center" (click)="closeSubMenus()">
                 <mat-icon>home</mat-icon>
                 <span class="breadcrumb-title">Homepage</span>
@@ -10,6 +10,6 @@
                 <span [hidden]="i != (breadcrumbs.length - 1)" class="breadcrumb-title active"><b>{{breadcrumb.name}}</b></span>
             </div> 
         </mat-card>
-    </div> 
+    </div>
 </div>
 
