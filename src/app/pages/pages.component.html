@@ -84,7 +84,7 @@
                                         <div class="divider mt-1"></div>
                                         <div *ngIf="appService.Data.cartList.length == 0" class="py-1 text-muted text-center">U heeft nog geen producten in uw winkelwagen geplaatst.</div>
                                         <mat-list>
-                                            <mat-list-item *ngFor="let product of appService.Data.cartList">
+                                            <mat-list-item *ngFor="let product of appService.Data.cartList" class="py-1">
                                                 <h3 matLine class="text-muted"> {{product.name}} </h3>
                                                 <p matLine class="text-muted">
                                                     <span> {{product.quantity }} x {{product.newPrice | customCurrency}} </span>
@@ -94,7 +94,7 @@
                                                         <span>{{attribute.products_options_name}}:{{getAttributeName(product, i, attribute.selected)}}</span>
                                                     </ng-container>
                                                 </p>
-                                                <img  [src]="product.images[0].small" alt="image">
+                                                <img [src]="product.images[0].small" alt="image">
                                                 <button mat-icon-button color="warn" class="remove" (click)="remove(product);stopClickPropagate($event)" matTooltip="Verwijder" matTooltipPosition="before">
                                                     <mat-icon class="mat-icon-sm">close</mat-icon>
                                                 </button>
@@ -102,17 +102,14 @@
                                         </mat-list>
                                         <div *ngIf="appService.Data.cartList.length > 0" class="cart-dropdown-footer">
                                             <div class="divider mt-1"></div>
-                                            <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted mt-1">
-                                                <b>TOTAAL:</b>
+                                            <div fxLayout="row" fxLayoutAlign="flex-end center" class="text-muted mt-1">
+                                                <b class="mr-1">TOTAAL:</b>
                                                 <b class="new-price">{{appService.Data.totalPrice | customCurrency}}</b>
                                             </div>
                                             <div class="divider mt-1"></div>
-                                            <div fxLayout="row" fxLayoutAlign="space-between center" class="mt-1">
-                                                <button mat-mini-fab color="warn" (click)="clear();stopClickPropagate($event)" matTooltip="Leeg winkelwagen" matTooltipPosition="after">
-                                                    <mat-icon>remove_shopping_cart</mat-icon>
-                                                </button>
-                                                <a [routerLink]="['/checkout']" mat-mini-fab color="primary" matTooltip="Bestellen" matTooltipPosition="before">
-                                                    <mat-icon>check</mat-icon>
+                                            <div fxLayout="row" fxLayoutAlign="flex-end center" class="mt-1">
+                                                <a [routerLink]="['/checkout']" mat-button mat-primary color="primary" class="cart-dropdown-submit" matTooltip="Ga verder met bestellen">
+                                                    Ga verder met bestellen
                                                 </a>
                                             </div>
                                         </div>
