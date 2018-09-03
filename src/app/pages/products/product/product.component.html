@@ -2,7 +2,7 @@
 
     <div fxFlex="100" fxFlex.gt-md="80" fxLayout="row wrap">
 
-        <div fxLayout="column">
+        <div fxLayout="column wrap">
 
             <div fxLayout="row wrap">
 
@@ -111,28 +111,28 @@
                     <div fxFlex>
                         <mat-card>
                             <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
-                                <mat-tab label="Beschrijving">
-                                    <div class="full-desc lh">
+                                <mat-tab label="Beschrijving" class="mat-tab-beschrijving">
+                                    <div class="full-desc mat-tab-beschrijving">
                                         <p [innerHTML]="product?.description"></p>
                                     </div>
                                 </mat-tab>
                                 <mat-tab label="Specificaties">
-                                    <div class="full-desc lh">
+                                    <div class="full-desc mat-tab-specificaties">
                                         <p [innerHTML]="product?.extra_description"></p>
                                     </div>
                                 </mat-tab>
                                 <mat-tab label="Reviews">
-                                    <div class="full-desc lh">
-                                        <div *ngFor="let review of product?.reviews" style="margin-bottom: 20px">
-                                            <p [innerHTML]="review.reviewAuthor"></p>
-                                            <p [innerHTML]="review.reviewContent"></p>
-                                            <p [innerHTML]="review.reviewMood"></p>
-                                            <p [innerHTML]="review.dateAdded"></p>
+                                    <div class="full-desc mat-tab-reviews">
+                                        <div *ngFor="let review of product?.reviews" class="reviews-item">
+                                            <p [innerHTML]="review.reviewAuthor" class="reviews-item--author"></p>
+                                            <p [innerHTML]="review.reviewContent" class="reviews-item--content"></p>
+                                            <p [innerHTML]="review.reviewMood" class="reviews-item--rate"></p>
+                                            <p [innerHTML]="review.dateAdded" class="reviews-item--date"></p>
                                         </div>
                                     </div>
                                 </mat-tab>
                                 <mat-tab label="PLUS- EN MINPUNTEN">
-                                    <div class="full-desc lh">
+                                    <div class="full-desc mat-tab-plus-en-min">
                                         <p [innerHTML]="product?.expertReview"></p>
                                     </div>
                                 </mat-tab>
