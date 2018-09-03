@@ -234,7 +234,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       parent = this.categories.find(c => c.id === parent.parentId);
     }
 
-    console.log(parent.id);
+    //console.log(parent.id);
 
     this.topParentCategory = parent;
     this.topParentCategoryId = parent.id;
