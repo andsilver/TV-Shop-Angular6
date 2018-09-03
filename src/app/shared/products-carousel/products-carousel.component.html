@@ -6,8 +6,7 @@
                     <mat-chip color="warn" selected="true">{{product.discount}}% korting</mat-chip>
                 </mat-chip-list>
                 <a [routerLink]="['/products', product.id, product.name]" class="image-link">
-                    <img [attr.data-src]="product.images[0].medium" class="swiper-lazy"/>
-                    <div class="swiper-lazy-preloader"></div>
+                    <img [src]="product.images[0].medium" class="swiper-lazy"/>
                 </a>
                 <h4 class="category text-muted">{{ ( appService.Data.categories | filterById : product.categoryId )?.name }}</h4>
                 <a [routerLink]="['/products', product.id, product.name]" class="title text-truncate">

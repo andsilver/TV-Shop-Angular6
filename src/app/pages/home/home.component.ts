@@ -30,6 +30,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.featuredProducts = this.homeService.featuredProducts;
+    this.onSaleProducts = this.homeService.onSaleProducts;
+    this.topRatedProducts = this.homeService.topRatedProducts;
+    this.newArrivalsProducts = this.homeService.newArrivalsProducts;
     this.banners = this.homeService.banners;
     this.brands = this.homeService.brands;
   }
@@ -47,6 +50,7 @@ export class HomeComponent implements OnInit {
     if (type === 'on sale' && !this.onSaleProducts) {
       this.appService.getProducts('on-sale').subscribe(data => {
         this.onSaleProducts = data.products;
+        console.log(data.products);
       });
     }
     if (type === 'top rated' && !this.topRatedProducts) {
