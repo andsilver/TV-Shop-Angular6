@@ -111,17 +111,17 @@
                     <div fxFlex>
                         <mat-card>
                             <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
-                                <mat-tab label="Beschrijving" class="mat-tab-beschrijving">
+                                <mat-tab label="Beschrijving" class="mat-tab-beschrijving" *ngIf="product?.description">
                                     <div class="full-desc mat-tab-beschrijving">
                                         <p [innerHTML]="product?.description"></p>
                                     </div>
                                 </mat-tab>
-                                <mat-tab label="Specificaties">
+                                <mat-tab label="Specificaties" *ngIf="product?.extra_description">
                                     <div class="full-desc mat-tab-specificaties">
                                         <p [innerHTML]="product?.extra_description"></p>
                                     </div>
                                 </mat-tab>
-                                <mat-tab label="Reviews">
+                                <mat-tab label="Reviews" *ngIf="product?.reviews.length">
                                     <div class="full-desc mat-tab-reviews">
                                         <div *ngFor="let review of product?.reviews" class="reviews-item">
                                             <p [innerHTML]="review.reviewAuthor" class="reviews-item--author"></p>
@@ -131,7 +131,7 @@
                                         </div>
                                     </div>
                                 </mat-tab>
-                                <mat-tab label="PLUS- EN MINPUNTEN">
+                                <mat-tab label="PLUS- EN MINPUNTEN" *ngIf="product?.expertReview">
                                     <div class="full-desc mat-tab-plus-en-min">
                                         <p [innerHTML]="product?.expertReview"></p>
                                     </div>
