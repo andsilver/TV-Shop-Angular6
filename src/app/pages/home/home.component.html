@@ -44,14 +44,14 @@
 <div class="products-tabs">
 
     <mat-tab-group mat-stretch-tabs (selectedTabChange)="onLinkClick($event)">
-       
-        <mat-tab label="Aanbiedingen">
-           <app-products-carousel [products]="products"></app-products-carousel>
-        </mat-tab>
-        <mat-tab label="Nieuw">
+
+        <mat-tab label="On Sale">
             <app-products-carousel [products]="products"></app-products-carousel>
         </mat-tab>
-        <mat-tab label="Bekijk ook eens">
+        <mat-tab label="Top Rated">
+            <app-products-carousel [products]="products"></app-products-carousel>
+        </mat-tab>
+        <mat-tab label="New Arrivals">
             <app-products-carousel [products]="products"></app-products-carousel>
         </mat-tab>
     </mat-tab-group> 

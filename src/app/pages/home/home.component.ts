@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
 
     this.products = this.onSaleProducts;
 
-    console.log(this.newArrivalsProducts);
+    //console.log(this.newArrivalsProducts);
   }
 
   public onLinkClick(e) {
@@ -48,14 +48,17 @@ export class HomeComponent implements OnInit {
   }
 
   public getProducts(type) {
-    if (type === 'Aanbiedingen') {
+    if (type === 'featured') {
       this.products = this.featuredProducts;
     }
-    if (type === 'Nieuw') {
+    if (type === 'on sale') {
       this.products = this.onSaleProducts;
     }
-    if (type === 'Bekijk ook eens') {
+    if (type === 'top rated') {
       this.products = this.topRatedProducts;
+    }
+    if (type === 'new arrivals') {
+      this.products = this.newArrivalsProducts;
     }
   }
 

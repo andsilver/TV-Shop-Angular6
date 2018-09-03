@@ -116,7 +116,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public getBrands() {
     this.appService.getBrandsByCategoryId(this.categoryId)
       .subscribe(res => {
-        console.log(res);
+        //console.log(res);
         this.brands = res.manufacturer;
       });
   }
