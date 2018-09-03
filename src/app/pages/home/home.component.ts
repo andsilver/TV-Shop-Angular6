@@ -57,9 +57,6 @@ export class HomeComponent implements OnInit {
     if (type === 'Bekijk ook eens') {
       this.products = this.topRatedProducts;
     }
-    if (type === 'new arrivals') {
-      this.products = this.newArrivalsProducts;
-    }
   }
 
 }
