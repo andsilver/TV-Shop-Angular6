@@ -29,9 +29,9 @@ export class HomeService implements Resolve<any> {
           this.appService.getBanners(),
           this.appService.getBrandsByCategoryId(0),
           this.appService.getProducts('featured'),
-          this.appService.getProducts('on-sale'),
-          this.appService.getProducts('top-rated'),
-          this.appService.getProducts('new-arrivals')
+          this.appService.getProducts('sale'),
+          this.appService.getProducts('top_rated'),
+          this.appService.getProducts('new_arrivals')
         ])
         .subscribe(res => {
           this.banners = res[0];

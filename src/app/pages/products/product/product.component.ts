@@ -1,6 +1,5 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
 import { AppService } from '../../../app.service';
@@ -29,29 +28,29 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   public relatedProducts: Array<Product>;
 
   constructor(
-    public santitizer: DomSanitizer,
     private store: Store<State>,
     public appService: AppService,
     public dialog: MatDialog,
-    public formBuilder: FormBuilder) {  }
+    public formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.sub = this.store.select(state => state.product).subscribe(res => {
-      this.product = null;
-      this.product = res.product;
-      this.selectedImage = this.product.images[0];
-      this.image = this.product.images[0].medium;
-      this.zoomImage = this.product.images[0].big;
-      setTimeout(() => {
-        this.config.observer = true;
-        // this.directiveRef.setIndex(0);
+    this.sub = this.store.select(state => state.product)
+      .subscribe(res => {
+        this.product = null;
+        this.product = res.product;
+        this.selectImage(this.product.images[0]);
+        setTimeout(() => {
+          this.config.observer = true;
+          // this.directiveRef.setIndex(0);
+        });
       });
-    });
+
     this.form = this.formBuilder.group({
       'review': [null, Validators.required],
       'name': [null, Validators.compose([Validators.required, Validators.minLength(4)])],
       'email': [null, Validators.compose([Validators.required, emailValidator])]
     });
+
     this.getRelatedProducts();
   }
 
@@ -71,7 +70,7 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
           slidesPerView: 2
         },
         600: {
-          slidesPerView: 3,
+          slidesPerView: 3
         }
       }
     };
@@ -80,10 +79,7 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   public getProductById(id) {
     this.appService.getProductById(id).subscribe(data => {
       this.product = data;
-      // console.log(data);
-      this.selectedImage = data.images[0];
-      this.image = data.images[0].medium;
-      this.zoomImage = data.images[0].big;
+      this.selectedImage(data.images[0]);
       setTimeout(() => {
         this.config.observer = true;
        // this.directiveRef.setIndex(0);
@@ -101,7 +97,6 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
     this.selectedImage = image;
     this.image = image.medium;
     this.zoomImage = image.big;
-    console.log(this.selectedImage);
   }
 
   public onMouseMove(e) {
@@ -116,8 +111,9 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
       if (zoomer) {
         zoomer.style.backgroundPosition = x + '% ' + y + '%';
         zoomer.style.display = 'block';
-        zoomer.style.height = image.height * 2 + 'px';
-        zoomer.style.width = image.width * 2 + 'px';
+        zoomer.style.height = image.height + 'px';
+        zoomer.style.width = image.width + 'px';
+        zoomer.style.backgroundImage = `url("${this.zoomImage}")`;
       }
     }
   }

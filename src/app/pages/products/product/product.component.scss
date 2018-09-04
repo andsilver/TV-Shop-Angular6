@@ -35,12 +35,19 @@
     }
 }
 
-.mat-card.zoom-viewer{
+.zoom-viewer{
     position: absolute;
+    overflow: hidden;
     display: none;
     background-repeat: no-repeat;
     padding: 8px;
     z-index: 99;
+    &-container {
+        position: relative;
+        img {
+            position: absolute;
+        }
+    }
 }
 
 .mt-16{
