@@ -48,16 +48,16 @@ export class HomeComponent implements OnInit {
   }
 
   public getProducts(type) {
-    if (type === 'featured') {
-      this.products = this.featuredProducts;
-    }
-    if (type === 'on sale') {
+    // if (type === 'featured') {
+    //   this.products = this.featuredProducts;
+    // }
+    if (type === 'aanbiedingen') {
       this.products = this.onSaleProducts;
     }
-    if (type === 'top rated') {
+    if (type === 'best beoordeeld') {
       this.products = this.topRatedProducts;
     }
-    if (type === 'new arrivals') {
+    if (type === 'nieuw') {
       this.products = this.newArrivalsProducts;
     }
   }
