@@ -24,7 +24,7 @@ export class InitStateService implements Resolve<any> {
     return new Promise(( resolve, reject ) => {
         forkJoin([this.appService.getCategories(), this.appService.getBrands()])
           .subscribe(subs => {
-            //console.log(subs);
+            console.log(subs);
             this.store.dispatch(new fromCategories.SuccessGetCategories(subs[0]));
             this.store.dispatch(new fromBrands.SuccessGetBrands(subs[1]));
             resolve(subs);

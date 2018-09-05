@@ -22,6 +22,7 @@ export class MenuComponent implements OnInit {
     this.store.select(state => state.categories).subscribe( data => {
       this.allCategories = data.categories;
       this.categories = this.allCategories.filter( c => c.parentId === 0 );
+      console.log(this.categories);
     });
   }
 
@@ -62,12 +63,10 @@ export class MenuComponent implements OnInit {
   }
 
   public onChangeCategory(event) {
-    if (event.target) {
-      this.parentCategory = null;
-      const sub = document.getElementById('subCategories');
-      sub.style.display = 'none';
-      this.router.navigate(['/products', event.target.innerText.toLowerCase()]);
-    }
+    this.parentCategory = null;
+    const sub = document.getElementById('subCategories');
+    sub.style.display = 'none';
+    this.router.navigate([event.permalink]);
   }
 
 }

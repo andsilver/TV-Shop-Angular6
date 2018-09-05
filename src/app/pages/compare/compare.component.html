@@ -20,7 +20,7 @@
         naam
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
-        <a [routerLink]="['/products', product.id, product.name]" class="product-name">{{product.name}}</a>
+        <a [routerLink]="[product.permalink]" class="product-name">{{product.name}}</a>
       </div>
     </div>
 

@@ -82,6 +82,16 @@ export class AppService {
         return this.http.get<Product>(`/products/${id}/detail`);
     }
 
+    public getProdcutByPermallink(permalink: string, categoryId: number = null): Observable<Product> {
+        let param = new HttpParams();
+        param = param.append('permalink', permalink);
+        if (categoryId) {
+            return this.http.post<Product>('/products/detail', { categoryId: categoryId }, {params: param});
+        } else {
+            return this.http.get<Product>('/products/detail', {params: param});
+        }
+    }
+
     public getBrands(limit: number = 100, page: number = 1) {
         let params = new HttpParams();
         params = params.append('limit', `${limit}`);

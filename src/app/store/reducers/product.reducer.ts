@@ -16,6 +16,9 @@ export function reducer ( state = initialState, action: ProductActions.Actions )
         case ProductActions.READ_PRODUCT: {
             return state;
         }
+        case ProductActions.REMOVE_PRODUCT: {
+            return { product: null };
+        }
         default:
             return state;
     }

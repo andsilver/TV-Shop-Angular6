@@ -8,6 +8,8 @@ import * as ProductsActions from '../actions/products.action';
 import * as BrandsActions from '../actions/brands.action';
 import * as CategoriesActions from '../actions/categories.action';
 import * as ProductActions from '../actions/product.action';
+// import * as CategoryActions from '../actions/category.action';
+// import * as CrumbPathActions from '../actions/crumb-path.action';
 
 @Injectable()
 export class AppEffects {
@@ -58,9 +60,23 @@ export class AppEffects {
               return this.appService.getCategories();
             }
           }),
-          map(data => new CategoriesActions.SuccessGetCategories(data)),
+          map(data => {
+            console.log(data);
+            return new CategoriesActions.SuccessGetCategories(data);
+          }),
           catchError(err => of(new CategoriesActions.FailedGetCategories({ message: err.message })))
         );
+
+  // @Effect()
+  // GetCategory: Observable<any>
+  //   = this.actions
+  //       .ofType(CategoryActions.GET_CATEGORY)
+  //       .pipe(
+  //         map((action: any) => action.payload),
+  //         switchMap(payload => {
+  //           return this.appService.getCategory
+  //         })
+  //       )
 
   @Effect()
   GetProduct: Observable<any>
@@ -69,7 +85,7 @@ export class AppEffects {
         .pipe(
           map((action: any) => action.payload),
           switchMap(payload => {
-            return this.appService.getProductById(payload)
+            return this.appService.getProdcutByPermallink(payload.permalink, payload.categoryId)
               .pipe(
                 map(data => new ProductActions.SaveProduct(data))
               );

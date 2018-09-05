@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material';
 import { ProductDialogComponent } from './product-dialog/product-dialog.component';
 import { Data, AppService } from '../../app.service';
 import { Product } from 'app/app.models';
-import { CurrencyService } from 'app/services';
+import { RoutingHandlerService } from 'app/services';
 
 @Component({
   selector: 'app-products-carousel',
@@ -17,7 +17,7 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
 
   @Input() products: Array<Product> = [];
   public config: SwiperConfigInterface = {};
-  constructor(public appService: AppService, public dialog: MatDialog, private router: Router, public cc: CurrencyService) { }
+  constructor(public appService: AppService, public dialog: MatDialog, private router: Router, public routing: RoutingHandlerService) { }
 
   ngOnInit() {
    }
@@ -64,6 +64,13 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
         this.router.navigate(['/products', p.id, p.name]);
       }
     });
+  }
+
+  public navigate(product) {
+    this.appService.getProductById(product.id).subscribe((p) => {
+      this.routing.toDetailsPage(p);
+    });
+    // this.routing.toProductsPage(product);
   }
 
 }

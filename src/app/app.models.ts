@@ -3,6 +3,8 @@ export interface Category {
   name: string;
   hasSubCategory: boolean;
   parentId: number;
+  permalink: string;
+  crumbPath: any;
 }
 
 export class Product {
@@ -27,6 +29,8 @@ export class Product {
   quantity: number;
   reviews: string;
   expertReview: any;
+  permalink: string;
+  crumbPath: any;
 }
 
 export interface Brand {

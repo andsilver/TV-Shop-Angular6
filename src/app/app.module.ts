@@ -17,6 +17,7 @@ import { TopMenuComponent } from './theme/components/top-menu/top-menu.component
 import { MenuComponent } from './theme/components/menu/menu.component';
 import { SidenavMenuComponent } from './theme/components/sidenav-menu/sidenav-menu.component';
 import { BreadcrumbComponent } from './theme/components/breadcrumb/breadcrumb.component';
+import { CrumbPathComponent } from './theme/components/crumb-path/crumb-path.component';
 
 import { AppSettings } from './app.settings';
 import { AppService } from './app.service';
@@ -54,7 +55,8 @@ import { AppEffects } from './store/effects/app.effects';
     SidenavMenuComponent,
     BreadcrumbComponent,
     OptionsComponent,
-    FooterComponent
+    FooterComponent,
+    CrumbPathComponent
   ],
   providers: [
     AppSettings,

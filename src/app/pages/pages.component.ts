@@ -51,6 +51,7 @@ export class PagesComponent implements OnInit, AfterViewInit {
 
   public getCategories() {
     this.store.select(state => state.categories ).subscribe(data => {
+      console.log(data.categories);
       this.categories = data.categories;
       this.category = data.categories[0];
       this.sidenavMenuItems = this.categories.map(c =>

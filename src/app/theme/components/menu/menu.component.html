@@ -64,7 +64,7 @@
         mat-button
         (mouseenter)="triggerSubCategoryMenu(category, $event)"
         (mouseleave)="hideSubCategoryMenu($event)"
-        [routerLink]="['/products', category.name.toLowerCase()]"
+        [routerLink]="[ category.permalink ]"
         routerLinkActive="horizontal-active-link"
         [routerLinkActiveOptions]="{exact:true}">
         {{category.name}}

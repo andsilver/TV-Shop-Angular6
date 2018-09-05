@@ -8,6 +8,7 @@ import { CustomCurrencyPipe } from './custom-currency.pipe';
 import { JsonLoopPipe } from './json-loop.pipe';
 import { UrlSantitizerPipe } from './url-santitizer.pipe';
 import { HtmlSantitizerPipe } from './html-santitizer.pipe';
+import { EncodeUriPipe } from './encode-uri.pipe';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { HtmlSantitizerPipe } from './html-santitizer.pipe';
         CustomCurrencyPipe,
         JsonLoopPipe,
         UrlSantitizerPipe,
-        HtmlSantitizerPipe
+        HtmlSantitizerPipe,
+        EncodeUriPipe
     ],
     exports: [
         FilterByIdPipe,
@@ -29,7 +31,8 @@ import { HtmlSantitizerPipe } from './html-santitizer.pipe';
         CustomCurrencyPipe,
         JsonLoopPipe,
         UrlSantitizerPipe,
-        HtmlSantitizerPipe
+        HtmlSantitizerPipe,
+        EncodeUriPipe
     ]
 })
 export class PipesModule { }

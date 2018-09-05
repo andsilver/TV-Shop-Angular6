@@ -8,12 +8,17 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
     {
+        path: '404',
+        component: NotFoundComponent
+    },
+    {
         path: '',
         component: PagesComponent,
         resolve: { data: InitStateService },
         children: [
             { path: '', loadChildren: 'app/pages/home/home.module#HomeModule' },
-            { path: 'account',
+            {
+              path: 'account',
               loadChildren: 'app/pages/account/account.module#AccountModule',
               data: { breadcrumb: 'Account instellingen' }
             },
@@ -24,13 +29,13 @@ export const routes: Routes = [
             { path: 'contact', loadChildren: 'app/pages/contact/contact.module#ContactModule', data: { breadcrumb: 'Contact' } },
             { path: 'sign-in', loadChildren: 'app/pages/sign-in/sign-in.module#SignInModule', data: { breadcrumb: 'Inloggen ' } },
             { path: 'brands', loadChildren: 'app/pages/brands/brands.module#BrandsModule', data: { breadcrumb: 'Merken' } },
-            { path: 'products',
+            {
+              path: '**',
               loadChildren: 'app/pages/products/products.module#ProductsModule',
               data: { breadcrumb: 'Gevonden producten' }
             }
         ]
-    },
-    { path: '**', component: NotFoundComponent }
+    }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes, {

@@ -1,5 +1,5 @@
 <div *ngFor="let category of mainCategories">
-    <button mat-menu-item (click)="changeCategory($event)">
+    <button mat-menu-item (click)="changeCategory(category)">
         <span [ngClass]="{'highlight': selectedCategory == category.id}">{{category.name | uppercase}}</span>
     </button>
      <div *ngIf="category.hasSubCategory" class="sub-category">
