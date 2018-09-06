@@ -66,11 +66,4 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
     });
   }
 
-  public navigate(product) {
-    this.appService.getProductById(product.id).subscribe((p) => {
-      this.routing.toDetailsPage(p);
-    });
-    // this.routing.toProductsPage(product);
-  }
-
 }

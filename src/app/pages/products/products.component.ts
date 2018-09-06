@@ -24,39 +24,40 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
   sidenav: any;
 
   @Input()
-  public category: Category;
+  category: Category;
 
   @Input()
-  public categories: Category[] = [];
+  categories: Category[] = [];
 
-  public sidenavOpen = true;
   private Subscriptions: Subscription[];
-  public viewType = 'grid';
-  public viewCol = 25;
-  public counts = [12, 24, 36];
-  public count = 12;
-  public sortings = ['Relevantie', 'Best verkocht', 'Prijs laag-hoog', 'Prijs hoog-laag'];
-  public sort: any;
-  public products: Array<Product> = [];
 
-  public categoryId = 0;
-  public topParentCategoryId = 0;
-  public topParentCategory;
+  sidenavOpen = true;
+  viewType = 'grid';
+  viewCol = 25;
+  counts = [12, 24, 36];
+  count = 12;
+  sortings = ['Relevantie', 'Best verkocht', 'Prijs laag-hoog', 'Prijs hoog-laag'];
+  sort: any;
+  products: Array<Product> = [];
 
-  public brands = [];
-  public selectedBrands = [];
-  public priceFrom = 1;
-  public priceTo = 10000;
-  public colors = [ '#5C6BC0', '#66BB6A', '#EF5350', '#BA68C8', '#FF4081', '#9575CD', '#90CAF9', '#B2DFDB', '#DCE775',
+  categoryId = 0;
+  topParentCategoryId = 0;
+  topParentCategory;
+
+  brands = [];
+  selectedBrands = [];
+  priceFrom = 1;
+  priceTo = 10000;
+  colors = [ '#5C6BC0', '#66BB6A', '#EF5350', '#BA68C8', '#FF4081', '#9575CD', '#90CAF9', '#B2DFDB', '#DCE775',
                     '#FFD740', '#00E676', '#FBC02D', '#FF7043', '#F5F5F5', '#000000'];
-  public selectedColors = [];
-  public sizes = ['S', 'M', 'L', 'XL', '2XL', '32', '36', '38', '46', '52', '13.3\'', '15.4\'', '17\'', '21\'', '23.4\''];
-  public selectedSizes = [];
-  public page = 0;
-  public totalProducts = 0;
-  public emptyMessage = '';
+  selectedColors = [];
+  sizes = ['S', 'M', 'L', 'XL', '2XL', '32', '36', '38', '46', '52', '13.3\'', '15.4\'', '17\'', '21\'', '23.4\''];
+  selectedSizes = [];
+  page = 0;
+  totalProducts = 0;
+  emptyMessage = '';
 
-  public showMoreBrandsType = {
+  showMoreBrandsType = {
     show_more: {
       text: 'Toon meer',
       icon: 'keyboard_arrow_down',
@@ -69,7 +70,7 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
     }
   };
 
-  public showMoreBrandsStatus;
+  showMoreBrandsStatus;
 
   constructor(private activatedRoute: ActivatedRoute,
               public appService: AppService,
@@ -117,14 +118,7 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
     (window.innerWidth < 1280) ? this.viewCol = 33.3 : this.viewCol = 25;
   }
 
-  public getBrands() {
-    this.appService.getBrandsByCategoryId(this.categoryId)
-      .subscribe(res => {
-        this.brands = res.manufacturer;
-      });
-  }
-
-  public setProducts(res) {
+  setProducts(res) {
     this.products = res.products;
     this.totalProducts = res.total;
     if (!this.products.length) {
@@ -132,7 +126,19 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  public getProducts() {
+  initFilter() {
+    this.selectedBrands = [];
+    this.priceFrom = 1;
+    this.priceTo = 10000;
+    this.sort = this.sortings[0];
+  }
+
+  filterChanged() {
+    this.page = 1;
+    this.getProducts();
+  }
+
+  getProducts() {
     this.emptyMessage = '';
     const filter = {
       categoryId: this.categoryId,
@@ -148,22 +154,22 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
     this.filter.runFilter(filter);
   }
 
-  public changeCount(count) {
+  changeCount(count) {
     this.count = count;
     this.filterChanged();
   }
 
-  public changeSorting(sort) {
+  changeSorting(sort) {
     this.sort = sort;
     this.filterChanged();
   }
 
-  public changeViewType(viewType, viewCol) {
+  changeViewType(viewType, viewCol) {
     this.viewType = viewType;
     this.viewCol = viewCol;
   }
 
-  public openProductDialog(product) {
+  openProductDialog(product) {
     const dialogRef = this.dialog.open(ProductDialogComponent, {
         data: product,
         panelClass: 'product-dialog'
@@ -175,38 +181,17 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
     });
   }
 
-  public onPageChanged(event) {
+  onPageChanged(event) {
       this.page = event;
       this.getProducts();
       window.scrollTo(0, 0);
   }
 
-  public onChangeCategory(event) {
-    console.log(event);
+  onChangeCategory(event) {
     this.router.navigate([event.permalink]);
   }
 
-  public selectSize(size) {
-    const index = this.selectedSizes.indexOf(size);
-    if (index > -1) {
-      this.selectedSizes.splice(index, 1);
-    } else {
-      this.selectedSizes.push(size);
-    }
-    this.filterChanged();
-  }
-
-  public selectColor(color) {
-    const index = this.selectedColors.indexOf(color);
-    if (index > -1) {
-      this.selectedColors.splice(index, 1);
-    } else {
-      this.selectedColors.push(color);
-    }
-    this.filterChanged();
-  }
-
-  public selectBrand(brand) {
+  selectBrand(brand) {
     const index = this.selectedBrands.indexOf(brand);
     if (index > -1) {
       this.selectedBrands.splice(index, 1);
@@ -216,20 +201,14 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
     this.filterChanged();
   }
 
-  public filterChanged() {
-    this.page = 1;
-    this.getProducts();
-  }
-
-  public changeShowMoreBrands() {
+  changeShowMoreBrands() {
     this.showMoreBrandsStatus
       = (this.showMoreBrandsStatus === this.showMoreBrandsType.show_more)
       ? this.showMoreBrandsType.show_less
       : this.showMoreBrandsType.show_more;
   }
 
-  public findTopCategoryId() {
-
+  findTopCategoryId() {
     if (this.categoryId === 0) {
       this.topParentCategoryId = 0;
       return;
@@ -242,13 +221,6 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
 
     this.topParentCategory = parent;
     this.topParentCategoryId = parent.id;
-  }
-
-  public initFilter() {
-    this.selectedBrands = [];
-    this.priceFrom = 1;
-    this.priceTo = 10000;
-    this.sort = this.sortings[0];
   }
 
 }

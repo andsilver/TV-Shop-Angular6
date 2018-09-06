@@ -28,18 +28,17 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   @Input()
   product: Product;
 
-  public config: SwiperConfigInterface = {};
-  public image: any;
-  public zoomImage: any;
-  public selectedImage: any;
-  public form: FormGroup;
-  public relatedProducts: Array<Product>;
-  public subscription: Subscription;
+  config: SwiperConfigInterface = {};
+  image: any;
+  zoomImage: any;
+  selectedImage: any;
+  form: FormGroup;
+  relatedProducts: Array<Product>;
+  subscription: Subscription;
 
   constructor(
-    public appService: AppService,
-    public dialog: MatDialog,
-    public formBuilder: FormBuilder,
+    private dialog: MatDialog,
+    private formBuilder: FormBuilder,
     private router: Router,
     private store: Store<State>) {}
 
@@ -66,7 +65,7 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     this.selectImage(this.product.images[0]);
     setTimeout(() => {
       this.config.observer = true;
-      // this.directiveRef.setIndex(0);
+      this.directiveRef.setIndex(0);
     });
   }
 
@@ -92,19 +91,13 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     };
   }
 
-  public getRelatedProducts() {
-    this.appService.getProducts('related').subscribe(data => {
-      this.relatedProducts = data.products;
-    });
-  }
-
-  public selectImage(image) {
+   selectImage(image) {
     this.selectedImage = image;
     this.image = image.medium;
     this.zoomImage = image.big;
   }
 
-  public onMouseMove(e) {
+  onMouseMove(e) {
     if (window.innerWidth >= 1280) {
       const image = e.currentTarget;
       let offsetX, offsetY, x, y, zoomer;
@@ -123,11 +116,11 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     }
   }
 
-  public onMouseLeave(event) {
+  onMouseLeave(event) {
     this.zoomViewer.nativeElement.children[0].style.display = 'none';
   }
 
-  public openZoomViewer() {
+  openZoomViewer() {
     this.dialog.open(ProductZoomComponent, {
       data: this.zoomImage,
       panelClass: 'zoom-dialog'
@@ -138,13 +131,12 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     this.subscription.unsubscribe();
   }
 
-  public onSubmit(values: Object): void {
+  onSubmit(values: Object): void {
     if (this.form.valid) {
-      // email sent
     }
   }
 
-  public attributeSelected(index, event) {
+  attributeSelected(index, event) {
     this.product.attributes[index]['selected'] = event.value;
   }
 }
