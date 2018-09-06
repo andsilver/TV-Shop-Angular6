@@ -98,16 +98,13 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.Subscriptions = [
       this.filter.searchPerformed.subscribe(() => this.filterChanged()),
-      this.store.select(state => state.brands).subscribe(res => {
-        this.tempBrands = res.manufacturer;
-      }),
+      this.store.select(state => state.brands).subscribe(res => this.tempBrands = res.manufacturer),
       this.store.select(state => state.products).subscribe( resp => this.setProducts(resp))
     ];
 
     this.categoryId =  this.category ? this.category.id : 0;
     this.store.dispatch(new fromBrands.GetBrands(this.categoryId));
     this.findTopCategoryId();
-    this.initFilter();
     this.filterChanged();
   }
 
@@ -127,13 +124,13 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   setProducts(res) {
     if (this.isFirst) {
       this.isFirst = false;
+      return;
     } else {
       this.viewLoaded = true;
       this.brands = this.tempBrands;
     }
 
     this.products = res.products;
-    
     this.totalProducts = res.total;
     window.scrollTo(0, 0);
     if (!this.products.length) {
