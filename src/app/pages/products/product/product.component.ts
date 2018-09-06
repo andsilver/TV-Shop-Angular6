@@ -2,18 +2,22 @@ import { Component, OnInit, OnChanges, AfterViewInit, OnDestroy, ViewChild, Inpu
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
+import { Subscription } from 'rxjs';
 import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
 import { AppService } from '../../../app.service';
 import { Product } from '../../../app.models';
 import { emailValidator } from '../../../theme/utils/app-validators';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
 
+import { Store } from '@ngrx/store';
+import { State } from 'app/store';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements OnChanges, AfterViewInit, OnDestroy {
+export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
   @ViewChild('zoomViewer')
   zoomViewer;
@@ -30,23 +34,18 @@ export class ProductComponent implements OnChanges, AfterViewInit, OnDestroy {
   public selectedImage: any;
   public form: FormGroup;
   public relatedProducts: Array<Product>;
+  public subscription: Subscription;
 
   constructor(
     public appService: AppService,
     public dialog: MatDialog,
     public formBuilder: FormBuilder,
-    private router: Router) {}
+    private router: Router,
+    private store: Store<State>) {}
 
-  ngOnChanges() {
-
-    if (!this.product.id) {
-      this.router.navigate(['/404']);
-    }
-
-    this.selectImage(this.product.images[0]);
-    setTimeout(() => {
-      this.config.observer = true;
-      // this.directiveRef.setIndex(0);
+  ngOnInit() {
+    this.subscription = this.store.select(state => state.products).subscribe(data => {
+      this.relatedProducts = data.products;
     });
 
     this.form = this.formBuilder.group({
@@ -54,8 +53,21 @@ export class ProductComponent implements OnChanges, AfterViewInit, OnDestroy {
       'name': [null, Validators.compose([Validators.required, Validators.minLength(4)])],
       'email': [null, Validators.compose([Validators.required, emailValidator])]
     });
+  }
 
-    this.getRelatedProducts();
+  ngOnChanges() {
+
+    if (!this.product.id) {
+      this.product = null;
+      this.router.navigate(['/404']);
+      return;
+    }
+
+    this.selectImage(this.product.images[0]);
+    setTimeout(() => {
+      this.config.observer = true;
+      // this.directiveRef.setIndex(0);
+    });
   }
 
   ngAfterViewInit() {
@@ -104,8 +116,8 @@ export class ProductComponent implements OnChanges, AfterViewInit, OnDestroy {
       if (zoomer) {
         zoomer.style.backgroundPosition = x + '% ' + y + '%';
         zoomer.style.display = 'block';
-        zoomer.style.height = image.height + 'px';
-        zoomer.style.width = image.width + 'px';
+        zoomer.style.height = image.height * 1.5 + 'px';
+        zoomer.style.width = image.width * 1.5 + 'px';
         zoomer.style.backgroundImage = `url("${this.zoomImage}")`;
       }
     }
@@ -122,7 +134,9 @@ export class ProductComponent implements OnChanges, AfterViewInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
   public onSubmit(values: Object): void {
     if (this.form.valid) {

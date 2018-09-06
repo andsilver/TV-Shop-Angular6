@@ -16,7 +16,6 @@ export class CategoryListComponent implements OnChanges {
   constructor() { }
 
   public ngOnChanges() {
-    // console.log(this.categoryParentId);
     if (this.categories) {
       this.mainCategories = this.categories.filter(category => category.parentId === this.categoryParentId);
     }

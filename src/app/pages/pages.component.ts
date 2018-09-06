@@ -1,5 +1,7 @@
-import { Component, OnInit, HostListener, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 import { Settings, AppSettings } from '../app.settings';
 import { AppService } from '../app.service';
 import { Category } from '../app.models';
@@ -16,15 +18,19 @@ import { State } from 'app/store';
   styleUrls: ['./pages.component.scss'],
   providers: [ SidenavMenuService ]
 })
-export class PagesComponent implements OnInit, AfterViewInit {
+export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  @ViewChild('sidenav')
+  sidenav: any;
+
   public showBackToTop = false;
   public categories: Category[];
   public category: Category;
   public sidenavMenuItems: Array<any> = [];
   public keyword = '';
-  @ViewChild('sidenav') sidenav: any;
-
   public settings: Settings;
+  private subscription: Subscription;
+
   constructor(public appSettings: AppSettings,
               public appService: AppService,
               public sidenavMenuService: SidenavMenuService,
@@ -36,7 +42,12 @@ export class PagesComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.getCategories();
+    this.subscription = this.store.select(state => state.categories ).subscribe(data => {
+      this.categories = data.categories;
+      this.category = data.categories[0];
+      this.sidenavMenuItems = this.categories.map(c =>
+        new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
+    });
     // this.sidenavMenuItems = this.sidenavMenuService.getSidenavMenuItems();
   }
 
@@ -49,21 +60,11 @@ export class PagesComponent implements OnInit, AfterViewInit {
     this.sidenavMenuService.expandActiveSubMenu(this.sidenavMenuService.getSidenavMenuItems());
   }
 
-  public getCategories() {
-    this.store.select(state => state.categories ).subscribe(data => {
-      console.log(data.categories);
-      this.categories = data.categories;
-      this.category = data.categories[0];
-      this.sidenavMenuItems = this.categories.map(c =>
-        new SidenavMenu(c.id, c.name, `/products/${c.name.toLowerCase()}`, null, null, c.hasSubCategory, c.parentId));
-    });
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   public changeCategory(event) {
-    if (event.target) {
-      this.category = this.categories.filter(category => category.name.toLowerCase() === event.target.innerText.toLowerCase())[0];
-      this.route.productsPage(this.category.name);
-    }
     if (window.innerWidth < 960) {
       this.stopClickPropagate(event);
     }
@@ -78,7 +79,8 @@ export class PagesComponent implements OnInit, AfterViewInit {
   }
 
   public search() {
-    this.filter.search(this.keyword);
+    const navigate = !this.categories.some(c => c.permalink === `${this.router.url}/`);
+    this.filter.search(this.keyword, navigate);
   }
 
   public clear() {

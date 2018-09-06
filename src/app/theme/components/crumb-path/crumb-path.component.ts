@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute, Router, ActivatedRouteSnapshot, UrlSegment, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 
-import { Settings, AppSettings } from '../../../app.settings';
+import { AppSettings } from '../../../app.settings';
 import { Title } from '@angular/platform-browser';
 import { SidenavMenuService } from '../../../theme/components/sidenav-menu/sidenav-menu.service';
+
+import { Category } from 'app/app.models';
 
 @Component({
   selector: 'app-crumb-path',
@@ -15,15 +17,18 @@ import { SidenavMenuService } from '../../../theme/components/sidenav-menu/siden
 })
 export class CrumbPathComponent implements OnInit {
 
+  @Input()
+  categories: Category[];
+
   breadcrumbs = [];
   subscription: Subscription;
 
   constructor(
     private store: Store<State>,
-    public router: Router,
     public title: Title,
     public sidenavMenuService: SidenavMenuService,
-    public appSettings: AppSettings
+    public appSettings: AppSettings,
+    public router: Router
   ) {}
 
   ngOnInit() {
@@ -33,12 +38,11 @@ export class CrumbPathComponent implements OnInit {
         if (paths.length) {
           this.title.setTitle(paths[paths.length - 1].name);
         }
-        let url = '';
         this.breadcrumbs = paths.map(path => {
-          url += '/' + path.name.toLowerCase().replace(/ |\'|\(|\)|\/|\+/g, '-');
+          const s = this.categories.find( c => c.id === path.id );
           return {
             name: path.name,
-            url: url
+            url: s ? s.permalink : ''
           };
         });
         console.log(this.breadcrumbs);

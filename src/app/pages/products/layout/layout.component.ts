@@ -8,7 +8,9 @@ import { Store } from '@ngrx/store';
 
 import { State } from 'app/store';
 import { Category, Product } from 'app/app.models';
+
 import * as fromProduct from 'app/store/actions/product.action';
+import * as fromProducts from 'app/store/actions/products.action';
 import * as fromCategory from 'app/store/actions/category.action';
 import * as fromCrumbPath from 'app/store/actions/crumb-path.action';
 
@@ -28,39 +30,41 @@ export class LayoutComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private store: Store<State>) {
+    private store: Store<State>) { }
 
+  ngOnInit() {
     this.subscriptions = [
-      store
+      this.store
         .select(state => state.category)
         .subscribe(data => this.parentCategory = data.category),
 
-      store
+    this.store
         .select(state => state.product)
         .subscribe(data => {
-          // this.product = (data.product && data.product.id) ? data.product : null;
+
           this.product = data.product;
 
-          if ( this.product ) {
-            this.product.crumbPath.push({
-              name: this.product.name,
-              id: this.product.id
-            });
+          if ( this.product && this.product.crumbPath ) {
+
+            this.product.crumbPath.push({ name: this.product.name, id: this.product.id });
             this.store.dispatch( new fromCrumbPath.SaveCrumbPath(this.product.crumbPath));
           }
         }),
 
-      store
+    this.store
         .select(state => state.categories)
         .pipe(
           switchMap(res => {
             this.categories = res.categories;
-            return route.url;
+            return this.route.url;
           })
         )
         .subscribe(() => {
-            console.log(router.url, this.category, this.parentCategory, this.product);
-            this.category = this.categories.find((c) => c.permalink === `${router.url}/`);
+            if (this.router.url === '/products') {
+              this.category = {id: 0, name: '', crumbPath: [], parentId: 0, permalink: '', hasSubCategory: true};
+            } else {
+              this.category = this.categories.find((c) => c.permalink === `${this.router.url}/`);
+            }
             if (this.category) {
               this.store.dispatch(new fromCategory.SaveCategory(this.category));
               this.store.dispatch(new fromProduct.RemoveProduct());
@@ -69,12 +73,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
               const payload = { permalink: this.router.url, categoryId: this.parentCategory ? this.parentCategory.id : null };
               this.store.dispatch( new fromProduct.GetProduct(payload));
               this.store.dispatch( new fromCategory.RemoveCategory());
+              this.store.dispatch( new fromProducts.ModeProducts('related'));
             }
         })
     ];
-  }
-
-  ngOnInit() {
   }
 
   ngOnDestroy() {

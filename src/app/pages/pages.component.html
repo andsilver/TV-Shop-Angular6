@@ -117,7 +117,7 @@
                                 </mat-menu>
                             </div>
 
-                            <div fxLayoutAlign="center center" fxHide="false" fxHide.gt-sm>
+                            <!-- <div fxLayoutAlign="center center" fxHide="false" fxHide.gt-sm>
                                 <button mat-icon-button [matMenuTriggerFor]="searchMenu" #searchMenuTrigger="matMenuTrigger" class="search-toggle-btn">
                                     <mat-icon class="mat-icon-lg">search</mat-icon>
                                 </button>
@@ -135,7 +135,7 @@
                                         </button>
                                     </form>
                                 </mat-menu>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
     <app-menu fxShow="false" fxShow.gt-sm></app-menu>  
     
     <div class="theme-container main">
-        <app-crumb-path></app-crumb-path>
+        <app-crumb-path [categories]="categories"></app-crumb-path>
         <router-outlet></router-outlet>
     </div>
 

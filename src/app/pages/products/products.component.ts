@@ -2,7 +2,6 @@ import { Component, OnInit, OnChanges, OnDestroy, ViewChild, HostListener, Input
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -11,6 +10,8 @@ import { ProductDialogComponent } from '../../shared/products-carousel/product-d
 import { AppService } from '../../app.service';
 import { Product, Category } from '../../app.models';
 import { FilterService, ErrorHandlerService } from 'app/services';
+
+import * as fromBrands from 'app/store/actions/brands.action';
 
 @Component({
   selector: 'app-products',
@@ -81,28 +82,27 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
 
     this.count = this.counts[0];
-    this.sort = this.sortings[0];
+    this.sort  = this.sortings[0];
     this.showMoreBrandsStatus = this.showMoreBrandsType.show_more;
 
     if (window.innerWidth < 960) {
       this.sidenavOpen = false;
     }
-
     if (window.innerWidth < 1280) {
       this.viewCol = 33.3;
     }
 
     this.Subscriptions = [
       this.filter.searchPerformed.subscribe(() => this.filterChanged()),
-      this.store.select(state => state.products).subscribe( res => this.setProducts(res))
+      this.store.select(state => state.products).subscribe( res => this.setProducts(res)),
+      this.store.select(state => state.brands).subscribe(res => this.brands = res.manufacturer)
     ];
   }
 
   ngOnChanges() {
-
     this.categoryId =  this.category ? this.category.id : 0;
+    this.store.dispatch(new fromBrands.GetBrands(this.categoryId));
     this.findTopCategoryId();
-    this.getBrands();
     this.initFilter();
     this.filterChanged();
   }

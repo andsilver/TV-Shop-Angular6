@@ -7,7 +7,7 @@ export const FAILED_GET_BRANDS = '[BRANDS] Failed';
 
 export class GetBrands implements Action {
     readonly type = GET_BRANDS;
-    constructor() {}
+    constructor(public payload: number) {}
 }
 
 export class SuccessGetBrands implements Action {
