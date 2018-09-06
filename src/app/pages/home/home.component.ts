@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../app.service';
 import { Product } from '../../app.models';
 import { HomeService } from './home.service';
+import { AppSettings } from '../../app.settings';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,7 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
 
-  public slides = [
+  slides = [
     { title: 'Welkom in onze vernieuwde webwinkel!', subtitle: 'Nu nog meer bestelgemak', image: 'assets/images/carousel/banner1.jpg' },
     { title: 'Black Friday Deals', subtitle: 'Alleen bij PlatteTV', image: 'assets/images/carousel/banner2.jpg' },
     { title: 'Kerst Deals', subtitle: 'Alleen bij PlatteTV', image: 'assets/images/carousel/banner3.jpg' },
@@ -18,17 +20,17 @@ export class HomeComponent implements OnInit {
     { title: 'Mega Deals', subtitle: 'Alleen bij PlatteTV', image: 'assets/images/carousel/banner5.jpg' }
   ];
 
-  public brands = [];
-  public banners = [];
-  public featuredProducts: Array<Product>;
-  public onSaleProducts: Array<Product>;
-  public topRatedProducts: Array<Product>;
-  public newArrivalsProducts: Array<Product>;
+  brands = [];
+  banners = [];
+  featuredProducts: Array<Product>;
+  onSaleProducts: Array<Product>;
+  topRatedProducts: Array<Product>;
+  newArrivalsProducts: Array<Product>;
 
-  public products: Array<Product>;
+  products: Array<Product>;
 
 
-  constructor(public appService: AppService, private homeService: HomeService) { }
+  constructor(public appService: AppService, private homeService: HomeService, private settings: AppSettings, private title: Title) { }
 
   ngOnInit() {
     this.featuredProducts = this.homeService.featuredProducts;
@@ -39,15 +41,16 @@ export class HomeComponent implements OnInit {
     this.brands = this.homeService.brands;
 
     this.products = this.onSaleProducts;
+    this.title.setTitle(this.settings.settings.name);
 
     console.log(this.newArrivalsProducts);
   }
 
-  public onLinkClick(e) {
+  onLinkClick(e) {
     this.getProducts(e.tab.textLabel.toLowerCase());
   }
 
-  public getProducts(type) {
+  getProducts(type) {
     // if (type === 'featured') {
     //   this.products = this.featuredProducts;
     // }
