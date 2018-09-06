@@ -5,13 +5,14 @@ import { Subscription } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
+import * as KeywordActions from 'app/store/actions/keyword.action';
+import * as ProductsActions from 'app/store/actions/products.action';
+import * as BrandsActions from 'app/store/actions/brands.action';
 
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product, Category } from '../../app.models';
-import { FilterService, ErrorHandlerService } from 'app/services';
-
-import * as fromBrands from 'app/store/actions/brands.action';
+import { ErrorHandlerService } from 'app/services';
 
 @Component({
   selector: 'app-products',
@@ -33,6 +34,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   isFirst = true;
   viewLoaded = false;
+  keyword: string;
   sidenavOpen = true;
   viewType = 'grid';
   viewCol = 25;
@@ -80,7 +82,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
               public errorHandlerService: ErrorHandlerService,
               public dialog: MatDialog,
               private router: Router,
-              private filter: FilterService,
               private store: Store<State>) { }
 
   ngOnInit() {
@@ -96,16 +97,19 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.viewCol = 33.3;
     }
 
+    this.categoryId =  this.category ? this.category.id : 0;
+    this.store.dispatch(new BrandsActions.GetBrands(this.categoryId));
+    this.findTopCategoryId();
+
     this.Subscriptions = [
-      this.filter.searchPerformed.subscribe(() => this.filterChanged()),
+      this.store.select(state => state.keyword).subscribe(res => {
+        this.keyword = res.keyword;
+        this.filterChanged();
+      }),
       this.store.select(state => state.brands).subscribe(res => this.tempBrands = res.manufacturer),
       this.store.select(state => state.products).subscribe( resp => this.setProducts(resp))
     ];
 
-    this.categoryId =  this.category ? this.category.id : 0;
-    this.store.dispatch(new fromBrands.GetBrands(this.categoryId));
-    this.findTopCategoryId();
-    this.filterChanged();
   }
 
   ngAfterViewInit() {
@@ -152,7 +156,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getProducts() {
     this.emptyMessage = '';
-    const filter = {
+    this.store.dispatch(new ProductsActions.FilterProducts({
+      keyword: this.keyword,
       categoryId: this.categoryId,
       fromPrice: this.priceFrom,
       toPrice: this.priceTo,
@@ -162,8 +167,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       sort: this.sort,
       limit: this.count,
       page: this.page
-    };
-    this.filter.runFilter(filter);
+    }));
   }
 
   changeCount(count) {
@@ -183,8 +187,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   openProductDialog(product) {
     const dialogRef = this.dialog.open(ProductDialogComponent, {
-        data: product,
-        panelClass: 'product-dialog'
+      data: product,
+      panelClass: 'product-dialog'
     });
     dialogRef.afterClosed().subscribe(p => {
       if (p) {
@@ -194,8 +198,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onPageChanged(event) {
-      this.page = event;
-      this.getProducts();
+    this.page = event;
+    this.getProducts();
   }
 
   onChangeCategory(event) {

@@ -5,7 +5,6 @@ import { ProductDialogComponent } from '../../../shared/products-carousel/produc
 import { AppService } from '../../../app.service';
 import { Product, Category } from '../../../app.models';
 import { BrandsService } from '../brands.service';
-import { FilterService } from 'app/services';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -45,7 +44,6 @@ export class BrandComponent implements OnInit, OnDestroy {
               public dialog: MatDialog,
               private router: Router,
               private brandsService: BrandsService,
-              private filter: FilterService,
               private store: Store<State>) { }
 
   ngOnInit() {
@@ -60,7 +58,7 @@ export class BrandComponent implements OnInit, OnDestroy {
     }
 
     this.categories = this.brandsService.categories;
-    this.searchSub = this.filter.searchPerformed.subscribe(() => this.filterChanged());
+    // this.searchSub = this.filter.searchPerformed.subscribe(() => this.filterChanged());
     this.routingSub = this.activatedRoute.paramMap.subscribe((params) => {
       this.brand = params.get('name');
       this.filterChanged();
@@ -85,7 +83,7 @@ export class BrandComponent implements OnInit, OnDestroy {
       page: this.page
     };
 
-    this.filter.runFilter(filter);
+    // this.filter.runFilter(filter);
   }
 
   ngOnDestroy() {

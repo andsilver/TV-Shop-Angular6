@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit,  OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -15,7 +15,7 @@ import { Category } from 'app/app.models';
   templateUrl: './crumb-path.component.html',
   styleUrls: ['./crumb-path.component.scss']
 })
-export class CrumbPathComponent implements OnInit {
+export class CrumbPathComponent implements OnInit, OnDestroy {
 
   @Input()
   categories: Category[];
@@ -37,6 +37,8 @@ export class CrumbPathComponent implements OnInit {
         const paths = data.crumbPath ? data.crumbPath : [];
         if (paths.length) {
           this.title.setTitle(paths[paths.length - 1].name);
+        } else {
+          this.title.setTitle(this.appSettings.settings.name);
         }
         this.breadcrumbs = paths.map(path => {
           const s = this.categories.find( c => c.id === path.id );
@@ -47,6 +49,11 @@ export class CrumbPathComponent implements OnInit {
         });
         console.log(this.breadcrumbs);
       });
+  }
+
+  ngOnDestroy() {
+    this.title.setTitle(this.appSettings.settings.name);
+    this.subscription.unsubscribe();
   }
 
   public closeSubMenus() {

@@ -7,10 +7,11 @@ import { AppService } from '../app.service';
 import { Category } from '../app.models';
 import { SidenavMenuService } from '../theme/components/sidenav-menu/sidenav-menu.service';
 import { SidenavMenu } from '../theme/components/sidenav-menu/sidenav-menu.model';
-import { RoutingHandlerService, FilterService } from 'app/services';
+import { RoutingHandlerService } from 'app/services';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
+import * as KeywordActions from 'app/store/actions/keyword.action';
 
 @Component({
   selector: 'app-pages',
@@ -29,39 +30,46 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   public sidenavMenuItems: Array<any> = [];
   public keyword = '';
   public settings: Settings;
-  private subscription: Subscription;
+  private subscriptions: Subscription[] = [];
 
   constructor(public appSettings: AppSettings,
               public appService: AppService,
               public sidenavMenuService: SidenavMenuService,
               public router: Router,
               public route: RoutingHandlerService,
-              public filter: FilterService,
               public store: Store<State>) {
     this.settings = this.appSettings.settings;
   }
 
   ngOnInit() {
-    this.subscription = this.store.select(state => state.categories ).subscribe(data => {
-      this.categories = data.categories;
-      this.category = data.categories[0];
-      this.sidenavMenuItems = this.categories.map(c =>
-        new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
-    });
+    this.subscriptions.push(
+      this.store.select(state => state.categories ).subscribe(data => {
+        this.categories = data.categories;
+        this.category = data.categories[0];
+        this.sidenavMenuItems = this.categories.map(c =>
+          new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
+      })
+    );
     // this.sidenavMenuItems = this.sidenavMenuService.getSidenavMenuItems();
   }
 
   ngAfterViewInit() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.sidenav.close();
-      }
-    });
+    this.subscriptions.push(
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          this.sidenav.close();
+        }
+      })
+    );
+
+    this.subscriptions.push(
+      this.store.select(state => state.keyword).subscribe(data => setTimeout(() => this.keyword = data.keyword, 500))
+    );
     this.sidenavMenuService.expandActiveSubMenu(this.sidenavMenuService.getSidenavMenuItems());
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
   public changeCategory(event) {
@@ -79,8 +87,10 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public search() {
-    const navigate = !this.categories.some(c => c.permalink === `${this.router.url}/`);
-    this.filter.search(this.keyword, navigate);
+    if (!this.categories.some(c => c.permalink === `${this.router.url}/`)) {
+      this.router.navigate(['/products']);
+    }
+    this.store.dispatch(new KeywordActions.SetKeyword(this.keyword));
   }
 
   public clear() {

@@ -9,10 +9,11 @@ import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import { Category, Product } from 'app/app.models';
 
-import * as fromProduct from 'app/store/actions/product.action';
-import * as fromProducts from 'app/store/actions/products.action';
-import * as fromCategory from 'app/store/actions/category.action';
-import * as fromCrumbPath from 'app/store/actions/crumb-path.action';
+import * as KeywordActions from 'app/store/actions/keyword.action';
+import * as ProductActions from 'app/store/actions/product.action';
+import * as ProductsActions from 'app/store/actions/products.action';
+import * as CategoryActions from 'app/store/actions/category.action';
+import * as CrumbpathActions from 'app/store/actions/crumb-path.action';
 
 @Component({
   selector: 'app-products-layout',
@@ -33,6 +34,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     private store: Store<State>) { }
 
   ngOnInit() {
+
     this.subscriptions = [
       this.store
         .select(state => state.category)
@@ -47,7 +49,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
           if ( this.product && this.product.crumbPath ) {
 
             this.product.crumbPath.push({ name: this.product.name, id: this.product.id });
-            this.store.dispatch( new fromCrumbPath.SaveCrumbPath(this.product.crumbPath));
+            this.store.dispatch( new CrumbpathActions.SaveCrumbPath(this.product.crumbPath));
           }
         }),
 
@@ -64,16 +66,17 @@ export class LayoutComponent implements OnInit, OnDestroy {
               this.category = {id: 0, name: '', crumbPath: [], parentId: 0, permalink: '', hasSubCategory: true};
             } else {
               this.category = this.categories.find((c) => c.permalink === `${this.router.url}/`);
+              this.store.dispatch( new KeywordActions.SetKeyword(''));
             }
             if (this.category) {
-              this.store.dispatch(new fromCategory.SaveCategory(this.category));
-              this.store.dispatch(new fromProduct.RemoveProduct());
-              this.store.dispatch(new fromCrumbPath.SaveCrumbPath(this.category.crumbPath));
+              this.store.dispatch(new CategoryActions.SaveCategory(this.category));
+              this.store.dispatch(new ProductActions.RemoveProduct());
+              this.store.dispatch(new CrumbpathActions.SaveCrumbPath(this.category.crumbPath));
             } else if (!this.category) {
               const payload = { permalink: this.router.url, categoryId: this.parentCategory ? this.parentCategory.id : null };
-              this.store.dispatch( new fromProduct.GetProduct(payload));
-              this.store.dispatch( new fromCategory.RemoveCategory());
-              this.store.dispatch( new fromProducts.ModeProducts('related'));
+              this.store.dispatch( new ProductActions.GetProduct(payload));
+              this.store.dispatch( new CategoryActions.RemoveCategory());
+              this.store.dispatch( new ProductsActions.ModeProducts('related'));
             }
         })
     ];

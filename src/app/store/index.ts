@@ -11,6 +11,7 @@ import * as fromCategories from './reducers/categories.reducer';
 import * as fromProduct from './reducers/product.reducer';
 import * as fromCategory from './reducers/category.reducer';
 import * as fromCrumbpath from './reducers/crumb-path.reducer';
+import * as fromKeyword from './reducers/keyword.reducer';
 
 export interface State {
   products: fromProducts.State;
@@ -19,6 +20,7 @@ export interface State {
   product: fromProduct.State;
   category: fromCategory.State;
   crumbPath: fromCrumbpath.State;
+  keyword: fromKeyword.State;
 }
 
 export const initialState: State = {
@@ -27,7 +29,8 @@ export const initialState: State = {
   categories: fromCategories.initialState,
   product: fromProduct.initialState,
   category: fromCategory.initialState,
-  crumbPath: fromCrumbpath.initialState
+  crumbPath: fromCrumbpath.initialState,
+  keyword: fromKeyword.initialState
 };
 
 export const reducers: ActionReducerMap<State> = {
@@ -36,7 +39,8 @@ export const reducers: ActionReducerMap<State> = {
   categories: fromCategories.reducer,
   product: fromProduct.reducer,
   category: fromCategory.reducer,
-  crumbPath: fromCrumbpath.reducer
+  crumbPath: fromCrumbpath.reducer,
+  keyword: fromKeyword.reducer
 };
 
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
