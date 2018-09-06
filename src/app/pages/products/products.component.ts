@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, OnDestroy, ViewChild, HostListener, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy, ViewChild, HostListener, Input, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
@@ -18,7 +18,7 @@ import * as fromBrands from 'app/store/actions/brands.action';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
+export class ProductsComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
 
   @ViewChild('sidenav')
   sidenav: any;
@@ -31,6 +31,7 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
 
   private Subscriptions: Subscription[];
 
+  viewLoaded: boolean;
   sidenavOpen = true;
   viewType = 'grid';
   viewCol = 25;
@@ -96,16 +97,20 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
     this.Subscriptions = [
       this.filter.searchPerformed.subscribe(() => this.filterChanged()),
       this.store.select(state => state.products).subscribe( res => this.setProducts(res)),
-      this.store.select(state => state.brands).subscribe(res => this.brands = res.manufacturer)
+      this.store.select(state => state.brands).subscribe(res => {this.brands = res.manufacturer; console.log('brands');})
     ];
   }
 
   ngOnChanges() {
+    console.log('changed');
     this.categoryId =  this.category ? this.category.id : 0;
-    this.store.dispatch(new fromBrands.GetBrands(this.categoryId));
+    // this.store.dispatch(new fromBrands.GetBrands(this.categoryId));
     this.findTopCategoryId();
     this.initFilter();
     this.filterChanged();
+  }
+
+  ngAfterViewInit() {
   }
 
   ngOnDestroy() {
@@ -121,6 +126,9 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
   setProducts(res) {
     this.products = res.products;
     this.totalProducts = res.total;
+    this.viewLoaded = false;
+    window.scrollTo(0, 0);
+    console.log(this.products);
     if (!this.products.length) {
       this.emptyMessage = 'De opgegeven zoekopdracht heeft geen resultaten opgeleverd.';
     }
@@ -151,6 +159,7 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
       limit: this.count,
       page: this.page
     };
+    console.log('runfilter');
     this.filter.runFilter(filter);
   }
 
@@ -184,7 +193,6 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
   onPageChanged(event) {
       this.page = event;
       this.getProducts();
-      window.scrollTo(0, 0);
   }
 
   onChangeCategory(event) {
@@ -221,6 +229,11 @@ export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
 
     this.topParentCategory = parent;
     this.topParentCategoryId = parent.id;
+  }
+
+  finishedLoading() {
+    console.log('image loaded');
+    this.viewLoaded = true;
   }
 
 }
