@@ -37,6 +37,7 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   subscription: Subscription;
 
   constructor(
+    public appService: AppService,
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
     private router: Router,
