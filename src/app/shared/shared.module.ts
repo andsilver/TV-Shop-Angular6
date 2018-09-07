@@ -55,6 +55,7 @@ import { BannersComponent } from './banners/banners.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { AddedToCartPopupComponent } from './added-to-cart-popup/added-to-cart-popup.component';
 import { GoogleMapComponent } from './google-map/google-map.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
@@ -95,7 +96,10 @@ import { GoogleMapComponent } from './google-map/google-map.component';
     MatTooltipModule,
     MatStepperModule,
     PerfectScrollbarModule,
-    PipesModule
+    PipesModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBv2IOmt-5I3BoQ9xKl_y7anf7dEy-4194'
+    }),
   ],
   exports: [
     RouterModule,
@@ -144,7 +148,8 @@ import { GoogleMapComponent } from './google-map/google-map.component';
     BannersComponent,
     CategoryListComponent,
     AddedToCartPopupComponent,
-    GoogleMapComponent
+    GoogleMapComponent,
+    AgmCoreModule
   ],
   declarations: [
     RatingComponent,

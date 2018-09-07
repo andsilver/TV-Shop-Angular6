@@ -25,16 +25,18 @@
       ]
     }
   }],
-  "dataGroups": [{
-    "name": "plattetv-api",
-    "urls": [
-      "https://api-oscommercenl.deb1.bvb.vg/**"
-    ],
-    "cacheConfig": {
-      "strategy": "freshness",
-      "maxSize": 200,
-      "maxAge": "3d",
-      "timeout": "1m"
+  "dataGroups": [
+    {
+      "name": "plattetv-api",
+      "urls": [
+        "https://api-plattetvnl.deb1.bvb.vg/**"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 200,
+        "maxAge": "3d",
+        "timeout": "1m"
+      }
     }
-  }]
+  ]
 }

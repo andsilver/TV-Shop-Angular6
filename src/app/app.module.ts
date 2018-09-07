@@ -3,7 +3,6 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { AgmCoreModule } from '@agm/core';
 
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { CustomOverlayContainer } from './theme/utils/custom-overlay-container';
@@ -38,9 +37,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     BrowserAnimationsModule,
     HttpClientModule,
     NgxSpinnerModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDe_oVpi9eRSN99G4o6TwVjJbFBNr58NxE'
-    }),
     SharedModule,
     routing,
     StoreModule.forRoot(reducers, { metaReducers }),
