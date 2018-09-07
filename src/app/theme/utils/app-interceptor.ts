@@ -28,7 +28,7 @@ export class AppInterceptor implements HttpInterceptor {
             const started = Date.now();
             const elapsed = Date.now() - started;
             console.log(`Request for ${req.urlWithParams} failed after ${elapsed} ms.`);
-            this.errorHandlerService.showError(err);
+            this.errorHandlerService.showMessage("Oeps, helaas is de verbinding mislukt. Probeer het later nog een keer.");
            // debugger;
           }
         });
