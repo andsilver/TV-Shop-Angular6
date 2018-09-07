@@ -1,0 +1,24 @@
+<div class="added-to-cart">
+  <h3 class="mat-dialog-title">Toegevoegd aan je winkelmandje</h3>
+  <div class="product" fxLayout fxLayoutAlign="space-between start" fxLayoutGap="25px">
+    <img class="product-image" (click)="navigateToDetail()" [src]="product.images[0].small">
+    <div>
+      <a (click)="navigateToDetail()" class="title text-truncate">
+          {{product.name}}
+      </a>
+      <p>Aantal: {{product.quantity}}</p>
+    </div>
+    <div class="product-price">
+      {{product.newPrice | customCurrency}}
+    </div>
+    <div fxLayout="column" fxLayoutGap="10px">
+        <button class="control-add-to-cart" mat-button (click)="navigateToCartList()">Bestellen</button>
+        <button class="control-normal" mat-button (click)="dialogRef.close()">Verder winkelen</button>
+    </div>
+  </div>
+  <div class="close-popup">
+    <a mat-icon-button (click)="dialogRef.close()">
+      <mat-icon>close</mat-icon>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+.added-to-cart {
+    position: relative;
+
+    .product{
+        &-image {
+            cursor: pointer;
+            padding: 10px;
+            &:hover{
+                padding: 9px;
+                border: 1px solid #cccccc;
+            }
+        }
+
+        &-price {
+            margin-left: 40px;
+            font-weight: bold;
+        }
+    }
+
+    a {
+        color: #0090e3;
+        cursor: pointer;
+        font-weight: 600;
+    }
+    .mat-button {
+        padding: 0 60px;
+        line-height: 45px;
+        &.control-add-to-cart {
+            background-color: #5AAD49;
+            color:#fff;
+        }
+
+        &.control-normal {
+            background-color: #ebebe3;
+            color: #212226;
+        }
+    }
+    .close-popup {
+        position: absolute;
+        right: -24px;
+        top: -24px;
+    }
+}    

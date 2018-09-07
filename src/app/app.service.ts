@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
+
 import { Category, Product, Products } from './app.models';
+import { AddedToCartPopupComponent } from 'app/shared/added-to-cart-popup/added-to-cart-popup.component';
+
 import * as countries from 'assets/data/countries.json';
 
 export class Data {
@@ -24,7 +27,7 @@ export class AppService {
     );
     public filter: any = {};
     public url = 'assets/data/';
-    constructor(public http: HttpClient, public snackBar: MatSnackBar) { }
+    constructor(public http: HttpClient, public snackBar: MatSnackBar, private dialog: MatDialog) { }
 
     /***
     *  ---------------- New Apis -----------------------------------------------------------
@@ -144,7 +147,7 @@ export class AppService {
         this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
     }
 
-    public addToCart(product: Product, count: number = 1) {
+    public addToCart(product: Product, count: number = 1, openPopup: boolean = false) {
         let message, status;
         if (product.attributes && product.attributes.find(attr => attr.required && !attr.selected)) {
             message = 'Verplichte attributen zijn niet geselecteerd.';
@@ -168,15 +171,16 @@ export class AppService {
 
         this.calculateTotalPrice();
 
-        // this.Data.totalPrice = 0;
-        // this.Data.cartList.push(product);
-        // for ( const c of this.Data.cartList) {
-        //     this.Data.totalPrice += Number(c.newPrice);
-        // }
-        // console.log(this.Data.totalPrice);
-        // message = 'The product ' + product.name + ' has been added to cart.';
-        // status = 'success';
-        this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
+        if (openPopup) {
+
+            const dialogRef = this.dialog.open(AddedToCartPopupComponent, {
+                data: product
+            });
+
+            dialogRef.afterClosed().subscribe(res => {
+                console.log(res);
+            });
+        }
     }
 
     public removeFromCart(productId) {
