@@ -123,7 +123,7 @@
                                 </mat-tab>
                                 <mat-tab label="Specificaties" *ngIf="product?.extra_description">
                                     <div class="full-desc mat-tab-specificaties" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                        <p [innerHTML]="product?.extra_description"></p>
+                                        <p [innerHTML]="product?.extra_description | htmlSanitize"></p>
                                     </div>
                                 </mat-tab>
                                 <mat-tab label="Reviews" *ngIf="product?.reviews.length">
@@ -159,9 +159,9 @@
                         <div class="branch_opening_hours_box">
                             <div class="branch_img"><a [routerLink]="['/stores/amsterdam']"><img src="https://www.plattetv.nl/var/store_images/amsterdam.png" width="55" height="55"></a></div>
                             <div class="branch_opening_hours">
-                                <div class="adbox_opening_times city_name"><a [routerLink]="['/stores/amstredam']"> <strong>Amsterdam</strong> </a></div>
-                                <div class="adbox_opening_times"><a [routerLink]="['/stores/amstredam']">Vandaag open</a></div>
-                                <div class="adbox_opening_times"><a [routerLink]="['/stores/amstredam']">tot 21:00</a></div>
+                                <div class="adbox_opening_times city_name"><a [routerLink]="['/stores/amsterdam']"> <strong>Amsterdam</strong> </a></div>
+                                <div class="adbox_opening_times"><a [routerLink]="['/stores/amsterdam']">Vandaag open</a></div>
+                                <div class="adbox_opening_times"><a [routerLink]="['/stores/amsterdam']">tot 21:00</a></div>
                             </div>
                         </div>
                         <div class="branch_opening_hours_box">
