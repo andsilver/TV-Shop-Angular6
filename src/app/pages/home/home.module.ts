@@ -6,7 +6,7 @@ import { HomeComponent } from './home.component';
 import { HomeService } from './home.service';
 
 export const routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full', resolve: { data: HomeService }  }
+  { path: '', component: HomeComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

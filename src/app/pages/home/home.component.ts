@@ -4,6 +4,7 @@ import { Product } from '../../app.models';
 import { HomeService } from './home.service';
 import { AppSettings } from '../../app.settings';
 import { Title } from '@angular/platform-browser';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -33,17 +34,26 @@ export class HomeComponent implements OnInit {
   constructor(public appService: AppService, private homeService: HomeService, private settings: AppSettings, private title: Title) { }
 
   ngOnInit() {
-    this.featuredProducts = this.homeService.featuredProducts;
-    this.onSaleProducts = this.homeService.onSaleProducts;
-    this.topRatedProducts = this.homeService.topRatedProducts;
-    this.newArrivalsProducts = this.homeService.newArrivalsProducts;
-    this.banners = this.homeService.banners;
-    this.brands = this.homeService.brands;
-
-    this.products = this.onSaleProducts;
+    forkJoin([
+        this.appService.getBanners(),
+        this.appService.getBrandsByCategoryId(0),
+        this.appService.getProducts('featured'),
+        this.appService.getProducts('sale'),
+        this.appService.getProducts('top_rated'),
+        this.appService.getProducts('new_arrivals')
+      ])
+      .subscribe(res => {
+        this.banners = res[0];
+        this.brands = res[1].manufacturer;
+        this.featuredProducts = res[2].products;
+        this.onSaleProducts = res[3].products;
+        this.topRatedProducts = res[4].products;
+        this.newArrivalsProducts = res[5].products;
+        this.products = this.onSaleProducts;
+      });
+      
     this.title.setTitle(this.settings.settings.name);
 
-    console.log(this.newArrivalsProducts);
   }
 
   onLinkClick(e) {
