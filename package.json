@@ -9,7 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postbuild": "scp -r dist/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/"
+    "postbuild": "scp -r dist/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/",
+    "pwa": "ng build --prod && sw-precache --root=dist --config=precache-config.js",
+    "serve:sw": "npm run pwa && http-server ./dist -p 8000"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +27,7 @@
     "@angular/material": "6.2.0",
     "@angular/platform-browser": "6.0.3",
     "@angular/platform-browser-dynamic": "6.0.3",
+    "@angular/pwa": "^0.8.1",
     "@angular/router": "6.0.3",
     "@ngrx/effects": "^6.1.0",
     "@ngrx/entity": "^6.1.0",
@@ -41,7 +44,8 @@
     "ngx-swiper-wrapper": "6.2.1",
     "rxjs": "6.2.0",
     "rxjs-compat": "6.2.0",
-    "zone.js": "0.8.26"
+    "zone.js": "0.8.26",
+    "@angular/service-worker": "6.0.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.6.7",
@@ -65,6 +69,7 @@
     "karma-jasmine-html-reporter": "1.1.0",
     "protractor": "5.3.2",
     "shelljs": "^0.8.2",
+    "sw-precache-webpack-plugin": "^0.11.5",
     "ts-node": "6.0.5",
     "tslint": "5.10.0",
     "typescript": "2.7.2"

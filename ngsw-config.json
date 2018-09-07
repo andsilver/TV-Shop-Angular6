@@ -1,0 +1,40 @@
+{
+  "index": "/index.html",
+  "assetGroups": [{
+    "name": "PLATTETV",
+    "installMode": "prefetch",
+    "resources": {
+      "files": [
+        "/favicon.ico",
+        "/manifest.json",
+        "/index.html",
+        "/*.bundle.css",
+        "/*.bundle.js",
+        "/*.chunk.js",
+        "/*.css",
+        "/*.js"
+      ]
+    }
+  }, {
+    "name": "assets",
+    "installMode": "lazy",
+    "updateMode": "prefetch",
+    "resources": {
+      "files": [
+        "/assets/**"
+      ]
+    }
+  }],
+  "dataGroups": [{
+    "name": "plattetv-api",
+    "urls": [
+      "https://api-oscommercenl.deb1.bvb.vg/**"
+    ],
+    "cacheConfig": {
+      "strategy": "freshness",
+      "maxSize": 200,
+      "maxAge": "3d",
+      "timeout": "1m"
+    }
+  }]
+}
