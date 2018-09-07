@@ -30,6 +30,9 @@ export const routes: Routes = [
             { path: 'sign-in', loadChildren: 'app/pages/sign-in/sign-in.module#SignInModule', data: { breadcrumb: 'Inloggen ' } },
             { path: 'brands', loadChildren: 'app/pages/brands/brands.module#BrandsModule', data: { breadcrumb: 'Merken' } },
             {
+              path: 'stores', loadChildren: 'app/pages/stores/stores.module#StoresModule'
+            },
+            {
               path: '**',
               loadChildren: 'app/pages/products/products.module#ProductsModule',
               data: { breadcrumb: 'Gevonden producten' }

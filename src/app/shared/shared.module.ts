@@ -54,6 +54,7 @@ import { ProductDialogComponent } from './products-carousel/product-dialog/produ
 import { BannersComponent } from './banners/banners.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { AddedToCartPopupComponent } from './added-to-cart-popup/added-to-cart-popup.component';
+import { GoogleMapComponent } from './google-map/google-map.component';
 
 @NgModule({
   imports: [
@@ -142,7 +143,8 @@ import { AddedToCartPopupComponent } from './added-to-cart-popup/added-to-cart-p
     ProductDialogComponent,
     BannersComponent,
     CategoryListComponent,
-    AddedToCartPopupComponent
+    AddedToCartPopupComponent,
+    GoogleMapComponent
   ],
   declarations: [
     RatingComponent,
@@ -153,7 +155,8 @@ import { AddedToCartPopupComponent } from './added-to-cart-popup/added-to-cart-p
     ProductDialogComponent,
     BannersComponent,
     CategoryListComponent,
-    AddedToCartPopupComponent
+    AddedToCartPopupComponent,
+    GoogleMapComponent
   ],
   entryComponents: [
     ProductDialogComponent,

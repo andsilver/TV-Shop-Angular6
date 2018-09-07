@@ -1,0 +1,65 @@
+<div class="store">
+
+  <h1>{{data.name}}</h1>
+
+  <div fxLayout="space-between start" fxLayout.lt-md="column" fxLayoutGap="30px">
+
+    <div fxFlex="40%" fxFlex.lt-md="false">
+
+      <div class="address-field">{{data.address.field1}}</div>
+
+      <div class="address-field">{{data.address.field2}}</div>
+
+      <div class="phone-number">{{data.phone}}</div>
+
+      <a class="email">{{data.email}}</a>
+
+      <div class="header-title">OPENINGSTIJDEN</div>
+
+      <div *ngFor="let day of data.opening_hours">
+        <span class="weekday">{{day.weekday}}:</span>
+        <span>{{day.start}} - {{day.end}}</span>
+      </div>
+    </div>
+
+    <div fxFlex fxFlex.lt-md="false">
+      <app-google-map></app-google-map>
+    </div>
+
+  </div>
+
+  <div class="features">
+    <ul>
+      <li *ngFor="let feature of data.features" >
+        {{feature}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="video">
+    <iframe width='100%' height='435' src='https://www.youtube.com/embed/fH5c5JMppDs?enablejsapi=1&amp;origin=https:%2F%2Fwww.plattetv.nl' frameborder='0' allowfullscreen='' id='widget2'></iframe>
+  </div>
+
+  <div class="introduce">
+    <h3 class="header-title">EVEN VOORSTELLEN</h3>
+    <div fxLayout fxLayoutGap="10px">
+      <img *ngFor="let photo of data.introduce" [src]="photo">
+    </div>
+  </div>
+
+  <div class="atmosphere">
+    <h3 class="header-title">SFEERIMPRESSIE</h3>
+    <div fxLayout fxLayout="start stretch" fxLayoutGap="20px">
+      <div fxFlex="25" fxLayout="column" fxLayout="space-between start">
+        <div class="small-image" *ngFor="let image of data.atmosphere.small">
+          <img [src]="image" width="100%" height="auto">
+        </div>
+      </div>
+      <div fxFlex fxLayout="row wrap" fxLayoutAlign="space-between start">
+        <div class="big-image" fxFlex="48%" *ngFor="let image of data.atmosphere.big">
+          <img [src]="image" width="100%">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
