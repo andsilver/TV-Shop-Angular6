@@ -73,7 +73,7 @@ export class ControlsComponent implements OnChanges {
   }
 
   public addToCart(product: Product) {
-    this.appService.addToCart(product, this.count);
+    this.appService.addToCart(product, this.count, true);
   }
 
   public openProductDialog(event) {
