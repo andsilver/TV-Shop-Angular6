@@ -223,9 +223,7 @@
                                     </a>
                                 </div>
                                 <div fxLayout fxLayoutAlign="space-around start">
-                                    <div [innerHTML]="product.featureHighlights | htmlSanitize"></div>
                                     <div>
-                                        <p [innerHTML]="product.stockIndicator | htmlSanitize"></p>
                                         <p *ngIf="product.demoUnitText" [innerHTML]="product.demoUnitText | htmlSanitize"></p>
                                     </div>
                                 </div>
@@ -235,7 +233,8 @@
                                     {{product.name}}
                                 </a>
                                 <span class="category text-muted">{{ product.category_name }}</span>
-                                <p class="py-1 text-muted lh" [innerHTML]="product.shortdescription"></p>
+                                <p class="py-1 text-muted lh" [innerHTML]="product.featureHighlights | htmlSanitize"></p>
+                                <p class="py-1 text-muted lh" [innerHTML]="product.stockIndicator | htmlSanitize"></p>
                                 <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
                                     <div fxLayout="column" fxLayoutAlign="center start">
                                         <p class="old-price text-muted">
