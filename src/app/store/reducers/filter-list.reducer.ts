@@ -1,23 +1,20 @@
 import { Category } from '../../app.models';
-import * as CategoryActions from '../actions/category.action';
+import * as FilterActions from '../actions/filter-list.action';
 
 export interface State {
-    category: Category;
+    filterList: any;
 }
 
-export const initialState: State = { category: null };
+export const initialState: State = { filterList: [] };
 
-export function reducer ( state = initialState, action: CategoryActions.Actions ): State {
+export function reducer ( state = initialState, action: FilterActions.Actions ): State {
 
     switch (action.type) {
-        case CategoryActions.SAVE_CATEGORY: {
-            return { category: action.payload };
+        case FilterActions.SAVE_FILTER: {
+            return { filterList: action.payload };
         }
-        case CategoryActions.READ_CATEGORY: {
-            return state;
-        }
-        case CategoryActions.REMOVE_CATEGORY: {
-            return { category: null };
+        case FilterActions.REMOVE_FILTER: {
+            return { filterList: null };
         }
         default:
             return state;

@@ -174,7 +174,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     };
 
     this.selectedFilterLists.forEach(f => {
-      filt[f.id] = f.children;
+      filt.filterAttributes[f.id] = f.children;
     });
 
     this.store.dispatch(new ProductsActions.FilterProducts(filt));
