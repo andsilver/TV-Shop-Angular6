@@ -55,7 +55,7 @@
                                         <app-category-list [categories]="categories" [categoryParentId]="0" (change)="changeCategory($event)"></app-category-list>
                                     </span>
                                 </mat-menu> -->
-                                <input type="text" placeholder="Typ zoekopdracht..." name="search_key" [(ngModel)]="keyword" fxFlex>
+                                <input type="text" placeholder="Typ zoekopdracht..." name="search_key" [(ngModel)]="keyword" (keyup)="searchTerm.next($event.target.value)" fxFlex>
                                 <button mat-button (click)="search()" type="submit" class="search-btn mat-elevation-z0 text-muted">
                                     <mat-icon>search</mat-icon>
                                 </button>

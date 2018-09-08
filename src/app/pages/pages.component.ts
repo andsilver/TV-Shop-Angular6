@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject, Observable, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 import { Settings, AppSettings } from '../app.settings';
 import { AppService } from '../app.service';
@@ -24,12 +25,14 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('sidenav')
   sidenav: any;
 
-  public showBackToTop = false;
-  public categories: Category[];
-  public category: Category;
-  public sidenavMenuItems: Array<any> = [];
-  public keyword = '';
-  public settings: Settings;
+  showBackToTop = false;
+  categories: Category[];
+  category: Category;
+  sidenavMenuItems: Array<any> = [];
+  keyword = '';
+  searchTerm = new Subject();
+
+  settings: Settings;
   private subscriptions: Subscription[] = [];
 
   constructor(public appSettings: AppSettings,
@@ -50,6 +53,16 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
           new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
       })
     );
+
+    this.searchTerm
+      .pipe(
+        debounceTime(400),
+        distinctUntilChanged()
+      )
+      .subscribe(word => {
+        console.log(word);
+        this.search();
+      });
     // this.sidenavMenuItems = this.sidenavMenuService.getSidenavMenuItems();
   }
 
@@ -72,13 +85,13 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
-  public changeCategory(event) {
+  changeCategory(event) {
     if (window.innerWidth < 960) {
       this.stopClickPropagate(event);
     }
   }
 
-  public remove(product) {
+  remove(product) {
       const index: number = this.appService.Data.cartList.indexOf(product);
       if (index !== -1) {
           this.appService.Data.cartList.splice(index, 1);
@@ -86,27 +99,27 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
       }
   }
 
-  public search() {
+  search() {
     if (!this.categories.some(c => c.permalink === `${this.router.url}/`)) {
       this.router.navigate(['/products']);
     }
     this.store.dispatch(new KeywordActions.SetKeyword(this.keyword));
   }
-
-  public clear() {
+  
+  clear() {
     this.appService.Data.cartList.length = 0;
   }
 
-  public changeTheme(theme) {
+  changeTheme(theme) {
     this.settings.theme = theme;
   }
 
-  public stopClickPropagate(event: any) {
+  stopClickPropagate(event: any) {
     event.stopPropagation();
     event.preventDefault();
   }
 
-  public scrollToTop() {
+  scrollToTop() {
     const scrollDuration = 200;
     const scrollStep = -window.pageYOffset  / (scrollDuration / 20);
     const scrollInterval = setInterval(() => {
@@ -125,13 +138,13 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
     ($event.target.documentElement.scrollTop > 300) ? this.showBackToTop = true : this.showBackToTop = false;
   }
 
-  public closeSubMenus() {
+  closeSubMenus() {
     if (window.innerWidth < 960) {
       this.sidenavMenuService.closeAllSubMenus();
     }
   }
 
-  public getAttributeName(product, id, value) {
+  getAttributeName(product, id, value) {
     return product.attributes[id].values.find(v => v.products_options_values_id === value).products_options_values_name;
   }
 
