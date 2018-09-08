@@ -69,10 +69,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       count: 10
     },
     show_less: {
-￼
-￼
-￼
-
       text: 'Toon minder',
       icon: 'keyboard_arrow_up',
       count: 9999
