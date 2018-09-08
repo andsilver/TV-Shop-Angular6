@@ -27,7 +27,7 @@ export class RatingComponent {
   }
 
   calculateAvgValue(){
-    this.avg = this.ratingsValue / this.ratingsCount;
+    this.avg = this.ratingsValue;
     switch (true) {
       case this.avg > 0 && this.avg < 20 : {
           this.stars = ['star_half', 'star_border', 'star_border', 'star_border', 'star_border'];
@@ -60,15 +60,15 @@ export class RatingComponent {
       case this.avg == 80 : {
           this.stars = ['star', 'star', 'star', 'star', 'star_border'];
           break;
-      } 
+      }
       case this.avg > 80 && this.avg < 100 : {
           this.stars = ['star', 'star', 'star', 'star', 'star_half'];
           break;
-      } 
+      }
       case this.avg >= 100 : {
           this.stars = ['star', 'star', 'star', 'star', 'star'];
           break;
-      }   
+      }
       default: {
           this.stars = ['star_border', 'star_border', 'star_border', 'star_border', 'star_border'];
           break;
