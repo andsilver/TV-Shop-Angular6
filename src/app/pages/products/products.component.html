@@ -185,14 +185,50 @@
             <ng-container>
                 <div  *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }" fxFlex="100" class="col">
                     <mat-card class="product-item">
+                        <!-- <div fxLayout fxLayoutAlign="start center">
+                            <div fxFlex class="product-item-image">
+                                <div *ngIf="product.specialLabel" class="product-item-image-speciallabel">
+                                    {{product.specialLabel}}
+                                </div>
+                                <a [routerLink]="[product.permalink]" class="image-link">
+                                    <img [src]="product.images[0].medium" alt="">
+                                </a>
+                            </div>
+                            <div fxFlex>
+                                <a [routerLink]="[product.permalink]" class="title">{{product.name}}</a>
+                                <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'row'"></app-rating>
+                                <div class="product-item-feature-highlights" [innerHTML]="product.featureHighlights | htmlSanitize"></div>
+                            </div>
+                            <div fxFlex>
+                                <p class="old-price text-muted">
+                                    <span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency}}</span>
+                                </p>
+                                <p class="new-price">{{product.newPrice | customCurrency}}</p>
+                                <p [innerHTML]="product.stockIndicator | htmlSanitize"></p>
+                                <button class="control-normal" mat-button>NAAR PRODUCT <i class="fas fa-chevron-circle-right"></i></button>
+                                <p *ngIf="product."></p>
+                            </div>
+                        </div> -->
                         <div fxLayout="row wrap">
                             <div fxFlex="100" fxFlex.gt-xs="40" class="p-2">
                                 <mat-chip-list *ngIf="product.discount" class="list-view">
                                     <mat-chip color="warn" selected="true">{{product.discount}}% korting</mat-chip>
                                 </mat-chip-list>
-                                <a [routerLink]="[product.permalink]" class="image-link">
-                                    <img [src]="product.images[0].medium" alt="">
-                                </a>
+                                <div *ngIf="product.specialLabel" class="product-item-image-speciallabel">
+                                    {{product.specialLabel}}
+                                </div>
+                                <div>
+                                    <a [routerLink]="[product.permalink]" class="image-link">
+                                        <img [src]="product.images[0].medium" alt="">
+                                    </a>
+                                </div>
+                                <div fxLayout fxLayoutAlign="space-around start">
+                                    <div [innerHTML]="product.featureHighlights | htmlSanitize"></div>
+                                    <div>
+                                        <p [innerHTML]="product.stockIndicator | htmlSanitize"></p>
+                                        <p *ngIf="product.demoUnitText" [innerHTML]="product.demoUnitText | htmlSanitize"></p>
+                                    </div>
+                                </div>
                             </div>
                             <div fxFlex="100" fxFlex.gt-xs="60" class="p-2">
                                 <a [routerLink]="[product.permalink]" class="title">
