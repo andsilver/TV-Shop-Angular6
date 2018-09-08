@@ -70,7 +70,7 @@
         {{category.name}}
     </a>
     <mat-card id="subCategories" (mouseleave)="hideSubCategoryMenu($event, false)">
-        <app-category-list *ngIf="parentCategory" [categories]="allCategories" [categoryParentId]="parentCategory.id" (change)="onChangeCategory($event)"></app-category-list>
+        <app-category-list *ngIf="parentCategory" [categories]="allCategories" [categoryParentId]="parentCategory.id" [selectedCategory]="selectedCategoryId" (change)="onChangeCategory($event)"></app-category-list>
     </mat-card>
    <!--  <a mat-button [routerLink]="['/products', 'jewellery']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Jewellery</a>
     <a mat-button [routerLink]="['/products', 'electronics']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Electronics</a>
