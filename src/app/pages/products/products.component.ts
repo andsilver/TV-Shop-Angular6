@@ -69,6 +69,10 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       count: 10
     },
     show_less: {
+￼
+￼
+￼
+
       text: 'Toon minder',
       icon: 'keyboard_arrow_up',
       count: 9999
@@ -114,7 +118,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.store.select(state => state.products).subscribe( resp => this.setProducts(resp))
     ];
 
-    this.viewType = localStorage.getItem('viewType') ? localStorage.getItem('viewType') : 'grid';
+    this.viewType = localStorage.getItem('viewType') ? localStorage.getItem('viewType') : 'list';
   }
 
   ngAfterViewInit() {
