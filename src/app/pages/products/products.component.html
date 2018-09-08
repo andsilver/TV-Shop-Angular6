@@ -154,7 +154,7 @@
                             <mat-chip color="warn" selected="true">{{product.discount}}% korting</mat-chip>
                         </mat-chip-list>
                         <a [routerLink]="[product.permalink]" class="image-link">
-                            <img [src]="product.images[0].medium" alt="">
+                            <img [src]="product.images[0].big" alt="">
                         </a>
                         <h4 class="category text-muted">{{ product.category_name }}</h4>                                                                     
                         <a [routerLink]="[product.permalink]" class="title text-truncate">
@@ -191,7 +191,7 @@
                                     <mat-chip color="warn" selected="true">{{product.discount}}% korting</mat-chip>
                                 </mat-chip-list>
                                 <a [routerLink]="[product.permalink]" class="image-link">
-                                    <img [src]="product.images[0].medium" alt="">
+                                    <img [src]="product.images[0].big" alt="">
                                 </a>
                             </div>
                             <div fxFlex="100" fxFlex.gt-xs="60" class="p-2">
