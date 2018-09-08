@@ -42,7 +42,7 @@ export class ControlsComponent implements OnChanges {
       this.count++;
       const obj = {
         productId: this.product.id,
-        soldQuantity: this.count,
+        soldQuantity: 1,
         total: this.count * this.product.newPrice
       };
       this.changeQuantity(obj);
@@ -57,7 +57,7 @@ export class ControlsComponent implements OnChanges {
       this.count--;
       const obj = {
         productId: this.product.id,
-        soldQuantity: this.count,
+        soldQuantity: -1,
         total: this.count * this.product.newPrice
       };
       this.changeQuantity(obj);

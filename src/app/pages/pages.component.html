@@ -66,10 +66,10 @@
                             <div fxLayoutAlign="center center">
                                 <button mat-button [matMenuTriggerFor]="cartMenu" #cartMenuTrigger="matMenuTrigger" class="flex-row-button">
                                     <mat-icon class="mat-icon-lg">shopping_cart</mat-icon>
-                                    <span *ngIf="appService.Data.cartList.length > 0" class="cart-items-count">{{appService.Data.cartList.length}}</span>
+                                    <span *ngIf="appService.Data.cartList.length > 0" class="cart-items-count">{{appService.Data.totalQuantity}}</span>
                                     <div fxLayout="column" fxLayoutAlign="center center" fxShow="false" fxShow.gt-xs class="top-cart">
                                         <span>Winkelwagen</span>
-                                        <span *ngIf="appService.Data.cartList.length > 0">{{appService.Data.cartList.length}} product<span *ngIf="appService.Data.cartList.length > 1">en</span> -
+                                        <span *ngIf="appService.Data.cartList.length > 0">{{appService.Data.totalQuantity}} product<span *ngIf="appService.Data.cartList.length > 1">en</span> -
                                             <span>{{appService.Data.totalPrice | customCurrency}}</span>
                                         </span>
                                     </div>
@@ -78,7 +78,7 @@
                                 <mat-menu #cartMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="top-menu-dropdown cart-dropdown">
                                     <span (mouseleave)="cartMenuTrigger.closeMenu()" class="d-block">
                                         <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted">
-                                            <b><span>{{appService.Data.cartList.length}} PRODUCT<span *ngIf="appService.Data.cartList.length > 1">EN</span></span></b>
+                                            <b><span>{{appService.Data.totalQuantity}} PRODUCT<span *ngIf="appService.Data.cartList.length > 1">EN</span></span></b>
                                             <b><a [routerLink]="['/cart']" class="text-muted">BEKIJK INHOUD WINKELWAGEN</a></b>
                                         </div>
                                         <div class="divider mt-1"></div>

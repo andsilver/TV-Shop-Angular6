@@ -13,7 +13,8 @@ export class Data {
                 public compareList: Product[],
                 public wishList: Product[],
                 public cartList: Product[],
-                public totalPrice: number) { }
+                public totalPrice: number,
+                public totalQuantity: number) { }
 }
 
 @Injectable()
@@ -23,7 +24,8 @@ export class AppService {
         [], // compareList
         [],  // wishList
         [],  // cartList
-        null // totalPrice
+        null, // totalPrice
+        0
     );
     public filter: any = {};
     public url = 'assets/data/';
@@ -193,8 +195,10 @@ export class AppService {
 
     public calculateTotalPrice() {
         this.Data.totalPrice = 0;
+        this.Data.totalQuantity = 0;
         for ( const c of this.Data.cartList) {
             this.Data.totalPrice += Number(c.newPrice) * c.quantity;
+            this.Data.totalQuantity += c.quantity;
         }
         // console.log(this.Data.totalPrice);
     }
