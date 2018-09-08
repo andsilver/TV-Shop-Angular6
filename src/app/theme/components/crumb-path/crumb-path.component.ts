@@ -41,10 +41,14 @@ export class CrumbPathComponent implements OnInit, OnDestroy {
           this.title.setTitle(this.appSettings.settings.name);
         }
         this.breadcrumbs = paths.map(path => {
+          let urlPath;
+          if (path.static) {
+            urlPath = path.permalink;
+          }
           const s = this.categories.find( c => c.id === path.id );
           return {
             name: path.name,
-            url: s ? s.permalink : ''
+            url: urlPath ? urlPath : s ? s.permalink : ''
           };
         });
         console.log(this.breadcrumbs);
