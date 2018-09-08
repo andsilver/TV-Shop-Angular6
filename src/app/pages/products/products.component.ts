@@ -114,6 +114,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.store.select(state => state.products).subscribe( resp => this.setProducts(resp))
     ];
 
+    this.viewType = localStorage.getItem('viewType') ? localStorage.getItem('viewType') : 'grid';
   }
 
   ngAfterViewInit() {
@@ -194,6 +195,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   changeViewType(viewType, viewCol) {
     this.viewType = viewType;
     this.viewCol = viewCol;
+    localStorage.setItem('viewType', viewType);
   }
 
   openProductDialog(product) {
