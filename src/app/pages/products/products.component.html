@@ -79,6 +79,7 @@
                     <div fxLayout="column" fxLayoutGap="10px" class="filter-brands">
                         <div *ngFor="let value of filt.values">
                             <mat-checkbox
+                                [disabled]="value.result_counter == 0"
                                 [checked]="value.value_checked"
                                 (change)="selectFilter(filt.option_id, value.value_id)">
                                 {{value.value_name}} ({{value.result_counter}})
