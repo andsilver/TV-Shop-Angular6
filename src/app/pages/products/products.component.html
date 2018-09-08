@@ -69,6 +69,24 @@
                 </div>
             </mat-expansion-panel>
 
+            <ng-container *ngIf="filterLists.length">
+                <mat-expansion-panel expanded *ngFor="let filt of filterLists">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <h4>{{filt.option_name}}</h4>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div fxLayout="column" fxLayoutGap="10px" class="filter-brands">
+                        <div *ngFor="let value of filt.values">
+                            <mat-checkbox
+                                (change)="selectFilter(filt.option_id, value.value_id)">
+                                {{value.value_name}} ({{value.result_counter}})
+                            </mat-checkbox>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </ng-container>
+
             <!-- <mat-expansion-panel expanded>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -134,7 +152,7 @@
                             <mat-chip color="warn" selected="true">{{product.discount}}% korting</mat-chip>
                         </mat-chip-list>
                         <a [routerLink]="[product.permalink]" class="image-link">
-                            <img [src]="product.images[0].medium" alt="" (load)="finishedLoading()">
+                            <img [src]="product.images[0].medium" alt="">
                         </a>
                         <h4 class="category text-muted">{{ product.category_name }}</h4>                                                                     
                         <a [routerLink]="[product.permalink]" class="title text-truncate">

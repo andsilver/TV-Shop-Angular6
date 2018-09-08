@@ -75,6 +75,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   };
 
+  filterLists = [];
+  selectedFilterLists = [];
+
   showMoreBrandsStatus;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -135,6 +138,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     this.products = res.products;
+    this.filterLists = res['filterLists'];
     this.totalProducts = res.total;
     window.scrollTo(0, 0);
     if (!this.products.length) {
@@ -156,7 +160,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getProducts() {
     this.emptyMessage = '';
-    this.store.dispatch(new ProductsActions.FilterProducts({
+    let filt = {
       keyword: this.keyword,
       categoryId: this.categoryId,
       fromPrice: this.priceFrom,
@@ -167,7 +171,13 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       sort: this.sort,
       limit: this.count,
       page: this.page
-    }));
+    };
+
+    this.selectedFilterLists.forEach(f => {
+      filt[f.id] = f.children;
+    });
+
+    this.store.dispatch(new ProductsActions.FilterProducts(filt));
   }
 
   changeCount(count) {
@@ -216,6 +226,28 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.filterChanged();
   }
 
+  selectFilter(optionId, valueId) {
+    const option = this.selectedFilterLists.find(filt => filt.id === optionId);
+    if (option) {
+      const ind = option.children.indexOf(valueId);
+      if ( ind > -1 ) {
+        option.children.splice(ind, 1);
+        if (option.children.length === 0){
+          this.selectedFilterLists.splice(this.selectedFilterLists.indexOf(option), 1);
+        }
+      } else {
+        option.children.push(valueId);
+      }
+    } else {
+      this.selectedFilterLists.push({
+        id: optionId,
+        children: [ valueId ]
+      })
+    }
+    console.log(this.selectedFilterLists);
+    this.filterChanged();
+  }
+
   changeShowMoreBrands() {
     this.showMoreBrandsStatus
       = (this.showMoreBrandsStatus === this.showMoreBrandsType.show_more)
@@ -238,8 +270,24 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.topParentCategoryId = parent.id;
   }
 
-  finishedLoading() {
-    // this.viewLoaded = true;
-  }
+  // getCheckStatus(optionId, valueId) {
+  //   const option = this.selectedFilterLists.find(filt => filt.id === optionId);
+  //   if (option) {
+  //     const ind = option.children.indexOf(valueId);
+  //     if ( ind > -1 ) {
+  //       if (option.children.length === 0){
+  //         this.selectedFilterLists.splice(this.selectedFilterLists.indexOf(option), 1);
+  //       }
+  //     } else {
+  //       option.children.push(valueId);
+  //     }
+  //   } else {
+  //     this.selectedFilterLists.push({
+  //       id: optionId,
+  //       children: [ valueId ]
+  //     })
+  //   }
+  //   // this.viewLoaded = true;
+  // }
 
 }
