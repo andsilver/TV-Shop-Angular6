@@ -184,9 +184,38 @@
             </div>
             <ng-container>
                 <div  *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }" fxFlex="100" class="col">
-                    <mat-card class="product-item">
-                        <div fxLayout="row wrap">
+                    <mat-card class="product-item product-item-list">
+                        <div fxLayout fxLayoutAlign="start start">
+                            <div fxFlex="30" class="product-item-image">
+                                <div *ngIf="product.specialLabel" class="product-item-image-speciallabel">
+                                    {{product.specialLabel}}
+                                </div>
+                                <a [routerLink]="[product.permalink]" class="image-link" style="height: unset">
+                                    <img [src]="product.images[0].small" alt="">
+                                </a>
+                            </div>
+                            <div fxFlex="30">
+                                <a [routerLink]="[product.permalink]" class="title">{{product.name}}</a>
+                                <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'row'"></app-rating>
+                                <div class="product-item-feature-highlights" [innerHTML]="product.featureHighlights | htmlSanitize"></div>
+                            </div>
+                            <div fxFlex>
+                                <p class="old-price text-muted" style="text-align: right">
+                                    <span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency:2:3:false}}</span>
+                                </p>
+                                <p class="new-price list-new-price" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</p>
+                                <p [innerHTML]="product.stockIndicator | htmlSanitize"></p>
+                                <button class="control-normal" mat-button>
+                                    NAAR PRODUCT <i class="fas fa-chevron-circle-right"></i>
+                                </button>
+                                <p *ngIf="product.demoUnitText" [innerHTML]="product.demoUnitText | htmlSanitize"></p>
+                            </div>
+                        </div>
+                        <!-- <div fxLayout="row wrap">
                             <div fxFlex="100" fxFlex.gt-xs="40" class="p-2">
+                                <mat-chip-list *ngIf="product.discount" class="list-view">
+                                    <mat-chip color="warn" selected="true">{{product.discount}}% korting</mat-chip>
+                                </mat-chip-list>
                                 <div *ngIf="product.specialLabel" class="product-item-image-speciallabel">
                                     {{product.specialLabel}}
                                 </div>
@@ -222,7 +251,7 @@
                                     <app-controls [product]="product" (onOpenProductDialog)="openProductDialog(product)"></app-controls>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </mat-card>
                 </div>
             </ng-container>

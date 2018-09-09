@@ -273,24 +273,10 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.topParentCategoryId = parent.id;
   }
 
-  // getCheckStatus(optionId, valueId) {
-  //   const option = this.selectedFilterLists.find(filt => filt.id === optionId);
-  //   if (option) {
-  //     const ind = option.children.indexOf(valueId);
-  //     if ( ind > -1 ) {
-  //       if (option.children.length === 0){
-  //         this.selectedFilterLists.splice(this.selectedFilterLists.indexOf(option), 1);
-  //       }
-  //     } else {
-  //       option.children.push(valueId);
-  //     }
-  //   } else {
-  //     this.selectedFilterLists.push({
-  //       id: optionId,
-  //       children: [ valueId ]
-  //     })
-  //   }
-  //   // this.viewLoaded = true;
-  // }
+  checkStockIndicator() {
+    if (this.product)
+      return this.product.stockIndicator.indexOf('Vraag naar levertijd') > -1;
+    return false;
+  }
 
 }

@@ -75,8 +75,8 @@
         position: relative;
         &-speciallabel {
             position: absolute;
-            top: 10px;
-            right: 0;
+            top: 4px;
+            left: 21px;
             background-color: #2da7c2;
             color: #fff;
             padding: 5px 10px;
@@ -89,7 +89,7 @@
     }
 }
 
-.mat-button {
+.product-item-list .mat-button {
     width: 100%;
     font-family: "Poppins";
     text-align: left;
@@ -102,5 +102,23 @@
     &.control-normal {
         background-color: #ebebe3;
         color: #212226;
+        position: relative;
+        .fas {
+            position: absolute;
+            right: 1rem;
+            top: 0;
+            line-height: 2.25rem;
+        }
     }
+}
+
+.list-new-price {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: right;
+}
+
+.price-only-new {
+    color: #000 !important;
 }

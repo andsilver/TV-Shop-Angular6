@@ -8,7 +8,7 @@ export class CustomCurrencyPipe implements PipeTransform {
 
   constructor(private cc: CurrencyService) {}
 
-  transform(value: number, decimalLength: number = 2, chunkLength: number = 3): string {
+  transform(value: number, decimalLength: number = 2, chunkLength: number = 3, currencySignOn: boolean = true): string {
 
     const v = value / 100 * 100;
     const currencySign = this.cc.currency.unit;
@@ -18,7 +18,7 @@ export class CustomCurrencyPipe implements PipeTransform {
     const num = v.toFixed(Math.max(0, decimalLength));
     const fn = (decimalDelimiter ? num.replace('.', decimalDelimiter) : num).replace(new RegExp(result, 'g'), '$&' + chunkDelimiter);
 
-    let res = currencySign + fn;
+    let res = currencySignOn ? currencySign + fn : fn;
     if ( Number.isInteger(v) && chunkLength !== 999 ) {
       res = res.substring(0, res.length - 2);
       res += '-';
