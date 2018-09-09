@@ -25,7 +25,7 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
   ngAfterViewInit () {
     this.config = {
       observer: true,
-      slidesPerView: 6,
+      slidesPerView: 4,
       spaceBetween: 16,
       keyboard: true,
       navigation: true,
@@ -42,13 +42,13 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
           slidesPerView: 2,
         },
         960: {
-          slidesPerView: 3,
+          slidesPerView: 2,
         },
         1280: {
           slidesPerView: 4,
         },
         1500: {
-          slidesPerView: 5,
+          slidesPerView: 4,
         }
       }
     };

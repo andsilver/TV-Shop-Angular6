@@ -1,4 +1,4 @@
-<mat-sidenav-container> 
+<mat-sidenav-container class="wrapper theme-container" ngClass="px-0" ngClass.gt-md="px-3">
 
     <mat-sidenav [opened]="false" mode="over" #sidenav class="sidenav mat-elevation-z6">
         <button mat-icon-button color="warn" class="close" (click)="sidenav.close()">
@@ -28,8 +28,15 @@
             <span fxShow="false" fxShow.gt-sm>Welcome to our market!</span>
             <app-top-menu></app-top-menu>
         </mat-toolbar-row> -->
-        <mat-toolbar-row fxLayoutAlign="space-between center" class="logo-toolbar theme-container">
+        <mat-toolbar-row fxLayoutAlign="space-between center" class="logo-toolbar">
+            <div>
             <a class="logo" routerLink="/" (click)="closeSubMenus()"><img src="assets/images/others/logo_plattetv.png" width="226"></a>
+            <nav class="mobilenav fxShow fxHide.gt-sm">
+                <a href="/extrainfo/advies-contact-2316.html"><img src="/var/templates/images/icon_chat.png"></a>
+                <a href="/extrainfo/winkels-amsterdam-arnhem-breda-doesburg-doetinchem-eindhoven-nijmegen-en-utrecht-885.html"><img src="/var/templates/images/icon_locator.png"></a>
+                <a href="/winkelwagen"><img src="/var/templates/images/icon_cart.png"></a>
+            </nav>
+            </div>
             <span fxHide="false" fxHide.gt-sm>
                 <button mat-button (click)="sidenav.toggle()" class="sidenav-toggle">
                     <mat-icon>menu</mat-icon>

@@ -16,7 +16,7 @@ export class BrandsCarouselComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.config = {
-      slidesPerView: 7,
+      slidesPerView: 4,
       spaceBetween: 16,
       keyboard: true,
       navigation: true,
@@ -39,16 +39,16 @@ export class BrandsCarouselComponent implements AfterViewInit {
           slidesPerView: 2
         },
         600: {
-          slidesPerView: 3,
+          slidesPerView: 2,
         },
         960: {
           slidesPerView: 4,
         },
         1280: {
-          slidesPerView: 5,
+          slidesPerView: 4,
         },
         1500: {
-          slidesPerView: 6,
+          slidesPerView: 4,
         }
       }
     };
