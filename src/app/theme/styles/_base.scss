@@ -305,6 +305,7 @@ a:focus {
         margin-top: 2rem;
     }
     .mat-card{
+        padding: 1.5rem;
 
         .content{
             margin-left: 10px;
@@ -314,6 +315,23 @@ a:focus {
             span{
                 font-size: 13px;
             }
+        }
+        .mat-card-title {
+            border-bottom: 1px solid #212226;
+            margin-bottom: .75rem;
+
+            h4 {
+                font-weight: 700;
+                font-size: .875rem;
+                line-height: 1.125rem;
+                font-family: "Poppins";
+                color: #212226;
+                text-transform: uppercase;
+                margin-bottom: 0;
+                padding-bottom: .5rem;
+            }
+        }
+        .mat-card-content {
         }
     }
 }
