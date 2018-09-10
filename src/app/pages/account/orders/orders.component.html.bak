@@ -17,6 +17,7 @@
           <button mat-mini-fab color="primary" [matTooltip]="translatedTooltipMessage.innerHTML">
               <mat-icon>remove_red_eye</mat-icon>
           </button>
+
 <span class="cdk-visually-hidden" #translatedTooltipMessage1 i18n="@@myTranslation">View invoice</span>
           <button *ngIf="order.invoice" mat-mini-fab color="warn" [matTooltip]="translatedTooltipMessage1.innerHTML" class="btn-invoice">
               <mat-icon>receipt</mat-icon>
