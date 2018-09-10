@@ -109,6 +109,7 @@
                         <button mat-icon-button><mat-icon>share</mat-icon></button>
                     </div> -->
                 </div>
+
             </div>
             <div class="mt-2">
 
@@ -151,6 +152,7 @@
                 </div>
 
             </div>
+
     </div>
     <div fxFlex="100" fxFlex.gt-md="20" fxHide fxShow.gt-md>
 

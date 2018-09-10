@@ -37,7 +37,7 @@
       <div class="mat-cell">{{product.newPrice * product.quantity | customCurrency}}</div>
       <div class="mat-cell text-center">
         <div class="p-1">
-<span class="cdk-visually-hidden" #translatedTooltipMessage i18n="@@myTranslation">Clear</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage >Clear</span>
           <button mat-mini-fab color="warn" (click)="remove(product)" [matTooltip]="translatedTooltipMessage.innerHTML">
               <mat-icon>close</mat-icon>
           </button>

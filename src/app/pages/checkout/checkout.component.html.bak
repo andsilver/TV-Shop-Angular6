@@ -71,7 +71,7 @@
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-<span class="cdk-visually-hidden" #translatedTooltipMessage i18n="@@myTranslation">Next</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage >Next</span>
         <button mat-mini-fab matStepperNext color="primary" [matTooltip]="translatedTooltipMessage.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
       </div>
     </form>
@@ -82,8 +82,8 @@
         <mat-radio-button *ngFor="let method of deliveryMethods" color="primary" [value]="method" class="mt-1"><b>{{method.name}}</b> {{method.desc}}</mat-radio-button>
       </mat-radio-group> 
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-<span class="cdk-visually-hidden" #translatedTooltipMessage2 i18n="@@myTranslation">Back</span>
-<span class="cdk-visually-hidden" #translatedTooltipMessage3 i18n="@@myTranslation">Next</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage2 >Back</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage3 >Next</span>
         <button mat-mini-fab matStepperPrevious color="primary" [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
         <button mat-mini-fab matStepperNext color="primary" [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
       </div>

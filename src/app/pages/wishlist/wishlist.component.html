@@ -34,11 +34,11 @@
       </div>
       <div class="mat-cell">
         <div class="p-1">   
-       <span class="cdk-visually-hidden" #translatedTooltipMessage i18n="@@myTranslation">Add to cart</span>
+       <span class="cdk-visually-hidden" #translatedTooltipMessage >Add to cart</span>
           <button mat-mini-fab color="primary" (click)="addToCart(product)" [matTooltip]="translatedTooltipMessage.innerHTML">
               <mat-icon>add_shopping_cart</mat-icon>
           </button>
-<span class="cdk-visually-hidden" #translatedTooltipMessage1 i18n="@@myTranslation">Clear</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage1 >Clear</span>
           <button mat-mini-fab color="warn" (click)="remove(product)" [matTooltip]="translatedTooltipMessage1.innerHTML" class="remove">
               <mat-icon>close</mat-icon>
           </button>

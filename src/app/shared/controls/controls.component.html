@@ -1,17 +1,17 @@
 <div fxLayout="row" fxLayout.xs="column" [fxLayoutAlign]="align" class="text-muted">
     <div *ngIf="product?.availibilityCount > 0 && (type=='all' || type=='wish')">
         <span *ngIf="type!='wish'" class="fw-500">Quantity:</span>
-<span class="cdk-visually-hidden" #translatedTooltipMessage i18n="@@myTranslation">Remove</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage >Remove</span>
         <button mat-icon-button [matTooltip]="translatedTooltipMessage.innerHTML" (click)="decrement()"><mat-icon>remove</mat-icon></button>
         <span> {{count}} </span>
-<span class="cdk-visually-hidden" #translatedTooltipMessage1 i18n="@@myTranslation">Add</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage1 >Add</span>
         <button mat-icon-button [matTooltip]="translatedTooltipMessage1.innerHTML" (click)="increment()"><mat-icon>add</mat-icon></button>
     </div>
     <div *ngIf="type!='wish'">
-<span class="cdk-visually-hidden" #translatedTooltipMessage2 i18n="@@myTranslation">Add to wishlist</span>
-<span class="cdk-visually-hidden" #translatedTooltipMessage3 i18n="@@myTranslation">Add to cart</span>
-<span class="cdk-visually-hidden" #translatedTooltipMessage4 i18n="@@myTranslation">Add to compare</span>
-<span class="cdk-visually-hidden" #translatedTooltipMessage5 i18n="@@myTranslation">Quick view</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage2 >Add to wishlist</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage3 >Add to cart</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage4 >Add to compare</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage5 >Quick view</span>
 
         <button mat-icon-button [matTooltip]="translatedTooltipMessage2.innerHTML" (click)="addToWishList(product)"><mat-icon>favorite</mat-icon></button>
         <button mat-icon-button [matTooltip]="translatedTooltipMessage3.innerHTML" *ngIf="product?.availibilityCount > 0" (click)="addToCart(product)"><mat-icon>shopping_cart</mat-icon></button>

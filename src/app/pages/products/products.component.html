@@ -20,8 +20,8 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted">
-                    <span>Van: <b>{{priceFrom | customCurrency:0:999}}</b></span>
-                    <span>Tot: <b>{{priceTo | customCurrency:0:999}}</b></span>
+                    <span>From: <b>{{priceFrom | customCurrency:0:999}}</b></span>
+                    <span>To: <b>{{priceTo | customCurrency:0:999}}</b></span>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="filter-price">
                     <mat-slider color="primary" max="10000" min="1" thumb-label="true" [(ngModel)]="priceFrom" (change)="filterChanged()"></mat-slider>
@@ -122,7 +122,7 @@
             </div>
             <div fxLayout="row" fxLayoutAlign="center center">
                 <a mat-button [matMenuTriggerFor]="countsMenu" #countsMenuTrigger="matMenuTrigger">
-                    Aantal resultaten: {{count}}<mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
+                    Show {{count}}<mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
                 </a>
                 <mat-menu #countsMenu="matMenu" xPosition="before" class="app-dropdown">
                     <span (mouseleave)="countsMenuTrigger.closeMenu()">
