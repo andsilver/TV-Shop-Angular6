@@ -27,19 +27,19 @@ export class HomeService implements Resolve<any> {
 
         forkJoin([
           this.appService.getBanners(),
-          this.appService.getBrandsByCategoryId(0),
-          this.appService.getProducts('featured'),
+          this.appService.getBrandsByCategoryId(0)
+          /*this.appService.getProducts('featured'),
           this.appService.getProducts('sale'),
           this.appService.getProducts('top_rated'),
-          this.appService.getProducts('new_arrivals')
+          this.appService.getProducts('new_arrivals')*/
         ])
         .subscribe(res => {
           this.banners = res[0];
           this.brands = res[1].manufacturer;
-          this.featuredProducts = res[2].products;
+          /*this.featuredProducts = res[2].products;
           this.onSaleProducts = res[3].products;
           this.topRatedProducts = res[4].products;
-          this.newArrivalsProducts = res[5].products;
+          this.newArrivalsProducts = res[5].products;*/
           resolve(res);
         }, reject);
     });
