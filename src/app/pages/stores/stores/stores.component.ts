@@ -22,7 +22,8 @@ export class StoresComponent implements OnInit {
       {
         name: 'Stores',
         permalink: `/stores`,
-        static: true
+        static: true,
+        default_title: true
       }
     ]));
   }

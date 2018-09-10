@@ -8,6 +8,7 @@ import { AppService } from '../../../app.service';
 import { Product } from '../../../app.models';
 import { emailValidator } from '../../../theme/utils/app-validators';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
+import { BestPriceDialogComponent } from '../best-price-dialog/best-price-dialog.component';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -139,5 +140,13 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
 
   attributeSelected(index, event) {
     this.product.attributes[index]['selected'] = event.value;
+  }
+
+  requestBestPrice() {
+    const dialogRef = this.dialog.open(BestPriceDialogComponent);
+
+    dialogRef.afterClosed().subscribe(res => {
+
+    });
   }
 }

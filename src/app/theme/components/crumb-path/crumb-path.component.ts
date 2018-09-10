@@ -34,12 +34,14 @@ export class CrumbPathComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription =
       this.store.select(state => state.crumbPath).subscribe(data => {
+
         const paths = data.crumbPath ? data.crumbPath : [];
-        if (paths.length) {
+        if (paths.length && !paths[paths.length - 1].default_title) {
           this.title.setTitle(paths[paths.length - 1].name);
         } else {
           this.title.setTitle(this.appSettings.settings.name);
         }
+
         this.breadcrumbs = paths.map(path => {
           let urlPath;
           if (path.static) {
@@ -51,7 +53,7 @@ export class CrumbPathComponent implements OnInit, OnDestroy {
             url: urlPath ? urlPath : s ? s.permalink : ''
           };
         });
-        console.log(this.breadcrumbs);
+
       });
   }
 

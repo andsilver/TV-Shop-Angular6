@@ -1,0 +1,56 @@
+@import "../../../theme/styles/variables";
+
+.request-best-price{
+
+    width: 596px;
+
+    @media #{$medium-only} {
+        width: 400px;
+    }
+
+    @media #{$small-and-down} {
+        width: 300px;
+    }
+
+    .top-image img{
+        width: 100%;
+    }
+
+    .introduction{
+        line-height: 27px;
+        margin-top: 17px;
+    }
+
+    .form-title {
+        a {
+            color: #006eda;
+            text-decoration: underline;
+        }
+
+        margin-bottom: 40px;
+    }
+
+    .mat-button {
+        width: 100%;
+        font-family: "Poppins";
+        text-align: left;
+        padding: 0 1rem;
+    
+        &+.mat-button {
+            margin-top:.5rem;
+        }
+        
+        &.control-normal {
+            width: 200px;
+            background-color: #FDC642;
+            color: #212226;
+            position: relative;
+            .fas {
+                position: absolute;
+                right: 1rem;
+                top: 0;
+                line-height: 2.25rem;
+            }
+        }
+    }
+}

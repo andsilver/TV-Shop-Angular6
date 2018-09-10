@@ -14,6 +14,7 @@ import { ProductZoomComponent } from './product/product-zoom/product-zoom.compon
 import { LayoutComponent } from './layout/layout.component';
 
 import { NotMatchComponent } from './not-match/not-match.component';
+import { BestPriceDialogComponent } from './best-price-dialog/best-price-dialog.component';
 
 export const routes = [
   {
@@ -37,10 +38,12 @@ export const routes = [
     ProductComponent,
     ProductZoomComponent,
     LayoutComponent,
-    NotMatchComponent
+    NotMatchComponent,
+    BestPriceDialogComponent
   ],
   entryComponents: [
-    ProductZoomComponent
+    ProductZoomComponent,
+    BestPriceDialogComponent
   ]
 })
 export class ProductsModule { }

@@ -21,20 +21,24 @@ export class InformationComponent implements OnInit, OnDestroy {
   passwordForm: FormGroup;
 
 
-  constructor(public formBuilder: FormBuilder, public snackBar: MatSnackBar, private route: ActivatedRoute, private account: AccountService) { }
+  constructor(
+    public formBuilder: FormBuilder,
+    public snackBar: MatSnackBar,
+    private route: ActivatedRoute,
+    private account: AccountService) { }
 
   ngOnInit() {
 
     this.infoForm = this.formBuilder.group({
         'firstName': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
         'lastName': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-        'email': ['', Validators.compose([Validators.required, emailValidator])]})
+        'email': ['', Validators.compose([Validators.required, emailValidator])]});
 
     this.passwordForm = this.formBuilder.group({
       'currentPassword': ['', Validators.required],
       'newPassword': ['', Validators.required],
       'confirmNewPassword': ['', Validators.required]
-    },{validator: matchingPasswords('newPassword', 'confirmNewPassword')});
+    }, {validator: matchingPasswords('newPassword', 'confirmNewPassword')});
 
     this.userUpdated = this.account.userUpdated.subscribe( user => this.setValuesOnForms( user ));
   }
@@ -43,13 +47,14 @@ export class InformationComponent implements OnInit, OnDestroy {
     this.userUpdated.unsubscribe();
   }
 
-  public onInfoFormSubmit(values:Object):void {
+  public onInfoFormSubmit(values: Object): void {
     if (this.infoForm.valid) {
-      this.snackBar.open('Your account information updated successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+      this.snackBar.open('Your account information updated successfully!',
+      '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
     }
   }
 
-  public onPasswordFormSubmit(values:Object):void {
+  public onPasswordFormSubmit(values: Object): void {
     if (this.passwordForm.valid) {
       this.snackBar.open('Your password changed successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
     }
@@ -61,6 +66,6 @@ export class InformationComponent implements OnInit, OnDestroy {
       'firstName': this.userInfo.first_name,
       'lastName': this.userInfo.last_name,
       'email': this.userInfo.email
-    })
+    });
   }
 }

@@ -31,6 +31,9 @@ export class Product {
   expertReview: any;
   permalink: string;
   crumbPath: any;
+  specialLabel: string;
+  featureHighlights: string;
+  stockIndicator: string;
 }
 
 export interface Brand {
