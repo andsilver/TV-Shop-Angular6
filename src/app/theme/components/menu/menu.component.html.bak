@@ -50,7 +50,7 @@
             <div fxFlex="20" class="p-1"> 
                 <mat-card class="mega-menu-widget p-0">
                     <mat-chip-list>
-                        <mat-chip color="warn" selected="true">50% korting</mat-chip>
+                        <mat-chip color="warn" selected="true">50% OFF</mat-chip>
                     </mat-chip-list>
                     <button mat-raised-button color="primary">Winkel nu</button>
                     <img src="assets/images/others/mega_menu_img.png" alt="" class="w-100"> 
@@ -79,7 +79,7 @@
 
     <!-- <a mat-button [matMenuTriggerFor]="animals">Pages<mat-icon class="caret">arrow_drop_down</mat-icon></a> -->
     <mat-menu #animals="matMenu" [overlapTrigger]="false" class="app-dropdown">
-        <a mat-menu-item routerLink="/products" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Alle producten</a>
+        <a mat-menu-item routerLink="/products" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">All products</a>
         <a mat-menu-item [routerLink]="['/products', '2', 'PC All-in-One']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Product detail</a> 
         <a mat-menu-item routerLink="/contact" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Contact</a>  
         <a mat-menu-item routerLink="/sign-in">Sign in</a>
