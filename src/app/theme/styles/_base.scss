@@ -95,6 +95,29 @@ a:focus {
     border-top: 1px solid rgba(204, 204, 204, 0.6);
 }
 
+#brand {
+    .mobilenav {
+
+        a {
+            display: block;
+
+            &+a {
+                margin-left: 1.5rem;
+            }
+            img {
+                max-height: 40px;
+            }
+        }
+
+    }
+}
+@media (max-width:959px) {
+    #brand,
+    .main-header-sub {
+        width: 100%;
+    }
+}
+
 .mat-icon-button .mat-icon.mat-icon-xs,
 .mat-icon.mat-icon-xs{
     font-size: 14px;
@@ -175,7 +198,7 @@ a:focus {
                 color: #fbc02d;
             }
         }
-    }    
+    }
 }
 .categories-dropdown.mat-menu-panel{
     max-height: 350px;
@@ -287,36 +310,50 @@ a:focus {
     padding-bottom: 3rem!important;
 }
 
+.py-0 {
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+}
 .py-1{
-    padding: .25rem 0!important;
+    padding-top: .25rem!important;
+    padding-bottom: .25rem!important;
 }
 .py-2{
-    padding: .5rem 0!important;
+    padding-top: .5rem!important;
+    padding-bottom: .5rem!important;
 }
 .py-3{
-    padding: 1rem 0!important;
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
 }
 .py-4{
-    padding: 1.5rem 0!important;
+    padding-top: 1.5rem!important;
+    padding-bottom: 1.5rem!important;
 }
 .py-5{
-    padding: 3rem 0!important;
+    padding-top: 3rem!important;
+    padding-bottom: 3rem!important;
 }
 
 .px-1{
-    padding: 0 .25rem!important;
+    padding-left: .25rem!important;
+    padding-right: .25rem!important;
 }
 .px-2{
-    padding: 0 .5rem!important;
+    padding-left: .5rem!important;
+    padding-right: .5rem!important;
 }
 .px-3{
-    padding: 0 1rem!important;
+    padding-left: 1rem!important;
+    padding-right: 1rem!important;
 }
 .px-4{
-    padding: 0 1.5rem!important;
+    padding-left: 1.5rem!important;
+    padding-right: 1.5rem!important;
 }
 .px-5{
-    padding: 0 3rem!important;
+    padding-left: 3rem!important;
+    padding-right: 3rem!important;
 }
 
 .m-0{
@@ -600,7 +637,7 @@ a:focus {
     .top-menu{
         margin-right: -16px;
         text-transform: uppercase;
-        a{           
+        a{
             text-decoration: none;
             font-weight: 400;
             font-size: 13px;
@@ -608,13 +645,13 @@ a:focus {
             padding: 0 10px;
             min-width: 70px;
             border-radius: 0;
-        } 
+        }
         a.mobile-menu-icon{
             min-width: 36px;
         }
         .mat-icon.more{
             height: 28px;
-        }       
+        }
     }
 }
 .flag-menu-title{
@@ -634,11 +671,11 @@ a:focus {
         padding: 0;
         .mat-list-item{
             .mat-list-item-content{
-                padding: 0; 
+                padding: 0;
                 img{
                     width: 70px;
                     margin-left: 10px;
-                }          
+                }
             }
             .mat-list-text>*{
                 font-size: 14px;
@@ -649,7 +686,7 @@ a:focus {
                 font-weight: 400;
             }
         }
-    } 
+    }
     .cart-dropdown-footer{
         font-size: 14px;
 
@@ -662,11 +699,11 @@ a:focus {
     }
 }
 
-.logo-toolbar.mat-toolbar-row {
+#main-header.mat-toolbar-row {
     height: auto;
 }
 @media (min-width: 960px) {
-    .logo-toolbar.mat-toolbar-row {
+    #main-header.mat-toolbar-row {
         height: 126px;
     }
 }
@@ -674,29 +711,21 @@ a:focus {
     line-height:0;
 }
 
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
 #links_city {
     margin-bottom: 1rem;
     list-style:none;
 
     li {
-        text-align:center;
-        margin-left:9px;
 
-        &:before {
-            float: left;
+        &.links_city_separator {
             width: 1px;
-            height: 32px;
-            background: #fff;
-            content: "";
-            margin-right: 10px;
+            background-color: #fff;
         }
-        &:first-child {
-            margin-left: 0;
-        }
-        &:first-child:before {
-            display: none;
-        }
-
         a {
             display: block;
             color: #fff!important;
@@ -737,8 +766,8 @@ a:focus {
     input[type=text]{
         border: 0;
         outline: none;
-        padding: 0 34px 0 12px; 
-        border-left: 1px solid #ccc;      
+        padding: 0 34px 0 12px;
+        border-left: 1px solid #ccc;
     }
     .search-btn{
          margin-left: -20px;
@@ -918,7 +947,7 @@ button.swipe-arrow{
 }
 
 /******* Product *******/
-.product-item{  
+.product-item{
     position: relative;
     .mat-chip-list{
         position: absolute;
@@ -969,7 +998,7 @@ button.swipe-arrow{
     }
     .icons{
         margin-top: 18px;
-    }        
+    }
 }
 
 
@@ -985,17 +1014,17 @@ button.swipe-arrow{
     opacity: .5;
     color: #fff;
     background-color: rgba(0,0,0,.75);
-    border-radius: 4px;    
+    border-radius: 4px;
     &:hover{
         opacity: 0.9;
-    }    
+    }
 }
 
 
 
 /******* Responsive *******/
 // Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575px) { 
+@media (max-width: 575px) {
     .top-toolbar.mat-toolbar-row{
         padding: 0;
         .top-menu{
@@ -1007,7 +1036,7 @@ button.swipe-arrow{
         .sidenav-toggle{
             min-width: 52px;
         }
-    } 
+    }
     .search-form input[type=text]{
         width: 160px;
     }
@@ -1027,7 +1056,7 @@ button.swipe-arrow{
         .sidenav-toggle{
             min-width: 52px;
         }
-    } 
+    }
 }
 
 // Medium devices (tablets, 768px and up)
@@ -1040,7 +1069,7 @@ button.swipe-arrow{
         .sidenav-toggle{
             min-width: 52px;
         }
-    } 
+    }
 
 }
 
@@ -1067,7 +1096,7 @@ button.swipe-arrow{
         background: #cccccc;
     }
     &:active{
-        background: #888888; 
+        background: #888888;
     }
 }
 ::-webkit-scrollbar-track {
@@ -1078,7 +1107,7 @@ button.swipe-arrow{
         background: #666666;
     }
     &:active{
-        background: #333333; 
+        background: #333333;
     }
 }
 ::-webkit-scrollbar-corner {
@@ -1092,13 +1121,13 @@ button.swipe-arrow{
     -ms-touch-action: auto;
     touch-action: auto;
     overflow: hidden !important;
-    -ms-overflow-style: none; 
+    -ms-overflow-style: none;
     position: relative;
 }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     .ps {
-        overflow: auto !important; 
-    } 
+        overflow: auto !important;
+    }
 }
 .ps__rail-x {
     display: none;
