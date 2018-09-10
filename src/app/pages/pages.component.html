@@ -28,7 +28,7 @@
             <span fxShow="false" fxShow.gt-sm>Welcome to our market!</span>
             <app-top-menu></app-top-menu>
         </mat-toolbar-row> -->
-        <mat-toolbar-row fxLayout.lt-md="column" fxFlexAlign="center" ngClass="p-2" ngClass.sm="p-4" ngClass.md="px-4" ngClass.lg="px-5" id="main-header">
+        <mat-toolbar-row fxLayout.lt-md="column" fxFlexAlign="center" id="main-header">
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" id="brand">
                 <a routerLink="/" (click)="closeSubMenus()" class="logo mr-4"><img src="assets/images/others/logo_plattetv.png"></a>
                 <nav fxLayout="row" fxShow fxHide.gt-sm class="mobilenav">
@@ -53,7 +53,7 @@
                     <li class="links_city_separator"></li>
                     <li class="links_city_utrecht"><a href="/extrainfo/winkel-utrecht-14.html"><span class="link_city_top">Utrecht</span><span class="link_city_bottom">030 310 1045</span></a></li>
                 </ul>
-                <div fxFlex fxFlexOffset.gt-sm="0" class="main-header-sub">
+                <div fxFlex fxLayout="row nowrap" fxFlexOffset.gt-sm="0" class="main-header-sub">
                     <span fxHide="false" fxHide.gt-sm>
                         <button mat-button (click)="sidenav.toggle()" class="sidenav-toggle">
                             <mat-icon>menu</mat-icon>

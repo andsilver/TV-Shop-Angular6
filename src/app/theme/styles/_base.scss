@@ -701,12 +701,27 @@ a:focus {
 
 #main-header.mat-toolbar-row {
     height: auto;
+    padding: .5rem;
+}
+@media (min-width: 600px) {
+    #main-header.mat-toolbar-row {
+        padding: 1.5rem;
+    }
 }
 @media (min-width: 960px) {
     #main-header.mat-toolbar-row {
         height: 126px;
+        padding-top: 0;
+        padding-bottom: 0;
     }
 }
+@media (min-width: 1280px) {
+    #main-header.mat-toolbar-row {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
 .logo{
     line-height:0;
 }
@@ -794,6 +809,15 @@ a:focus {
     }
 }
 
+@media (max-width:959px) {
+    .main-header-right {
+        width: 100%;
+    }
+}
+.sidenav-toggle.mat-button {
+    padding-left: 0;
+    padding-right: 0;
+}
 .usp-list.mat-toolbar {
     height: auto;
     padding-left:0;
