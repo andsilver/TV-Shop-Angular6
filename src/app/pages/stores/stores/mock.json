@@ -1,0 +1,43 @@
+{
+    "data": {
+        "title": "BEZOEK ONZE WINKELS",
+        "sentences": [
+            "Vandaag open tot 18:00",
+            "Natuurlijk bent u van harte welkom in één van onze acht winkels. Bekijk hier de openingstijden, routebeschrijving en overige informatie over onze winkels."
+        ],
+        "stores": [
+            {
+                "name": "Amsterdam",
+                "src": "https://www.plattetv.nl/var/images/cmsimages/winkels/winkeloverzicht-amsterdam-2.png"
+            },
+            {
+                "name": "Arnhem",
+                "src": "https://www.plattetv.nl/var/images/cmsimages/winkels/winkeloverzicht-arnhem-2.png"
+            },
+            {
+                "name": "Breda",
+                "src": "https://www.plattetv.nl/var/images/cmsimages/winkels/winkeloverzicht-breda.png"
+            },
+            {
+                "name": "Doesburg",
+                "src": "https://www.plattetv.nl/var/images/cmsimages/winkels/winkeloverzicht-doesburg.png"
+            },
+            {
+                "name": "Doetinchem",
+                "src": "https://www.plattetv.nl/var/images/cmsimages/winkels/winkeloverzicht-doetinchem.png"
+            },
+            {
+                "name": "Eindhoven",
+                "src": "https://www.plattetv.nl/var/images/cmsimages/winkels/winkeloverzicht-eindhoven.png"
+            },
+            {
+                "name": "Nijmegen",
+                "src": "https://www.plattetv.nl/var/images/cmsimages/winkels/winkeloverzicht-nijmegen.png"
+            },
+            {
+                "name": "Utrecht",
+                "src": "https://www.plattetv.nl/var/images/cmsimages/winkels/winkeloverzicht-utrecht-3.png"
+            }
+        ]
+    }
+}

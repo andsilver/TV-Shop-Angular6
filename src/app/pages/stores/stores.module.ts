@@ -5,8 +5,12 @@ import { SharedModule } from '../../shared/shared.module';
 import { PipesModule } from '../../theme/pipes/pipes.module';
 
 import { StoreComponent } from './store/store.component';
+import { StoresComponent } from './stores/stores.component';
 
 export const routes: Route[] = [
+  {
+    path: '', component: StoresComponent
+  },
   {
     path: ':id', component: StoreComponent
   }
@@ -20,6 +24,6 @@ export const routes: Route[] = [
     RouterModule.forChild(routes),
     PipesModule
   ],
-  declarations: [StoreComponent]
+  declarations: [StoreComponent, StoresComponent]
 })
 export class StoresModule { }

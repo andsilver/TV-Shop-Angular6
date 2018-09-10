@@ -14,7 +14,7 @@
                     <mat-card class="product-image">
                         <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><mat-icon>fullscreen</mat-icon></button>
                         <ng-container *ngIf="selectedImage">
-                            <div *ngIf="product.specialLabel" class="product-item-image-speciallabel">
+                            <div *ngIf="product?.specialLabel" class="product-item-image-speciallabel">
                                 {{product.specialLabel}}
                             </div>
                             <img 

@@ -1,0 +1,20 @@
+.page-container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.stores {
+    &-sentences{
+        margin: 30px 0 40px;
+    }
+    &-sentence{
+        margin: 10px 0;
+        width: 60%;
+        line-height: 24px;
+    }
+    &-individual-store{
+        img, a{
+            cursor: pointer;
+        }
+    }
+}

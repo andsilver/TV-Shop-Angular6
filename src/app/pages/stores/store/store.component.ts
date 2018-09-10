@@ -24,7 +24,7 @@ export class StoreComponent implements OnInit {
       this.store.dispatch(new CrumbActions.SaveCrumbPath([
         {
           name: 'Stores',
-          permalink: `/stores/${params.id}`,
+          permalink: `/stores`,
           static: true
         },
         {

@@ -1,0 +1,16 @@
+<div class="page-container">
+    <div class="stores">
+        <strong>{{data.title}}</strong>
+        <div class="stores-sentences">
+            <div class="stores-sentence" *ngFor="let sentence of data.sentences">{{sentence}}</div>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="start start">
+            <div fxFlex="25" fxFlex.sm="33" fxFlex.xs="50" *ngFor="let store of data.stores" class="stores-individual-store">
+                <img [src]="store.src" [routerLink]="['/stores', store.name]">
+                <div>
+                    <a [routerLink]="['/stores', store.name]">{{store.name}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
