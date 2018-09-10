@@ -38,7 +38,7 @@
       <div class="mat-cell text-center">
         <div class="p-1">
 <span class="cdk-visually-hidden" #translatedTooltipMessage i18n="@@myTranslation">Clear</span>
-          <button mat-mini-fab color="warn" (click)="remove(product)" [matTooltip]="Leeg winkelwagen">
+          <button mat-mini-fab color="warn" (click)="remove(product)" [matTooltip]="nslatedTooltipMessage.innerHTML">
               <mat-icon>close</mat-icon>
           </button>
         </div>
