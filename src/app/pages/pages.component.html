@@ -105,7 +105,8 @@
                                                 </ng-container>
                                             </p>
                                             <img [src]="product.images[0].small" alt="image">
-                                            <button mat-icon-button color="warn" class="remove" (click)="remove(product);stopClickPropagate($event)" matTooltip="Verwijder" matTooltipPosition="before">
+                                            <span class="cdk-visually-hidden" #translatedTooltipMessage >Back</span>
+                                            <button mat-icon-button color="warn" class="remove" (click)="remove(product);stopClickPropagate($event)" [matTooltip]="translatedTooltipMessage.innerHTML" matTooltipPosition="before">
                                                 <mat-icon class="mat-icon-sm">close</mat-icon>
                                             </button>
                                         </mat-list-item>
@@ -118,8 +119,9 @@
                                         </div>
                                         <div class="divider mt-1"></div>
                                         <div fxLayout="row" fxLayoutAlign="flex-end center" class="mt-1">
-                                            <a [routerLink]="['/checkout']" mat-button mat-primary color="primary" class="cart-dropdown-submit" matTooltip="Ga verder met bestellen">
-                                                Ga verder met bestellen
+                                                <span class="cdk-visually-hidden" #translatedTooltipMessage2>Checkout</span>
+                                            <a [routerLink]="['/checkout']" mat-button mat-primary color="primary" class="cart-dropdown-submit" [matTooltip]="translatedTooltipMessage2.innerHTML">
+                                                check
                                             </a>
                                         </div>
                                     </div>
