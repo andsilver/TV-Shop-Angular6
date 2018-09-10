@@ -14,6 +14,9 @@
                     <mat-card class="product-image">
                         <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><mat-icon>fullscreen</mat-icon></button>
                         <ng-container *ngIf="selectedImage">
+                            <div *ngIf="product.specialLabel" class="product-item-image-speciallabel">
+                                {{product.specialLabel}}
+                            </div>
                             <img 
                                 *ngIf="selectedImage.have_image"
                                 [src]="image"
@@ -119,6 +122,7 @@
                                 <mat-tab label="Beschrijving" class="mat-tab-beschrijving" *ngIf="product?.description">
                                     <div class="full-desc mat-tab-beschrijving" ngClass.xs="py-2" ngClass.lt-md="p-2">
                                         <p [innerHTML]="product?.description | htmlSanitize"></p>
+                                        <p [innerHTML]="product?.featureHighlights | htmlSanitize"></p>
                                     </div>
                                 </mat-tab>
                                 <mat-tab label="Specificaties" *ngIf="product?.extra_description">

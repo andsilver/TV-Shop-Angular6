@@ -273,9 +273,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.topParentCategoryId = parent.id;
   }
 
-  checkStockIndicator() {
-    if (this.product)
-      return this.product.stockIndicator.indexOf('Vraag naar levertijd') > -1;
+  checkStockIndicator(product) {
+    if (product)
+      return product.stockIndicator.indexOf('Vraag naar levertijd') > -1;
     return false;
   }
 

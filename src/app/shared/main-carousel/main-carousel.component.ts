@@ -37,6 +37,7 @@ export class MainCarouselComponent implements OnInit, AfterViewInit {
       },
       speed: 500,
       effect: 'slide'
-    };
+    }
   }
+
 }
