@@ -717,6 +717,9 @@ a:focus {
 }
 
 #links_city {
+    flex: 1 1 100%;
+    justify-content: space-between;
+    max-width: 100%;
     margin-bottom: 1rem;
     list-style:none;
 
@@ -758,6 +761,8 @@ a:focus {
 
 .search-form{
     overflow: hidden;
+    width: 100%;
+
     .categories{
         height: 40px;
         width: 180px;
