@@ -151,7 +151,7 @@
                 <div *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }" fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="col">
                     <mat-card class="product-item text-center">
                         <mat-chip-list *ngIf="product.discount">
-                            <mat-chip color="warn" selected="true">{{product.discount}}% korting</mat-chip>
+                            <mat-chip color="warn" selected="true">{{product.discount}}% OFF</mat-chip>
                         </mat-chip-list>
                         <a [routerLink]="[product.permalink]" class="image-link">
                             <img [src]="product.images[0].medium" alt="">

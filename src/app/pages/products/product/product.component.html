@@ -73,7 +73,7 @@
 
                     <div fxLayout="column" class="product-detail-control mb-2">
                         <!-- <app-controls [product]="product" [type]="'all'"></app-controls> -->
-                        <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)">In winkelwagen <i class="fas fa-shopping-cart"></i></button>
+                        <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)">Add to cart <i class="fas fa-shopping-cart"></i></button>
                         <button class="control-normal" mat-button>Afhalen in de winkel <i class="fas fa-chevron-circle-right"></i></button>
                         <button class="control-normal" mat-button (click)="requestBestPrice()">Vraag beste prijs aan <i class="fas fa-chevron-circle-right"></i></button>
                         <button class="control-deal" mat-button>ZOMERDEAL <i class="fas fa-chevron-circle-right"></i></button>
