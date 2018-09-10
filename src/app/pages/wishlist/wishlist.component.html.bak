@@ -39,7 +39,7 @@
               <mat-icon>add_shopping_cart</mat-icon>
           </button>
 <span class="cdk-visually-hidden" #translatedTooltipMessage1 i18n="@@myTranslation">Clear</span>
-          <button mat-mini-fab color="warn" (click)="remove(product)" [matTooltip]="translatedTooltipMessage1.innerHTML" class="remove">
+          <button mat-mini-fab color="warn" (click)="remove(product)" [matTooltip]="translatedTooltipMessage2.innerHTML" class="remove">
               <mat-icon>close</mat-icon>
           </button>
         </div>

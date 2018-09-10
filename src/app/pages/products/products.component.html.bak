@@ -59,7 +59,7 @@
             <mat-expansion-panel expanded *ngIf="brands.length">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        <h4>Condition</h4>
+                        <h4>Filter op merk</h4>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div fxLayout="column" fxLayoutGap="10px" class="filter-brands">
