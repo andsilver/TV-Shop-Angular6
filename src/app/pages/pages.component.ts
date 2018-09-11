@@ -13,6 +13,7 @@ import { RoutingHandlerService } from 'app/services';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import * as KeywordActions from 'app/store/actions/keyword.action';
+import * as fromCategories from 'app/store/actions/categories.action';
 
 @Component({
   selector: 'app-pages',
@@ -26,7 +27,7 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   sidenav: any;
 
   showBackToTop = false;
-  categories: Category[];
+  categories: Category[] = [];
   category: Category;
   sidenavMenuItems: Array<any> = [];
   keyword = '';
@@ -46,12 +47,19 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.subscriptions.push(
-      this.store.select(state => state.categories ).subscribe(data => {
-        this.categories = data.categories;
-        this.category = data.categories[0];
+      this.appService.getCategories().subscribe(res => {
+        this.store.dispatch(new fromCategories.SuccessGetCategories(res));
+        this.categories = res;
+        this.category = res[0];
         this.sidenavMenuItems = this.categories.map(c =>
-          new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
+            new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
       })
+      // this.store.select(state => state.categories ).subscribe(data => {
+      //   this.categories = data.categories;
+      //   this.category = data.categories[0];
+      //   this.sidenavMenuItems = this.categories.map(c =>
+      //     new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
+      // })
     );
 
     this.searchTerm
@@ -60,7 +68,6 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
         distinctUntilChanged()
       )
       .subscribe(word => {
-        console.log(word);
         this.search();
       });
     // this.sidenavMenuItems = this.sidenavMenuService.getSidenavMenuItems();
@@ -105,7 +112,7 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this.store.dispatch(new KeywordActions.SetKeyword(this.keyword));
   }
-  
+
   clear() {
     this.appService.Data.cartList.length = 0;
   }

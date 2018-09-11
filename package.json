@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postbuild": "scp -r dist/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/",
-    "pwa": "ng build --prod && sw-precache --root=dist --config=precache-config.js",
+    "pwa": "ng build --prod --build-optimizer --aot && gulp compress && sw-precache --root=dist --config=precache-config.js",
     "serve:sw": "npm run pwa && http-server ./dist -p 8000"
   },
   "private": true,
@@ -29,6 +29,7 @@
     "@angular/platform-browser-dynamic": "6.0.3",
     "@angular/pwa": "^0.8.1",
     "@angular/router": "6.0.3",
+    "@angular/service-worker": "6.0.3",
     "@ngrx/effects": "^6.1.0",
     "@ngrx/entity": "^6.1.0",
     "@ngrx/router-store": "^6.1.0",
@@ -44,8 +45,7 @@
     "ngx-swiper-wrapper": "6.2.1",
     "rxjs": "6.2.0",
     "rxjs-compat": "6.2.0",
-    "zone.js": "0.8.26",
-    "@angular/service-worker": "6.0.3"
+    "zone.js": "0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.6.7",
@@ -57,6 +57,8 @@
     "@types/jasminewd2": "2.0.3",
     "@types/node": "10.1.4",
     "codelyzer": "4.3.0",
+    "gulp": "^3.9.1",
+    "gulp-gzip": "^1.4.2",
     "imagemin-cli": "^3.0.0",
     "imagemin-cli-preserve-dir-structure": "0.0.2",
     "jasmine-core": "3.1.0",
