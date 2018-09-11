@@ -30,7 +30,7 @@
       <div class="mat-cell">{{product.newPrice | customCurrency}}</div>
       <div class="mat-cell">{{ (product.availibilityCount > 0) ? 'In stock':'Unavailable'}}</div>
       <div class="mat-cell text-muted">
-        <app-controls [product]="product" [type]="'wish'" (onQuantityChange)="saveQuantity($event)"></app-controls>
+        <app-controls [product]="product" [type]="'wish'" (quantityChanged)="saveQuantity($event)"></app-controls>
       </div>
       <div class="mat-cell">
         <div class="p-1">          

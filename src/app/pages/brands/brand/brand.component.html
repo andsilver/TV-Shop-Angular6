@@ -94,7 +94,7 @@
                     </div>                            
                     <div class="divider"></div>
                     <div class="icons">
-                        <app-controls [product]="product" (onOpenProductDialog)="openProductDialog(product)"></app-controls>
+                        <app-controls [product]="product" (productDialogOpened)="openProductDialog(product)"></app-controls>
                     </div>
                 </mat-card>
             </div>
@@ -127,7 +127,7 @@
                             </div>                            
                             <div class="divider"></div>
                             <div class="icons">
-                                <app-controls [product]="product" (onOpenProductDialog)="openProductDialog(product)"></app-controls>
+                                <app-controls [product]="product" (productDialogOpened)="openProductDialog(product)"></app-controls>
                             </div>
                         </div>
                     </div>

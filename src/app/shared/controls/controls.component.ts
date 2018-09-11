@@ -11,8 +11,8 @@ import { Product } from '../../app.models';
 export class ControlsComponent implements OnChanges {
   @Input() product: Product;
   @Input() type: string;
-  @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
-  @Output() onQuantityChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() productDialogOpened: EventEmitter<any> = new EventEmitter();
+  @Output() quantityChanged: EventEmitter<any> = new EventEmitter<any>();
   public count = 1;
   public align = 'center center';
   constructor(public appService: AppService, public snackBar: MatSnackBar) { }
@@ -77,11 +77,11 @@ export class ControlsComponent implements OnChanges {
   }
 
   public openProductDialog(event) {
-    this.onOpenProductDialog.emit(event);
+    this.productDialogOpened.emit(event);
   }
 
   public changeQuantity(value) {
-      this.onQuantityChange.emit(value);
+      this.quantityChanged.emit(value);
   }
 
 }

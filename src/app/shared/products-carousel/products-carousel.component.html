@@ -23,7 +23,7 @@
                 </div>
                 <div class="divider mt-2"></div>
                 <div class="icons">
-                    <app-controls [product]="product" (onOpenProductDialog)="openProductDialog(product)"></app-controls>
+                    <app-controls [product]="product" (productDialogOpened)="openProductDialog(product)"></app-controls>
                 </div>
             </mat-card>
         </div>

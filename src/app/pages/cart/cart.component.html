@@ -32,7 +32,7 @@
       </div>
       <div class="mat-cell">{{product.newPrice | customCurrency}}</div>
       <div class="mat-cell text-muted">
-        <app-controls [product]="product" [type]="'wish'" (onQuantityChange)="getTotalPrice($event)"></app-controls>
+        <app-controls [product]="product" [type]="'wish'" (quantityChanged)="getTotalPrice($event)"></app-controls>
       </div>
       <div class="mat-cell">{{product.newPrice * product.quantity | customCurrency}}</div>
       <div class="mat-cell text-center">

@@ -33,7 +33,7 @@ export class MenuComponent implements OnInit {
       this.store.select(state => state.category).subscribe( data => {
         this.selectedCategoryId = data.category ? data.category.id : 0;
       })
-    ]
+    ];
   }
 
   openMegaMenu() {

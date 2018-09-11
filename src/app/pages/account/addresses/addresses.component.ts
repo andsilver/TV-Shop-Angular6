@@ -53,15 +53,17 @@ export class AddressesComponent implements OnInit {
     this.userUpdated = this.account.userUpdated.subscribe( user => this.setValuesOnForms(user));
   }
 
-  public onBillingFormSubmit(values:Object):void {
+  public onBillingFormSubmit(values: Object): void {
     if (this.billingForm.valid) {
-      this.snackBar.open('Your billing address information updated successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+      this.snackBar.open('Your billing address information updated successfully!', '×',
+        { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
     }
   }
 
-  public onShippingFormSubmit(values:Object):void {
+  public onShippingFormSubmit(values: Object): void {
     if (this.shippingForm.valid) {
-      this.snackBar.open('Your shipping address information updated successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+      this.snackBar.open('Your shipping address information updated successfully!', '×',
+      { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
     }
   }
 
@@ -81,8 +83,8 @@ export class AddressesComponent implements OnInit {
     });
   }
 
-  public titleCaseWord(word: string){
-    if (!word) return word;
+  public titleCaseWord(word: string) {
+    if (!word) { return word; }
     return word[0].toUpperCase() + word.substr(1).toLowerCase();
   }
 
