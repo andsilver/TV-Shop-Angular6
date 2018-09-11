@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatStepper } from '@angular/material';
-import { Data, AppService } from '../../app.service';
+import { MatStepper } from '@angular/material/stepper';
+import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-checkout',
@@ -20,10 +20,10 @@ export class CheckoutComponent implements OnInit {
   deliveryMethods = [];
   grandTotal = 0;
 
-  constructor(public appService:AppService, public formBuilder: FormBuilder) { }
+  constructor(public appService: AppService, public formBuilder: FormBuilder) { }
 
-  ngOnInit() {    
-    this.appService.Data.cartList.forEach(product=>{
+  ngOnInit() {
+    this.appService.Data.cartList.forEach(product => {
       this.grandTotal += product.newPrice;
     });
     this.countries = this.appService.getCountries();
@@ -55,7 +55,7 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  public placeOrder(){
+  public placeOrder() {
     this.horizontalStepper._steps.forEach(step => step.editable = false);
     this.verticalStepper._steps.forEach(step => step.editable = false);
     this.appService.Data.cartList.length = 0;

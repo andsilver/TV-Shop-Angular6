@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 import { AppService } from '../../../app.service';
 import { AccountService } from '../account.service';
 
@@ -16,7 +16,11 @@ export class AddressesComponent implements OnInit {
   billingForm: FormGroup;
   shippingForm: FormGroup;
   countries = [];
-  constructor(public appService:AppService, public formBuilder: FormBuilder, public snackBar: MatSnackBar, private account: AccountService) { }
+  constructor(
+    public appService: AppService,
+    public formBuilder: FormBuilder,
+    public snackBar: MatSnackBar,
+    private account: AccountService) { }
 
   ngOnInit() {
     this.countries = this.appService.getCountries();

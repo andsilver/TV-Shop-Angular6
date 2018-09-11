@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from '../../shared/shared.module';
-import { PipesModule } from '../../theme/pipes/pipes.module';
 import { BrandsComponent } from './brands.component';
 import { BrandComponent } from './brand/brand.component';
 import { BrandsService } from './brands.service';
@@ -16,12 +13,9 @@ export const routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
     RouterModule.forChild(routes),
-    FormsModule,
     NgxPaginationModule,
     SharedModule,
-    PipesModule
   ],
   declarations: [
     BrandsComponent,

@@ -1,8 +1,8 @@
 import { Component, OnInit, OnChanges, AfterViewInit, OnDestroy, ViewChild, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material';
-import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs/Subscription';
 import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
 import { AppService } from '../../../app.service';
 import { Product } from '../../../app.models';

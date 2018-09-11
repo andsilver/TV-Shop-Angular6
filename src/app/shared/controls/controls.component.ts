@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
-import { Data, AppService } from '../../app.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AppService } from '../../app.service';
 import { Product } from '../../app.models';
 
 @Component({

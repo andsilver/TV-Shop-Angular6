@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, UrlSegment, NavigationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { switchMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators/switchMap';
 import { Settings, AppSettings } from '../../../app.settings';
 import { SidenavMenuService } from '../../../theme/components/sidenav-menu/sidenav-menu.service';
 import { AppService } from 'app/app.service';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
-import * as fromProduct from 'app/store/actions/product.action';
-import { nodeChildrenAsMap } from '@angular/router/src/utils/tree';
 
 @Component({
   selector: 'app-breadcrumb',

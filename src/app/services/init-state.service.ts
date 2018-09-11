@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, forkJoin } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 import { ActivatedRouteSnapshot, Router, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -24,7 +25,6 @@ export class InitStateService implements Resolve<any> {
     return new Promise(( resolve, reject ) => {
         forkJoin([this.appService.getCategories(), this.appService.getBrands()])
           .subscribe(subs => {
-            console.log(subs);
             this.store.dispatch(new fromCategories.SuccessGetCategories(subs[0]));
             this.store.dispatch(new fromBrands.SuccessGetBrands(subs[1]));
             resolve(subs);

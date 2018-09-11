@@ -4,7 +4,7 @@ import { Product } from '../../app.models';
 import { HomeService } from './home.service';
 import { AppSettings } from '../../app.settings';
 import { Title } from '@angular/platform-browser';
-import { forkJoin, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 
 import * as data from 'assets/data/banners.json';
 

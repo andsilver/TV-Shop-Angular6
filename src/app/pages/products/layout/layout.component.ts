@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Subscription } from 'rxjs/Subscription';
+import { switchMap } from 'rxjs/operators/switchMap';
 
 import { Store } from '@ngrx/store';
 
@@ -17,8 +17,8 @@ import * as CrumbpathActions from 'app/store/actions/crumb-path.action';
 
 @Component({
   selector: 'app-products-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  template: `<app-products *ngIf="category" [category]="category" [categories]="categories"></app-products>
+            <app-product *ngIf="product" [product]="product"></app-product>`
 })
 export class LayoutComponent implements OnInit, OnDestroy {
 

@@ -4,8 +4,10 @@ import { Settings, AppSettings } from './app.settings';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  template: `<div id="app" class="h-100 app" [ngClass]="settings.theme">
+               <router-outlet></router-outlet>
+            </div>`
 })
 export class AppComponent implements OnInit, AfterViewInit {
   loading = false;

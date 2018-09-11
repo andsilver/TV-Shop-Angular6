@@ -102,7 +102,6 @@ import { AgmCoreModule } from '@agm/core';
     }),
   ],
   exports: [
-    RouterModule,
     SwiperModule,
     FormsModule,
     FlexLayoutModule,

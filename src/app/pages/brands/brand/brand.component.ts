@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, HostListener, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ProductDialogComponent } from '../../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../../app.service';
 import { Product, Category } from '../../../app.models';

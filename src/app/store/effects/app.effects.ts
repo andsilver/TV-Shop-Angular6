@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 import { map, switchMap, catchError } from 'rxjs/operators';
 import { Actions, Effect } from '@ngrx/effects';
 import { AppService } from 'app/app.service';
@@ -8,8 +9,6 @@ import * as ProductsActions from '../actions/products.action';
 import * as BrandsActions from '../actions/brands.action';
 import * as CategoriesActions from '../actions/categories.action';
 import * as ProductActions from '../actions/product.action';
-// import * as CategoryActions from '../actions/category.action';
-// import * as CrumbPathActions from '../actions/crumb-path.action';
 
 @Injectable()
 export class AppEffects {

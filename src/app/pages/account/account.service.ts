@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Observable, Subscription, Subject, BehaviorSubject, of } from 'rxjs';
+import { Observable} from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { AccountModule } from './account.module';
 import { AppService } from '../../app.service';
 
 @Injectable()

@@ -1,7 +1,7 @@
-import { Component, OnInit, OnChanges, OnDestroy, ViewChild, HostListener, Input, AfterViewInit } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { MatDialog } from '@angular/material';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy, ViewChild, HostListener, Input, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs/Subscription';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -11,7 +11,6 @@ import * as BrandsActions from 'app/store/actions/brands.action';
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product, Category } from '../../app.models';
-import { ErrorHandlerService } from 'app/services';
 
 @Component({
   selector: 'app-products',
@@ -80,12 +79,11 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   showMoreBrandsStatus;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              public appService: AppService,
-              public errorHandlerService: ErrorHandlerService,
-              public dialog: MatDialog,
-              private router: Router,
-              private store: Store<State>) { }
+  constructor(
+    public appService: AppService,
+    public dialog: MatDialog,
+    private router: Router,
+    private store: Store<State>) { }
 
   ngOnInit() {
 
@@ -234,7 +232,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       const ind = option.children.indexOf(valueId);
       if ( ind > -1 ) {
         option.children.splice(ind, 1);
-        if (option.children.length === 0){
+        if (option.children.length === 0) {
           this.selectedFilterLists.splice(this.selectedFilterLists.indexOf(option), 1);
         }
       } else {

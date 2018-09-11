@@ -1,5 +1,5 @@
 import { Component, OnInit,  OnDestroy, Input } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';

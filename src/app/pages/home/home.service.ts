@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, forkJoin } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 import { ActivatedRouteSnapshot, Router, Resolve, RouterStateSnapshot } from '@angular/router';
 import { AppService } from 'app/app.service';
 import { Product } from 'app/app.models';

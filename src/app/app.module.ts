@@ -2,11 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { OverlayContainer } from '@angular/cdk/overlay';
+
 import { NgxSpinnerModule } from 'ngx-spinner';
 
-import { OverlayContainer } from '@angular/cdk/overlay';
-import { CustomOverlayContainer } from './theme/utils/custom-overlay-container';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
+
+import { CustomOverlayContainer } from './theme/utils/custom-overlay-container';
 import { SharedModule } from './shared/shared.module';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
@@ -17,19 +23,16 @@ import { MenuComponent } from './theme/components/menu/menu.component';
 import { SidenavMenuComponent } from './theme/components/sidenav-menu/sidenav-menu.component';
 import { BreadcrumbComponent } from './theme/components/breadcrumb/breadcrumb.component';
 import { CrumbPathComponent } from './theme/components/crumb-path/crumb-path.component';
-
 import { AppSettings } from './app.settings';
 import { AppService } from './app.service';
 import { AppInterceptor } from './theme/utils/app-interceptor';
 import { OptionsComponent } from './theme/components/options/options.component';
 import { FooterComponent } from './theme/components/footer/footer.component';
-import { StoreModule } from '@ngrx/store';
+
 import { reducers, metaReducers } from './store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './store/effects/app.effects';
-import { ServiceWorkerModule } from '@angular/service-worker';
+
 
 @NgModule({
    imports: [
