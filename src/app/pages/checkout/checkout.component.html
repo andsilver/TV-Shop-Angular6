@@ -306,7 +306,7 @@
         <div fxFlex="100" class="px-1">
           <mat-form-field class="w-100">
               <input matInput placeholder="Address (street, apartment, suite, unit etc.)" formControlName="address" required>
-              <mat-error *ngIf="billingForm.controls.address.errors?.required">Street name + house number is verplicht</mat-error>
+              <mat-error *ngIf="billingForm.controls.address.errors?.required">Street name + house number is required</mat-error>
           </mat-form-field>
         </div>
       </div>
