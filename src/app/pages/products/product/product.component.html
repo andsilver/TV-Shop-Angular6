@@ -73,22 +73,22 @@
 
                     <div fxLayout="column" class="product-detail-control mb-2">
                         <!-- <app-controls [product]="product" [type]="'all'"></app-controls> -->
-                        <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)">Add to cart <i class="fas fa-shopping-cart"></i></button>
-                        <button class="control-normal" mat-button>Afhalen in de winkel <i class="fas fa-chevron-circle-right"></i></button>
-                        <button class="control-normal" mat-button (click)="requestBestPrice()">Vraag beste prijs aan <i class="fas fa-chevron-circle-right"></i></button>
-                        <button class="control-deal" mat-button>ZOMERDEAL <i class="fas fa-chevron-circle-right"></i></button>
-                        <button class="control-normal" mat-button>Actie: Ruil uw TV in <i class="fas fa-chevron-circle-right"></i></button>
+                        <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)" i18n>Add to cart <i class="fas fa-shopping-cart"></i></button>
+                        <button class="control-normal" mat-button i18n>Collect in store<i class="fas fa-chevron-circle-right"></i></button>
+                        <button class="control-normal" mat-button (click)="requestBestPrice()" i18n>Request best price<i class="fas fa-chevron-circle-right"></i></button>
+                        <button class="control-deal" mat-button i18n>SUMMERDEAL<i class="fas fa-chevron-circle-right"></i></button>
+                        <button class="control-normal" mat-button i18n>Action: Exchange your TV<i class="fas fa-chevron-circle-right"></i></button>
                     </div>
 
                     <div class="new-stock-info-wrapper">
-                        <div class="bezorg-title">Bezorgvoorraad</div>
+                        <div class="bezorg-title">Stock delivery</div>
                         <div class="new-stock-info-bezorg">
                             <div class="bezorg-cms-title">
-                                <p><a href="#"><i class="fas fa-circle"></i> Vandaag voor 23:59 besteld, morgen in huis</a></p>
+                                <p><a href="#"><i class="fas fa-circle"></i>Order today, receive tomorrow</a></p>
                             </div>
                         </div>
                         <div class="new-stock-info-winkel">
-                            <div class="winkel-title">Winkelvoorraad</div>
+                            <div class="winkel-title">Stock store</div>
                             <div class="r-row r-col-2">
                                 <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa-circle"></i> <a href="/pagina_cms?type=amsterdam-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Amsterdam</span></a></div>
                                 <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa-circle"></i> <a href="/pagina_cms?type=utrecht-voorraadstatus-msg-green" rel="lyteframe" title="Klik voor meer info" rev="width: 640px; height: 480px; scrolling: yes;"><span>Utrecht</span></a></div>
@@ -157,68 +157,68 @@
         <div fxLayout="column" class="misc-bar" ngClass.gt-md="m-0">
             <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
                 <mat-card class="branch-office">
-                    <mat-card-title><h4>Onze Winkels</h4></mat-card-title>
+                    <mat-card-title><h4>Our stores</h4></mat-card-title>
                     <mat-card-content>
                         <div class="branch_opening_hours_box">
                             <div class="branch_img"><a [routerLink]="['/stores/amsterdam']"><img src="https://www.plattetv.nl/var/store_images/amsterdam.png" width="55" height="55"></a></div>
                             <div class="branch_opening_hours">
                                 <div class="adbox_opening_times city_name"><a [routerLink]="['/stores/amsterdam']"> <strong>Amsterdam</strong> </a></div>
-                                <div class="adbox_opening_times"><a [routerLink]="['/stores/amsterdam']">Vandaag open</a></div>
-                                <div class="adbox_opening_times"><a [routerLink]="['/stores/amsterdam']">tot 21:00</a></div>
+                                <div class="adbox_opening_times"><a [routerLink]="['/stores/amsterdam']">Open today</a></div>
+                                <div class="adbox_opening_times"><a [routerLink]="['/stores/amsterdam']">till 21:00</a></div>
                             </div>
                         </div>
                         <div class="branch_opening_hours_box">
                             <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-arnhem-1.html"><img src="https://www.plattetv.nl/var/store_images/arnhem.png" width="55" height="55"></a></div>
                             <div class="branch_opening_hours">
                                 <div class="adbox_opening_times city_name"><a href="https://www.plattetv.nl/extrainfo/winkel-arnhem-1.html"> <strong>Arnhem</strong> </a></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-arnhem-1.html">Vandaag open</a></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-arnhem-1.html">tot 21:00</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-arnhem-1.html">Open today</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-arnhem-1.html">till 21:00</a></div>
                             </div>
                         </div>
                         <div class="branch_opening_hours_box">
                             <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-breda-3.html"><img src="https://www.plattetv.nl/var/store_images/breda.png" width="55" height="55"></a></div>
                             <div class="branch_opening_hours"><div class="adbox_opening_times city_name"><a href="https://www.plattetv.nl/extrainfo/winkel-breda-3.html"> <strong>Breda</strong> </a></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-breda-3.html">Vandaag open</a></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-breda-3.html">tot 21:00</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-breda-3.html">Open today</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-breda-3.html">till 21:00</a></div>
                             </div>
                         </div>
                         <div class="branch_opening_hours_box">
                             <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-doesburg-12.html"><img src="https://www.plattetv.nl/var/store_images/doesburg.png" width="55" height="55"></a></div>
                             <div class="branch_opening_hours">
                                 <div class="adbox_opening_times city_name"><a href="https://www.plattetv.nl/extrainfo/winkel-doesburg-12.html"> <strong>Doesburg</strong> </a></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-doesburg-12.html">Vandaag open</a></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-doesburg-12.html">tot 18:00</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-doesburg-12.html">Open today</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-doesburg-12.html">till 21:00</a></div>
                             </div>
                         </div>
                         <div class="branch_opening_hours_box">
                             <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-doetinchem-4.html"><img src="https://www.plattetv.nl/var/store_images/doetinchem.png" width="55" height="55"></a></div>
                             <div class="branch_opening_hours">
                                 <div class="adbox_opening_times city_name"><a href="https://www.plattetv.nl/extrainfo/winkel-doetinchem-4.html"> <strong>Doetinchem</strong> </a></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-doetinchem-4.html">Vandaag open</a></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-doetinchem-4.html">tot 18:00</a></div></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-doetinchem-4.html">Open today</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-doetinchem-4.html">till 21:00</a></div></div>
                         </div>
                         <div class="branch_opening_hours_box">
                             <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-eindhoven-9.html"><img src="https://www.plattetv.nl/var/store_images/eindhoven-thumb.jpg" width="55" height="55"></a></div>
                             <div class="branch_opening_hours">
                                 <div class="adbox_opening_times city_name"><strong><a href="https://www.plattetv.nl/extrainfo/winkel-eindhoven-9.html">Eindhoven</a>&nbsp;</strong></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-eindhoven-9.html">Vandaag open</a></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-eindhoven-9.html">tot 18:00</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-eindhoven-9.html">Open today</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-eindhoven-9.html">till 21:00</a></div>
                             </div>
-                            <div class="image_overlay"><a href="extrainfo/winkel-eindhoven-9.html">nieuw!</a></div>
+                            <div class="image_overlay"><a href="extrainfo/winkel-eindhoven-9.html">new!</a></div>
                         </div>
                         <div class="branch_opening_hours_box">
                             <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-nijmegen-2.html"><img src="https://www.plattetv.nl/var/store_images/nijmegen.png" width="55" height="55"></a></div>
                             <div class="branch_opening_hours"><div class="adbox_opening_times city_name"><a href="https://www.plattetv.nl/extrainfo/winkel-nijmegen-2.html"> <strong>Nijmegen</strong> </a></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-nijmegen-2.html">Vandaag open</a></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-nijmegen-2.html">tot 21:00</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-nijmegen-2.html">Open today</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-nijmegen-2.html">till 21:00</a></div>
                             </div>
                         </div>
                         <div class="branch_opening_hours_box">
                             <div class="branch_img"><a href="https://www.plattetv.nl/extrainfo/winkel-utrecht-14.html"><img src="https://www.plattetv.nl/var/store_images/PlatteTV_Utrecht_vierkant_Thumbnail_Samsung.jpg" width="55" height="55"></a></div>
                             <div class="branch_opening_hours">
                                 <div class="adbox_opening_times city_name"><strong><a href="https://www.plattetv.nl/extrainfo/winkel-utrecht-14.html">Utrecht</a>&nbsp;</strong></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-utrecht-14.html">Vandaag open</a></div>
-                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-utrecht-14.html">tot 21:00</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-utrecht-14.html">Open today</a></div>
+                                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/winkel-utrecht-14.html">till 21:00</a></div>
                             </div>
                         </div>
                     </mat-card-content>
@@ -230,23 +230,23 @@
                         <h4>ADVIES EN CONTACT</h4>
                     </mat-card-title>
                     <mat-card-content>
-                        <div class="adbox_opening_times"><strong> <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html">Vandaag open</a> </strong></div>
-                        <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html">tot 21:00 uur</a></div>
-                        <div class="contact_box contact_chat_live"><a onclick="LC_API.open_chat_window(); return false;" href="https://www.plattetv.nl/"> <i class="far fa-comment"></i><strong>CHAT LIVE</strong> <span>Reactie binnen 30 sec.</span> </a></div>
-                        <div class="contact_box contact_form"><a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS"> <i class="far fa-envelope"></i><strong>VUL FORMULIER IN</strong> <span>Reactie binnen 10 min.</span> </a></div>
-                        <div class="contact_box contact_whatsapp"><a href="https://api.whatsapp.com/send?phone=31633444433"> <i class="fab fa-whatsapp"></i><strong>WHATSAPP ONS</strong> <span>Reactie binnen 30 sec.</span> </a></div>
-                        <div class="contact_box contact_bel"><a href="tel:0268454658"> <i class="fas fa-phone"></i><strong>BEL 026-84 54 658</strong> <span>Direct reactie</span> </a></div>
+                        <div class="adbox_opening_times"><strong> <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html">Open today</a> </strong></div>
+                        <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html">till 21:00 hour</a></div>
+                        <div class="contact_box contact_chat_live"><a onclick="LC_API.open_chat_window(); return false;" href="https://www.plattetv.nl/"> <i class="far fa-comment"></i><strong>CHAT LIVE</strong> <span>Reply within 30 sec.</span> </a></div>
+                        <div class="contact_box contact_form"><a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS"> <i class="far fa-envelope"></i><strong>Insert Form</strong> <span>Reply within 10 min.</span> </a></div>
+                        <div class="contact_box contact_whatsapp"><a href="https://api.whatsapp.com/send?phone=31633444433"> <i class="fab fa-whatsapp"></i><strong>WHATSAPP US</strong> <span>Reply within 30 sec.</span> </a></div>
+                        <div class="contact_box contact_bel"><a href="tel:0268454658"> <i class="fas fa-phone"></i><strong>CALL 026-84 54 658</strong> <span>Direct reply</span> </a></div>
                     </mat-card-content>
                 </mat-card>
             </div>
             <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
             <mat-card id="extra-open">
                 <mat-card-title>
-                    <h4>EXTRA VOOR U OPEN</h4>
+                    <h4>EXTRA OPEN FOR YOU</h4>
                 </mat-card-title>
                 <mat-card-content>
                     <div class="extra_open_hours_box">
-                        <div class="special_open_time"><span>ZONDAG 2 SEP</span></div>
+                        <div class="special_open_time"><span>SUNDAY 2 SEP</span></div>
                         <div class="city_open_time"><a href="https://www.plattetv.nl/extrainfo/winkel-amsterdam-6.html">Amsterdam</a></div>
                         <div class="city_open_time"><a href="https://www.plattetv.nl/extrainfo/winkel-Arnhem-1.html">Arnhem</a></div>
                         <div class="city_open_time"><a href="https://www.plattetv.nl/extrainfo/winkel-breda-3.html">Breda</a></div>
@@ -254,14 +254,14 @@
                         <div class="city_open_time"><a href="https://www.plattetv.nl/extrainfo/winkel-nijmegen-2.html">Nijmegen</a></div>
                         <div class="city_open_time"><a href="https://www.plattetv.nl/extrainfo/winkel-utrecht-14.html">Utrecht</a></div>
                     </div>
-                    <div class="city_open_time" style="text-align: center;"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#winkels">open van 12:00 tot 17:00</a></div>
+                    <div class="city_open_time" style="text-align: center;"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#winkels">open from 12:00 till 17:00</a></div>
                 </mat-card-content>
             </mat-card>
             </div>
             <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
             <mat-card id="customer-review">
                 <mat-card-title>
-                    <h4>KLANTENBEOORDELING</h4>
+                    <h4>CLIENT REVIEWS</h4>
                 </mat-card-title>
                 <mat-card-content>
                     <div class="reviewbox reviewbox-kieskeurig">

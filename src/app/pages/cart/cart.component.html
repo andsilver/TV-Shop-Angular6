@@ -10,10 +10,10 @@
   <div class="mat-table cart-table">
     <div class="mat-header-row">
       <div class="mat-header-cell">Product</div>
-      <div class="mat-header-cell">Name</div>
-      <div class="mat-header-cell">Price</div>
-      <div class="mat-header-cell">Quantity</div>
-      <div class="mat-header-cell">Total</div>
+      <div class="mat-header-cell" i18n>Name</div>
+      <div class="mat-header-cell" i18n>Price</div>
+      <div class="mat-header-cell" i18n>Quantity</div>
+      <div class="mat-header-cell" i18n>Total</div>
       <div class="mat-header-cell text-center">
         <div class="px-1">
           <button mat-raised-button color="warn" (click)="clear()">Clear All</button>
@@ -37,8 +37,8 @@
       <div class="mat-cell">{{product.newPrice * product.quantity | customCurrency}}</div>
       <div class="mat-cell text-center">
         <div class="p-1">
-<span class="cdk-visually-hidden" #translatedTooltipMessage >Clear</span>
-          <button mat-mini-fab color="warn" (click)="remove(product)" [matTooltip]="translatedTooltipMessage.innerHTML">
+<span class="cdk-visually-hidden" #translatedTooltipMessage i18n>Clear</span>
+          <button mat-mini-fab color="warn" (click)="remove(product)" [matTooltip]="translatedTooltipMessage.innerHTML" i18n>
               <mat-icon>close</mat-icon>
           </button>
         </div>

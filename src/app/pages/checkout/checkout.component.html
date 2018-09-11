@@ -71,8 +71,8 @@
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-<span class="cdk-visually-hidden" #translatedTooltipMessage >Next</span>
-        <button mat-mini-fab matStepperNext color="primary" [matTooltip]="translatedTooltipMessage.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
+<span class="cdk-visually-hidden" #translatedTooltipMessage i18n>Next</span>
+        <button mat-mini-fab matStepperNext color="primary" i18n [matTooltip]="translatedTooltipMessage.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -82,10 +82,10 @@
         <mat-radio-button *ngFor="let method of deliveryMethods" color="primary" [value]="method" class="mt-1"><b>{{method.name}}</b> {{method.desc}}</mat-radio-button>
       </mat-radio-group> 
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-<span class="cdk-visually-hidden" #translatedTooltipMessage2 >Back</span>
-<span class="cdk-visually-hidden" #translatedTooltipMessage3 >Next</span>
-        <button mat-mini-fab matStepperPrevious color="primary" [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary" [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
+<span class="cdk-visually-hidden" #translatedTooltipMessage2 i18n>Back</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage3 i18n>Next</span>
+        <button mat-mini-fab matStepperPrevious color="primary" i18n [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary" i18n  [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -136,8 +136,8 @@
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperPrevious color="primary" [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary" [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
+        <button mat-mini-fab matStepperPrevious color="primary" i18n [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary" i18n [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -149,10 +149,10 @@
         <div class="mat-table review-order-table">
           <div class="mat-header-row">
             <div class="mat-header-cell">Product</div>
-            <div class="mat-header-cell">Name</div>
-            <div class="mat-header-cell">Unit Price</div>
-            <div class="mat-header-cell">Quantity</div>
-            <div class="mat-header-cell">Total</div>
+            <div class="mat-header-cell" i18n>Name</div>
+            <div class="mat-header-cell" i18n>Unit Price</div>
+            <div class="mat-header-cell" i18n>Quantity</div>
+            <div class="mat-header-cell" i18n>Total</div>
           </div>
           <div *ngFor="let product of appService.Data.cartList" class="mat-row">
             <div class="mat-cell"><img [src]="product.images[0].small"></div>
@@ -166,39 +166,39 @@
     </div>
     <div fxLayout="row wrap">
       <div fxFlex="100" class="p-1">
-        <h3 class="text-muted mt-2">Billing information</h3>
+        <h3 class="text-muted mt-2" i18n>Billing information</h3>
         <div class="divider"></div>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">Name:</p>
+        <p class="text-muted" i18n>Name:</p>
         <p>{{billingForm.controls.firstName.value}} {{billingForm.controls.lastName.value}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">Email:</p>
+        <p class="text-muted" i18n>Email:</p>
         <p>{{billingForm.controls.email.value}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">Phone:</p>
+        <p class="text-muted" i18n>Phone:</p>
         <p>{{billingForm.controls.phone.value}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">Country:</p>
+        <p class="text-muted" i18n>Country:</p>
         <p>{{billingForm.controls.country.value['name']}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">City:</p>
+        <p class="text-muted" i18n>City:</p>
         <p>{{billingForm.controls.city.value}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">State:</p>
+        <p class="text-muted" i18n>State:</p>
         <p>{{billingForm.controls.state.value}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">Zip/PostalCode:</p>
+        <p class="text-muted" i18n>Zip/PostalCode:</p>
         <p>{{billingForm.controls.zip.value}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">Street name + house number:</p>
+        <p class="text-muted" i18n>Street name + house number:</p>
         <p>{{billingForm.controls.address.value}}</p>
       </div>
     </div>
@@ -217,12 +217,12 @@
       </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="p-1"> 
-       <h2><span class="text-muted mr-1">Total Price:</span><span>${{grandTotal | number : '1.2-2'}}</span></h2>
+       <h2><span class="text-muted mr-1" i18n>Total Price:</span><span>${{grandTotal | number : '1.2-2'}}</span></h2>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
 
-      <button mat-mini-fab matStepperPrevious color="primary" [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
-      <button mat-raised-button matStepperNext color="primary" (click)="placeOrder()">Place order now</button>
+      <button mat-mini-fab matStepperPrevious color="primary" i18n [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
+      <button mat-raised-button matStepperNext color="primary" (click)="placeOrder()" i18n>Place order now</button>
     </div>     
   </mat-step>
   <mat-step label="Confirmation">
@@ -232,7 +232,7 @@
       <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus dolor ante, ut luctus mi faucibus a. Ut eu tincidunt neque. Proin porttitor id ligula id placerat. Integer nec nulla varius, dapibus libero quis, semper eros. Aliquam erat volutpat. Proin volutpat tellus vel purus interdum euismod.</p>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-      <a [routerLink]="['/']" mat-raised-button color="primary">Return to Shop</a>
+      <a [routerLink]="['/']" mat-raised-button color="primary" i18n>Return to Shop</a>
     </div>
      
   </mat-step>
@@ -306,12 +306,12 @@
         <div fxFlex="100" class="px-1">
           <mat-form-field class="w-100">
               <input matInput placeholder="Address (street, apartment, suite, unit etc.)" formControlName="address" required>
-              <mat-error *ngIf="billingForm.controls.address.errors?.required">Street name + house number is required</mat-error>
+              <mat-error *ngIf="billingForm.controls.address.errors?.required" i18n>Street name + house number is required</mat-error>
           </mat-form-field>
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperNext color="primary" [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary" i18n [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -321,8 +321,8 @@
         <mat-radio-button *ngFor="let method of deliveryMethods" color="primary" [value]="method" class="mt-1"><b>{{method.name}}</b> {{method.desc}}</mat-radio-button>
       </mat-radio-group> 
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperPrevious color="primary" [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary" [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
+        <button mat-mini-fab matStepperPrevious color="primary" i18n [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary"  i18n [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -330,7 +330,7 @@
     <form [formGroup]="paymentForm">
       <div fxLayout="row wrap">
         <div fxFlex="100" fxLayout="column" fxLayoutAlign="start start" class="p-1">
-          <span class="text-muted">Credit Card</span>
+          <span class="text-muted" i18n>Credit Card</span>
           <img src="assets/images/others/card-icon.png" alt="">
         </div>        
         <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
@@ -373,23 +373,23 @@
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperPrevious color="primary" [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary" [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
+        <button mat-mini-fab matStepperPrevious color="primary" i18n [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary"  i18n [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
       </div>
     </form>
   </mat-step>
   <mat-step label="Review Order">    
     <div fxLayout="row wrap">
       <div fxFlex="100" class="p-1">
-        <h3 class="text-muted">Shopping Cart</h3>
+        <h3 class="text-muted" i18n>Shopping Cart</h3>
         <div class="divider"></div>
         <div class="mat-table review-order-table">
           <div class="mat-header-row">
             <div class="mat-header-cell">Product</div>
-            <div class="mat-header-cell">Name</div>
-            <div class="mat-header-cell">Unit Price</div>
-            <div class="mat-header-cell">Quantity</div>
-            <div class="mat-header-cell">Total</div>
+            <div class="mat-header-cell" i18n>Name</div>
+            <div class="mat-header-cell" i18n>Unit Price</div>
+            <div class="mat-header-cell" i18n>Quantity</div>
+            <div class="mat-header-cell" i18n>Total</div>
           </div>
           <div *ngFor="let product of appService.Data.cartList" class="mat-row">
             <div class="mat-cell"><img [src]="product.images[0].small"></div>
@@ -403,39 +403,39 @@
     </div>
     <div fxLayout="row wrap">
       <div fxFlex="100" class="p-1">
-        <h3 class="text-muted mt-2">Billing information</h3>
+        <h3 class="text-muted mt-2" i18n>Billing information</h3>
         <div class="divider"></div>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">Name:</p>
+        <p class="text-muted" i18n>Name:</p>
         <p>{{billingForm.controls.firstName.value}} {{billingForm.controls.lastName.value}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">Email:</p>
+        <p class="text-muted" i18n>Email:</p>
         <p>{{billingForm.controls.email.value}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">Phone:</p>
+        <p class="text-muted" i18n>Phone:</p>
         <p>{{billingForm.controls.phone.value}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">Country:</p>
+        <p class="text-muted" i18n>Country:</p>
         <p>{{billingForm.controls.country.value['name']}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">City:</p>
+        <p class="text-muted" i18n>City:</p>
         <p>{{billingForm.controls.city.value}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">State:</p>
+        <p class="text-muted" i18n>State:</p>
         <p>{{billingForm.controls.state.value}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">Zip/PostalCode:</p>
+        <p class="text-muted" i18n>Zip/PostalCode:</p>
         <p>{{billingForm.controls.zip.value}}</p>
       </div>
       <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" class="p-1">
-        <p class="text-muted">Address:</p>
+        <p class="text-muted" i18n>Address:</p>
         <p>{{billingForm.controls.address.value}}</p>
       </div>
     </div>

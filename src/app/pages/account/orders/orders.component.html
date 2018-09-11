@@ -13,12 +13,12 @@
       <div class="mat-cell">{{order.total}}</div>     
       <div class="mat-cell">
         <div class="p-1 actions"> 
-<span class="cdk-visually-hidden" #translatedTooltipMessage >View</span>         
-          <button mat-mini-fab color="primary" [matTooltip]="translatedTooltipMessage.innerHTML">
+<span class="cdk-visually-hidden" #translatedTooltipMessage i18n>View</span>         
+          <button mat-mini-fab color="primary" [matTooltip]="translatedTooltipMessage.innerHTML" i18n>
               <mat-icon>remove_red_eye</mat-icon>
           </button>
-<span class="cdk-visually-hidden" #translatedTooltipMessage1 >View invoice</span>
-          <button *ngIf="order.invoice" mat-mini-fab color="warn" [matTooltip]="translatedTooltipMessage1.innerHTML" class="btn-invoice">
+<span class="cdk-visually-hidden" #translatedTooltipMessage1 i18n>View invoice</span>
+          <button *ngIf="order.invoice" mat-mini-fab color="warn" [matTooltip]="translatedTooltipMessage1.innerHTML" class="btn-invoice" i18n>
               <mat-icon>receipt</mat-icon>
           </button>
         </div>
