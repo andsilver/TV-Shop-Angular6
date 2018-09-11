@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
-import * as KeywordActions from 'app/store/actions/keyword.action';
 import * as ProductsActions from 'app/store/actions/products.action';
 import * as BrandsActions from 'app/store/actions/brands.action';
 
@@ -162,7 +161,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getProducts() {
     this.emptyMessage = '';
-    let filt = {
+    const filt = {
       keyword: this.keyword,
       categoryId: this.categoryId,
       fromPrice: this.priceFrom,
@@ -245,7 +244,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.selectedFilterLists.push({
         id: optionId,
         children: [ valueId ]
-      })
+      });
     }
     console.log(this.selectedFilterLists);
     this.filterChanged();
@@ -274,8 +273,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   checkStockIndicator(product) {
-    if (product)
+    if (product) {
       return product.stockIndicator.indexOf('Vraag naar levertijd') > -1;
+    }
     return false;
   }
 

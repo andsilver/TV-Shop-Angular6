@@ -34,7 +34,6 @@
                                         <span *ngIf="image.have_image">
                                             <img [src]="image.small" class="swiper-lazy"/>
                                         </span>
-                                        <!-- <div class="swiper-lazy-preloader"></div> -->
                                     </mat-card>
                                 </div>
                             </div>
@@ -101,13 +100,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- <div class="divider"></div> -->
-
-                    <!-- <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted py-1">
-                        <button mat-button><mat-icon>mail_outline</mat-icon> Email to a Friend</button>
-                        <button mat-icon-button><mat-icon>share</mat-icon></button>
-                    </div> -->
                 </div>
 
             </div>
@@ -115,7 +107,7 @@
 
                 <div ngClass.gt-md="pr-3">
 
-                    <div class="shortdesc"><p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
+                    <!-- <div class="shortdesc"><p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
 
                     <div fxFlex>
                         <mat-card *ngIf="product?.description || product?.extra_description || product?.reviews.length || product?.expertReview">
@@ -148,7 +140,7 @@
                                 </mat-tab>
                             </mat-tab-group>
                         </mat-card>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -299,5 +291,3 @@
     <div class="divider"></div>
     <app-products-carousel [products]="relatedProducts"></app-products-carousel>
 </div>
-
-
