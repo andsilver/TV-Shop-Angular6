@@ -1,19 +1,19 @@
 <div class="added-to-cart">
-  <h3 class="mat-dialog-title">Toegevoegd aan je winkelmandje</h3>
+  <h3 class="mat-dialog-title" i18n>Toegevoegd aan je winkelmandje</h3>
   <div class="product" fxLayout fxLayout.lt-md="column" fxLayoutAlign="space-between start" fxLayoutAlign.lt-md="start center" fxLayoutGap="25px">
     <img class="product-image" (click)="navigateToDetail()" [src]="product.images[0].small">
     <div>
       <a (click)="navigateToDetail()" class="title text-truncate">
           {{product.name}}
       </a>
-      <p class="product-quantity" [ngStyle.lt-md]="{'text-align': 'center'}">Aantal: {{product.quantity}}</p>
+      <p class="product-quantity" [ngStyle.lt-md]="{'text-align': 'center'}" i18n>Quantity: {{product.quantity}}</p>
     </div>
     <div class="product-price" [ngStyle.gt-sm]="{'margin-left': '40px'}">
       {{product.newPrice | customCurrency}}
     </div>
     <div fxLayout="column" fxLayoutGap="10px">
-        <button class="control-add-to-cart" mat-button (click)="navigateToCartList()">Bestellen</button>
-        <button class="control-normal" mat-button (click)="dialogRef.close()">Verder winkelen</button>
+        <button class="control-add-to-cart" mat-button (click)="navigateToCartList()" i18n>Bestellen</button>
+        <button class="control-normal" mat-button (click)="dialogRef.close()" i18n>Return to Shop</button>
     </div>
   </div>
   <div class="close-popup">

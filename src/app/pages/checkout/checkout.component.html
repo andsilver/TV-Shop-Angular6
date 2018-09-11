@@ -4,75 +4,75 @@
       <div fxLayout="row wrap">
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="First name" formControlName="firstName" required>
-              <mat-error *ngIf="billingForm.controls.firstName.errors?.required">First name is required</mat-error>
+              <input matInput i18n-placeholder placeholder="First name" formControlName="firstName" required>
+              <mat-error *ngIf="billingForm.controls.firstName.errors?.required" i18n>First name is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Last name" formControlName="lastName" required>
-              <mat-error *ngIf="billingForm.controls.lastName.errors?.required">Last name is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Last name" formControlName="lastName" required>
+              <mat-error *ngIf="billingForm.controls.lastName.errors?.required" i18n>Last name is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Middle Name/Initial" formControlName="middleName">
+              <input matInput i18n-placeholder placeholder="Middle Name/Initial" formControlName="middleName">
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Company" formControlName="company">
+              <input matInput i18n-placeholder placeholder="Company" formControlName="company">
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Email" formControlName="email" required>
-              <mat-error *ngIf="billingForm.controls.email.errors?.required">Email is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Email" formControlName="email" required>
+              <mat-error *ngIf="billingForm.controls.email.errors?.required" i18n>Email is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Phone" formControlName="phone" required>
-              <mat-error *ngIf="billingForm.controls.phone.errors?.required">Phone is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Phone" formControlName="phone" required>
+              <mat-error *ngIf="billingForm.controls.phone.errors?.required" i18n>Phone is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="25" class="px-1">
           <mat-form-field class="w-100">
-            <mat-select placeholder="Country" formControlName="country" required>
+            <mat-select i18n-placeholder placeholder="Country" formControlName="country" required>
               <mat-option *ngFor="let country of countries" [value]="country">
                   {{country.name}}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="billingForm.controls.country.errors?.required">Country is required</mat-error>
+            <mat-error *ngIf="billingForm.controls.country.errors?.required" i18n>Country is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="25" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="City" formControlName="city" required>
-              <mat-error *ngIf="billingForm.controls.city.errors?.required">City is required</mat-error>
+              <input matInput i18n-placeholder placeholder="City" formControlName="city" required>
+              <mat-error *ngIf="billingForm.controls.city.errors?.required" i18n>City is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="25" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="State/Province" formControlName="state">
+              <input matInput i18n-placeholder placeholder="State/Province" formControlName="state">
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="25" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Zip/Postal Code" formControlName="zip" required>
-              <mat-error *ngIf="billingForm.controls.zip.errors?.required">Zip/Postal Code is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Zip/Postal Code" formControlName="zip" required>
+              <mat-error *ngIf="billingForm.controls.zip.errors?.required" i18n>Zip/Postal Code is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Address (street, apartment, suite, unit etc.)" formControlName="address" required>
-              <mat-error *ngIf="billingForm.controls.address.errors?.required">Address is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Address (street, apartment, suite, unit etc.)" formControlName="address" required>
+              <mat-error *ngIf="billingForm.controls.address.errors?.required" i18n>Address is required</mat-error>
           </mat-form-field>
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
 <span class="cdk-visually-hidden" #translatedTooltipMessage i18n>Next</span>
-        <button mat-mini-fab matStepperNext color="primary" i18n [matTooltip]="translatedTooltipMessage.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary" [matTooltip]="translatedTooltipMessage.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -84,8 +84,8 @@
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
 <span class="cdk-visually-hidden" #translatedTooltipMessage2 i18n>Back</span>
 <span class="cdk-visually-hidden" #translatedTooltipMessage3 i18n>Next</span>
-        <button mat-mini-fab matStepperPrevious color="primary" i18n [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary" i18n  [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
+        <button mat-mini-fab matStepperPrevious color="primary"  [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary"   [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -93,62 +93,62 @@
     <form [formGroup]="paymentForm">
       <div fxLayout="row wrap">
         <div fxFlex="100" fxLayout="column" fxLayoutAlign="start start" class="p-1">
-          <span class="text-muted">Credit Card</span>
+          <span class="text-muted" i18n>Credit Card</span>
           <img src="assets/images/others/card-icon.png" alt="">
         </div>        
         <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Card holder name" formControlName="cardHolderName" required>
-              <mat-error *ngIf="paymentForm.controls.cardHolderName.errors?.required">Card holder name name is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Card holder name" formControlName="cardHolderName" required>
+              <mat-error *ngIf="paymentForm.controls.cardHolderName.errors?.required" i18n>Card holder name name is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Card number" formControlName="cardNumber" required>
-              <mat-error *ngIf="paymentForm.controls.cardNumber.errors?.required">Card number is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Card number" formControlName="cardNumber" required>
+              <mat-error *ngIf="paymentForm.controls.cardNumber.errors?.required" i18n>Card number is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-            <mat-select placeholder="Expired month" formControlName="expiredMonth" required>
+            <mat-select i18n-placeholder placeholder="Expired month" formControlName="expiredMonth" required>
               <mat-option *ngFor="let month of months" [value]="month.value">
                   {{month.name}}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="paymentForm.controls.expiredMonth.errors?.required">Expired month is required</mat-error>
+            <mat-error *ngIf="paymentForm.controls.expiredMonth.errors?.required" i18n>Expired month is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-            <mat-select placeholder="Expired year" formControlName="expiredYear" required>
+            <mat-select i18n-placeholder placeholder="Expired year" formControlName="expiredYear" required>
               <mat-option *ngFor="let year of years" [value]="year">
                   {{year}}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="paymentForm.controls.expiredYear.errors?.required">Expired year is required</mat-error>
+            <mat-error *ngIf="paymentForm.controls.expiredYear.errors?.required" i18n>Expired year is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="CVV" formControlName="cvv" required>
-              <mat-error *ngIf="paymentForm.controls.cvv.errors?.required">CVV is required</mat-error>
+              <input matInput i18n-placeholder placeholder="CVV" formControlName="cvv" required>
+              <mat-error *ngIf="paymentForm.controls.cvv.errors?.required" i18n>CVV is required</mat-error>
           </mat-form-field>
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperPrevious color="primary" i18n [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary" i18n [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
+        <button mat-mini-fab matStepperPrevious color="primary"  [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary"  [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
       </div>
     </form>
   </mat-step>
   <mat-step label="Review Order">    
     <div fxLayout="row wrap">
       <div fxFlex="100" class="p-1">
-        <h3 class="text-muted">Shopping Cart</h3>
+        <h3 class="text-muted" i18n>Shopping Cart</h3>
         <div class="divider"></div>
         <div class="mat-table review-order-table">
           <div class="mat-header-row">
-            <div class="mat-header-cell">Product</div>
+            <div class="mat-header-cell" i18n>Product</div>
             <div class="mat-header-cell" i18n>Name</div>
             <div class="mat-header-cell" i18n>Unit Price</div>
             <div class="mat-header-cell" i18n>Quantity</div>
@@ -204,32 +204,34 @@
     </div>
     <div fxLayout="row">
       <div fxFlex="100" class="p-1">
-        <h3 class="text-muted mt-2">Delivery information</h3>
+        <h3 class="text-muted mt-2" i18n>Delivery information</h3>
         <div class="divider"></div>
         <p class="py-1">{{deliveryForm.controls.deliveryMethod.value['name']}} <span class="text-muted">{{deliveryForm.controls.deliveryMethod.value['desc']}}</span></p>
       </div>
     </div>
     <div fxLayout="row">
       <div fxFlex="100" class="p-1">
-        <h3 class="text-muted mt-2">Payment information</h3>
+        <h3 class="text-muted mt-2" i18n>Payment information</h3>
         <div class="divider"></div>
-        <p class="py-1"><span class="text-muted mr-1">Card number:</span><span>XXX-XXX-XXX-7224</span></p>
+        <p class="py-1"><span class="text-muted mr-1" i18n>Card number:</span><span i18n>XXX-XXX-XXX-7224</span></p>
       </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="p-1"> 
-       <h2><span class="text-muted mr-1" i18n>Total Price:</span><span>${{grandTotal | number : '1.2-2'}}</span></h2>
+       <h2>
+         <span class="text-muted mr-1" i18n>Total Price:</span>
+         <span>${{grandTotal | number : '1.2-2'}}</span></h2>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
 
-      <button mat-mini-fab matStepperPrevious color="primary" i18n [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
+      <button mat-mini-fab matStepperPrevious color="primary" [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
       <button mat-raised-button matStepperNext color="primary" (click)="placeOrder()" i18n>Place order now</button>
     </div>     
   </mat-step>
   <mat-step label="Confirmation">
     <div fxLayout="column" fxLayoutAlign="center center" class="p-2 text-center"> 
       <button mat-fab color="primary"><mat-icon>check</mat-icon></button>
-      <h2 class="py-2">Congratulation! Your order has been processed</h2>
-      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus dolor ante, ut luctus mi faucibus a. Ut eu tincidunt neque. Proin porttitor id ligula id placerat. Integer nec nulla varius, dapibus libero quis, semper eros. Aliquam erat volutpat. Proin volutpat tellus vel purus interdum euismod.</p>
+      <h2 class="py-2" i18n>Congratulation! Your order has been processed</h2>
+      <p class="text-muted" i18n>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus dolor ante, ut luctus mi faucibus a. Ut eu tincidunt neque. Proin porttitor id ligula id placerat. Integer nec nulla varius, dapibus libero quis, semper eros. Aliquam erat volutpat. Proin volutpat tellus vel purus interdum euismod.</p>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
       <a [routerLink]="['/']" mat-raised-button color="primary" i18n>Return to Shop</a>
@@ -244,74 +246,74 @@
       <div fxLayout="row wrap">
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="First name" formControlName="firstName" required>
-              <mat-error *ngIf="billingForm.controls.firstName.errors?.required">First name is required</mat-error>
+              <input matInput i18n-placeholder placeholder="First name" formControlName="firstName" required>
+              <mat-error *ngIf="billingForm.controls.firstName.errors?.required" i18n>First name is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Last name" formControlName="lastName" required>
-              <mat-error *ngIf="billingForm.controls.lastName.errors?.required">Last name is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Last name" formControlName="lastName" required>
+              <mat-error *ngIf="billingForm.controls.lastName.errors?.required" i18n>Last name is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Middle Name/Initial" formControlName="middleName">
+              <input matInput i18n-placeholder placeholder="Middle Name/Initial" formControlName="middleName">
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Company" formControlName="company">
+              <input matInput i18n-placeholder placeholder="Company" formControlName="company">
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Email" formControlName="email" required>
-              <mat-error *ngIf="billingForm.controls.email.errors?.required">Email is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Email" formControlName="email" required>
+              <mat-error *ngIf="billingForm.controls.email.errors?.required" i18n>Email is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Phone" formControlName="phone" required>
-              <mat-error *ngIf="billingForm.controls.phone.errors?.required">Phone is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Phone" formControlName="phone" required>
+              <mat-error *ngIf="billingForm.controls.phone.errors?.required" i18n>Phone is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="25" class="px-1">
           <mat-form-field class="w-100">
-            <mat-select placeholder="Country" formControlName="country" required>
+            <mat-select i18n-placeholder placeholder="Country" formControlName="country" required>
               <mat-option *ngFor="let country of countries" [value]="country">
                   {{country.name}}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="billingForm.controls.country.errors?.required">Country is required</mat-error>
+            <mat-error *ngIf="billingForm.controls.country.errors?.required" i18n>Country is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="25" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="City" formControlName="city" required>
-              <mat-error *ngIf="billingForm.controls.city.errors?.required">City is required</mat-error>
+              <input matInput i18n-placeholder placeholder="City" formControlName="city" required>
+              <mat-error *ngIf="billingForm.controls.city.errors?.required" i18n>City is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="25" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="State/Province" formControlName="state">
+              <input matInput i18n-placeholder placeholder="State/Province" formControlName="state">
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="25" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Zip/Postal Code" formControlName="zip" required>
-              <mat-error *ngIf="billingForm.controls.zip.errors?.required">Zip/Postal Code is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Zip/Postal Code" formControlName="zip" required>
+              <mat-error *ngIf="billingForm.controls.zip.errors?.required" i18n>Zip/Postal Code is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Address (street, apartment, suite, unit etc.)" formControlName="address" required>
+              <input matInput i18n-placeholder placeholder="Address (street, apartment, suite, unit etc.)" formControlName="address" required>
               <mat-error *ngIf="billingForm.controls.address.errors?.required" i18n>Street name + house number is required</mat-error>
           </mat-form-field>
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperNext color="primary" i18n [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary"  [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -321,8 +323,8 @@
         <mat-radio-button *ngFor="let method of deliveryMethods" color="primary" [value]="method" class="mt-1"><b>{{method.name}}</b> {{method.desc}}</mat-radio-button>
       </mat-radio-group> 
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperPrevious color="primary" i18n [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary"  i18n [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
+        <button mat-mini-fab matStepperPrevious color="primary"  [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary"   [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -335,46 +337,46 @@
         </div>        
         <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Card holder name" formControlName="cardHolderName" required>
-              <mat-error *ngIf="paymentForm.controls.cardHolderName.errors?.required">Card holder name name is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Card holder name" formControlName="cardHolderName" required>
+              <mat-error *ngIf="paymentForm.controls.cardHolderName.errors?.required" i18n>Card holder name name is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Card number" formControlName="cardNumber" required>
-              <mat-error *ngIf="paymentForm.controls.cardNumber.errors?.required">Card number is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Card number" formControlName="cardNumber" required>
+              <mat-error *ngIf="paymentForm.controls.cardNumber.errors?.required" i18n>Card number is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-            <mat-select placeholder="Expired month" formControlName="expiredMonth" required>
+            <mat-select i18n-placeholder placeholder="Expired month" formControlName="expiredMonth" required>
               <mat-option *ngFor="let month of months" [value]="month.value">
                   {{month.name}}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="paymentForm.controls.expiredMonth.errors?.required">Expired month is required</mat-error>
+            <mat-error *ngIf="paymentForm.controls.expiredMonth.errors?.required" i18n>Expired month is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-            <mat-select placeholder="Expired year" formControlName="expiredYear" required>
+            <mat-select i18n-placeholder placeholder="Expired year" formControlName="expiredYear" required>
               <mat-option *ngFor="let year of years" [value]="year">
                   {{year}}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="paymentForm.controls.expiredYear.errors?.required">Expired year is required</mat-error>
+            <mat-error *ngIf="paymentForm.controls.expiredYear.errors?.required" i18n>Expired year is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="CVV" formControlName="cvv" required>
-              <mat-error *ngIf="paymentForm.controls.cvv.errors?.required">CVV is required</mat-error>
+              <input matInput i18n-placeholder placeholder="CVV" formControlName="cvv" required>
+              <mat-error *ngIf="paymentForm.controls.cvv.errors?.required" i18n>CVV is required</mat-error>
           </mat-form-field>
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperPrevious color="primary" i18n [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary"  i18n [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
+        <button mat-mini-fab matStepperPrevious color="primary"  [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary"   [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
       </div>
     </form>
   </mat-step>
@@ -385,7 +387,7 @@
         <div class="divider"></div>
         <div class="mat-table review-order-table">
           <div class="mat-header-row">
-            <div class="mat-header-cell">Product</div>
+            <div class="mat-header-cell" i18n>Product</div>
             <div class="mat-header-cell" i18n>Name</div>
             <div class="mat-header-cell" i18n>Unit Price</div>
             <div class="mat-header-cell" i18n>Quantity</div>
@@ -441,34 +443,36 @@
     </div>
     <div fxLayout="row">
       <div fxFlex="100" class="p-1">
-        <h3 class="text-muted mt-2">Delivery information</h3>
+        <h3 class="text-muted mt-2" i18n>Delivery information</h3>
         <div class="divider"></div>
         <p class="py-1">{{deliveryForm.controls.deliveryMethod.value['name']}} <span class="text-muted">{{deliveryForm.controls.deliveryMethod.value['desc']}}</span></p>
       </div>
     </div>
     <div fxLayout="row">
       <div fxFlex="100" class="p-1">
-        <h3 class="text-muted mt-2">Payment information</h3>
+        <h3 class="text-muted mt-2" i18n>Payment information</h3>
         <div class="divider"></div>
-        <p class="py-1"><span class="text-muted mr-1">Card number:</span><span>XXX-XXX-XXX-XXXX</span></p>
+        <p class="py-1"><span class="text-muted mr-1" i18n>Card number:</span><span i18n>XXX-XXX-XXX-XXXX</span></p>
       </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="p-1"> 
-       <h2><span class="text-muted mr-1">Total Price:</span><span>{{grandTotal | customCurrency}}</span></h2>    
+       <h2>
+         <span class="text-muted mr-1" i18n>Total Price:</span>
+         <span>{{grandTotal | customCurrency}}</span></h2>    
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
       <button mat-mini-fab matStepperPrevious color="primary" [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
-      <button mat-raised-button matStepperNext color="primary" (click)="placeOrder()">Place order now</button>
+      <button mat-raised-button matStepperNext color="primary" (click)="placeOrder()" i18n>Place order now</button>
     </div>     
   </mat-step>
   <mat-step label="Confirmation">
     <div fxLayout="column" fxLayoutAlign="center center" class="p-2 text-center"> 
       <button mat-fab color="primary"><mat-icon>check</mat-icon></button>
-      <h2 class="py-2">Congratulation! Your order has been processed</h2>
-      <p class="text-muted lh">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus dolor ante, ut luctus mi faucibus a. Ut eu tincidunt neque. Proin porttitor id ligula id placerat. Integer nec nulla varius, dapibus libero quis, semper eros. Aliquam erat volutpat. Proin volutpat tellus vel purus interdum euismod.</p>
+      <h2 class="py-2" i18n>Congratulation! Your order has been processed</h2>
+      <p class="text-muted lh" i18n>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus dolor ante, ut luctus mi faucibus a. Ut eu tincidunt neque. Proin porttitor id ligula id placerat. Integer nec nulla varius, dapibus libero quis, semper eros. Aliquam erat volutpat. Proin volutpat tellus vel purus interdum euismod.</p>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-      <a [routerLink]="['/']" mat-raised-button color="primary">Return to Shop</a>
+      <a [routerLink]="['/']" mat-raised-button color="primary" i18n>Return to Shop</a>
     </div>     
   </mat-step>
 </mat-vertical-stepper>

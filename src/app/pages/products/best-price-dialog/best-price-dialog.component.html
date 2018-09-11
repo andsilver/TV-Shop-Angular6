@@ -3,47 +3,49 @@
     <img src="https://www.plattetv.nl/var/images/cmsimages/banners/2017/deal-op-maat.png" alt="Request the best price">
   </div>
   <div class="introduction">
-    <strong>Wij maken graag een deal op maat! </strong>
-    Wilt u een persoonlijke deal? Geef dit aan ons door. Wij zorgen dat u de beste prijs krijgt. Wij zorgen dat u de beste prijs krijgt. 
-    Uiteraard met behoud van volledige service door heel Nederland en België.<br><br>
+    <strong i18n>Wij maken graag een deal op maat! </strong>
+    <ng-container i18n> Wilt u een persoonlijke deal? Geef dit aan ons door. Wij zorgen dat u de beste prijs krijgt. Wij zorgen dat u de beste prijs krijgt. 
+    Uiteraard met behoud van volledige service door heel Nederland en België.</ng-container><br><br>
   </div>
   <div class="form-title">
-      Vraag de beste prijs aan via onze <a href="/">LiveChat</a> of <strong>vul onderstaand formulier in:</strong>
+      <ng-container i18n> Vraag de beste prijs aan via onze </ng-container> <a href="/" i18n>LiveChat</a>
+      <ng-container i18n> of </ng-container>
+        <strong i18n>vul onderstaand formulier in:</strong>
   </div>
 
   <form [formGroup]="requestForm" (ngSubmit)="formSubmit()">
     <div>
-      <label style="margin-right: 30px">Aanhef:</label>
+      <label style="margin-right: 30px" i18n>Aanhef:</label>
       <mat-radio-group formControlName="salutation">
-        <mat-radio-button value="mr" style="margin-right: 20px">Dhr.</mat-radio-button>
-        <mat-radio-button value="mrs">Mevr.</mat-radio-button>
+        <mat-radio-button value="mr" style="margin-right: 20px" i18n>Dhr.</mat-radio-button>
+        <mat-radio-button value="mrs" i18n>Mevr.</mat-radio-button>
       </mat-radio-group>
     </div>
 
     <mat-form-field class="w-100 mt-2">
-      <input matInput placeholder="Uw Naam:" formControlName="name" required>
-      <mat-error *ngIf="requestForm.controls.name.errors?.required">Uw Naam is required</mat-error>
+      <input matInput i18n-placeholder placeholder="Uw Naam:" formControlName="name" required>
+      <mat-error *ngIf="requestForm.controls.name.errors?.required" i18n>Uw Naam is required</mat-error>
     </mat-form-field>
 
     <mat-form-field class="w-100 mt-2">
-      <input matInput placeholder="E-mail:" formControlName="email" required>
-      <mat-error *ngIf="requestForm.controls.email.errors?.required">E-mail is required</mat-error>
+      <input matInput i18n-placeholder placeholder="E-mail:" formControlName="email" required>
+      <mat-error *ngIf="requestForm.controls.email.errors?.required" i18n>E-mail is required</mat-error>
     </mat-form-field>
 
-    <mat-checkbox formControlName="allow" style="width: 100%">Stuur mij exclusieve acties en aanbiedingen via e-mail. </mat-checkbox>
+    <mat-checkbox formControlName="allow" style="width: 100%" i18n>Stuur mij exclusieve acties en aanbiedingen via e-mail. </mat-checkbox>
 
     <mat-form-field class="w-100 mt-2">
-      <input matInput placeholder="Telefoonnummer:" formControlName="phone" required>
-      <mat-error *ngIf="requestForm.controls.phone.errors?.required">Telefoonnummer is required</mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="w-100 mt-2">
-      <input matInput placeholder="Woonplaats:" formControlName="residence" required>
+      <input matInput i18n-placeholder placeholder="Telefoonnummer:" formControlName="phone" required>
+      <mat-error *ngIf="requestForm.controls.phone.errors?.required" i18n>Telefoonnummer is required</mat-error>
     </mat-form-field>
 
     <mat-form-field class="w-100 mt-2">
-      <textarea matInput placeholder="Van welke producten wilt u de beste prijs aanvragen?:" formControlName="description" rows="5"></textarea>
+      <input matInput i18n-placeholder placeholder="Woonplaats:" formControlName="residence" required>
+    </mat-form-field>
+
+    <mat-form-field class="w-100 mt-2">
+      <textarea matInput i18n-placeholder placeholder="Van welke producten wilt u de beste prijs aanvragen?:" formControlName="description" rows="5"></textarea>
     </mat-form-field>
   </form>
-  <button (click)="formSubmit()" class="control-normal" mat-button>Verzenden <i class="fas fa-chevron-circle-right"></i></button>
+  <button (click)="formSubmit()" class="control-normal" mat-button ><ng-content i18n>Verzenden</ng-content> <i class="fas fa-chevron-circle-right"></i></button>
 </div>

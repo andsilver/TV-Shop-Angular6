@@ -2,55 +2,55 @@
     <div fxFlex="100" fxFlex.gt-xs="33.3">
         <div fxLayout="column" fxLayoutAlign="center center" class="text-center">
             <mat-icon color="primary" class="mat-icon-lg">home</mat-icon>
-            <h3 class="primary-text py-1">ADDRESS :</h3>
-            <span class="text-muted">Maasdijk 62, 5308 JD Aalst</span>
+            <h3 class="primary-text py-1" i18n>ADDRESS :</h3>
+            <span class="text-muted" i18n>Maasdijk 62, 5308 JD Aalst</span>
         </div>
     </div>
     <div fxFlex="100" fxFlex.gt-xs="33.3" ngClass.xs="mt-2">
         <div fxLayout="column" fxLayoutAlign="center center">
             <mat-icon color="primary" class="mat-icon-lg">call</mat-icon>
-            <h3 class="primary-text py-1">PHONES :</h3>
-            <span class="text-muted">026 - 84 54 658</span>
+            <h3 class="primary-text py-1" i18n>PHONES :</h3>
+            <span class="text-muted" i18n>026 - 84 54 658</span>
         </div>
     </div>
     <div fxFlex="100" fxFlex.gt-xs="33.3" ngClass.xs="mt-2">
         <div fxLayout="column" fxLayoutAlign="center center">
             <mat-icon color="primary" class="mat-icon-lg">mail_outline</mat-icon>
-            <h3 class="primary-text py-1">E-MAIL :</h3>
-            <span class="text-muted">sales@bvb.media</span>
+            <h3 class="primary-text py-1" i18n>E-MAIL :</h3>
+            <span class="text-muted" i18n>sales@bvb.media</span>
         </div>
     </div>
     <div class="divider w-100 mt-2"></div>
-    <h3 class="w-100 text-center py-2">CONTACT US</h3>
+    <h3 class="w-100 text-center py-2" i18n>CONTACT US</h3>
     
     <form [formGroup]="contactForm" (ngSubmit)="onContactFormSubmit(contactForm.value)" fxLayout="row wrap">
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Name" formControlName="name" required>
-              <mat-error *ngIf="contactForm.controls.name.errors?.required">Name is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Name" formControlName="name" required>
+              <mat-error *ngIf="contactForm.controls.name.errors?.required" i18n>Name is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Email" formControlName="email" required>
-              <mat-error *ngIf="contactForm.controls.email.errors?.required">Email is required</mat-error>
-              <mat-error *ngIf="contactForm.controls.email.hasError('invalidEmail')">Invalid email address</mat-error>
+              <input matInput i18n-placeholder placeholder="Email" formControlName="email" required>
+              <mat-error *ngIf="contactForm.controls.email.errors?.required" i18n>Email is required</mat-error>
+              <mat-error *ngIf="contactForm.controls.email.hasError('invalidEmail')" i18n>Invalid email address</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Phone" formControlName="phone" required>
-              <mat-error *ngIf="contactForm.controls.phone.errors?.required">Phone is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Phone" formControlName="phone" required>
+              <mat-error *ngIf="contactForm.controls.phone.errors?.required" i18n>Phone is required</mat-error>
           </mat-form-field>
         </div>
         <div fxFlex="100" class="px-1 mt-1">
           <mat-form-field class="w-100">
-              <input matInput placeholder="Message" formControlName="message" required>
-              <mat-error *ngIf="contactForm.controls.message.errors?.required">Message is required</mat-error>
+              <input matInput i18n-placeholder placeholder="Message" formControlName="message" required>
+              <mat-error *ngIf="contactForm.controls.message.errors?.required" i18n>Message is required</mat-error>
           </mat-form-field>
         </div> 
         <div class="w-100 py-2 text-center">
-          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <button mat-raised-button color="primary" type="submit" i18n>Submit</button>
         </div> 
     </form>
 
