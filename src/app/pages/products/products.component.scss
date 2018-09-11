@@ -122,3 +122,20 @@
 .price-only-new {
     color: #000 !important;
 }
+
+.product-item-list.mat-card {
+    padding: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #E6E6DC;
+
+    .product-item-image {
+        padding: .75rem .25rem .75rem .75rem;
+
+        .image-link img {
+            max-width: none;
+        }
+    }
+    .listing-item-content {
+        padding: .75rem;
+    }
+}
