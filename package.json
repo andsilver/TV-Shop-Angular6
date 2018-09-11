@@ -10,8 +10,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postbuild": "scp -r dist/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/",
-    "pwa": "ng build --prod --build-optimizer --aot && gulp compress && sw-precache --root=dist --config=precache-config.js",
-    "serve:sw": "npm run pwa && http-server ./dist -p 8000"
+    "pwa": "ng build --prod --build-optimizer --aot --stats-json && gulp compress && sw-precache --root=dist --config=precache-config.js",
+    "postpwa": "scp -r dist/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/",
+    "serve:sw": "npm run pwa && http-server ./dist -p 8000",
+    "bundle-report": "webpack-bundle-analyzer dist/stats.json"
   },
   "private": true,
   "dependencies": {
@@ -74,6 +76,7 @@
     "sw-precache-webpack-plugin": "^0.11.5",
     "ts-node": "6.0.5",
     "tslint": "5.10.0",
-    "typescript": "2.7.2"
+    "typescript": "2.7.2",
+    "webpack-bundle-analyzer": "^2.13.1"
   }
 }
