@@ -180,7 +180,7 @@
                                     <p class="new-price list-new-price" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</p>
                                     <p [innerHTML]="product.stockIndicator | htmlSanitize"></p>
                                     <button class="control-normal" mat-button>
-                                        NAAR PRODUCT <i class="fas fa-chevron-circle-right"></i>
+                                        NAAR PRODUCT <i class="fas fa fa-chevron-circle-right"></i>
                                     </button>
                                     <p *ngIf="product.demoUnitText" [innerHTML]="product.demoUnitText | htmlSanitize"></p>
                                 </div>

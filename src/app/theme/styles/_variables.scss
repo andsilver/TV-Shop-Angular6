@@ -24,21 +24,14 @@ $large-only: 'only screen and (min-width : #{$medium-screen-up}) and (max-width 
 
 @font-face {
   font-family: "Gotham Condensed Bold";
-  src: url(/assets/fonts/hinted-GothamCondensed-Bold.woff2) format('woff2'),
-      url(/assets/fonts/hinted-GothamCondensed-Bold.woff) format('woff'),
-      url(/assets/fonts/hinted-GothamCondensed-Bold.ttf) format('truetype');
+  font-display: auto;
+  src: local("Gotham Condensed Bold"),
+    url(/assets/fonts/hinted-GothamCondensed-Bold.woff2) format('woff2');
 }
 
 @font-face {
-    font-family: "Gotham Condensed";
-    src: url(/assets/fonts/hinted-GothamCondensed-Light.woff2) format('woff2'),
-        url(/assets/fonts/hinted-GothamCondensed-Light.woff) format('woff'),
-        url(/assets/fonts/hinted-GothamCondensed-Light.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: "Gotham Condensed Medium";
-  src: url(/assets/fonts/hinted-GothamCondensed-Medium.woff2) format('woff2'),
-      url(/assets/fonts/hinted-GothamCondensed-Medium.woff) format('woff'),
-      url(/assets/fonts/hinted-GothamCondensed-Medium.ttf) format('truetype');
+  font-family: "Gotham Condensed";
+  font-display: auto;
+  src: local("Gotham Condensed"), 
+    url(/assets/fonts/hinted-GothamCondensed-Medium.woff2) format('woff2');
 }

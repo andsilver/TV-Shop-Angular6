@@ -140,8 +140,6 @@ export class AppService {
             this.Data.wishList[index] = product;
             message = 'Product ' + product.name + ' is aangepast op uw wensenlijst.';
             status = 'success';
-            // message = 'The product ' + product.name + ' already added to wish list.';
-            // status = 'error';
         } else {
             this.Data.wishList.push(product);
             message = 'Product ' + product.name + ' is toegevoegd aan uw wensenlijst.';

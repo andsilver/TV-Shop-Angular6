@@ -15,6 +15,7 @@ import { RoutingHandlerService } from 'app/services';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import * as KeywordActions from 'app/store/actions/keyword.action';
+import * as CategoriesActions from 'app/store/actions/categories.action';
 
 @Component({
   selector: 'app-pages',
@@ -48,9 +49,16 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.subscriptions.push(
-      this.store.select(state => state.categories ).subscribe(res => {
-        this.categories = res.categories;
-        this.category = res.categories[0];
+      // this.store.select(state => state.categories ).subscribe(res => {
+      //   this.categories = res.categories;
+      //   this.category = res.categories[0];
+      //   this.sidenavMenuItems = this.categories.map(c =>
+      //       new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
+      // })
+      this.appService.getCategories().subscribe(res => {
+        this.categories = res;
+        this.category = res[0];
+        this.store.dispatch(new CategoriesActions.SuccessGetCategories(res));
         this.sidenavMenuItems = this.categories.map(c =>
             new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
       })

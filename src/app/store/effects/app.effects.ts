@@ -64,6 +64,20 @@ export class AppEffects {
         );
 
   @Effect()
+  GetAllBrands: Observable<any>
+    = this.actions
+      .ofType(BrandsActions.GET_ALL_BRANDS)
+      .pipe(
+        switchMap((action: any) =>
+          this.appService.getBrands()
+            .pipe(
+              map(data => new BrandsActions.SuccessGetBrands(data)),
+              catchError(err => of(new BrandsActions.FailedGetBrands({ message: err.message })))
+            )
+          )
+        );
+
+  @Effect()
   GetCategories: Observable<any>
     = this.actions
         .ofType(CategoriesActions.GET_CATEGORIES)
@@ -71,7 +85,7 @@ export class AppEffects {
           map((action: any) => action.payload),
           switchMap(payload => {
             if (payload) {
-              return this.appService.getCategoriesByParentId(payload);
+              return this.appService.getCategories();
             } else {
               return this.appService.getCategories();
             }
