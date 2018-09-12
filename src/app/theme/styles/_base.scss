@@ -96,13 +96,17 @@ app-root .app.dark .mat-drawer-container {
 }
 
 #brand {
+    margin-bottom: .5rem;
+    .logo {
+        line-height:0;
+    }
     .mobilenav {
 
         a {
             display: block;
 
             &+a {
-                margin-left: 1.5rem;
+                margin-left: 1rem;
             }
             img {
                 max-height: 40px;
@@ -111,10 +115,38 @@ app-root .app.dark .mat-drawer-container {
 
     }
 }
-@media (max-width:959px) {
+@media (max-width: 959px) {
     #brand,
     .main-header-sub {
         width: 100%;
+    }
+    .sidenav-toggle.mat-button {
+        min-width: 0;
+        margin-right: .5rem;
+    }
+    #brand {
+        .mobilenav {
+            a {
+                line-height: 0;
+            }
+        }
+    }
+}
+@media (max-width: 599px) {
+    #brand {
+        .logo {
+            img {
+                max-width: 35vw;
+            }
+        }
+    }
+    #brand .mobilenav a img {
+        max-height: 8vw;
+    }
+}
+@media (min-width: 600px) {
+    #brand {
+        margin-bottom: 1rem;
     }
 }
 
@@ -722,10 +754,6 @@ app-root .app.dark .mat-drawer-container {
     }
 }
 
-.logo{
-    line-height:0;
-}
-
 .img-fluid {
     max-width: 100%;
     height: auto;
@@ -786,12 +814,19 @@ app-root .app.dark .mat-drawer-container {
     input[type=text]{
         border: 0;
         outline: none;
-        padding: 0 34px 0 12px;
+        padding: 0 1rem;
         border-left: 1px solid #ccc;
     }
     .search-btn{
-         margin-left: -20px;
-         background: #fff !important;
+        border: none;
+        width: 40px;
+        height: 40px;
+        min-width: 0;
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+        border-radius: 0;
+        background: #fff !important;
     }
 }
 .search-dropdown.mat-menu-panel{
