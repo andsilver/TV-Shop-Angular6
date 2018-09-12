@@ -600,7 +600,7 @@ app-root .app.dark .mat-drawer-container {
 .extra_open_hours_box > div a,
 .extra_open_hours_box > div.special_open_time span { display:block; border:1px solid #E6E6DC; font-weight:600; font-size:16px; line-height:32px; font-family:"Poppins"; text-align:center; margin-bottom:5px; }
 .extra_open_hours_box > div.special_open_time a,
-.extra_open_hours_box > div.special_open_time span { background:#2da6c1; font-weight:bold; font-size:31px; line-height:44px; font-family:"PT Sans Narrow"; letter-spacing:.02em; color:#fff; }
+.extra_open_hours_box > div.special_open_time span { background:#2da6c1; font-weight:bold; font-size:31px; line-height:44px; font-family:"Gotham Condensed"; letter-spacing:.02em; color:#fff; }
 .extra_open_hours_box > div.special_open_time span { cursor:default; }
 .extra_open_hours_box > div.special_open_time a:hover { text-decoration:none; }
 .extra_open_hours_box > div.city_open_time:hover a { background:#212226; color:#fff; text-decoration:none; }
@@ -627,7 +627,7 @@ app-root .app.dark .mat-drawer-container {
 }
 .reviewbox+.reviewbox { margin-top:5px; }
 
-.reviewbox-kieskeurig .reviewbox--score { display:inline-block; width:35px; height:35px; background-color:#2da6c1; font-size:1.3125rem; line-height:35px; font-family:"PT Sans Narrow"; color:#fff; text-align:center; margin-right:6px; border-radius:50%; }
+.reviewbox-kieskeurig .reviewbox--score { display:inline-block; width:35px; height:35px; background-color:#2da6c1; font-size:1.3125rem; line-height:35px; font-family:"Gotham Condensed"; color:#fff; text-align:center; margin-right:6px; border-radius:50%; }
 .reviewbox-kieskeurig .reviewbox--text { display:inline-block; font-weight:700; line-height:1.125rem; text-align:left; }
 .reviewbox-kieskeurig .reviewbox--text .reviewbox--label { display:block; font-weight:700; margin-bottom:2px; }
 .reviewbox-kieskeurig .reviewbox--text .reviewbox--total-reviews { display:block; font-weight:400; }
@@ -1051,7 +1051,7 @@ button.swipe-arrow{
     }
     .prices{
         margin: 12px 0;
-        font-family: "PT Sans Narrow";
+        font-family: "Gotham Condensed";
         .old-price{
             text-decoration: line-through;
             height: 15px;
