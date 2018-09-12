@@ -52,13 +52,21 @@ export class MenuComponent implements OnInit {
       return;
     }
     const ele = event.target.getBoundingClientRect();
-    // console.log(ele.getBoundingClientRect());
     this.parentCategory = category;
     const sub = document.getElementById('subCategories');
+    const subele = sub.getBoundingClientRect();
     sub.style.position = 'absolute';
-    sub.style.left = `${ele.left}px`;
-    sub.style.top = `${ele.bottom}px`;
-    sub.style.display = 'block';
+    event.target.appendChild(sub);
+    // sub.style.display = 'block';
+    // setTimeout(() => {
+    //   if (subele.right > ele.right) {
+    //     sub.style.right = ele.right;
+    //     sub.style.left = 'unset';
+    //   } else {
+    //     sub.style.right = 'unset';
+    //     sub.style.left = ele.left;
+    //   }
+    // }, 500);
   }
 
   hideSubCategoryMenu(event, openBottom: boolean = true) {
