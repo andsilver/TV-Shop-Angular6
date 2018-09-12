@@ -20,8 +20,8 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted">
-                    <span i18n>From: <b>{{priceFrom | customCurrency:0:999}}</b></span>
-                    <span i18n>To: <b>{{priceTo | customCurrency:0:999}}</b></span>
+                    <span><ng-container i18n>From:</ng-container> <b>{{priceFrom | customCurrency:0:999}}</b></span>
+                    <span><ng-container i18n>To:</ng-container> <b>{{priceTo | customCurrency:0:999}}</b></span>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="filter-price">
                     <mat-slider color="primary" max="10000" min="1" thumb-label="true" [(ngModel)]="priceFrom" (change)="filterChanged()"></mat-slider>
@@ -121,8 +121,8 @@
                 </mat-menu>
             </div>
             <div fxLayout="row" fxLayoutAlign="center center">
-                <a mat-button [matMenuTriggerFor]="countsMenu" #countsMenuTrigger="matMenuTrigger" i18n>
-                    Show {{count}}<mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
+                <a mat-button [matMenuTriggerFor]="countsMenu" #countsMenuTrigger="matMenuTrigger">
+                  <ng-container i18n>Show</ng-container> {{count}}<mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
                 </a>
                 <mat-menu #countsMenu="matMenu" xPosition="before" class="app-dropdown">
                     <span (mouseleave)="countsMenuTrigger.closeMenu()">

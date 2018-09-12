@@ -3,28 +3,28 @@
     <img src="https://www.plattetv.nl/var/images/cmsimages/banners/2017/deal-op-maat.png" alt="Request the best price">
   </div>
   <div class="introduction">
-    <strong i18n>Wij maken graag een deal op maat! </strong>
-    <ng-container i18n> Wilt u een persoonlijke deal? Geef dit aan ons door. Wij zorgen dat u de beste prijs krijgt. Wij zorgen dat u de beste prijs krijgt. 
-    Uiteraard met behoud van volledige service door heel Nederland en België.</ng-container><br><br>
+    <strong i18n>We like to make a custom deal! </strong>
+    <ng-container i18n> Do you want a personal deal? Let us know. We arrange the best deal for you. We arrange the best deal for you. 
+    Of course included full service within the Netherlands and Belgium.</ng-container><br><br>
   </div>
   <div class="form-title">
-      <ng-container i18n> Vraag de beste prijs aan via onze </ng-container> <a href="/" i18n>LiveChat</a>
+      <ng-container i18n> Ask for the best price via </ng-container> <a href="/" i18n>LiveChat</a>
       <ng-container i18n> of </ng-container>
-        <strong i18n>vul onderstaand formulier in:</strong>
+        <strong i18n>insert below form:</strong>
   </div>
 
   <form [formGroup]="requestForm" (ngSubmit)="formSubmit()">
     <div>
-      <label style="margin-right: 30px" i18n>Aanhef:</label>
+      <label style="margin-right: 30px" i18n>Salutation:</label>
       <mat-radio-group formControlName="salutation">
-        <mat-radio-button value="mr" style="margin-right: 20px" i18n>Dhr.</mat-radio-button>
-        <mat-radio-button value="mrs" i18n>Mevr.</mat-radio-button>
+        <mat-radio-button value="mr" style="margin-right: 20px" i18n>Mr.</mat-radio-button>
+        <mat-radio-button value="mrs" i18n>Ms.</mat-radio-button>
       </mat-radio-group>
     </div>
 
     <mat-form-field class="w-100 mt-2">
-      <input matInput i18n-placeholder placeholder="Uw Naam:" formControlName="name" required>
-      <mat-error *ngIf="requestForm.controls.name.errors?.required" i18n>Uw Naam is required</mat-error>
+      <input matInput i18n-placeholder placeholder="Your Naam:" formControlName="name" required>
+      <mat-error *ngIf="requestForm.controls.name.errors?.required" i18n>Your name is required</mat-error>
     </mat-form-field>
 
     <mat-form-field class="w-100 mt-2">
@@ -32,20 +32,20 @@
       <mat-error *ngIf="requestForm.controls.email.errors?.required" i18n>E-mail is required</mat-error>
     </mat-form-field>
 
-    <mat-checkbox formControlName="allow" style="width: 100%" i18n>Stuur mij exclusieve acties en aanbiedingen via e-mail. </mat-checkbox>
+    <mat-checkbox formControlName="allow" style="width: 100%" i18n>Send me exclusive specials via e-mail. </mat-checkbox>
 
     <mat-form-field class="w-100 mt-2">
-      <input matInput i18n-placeholder placeholder="Telefoonnummer:" formControlName="phone" required>
-      <mat-error *ngIf="requestForm.controls.phone.errors?.required" i18n>Telefoonnummer is required</mat-error>
+      <input matInput i18n-placeholder placeholder="Telephone:" formControlName="phone" required>
+      <mat-error *ngIf="requestForm.controls.phone.errors?.required" i18n>Telephone number is required</mat-error>
     </mat-form-field>
 
     <mat-form-field class="w-100 mt-2">
-      <input matInput i18n-placeholder placeholder="Woonplaats:" formControlName="residence" required>
+      <input matInput i18n-placeholder placeholder="City:" formControlName="residence" required>
     </mat-form-field>
 
     <mat-form-field class="w-100 mt-2">
-      <textarea matInput i18n-placeholder placeholder="Van welke producten wilt u de beste prijs aanvragen?:" formControlName="description" rows="5"></textarea>
+      <textarea matInput i18n-placeholder placeholder="From which products you like to receive the best price?:" formControlName="description" rows="5"></textarea>
     </mat-form-field>
   </form>
-  <button (click)="formSubmit()" class="control-normal" mat-button ><ng-content i18n>Verzenden</ng-content> <i class="fas fa-chevron-circle-right"></i></button>
+  <button (click)="formSubmit()" class="control-normal" mat-button i18n>Submit <i class="fas fa-chevron-circle-right"></i></button>
 </div>

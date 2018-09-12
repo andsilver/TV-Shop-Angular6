@@ -78,8 +78,9 @@
                                 <mat-icon class="mat-icon-lg">shopping_cart</mat-icon>
                                 <span *ngIf="appService.Data.cartList.length > 0" class="cart-items-count">{{appService.Data.totalQuantity}}</span>
                                 <div fxLayout="column" fxLayoutAlign="center center" fxShow="false" fxShow.gt-xs class="top-cart">
-                                    <span>Shopping Cart</span>
-                                    <span *ngIf="appService.Data.cartList.length > 0">{{appService.Data.totalQuantity}} product<span *ngIf="appService.Data.cartList.length > 1">en</span> -
+                                    <span i18n>Shopping Cart</span>
+                                    <span *ngIf="appService.Data.cartList.length > 0">{{appService.Data.totalQuantity}} <ng-container i18n>product</ng-container>
+                                     <span *ngIf="appService.Data.cartList.length > 1" i18n>en</span> -
                                         <span>{{appService.Data.totalPrice | customCurrency}}</span>
                                     </span>
                                 </div>
@@ -88,7 +89,7 @@
                             <mat-menu #cartMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="top-menu-dropdown cart-dropdown">
                                 <span (mouseleave)="cartMenuTrigger.closeMenu()" class="d-block">
                                     <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted">
-                                        <b><span>{{appService.Data.totalQuantity}} <ng-content i18n>PRODUCT</ng-content><span *ngIf="appService.Data.cartList.length > 1" i18n>EN</span></span></b>
+                                        <b><span>{{appService.Data.totalQuantity}} <ng-container i18n>PRODUCT</ng-container><span *ngIf="appService.Data.cartList.length > 1" i18n>EN</span></span></b>
                                         <b><a [routerLink]="['/cart']" class="text-muted" i18n>VIEW CART CONTENTS</a></b>
                                     </div>
                                     <div class="divider mt-1"></div>

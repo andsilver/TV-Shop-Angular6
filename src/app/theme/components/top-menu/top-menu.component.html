@@ -25,8 +25,8 @@
     </mat-menu>
 
     <span fxShow="false" fxShow.gt-sm>
-        <a mat-button routerLink="/compare" i18n>Compare  ({{appService.Data.compareList.length}})</a>
-        <a mat-button routerLink="/wishlist" i18n>Wishlist ({{appService.Data.wishList.length}})</a>
+        <a mat-button routerLink="/compare"><ng-container i18n>Compare</ng-container>  ({{appService.Data.compareList.length}})</a>
+        <a mat-button routerLink="/wishlist"><ng-container i18n>Wishlist</ng-container> ({{appService.Data.wishList.length}})</a>
     </span>  
 
     <a mat-button [matMenuTriggerFor]="accountMenu" #accountMenuTrigger="matMenuTrigger">
@@ -45,11 +45,11 @@
             </a>
             <a mat-menu-item routerLink="/compare" fxHide="false" fxHide.gt-sm>
                 <mat-icon class="mat-icon-sm">compare</mat-icon>
-                <span i18n>Compare ({{appService.Data.compareList.length}})</span> 
+                <span><ng-container i18n>Compare</ng-container> ({{appService.Data.compareList.length}})</span> 
             </a>
             <a mat-menu-item routerLink="/wishlist" fxHide="false" fxHide.gt-sm>
                 <mat-icon class="mat-icon-sm">favorite</mat-icon>
-                <span i18n>Wishlist ({{appService.Data.wishList.length}})</span>
+                <span><ng-container i18n>Wishlist</ng-container> ({{appService.Data.wishList.length}})</span>
             </a>
             <a mat-menu-item routerLink="/"> 
                 <mat-icon class="mat-icon-sm">lock</mat-icon>

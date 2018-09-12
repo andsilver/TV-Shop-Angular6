@@ -15,7 +15,7 @@
 
       <a class="email">{{data.email}}</a>
 
-      <h4 ngClass="mt-2" i18n>OPENINGSTIJDEN</h4>
+      <h4 ngClass="mt-2" i18n>OPENING HOURS</h4>
 
       <div *ngFor="let day of data.opening_hours">
         <span class="weekday">{{day.weekday}}:</span>
@@ -42,14 +42,14 @@
   </div>
 
   <div class="introduce" ngClass="mb-3">
-    <h3 class="header-title" i18n>EVEN VOORSTELLEN</h3>
+    <h3 class="header-title" i18n>LET US INTRODUCE</h3>
     <div fxLayout fxLayoutGap="10px">
       <img *ngFor="let photo of data.introduce" [src]="photo">
     </div>
   </div>
 
   <div class="atmosphere">
-    <h3 class="header-title" i18n>SFEERIMPRESSIE</h3>
+    <h3 class="header-title" i18n>ATMOSPHERE</h3>
     <div fxLayout fxLayout="start stretch">
       <div fxFlex="25" fxLayout="column" fxLayout="space-between start" class="atmosphere-l">
         <div class="small-image" *ngFor="let image of data.atmosphere.small">
@@ -70,7 +70,7 @@
     <div fxLayout="column" class="misc-bar" ngClass.gt-md="m-0">
       <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
         <mat-card class="branch-office">
-          <mat-card-title><h4 i18n>Onze Winkels</h4></mat-card-title>
+          <mat-card-title><h4 i18n>Our Shops</h4></mat-card-title>
           <mat-card-content>
             <div class="branch_opening_hours_box">
               <div class="branch_img"><a [routerLink]="['/stores/amsterdam']"><img src="https://www.plattetv.nl/var/store_images/amsterdam.png" width="55" height="55"></a></div>
