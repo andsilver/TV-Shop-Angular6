@@ -49,19 +49,19 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.subscriptions.push(
-      this.store.select(state => state.categories ).subscribe(res => {
-        this.categories = res.categories;
-        this.category = res.categories[0];
-        this.sidenavMenuItems = this.categories.map(c =>
-            new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
-      })
-      // this.appService.getCategories().subscribe(res => {
-      //   this.categories = res;
-      //   this.category = res[0];
-      //   this.store.dispatch(new CategoriesActions.SuccessGetCategories(res));
+      // this.store.select(state => state.categories ).subscribe(res => {
+      //   this.categories = res.categories;
+      //   this.category = res.categories[0];
       //   this.sidenavMenuItems = this.categories.map(c =>
       //       new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
       // })
+      this.appService.getCategories().subscribe(res => {
+        this.categories = res;
+        this.category = res[0];
+        this.store.dispatch(new CategoriesActions.SuccessGetCategories(res));
+        this.sidenavMenuItems = this.categories.map(c =>
+            new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
+      })
     );
 
     this.searchTerm

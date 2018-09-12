@@ -27,6 +27,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   product:  Product;
   categories: Category[];
   subscriptions: Subscription[];
+  loaded = false;
 
   constructor(
     private router: Router,
@@ -62,6 +63,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
           })
         )
         .subscribe(() => {
+            if (!this.categories.length) {
+                return;
+            }
+            this.loaded = true;
             if (this.router.url === '/products') {
               this.category = {id: 0, name: '', crumbPath: [], parentId: 0, permalink: '', hasSubCategory: true};
             } else {
@@ -78,6 +83,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
               this.store.dispatch( new CategoryActions.RemoveCategory());
               this.store.dispatch( new ProductsActions.ModeProducts('related'));
             }
+
         })
     ];
   }
