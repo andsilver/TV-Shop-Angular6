@@ -14,7 +14,7 @@ export const routes: Routes = [
     {
         path: '',
         component: PagesComponent,
-        // resolve: { data: InitStateService },
+        resolve: { data: InitStateService },
         children: [
             { path: '', loadChildren: 'app/pages/home/home.module#HomeModule' },
             {

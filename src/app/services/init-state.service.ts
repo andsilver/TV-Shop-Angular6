@@ -22,17 +22,17 @@ export class InitStateService implements Resolve<any> {
    * @returns {Observable<any> | Promise<any> | any}
    */
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-      this.store.dispatch(new fromCategories.GetCategories);
-      this.store.dispatch(new fromBrands.GetAllBrands);
-    // return new Promise(( resolve, reject ) => {
-    //     forkJoin([this.appService.getCategories(), this.appService.getBrands()])
-    //       .subscribe(subs => {
-    //         this.store.dispatch(new fromCategories.SuccessGetCategories(subs[0]));
-    //         this.store.dispatch(new fromBrands.SuccessGetBrands(subs[1]));
-    //         resolve(subs);
-    //       },
-    //       reject
-    //     );
-    // });
+      // this.store.dispatch(new fromCategories.GetCategories);
+      // this.store.dispatch(new fromBrands.GetAllBrands);
+    return new Promise(( resolve, reject ) => {
+        forkJoin([this.appService.getCategories(), this.appService.getBrands()])
+          .subscribe(subs => {
+            this.store.dispatch(new fromCategories.SuccessGetCategories(subs[0]));
+            this.store.dispatch(new fromBrands.SuccessGetBrands(subs[1]));
+            resolve(subs);
+          },
+          reject
+        );
+    });
   }
 }
