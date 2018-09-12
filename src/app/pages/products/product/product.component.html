@@ -45,6 +45,7 @@
                 <div fxFlex="100" fxFlex.gt-md="30" fxFlex.md="35" ngClass.gt-sm="px-3 m-0" ngClass.md="pl-3" ngClass.sm="mt-2" ngClass.xs="mt-2">
 
                     <h2 class="mb-2 new-price">{{product?.newPrice | customCurrency}}</h2>
+                    <div [innerHTML]="product?.demoUnit" class="product_deals_wrapper"></div>
 
                     <div #zoomViewer fxShow="false" fxShow.gt-md>
                         <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18"></mat-card>
