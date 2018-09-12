@@ -536,8 +536,7 @@
       <trans-unit id="99e1471bc5e7bdcd8f43ef05e3fdf8e077605de7" datatype="html">
         <source>
                                                 check
-                                            </source><target state="new">                                 
-                                            </target>
+                                            </source><target state="new">bekijk</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/pages.component.ts</context>
           <context context-type="linenumber">124</context>
@@ -551,21 +550,21 @@
         </context-group>
       </trans-unit>
       <trans-unit id="31b659cef6297410b1a9c7097fd86314fe3791bb" datatype="html">
-        <source>Opps, it seems that this page does not exist.</source><target state="new"></target>
+        <source>Opps, it seems that this page does not exist.</source><target state="new">Oeps, het lijkt erop dat de pagina niet bestaat</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/not-found/not-found.component.ts</context>
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="55e685e391c47c7298702b1b1079de15a7ca42dc" datatype="html">
-        <source>If you are sure it should, search for it.</source><target state="new"></target>
+        <source>If you are sure it should, search for it.</source><target state="new">Als je zeker bent dat het kan, zoek er naar.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/not-found/not-found.component.ts</context>
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="86cf2e3fa687b70dc14a95668edbb7ca8eda5bde" datatype="html">
-        <source>Enter search keyword...</source><target state="new"></target>
+        <source>Enter search keyword...</source><target state="new">Typ zoekwoord...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/not-found/not-found.component.ts</context>
           <context context-type="linenumber">13</context>
@@ -594,14 +593,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="3f562a98e727b295d973744c9c800fcf6435f87a" datatype="html">
-        <source>account</source><target state="new"></target>
+        <source>account</source><target state="new">account</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/top-menu/top-menu.component.ts</context>
           <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6d55370863f27f841a8ec846b3e8cc457fdf9e63" datatype="html">
-        <source>Bas van Beek</source><target state="new"></target>
+        <source>Bas van Beek</source><target state="new">Bas van Beek</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/top-menu/top-menu.component.ts</context>
           <context context-type="linenumber">39</context>
@@ -612,7 +611,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="d5bbdf602b00fcb806f7650e1747f1faf4029dbb" datatype="html">
-        <source>basvanbeek (152</source><target state="new"></target>
+        <source>basvanbeek (152</source><target state="new">basvanbeek (152</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/top-menu/top-menu.component.ts</context>
           <context context-type="linenumber">39</context>
@@ -626,14 +625,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="bba8debb212ab8c7fe54176c419e9b4099ddce39" datatype="html">
-        <source>Account Settings</source><target state="new"></target>
+        <source>Account Settings</source><target state="new">Account aanpassen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/top-menu/top-menu.component.ts</context>
           <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="770bce4fb4fe5255a5c24e47c595fa7999cff99d" datatype="html">
-        <source>Lock screen</source><target state="new"></target>
+        <source>Lock screen</source><target state="new">Vergrendel scherm</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/top-menu/top-menu.component.ts</context>
           <context context-type="linenumber">56</context>
@@ -647,7 +646,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="640eec093c685babaa3265137215e3cc92ad704d" datatype="html">
-        <source>Sign Out</source><target state="new"></target>
+        <source>Sign Out</source><target state="new">Log uit</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/top-menu/top-menu.component.ts</context>
           <context context-type="linenumber">65</context>
@@ -901,7 +900,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="8b644fff6e84b4e821efe74b0aa3a5b6e29591bd" datatype="html">
-        <source>Product detail</source><target state="new"></target>
+        <source>Product detail</source><target state="new">Detailpagina</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/menu/menu.component.ts</context>
           <context context-type="linenumber">83</context>
@@ -919,7 +918,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="287d3301a32a65a1b31116bda5d3a6463158c42a" datatype="html">
-        <source>Sign in</source><target state="new"></target>
+        <source>Sign in</source><target state="new">Inloggen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/menu/menu.component.ts</context>
           <context context-type="linenumber">85</context>
@@ -933,14 +932,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="2e77ab4db0c90cd71b6a0ef856724b21e4a53218" datatype="html">
-        <source>Others</source><target state="new"></target>
+        <source>Others</source><target state="new">Overige</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/menu/menu.component.ts</context>
           <context context-type="linenumber">87</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3207b291e146c875623fe9716c48abc14d1aabc4" datatype="html">
-        <source>External Link</source><target state="new"></target>
+        <source>External Link</source><target state="new">Externe link</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/menu/menu.component.ts</context>
           <context context-type="linenumber">91</context>
@@ -1365,35 +1364,35 @@
         </context-group>
       </trans-unit>
       <trans-unit id="5ce2bda884ea801c34a1a6c23627d9a5e08f0a82" datatype="html">
-        <source>My Account</source><target state="new"></target>
+        <source>My Account</source><target state="new">Mijn Account</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/account.component.ts</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9dfa0a7967c70b6e91aa573232be82f110406d16" datatype="html">
-        <source>Hello, </source><target state="new"></target>
+        <source>Hello, </source><target state="new">Hallo,</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/dashboard/dashboard.component.ts</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0e1758f6ce98889f283ccb9764f1b4cae3babb3a" datatype="html">
-        <source>Bas van Beek!</source><target state="new"></target>
+        <source>Bas van Beek!</source><target state="new">Bas van Beek!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/dashboard/dashboard.component.ts</context>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f5aa4ab6260cf255e20013cd50ae1095c8cd2651" datatype="html">
-        <source> From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</source><target state="new"></target>
+        <source> From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</source><target state="new">Vanuit Mijn Account heeft u de mogelijkheid om recente activiteiten te bekijken en om uw profielinformatie te wijzigen. Selecteer hieronder een link om informatie te bekijken of te wijzigen.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/dashboard/dashboard.component.ts</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a5d27d599f02cb7f480adb98eded0fdd75032eae" datatype="html">
-        <source>Account Information</source><target state="new"></target>
+        <source>Account Information</source><target state="new">Account informatie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/dashboard/dashboard.component.ts</context>
           <context context-type="linenumber">11</context>
@@ -1421,56 +1420,56 @@
         </context-group>
       </trans-unit>
       <trans-unit id="5d467e9df9686dedb2072eb22ce048db2403dcf2" datatype="html">
-        <source>Billing address</source><target state="new"></target>
+        <source>Billing address</source><target state="new">Factuuradres</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/dashboard/dashboard.component.ts</context>
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0abfa35383c7b750656f1cb926fca97cd2637718" datatype="html">
-        <source>Shipping address</source><target state="new"></target>
+        <source>Shipping address</source><target state="new">Bezorgadres</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/dashboard/dashboard.component.ts</context>
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4e7f5f07ae8e67878f35b34bcee10e39300ff41a" datatype="html">
-        <source>Orders</source><target state="new"></target>
+        <source>Orders</source><target state="new">Bestellingen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/dashboard/dashboard.component.ts</context>
           <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a7c328c4773db932ff14a1954e15e43dca58e7b7" datatype="html">
-        <source>Completed</source><target state="new"></target>
+        <source>Completed</source><target state="new">Afgerond</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/dashboard/dashboard.component.ts</context>
           <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8aaab7900b39fc1307d70bd5886ba66396668b1f" datatype="html">
-        <source>Processing</source><target state="new"></target>
+        <source>Processing</source><target state="new">In behandeling</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/dashboard/dashboard.component.ts</context>
           <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="181207386e24dbfa5c812a9bc819ac126da99d70" datatype="html">
-        <source>On hold</source><target state="new"></target>
+        <source>On hold</source><target state="new">Geblokkeerd</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/dashboard/dashboard.component.ts</context>
           <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="468cf861ee67f3988a19f656f1883c35a7e4f075" datatype="html">
-        <source>Refunded</source><target state="new"></target>
+        <source>Refunded</source><target state="new">Terugbetaald</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/dashboard/dashboard.component.ts</context>
           <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="186bc5d09b3b74450a3d5ae3299eb25a68d8b0e1" datatype="html">
-        <source>Account details</source><target state="new"></target>
+        <source>Account details</source><target state="new">Account informatie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">3</context>
@@ -1491,7 +1490,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="2617f5586c3ef0a35c79c0f5bb3c231c3cf65969" datatype="html">
-        <source>First Name isn't long enough, minimum of 3 characters</source><target state="new"></target>
+        <source>First Name isn't long enough, minimum of 3 characters</source><target state="new">Voornaam is niet lang genoeg, dient minimaal uit 3 tekens te bestaan</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">8</context>
@@ -1512,7 +1511,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="57c6e9bfcfb4ca19e5aee9f753526c91f3aa3144" datatype="html">
-        <source>Last Name isn't long enough, minimum of 3 characters</source><target state="new"></target>
+        <source>Last Name isn't long enough, minimum of 3 characters</source><target state="new">Achternaam is niet lang genoeg, dient minimaal uit 3 tekens te bestaan</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">13</context>
@@ -1554,7 +1553,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="96bf0a9d7c94b4963e9c249140e8c0fabd93663f" datatype="html">
-        <source>Invalid email address</source><target state="new"></target>
+        <source>Invalid email address</source><target state="new">Ongeldig e-mailadres</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">18</context>
@@ -1573,7 +1572,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="52c9a103b812f258bcddc3d90a6e3f46871d25fe" datatype="html">
-        <source>Save</source><target state="new"></target>
+        <source>Save</source><target state="new">Opslaan</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">21</context>
@@ -1588,49 +1587,49 @@
         </context-group>
       </trans-unit>
       <trans-unit id="376165283ff69109e17fd1f6d1e3fecde06c8fbc" datatype="html">
-        <source>Password change</source><target state="new"></target>
+        <source>Password change</source><target state="new">Wachtwoord wijzigen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1ae3dcf96b494406b6fd6fbd2f15f7259553bf4d" datatype="html">
-        <source>Current Password</source><target state="new"></target>
+        <source>Current Password</source><target state="new">Huidig wachtwoord</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8b8132ad5bfe0707cc9ae947c2a2d6cb6fcdf588" datatype="html">
-        <source>Current Password is required</source><target state="new"></target>
+        <source>Current Password is required</source><target state="new">Huidig wachtwoord is verplicht</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f6d0239e41387a26c5cde5b42b111f3de94d8839" datatype="html">
-        <source>Current Password isn't long enough, minimum of 6 characters</source><target state="new"></target>
+        <source>Current Password isn't long enough, minimum of 6 characters</source><target state="new">Huidig wachtwoord is niet lang genoeg, dient uit minimaal 6 tekens te bestaan</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c7014c6360e94b236286b869c3fe0ea9911c0387" datatype="html">
-        <source>New Password</source><target state="new">New Password</target>
+        <source>New Password</source><target state="new">Nieuw wachtwoord</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="65c5198bec66074235998cda494c04b708b94cdd" datatype="html">
-        <source>New Password is required</source><target state="new">New Password is verplicht</target>
+        <source>New Password is required</source><target state="new">Nieuw wachtwoord is verplicht</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cf7de126ebc74e7986c4d61bc08ed071f6c20288" datatype="html">
-        <source>New Password isn't long enough, minimum of 6 characters</source><target state="new"></target>
+        <source>New Password isn't long enough, minimum of 6 characters</source><target state="new">Nieuw wachtwoord is niet lang genoeg, dient uit minimaal 6 tekens te bestaan</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">36</context>
@@ -1651,7 +1650,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="0a9dcaac5aadd48fe716eaff77ab9b21a8bef3af" datatype="html">
-        <source>Passwords do not match</source><target state="new"></target>
+        <source>Passwords do not match</source><target state="new">Wachtwoorden komen niet overeen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">41</context>
@@ -1662,7 +1661,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="024cdb2814b0cb3f4ced148f1a0b9854447cb214" datatype="html">
-        <source>Change</source><target state="new"></target>
+        <source>Change</source><target state="new">Wijzig</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">44</context>
@@ -2003,7 +2002,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="81b97b8ea996ad1e4f9fca8415021850214884b1" datatype="html">
-        <source>Status</source><target state="new"></target>
+        <source>Status</source><target state="new">Status</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/orders/orders.component.ts</context>
           <context context-type="linenumber">5</context>
@@ -2036,7 +2035,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="985bbfac83821816643c7bf698960ed18d3a2888" datatype="html">
-        <source>View invoice</source><target state="new"></target>
+        <source>View invoice</source><target state="new">Bekijk factuur</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/orders/orders.component.ts</context>
           <context context-type="linenumber">20</context>
@@ -2050,7 +2049,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="a637748d298ae48428a3e865dd440287a6d8c27e" datatype="html">
-        <source>Search For Brands...</source><target state="new"></target>
+        <source>Search For Brands...</source><target state="new">Zoek naar merken...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/brands/brands.component.ts</context>
           <context context-type="linenumber">5</context>
@@ -2078,7 +2077,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="4d6ee53858628de558a18623894a03c8673bce9e" datatype="html">
-        <source>Price</source><target state="new">Filter op prijs</target>
+        <source>Price</source><target state="new">Prijs</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/brands/brand/brand.component.ts</context>
           <context context-type="linenumber">19</context>
@@ -2770,14 +2769,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="ccac601bf473fa28c9ac46794f1cd40542f74347" datatype="html">
-        <source>Message</source><target state="new"></target>
+        <source>Message</source><target state="new">Bericht</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/contact/contact.component.ts</context>
           <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e3c6e070aef7876e94c9e9316ee6d9865c12f579" datatype="html">
-        <source>Message is required</source><target state="new"></target>
+        <source>Message is required</source><target state="new">Bericht is verplicht</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/contact/contact.component.ts</context>
           <context context-type="linenumber">49</context>
@@ -2833,7 +2832,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="3b18c4ba3c4a3dff04f52de2a82185e10581346f" datatype="html">
-        <source>ONLINE SUPPORT 24/7</source><target state="new"></target>
+        <source>ONLINE SUPPORT 24/7</source><target state="new">ONLINE SUPPORT 24/7</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
           <context context-type="linenumber">35</context>
@@ -3037,7 +3036,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="826df99118daefa9a88971a928e5a9aa3c3bbe5f" datatype="html">
-        <source>Click for more info</source><target state="new"></target>
+        <source>Click for more info</source><target state="new">Klik voor meer info</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/products/product/product.component.ts</context>
           <context context-type="linenumber">93</context>
@@ -3354,15 +3353,14 @@
       <trans-unit id="80896b8f3e742c24432014dcc7ce8e831931e6cc" datatype="html">
         <source>
   not-match works!
-</source><target state="new">
-</target>
+</source><target state="new">not-match works!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/products/not-match/not-match.component.ts</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ba4f24bf9bf3dc4db3d6bc1b8b63339295f0b806" datatype="html">
-        <source>Sign In</source><target state="new"></target>
+        <source>Sign In</source><target state="new">Inloggen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/sign-in/sign-in.component.ts</context>
           <context context-type="linenumber">4</context>
@@ -3391,7 +3389,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="954984bfa6e3d47c401d180acb124295c706d820" datatype="html">
-        <source>Password isn't long enough, minimum of 6 characters</source><target state="new"></target>
+        <source>Password isn't long enough, minimum of 6 characters</source><target state="new">Wachtwoord is niet lang genoeg, dient uit minimaal 6 tekens te bestaan</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/sign-in/sign-in.component.ts</context>
           <context context-type="linenumber">14</context>
@@ -3402,14 +3400,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="c88d5d18135d6598257f4c4937d4058c8260a83c" datatype="html">
-        <source>or Sign in with one click</source><target state="new"></target>
+        <source>or Sign in with one click</source><target state="new">of login d.m.v. 1 klik</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/sign-in/sign-in.component.ts</context>
           <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="085133c1a46acca336a35d8c60e9e007d4226c10" datatype="html">
-        <source>Don't have an account? Sign up now!</source><target state="new"></target>
+        <source>Don't have an account? Sign up now!</source><target state="new">Nog geen account? Schrijf u nu in!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/sign-in/sign-in.component.ts</context>
           <context context-type="linenumber">43</context>
@@ -3430,7 +3428,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="632218ca7abd35309578669489e18aab86869eac" datatype="html">
-        <source>Full Name isn't long enough, minimum of 3 characters</source><target state="new"></target>
+        <source>Full Name isn't long enough, minimum of 3 characters</source><target state="new">Volledige naam niet lang genoeg, dient uit minimaal 3 tekens te bestaan</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/sign-in/sign-in.component.ts</context>
           <context context-type="linenumber">48</context>
