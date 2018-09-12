@@ -1396,3 +1396,8 @@ button.swipe-arrow{
     padding-left: 8px;
     padding-right: 8px;
 }
+
+.app.dark .swiper-button-prev.mat-mini-fab.mat-primary,
+.app.dark .swiper-button-next.mat-mini-fab.mat-primary {
+    background-color: #212121!important;
+}
