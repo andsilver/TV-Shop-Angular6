@@ -25,12 +25,12 @@ footer .mat-toolbar .mat-toolbar-row {
 .footer-info--contact-list ul > li .fab-whatsapp { font-size:22px; }
 .footer-info--contact-list ul > li span,
 .footer-info--contact-list ul > li span > strong { display:block; }
-.footer-info--contact-list ul > li span > strong { font-size:18px; font-family:"PT Sans Narrow"; }
+.footer-info--contact-list ul > li span > strong { font-size:18px; font-family:"Gotham Condensed"; }
 .footer-info--contact-list ul > li a:hover { text-decoration:none; }
 .footer-info--contact-list ul > li a:hover strong { text-decoration:underline; }
 .footer-info--contact-list ul > li.footer_cs_close:not(.footer-info--email) { pointer-events:none; cursor:default; opacity:.5; }
 .footer-info--text { font-size:12.6px; white-space:nowrap; }
-.footer-info--text strong { display:inline-block; font-weight:bold; font-size:20px; line-height:20px; font-family:"PT Sans Narrow"; margin-bottom:3px;  }
+.footer-info--text strong { display:inline-block; font-weight:bold; font-size:20px; line-height:20px; font-family:"Gotham Condensed"; margin-bottom:3px;  }
 @media (max-width:959px) {
     .footer-info--contact-list ul > li { float:none; width:100%; }
 }
@@ -45,7 +45,7 @@ footer .mat-toolbar .mat-toolbar-row {
 .footer-info--social-media ul:before,
 .footer-info--social-media ul:after { clear:both; display:table; content:""; }
 .footer-info--social-media ul > li { float:left; }
-.footer-info--social-media ul > li:first-child { font-size:20px; font-family:"PT Sans Narrow"; line-height:23px; margin-right:10px; }
+.footer-info--social-media ul > li:first-child { font-size:20px; font-family:"Gotham Condensed"; line-height:23px; margin-right:10px; }
 .footer-info--social-media ul > li+li { margin-right:6px; }
 
 footer .mat-toolbar.footer-nav {
@@ -58,7 +58,7 @@ footer .mat-toolbar.footer-nav {
         font-weight: 600;
         font-size: 1.25rem;
         line-height: 1.375rem;
-        font-family: "PT Sans Narrow";
+        font-family: "Gotham Condensed";
         color: #fff!important;
         margin-bottom: 5px;
     }
