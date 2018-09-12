@@ -61,6 +61,7 @@
     </mat-menu>
 
     <a *ngFor="let category of categories"
+        class="category-menu-item"
         mat-button
         (mouseenter)="triggerSubCategoryMenu(category, $event)"
         (mouseleave)="hideSubCategoryMenu($event)"
