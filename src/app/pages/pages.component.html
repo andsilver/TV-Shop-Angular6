@@ -55,7 +55,7 @@
                 </ul>
                 <div fxFlex fxLayout="row nowrap" fxFlexOffset.gt-sm="0" class="main-header-sub">
                     <span fxHide="false" fxHide.gt-sm>
-                        <button mat-button (click)="sidenav.toggle()" class="sidenav-toggle">
+                        <button mat-button (click)="sidenav.toggle()" class="sidenav-toggle" aria-label="sidenav-toggle">
                             <mat-icon>menu</mat-icon>
                         </button>
                     </span>
@@ -66,8 +66,8 @@
                                 <app-category-list [categories]="categories" [categoryParentId]="0" (change)="changeCategory($event)"></app-category-list>
                             </span>
                         </mat-menu> -->
-                        <input type="text" placeholder="Typ zoekopdracht..." name="search_key" [(ngModel)]="keyword" (keyup)="searchTerm.next($event.target.value)" fxFlex>
-                        <button mat-button (click)="search()" type="submit" class="search-btn mat-elevation-z0 text-muted">
+                        <input type="text" placeholder="Typ zoekopdracht..." name="search_key" [(ngModel)]="keyword" (keyup)="searchTerm.next($event.target.value)" fxFlex aria-label="search_key">
+                        <button mat-button (click)="search()" type="submit" class="search-btn mat-elevation-z0 text-muted" aria-label="search-btn">
                             <mat-icon>search</mat-icon>
                         </button>
                     </form>
