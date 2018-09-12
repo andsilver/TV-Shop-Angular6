@@ -35,7 +35,7 @@
         <app-controls [product]="product" [type]="'wish'" (quantityChanged)="getTotalPrice($event)"></app-controls>
       </div>
       <div class="mat-cell">{{product.newPrice * product.quantity | customCurrency}}</div>
-      <div class="mat-cell text-center">
+      <div class="mat-cell text-center overflow-visible">
         <div class="p-1">
           <button mat-mini-fab color="warn" (click)="remove(product)" matTooltip="Leeg winkelwagen">
               <mat-icon>close</mat-icon>
