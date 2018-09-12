@@ -102,6 +102,11 @@ app-root .app.dark .mat-drawer-container {
     margin-bottom: .5rem;
     .logo {
         line-height:0;
+
+        img {
+            width: 226px;
+            height: auto;
+        }
     }
     .mobilenav {
 
@@ -150,6 +155,11 @@ app-root .app.dark .mat-drawer-container {
 @media (min-width: 600px) {
     #brand {
         margin-bottom: 1rem;
+    }
+}
+@media (min-width: 960px) {
+    #brand {
+        margin-bottom: 0;
     }
 }
 
