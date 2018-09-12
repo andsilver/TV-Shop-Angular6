@@ -10,6 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postbuild": "scp -r dist/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/",
+    "extract": "ng xi18n --output-path=locale --i18n-locale en && npm run xliffmerge",
+    "xliffmerge": "xliffmerge --profile xliffmerge.json nl",
     "pwa": "ng build --prod && sw-precache --root=dist --config=precache-config.js",
     "serve:sw": "npm run pwa && http-server ./dist -p 8000"
   },
@@ -67,6 +69,7 @@
     "karma-coverage-istanbul-reporter": "2.0.1",
     "karma-jasmine": "1.1.2",
     "karma-jasmine-html-reporter": "1.1.0",
+    "ngx-i18nsupport": "^0.17.0",
     "protractor": "5.3.2",
     "shelljs": "^0.8.2",
     "sw-precache-webpack-plugin": "^0.11.5",
