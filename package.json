@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postbuild": "scp -r dist/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/",
-    "pwa": "ng build --prod --build-optimizer --aot --named-chunks --stats-json && gulp && sw-precache --root=dist --config=precache-config.js",
+    "pwa": "ng build --prod --build-optimizer --aot --named-chunks && gulp && sw-precache --root=dist --config=precache-config.js",
+    "pwadebug": "ng build --prod --build-optimizer --aot --named-chunks --stats-json && gulp && sw-precache --root=dist --config=precache-config.js",
     "postpwa": "scp -r dist/. root@deb1.bvb.vg:/var/www/plattetv.bvb.media/web/",
     "serve:sw": "npm run pwa && http-server ./dist -p 8000 --gzip",
     "bundle-report": "webpack-bundle-analyzer dist/stats.json"
