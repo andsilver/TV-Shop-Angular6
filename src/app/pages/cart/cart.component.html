@@ -21,7 +21,7 @@
       </div>
     </div>
     <div *ngFor="let product of appService.Data.cartList" class="mat-row">
-      <div class="mat-cell"><img [src]="product.images[0].small"></div>
+      <div class="mat-cell"><img [src]="product.images[0].small" alt="coming soon..."></div>
       <div class="mat-cell">
         <a [routerLink]="[product.permalink]" class="product-name">{{product.name}}</a>
         <p class="text-muted" *ngFor="let attribute of product.attributes; let i=index;">
