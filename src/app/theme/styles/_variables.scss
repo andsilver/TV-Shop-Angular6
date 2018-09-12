@@ -35,3 +35,13 @@ $large-only: 'only screen and (min-width : #{$medium-screen-up}) and (max-width 
   src: local("Gotham Condensed"), 
     url(/assets/fonts/hinted-GothamCondensed-Medium.woff2) format('woff2');
 }
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2') format("woff2");
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('https://fonts.gstatic.com/s/poppins/v5/pxiEyp8kv8JHgFVrJJfecg.woff2') format("woff2");
+}
