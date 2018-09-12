@@ -2,7 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs/Observable';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material';
 import 'rxjs/add/operator/do';
 
 import { environment } from 'environments/environment';
@@ -29,7 +29,7 @@ export class AppInterceptor implements HttpInterceptor {
             const elapsed = Date.now() - started;
             console.log(`Request for ${req.urlWithParams} failed after ${elapsed} ms.`);
             this.snackBar.open('Oeps, helaas is de verbinding mislukt. Probeer het later nog een keer.', '×',
-            { panelClass: [status], verticalPosition: 'top', duration: 3000 });
+              { panelClass: ['error'], verticalPosition: 'top', duration: 3000 });
            // debugger;
           }
         });

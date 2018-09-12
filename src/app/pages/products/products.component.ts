@@ -137,7 +137,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     this.products = res.products;
-    this.filterLists = res['filterLists'];
+    this.filterLists = res['filterLists'] ? res['filterLists'] : 0;
     this.totalProducts = res.total;
     window.scrollTo(0, 0);
     if (!this.products.length) {
