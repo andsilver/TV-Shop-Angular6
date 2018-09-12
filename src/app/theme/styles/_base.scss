@@ -56,6 +56,9 @@ a:focus {
 .lh{
     line-height: 27px;
 }
+.wrapper > .mat-drawer-content {
+    overflow: visible!important;
+}
 .theme-container{
     max-width: $theme-max-width;
     margin: 0 auto;
