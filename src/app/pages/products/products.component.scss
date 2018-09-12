@@ -1,11 +1,21 @@
-.filter-sidenav{
+.filter-sidenav {
+    overflow: visible!important;
     width: 280px;
     padding: 2px;
-    //background: transparent !important;
-    .mat-expansion-panel-header-title {
-        text-transform: uppercase;
+
+    .mat-expansion-panel {
+        border-bottom: 1px solid #E6E6DC;
+        box-shadow: none;
+        .mat-expansion-panel-header {
+            font-size: .875rem;
+            padding: 0;
+            .mat-expansion-panel-header-title {
+                text-transform: uppercase;
+            }
+        }
     }
 }
+
 @media (min-width:960px) {
     .filter-sidenav {
         float: left;

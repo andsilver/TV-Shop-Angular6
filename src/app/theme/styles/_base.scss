@@ -64,8 +64,16 @@ a:focus {
     margin: 0 auto;
 }
 app-root .app.dark .mat-drawer-container {
+    overflow: visible!important;
     background-color: transparent;
 }
+app-root .app.dark .mat-drawer-container::before,
+app-root .app.dark .mat-drawer-container::after {
+    clear: both;
+    display: table;
+    content: "";
+}
+
 .main.theme-container {
     background-color: #fff;
 }
@@ -102,6 +110,11 @@ app-root .app.dark .mat-drawer-container {
     margin-bottom: .5rem;
     .logo {
         line-height:0;
+
+        img {
+            width: 226px;
+            height: auto;
+        }
     }
     .mobilenav {
 
@@ -150,6 +163,11 @@ app-root .app.dark .mat-drawer-container {
 @media (min-width: 600px) {
     #brand {
         margin-bottom: 1rem;
+    }
+}
+@media (min-width: 960px) {
+    #brand {
+        margin-bottom: 0;
     }
 }
 
@@ -1408,17 +1426,14 @@ button.swipe-arrow{
 app-root .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
     background-color: transparent!important;
 }
-app-root .filter-sidenav .mat-expansion-panel {
-    border-bottom: 1px solid #E6E6DC;
-    box-shadow: none;
+.filter-sidenav {
+    .mat-expansion-panel {
+        .mat-expansion-panel-body {
+            padding: 0 0 1rem;
+        }
+    }
 }
-app-root .filter-sidenav .mat-expansion-panel-header {
-    font-size: .875rem;
-    padding: 0;
-}
-app-root .filter-sidenav .mat-expansion-panel-header-title {
 
-}
-app-root .filter-sidenav .mat-expansion-panel-body {
-    padding: 0 0 1rem;
+.overflow-visible {
+    overflow: visible!important;
 }

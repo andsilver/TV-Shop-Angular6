@@ -30,7 +30,7 @@
         </mat-toolbar-row> -->
         <mat-toolbar-row fxLayout.lt-md="column" fxFlexAlign="center" id="main-header">
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" id="brand">
-                <a routerLink="/" (click)="closeSubMenus()" class="logo mr-4"><img src="assets/images/others/logo_plattetv.png" alt="PlatteTV"></a>
+                <a routerLink="/" (click)="closeSubMenus()" class="logo mr-4"><img src="assets/images/others/logo_plattetv.svg" alt="PlatteTV"></a>
                 <nav fxLayout="row" fxShow fxHide.gt-sm class="mobilenav">
                     <a href="/extrainfo/advies-contact-2316.html"><img src="assets/images/others/icon_chat.png" alt="Chat"></a>
                     <a href="/extrainfo/winkels-amsterdam-arnhem-breda-doesburg-doetinchem-eindhoven-nijmegen-en-utrecht-885.html"><img src="assets/images/others/icon_locator.png" alt="Locaties"></a>
@@ -55,7 +55,7 @@
                 </ul>
                 <div fxFlex fxLayout="row nowrap" fxFlexOffset.gt-sm="0" class="main-header-sub">
                     <span fxHide="false" fxHide.gt-sm>
-                        <button mat-button (click)="sidenav.toggle()" class="sidenav-toggle">
+                        <button mat-button (click)="sidenav.toggle()" class="sidenav-toggle" aria-label="sidenav-toggle">
                             <mat-icon>menu</mat-icon>
                         </button>
                     </span>
@@ -66,8 +66,8 @@
                                 <app-category-list [categories]="categories" [categoryParentId]="0" (change)="changeCategory($event)"></app-category-list>
                             </span>
                         </mat-menu> -->
-                        <input type="text" placeholder="Typ zoekopdracht..." name="search_key" [(ngModel)]="keyword" (keyup)="searchTerm.next($event.target.value)" fxFlex>
-                        <button mat-button (click)="search()" type="submit" class="search-btn mat-elevation-z0 text-muted">
+                        <input type="text" placeholder="Typ zoekopdracht..." name="search_key" [(ngModel)]="keyword" (keyup)="searchTerm.next($event.target.value)" fxFlex aria-label="search_key">
+                        <button mat-button (click)="search()" type="submit" class="search-btn mat-elevation-z0 text-muted" aria-label="search-btn">
                             <mat-icon>search</mat-icon>
                         </button>
                     </form>
