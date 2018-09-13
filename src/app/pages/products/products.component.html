@@ -77,7 +77,7 @@
 
     </mat-sidenav>
     <mat-sidenav-content class="all-products" ngClass.gt-sm="p-left">
-        <div fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="filter-row mat-elevation-z1 text-muted">
+        <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" class="filter-row mat-elevation-z1 text-muted">
             <div>
                 <button *ngIf="!sidenavOpen" mat-icon-button (click)="sidenav.toggle()">
                     <mat-icon>more_vert</mat-icon>
@@ -159,7 +159,7 @@
                 <div  *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }" fxFlex="100" class="col">
                     <mat-card class="product-item product-item-list">
                         <div fxLayout fxLayout="row" fxLayoutAlign="start start">
-                            <div class="product-item-image">
+                            <div fxFlex="160px" class="product-item-image">
                                 <div *ngIf="product.specialLabel" class="product-item-image-speciallabel">
                                     {{product.specialLabel}}
                                 </div>
@@ -232,7 +232,7 @@
             </ng-container>
         </div>
 
-        <div *ngIf="products.length > 0" fxLayout="row wrap">
+        <div *ngIf="products.length > 0" fxLayout="row wrap" class="product-pagination-wrapper">
             <div fxFlex="100">
                 <mat-card class="p-0 text-center">
                     <pagination-controls class="product-pagination" previousLabel="Vorige" nextLabel="Volgende" autoHide="true" maxSize="5" (pageChange)="onPageChanged($event)">

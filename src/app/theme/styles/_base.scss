@@ -1438,3 +1438,13 @@ app-root .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not
 .overflow-visible {
     overflow: visible!important;
 }
+.product-pagination-wrapper {
+    .mat-card {
+        .product-pagination {
+            .ngx-pagination {
+                margin-bottom: 1rem;
+                padding: 0!important;
+            }
+        }
+    }
+}
