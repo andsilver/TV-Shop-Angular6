@@ -28,6 +28,12 @@
     padding: 0;
     box-shadow: none;
 }
+@media (max-width:419px) {
+    .filter-row {
+        -ms-flex-direction: column!important;
+        flex-direction: column!important;
+    }
+}
 .all-products{
     min-height: 400px;
     padding: 2px;
