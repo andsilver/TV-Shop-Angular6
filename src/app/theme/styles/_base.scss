@@ -1371,14 +1371,14 @@ button.swipe-arrow{
             }
             ul+ul { margin-top: 1rem; }
             ul.plus_point_list li:not(.plus_point_header):before {
-                font-family:"Font Awesome 5 Free";
+                font-family:"fontAwesome";
                 content:"\f067";
                 font-weight: 900;
                 color:#5aad49;
                 margin-right: .5rem;
             }
             ul.minus_point_list li:not(.minus_point_header):before {
-                font-family:"Font Awesome 5 Free";
+                font-family:"fontAwesome";
                 content:"\f068";
                 font-weight: 900;
                 color:#f00;
@@ -1387,6 +1387,23 @@ button.swipe-arrow{
         }
     }
 }
+
+.new-stock-info-wrapper { margin-top: 1rem; margin-bottom: 1rem; }
+.new-stock-info-wrapper .new-stock-info-bezorg { margin-bottom:10px; }
+.new-stock-info-wrapper .new-stock-info-winkel { overflow:hidden; }
+.new-stock-info-wrapper .new-stock-info-winkel .winkel-branch-city-stock { float:left; width:50%; font-size:12px; }
+.new-stock-info-wrapper .new-stock-info-winkel .winkel-branch-city-stock a { text-decoration:none; }
+.new-stock-info-wrapper .new-stock-info-winkel .winkel-branch-city-stock a:hover { text-decoration:underline; }
+
+.new-stock-info-wrapper .bezorg-title,
+.new-stock-info-wrapper .new-stock-info-winkel .winkel-title { font-weight:bold; color:#212226; padding-bottom:2px; }
+
+.dot-green-icon,
+.dot-orange-icon,
+.dot-red-icon { float:left; overflow:hidden; width:9px; height:0; margin-top:4px; margin-right:5px; padding-top:9px; border-radius:50%; }
+.dot-green-icon { background:#5aad49; }
+.dot-orange-icon { background:#ff7900; }
+.dot-red-icon { background:#ff0000; }
 
 .mat-tab-reviews {
     .reviews-item {
