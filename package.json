@@ -14,9 +14,9 @@
     "extract": "ng xi18n --output-path=locale --i18n-locale en && npm run xliffmerge",
     "xliffmerge": "xliffmerge --profile xliffmerge.json nl",
     "pwa": "npm run build && sw-precache --root=dist/en --config=precache-config.js",
-    "pwa:nl": "npm run build:nl && sw-precache --root=dist/nl --config=precache-config.js",
-    "serve:sw": "npm run pwa && http-server ./dist/en -p 8000",
-    "serve:sw:nl": "npm run pwa && http-server ./dist/nl -p 8001",
+    "pwa:nl": "npm run build:nl && sw-precache --root=dist/nl --config=precache-config-nl.js",
+    "serve:sw": "npm run pwa && npx http-server ./dist/en -p 8000",
+    "serve:sw:nl": "npm run pwa && npx http-server ./dist/nl -p 8001",
     "postbuild": "scp -r dist/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/"
   },
   "private": true,
