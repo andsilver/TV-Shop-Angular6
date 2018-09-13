@@ -151,4 +151,24 @@
         padding: .75rem;
     }
 }
+@media (max-width: 419px) {
+    .product-item-list.mat-card {
+        & > div {
+            -ms-flex-direction: column !important;
+            flex-direction: column !important;
+        }
+        .product-item-image,
+        .listing-item-content {
+            flex: 1 1 100% !important;
+            max-width: 100% !important;
+            width: 100%;
+            padding: 0;
+        }
+    }
+}
 
+.product-pagination-wrapper {
+    .mat-card {
+        box-shadow: none;
+    }
+}
