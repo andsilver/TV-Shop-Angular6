@@ -1406,7 +1406,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="739516c2ca75843d5aec9cf0e6b3e4335c4227b9" datatype="html">
-        <source>Change password</source><target state="new">Change password</target>
+        <source>Change password</source><target state="new">wijzigen Wachtwoorden</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/dashboard/dashboard.component.ts</context>
           <context context-type="linenumber">18</context>
@@ -1636,14 +1636,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="b81fbd1b5d0723eba41870071d02065674bdd565" datatype="html">
-        <source>Confirm New Password</source><target state="new">Confirm New Password</target>
+        <source>Confirm New Password</source><target state="new">Confirm Nieuw wachtwoord</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e8327b8c969d715a03fd16aaf61a89aa731c1dca" datatype="html">
-        <source>Confirm New Password is required</source><target state="new">Confirm New Password is verplicht</target>
+        <source>Confirm New Password is required</source><target state="new">Confirm Nieuw wachtwoord is verplicht</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/information/information.component.ts</context>
           <context context-type="linenumber">40</context>
@@ -1782,7 +1782,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="6934d8edd276d59e050006fe91b695ebad0218f8" datatype="html">
-        <source>Phone</source><target state="new">Telefoonnummer </target>
+        <source>Phone</source><target state="new">Telefoonnummer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/account/addresses/addresses.component.ts</context>
           <context context-type="linenumber">36</context>
@@ -2058,8 +2058,7 @@
       <trans-unit id="e4ea3c9439c19a18b29fd231603e95ec068ec388" datatype="html">
         <source>
               Show All Brands
-            </source><target state="new">Toon alle merken
-            </target>
+            </source><target state="new">Toon alle merken</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/brands/brands.component.ts</context>
           <context context-type="linenumber">10</context>
@@ -2438,7 +2437,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="3a56771d1062b04a2b362d5ed1da622659afae7b" datatype="html">
-        <source>Phone:</source><target state="new">Telefoonnummer :</target>
+        <source>Phone:</source><target state="new">Telefoonnummer:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/checkout.component.ts</context>
           <context context-type="linenumber">181</context>
@@ -2449,7 +2448,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="33d64f1b5578cd3ff6413272a9bf0384e9c8626b" datatype="html">
-        <source>Country:</source><target state="new">Land :</target>
+        <source>Country:</source><target state="new">Land:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/checkout.component.ts</context>
           <context context-type="linenumber">185</context>
@@ -2460,7 +2459,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="5f71766970c93d82a621274e3914ac401fbdebfa" datatype="html">
-        <source>City:</source><target state="new">Plaats :</target>
+        <source>City:</source><target state="new">Plaats:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/checkout.component.ts</context>
           <context context-type="linenumber">189</context>
@@ -2618,8 +2617,7 @@
       <trans-unit id="c4c5e502425b64dcdc67227e8e23673e24b4bce8" datatype="html">
         <source>
           product       
-      </source><target state="new">product
-      </target>
+      </source><target state="new">product</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/compare/compare.component.ts</context>
           <context context-type="linenumber">9</context>
@@ -2628,8 +2626,7 @@
       <trans-unit id="ff44ca97f1eece5b70cf89cae9c84e5e5950506b" datatype="html">
         <source>
         name
-      </source><target state="new">naam
-      </target>
+      </source><target state="new">naam</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/compare/compare.component.ts</context>
           <context context-type="linenumber">19</context>
@@ -2638,8 +2635,7 @@
       <trans-unit id="2435b6d40b93797df1b9dfca1aa68eb8502edf92" datatype="html">
         <source>
         price
-      </source><target state="new">Prijs
-      </target>
+      </source><target state="new">Prijs</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/compare/compare.component.ts</context>
           <context context-type="linenumber">28</context>
@@ -2648,8 +2644,7 @@
       <trans-unit id="a447a2eca45da49a059ae5807b19fe1723161e27" datatype="html">
         <source>
         availability
-      </source><target state="new">beschikbaarheid
-      </target>
+      </source><target state="new">beschikbaarheid</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/compare/compare.component.ts</context>
           <context context-type="linenumber">37</context>
@@ -2658,8 +2653,7 @@
       <trans-unit id="c36a1735338c85fdc825aee3f5f491653541055c" datatype="html">
         <source>
         rating
-      </source><target state="new">reviews
-      </target>
+      </source><target state="new">reviews</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/compare/compare.component.ts</context>
           <context context-type="linenumber">46</context>
@@ -2668,8 +2662,7 @@
       <trans-unit id="0d2b452013955a0dd9c00fefa44d785316c010ce" datatype="html">
         <source>
         description
-      </source><target state="new">beschrijving
-      </target>
+      </source><target state="new">beschrijving</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/compare/compare.component.ts</context>
           <context context-type="linenumber">55</context>
@@ -2678,8 +2671,7 @@
       <trans-unit id="95ee58caa29eac0cb7031d48ea3cfa16b3b3e8aa" datatype="html">
         <source>
         color
-      </source><target state="new">kleur
-      </target>
+      </source><target state="new">kleur</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/compare/compare.component.ts</context>
           <context context-type="linenumber">64</context>
@@ -2688,8 +2680,7 @@
       <trans-unit id="faba587400f9c6b560b0af07466042898c31835f" datatype="html">
         <source>
         size
-      </source><target state="new">grootte
-      </target>
+      </source><target state="new">grootte</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/compare/compare.component.ts</context>
           <context context-type="linenumber">73</context>
@@ -2698,8 +2689,7 @@
       <trans-unit id="c5519b9dac92fc717ec0bfd8cf9dcb51e45e0e4f" datatype="html">
         <source>
         weight
-      </source><target state="new">gewicht
-      </target>
+      </source><target state="new">gewicht</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/compare/compare.component.ts</context>
           <context context-type="linenumber">82</context>
@@ -2853,14 +2843,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="191aa21dfdba0723f3812293e66edbe5cd0cc936" datatype="html">
-        <source>GO TO PRODUCT</source><target state="new"> NAAR PRODUCT</target>
+        <source>GO TO PRODUCT</source><target state="new">NAAR PRODUCT</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/products/products.component.ts</context>
           <context context-type="linenumber">209</context>
         </context-group>
       </trans-unit>
       <trans-unit id="82251f0a629d2d3054d2c39b3158931a92feef4b" datatype="html">
-        <source>We like to make a custom deal! </source><target state="new">Wij maken graag een deal op maat! </target>
+        <source>We like to make a custom deal! </source><target state="new">Wij maken graag een deal op maat!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/products/best-price-dialog/best-price-dialog.component.ts</context>
           <context context-type="linenumber">6</context>
@@ -2875,7 +2865,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="59d3d69058a776cd831ed20195586575cda208d2" datatype="html">
-        <source> Ask for the best price via </source><target state="new">Vraag de beste prijs aan via onze </target>
+        <source> Ask for the best price via </source><target state="new">Vraag de beste prijs aan via onze</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/products/best-price-dialog/best-price-dialog.component.ts</context>
           <context context-type="linenumber">11</context>
@@ -2889,7 +2879,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="7824f44811306a9285fdf85af4ce960ed9c761ce" datatype="html">
-        <source> of </source><target state="new"> of </target>
+        <source> of </source><target state="new">of</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/products/best-price-dialog/best-price-dialog.component.ts</context>
           <context context-type="linenumber">12</context>
@@ -2924,7 +2914,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="6f927bec7039dcf7574286229ce37af9419c63c2" datatype="html">
-        <source>Your Naam:</source><target state="new">Uw Naam :</target>
+        <source>Your Naam:</source><target state="new">Uw Naam:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/products/best-price-dialog/best-price-dialog.component.ts</context>
           <context context-type="linenumber">26</context>
@@ -3367,7 +3357,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="c32ef07f8803a223a83ed17024b38e8d82292407" datatype="html">
-        <source>Password</source><target state="new">Password</target>
+        <source>Password</source><target state="new">Wachtwoord</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/sign-in/sign-in.component.ts</context>
           <context context-type="linenumber">12</context>
@@ -3378,7 +3368,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="1e20f8b8a4706526c9024cc2f39d568345d100dc" datatype="html">
-        <source>Password is required</source><target state="new">Password is verplicht</target>
+        <source>Password is required</source><target state="new">Wachtwoord is verplicht</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/sign-in/sign-in.component.ts</context>
           <context context-type="linenumber">13</context>
@@ -3414,14 +3404,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="484b0e541230d60ddb5fbd771a34a5c8d90e7a57" datatype="html">
-        <source>Full Name</source><target state="new">Full Name</target>
+        <source>Full Name</source><target state="new">Volledige naam</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/sign-in/sign-in.component.ts</context>
           <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="293a7878dc32e0e3936a977c540b93161cb5db9c" datatype="html">
-        <source>Full Name is required</source><target state="new">Full Name is verplicht</target>
+        <source>Full Name is required</source><target state="new">Volledige naam is verplicht</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/sign-in/sign-in.component.ts</context>
           <context context-type="linenumber">47</context>
@@ -3435,14 +3425,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="c1b7e6d75ff4285c7636c67e5ef259629b81725b" datatype="html">
-        <source>Confirm Password</source><target state="new">Confirm Password</target>
+        <source>Confirm Password</source><target state="new">Confirm Wachtwoorden</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/sign-in/sign-in.component.ts</context>
           <context context-type="linenumber">61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="eb48b798714d744f385f9a8900fe2c09627ef094" datatype="html">
-        <source>Confirm Password is required</source><target state="new">Confirm Password is verplicht</target>
+        <source>Confirm Password is required</source><target state="new">Confirm Wachtwoorden is verplicht</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/sign-in/sign-in.component.ts</context>
           <context context-type="linenumber">62</context>
