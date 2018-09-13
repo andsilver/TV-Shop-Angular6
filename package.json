@@ -11,14 +11,13 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postbuild": "scp -r dist/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/",
-    "pwa": "ng build --prod --build-optimizer --aot --named-chunks && gulp && sw-precache --root=dist --config=precache-config.js",
-    "pwa:nl": "ng build --prod  --configuration=production-nl --build-optimizer --aot --named-chunks && gulp && sw-precache --root=dist --config=precache-config.js",
-    "pwadebug": "ng build --prod --build-optimizer --aot --named-chunks --stats-json && gulp && sw-precache --root=dist --config=precache-config.js",
-    "postpwa": "scp -r dist/. root@deb1.bvb.vg:/var/www/plattetv.bvb.media/web/",
-    "serve:sw": "npm run pwa && http-server ./dist/en -p 8000 --gzip",
-    "serve:sw:nl": "npm run pwa:nl && npx http-server ./dist/nl -p 8000 --gzip",
-    "bundle-report": "webpack-bundle-analyzer dist/stats.json"
+    "extract": "ng xi18n --output-path=locale --i18n-locale en && npm run xliffmerge",
+    "xliffmerge": "xliffmerge --profile xliffmerge.json nl",
+    "pwa": "npm run build && sw-precache --root=dist/en --config=precache-config.js",
+    "pwa:nl": "npm run build:nl && sw-precache --root=dist/nl --config=precache-config.js",
+    "serve:sw": "npm run pwa && http-server ./dist/en -p 8000",
+    "serve:sw:nl": "npm run pwa && http-server ./dist/nl -p 8001",
+    "postbuild": "scp -r dist/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/"
   },
   "private": true,
   "dependencies": {
