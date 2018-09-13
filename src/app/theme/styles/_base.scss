@@ -1444,10 +1444,12 @@ button.swipe-arrow{
 app-root .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
     background-color: transparent!important;
 }
-.filter-sidenav {
-    .mat-expansion-panel {
-        .mat-expansion-panel-body {
-            padding: 0 0 1rem;
+@media (min-width:960px) {
+    .filter-sidenav {
+        .mat-expansion-panel {
+            .mat-expansion-panel-body {
+                padding: 0 0 1rem;
+            }
         }
     }
 }

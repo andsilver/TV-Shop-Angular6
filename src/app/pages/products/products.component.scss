@@ -1,14 +1,15 @@
 .filter-sidenav {
     overflow: visible!important;
-    width: 280px;
-    padding: 2px;
+    float: left;
+    left: 0;
+    width: 75vw;
+    padding: 0;
 
     .mat-expansion-panel {
         border-bottom: 1px solid #E6E6DC;
         box-shadow: none;
         .mat-expansion-panel-header {
             font-size: .875rem;
-            padding: 0;
             .mat-expansion-panel-header-title {
                 text-transform: uppercase;
             }
@@ -18,11 +19,19 @@
 
 @media (min-width:960px) {
     .filter-sidenav {
-        float: left;
         position: static;
+
+        width: 280px;
+        padding: 0;
+    }
+    .mat-expansion-panel {
+        .mat-expansion-panel-header {
+            padding: 0;
+        }
     }
 }
 .filter-row{
+    height: 48px;
     border-bottom: 1px solid #E6E6DC;
     background-color: transparent;
     padding: 0;
@@ -136,6 +145,9 @@
     letter-spacing: 1px;
     text-align: right;
 }
+.old-price {
+    text-decoration: line-through;
+}
 
 .price-only-new {
     color: #000 !important;
@@ -176,5 +188,11 @@
 .product-pagination-wrapper {
     .mat-card {
         box-shadow: none;
+    }
+}
+
+@media (max-width:959px) {
+    .mat-drawer-container {
+        position: static!important;
     }
 }
