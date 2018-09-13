@@ -3,7 +3,7 @@
         <div *ngFor="let product of products" class="swiper-slide">
             <mat-card class="product-item">
                 <mat-chip-list *ngIf="product.discount">
-                    <mat-chip color="warn" selected="true">{{product.discount}}% korting</mat-chip>
+                    <mat-chip color="warn" selected="true" i18n>{{product.discount}}% OFF</mat-chip>
                 </mat-chip-list>
                 <a [routerLink]="[ product.permalink ]" class="image-link">
                     <img [src]="product.images[0].medium" class="swiper-lazy"/>

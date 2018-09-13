@@ -1,22 +1,22 @@
 <div *ngIf="appService.Data.cartList.length == 0">
   <mat-chip-list>
-      <mat-chip color="warn" selected="true">U HEEFT NOG GEEN PRODUCTEN IN UW WINKELWAGEN GEPLAATST.</mat-chip>
+      <mat-chip color="warn" selected="true" i18n>YOU HAVE NO ITEMS IN YOUR SHOPPING CART.</mat-chip>
   </mat-chip-list>
-  <a [routerLink]="['/']" mat-raised-button color="primary" class="mt-2">Verder winkelen</a>
+  <a [routerLink]="['/']" mat-raised-button color="primary" class="mt-2" i18n>Continue shopping</a>
 </div>
 
 <mat-card *ngIf="appService.Data.cartList?.length > 0" class="p-0">
 
   <div class="mat-table cart-table">
     <div class="mat-header-row">
-      <div class="mat-header-cell">Product</div>
-      <div class="mat-header-cell">Naam</div>
-      <div class="mat-header-cell">Prijs</div>
-      <div class="mat-header-cell">Aantal</div>
-      <div class="mat-header-cell">Totaal</div>
+      <div class="mat-header-cell" i18n>Product</div>
+      <div class="mat-header-cell" i18n>Name</div>
+      <div class="mat-header-cell" i18n>Price</div>
+      <div class="mat-header-cell" i18n>Quantity</div>
+      <div class="mat-header-cell" i18n>Total</div>
       <div class="mat-header-cell text-center">
         <div class="px-1">
-          <button mat-raised-button color="warn" (click)="clear()">Leeg lijst</button>
+          <button mat-raised-button color="warn" (click)="clear()" i18n>Clear All</button>
         </div>
       </div>
     </div>
@@ -37,7 +37,8 @@
       <div class="mat-cell">{{product.newPrice * product.quantity | customCurrency}}</div>
       <div class="mat-cell text-center overflow-visible">
         <div class="p-1">
-          <button mat-mini-fab color="warn" (click)="remove(product)" matTooltip="Leeg winkelwagen">
+          <span class="cdk-visually-hidden" #translatedTooltipMessage i18n>Clear</span>
+          <button mat-mini-fab color="warn" (click)="remove(product)" [matTooltip]="translatedTooltipMessage.innerHTML">
               <mat-icon>close</mat-icon>
           </button>
         </div>
@@ -45,24 +46,24 @@
       
     </div>
     <div class="mat-row">
-      <div class="mat-cell"><a [routerLink]="['/']" mat-raised-button color="primary">Verder winkelen</a></div>
+      <div class="mat-cell"><a [routerLink]="['/']" mat-raised-button color="primary" i18n>Continue shopping</a></div>
       <div class="mat-cell"></div>
       <div class="mat-cell"></div>
       <div class="mat-cell text-right">
         <div fxLayout="column" fxLayoutAlign="center end" class="grand-total px-2">
-          <span>Subtotaal:</span>
-          <span class="text-muted">Korting:</span>
-          <span class="new-price">Totaalbedrag:</span>
+          <span i18n>SubTotal:</span>
+          <span class="text-muted" i18n>Discount:</span>
+          <span class="new-price" i18n>Grand total:</span>
         </div>        
       </div>
       <div class="mat-cell">
         <div fxLayout="column" fxLayoutAlign="center start" class="grand-total">
           <span>{{ grandTotal | customCurrency}}</span>
-          <span class="text-muted">15%</span>
+          <span class="text-muted" i18n>15%</span>
           <span class="new-price">{{ (grandTotal - (grandTotal*0.15)) | customCurrency}}</span>
         </div>
       </div>
-      <div class="mat-cell text-center"><a [routerLink]="['/checkout']" mat-raised-button color="primary">Ga naar bestellen</a></div>
+      <div class="mat-cell text-center"><a [routerLink]="['/checkout']" mat-raised-button color="primary" i18n>Proceed To Checkout</a></div>
     </div>
   </div>
 

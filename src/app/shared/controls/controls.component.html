@@ -1,15 +1,22 @@
 <div fxLayout="row" fxLayout.xs="column" [fxLayoutAlign]="align" class="text-muted">
     <div *ngIf="product?.availibilityCount > 0 && (type=='all' || type=='wish')">
-        <span *ngIf="type!='wish'" class="fw-500">Aantal:</span>
-        <button mat-icon-button matTooltip="Verwijder" (click)="decrement()"><mat-icon>remove</mat-icon></button>
+        <span *ngIf="type!='wish'" class="fw-500" i18n>Quantity:</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage i18n>Remove</span>
+        <button mat-icon-button  [matTooltip]="translatedTooltipMessage.innerHTML" (click)="decrement()"><mat-icon>remove</mat-icon></button>
         <span> {{count}} </span>
-        <button mat-icon-button matTooltip="Toevoegen" (click)="increment()"><mat-icon>add</mat-icon></button>
+<span class="cdk-visually-hidden" #translatedTooltipMessage1 i18n>Add</span>
+        <button mat-icon-button  [matTooltip]="translatedTooltipMessage1.innerHTML" (click)="increment()"><mat-icon>add</mat-icon></button>
     </div>
     <div *ngIf="type!='wish'">
-        <button mat-icon-button matTooltip="Toevoegen aan wensenlijst" (click)="addToWishList(product)"><mat-icon>favorite</mat-icon></button>
-        <button mat-icon-button matTooltip="Toevoegen aan winkelwagen" *ngIf="product?.availibilityCount > 0" (click)="addToCart(product)"><mat-icon>shopping_cart</mat-icon></button>
-        <button mat-icon-button matTooltip="Toevoegen aan vergelijkingslijst" (click)="addToCompare(product)"><mat-icon>compare</mat-icon></button>
-        <button *ngIf="type!='all'" mat-icon-button matTooltip="Snel bekijken" (click)="openProductDialog(product)"><mat-icon>remove_red_eye</mat-icon></button>
+<span class="cdk-visually-hidden" #translatedTooltipMessage2 i18n>Add to wishlist</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage3 i18n>Add to cart</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage4 i18n>Add to compare</span>
+<span class="cdk-visually-hidden" #translatedTooltipMessage5 i18n>Quick view</span>
+
+        <button mat-icon-button  [matTooltip]="translatedTooltipMessage2.innerHTML" (click)="addToWishList(product)"><mat-icon>favorite</mat-icon></button>
+        <button mat-icon-button  [matTooltip]="translatedTooltipMessage3.innerHTML" *ngIf="product?.availibilityCount > 0" (click)="addToCart(product)"><mat-icon>shopping_cart</mat-icon></button>
+        <button mat-icon-button  [matTooltip]="translatedTooltipMessage4.innerHTML" (click)="addToCompare(product)"><mat-icon>compare</mat-icon></button>
+        <button *ngIf="type!='all'" mat-icon-button   [matTooltip]="translatedTooltipMessage5.innerHTML" (click)="openProductDialog(product)"><mat-icon>remove_red_eye</mat-icon></button>
     </div>
 </div>
 <!-- <div *ngIf="product?.availibilityCount == 0 && type=='all'" class="bg-warn p-1 mt-2">

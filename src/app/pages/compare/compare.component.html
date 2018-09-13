@@ -1,12 +1,12 @@
 <mat-chip-list *ngIf="appService.Data.compareList.length == 0">
-    <mat-chip color="warn" selected="true">U HEEFT NOG GEEN PRODUCTEN GESELECTEERD OM TE VERGELIJKEN.</mat-chip>
+    <mat-chip color="warn" selected="true" i18n>YOU HAVE NO ITEMS TO COMPARE.</mat-chip>
 </mat-chip-list>
 
 <mat-card *ngIf="appService.Data.compareList?.length > 0" class="p-0">
 
   <div class="mat-table compare-table">
     <div class="mat-row">
-      <div class="mat-cell">
+      <div class="mat-cell" i18n>
           product       
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
@@ -16,8 +16,8 @@
     </div>
 
     <div class="mat-row">
-      <div class="mat-cell">
-        naam
+      <div class="mat-cell" i18n>
+        name
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <a [routerLink]="[product.permalink]" class="product-name">{{product.name}}</a>
@@ -25,8 +25,8 @@
     </div>
 
     <div class="mat-row">
-      <div class="mat-cell">
-        prijs
+      <div class="mat-cell" i18n>
+        price
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <b class="new-price">{{product.newPrice | customCurrency}}</b>
@@ -34,8 +34,8 @@
     </div>
 
     <div class="mat-row">
-      <div class="mat-cell">
-        beschikbaarheid
+      <div class="mat-cell" i18n>
+        availability
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
           <b class="text-muted">{{ (product.availibilityCount > 0) ? 'In stock':'Unavailable'}}</b>
@@ -43,8 +43,8 @@
     </div>
 
     <div class="mat-row">
-      <div class="mat-cell">
-        beoordeling
+      <div class="mat-cell" i18n>
+        rating
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue"></app-rating>
@@ -52,8 +52,8 @@
     </div>
 
     <div class="mat-row">
-      <div class="mat-cell">
-        beschrijving
+      <div class="mat-cell" i18n>
+        description
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <span class="text-muted lh" [innerHTML]="product.description"></span>
@@ -61,8 +61,8 @@
     </div>
 
     <div class="mat-row">
-      <div class="mat-cell">
-        kleur
+      <div class="mat-cell" i18n>
+        color
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <button mat-raised-button *ngFor="let color of product.color" [style.background]="color" class="color">&nbsp;</button>              
@@ -70,8 +70,8 @@
     </div>
 
     <div class="mat-row">
-      <div class="mat-cell">
-        grootte
+      <div class="mat-cell" i18n>
+        size
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <span *ngFor="let size of product.size" class="size">{{size}}</span>
@@ -79,21 +79,21 @@
     </div>
 
     <div class="mat-row">
-      <div class="mat-cell">
-        gewicht
+      <div class="mat-cell" i18n>
+        weight
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
-        <span *ngIf="product.weight">{{product.weight}} g</span>
+        <span *ngIf="product.weight" i18n>{{product.weight}} g</span>
       </div>
     </div>
 
     <div class="mat-row">
       <div class="mat-cell">
-        <button mat-raised-button color="warn" (click)="clear()">Leeg winkelwagen</button>
+        <button mat-raised-button color="warn" (click)="clear()" i18n>Clear All</button>
       </div>
       <div class="mat-cell" *ngFor="let product of appService.Data.compareList">
         <button mat-raised-button color="primary" class="add" (click)="addToCart(product)">
-          <mat-icon>shopping_cart</mat-icon>In winkelwagen</button>
+          <mat-icon>shopping_cart</mat-icon><ng-container i18n>Add to cart</ng-container></button>
       </div>
     </div>
 

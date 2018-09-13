@@ -2,5 +2,5 @@
     <div class="ratings">        
          <mat-icon *ngFor="let star of stars; let i=index;" class="mat-icon-xs" (click)="rate(i)">{{star}}</mat-icon>
     </div>
-    <p class="ratings-count text-muted" [ngClass]="{'margin-left-10': direction == 'row'}">{{ratingsCount}} reviews</p>
+    <p class="ratings-count text-muted" [ngClass]="{'margin-left-10': direction == 'row'}">{{ratingsCount}} <ng-container i18n>ratings</ng-container></p>
 </div>

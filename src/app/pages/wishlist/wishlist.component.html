@@ -1,19 +1,19 @@
 <mat-chip-list *ngIf="appService.Data.wishList.length == 0">
-    <mat-chip color="warn" selected="true">U HEEFT NOG GEEN PRODUCTEN TOEGEVOEGD AAN UW WENSENLIJST.</mat-chip>
+    <mat-chip color="warn" selected="true" i18n>YOU HAVE NO ITEMS IN WISH LIST.</mat-chip>
 </mat-chip-list>
 
 <mat-card *ngIf="appService.Data.wishList?.length > 0" class="p-0">
 
   <div class="mat-table wishlist-table">
     <div class="mat-header-row">
-      <div class="mat-header-cell">Product</div>
-      <div class="mat-header-cell">Naam</div>
-      <div class="mat-header-cell">Prijs</div>
-      <div class="mat-header-cell">Beschikbaarheid</div>
-      <div class="mat-header-cell">Aantal</div>
+      <div class="mat-header-cell" i18n>Product</div>
+      <div class="mat-header-cell" i18n>Name</div>
+      <div class="mat-header-cell" i18n>Price</div>
+      <div class="mat-header-cell" i18n>Availability</div>
+      <div class="mat-header-cell" i18n>Quantity</div>
       <div class="mat-header-cell">
         <div class="px-1">
-          <button mat-raised-button color="warn" (click)="clear()">Leeg lijst</button>
+          <button mat-raised-button color="warn" (click)="clear()" i18n>Clear All</button>
         </div>
       </div>
     </div>
@@ -33,11 +33,13 @@
         <app-controls [product]="product" [type]="'wish'" (quantityChanged)="saveQuantity($event)"></app-controls>
       </div>
       <div class="mat-cell">
-        <div class="p-1">          
-          <button mat-mini-fab color="primary" (click)="addToCart(product)" matTooltip="In winkelwagen">
+        <div class="p-1">   
+       <span class="cdk-visually-hidden" #translatedTooltipMessage i18n>Add to cart</span>
+          <button mat-mini-fab color="primary" (click)="addToCart(product)"  [matTooltip]="translatedTooltipMessage.innerHTML">
               <mat-icon>add_shopping_cart</mat-icon>
           </button>
-          <button mat-mini-fab color="warn" (click)="remove(product)" matTooltip="Verwijder" class="remove">
+<span class="cdk-visually-hidden" #translatedTooltipMessage1 i18n>Clear</span>
+          <button mat-mini-fab color="warn" (click)="remove(product)"  [matTooltip]="translatedTooltipMessage1.innerHTML" class="remove">
               <mat-icon>close</mat-icon>
           </button>
         </div>
