@@ -1,0 +1,17 @@
+.description-popover {
+    border-radius: 6px;
+    overflow: hidden;
+    min-width: 200px;
+    max-width: 600px;
+    box-shadow: 1px 1px 11px 2px rgba(0, 0, 0, 0.34);
+    &-title {
+        background-color: #555;
+        color: #ffffff;
+        padding: 10px;
+    }
+    &-content {
+        // min-height: 100px;
+        padding: 10px;
+        background-color: #ffffff;
+    }
+}

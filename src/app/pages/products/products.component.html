@@ -46,7 +46,10 @@
                 <mat-expansion-panel expanded *ngFor="let filt of filterLists">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            <h4>{{filt.option_name}}</h4>
+                            <h4 [satPopoverAnchorFor]="p" (mouseenter)="popoverFilter=filt;p.open();" (mouseleave)="p.close()">{{filt.option_name}}</h4>
+                            <sat-popover #p verticalAlign="below" horizontalAlign="start">
+                                <app-description-popover [title]="popoverFilter?.option_name" [content]="popoverFilter?.description"></app-description-popover>
+                            </sat-popover>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
                     <div fxLayout="column" fxLayoutGap="10px" class="filter-brands">
@@ -61,6 +64,7 @@
                     </div>
                 </mat-expansion-panel>
             </ng-container>
+
 
             <!-- <mat-expansion-panel expanded>
                 <mat-expansion-panel-header>
@@ -180,7 +184,7 @@
                                     <p class="new-price list-new-price" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</p>
                                     <p [innerHTML]="product.stockIndicator | htmlSanitize"></p>
                                     <button class="control-normal" mat-button>
-                                        <ng-container i18n>GO TO PRODUCT</ng-container> <i class="fas fa-chevron-circle-right"></i>
+                                        <ng-container i18n>GO TO PRODUCT</ng-container> <i class="fas fa fa-chevron-circle-right"></i>
                                     </button>
                                     <p *ngIf="product.demoUnitText" [innerHTML]="product.demoUnitText | htmlSanitize"></p>
                                 </div>

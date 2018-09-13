@@ -1,32 +1,32 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-rating',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.scss']
 })
-export class RatingComponent {
-  @Input() ratingsCount:number;
-  @Input() ratingsValue:number;
-  @Input() direction:string;
-  avg:number;
-  stars:Array<string>;
+export class RatingComponent implements DoCheck {
+  @Input() ratingsCount: number;
+  @Input() ratingsValue: number;
+  @Input() direction: string;
+  avg: number;
+  stars: Array<string>;
   constructor() { }
 
   ngDoCheck() {
-    if(this.ratingsCount && this.ratingsValue && !this.avg) {
+    if (this.ratingsCount && this.ratingsValue && !this.avg) {
       this.calculateAvgValue();
     }
   }
 
-  rate(value){
+  rate(value) {
     // value = (value + 1)*20;
     // this.ratingsCount++;
     // this.ratingsValue = this.ratingsValue + value;
     // this.calculateAvgValue();
   }
 
-  calculateAvgValue(){
+  calculateAvgValue() {
     this.avg = this.ratingsValue;
     switch (true) {
       case this.avg > 0 && this.avg < 20 : {
@@ -49,7 +49,7 @@ export class RatingComponent {
           this.stars = ['star', 'star', 'star_half', 'star_border', 'star_border'];
           break;
       }
-      case this.avg == 60 : {
+      case this.avg === 60 : {
           this.stars = ['star', 'star', 'star', 'star_border', 'star_border'];
           break;
       }
@@ -57,7 +57,7 @@ export class RatingComponent {
           this.stars = ['star', 'star', 'star', 'star_half', 'star_border'];
           break;
       }
-      case this.avg == 80 : {
+      case this.avg === 80 : {
           this.stars = ['star', 'star', 'star', 'star', 'star_border'];
           break;
       }

@@ -76,6 +76,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   filterLists = [];
   selectedFilterLists = [];
   tempFilterlist = [];
+  popoverFilter: any;
 
   showMoreBrandsStatus;
 
