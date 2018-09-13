@@ -4,16 +4,21 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --o --host 0.0.0.0",
+    "start:nl": "ng serve --configuration=nl --o --host 0.0.0.0",
     "build": "ng build --prod",
+    "build:nl": "ng build --configuration=production-nl",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postbuild": "scp -r dist/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/",
-    "extract": "ng xi18n --output-path=locale --i18n-locale en && npm run xliffmerge",
-    "xliffmerge": "xliffmerge --profile xliffmerge.json nl",
-    "pwa": "ng build --prod && sw-precache --root=dist --config=precache-config.js",
-    "serve:sw": "npm run pwa && http-server ./dist -p 8000"
+    "pwa": "ng build --prod --build-optimizer --aot --named-chunks && gulp && sw-precache --root=dist --config=precache-config.js",
+    "pwa:nl": "ng build --prod  --configuration=production-nl --build-optimizer --aot --named-chunks && gulp && sw-precache --root=dist --config=precache-config.js",
+    "pwadebug": "ng build --prod --build-optimizer --aot --named-chunks --stats-json && gulp && sw-precache --root=dist --config=precache-config.js",
+    "postpwa": "scp -r dist/. root@deb1.bvb.vg:/var/www/plattetv.bvb.media/web/",
+    "serve:sw": "npm run pwa && http-server ./dist/en -p 8000 --gzip",
+    "serve:sw:nl": "npm run pwa:nl && npx http-server ./dist/nl -p 8000 --gzip",
+    "bundle-report": "webpack-bundle-analyzer dist/stats.json"
   },
   "private": true,
   "dependencies": {
