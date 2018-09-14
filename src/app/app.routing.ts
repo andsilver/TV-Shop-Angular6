@@ -4,7 +4,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { PagesComponent } from './pages/pages.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
-import { InitStateService } from './services';
+// import { InitStateService } from './services';
 
 export const routes: Routes = [
     {

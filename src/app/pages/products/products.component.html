@@ -167,7 +167,7 @@
                                 <div *ngIf="product.specialLabel" class="product-item-image-speciallabel">
                                     {{product.specialLabel}}
                                 </div>
-                                <a [routerLink]="[product.permalink]" class="image-link" style="height: unset">
+                                <a [routerLink]="[product.permalink]" class="image-link">
                                     <img [src]="product.images[0].small" alt="">
                                 </a>
                             </div>
@@ -178,7 +178,7 @@
                                     <div class="product-item-feature-highlights" [innerHTML]="product.featureHighlights | htmlSanitize"></div>
                                 </div>
                                 <div fxFlex.md="60">
-                                    <p class="old-price text-muted" style="text-align: right">
+                                    <p class="old-price text-muted">
                                         <span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency:2:3:false}}</span>
                                     </p>
                                     <p class="new-price list-new-price" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</p>

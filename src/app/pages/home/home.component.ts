@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AppService } from '../../app.service';
 import { Product } from '../../app.models';
-import { HomeService } from './home.service';
 import { AppSettings } from '../../app.settings';
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
@@ -35,7 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   products: Array<Product>;
 
 
-  constructor(public appService: AppService, private homeService: HomeService, private settings: AppSettings, private title: Title) { }
+  constructor(public appService: AppService, private settings: AppSettings, private title: Title) { }
 
   ngOnInit() {
     // forkJoin([

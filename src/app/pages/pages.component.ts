@@ -5,12 +5,10 @@ import { Subject } from 'rxjs/Subject';
 import { debounceTime } from 'rxjs/operators/debounceTime';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 
-import { Settings, AppSettings } from '../app.settings';
 import { AppService } from '../app.service';
 import { Category } from '../app.models';
 import { SidenavMenuService } from '../theme/components/sidenav-menu/sidenav-menu.service';
 import { SidenavMenu } from '../theme/components/sidenav-menu/sidenav-menu.model';
-import { RoutingHandlerService } from 'app/services';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -35,16 +33,12 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   keyword = '';
   searchTerm = new Subject();
 
-  settings: Settings;
   private subscriptions: Subscription[] = [];
 
-  constructor(public appSettings: AppSettings,
-              public appService: AppService,
+  constructor(public appService: AppService,
               public sidenavMenuService: SidenavMenuService,
               public router: Router,
-              public route: RoutingHandlerService,
               public store: Store<State>) {
-    this.settings = this.appSettings.settings;
   }
 
   ngOnInit() {
@@ -117,10 +111,6 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   clear() {
     this.appService.Data.cartList.length = 0;
-  }
-
-  changeTheme(theme) {
-    this.settings.theme = theme;
   }
 
   stopClickPropagate(event: any) {

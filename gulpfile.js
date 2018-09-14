@@ -10,19 +10,23 @@ const src = (value) ? `./dist/${value}` : `./dist`;
 gulp.task('pack-js', () => {	
   return gulp.src([`${src}/*.js`])
     .pipe(uglify())
-    .pipe(gzip())
     .pipe(gulp.dest(`${src}`));
 });
 
 gulp.task('pack-css', () => {
   return gulp.src([`${src}/*.css`])
     .pipe(minify())
-    .pipe(gzip())
+    .pipe(gulp.dest(`${src}`));
+});
+
+gulp.task('gzip', ['pack-js', 'pack-css'], () => {
+  return gulp.src([`${src}/*.*`])
+    .pipe(gzip({ gzipOptions: { level: 9 }, skipGrowingFiles : true }))
     .pipe(gulp.dest(`${src}`));
 });
  
-gulp.task('clean', ['pack-js', 'pack-css'], () => {
-  return gulp.src([`${src}/*.js`, `${src}/*.css`], {read: false})
+gulp.task('clean', ['gzip'], () => {
+  return gulp.src([`${src}/*.js`, `${src}/*.css`, `${src}/*.html`, `${src}/*.css`, `${src}/*.json`, `${src}/*.ico`], {read: false})
     .pipe(clean());
 });
 

@@ -161,12 +161,18 @@
     .product-item-image {
         padding: .75rem .25rem .75rem .75rem;
 
-        .image-link img {
-            max-width: none;
+        .image-link {
+            height: unset;
+            img {
+                max-width: none;
+            }
         }
     }
     .listing-item-content {
         padding: .75rem;
+    }
+    .old-price {
+        text-align: right;
     }
 }
 @media (max-width: 419px) {

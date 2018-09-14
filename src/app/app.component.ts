@@ -1,10 +1,9 @@
-import { Component, ChangeDetectionStrategy, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Settings, AppSettings } from './app.settings';
 
 @Component({
   selector: 'app-root',
-  styleUrls: ['./app.component.scss'],
   template: `<div id="app" class="h-100 app" [ngClass]="settings.theme">
                <router-outlet></router-outlet>
             </div>`

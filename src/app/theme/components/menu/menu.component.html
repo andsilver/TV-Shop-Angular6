@@ -9,57 +9,6 @@
 </mat-toolbar>
 <mat-toolbar class="top-navbar mat-elevation-z2" fxLayoutAlign="center center">
     <mat-toolbar-row fxLayoutAlign="space-around center" class="top-navbar-container">
-    <!-- <a mat-button routerLink="/" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Home</a>
-    <a mat-button [matMenuTriggerFor]="menu" (click)="openMegaMenu()">Fashion<mat-icon class="caret">arrow_drop_down</mat-icon></a> -->
-    <mat-menu #menu="matMenu" [overlapTrigger]="false" class="mega-menu app-dropdown">
-        <div fxLayout="row wrap">
-            <div fxFlex="20" fxLayout="column" class="p-1"> 
-                <a mat-menu-item routerLink="/"><b i18n>WOMEN</b></a>
-                <mat-divider></mat-divider> 
-                <a mat-menu-item routerLink="/" i18n>Dresses & Skirts</a>
-                <a mat-menu-item routerLink="/" i18n>Jackets</a>              
-                <a mat-menu-item routerLink="/" i18n>Tops & Blouses</a>
-                <a mat-menu-item routerLink="/" i18n>Shoes & Boots</a>
-                <a mat-menu-item routerLink="/" i18n>Knitwear</a>                
-            </div>
-            <div fxFlex="20" class="p-1"> 
-                <a mat-menu-item routerLink="/"><b i18n>MEN</b></a>
-                <mat-divider></mat-divider> 
-                <button mat-menu-item i18n>T-shirts & Polos</button>
-                <button mat-menu-item i18n>Shoes & Boots</button> 
-                <button mat-menu-item i18n>Jeans</button> 
-                <button mat-menu-item i18n>Coats</button> 
-            </div>
-            <div fxFlex="20" class="p-1"> 
-                <a mat-menu-item routerLink="/"><b i18n>KIDS</b></a>
-                <mat-divider></mat-divider> 
-                <button mat-menu-item i18n>Top</button>
-                <button mat-menu-item i18n>Pants & Shorts</button>
-                <button mat-menu-item i18n>Dresses</button> 
-                <button mat-menu-item i18n>Skirts</button> 
-                <button mat-menu-item i18n>Set & Body</button> 
-            </div>
-            <div fxFlex="20" class="p-1"> 
-                <a mat-menu-item routerLink="/"><b i18n>ACCESSORIES</b></a>
-                <mat-divider></mat-divider>                
-                <button mat-menu-item i18n>Watches</button>  
-                <button mat-menu-item i18n>Bags & Wallet</button>
-                <button mat-menu-item i18n>Sunglasses</button> 
-                <button mat-menu-item i18n>Belts & Hats</button> 
-            </div>
-            <div fxFlex="20" class="p-1"> 
-                <mat-card class="mega-menu-widget p-0">
-                    <mat-chip-list>
-                        <mat-chip color="warn" selected="true" i18n>50% OFF</mat-chip>
-                    </mat-chip-list>
-                    <button mat-raised-button color="primary" i18n>Shop now</button>
-                    <img src="assets/images/others/mega_menu_img.png" alt="" class="w-100"> 
-                </mat-card>
-            </div>
-        </div>
-           
-    </mat-menu>
-
     <a *ngFor="let category of categories"
         class="category-menu-item"
         mat-button
@@ -73,12 +22,6 @@
     <mat-card id="subCategories" (mouseleave)="hideSubCategoryMenu($event, false)">
         <app-category-list *ngIf="parentCategory" [categories]="allCategories" [categoryParentId]="parentCategory.id" [selectedCategory]="selectedCategoryId" (change)="onChangeCategory($event)"></app-category-list>
     </mat-card>
-   <!--  <a mat-button [routerLink]="['/products', 'jewellery']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Jewellery</a>
-    <a mat-button [routerLink]="['/products', 'electronics']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Electronics</a>
-    <a mat-button [routerLink]="['/products', 'sports']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Sports</a>
-    <a mat-button [routerLink]="['/products', 'motors']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Motors</a> -->
-
-    <!-- <a mat-button [matMenuTriggerFor]="animals">Pages<mat-icon class="caret">arrow_drop_down</mat-icon></a> -->
     <mat-menu #animals="matMenu" [overlapTrigger]="false" class="app-dropdown">
         <a mat-menu-item routerLink="/products" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}" i18n>All products</a>
         <a mat-menu-item [routerLink]="['/products', '2', 'PC All-in-One']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}" i18n>Product detail</a> 
@@ -95,7 +38,6 @@
         <a mat-menu-item i18n>Menu item</a>
     </mat-menu>
     
-    <!-- <a mat-button routerLink="/contact" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Contact</a> -->
     </mat-toolbar-row>
 </mat-toolbar>
 

@@ -16,9 +16,9 @@
 
   <form [formGroup]="requestForm" (ngSubmit)="formSubmit()">
     <div>
-      <label style="margin-right: 30px" i18n>Salutation:</label>
+      <label class="margin-right-20" i18n>Salutation:</label>
       <mat-radio-group formControlName="salutation">
-        <mat-radio-button value="mr" style="margin-right: 20px" i18n>Mr.</mat-radio-button>
+        <mat-radio-button value="mr" class="margin-right-20" i18n>Mr.</mat-radio-button>
         <mat-radio-button value="mrs" i18n>Ms.</mat-radio-button>
       </mat-radio-group>
     </div>
@@ -34,7 +34,7 @@
       <mat-error *ngIf="requestForm.controls.email.errors?.required" i18n>E-mail is required</mat-error>
     </mat-form-field>
 
-    <mat-checkbox formControlName="allow" style="width: 100%" i18n>Send me exclusive specials via e-mail.
+    <mat-checkbox formControlName="allow" i18n>Send me exclusive specials via e-mail.
     </mat-checkbox>
 
     <mat-form-field class="w-100 mt-2">
