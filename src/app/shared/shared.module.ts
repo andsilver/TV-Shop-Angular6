@@ -56,6 +56,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { AddedToCartPopupComponent } from './added-to-cart-popup/added-to-cart-popup.component';
 import { GoogleMapComponent } from './google-map/google-map.component';
 import { AgmCoreModule } from '@agm/core';
+import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 
 @NgModule({
   imports: [
@@ -100,6 +101,7 @@ import { AgmCoreModule } from '@agm/core';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBv2IOmt-5I3BoQ9xKl_y7anf7dEy-4194'
     }),
+    LazyLoadImagesModule
   ],
   exports: [
     SwiperModule,
@@ -148,7 +150,8 @@ import { AgmCoreModule } from '@agm/core';
     CategoryListComponent,
     AddedToCartPopupComponent,
     GoogleMapComponent,
-    AgmCoreModule
+    AgmCoreModule,
+    LazyLoadImagesModule
   ],
   declarations: [
     RatingComponent,

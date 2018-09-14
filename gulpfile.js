@@ -22,23 +22,21 @@ gulp.task('pack-css', () => {
 });
 
 gulp.task('pack-index-html', () => {
-
   return gulp.src([`${src}/index.html`])
     .pipe(htmlmin({ collapseWhitespace: true, minifyJS: true }))
     .pipe(replace(new RegExp('script ', 'g'), 'script async '))
     .pipe(gulp.dest(`${src}`));
 });
 
-gulp.task('gzip', ['pack-js', 'pack-css', 'pack-index-html'], () => {
+gulp.task('gzip', gulp.series('pack-js', 'pack-css', 'pack-index-html', () => {
   return gulp.src([`${src}/*.js`, `${src}/*.css`, `${src}/*.html`])
     .pipe(gzip({ gzipOptions: { level: 9 }, skipGrowingFiles : true }))
     .pipe(gulp.dest(`${src}`));
-});
+}));
 
-gulp.task('clean', ['gzip'], () => {
+gulp.task('clean', gulp.series('gzip', () => {
   return gulp.src([`${src}/*.js`, `${src}/*.css`, `${src}/*.html`], {read: false})
     .pipe(clean());
-});
+}));
 
-gulp.task('default', ['clean'], () => {
-});
+gulp.task('default', gulp.parallel('clean'));

@@ -95,60 +95,16 @@
         </mat-toolbar-row>
     </mat-toolbar>
 
-    <!-- <div fxLayout="row wrap" fxLayoutAlign="space-between" class="py-3 border-bottom-mute theme-container">
-        <div fxFlex="100" fxFlex.gt-sm="20" fxFlex.sm="40"> 
-            <h3 class="col-title">USEFUL LINKS</h3>
-            <p class="mt-2"><a href="javascript:void(0);" class="link secondary-color">My Account</a></p>
-            <p class="mt-1"><a routerLink="/contact" class="link secondary-color">Contact</a></p>
-            <p class="mt-1"><a routerLink="/compare" class="link secondary-color">Compare</a></p>
-            <p class="mt-1"><a routerLink="/wishlist" class="link secondary-color">Wishlist</a></p>
-            <p class="mt-1"><a routerLink="/checkout" class="link secondary-color">Checkout</a></p>
-            <p class="mt-1"><a href="javascript:void(0);" class="link secondary-color">FAQ</a></p>
-        </div>
-        <div fxFlex="100" fxFlex.gt-sm="30" fxFlex.sm="60" ngClass.xs="mt-2"> 
-            <h3 class="col-title">CONTACT INFORMATION</h3>            
-            <p fxLayout="row" fxLayoutAlign="start center" class="mt-2 secondary-color">
-                <mat-icon class="mr-1">location_on</mat-icon>
-                <span>Maasdijk 62, 5308 JD Aalst</span>
-            </p>
-            <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
-                <mat-icon class="mr-1">call</mat-icon>
-                <span>(0418) 82 02 11</span>
-            </p>
-            <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
-                <mat-icon class="mr-1">mail_outline</mat-icon>
-                <span>sales@bvb.media</span>
-            </p>
-            <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
-                <mat-icon class="mr-1">schedule</mat-icon>
-                <span>Mon - Sun / 9.00 - 17.00</span>
-            </p>
-            <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
-                <mat-icon class="mr-1">directions</mat-icon>
-                <a href="javascript:void(0);" class="link secondary-color">Get directions</a>
-            </p>
-            <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
-                <mat-icon class="mr-1">directions_bus</mat-icon>
-                <span>Routes to us</span>
-            </p>
-        </div>
-        <div fxFlex="100" fxFlex.gt-sm="50" ngClass.sm="mt-2" ngClass.xs="mt-2"> 
-            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeControl]="true">
-                <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
-            </agm-map>
-        </div>
-    </div>
-    -->
     <mat-toolbar class="footer-payment">
         <mat-toolbar-row class="theme-container" fxLayout="column" fxLayoutAlign="flex-start center">
             <ul fxLayout="row wrap" fxLayoutAlign="center center">
-                <li><img src="/assets/images/others/icons_footer_ideal.png" alt="iDEAL"></li>
-                <li><img src="/assets/images/others/icons_footer_bancontact.png" alt="Bancontact"></li>
-                <li><img src="/assets/images/others/icons_footer_mastercard.png" alt="MasterCard"></li>
-                <li><img src="/assets/images/others/icons_footer_visa.png" alt="VISA"></li>
-                <li><img src="/assets/images/others/icons_footer_findio.png" alt="Findio"></li>
-                <li><img src="/assets/images/others/icons_footer_postnl.png" alt="Postnl"></li>
-                <li><img src="/assets/images/others/icons_footer_q.png" alt="Q"></li>
+                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_ideal.png" alt="iDEAL"></li>
+                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_bancontact.png" alt="Bancontact"></li>
+                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_mastercard.png" alt="MasterCard"></li>
+                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_visa.png" alt="VISA"></li>
+                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_findio.png" alt="Findio"></li>
+                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_postnl.png" alt="Postnl"></li>
+                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_q.png" alt="Q"></li>
             </ul>
             <p class="extra-footer-menu-wrapper"><a href="#" i18n>General conditions</a> | <a href="#" i18n>Privacy</a> | <a href="#" i18n>Cookies</a></p>
             <p i18n>All prices are incl. VAT</p>

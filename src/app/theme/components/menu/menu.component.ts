@@ -57,16 +57,7 @@ export class MenuComponent implements OnInit {
     const subele = sub.getBoundingClientRect();
     sub.style.position = 'absolute';
     event.target.appendChild(sub);
-    // sub.style.display = 'block';
-    // setTimeout(() => {
-    //   if (subele.right > ele.right) {
-    //     sub.style.right = ele.right;
-    //     sub.style.left = 'unset';
-    //   } else {
-    //     sub.style.right = 'unset';
-    //     sub.style.left = ele.left;
-    //   }
-    // }, 500);
+    sub.style.display = 'block';
   }
 
   hideSubCategoryMenu(event, openBottom: boolean = true) {

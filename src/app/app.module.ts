@@ -63,8 +63,7 @@ import { AppEffects } from './store/effects/app.effects';
     AppSettings,
     AppService,
     { provide: OverlayContainer, useClass: CustomOverlayContainer },
-    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
-    // { provide: INITIAL_STATE, useFactory:  }
+    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
