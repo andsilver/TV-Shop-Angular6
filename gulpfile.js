@@ -4,7 +4,7 @@ const minify = require('gulp-minify-css');
 const clean = require('gulp-clean');
 const uglify = require('gulp-uglify-es').default;
 
-const [command, value] = (process.argv[3]) ? process.argv[3].split('='): '';
+const [command, value] = (process.argv[2]) ? process.argv[2].split('='): '';
 const src = (value) ? `./dist/${value}` : `./dist`;
 
 gulp.task('pack-js', () => {	
