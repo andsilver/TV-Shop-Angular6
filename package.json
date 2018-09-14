@@ -18,8 +18,10 @@
     "pwadebug": "ng build --prod --build-optimizer --aot --named-chunks --stats-json && gulp && sw-precache --root=dist/en --config=precache-config.js",
     "serve:sw": "npm run pwa && npx http-server ./dist/en -p 8000 --gzip",
     "serve:sw:nl": "npm run pwa:nl && npx http-server ./dist/nl -p 8001 --gzip",
-    "postbuild": "scp -r dist/nl/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/",
-    "postpwa": "scp -r dist/nl/. root@deb1.bvb.vg:/var/www/plattetv.bvb.media/web/",
+    "postbuild": "scp -r dist/en/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/",
+    "postbuild:nl": "scp -r dist/nl/. root@deb1.bvb.vg:/var/www/demoshop.deb1.bvb.vg/web/",
+    "postpwa": "scp -r dist/en/. root@deb1.bvb.vg:/var/www/plattetv.bvb.media/web/",
+    "postpwa:nl": "scp -r dist/nl/. root@deb1.bvb.vg:/var/www/plattetv.bvb.media/web/",
     "bundle-report": "webpack-bundle-analyzer dist/stats.json"
   },
   "private": true,
