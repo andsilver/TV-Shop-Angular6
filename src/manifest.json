@@ -3,7 +3,7 @@
   "short_name": "PlatteTV",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "any",
   "scope": "/",
   "start_url": "/",
