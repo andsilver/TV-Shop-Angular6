@@ -10,7 +10,7 @@ export class CustomCurrencyPipe implements PipeTransform {
 
   transform(value: number, decimalLength: number = 2, chunkLength: number = 3, currencySignOn: boolean = true): string {
 
-    const v = value / 100 * 100;
+    const v = Math.round( value * 100 ) / 100;
     const currencySign = this.cc.currency.unit;
     const chunkDelimiter = this.cc.currency.chunkDelimiter;
     const decimalDelimiter = this.cc.currency.decimalDelimiter;
