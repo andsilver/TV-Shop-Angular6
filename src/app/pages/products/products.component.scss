@@ -2,7 +2,7 @@
     overflow: visible!important;
     float: left;
     left: 0;
-    width: 75vw;
+    width: 55vw;
     padding: 0;
 
     .mat-expansion-panel {
@@ -21,7 +21,7 @@
     .filter-sidenav {
         position: static;
 
-        width: 280px;
+        width: 250px;
         padding: 0;
     }
     .mat-expansion-panel {
@@ -172,6 +172,10 @@
         padding: .75rem;
     }
     .old-price {
+        text-align: right;
+    }
+
+    .stock-indicator{
         text-align: right;
     }
 }

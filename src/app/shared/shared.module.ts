@@ -57,6 +57,7 @@ import { AddedToCartPopupComponent } from './added-to-cart-popup/added-to-cart-p
 import { GoogleMapComponent } from './google-map/google-map.component';
 import { AgmCoreModule } from '@agm/core';
 import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
+import { ExtraInfoComponent } from './extra-info/extra-info.component';
 
 @NgModule({
   imports: [
@@ -150,6 +151,7 @@ import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
     CategoryListComponent,
     AddedToCartPopupComponent,
     GoogleMapComponent,
+    ExtraInfoComponent,
     AgmCoreModule,
     LazyLoadImagesModule
   ],
@@ -163,7 +165,8 @@ import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
     BannersComponent,
     CategoryListComponent,
     AddedToCartPopupComponent,
-    GoogleMapComponent
+    GoogleMapComponent,
+    ExtraInfoComponent
   ],
   entryComponents: [
     ProductDialogComponent,

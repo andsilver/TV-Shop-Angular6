@@ -112,7 +112,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.store.select(state => state.products).subscribe( resp => this.setProducts(resp))
     ];
 
-    this.viewType = localStorage.getItem('viewType') ? localStorage.getItem('viewType') : 'list';
+    this.viewType = 'list';
   }
 
   ngAfterViewInit() {
