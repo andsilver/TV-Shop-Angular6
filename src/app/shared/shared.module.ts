@@ -43,6 +43,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: true,
   suppressScrollX: true
 };
+import { SatPopoverModule } from '@ncstate/sat-popover';
+
 
 import { PipesModule } from '../theme/pipes/pipes.module';
 import { RatingComponent } from './rating/rating.component';
@@ -58,6 +60,8 @@ import { GoogleMapComponent } from './google-map/google-map.component';
 import { AgmCoreModule } from '@agm/core';
 import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 import { ExtraInfoComponent } from './extra-info/extra-info.component';
+import { FiltersListComponent } from './filters-list/filters-list.component';
+import { DescriptionPopoverComponent } from './description-popover/description-popover.component';
 
 @NgModule({
   imports: [
@@ -102,7 +106,8 @@ import { ExtraInfoComponent } from './extra-info/extra-info.component';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBv2IOmt-5I3BoQ9xKl_y7anf7dEy-4194'
     }),
-    LazyLoadImagesModule
+    LazyLoadImagesModule,
+    SatPopoverModule
   ],
   exports: [
     SwiperModule,
@@ -152,8 +157,11 @@ import { ExtraInfoComponent } from './extra-info/extra-info.component';
     AddedToCartPopupComponent,
     GoogleMapComponent,
     ExtraInfoComponent,
+    FiltersListComponent,
+    DescriptionPopoverComponent,
     AgmCoreModule,
-    LazyLoadImagesModule
+    LazyLoadImagesModule,
+    SatPopoverModule
   ],
   declarations: [
     RatingComponent,
@@ -166,7 +174,9 @@ import { ExtraInfoComponent } from './extra-info/extra-info.component';
     CategoryListComponent,
     AddedToCartPopupComponent,
     GoogleMapComponent,
-    ExtraInfoComponent
+    ExtraInfoComponent,
+    FiltersListComponent,
+    DescriptionPopoverComponent
   ],
   entryComponents: [
     ProductDialogComponent,

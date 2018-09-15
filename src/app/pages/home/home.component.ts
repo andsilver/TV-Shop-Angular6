@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { AppService } from '../../app.service';
 import { Product } from '../../app.models';
 import { AppSettings } from '../../app.settings';
@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   topRatedProducts: Array<Product>;
   newArrivalsProducts: Array<Product>;
   products: Array<Product>;
+  sidenavOpen = true;
 
 
   constructor(public appService: AppService, private settings: AppSettings, private title: Title, private store: Store<State>) { }
@@ -63,10 +64,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.banners = data['banners'];
     this.title.setTitle(this.settings.settings.name);
     this.store.dispatch(new KeywordActions.SetKeyword(''));
+
+    if (window.innerWidth < 960) {
+      this.sidenavOpen = false;
+    }
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  @HostListener('window:resize')
+  public onWindowResize(): void {
+    (window.innerWidth < 960) ? this.sidenavOpen = false : this.sidenavOpen = true;
   }
 
   onLinkClick(e) {

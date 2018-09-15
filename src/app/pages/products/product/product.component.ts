@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, AfterViewInit, OnDestroy, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, AfterViewInit, OnDestroy, ViewChild, Input, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -29,6 +29,7 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   @Input()
   product: Product;
 
+  sidenavOpen = true;
   config: SwiperConfigInterface = {};
   image: any;
   zoomImage: any;
@@ -54,6 +55,10 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
       'name': [null, Validators.compose([Validators.required, Validators.minLength(4)])],
       'email': [null, Validators.compose([Validators.required, emailValidator])]
     });
+
+    if (window.innerWidth < 960) {
+      this.sidenavOpen = false;
+    }
   }
 
   ngOnChanges() {
@@ -91,6 +96,11 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
         }
       }
     };
+  }
+
+  @HostListener('window:resize')
+  public onWindowResize(): void {
+    (window.innerWidth < 960) ? this.sidenavOpen = false : this.sidenavOpen = true;
   }
 
    selectImage(image) {

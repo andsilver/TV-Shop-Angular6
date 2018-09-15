@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { SatPopoverModule } from '@ncstate/sat-popover';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -13,7 +12,6 @@ import { LayoutComponent } from './layout/layout.component';
 
 import { NotMatchComponent } from './not-match/not-match.component';
 import { BestPriceDialogComponent } from './best-price-dialog/best-price-dialog.component';
-import { DescriptionPopoverComponent } from './description-popover/description-popover.component';
 
 export const routes = [
   {
@@ -26,8 +24,7 @@ export const routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     NgxPaginationModule,
-    SharedModule,
-    SatPopoverModule
+    SharedModule
   ],
   declarations: [
     ProductsComponent,
@@ -35,8 +32,7 @@ export const routes = [
     ProductZoomComponent,
     LayoutComponent,
     NotMatchComponent,
-    BestPriceDialogComponent,
-    DescriptionPopoverComponent
+    BestPriceDialogComponent
   ],
   entryComponents: [
     ProductZoomComponent,

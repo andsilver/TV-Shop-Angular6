@@ -1,0 +1,38 @@
+<mat-expansion-panel expanded>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <h4>{{filter.option_name}}</h4>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div fxLayout="column" class="filter-brands">
+        <div *ngFor="let value of filter.values">
+            <a>{{value.value_name}}</a>
+        </div>
+    </div>
+</mat-expansion-panel>
+
+<mat-expansion-panel expanded>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <h4 i18n>Categories</h4>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="categories-wrapper categories-dropdown" perfectScrollbar>
+        <div *ngFor="let category of categories">
+          <a>{{category.name}}</a>
+        </div>
+    </div>
+</mat-expansion-panel>
+
+<mat-expansion-panel expanded *ngIf="brands">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <h4 i18n>Condition</h4>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div fxLayout="column" class="filter-brands">
+       <div *ngFor="let brand of brands">
+          <a>{{brand.name}}</a>
+       </div>
+    </div>
+</mat-expansion-panel>

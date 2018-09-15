@@ -35,7 +35,7 @@
                         <h4 i18n>Condition</h4>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <div fxLayout="column" fxLayoutGap="10px" class="filter-brands">
+                <div fxLayout="column" class="filter-brands">
                    <div *ngFor="let brand of brands">
                        <mat-checkbox (change)="selectBrand(brand)">{{brand.name}}</mat-checkbox>
                    </div>
@@ -52,7 +52,7 @@
                             </sat-popover>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
-                    <div fxLayout="column" fxLayoutGap="10px" class="filter-brands">
+                    <div fxLayout="column" class="filter-brands">
                         <div *ngFor="let value of filt.values">
                             <mat-checkbox
                                 [disabled]="value.result_counter == 0"
