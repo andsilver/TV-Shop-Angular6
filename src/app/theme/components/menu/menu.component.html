@@ -16,7 +16,7 @@
         (mouseleave)="hideSubCategoryMenu($event)"
         [routerLink]="[ category.permalink ]"
         routerLinkActive="horizontal-active-link"
-        [routerLinkActiveOptions]="{exact:true}">
+        [routerLinkActiveOptions]="{exact:false}">
         {{category.name}}
     </a>
     <mat-card id="subCategories" (mouseleave)="hideSubCategoryMenu($event, false)">
