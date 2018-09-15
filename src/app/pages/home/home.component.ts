@@ -5,6 +5,10 @@ import { AppSettings } from '../../app.settings';
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 
+import { Store } from '@ngrx/store';
+import { State } from 'app/store';
+import * as KeywordActions from 'app/store/actions/keyword.action';
+
 import * as data from 'assets/data/banners.json';
 
 @Component({
@@ -34,7 +38,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   products: Array<Product>;
 
 
-  constructor(public appService: AppService, private settings: AppSettings, private title: Title) { }
+  constructor(public appService: AppService, private settings: AppSettings, private title: Title, private store: Store<State>) { }
 
   ngOnInit() {
     // forkJoin([
@@ -58,7 +62,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     this.banners = data['banners'];
     this.title.setTitle(this.settings.settings.name);
-
+    this.store.dispatch(new KeywordActions.SetKeyword(''));
   }
 
   ngOnDestroy() {

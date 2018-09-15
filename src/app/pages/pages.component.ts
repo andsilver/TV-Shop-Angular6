@@ -60,7 +60,7 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.searchTerm
       .pipe(
-        debounceTime(400),
+        debounceTime(2000),
         distinctUntilChanged()
       )
       .subscribe((event: string) => {
@@ -68,7 +68,6 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
         console.log(event);
         this.search();
       });
-    // this.sidenavMenuItems = this.sidenavMenuService.getSidenavMenuItems();
   }
 
   ngAfterViewInit() {
