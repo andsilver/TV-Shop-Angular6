@@ -63,7 +63,9 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
         debounceTime(400),
         distinctUntilChanged()
       )
-      .subscribe(word => {
+      .subscribe(event => {
+        this.keyword = event;
+        console.log(event);
         this.search();
       });
     // this.sidenavMenuItems = this.sidenavMenuService.getSidenavMenuItems();
