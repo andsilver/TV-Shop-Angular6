@@ -63,7 +63,7 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
         debounceTime(400),
         distinctUntilChanged()
       )
-      .subscribe(event => {
+      .subscribe((event: string) => {
         this.keyword = event;
         console.log(event);
         this.search();
