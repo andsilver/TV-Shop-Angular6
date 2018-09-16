@@ -106,71 +106,6 @@ app-root .app.dark .mat-drawer-container::after {
     border-top: 1px solid rgba(204, 204, 204, 0.6);
 }
 
-#brand {
-    margin-bottom: .5rem;
-    .logo {
-        line-height:0;
-
-        img {
-            width: 226px;
-            height: auto;
-        }
-    }
-    .mobilenav {
-
-        a {
-            display: block;
-
-            &+a {
-                margin-left: 1rem;
-            }
-            img {
-                max-height: 40px;
-            }
-        }
-
-    }
-}
-@media (max-width: 959px) {
-    #brand,
-    .main-header-sub {
-        width: 100%;
-    }
-    .sidenav-toggle.mat-button {
-        min-width: 0;
-        margin-right: .5rem;
-    }
-    #brand {
-        .mobilenav {
-            a {
-                line-height: 0;
-            }
-        }
-    }
-}
-@media (max-width: 599px) {
-    #brand {
-        .logo {
-            img {
-                max-width: 35vw;
-            }
-        }
-    }
-    #brand .mobilenav a img {
-        max-height: 8vw;
-    }
-}
-@media (min-width: 600px) {
-    #brand {
-        margin-bottom: 1rem;
-    }
-}
-@media (min-width: 960px) {
-    #brand {
-        margin-bottom: 0;
-    }
-}
-
 .mat-icon-button .mat-icon.mat-icon-xs,
 .mat-icon.mat-icon-xs{
     font-size: 14px;
@@ -715,42 +650,6 @@ app-root .app.dark .mat-drawer-container::after {
 .top-menu-dropdown .mat-menu-item img{
     vertical-align: middle;
     margin-right: 8px;
-}
-.cart-dropdown.mat-menu-panel{
-    min-width: 400px;
-    max-width: 400px;
-    padding: 6px 14px;
-    font-size: 13px;
-    .mat-list{
-        padding: 0;
-        .mat-list-item{
-            .mat-list-item-content{
-                padding: 0;
-                img{
-                    width: 70px;
-                    margin-left: 10px;
-                }
-            }
-            .mat-list-text>*{
-                font-size: 14px;
-                font-weight: 500;
-            }
-            .mat-line:nth-child(n+2){
-                font-size: 13px;
-                font-weight: 400;
-            }
-        }
-    }
-    .cart-dropdown-footer{
-        font-size: 14px;
-
-        .cart-dropdown-submit {
-            background-color: #5AAD49;
-            font-family: "Poppins";
-            color: #fff!important;
-            text-decoration: none!important;
-        }
-    }
 }
 
 #main-header.mat-toolbar-row {

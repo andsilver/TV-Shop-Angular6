@@ -1,7 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
-// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~swiper/dist/css/swiper.min.css';
-@import "app/theme/styles/base";
-@import "app/theme/styles/theme";
 @import "app/theme/styles/variables";
+@import "app/theme/styles/base";
 @import "app/theme/styles/font";
+
+@import '~@angular/material/theming';
+@include mat-core();
+@import 'app/theme/styles/theme-reset';
+
+.app{
+    $dark-primary: mat-palette($mat-grey, 900);
+    $dark-accent: mat-palette($mat-yellow, 600);
+    $dark-warn: mat-palette($mat-red, 700);
+    $dark-theme: mat-light-theme($dark-primary, $dark-accent, $dark-warn);
+
+    @include angular-material-theme($dark-theme);
+    @include theme-reset($dark-theme);
+}
