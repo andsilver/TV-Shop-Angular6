@@ -63,8 +63,11 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
         debounceTime(2000),
         distinctUntilChanged()
       )
-      .subscribe((event: string) => {
-        this.keyword = event;
+      .subscribe((event: KeyboardEvent) => {
+        if (event.key === 'Enter') {
+          return;
+        }
+        this.keyword = event.target['value'];
         console.log(event);
         this.search();
       });
@@ -103,7 +106,11 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
       }
   }
 
-  search() {
+  search(event: any = null) {
+    if (event) {
+      this.keyword = event.target.firstChild.value;
+    }
+    console.log(this.keyword);
     if (!this.categories.some(c => c.permalink === `${this.router.url}/`)) {
       this.router.navigate(['/products']);
     }

@@ -60,9 +60,9 @@
                             <mat-icon>menu</mat-icon>
                         </button>
                     </span>
-                    <form method="get"  class="search-form" fxLayout="row">
-                        <input type="text" i18n-placeholder placeholder="Type keyword..." name="search_key" [ngModel]="keyword" (keyup)="searchTerm.next($event.target.value)" fxFlex aria-label="search_key" autocomplete="off">
-                        <button mat-button (click)="search()" type="submit" class="search-btn mat-elevation-z0 text-muted" aria-label="search-btn">
+                    <form method="get"  class="search-form" fxLayout="row" (ngSubmit)="search($event)">
+                        <input type="text" i18n-placeholder placeholder="Type keyword..." name="search_key" [ngModel]="keyword" (keyup)="searchTerm.next($event)" fxFlex aria-label="search_key" autocomplete="off">
+                        <button mat-button type="submit" class="search-btn mat-elevation-z0 text-muted" aria-label="search-btn">
                             <mat-icon>search</mat-icon>
                         </button>
                     </form>
