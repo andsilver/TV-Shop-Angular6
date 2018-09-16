@@ -118,14 +118,56 @@
                             </div> --> 
                         </div>
                     </div>
+                    <div class="mt-2" fxLayout fxLayout.lt-md="column" fxLayoutAlign="space-between start">
+                        <div fxFlex="59">
+                            <h3>{{product.name}}</h3>
+                            <div class="shortdesc"><p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
+                            <h3>Kenmerken</h3>
+                            <p [innerHTML]="product?.featureHighlights | htmlSanitize"></p>
+                        </div>
+                        <div fxFlex="40" *ngIf="product?.description || product?.extra_description || product?.reviews.length || product?.expertReview">
+                            <div class="extra-infos extra-infos-list">
+                                <h2>BEKIJK OOK</h2>
+                                <div class="extra-infos-link">
+                                    <div *ngIf="product?.reviews.length" [scrollTo]="info_reviews"><i class="fa fa-circle"></i>Reviews</div>
+                                    <div *ngIf="product?.description" [scrollTo]="info_description"><i class="fa fa-circle"></i>Beschrijving</div>
+                                    <div *ngIf="product?.extra_description" [scrollTo]="info_extra_description"><i class="fa fa-circle"></i>Specificaties</div>
+                                    <button *ngIf="product?.expertReview" [scrollTo]="info_expert_reviews"><i class="fa fa-circle"></i>Plus- en minpunten</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="mt-2">
 
                         <div ngClass.gt-md="pr-3">
 
-                            <div class="shortdesc"><p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
-
-                            <div fxFlex>
-                                <mat-card *ngIf="product?.description || product?.extra_description || product?.reviews.length || product?.expertReview">
+                            <div fxFlex class="extra-infos">
+                                <div *ngIf="product?.reviews.length" #info_reviews>
+                                    <h2>Reviews</h2>
+                                    <div class="mat-tab-reviews" ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                        <div [innerHTML]="product?.reviews" class="reviews-item"></div>
+                                    </div>
+                                </div>
+                                <div *ngIf="product?.description" #info_description>
+                                    <h2>Beschrijving</h2>
+                                    <div class="mat-tab-beschrijving" ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                        <p [innerHTML]="product?.description | htmlSanitize"></p>
+                                    </div>
+                                </div>
+                                <div *ngIf="product?.extra_description" #info_extra_description>
+                                    <h2>Specificaties</h2>
+                                    <div class="mat-tab-specificaties" ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                        <p [innerHTML]="product?.extra_description | htmlSanitize"></p>
+                                    </div>
+                                </div>
+                                
+                                <div *ngIf="product?.expertReview" #info_expert_reviews>
+                                    <h2>Plus- en minpunten</h2>
+                                    <div class="mat-tab-plus-en-min" ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                        <p [innerHTML]="product?.expertReview | htmlSanitize"></p>
+                                    </div>
+                                </div>
+                                <!-- <mat-card *ngIf="product?.description || product?.extra_description || product?.reviews.length || product?.expertReview">
                                     <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
                                         <mat-tab label="Beschrijving" class="mat-tab-beschrijving" *ngIf="product?.description">
                                             <div class="full-desc mat-tab-beschrijving" ngClass.xs="py-2" ngClass.lt-md="p-2">
@@ -149,7 +191,7 @@
                                             </div>
                                         </mat-tab>
                                     </mat-tab-group>
-                                </mat-card>
+                                </mat-card> -->
                             </div>
                         </div>
 

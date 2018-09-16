@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ScrollToModule } from 'ng2-scroll-to-el';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -24,7 +25,8 @@ export const routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     NgxPaginationModule,
-    SharedModule
+    SharedModule,
+    ScrollToModule.forRoot()
   ],
   declarations: [
     ProductsComponent,

@@ -189,7 +189,7 @@ h2.product-detail-title,
     align-items: center!important;
     -ms-flex-pack: center!important;
     justify-content: center!important;
-    height:107px;
+    height:77px;
 }
 .no-product-image {
     width: auto;
@@ -203,4 +203,45 @@ h2.product-detail-title,
     background-color: #2da7c2;
     color: #fff;
     padding: 5px 10px;
+}
+
+.extra-infos {
+    h2 {
+        background: #212226;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 34px;
+        font-family: "Gotham Condensed";
+        letter-spacing: 1px;
+        color: #fff;
+        text-align: left;
+        text-transform: uppercase;
+        margin: 0 0 15px;
+        padding: 0 15px;
+    }
+    &-list {
+        border: 1px solid #E6E6DC;
+        margin: 0 0 30px;
+
+        h2{
+            font-size: 16px;
+        }
+
+        >div {
+            padding: 0 15px 15px;
+            i {
+                font-size: 10px;
+                margin-right: 5px;
+                color: #2da6c1
+            }
+        }
+    }
+    &-link {
+        color: #1122CC;
+        cursor: pointer;
+        font-size: 12px;
+        > div:hover {
+            text-decoration: underline;
+        }
+    }
 }
