@@ -103,7 +103,7 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     (window.innerWidth < 960) ? this.sidenavOpen = false : this.sidenavOpen = true;
   }
 
-   selectImage(image) {
+  selectImage(image) {
     this.selectedImage = image;
     this.image = image.medium;
     this.zoomImage = image.big;

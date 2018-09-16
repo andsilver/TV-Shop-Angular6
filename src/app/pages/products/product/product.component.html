@@ -129,10 +129,10 @@
                             <div class="extra-infos extra-infos-list">
                                 <h2>BEKIJK OOK</h2>
                                 <div class="extra-infos-link">
-                                    <div *ngIf="product?.reviews.length" [scrollTo]="info_reviews"><i class="fa fa-circle"></i>Reviews</div>
-                                    <div *ngIf="product?.description" [scrollTo]="info_description"><i class="fa fa-circle"></i>Beschrijving</div>
-                                    <div *ngIf="product?.extra_description" [scrollTo]="info_extra_description"><i class="fa fa-circle"></i>Specificaties</div>
-                                    <button *ngIf="product?.expertReview" [scrollTo]="info_expert_reviews"><i class="fa fa-circle"></i>Plus- en minpunten</button>
+                                    <div *ngIf="product?.reviews.length" [scrollTo]="info_reviews" [scrollDuration]="100"><i class="fa fa-circle"></i>Reviews</div>
+                                    <div *ngIf="product?.description" [scrollTo]="info_description" [scrollDuration]="200"><i class="fa fa-circle"></i>Beschrijving</div>
+                                    <div *ngIf="product?.extra_description" [scrollTo]="info_extra_description" [scrollDuration]="300"><i class="fa fa-circle"></i>Specificaties</div>
+                                    <div *ngIf="product?.expertReview" [scrollTo]="info_expert_reviews" [scrollDuration]="400"><i class="fa fa-circle"></i>Plus- en minpunten</div>
                                 </div>
                             </div>
                         </div>
@@ -142,29 +142,36 @@
                         <div ngClass.gt-md="pr-3">
 
                             <div fxFlex class="extra-infos">
-                                <div *ngIf="product?.reviews.length" #info_reviews>
-                                    <h2>Reviews</h2>
-                                    <div class="mat-tab-reviews" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                        <div [innerHTML]="product?.reviews" class="reviews-item"></div>
+                                <div #info_reviews>
+                                    <div *ngIf="product?.reviews.length">
+                                        <h2>Reviews</h2>
+                                        <div class="mat-tab-reviews" ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                            <div [innerHTML]="product?.reviews" class="reviews-item"></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div *ngIf="product?.description" #info_description>
-                                    <h2>Beschrijving</h2>
-                                    <div class="mat-tab-beschrijving" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                        <p [innerHTML]="product?.description | htmlSanitize"></p>
+                                <div #info_description>
+                                    <div *ngIf="product?.description">
+                                        <h2>Beschrijving</h2>
+                                        <div class="mat-tab-beschrijving" ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                            <p [innerHTML]="product?.description | htmlSanitize"></p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div *ngIf="product?.extra_description" #info_extra_description>
-                                    <h2>Specificaties</h2>
-                                    <div class="mat-tab-specificaties" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                        <p [innerHTML]="product?.extra_description | htmlSanitize"></p>
+                                <div #info_extra_description>
+                                    <div *ngIf="product?.extra_description">
+                                        <h2>Specificaties</h2>
+                                        <div class="mat-tab-specificaties" ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                            <p [innerHTML]="product?.extra_description | htmlSanitize"></p>
+                                        </div>
                                     </div>
                                 </div>
-                                
-                                <div *ngIf="product?.expertReview" #info_expert_reviews>
-                                    <h2>Plus- en minpunten</h2>
-                                    <div class="mat-tab-plus-en-min" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                        <p [innerHTML]="product?.expertReview | htmlSanitize"></p>
+                                <div #info_expert_reviews>
+                                    <div *ngIf="product?.expertReview">
+                                        <h2>Plus- en minpunten</h2>
+                                        <div class="mat-tab-plus-en-min" ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                            <p [innerHTML]="product?.expertReview | htmlSanitize"></p>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- <mat-card *ngIf="product?.description || product?.extra_description || product?.reviews.length || product?.expertReview">
