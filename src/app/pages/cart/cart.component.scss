@@ -1,7 +1,236 @@
+.cart-page-container {
+    max-width: 768px;
+    margin: 0 auto;
+    .page-title {
+        font-size: 22px;
+        font-weight: 600;
+        padding: 0 15px;
+        margin-bottom: 10px;
+    }
+    .clear{
+        clear: both;
+    }
+    .no-data-container{
+        .btn-container{
+            margin-top: 20px;
+            .btn{
+                float: right;
+                line-height: 22px;
+            }
+        }
+    }
+    a {
+        color: #014f97;
+        font-size: .8125rem;
+        cursor: pointer;
+        outline: none;
+    }
+    table.cart-table {
+        width: 100%;
+        border-collapse: collapse;
+        thead {
+            tr {
+                th {
+                    color: #0b0a4c;
+                    border-bottom: 1px solid #cdcdcd;
+                    padding-bottom: 5px;
+                    font-size: .8125rem;
+                    &.main {
+                        width: 90%;
+                    }
+                    &.quantity {
+                        width: 55px;
+                    }
+                    &.action {
+                        width: 55px;
+                    }
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    border-bottom: 1px solid #cdcdcd;
+                    padding: 8px 0;
+                    &.no-border {
+                        border-bottom: none;
+                    }
+                    &.main {
+                        width: 70%;
+                    }
+                    &.quantity {
+                        width: 55px;
+                    }
+                    &.action {
+                        width: 55px;
+                    }
+                    a.product-title {
+                        color: #014f97;
+                        text-decoration: underline;
+                        margin: 0;
+                        font-size: .8125rem;
+                    }
+                    ul {
+                        list-style: none;
+                        margin-top: 5px;
+                        li {
+                            padding: 0 20px;
+                            position: relative;
+                            color: #5AAD49;
+                            &::before {
+                                content: "";
+                                width: 9px;
+                                height: 9px;
+                                background: #5AAD49;
+                                position: absolute;
+                                top: 50%;
+                                left: 0;
+                                transform: translateY(-50%);
+                                border-radius: 100%;
+                            }
+                            a {
+                                color: #014f97;
+                            }
+                        }
+                    }
+                    input[type="text"] {
+                        border: 1px solid #cdcdcd;
+                        margin-bottom: 5px;
+                        font-size: 11px;
+                        padding: 1px 2px;
+                        width: 55px;
+                        height: 18px;
+                    }
+                    .btn-container {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-bottom: 5px;
+                        margin-top: 2px;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                        .item-button {
+                            width: 18px;
+                            margin: 0 5px 0 0;
+                            padding: 1px 2px;
+                            text-align: center;
+                            height: 18px;
+                            position: relative;
+                            color: #717171;
+                            .mat-icon {
+                                width: 11px;
+                                height: 11px;
+                                font-size: 13px;
+                                margin: 0 auto;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                    .price-content {
+                        width: 70px;
+                        display: block;
+                    }
+                    .mr-10 {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+    .btn {
+        background: #ebeae3;
+        height: auto;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 40px;
+        color: #212226;
+        padding: 0 35px 0 15px;
+        border: none;
+        box-shadow: none;
+        font-family: "Poppins";
+        position: relative;
+        outline: none;
+        &.btn-checkout {
+            background: #5AAD49;
+            margin-left: 20px;
+            color: #fff;
+        }
+        .mat-icon {
+            height: 16px;
+            width: 16px;
+            position: absolute;
+            top: 50%;
+            right: 8px;
+            transform: translateY(-50%);
+            background: #fff;
+            color: #212226;
+            border-radius: 100%;
+            font-size: 16px;
+        }
+    }
+    .checkout-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        .add-coupon-container{
+            .add-coupon-form{
+                margin-top:15px; 
+                input{
+                    outline: none;
+                    margin-bottom: 20px;
+                }
+                .btn{
+                    line-height: 22px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    .related-product-container {
+        margin: 50px 0 30px 0;
+        h4 {
+            margin-bottom: 20px;
+            font-size: .8125rem;
+            color: #212226;
+        }
+        table {
+            width: 100%;
+            tr {
+                td {
+                    a {
+                        color: #014f97;
+                        text-decoration: underline;
+                        white-space: normal;
+                        font-weight: 400;
+                        img {
+                            max-width: 48px;
+                            height: auto;
+                        }
+                    }
+                    span{
+                        &.check-price{
+                            text-decoration: line-through;
+                        }
+                    }
+                    .btn.add-item-btn {
+                        line-height: 22px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .cart-table.mat-table {
     display: block;
-    overflow-x:auto;
-    .mat-row, .mat-header-row {
+    overflow-x: auto;
+    .mat-row,
+    .mat-header-row {
         display: flex;
         border-bottom-width: 1px;
         border-bottom-style: solid;
@@ -10,10 +239,11 @@
         padding: 0 24px;
         min-width: 870px;
     }
-    .mat-row{
+    .mat-row {
         min-height: 100px;
     }
-    .mat-cell, .mat-header-cell {
+    .mat-cell,
+    .mat-header-cell {
         flex: 1;
         overflow: hidden;
         word-wrap: break-word;
@@ -21,18 +251,18 @@
     .mat-header-cell {
         font-size: 14px;
     }
-    .mat-cell{
-        img{
+    .mat-cell {
+        img {
             width: 100px;
         }
-        .product-name{
+        .product-name {
             color: inherit;
             text-decoration: none;
             font-weight: 500;
         }
-        .grand-total{
+        .grand-total {
             font-weight: 500;
-            span:nth-child(3){
+            span:nth-child(3) {
                 font-size: 16px;
             }
         }

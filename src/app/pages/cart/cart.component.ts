@@ -9,6 +9,7 @@ import { AppService } from '../../app.service';
 export class CartComponent implements OnInit {
   total = [];
   grandTotal = 0;
+  addCouponForm = false;
   constructor(public appService: AppService) { }
 
   ngOnInit() {
@@ -37,6 +38,11 @@ export class CartComponent implements OnInit {
 
   public getAttributeName(product, id, value) {
     return product.attributes[id].values.find(v => v.products_options_values_id === value).products_options_values_name;
+  }
+
+  public addCouponFormToggle(){
+
+    this.addCouponForm = !this.addCouponForm;
   }
 
 }

@@ -1,8 +1,210 @@
-<div *ngIf="appService.Data.cartList.length == 0">
+<!-- <div *ngIf="appService.Data.cartList.length == 0">
   <mat-chip-list>
       <mat-chip color="warn" selected="true" i18n>YOU HAVE NO ITEMS IN YOUR SHOPPING CART.</mat-chip>
   </mat-chip-list>
   <a [routerLink]="['/']" mat-raised-button color="primary" class="mt-2" i18n>Continue shopping</a>
+</div> -->
+
+<div class="cart-page-container">
+    <h3 class="page-title" i18n>CONTENTS BASKET</h3>
+  <div>
+    <table class="cart-table" border="0" width="100%" cellspacing="0" cellpadding="2">
+      <thead>
+        <tr>
+          <th align="center"></th>
+          <th class="main" align="left" i18n>Product(en)</th>
+          <th class="quantity" align="center" i18n>Quantity</th>
+          <th class="action" align="center" i18n></th>
+          <th align="right" i18n>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="center" valign="top">
+            <a>
+              <img class="mr-10" src="https://www.plattetv.nl/var/images/thumbnails_50/Samsung-NU8070 (1).jpg" alt="">
+            </a>
+          </td>
+          <td class="main" valign="top">
+            <a class="product-title"><strong>Samsung UE55NU8070</strong></a>
+            <ul>
+              <li>op voorraad</li>
+              <li><a>gratis bezorgd in NL en BE</a></li>
+            </ul>
+          </td>
+          <td class="quantity" align="center" valign="top">
+            <input type="text" value="1" />
+          </td>
+          <td class="action" align="center" valign="top">
+            <div class="btn-container">
+              <button class="item-button" title="Remove this product" i18n-title>
+                <mat-icon>close</mat-icon>
+              </button>
+              <button class="item-button" title="Recalculate price" i18n-title>
+                <mat-icon>autorenew</mat-icon>
+              </button>
+            </div>
+          </td>
+          <td align="right" valign="top"><strong class="price-content">€ 1.299,00</strong></td>
+        </tr>
+        <tr>
+          <td align="center" valign="top">
+            <a>
+              <img class="mr-10" src="https://www.plattetv.nl/var/images/thumbnails_50/tim-lifetime-support.png" alt="">
+            </a>
+          </td>
+          <td class="main" valign="top">
+            <a class="product-title"><strong>Gratis Lifetime Support</strong></a>
+            <ul>
+              <li>op voorraad</li>
+              <li><a>gratis bezorgd in NL en BE</a></li>
+            </ul>
+            <br>
+            <p>
+              Bij aanschaf van dit product ontvangt u levenslang ondersteunde service van PlatteTV.nl. U kunt ons van
+              09.00 uur tot 18.00 uur bereiken op een speciaal voor u ingesteld telefoonnummer.
+            </p>
+          </td>
+          <td class="quantity" align="center" valign="top"></td>
+          <td class="action" align="center" valign="top">
+            <div class="btn-container">
+              <button class="item-button" title="Remove this product" i18n-title>
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+          </td>
+          <td align="right" valign="top"><strong class="price-content">€ 0,00</strong></td>
+        </tr>
+        <tr>
+          <td align="center" valign="top">
+            <a>
+              <img class="mr-10" src="https://www.plattetv.nl/var/images/thumbnails_50/overlay-bol-100_075cc3dde0de44aedf6223b9b58be8d6.png"
+                alt="">
+            </a>
+          </td>
+          <td class="main" valign="top">
+            <a class="product-title"><strong>€100 retour op deze Samsung TV!</strong></a>
+            <ul>
+              <li>op voorraad</li>
+              <li><a>gratis bezorgd in NL en BE</a></li>
+            </ul>
+            <br>
+            <p>
+              Ontvang nu 100 euro retour op deze Samsung TV!
+            </p>
+          </td>
+          <td class="quantity" align="center" valign="top"></td>
+          <td class="action" align="center" valign="top">
+            <div class="btn-container">
+              <button class="item-button" title="Remove this product" i18n-title>
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+          </td>
+          <td align="right" valign="top"><strong class="price-content">€ 0,00</strong></td>
+        </tr>
+        <tr>
+          <td colspan="6" class="no-border"><br></td>
+        </tr>
+        <tr>
+          <td align="right" colspan="6" class="no-border">
+            <strong><span i18n>Subtotal (Incl. TAX):</span> € 1.299,00</strong>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" class="no-border"><br></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="checkout-container">
+      <div class="add-coupon-container">
+        <a (click)="addCouponFormToggle()">> <span i18n>Insert code</span></a>
+        <div class="add-coupon-form" *ngIf="addCouponForm">
+          <input type="text" /> <br>
+          <button class="btn btn-checkout"><span i18n>Activate code</span>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="checkout-btn-container">
+        <button class="btn btn-shopping"><span i18n>continue shopping</span>
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <button class="btn btn-checkout"><span i18n>place order</span>
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="related-product-container">
+      <h4 i18n>Complete your order:</h4>
+      <table>
+        <tr>
+          <td>
+            <a>
+              <img src="https://www.plattetv.nl/var/images/thumbnails_50/hdmi3.jpg">
+            </a>
+          </td>
+          <td>
+            <a>1.5 Meter HDMI Kabel (High Quality)</a>
+          </td>
+          <td align="right"><span class="check-price">€&nbsp;39,99</span></td>
+          <td align="right">€ 19,99</td>
+          <td align="right"><button class="btn add-item-btn"><span i18n>Add</span>
+              <mat-icon>keyboard_arrow_right</mat-icon>
+            </button></td>
+        </tr>
+        <tr>
+          <td>
+            <a>
+              <img src="https://www.plattetv.nl/var/images/thumbnails_50/hdmi3.jpg">
+            </a>
+          </td>
+          <td>
+            <a> 3 meter HDMI Kabel (High Quality)</a>
+          </td>
+          <td align="right"><span class="check-price">€&nbsp;59,99</span></td>
+          <td align="right">€ 29,99</td>
+          <td align="right"><button class="btn add-item-btn"><span i18n>Add </span>
+              <mat-icon>keyboard_arrow_right</mat-icon>
+            </button></td>
+        </tr>
+        <tr>
+          <td>
+            <a>
+              <img src="https://www.plattetv.nl/var/images/thumbnails_50/vogels-thin-550-1.png">
+            </a>
+          </td>
+          <td>
+            <a>Vogels THIN 550</a>
+          </td>
+          <td align="right"></td>
+          <td align="right">€ 349,00</td>
+          <td align="right"><button class="btn add-item-btn"><span i18n>Add </span>
+              <mat-icon>keyboard_arrow_right</mat-icon>
+            </button></td>
+        </tr>
+        <tr>
+          <td colspan="5"><br></td>
+        </tr>
+        <tr>
+          <td align="right" colspan="5">
+            <button class="btn btn-checkout"><span i18n>place order</span>
+              <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="no-data-container" style="display:none;">
+    <p i18n>Your basket is empty</p>
+    <div class="btn-container">
+      <button class="btn btn-checkout"><span i18n>proceed to home page</span>
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+      <div class="clear"></div>
+    </div>
+  </div>
 </div>
 
 <mat-card *ngIf="appService.Data.cartList?.length > 0" class="p-0">
@@ -25,9 +227,9 @@
       <div class="mat-cell">
         <a [routerLink]="[product.permalink]" class="product-name">{{product.name}}</a>
         <p class="text-muted" *ngFor="let attribute of product.attributes; let i=index;">
-            <ng-container *ngIf="attribute.selected">
-                <span>{{attribute.products_options_name}}:{{getAttributeName(product, i, attribute.selected)}}</span>
-            </ng-container>
+          <ng-container *ngIf="attribute.selected">
+            <span>{{attribute.products_options_name}}:{{getAttributeName(product, i, attribute.selected)}}</span>
+          </ng-container>
         </p>
       </div>
       <div class="mat-cell">{{product.newPrice | customCurrency}}</div>
@@ -39,11 +241,11 @@
         <div class="p-1">
           <span class="cdk-visually-hidden" #translatedTooltipMessage i18n>Clear</span>
           <button mat-mini-fab color="warn" (click)="remove(product)" [matTooltip]="translatedTooltipMessage.innerHTML">
-              <mat-icon>close</mat-icon>
+            <mat-icon>close</mat-icon>
           </button>
         </div>
       </div>
-      
+
     </div>
     <div class="mat-row">
       <div class="mat-cell"><a [routerLink]="['/']" mat-raised-button color="primary" i18n>Continue shopping</a></div>
@@ -54,7 +256,7 @@
           <span i18n>SubTotal:</span>
           <span class="text-muted" i18n>Discount:</span>
           <span class="new-price" i18n>Grand total:</span>
-        </div>        
+        </div>
       </div>
       <div class="mat-cell">
         <div fxLayout="column" fxLayoutAlign="center start" class="grand-total">
@@ -63,7 +265,8 @@
           <span class="new-price">{{ (grandTotal - (grandTotal*0.15)) | customCurrency}}</span>
         </div>
       </div>
-      <div class="mat-cell text-center"><a [routerLink]="['/checkout']" mat-raised-button color="primary" i18n>Proceed To Checkout</a></div>
+      <div class="mat-cell text-center"><a [routerLink]="['/checkout']" mat-raised-button color="primary" i18n>Proceed
+          To Checkout</a></div>
     </div>
   </div>
 
