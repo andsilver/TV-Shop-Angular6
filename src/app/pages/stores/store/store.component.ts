@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AppService } from 'app/app.service';
 import * as mock from './mock.json';
 
 import { Store } from '@ngrx/store';
@@ -14,26 +15,47 @@ import * as CrumbActions from 'app/store/actions/crumb-path.action';
 export class StoreComponent implements OnInit {
 
   data: any;
+  subscriptions = [];
+  _store: any;
 
-  constructor(private store: Store<State>, private route: ActivatedRoute) { }
+  sidenavOpen = true;
+
+  constructor(private store: Store<State>, private route: ActivatedRoute, private appService: AppService) { }
 
   ngOnInit() {
     this.data = mock['data'];
-    this.route.params.subscribe(params => {
-      console.log(params.id);
-      this.store.dispatch(new CrumbActions.SaveCrumbPath([
-        {
-          name: 'Stores',
-          permalink: `/stores`,
-          static: true
-        },
-        {
-          name: params.id,
-          permalink: '',
-          static: true
-        }
-      ]));
-    });
+    this.subscriptions.push(
+      this.route.params
+        .subscribe(params => {
+          // console.log(params.id);
+          this.appService.getStoreByName(params.id)
+            .subscribe(res => {
+              this._store = res[0];
+              console.log(this._store);
+              this.store.dispatch(new CrumbActions.SaveCrumbPath([
+                {
+                  name: 'Stores',
+                  permalink: `/stores`,
+                  static: true
+                },
+                {
+                  name: this._store.store_location,
+                  permalink: '',
+                  static: true
+                }
+              ]));
+            });
+        })
+    );
+
+    if (window.innerWidth < 960) {
+      this.sidenavOpen = false;
+    }
+  }
+
+  @HostListener('window:resize')
+  public onWindowResize(): void {
+    (window.innerWidth < 960) ? this.sidenavOpen = false : this.sidenavOpen = true;
   }
 
 }

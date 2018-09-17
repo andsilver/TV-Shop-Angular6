@@ -1,3 +1,20 @@
+.filter-sidenav {
+    overflow: visible!important;
+    float: left;
+    left: 0;
+    width: 55vw;
+    padding: 0;
+}
+
+@media (min-width:960px) {
+    .filter-sidenav {
+        position: static;
+        width: 200px;
+        padding: 0;
+        margin-right: 20px;
+    }
+}
+
 .store {
     max-width: 960px;
     margin: 0 auto;
@@ -38,7 +55,6 @@
         letter-spacing: 1px;
         color: #fff;
         margin: 0 0 1rem;
-        padding: 0 1rem;
     }
 
     .weekday {
@@ -79,11 +95,17 @@
             overflow: hidden;
             position: relative;
             line-height: 0;
+            margin-bottom: 10px;
 
             img {
                 max-width: 100%;
             }
         }
+    }
+
+    .introduce img {
+        padding-right: 15px;
+        padding-bottom: 15px;
     }
 }
 .atmosphere > div {

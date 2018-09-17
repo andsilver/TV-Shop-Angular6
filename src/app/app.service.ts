@@ -111,6 +111,18 @@ export class AppService {
         return this.http.get<any>('/manufacturers', {params: params});
     }
 
+    public getStores() {
+        return this.http.get<any>('/getStores');
+    }
+
+    public getStoreById(id: number) {
+        return this.http.get<any>(`/getStores/${id}`);
+    }
+
+    public getStoreByName(name: string): Observable<any> {
+        return this.http.get<any>(`/getStoreByName/${name}`);
+    }
+
     public _getUserById(id): Observable<any> {
         return this.http.get<any>(`/users/${id}/info`);
     }

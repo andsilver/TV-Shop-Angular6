@@ -1,72 +1,100 @@
-<div fxLayout="row">
-  <div fxFlex="100" fxFlex.gt-md="80" ngClass.gt-md="pr-3" class="store">
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
+      <mat-accordion displayMode="flat" multi="true">
+          <app-filters-list></app-filters-list>
+      </mat-accordion>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div fxLayout="row" >
+      <div fxFlex="100" fxFlex.gt-md="75" ngClass.gt-md="pr-3" class="store">
+        <ng-container *ngIf="_store">
+          <h1>{{_store.store_title}}</h1>
+          <div fxLayout="space-between start" fxLayout.lt-md="column" fxLayoutGap="30px" ngClass="mb-3">
+            <div fxFlex="40%" fxFlex.lt-md="false">
+              <div class="address-field">{{_store.address_field1}}</div>
+              <div class="address-field">{{_store.address_field2}}</div>
+              <div class="phone-number">{{_store.telephone_number}}</div>
+              <a class="email">{{_store.email_address}}</a>
+              <h4 ngClass="mt-2" i18n>OPENING HOURS</h4>
+              <div>
+                <div>
+                  <span class="weekday">ma:</span>
+                  <span>{{_store.opening_times.ma.from}} - {{_store.opening_times.ma.till}}</span>
+                </div>
+                <div>
+                  <span class="weekday">di:</span>
+                  <span>{{_store.opening_times.di.from}} - {{_store.opening_times.di.till}}</span>
+                </div>
+                <div>
+                  <span class="weekday">wo:</span>
+                  <span>{{_store.opening_times.wo.from}} - {{_store.opening_times.wo.till}}</span>
+                </div>
+                <div>
+                  <span class="weekday">do:</span>
+                  <span>{{_store.opening_times.do.from}} - {{_store.opening_times.do.till}}</span>
+                </div>
+                <div>
+                  <span class="weekday">vr:</span>
+                  <span>{{_store.opening_times.vr.from}} - {{_store.opening_times.vr.till}}</span>
+                </div>
+                <div>
+                  <span class="weekday">za:</span>
+                  <span>{{_store.opening_times.za.from}} - {{_store.opening_times.za.till}}</span>
+                </div>
+                <div>
+                  <span class="weekday">zo:</span>
+                  <span>{{_store.opening_times.zo.from}} - {{_store.opening_times.zo.till}}</span>
+                </div>
+              </div>
+            </div>
 
-  <h1>{{data.name}}</h1>
+            <div fxFlex fxFlex.lt-md="false">
+              <app-google-map></app-google-map>
+            </div>
+          </div>
 
-  <div fxLayout="space-between start" fxLayout.lt-md="column" fxLayoutGap="30px" ngClass="mb-3">
+          <div class="features" ngClass="mb-3">
+            <ul>
+              <li *ngFor="let item of _store.usp | jsonLoop; let i=index;" >
+                {{item.value}}
+              </li>
+            </ul>
+          </div>
 
-    <div fxFlex="40%" fxFlex.lt-md="false">
+          <div class="video" ngClass="mb-3">
+            <iframe *ngIf="_store" width='100%' height='435' [src]="_store.video_url | urlSanitize" frameborder='0' allowfullscreen=''></iframe>
+          </div>
 
-      <div class="address-field">{{data.address.field1}}</div>
+          <div class="introduce" ngClass="mb-3">
+            <h3 class="header-title" i18n>LET US INTRODUCE</h3>
+            <div fxLayout="row wrap">
+              <div *ngFor="let image of _store.employee_images" fxFlex="16" fxFlex.lt-sm="33">
+                <img [src]="image" alt="Image not arrived.">
+              </div>
+            </div>
+          </div>
 
-      <div class="address-field">{{data.address.field2}}</div>
+          <div class="atmosphere">
+            <h3 class="header-title" i18n>ATMOSPHERE</h3>
+            <div fxLayout fxLayout="start stretch">
+              <!-- <div fxFlex="25" fxLayout="column" fxLayout="space-between start" class="atmosphere-l">
+                <div class="small-image" *ngFor="let image of data.atmosphere.small">
+                  <img [src]="image">
+                </div>
+              </div> -->
+              <div fxFlex fxLayout="row wrap" fxLayoutAlign="start start" class="atmosphere-r">
+                <div class="big-image" fxFlex="25" fxFlex.lt-sm="50" *ngFor="let image of _store.store_images">
+                  <img [src]="image" alt="Image not arrived.">
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
 
-      <div class="phone-number">{{data.phone}}</div>
-
-      <a class="email">{{data.email}}</a>
-
-      <h4 ngClass="mt-2" i18n>OPENING HOURS</h4>
-
-      <div *ngFor="let day of data.opening_hours">
-        <span class="weekday">{{day.weekday}}:</span>
-        <span>{{day.start}} - {{day.end}}</span>
+      <div fxFlex fxHide fxShow.gt-md>
+        <app-extra-info></app-extra-info>
       </div>
     </div>
-
-    <div fxFlex fxFlex.lt-md="false">
-      <app-google-map></app-google-map>
-    </div>
-
-  </div>
-
-  <div class="features" ngClass="mb-3">
-    <ul>
-      <li *ngFor="let feature of data.features" >
-        {{feature}}
-      </li>
-    </ul>
-  </div>
-
-  <div class="video" ngClass="mb-3">
-    <iframe width='100%' height='435' src='https://www.youtube.com/embed/fH5c5JMppDs?enablejsapi=1&amp;origin=https:%2F%2Fwww.plattetv.nl' frameborder='0' allowfullscreen='' id='widget2'></iframe>
-  </div>
-
-  <div class="introduce" ngClass="mb-3">
-    <h3 class="header-title" i18n>LET US INTRODUCE</h3>
-    <div fxLayout fxLayoutGap="10px">
-      <img *ngFor="let photo of data.introduce" [src]="photo">
-    </div>
-  </div>
-
-  <div class="atmosphere">
-    <h3 class="header-title" i18n>ATMOSPHERE</h3>
-    <div fxLayout fxLayout="start stretch">
-      <div fxFlex="25" fxLayout="column" fxLayout="space-between start" class="atmosphere-l">
-        <div class="small-image" *ngFor="let image of data.atmosphere.small">
-          <img [src]="image">
-        </div>
-      </div>
-      <div fxFlex fxLayout="row wrap" fxLayoutAlign="space-between start" class="atmosphere-r">
-        <div class="big-image" fxFlex="50%" *ngFor="let image of data.atmosphere.big">
-          <img [src]="image">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <div fxFlex="100" fxFlex.gt-md="20" fxHide fxShow.gt-md>
-    <app-extra-info></app-extra-info>
-  </div>
-
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

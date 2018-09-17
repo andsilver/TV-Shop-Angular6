@@ -1,3 +1,20 @@
+.filter-sidenav {
+    overflow: visible!important;
+    float: left;
+    left: 0;
+    width: 55vw;
+    padding: 0;
+}
+
+@media (min-width:960px) {
+    .filter-sidenav {
+        position: static;
+        width: 200px;
+        padding: 0;
+        margin-right: 20px;
+    }
+}
+
 .page-container {
     max-width: 960px;
     margin: 0 auto;
@@ -13,8 +30,19 @@
         line-height: 24px;
     }
     &-individual-store{
+        margin-bottom: 20px;
         img, a{
             cursor: pointer;
         }
+
+        img {
+            width: 100px;
+            border: 2px solid #aaa;
+        }
+
+        div {
+            text-align: center;
+        }
+
     }
 }
