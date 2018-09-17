@@ -41,6 +41,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   sortings = ['Relevantie', 'Best verkocht', 'Prijs laag-hoog', 'Prijs hoog-laag'];
   sort: any;
   products: Array<Product> = [];
+  category_name: string;
+  category_description: string;
 
   categoryId = 0;
   topParentCategoryId = 0;
@@ -99,6 +101,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.viewCol = 33.3;
     }
 
+    console.log(this.category);
+
     this.categoryId =  this.category ? this.category.id : 0;
     this.store.dispatch(new BrandsActions.GetBrands(this.categoryId));
     this.findTopCategoryId();
@@ -138,6 +142,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     this.products = res.products;
+    this.category_name = res.category_name;
+    this.category_description = res.category_description;
     this.filterLists = res['filterLists'] ? res['filterLists'] : 0;
     this.totalProducts = res.total;
     window.scrollTo(0, 0);
