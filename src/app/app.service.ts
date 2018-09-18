@@ -203,8 +203,17 @@ export class AppService {
         }
     }
 
-    addToCardApi(productData): any {
+    public addToCardApi(productData): any {
         return this.http.get(environment.apiUrl + '/cart?mode=add_item&item_id=' + productData.id + '&item_qty=' + productData.quantity).pipe(
+            map((body: any) => {
+                return body;
+            })
+        );
+    }
+
+    public getCartDetails(cartId): any {
+
+        return this.http.get(environment.apiUrl + '/cart?mode=cart_details&cart_id=' + cartId).pipe(
             map((body: any) => {
                 return body;
             })
@@ -217,6 +226,14 @@ export class AppService {
             this.Data.cartList.splice(index, 1);
             this.calculateTotalPrice();
         }
+    }
+
+    public removeFromCartApi(productRemove) {
+        return this.http.get(environment.apiUrl + '/cart?mode=remove_item&cart_id=' + productRemove.cart_id + '&cart_item_id=' + productRemove.cart_item_id).pipe(
+            map((body: any) => {
+                return body;
+            })
+        );
     }
 
     public calculateTotalPrice() {

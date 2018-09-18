@@ -6,7 +6,7 @@
 </div> -->
 
 <div class="cart-page-container">
-    <h3 class="page-title" i18n>CONTENTS BASKET</h3>
+  <h3 class="page-title" i18n>CONTENTS BASKET</h3>
   <div>
     <table class="cart-table" border="0" width="100%" cellspacing="0" cellpadding="2">
       <thead>
@@ -19,35 +19,46 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+
+
+        <tr *ngFor="let product of productData">
           <td align="center" valign="top">
             <a>
-              <img class="mr-10" src="https://www.plattetv.nl/var/images/thumbnails_50/Samsung-NU8070 (1).jpg" alt="">
+              <img class="mr-10" src="{{ product.item_image }}" alt="">
             </a>
           </td>
           <td class="main" valign="top">
-            <a class="product-title"><strong>Samsung UE55NU8070</strong></a>
+            <a class="product-title"><strong>{{product.item_name}}</strong></a>
             <ul>
-              <li>op voorraad</li>
-              <li><a>gratis bezorgd in NL en BE</a></li>
+              <li>{{product.stock_indicator}}</li>
+
+
+              <li><a>{{product.shipping_info}}</a></li>
             </ul>
+            <br>
+            <div *ngIf="product.item_description">
+              {{product.item_description}}
+            </div>
           </td>
-          <td class="quantity" align="center" valign="top">
-            <input type="text" value="1" />
+          <td class="quantity" align="center" valign="top" >
+            <input type="text" value="{{product.item_qty}}" *ngIf="product.item_price != 0" />
           </td>
           <td class="action" align="center" valign="top">
             <div class="btn-container">
-              <button class="item-button" title="Remove this product" i18n-title>
+              <button class="item-button" title="Remove this product" (click)="removeFromCart(product)" i18n-title>
                 <mat-icon>close</mat-icon>
               </button>
-              <button class="item-button" title="Recalculate price" i18n-title>
+              <button class="item-button" title="Recalculate price" i18n-title *ngIf="product.item_price != 0">
                 <mat-icon>autorenew</mat-icon>
               </button>
             </div>
           </td>
-          <td align="right" valign="top"><strong class="price-content">€ 1.299,00</strong></td>
+          <!-- {{ totalPrice = totalPrice + (product.item_price * product.item_qty) }} -->
+
+          <td align="right" valign="top"><strong class="price-content">{{product.item_price * product.item_qty }}</strong></td>
+        
         </tr>
-        <tr>
+        <!-- <tr>
           <td align="center" valign="top">
             <a>
               <img class="mr-10" src="https://www.plattetv.nl/var/images/thumbnails_50/tim-lifetime-support.png" alt="">
@@ -74,8 +85,8 @@
             </div>
           </td>
           <td align="right" valign="top"><strong class="price-content">€ 0,00</strong></td>
-        </tr>
-        <tr>
+        </tr> -->
+        <!-- <tr>
           <td align="center" valign="top">
             <a>
               <img class="mr-10" src="https://www.plattetv.nl/var/images/thumbnails_50/overlay-bol-100_075cc3dde0de44aedf6223b9b58be8d6.png"
@@ -102,7 +113,7 @@
             </div>
           </td>
           <td align="right" valign="top"><strong class="price-content">€ 0,00</strong></td>
-        </tr>
+        </tr> -->
         <tr>
           <td colspan="6" class="no-border"><br></td>
         </tr>
@@ -265,8 +276,9 @@
           <span class="new-price">{{ (grandTotal - (grandTotal*0.15)) | customCurrency}}</span>
         </div>
       </div>
-      <div class="mat-cell text-center"><a [routerLink]="['/checkout']" mat-raised-button color="primary" i18n>Proceed
-          To Checkout</a></div>
+      <div class="mat-cell text-center"><a [routerLink]="['/checkout']" mat-raised-button color="primary" i18n>Proceed To
+          Checkout
+        </a></div>
     </div>
   </div>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -10,11 +11,23 @@ export class CartComponent implements OnInit {
   total = [];
   grandTotal = 0;
   addCouponForm = false;
-  constructor(public appService: AppService) { }
+  productData: any = [];
+  cartId: string = '';
+  totalPrice :number = 0;
+  constructor(public appService: AppService, private router: Router) { }
 
   ngOnInit() {
     this.grandTotal = this.appService.Data.totalPrice;
+    this.cartId = localStorage.getItem('cart_id');
+    this.appService.getCartDetails(this.cartId).subscribe((result) => {
+      for (var key in result.cart_contents) {
+        console.log(key, 'key');
+        this.productData.push(result.cart_contents[key])
+      }
+    });
   }
+
+
 
   public getTotalPrice(value) {
     if (value) {
@@ -40,9 +53,23 @@ export class CartComponent implements OnInit {
     return product.attributes[id].values.find(v => v.products_options_values_id === value).products_options_values_name;
   }
 
-  public addCouponFormToggle(){
+  public addCouponFormToggle() {
 
     this.addCouponForm = !this.addCouponForm;
+  }
+
+  /* 18th sep 2018 */
+  public removeFromCart(product) {
+    if (product.item_id !== undefined) {
+      let removeProductData: any = { 'cart_item_id': product.item_id, 'cart_id': this.cartId };
+      this.appService.removeFromCartApi(removeProductData).subscribe((response) => {
+        if (response.cart_remove !== undefined) {
+          console.log('item remove successfully');
+          this.router.navigate(['/cart']);
+        }
+      });
+    }
+
   }
 
 }
