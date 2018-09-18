@@ -34,12 +34,9 @@ export class CartComponent implements OnInit {
   }
 
   public getTotalPrice(productArray) {
-    let map = productArray.map(function (value) {
-      return value.item_price * value.item_qty;
-    });
-    let totalPrice = map.reduce((acc, val) => {
-      return acc + val;
-    });
+    let totalPrice = productArray.reduce((acc, val) => {
+      return acc + (val.item_qty * val.item_price);
+    }, 0);
     return totalPrice;
   }
 
@@ -108,7 +105,7 @@ export class CartComponent implements OnInit {
 
   public recalculatePrice(product, item_qty) {
     if (product.item_id !== undefined && item_qty != undefined) {
-      this.appService.recalculatePrice(product,item_qty).subscribe((response) => {
+      this.appService.recalculatePrice(product, item_qty).subscribe((response) => {
         this.getCartDetails();
         console.log(response, 'recalculation product price');
       });
