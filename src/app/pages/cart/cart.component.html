@@ -48,7 +48,7 @@
               <button class="item-button" title="Remove this product" (click)="removeFromCart(product)" i18n-title>
                 <mat-icon>close</mat-icon>
               </button>
-              <button class="item-button" title="Recalculate price" (click)="recalculatePrice(product)" i18n-title *ngIf="product.item_price != 0">
+              <button class="item-button" title="Recalculate price" (click)="recalculatePrice(product,product.item_qty)" i18n-title *ngIf="product.item_price != 0">
                 <mat-icon>autorenew</mat-icon>
               </button>
             </div>

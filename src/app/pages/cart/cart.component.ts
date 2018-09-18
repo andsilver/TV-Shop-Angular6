@@ -67,7 +67,7 @@ export class CartComponent implements OnInit {
   /* 18th sep 2018 */
   public removeFromCart(product) {
     if (product.item_id !== undefined) {
-      let removeProductData: any = { 'cart_item_id': product.item_id, 'cart_id': this.cartId };      
+      let removeProductData: any = { 'cart_item_id': product.item_id, 'cart_id': this.cartId };
       this.appService.removeFromCartApi(removeProductData).subscribe((response) => {
         if (response.cart_remove !== undefined) {
           this.getCartDetails();
@@ -96,12 +96,21 @@ export class CartComponent implements OnInit {
       });
     }
   }
-  
+
   public addToCartApi(product) {
     if (product.item_id !== undefined) {
       this.appService.addToCartApi(product).subscribe((response) => {
         this.getCartDetails();
         console.log(response, 'add to cart')
+      });
+    }
+  }
+
+  public recalculatePrice(product, item_qty) {
+    if (product.item_id !== undefined && item_qty != undefined) {
+      this.appService.recalculatePrice(product,item_qty).subscribe((response) => {
+        this.getCartDetails();
+        console.log(response, 'recalculation product price');
       });
     }
   }

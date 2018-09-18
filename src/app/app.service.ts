@@ -236,6 +236,14 @@ export class AppService {
         );
     }
 
+    public recalculatePrice(productData, item_qty): any {
+        return this.http.get(`${environment.apiUrl}/cart?mode=update_item&item_id=${productData.item_id}&item_qty=${(item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}`).pipe(
+            map((body: any) => {
+                return body;
+            })
+        );
+    }
+
     public removeFromCart(productId) {
         const index = this.Data.cartList.findIndex(p => p.id === productId);
         if (index > -1) {
