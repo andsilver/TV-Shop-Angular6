@@ -195,7 +195,7 @@ export class AppService {
             dialogRef.afterClosed().subscribe(res => {
                 const productData: any = { item_id: product.id, item_qty: product.quantity };
                 if (res.isAddTocart !== undefined) {
-                    this.addToCardApi(productData).subscribe((data) => {
+                    this.addToCartApi(productData).subscribe((data) => {
                         localStorage.setItem('cart_id', data.cart_id)
                     });
                 }
@@ -203,8 +203,25 @@ export class AppService {
         }
     }
 
-    public addToCardApi(productData): any {
-        return this.http.get(environment.apiUrl + '/cart?mode=add_item&item_id=' + productData.id + '&item_qty=' + productData.quantity).pipe(
+    public addToCartApi(productData): any {
+        return this.http.get(`${environment.apiUrl}/cart?mode=add_item&item_id=${productData.item_id}&item_qty=${(productData.item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}`).pipe(
+            map((body: any) => {
+                return body;
+            })
+        );
+    }
+
+    public checkCouponCode(couponCode): any {
+        return this.http.get(`${environment.apiUrl}/cart?mode=check_coupon&coupon=${couponCode}&cart_id=${(localStorage.getItem('cart_id') || '')}`).pipe(
+            map((body: any) => {
+                return body;
+            })
+        );
+
+    }
+
+    public getRelatedProduct(cartId) {
+        return this.http.get(`${environment.apiUrl}/cart?mode=get_related_products&cart_id=${(cartId || localStorage.getItem('cart_id'))}`).pipe(
             map((body: any) => {
                 return body;
             })
@@ -212,8 +229,7 @@ export class AppService {
     }
 
     public getCartDetails(cartId): any {
-
-        return this.http.get(environment.apiUrl + '/cart?mode=cart_details&cart_id=' + cartId).pipe(
+        return this.http.get(`${environment.apiUrl}/cart?mode=cart_details&cart_id=${(cartId || localStorage.getItem('cart_id'))}`).pipe(
             map((body: any) => {
                 return body;
             })
@@ -229,7 +245,7 @@ export class AppService {
     }
 
     public removeFromCartApi(productRemove) {
-        return this.http.get(environment.apiUrl + '/cart?mode=remove_item&cart_id=' + productRemove.cart_id + '&cart_item_id=' + productRemove.cart_item_id).pipe(
+        return this.http.get(`${environment.apiUrl}/cart?mode=remove_item&cart_id=${(productRemove.cart_id || localStorage.getItem('cart_id'))}&cart_item_id=${productRemove.cart_item_id}`).pipe(
             map((body: any) => {
                 return body;
             })

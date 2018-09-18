@@ -12,29 +12,35 @@ export class CartComponent implements OnInit {
   grandTotal = 0;
   addCouponForm = false;
   productData: any = [];
+  relatedProductData: any = [];
   cartId: string = '';
-  totalPrice :number = 0;
-  constructor(public appService: AppService, private router: Router) { }
+  totalPrice: number = 0;
+  couponCode: string = '';
+  constructor(public appService: AppService, private router: Router) {
+    this.cartId = localStorage.getItem('cart_id');
+    this.getCartDetails();
+    this.getRelatedProduct();
+  }
 
   ngOnInit() {
     this.grandTotal = this.appService.Data.totalPrice;
-    this.cartId = localStorage.getItem('cart_id');
+  }
+
+  public getCartDetails() {
     this.appService.getCartDetails(this.cartId).subscribe((result) => {
-      for (var key in result.cart_contents) {
-        console.log(key, 'key');
-        this.productData.push(result.cart_contents[key])
-      }
+      this.productData = result.cart_contents;
+      this.totalPrice = this.getTotalPrice(this.productData);
     });
   }
 
-
-
-  public getTotalPrice(value) {
-    if (value) {
-      const product = this.appService.Data.cartList.find(p => p.id === value.productId);
-      this.appService.addToCart(product, value.soldQuantity);
-      this.grandTotal = this.appService.Data.totalPrice;
-    }
+  public getTotalPrice(productArray) {
+    let map = productArray.map(function (value) {
+      return value.item_price * value.item_qty;
+    });
+    let totalPrice = map.reduce((acc, val) => {
+      return acc + val;
+    });
+    return totalPrice;
   }
 
   public remove(product) {
@@ -61,15 +67,43 @@ export class CartComponent implements OnInit {
   /* 18th sep 2018 */
   public removeFromCart(product) {
     if (product.item_id !== undefined) {
-      let removeProductData: any = { 'cart_item_id': product.item_id, 'cart_id': this.cartId };
+      let removeProductData: any = { 'cart_item_id': product.item_id, 'cart_id': this.cartId };      
       this.appService.removeFromCartApi(removeProductData).subscribe((response) => {
         if (response.cart_remove !== undefined) {
-          console.log('item remove successfully');
-          this.router.navigate(['/cart']);
+          this.getCartDetails();
         }
       });
     }
+  }
 
+  public verifyCouponCode() {
+    if (this.couponCode !== undefined) {
+      let couponCodeData: any = { 'coupon': this.couponCode };
+      this.appService.checkCouponCode(couponCodeData).subscribe((response) => {
+        if (response.cart_coupon.valid !== undefined && response.cart_coupon.valid) {
+          console.log(response, 'coupon code is valid');
+          this.getCartDetails()
+        }
+      });
+    }
+  }
+
+  public getRelatedProduct() {
+    if (this.cartId !== undefined) {
+      this.appService.getRelatedProduct(this.cartId).subscribe((result) => {
+        this.relatedProductData = result.cart_related_product;
+        console.log(this.relatedProductData, 'related products');
+      });
+    }
+  }
+  
+  public addToCartApi(product) {
+    if (product.item_id !== undefined) {
+      this.appService.addToCartApi(product).subscribe((response) => {
+        this.getCartDetails();
+        console.log(response, 'add to cart')
+      });
+    }
   }
 
 }

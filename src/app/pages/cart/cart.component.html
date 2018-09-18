@@ -23,12 +23,12 @@
 
         <tr *ngFor="let product of productData">
           <td align="center" valign="top">
-            <a>
+            <a routerLink="{{product.permalink}}">
               <img class="mr-10" src="{{ product.item_image }}" alt="">
             </a>
           </td>
           <td class="main" valign="top">
-            <a class="product-title"><strong>{{product.item_name}}</strong></a>
+            <a routerLink="{{product.permalink}}" class="product-title"><strong>{{product.item_name}}</strong></a>
             <ul>
               <li>{{product.stock_indicator}}</li>
 
@@ -48,15 +48,14 @@
               <button class="item-button" title="Remove this product" (click)="removeFromCart(product)" i18n-title>
                 <mat-icon>close</mat-icon>
               </button>
-              <button class="item-button" title="Recalculate price" i18n-title *ngIf="product.item_price != 0">
+              <button class="item-button" title="Recalculate price" (click)="recalculatePrice(product)" i18n-title *ngIf="product.item_price != 0">
                 <mat-icon>autorenew</mat-icon>
               </button>
             </div>
           </td>
-          <!-- {{ totalPrice = totalPrice + (product.item_price * product.item_qty) }} -->
 
-          <td align="right" valign="top"><strong class="price-content">{{product.item_price * product.item_qty }}</strong></td>
-        
+          <td align="right" valign="top"><strong class="price-content">{{ (product.item_price * product.item_qty) | customCurrency }}</strong></td>
+
         </tr>
         <!-- <tr>
           <td align="center" valign="top">
@@ -119,7 +118,7 @@
         </tr>
         <tr>
           <td align="right" colspan="6" class="no-border">
-            <strong><span i18n>Subtotal (Incl. TAX):</span> € 1.299,00</strong>
+            <strong><span i18n>Subtotal (Incl. TAX):</span> {{totalPrice | customCurrency}}</strong>
           </td>
         </tr>
         <tr>
@@ -131,8 +130,8 @@
       <div class="add-coupon-container">
         <a (click)="addCouponFormToggle()">> <span i18n>Insert code</span></a>
         <div class="add-coupon-form" *ngIf="addCouponForm">
-          <input type="text" /> <br>
-          <button class="btn btn-checkout"><span i18n>Activate code</span>
+          <input type="text" [(ngModel)]="couponCode"/> <br>
+          <button class="btn btn-checkout" (click)="verifyCouponCode()"><span i18n>Activate code</span>
             <mat-icon>keyboard_arrow_right</mat-icon>
           </button>
         </div>
@@ -149,22 +148,22 @@
     <div class="related-product-container">
       <h4 i18n>Complete your order:</h4>
       <table>
-        <tr>
+        <tr *ngFor="let product of relatedProductData">
           <td>
             <a>
-              <img src="https://www.plattetv.nl/var/images/thumbnails_50/hdmi3.jpg">
+              <img src="{{product.item_image}}">
             </a>
           </td>
           <td>
-            <a>1.5 Meter HDMI Kabel (High Quality)</a>
+            <a routerLink="{{product.permalink}}">{{product.item_name}}(High Quality)</a>
           </td>
-          <td align="right"><span class="check-price">€&nbsp;39,99</span></td>
-          <td align="right">€ 19,99</td>
-          <td align="right"><button class="btn add-item-btn"><span i18n>Add</span>
+          <td align="right"><span class="check-price">{{ product.item_old_price | customCurrency}}</span></td>
+          <td align="right">{{ product.item_price | customCurrency}}</td>
+          <td align="right"><button class="btn add-item-btn" (click)="addToCartApi(product)"><span i18n>Add</span>
               <mat-icon>keyboard_arrow_right</mat-icon>
             </button></td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td>
             <a>
               <img src="https://www.plattetv.nl/var/images/thumbnails_50/hdmi3.jpg">
@@ -178,8 +177,8 @@
           <td align="right"><button class="btn add-item-btn"><span i18n>Add </span>
               <mat-icon>keyboard_arrow_right</mat-icon>
             </button></td>
-        </tr>
-        <tr>
+        </tr> -->
+        <!-- <tr>
           <td>
             <a>
               <img src="https://www.plattetv.nl/var/images/thumbnails_50/vogels-thin-550-1.png">
@@ -193,7 +192,7 @@
           <td align="right"><button class="btn add-item-btn"><span i18n>Add </span>
               <mat-icon>keyboard_arrow_right</mat-icon>
             </button></td>
-        </tr>
+        </tr> -->
         <tr>
           <td colspan="5"><br></td>
         </tr>
