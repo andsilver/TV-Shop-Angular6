@@ -193,10 +193,10 @@ export class AppService {
             });
 
             dialogRef.afterClosed().subscribe(res => {
-                const productData: any = { item_id: product.id, item_qty: product.quantity};
+                const productData: any = { item_id: product.id, item_qty: product.quantity };
                 if (res.isAddTocart !== undefined) {
                     this.addToCardApi(productData).subscribe((data) => {
-                        console.log(data,'data');
+                        localStorage.setItem('cart_id', data.cart_id)
                     });
                 }
             });

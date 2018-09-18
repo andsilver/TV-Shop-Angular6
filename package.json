@@ -48,6 +48,8 @@
     "@ngrx/store": "^6.1.0",
     "@ngrx/store-devtools": "^6.1.0",
     "@types/googlemaps": "^3.30.12",
+    "angular-local-storage": "^0.7.1",
+    "angular-localstorage": "^1.1.5",
     "core-js": "2.5.7",
     "hammerjs": "2.0.8",
     "ng2-scroll-to-el": "^1.2.1",
