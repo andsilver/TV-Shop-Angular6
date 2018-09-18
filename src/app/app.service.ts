@@ -8,14 +8,16 @@ import { Category, Product, Products } from './app.models';
 import { AddedToCartPopupComponent } from 'app/shared/added-to-cart-popup/added-to-cart-popup.component';
 
 import * as countries from 'assets/data/countries.json';
+import { map } from 'rxjs/operators';
+import { environment } from 'environments/environment';
 
 export class Data {
     constructor(public categories: Category[],
-                public compareList: Product[],
-                public wishList: Product[],
-                public cartList: Product[],
-                public totalPrice: number,
-                public totalQuantity: number) { }
+        public compareList: Product[],
+        public wishList: Product[],
+        public cartList: Product[],
+        public totalPrice: number,
+        public totalQuantity: number) { }
 }
 
 @Injectable()
@@ -41,7 +43,7 @@ export class AppService {
         return this.http.get<Category[]>('/categories', { params: params });
     }
 
-    public getCategoriesByParentId( parentId, limit: number = 10 ): Observable<Category[]> {
+    public getCategoriesByParentId(parentId, limit: number = 10): Observable<Category[]> {
         let params = new HttpParams();
         params = params.append('mode', 'parent');
         params = params.append('parentId', parentId);
@@ -55,25 +57,25 @@ export class AppService {
         return this.productPagination(limit, page, params);
     }
 
-    public getProductsByCategory( categoryId: number, limit: number = 6, page: number = 1 ) {
+    public getProductsByCategory(categoryId: number, limit: number = 6, page: number = 1) {
         let params = new HttpParams();
         params = params.append('mode', 'category');
         params = params.append('category_id', `${categoryId}`);
         return this.productPagination(limit, page, params);
     }
 
-    public getProductsByFilter( filter: any ): Observable<Products> {
+    public getProductsByFilter(filter: any): Observable<Products> {
         return this.http.post<Products>('/products/search', filter);
     }
 
-    public getProductsByBrand( brand: string, limit: number = 6, page: number = 1 ) {
+    public getProductsByBrand(brand: string, limit: number = 6, page: number = 1) {
         let params = new HttpParams();
         params = params.append('mode', 'brand');
         params = params.append('brands_name', brand);
         return this.productPagination(limit, page, params);
     }
 
-    public productPagination( limit, page, params ): Observable<Products> {
+    public productPagination(limit, page, params): Observable<Products> {
         params = params.append('limit', `${limit}`);
         params = params.append('page', `${page}`);
         return this.http.get<Products>(`/products/listing`, { params: params });
@@ -81,7 +83,7 @@ export class AppService {
 
 
     public getProduct(id, categoryId) {
-        return this.http.post<any>(`/products/listing`, {categoryId: categoryId});
+        return this.http.post<any>(`/products/listing`, { categoryId: categoryId });
     }
 
     public getProductById(id): Observable<Product> {
@@ -92,9 +94,9 @@ export class AppService {
         let param = new HttpParams();
         param = param.append('permalink', permalink);
         if (categoryId) {
-            return this.http.post<Product>('/products/detail', { categoryId: categoryId }, {params: param});
+            return this.http.post<Product>('/products/detail', { categoryId: categoryId }, { params: param });
         } else {
-            return this.http.get<Product>('/products/detail', {params: param});
+            return this.http.get<Product>('/products/detail', { params: param });
         }
     }
 
@@ -102,13 +104,13 @@ export class AppService {
         let params = new HttpParams();
         params = params.append('limit', `${limit}`);
         params = params.append('page', `${page}`);
-        return this.http.get<any>('/manufacturers', {params: params});
+        return this.http.get<any>('/manufacturers', { params: params });
     }
 
-    public getBrandsByCategoryId( id: number ) {
+    public getBrandsByCategoryId(id: number) {
         let params = new HttpParams();
-        params = params.append('categoryId', `${id}` );
-        return this.http.get<any>('/manufacturers', {params: params});
+        params = params.append('categoryId', `${id}`);
+        return this.http.get<any>('/manufacturers', { params: params });
     }
 
     public getStores() {
@@ -169,7 +171,7 @@ export class AppService {
             return;
         }
         if (this.Data.cartList.some(item => item.id === product.id)) {
-            const index = this.Data.cartList.findIndex( p => p.id === product.id);
+            const index = this.Data.cartList.findIndex(p => p.id === product.id);
             count += this.Data.cartList[index].quantity;
             product.quantity = count;
             this.Data.cartList[index] = product;
@@ -191,13 +193,26 @@ export class AppService {
             });
 
             dialogRef.afterClosed().subscribe(res => {
-                console.log(res);
+                const productData: any = { item_id: product.id, item_qty: product.quantity};
+                if (res.isAddTocart !== undefined) {
+                    this.addToCardApi(productData).subscribe((data) => {
+                        console.log(data,'data');
+                    });
+                }
             });
         }
     }
 
+    addToCardApi(productData): any {
+        return this.http.get(environment.apiUrl + '/cart?mode=add_item&item_id=' + productData.id + '&item_qty=' + productData.quantity).pipe(
+            map((body: any) => {
+                return body;
+            })
+        );
+    }
+
     public removeFromCart(productId) {
-        const index = this.Data.cartList.findIndex( p => p.id === productId );
+        const index = this.Data.cartList.findIndex(p => p.id === productId);
         if (index > -1) {
             this.Data.cartList.splice(index, 1);
             this.calculateTotalPrice();
@@ -207,7 +222,7 @@ export class AppService {
     public calculateTotalPrice() {
         this.Data.totalPrice = 0;
         this.Data.totalQuantity = 0;
-        for ( const c of this.Data.cartList) {
+        for (const c of this.Data.cartList) {
             this.Data.totalPrice += Number(c.newPrice) * c.quantity;
             this.Data.totalQuantity += c.quantity;
         }
