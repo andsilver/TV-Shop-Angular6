@@ -24,6 +24,20 @@
             font-family: "Poppins";
             line-height: 1.125rem;
         }
+
+        .show_more_toggle {
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: "Poppins";
+            &:hover {
+                font-weight: bold;
+            }
+            .mat-icon {
+                vertical-align: middle;
+            }
+        }
     }
 }
 

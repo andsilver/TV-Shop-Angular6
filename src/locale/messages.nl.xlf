@@ -2210,7 +2210,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="bb0d8c7d921bc9d97697d3e41b1f8dda01cc1c39" datatype="html">
-        <source>Condition</source><target state="new">Filter op merk</target>
+        <source>Condition</source><target state="new">merk</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/shared/filters-list/filters-list.component.ts</context><context context-type="linenumber">30</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/products.component.ts</context><context context-type="linenumber">69</context></context-group></trans-unit>
       <trans-unit id="191aa21dfdba0723f3812293e66edbe5cd0cc936" datatype="html">
