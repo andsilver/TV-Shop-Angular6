@@ -67,6 +67,7 @@ export class CartComponent implements OnInit {
       this.appService.removeFromCartApi(removeProductData).subscribe((response) => {
         if (response.cart_remove !== undefined) {
           this.getCartDetails();
+          this.getRelatedProduct();
         }
       });
     }
@@ -97,6 +98,7 @@ export class CartComponent implements OnInit {
     if (product.item_id !== undefined) {
       this.appService.addToCartApi(product).subscribe((response) => {
         this.getCartDetails();
+        this.getRelatedProduct();
         console.log(response, 'add to cart')
       });
     }
@@ -106,6 +108,7 @@ export class CartComponent implements OnInit {
     if (product.item_id !== undefined && item_qty != undefined) {
       this.appService.recalculatePrice(product, item_qty).subscribe((response) => {
         this.getCartDetails();
+        this.getRelatedProduct();
         console.log(response, 'recalculation product price');
       });
     }
