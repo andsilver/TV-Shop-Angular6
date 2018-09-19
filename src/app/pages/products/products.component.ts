@@ -2,6 +2,9 @@ import { Component, OnInit, OnDestroy, ViewChild, HostListener, Input, AfterView
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs/Subscription';
+import { Subject } from 'rxjs/Subject';
+import { debounceTime } from 'rxjs/operators/debounceTime';
+import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -30,6 +33,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private Subscriptions: Subscription[];
 
+  priceToChanged = new Subject();
+  priceFromChanged = new Subject();
+
   isFirst = true;
   viewLoaded = false;
   keyword: string;
@@ -52,7 +58,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   tempBrands = [];
   selectedBrands = [];
   priceFrom = 1;
-  priceTo = 10000;
+  priceTo = 15000;
   colors = [ '#5C6BC0', '#66BB6A', '#EF5350', '#BA68C8', '#FF4081', '#9575CD', '#90CAF9', '#B2DFDB', '#DCE775',
                     '#FFD740', '#00E676', '#FBC02D', '#FF7043', '#F5F5F5', '#000000'];
   selectedColors = [];
@@ -113,7 +119,31 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.filterChanged();
       }),
       this.store.select(state => state.brands).subscribe(res => this.tempBrands = res.manufacturer),
-      this.store.select(state => state.products).subscribe( resp => this.setProducts(resp))
+      this.store.select(state => state.products).subscribe( resp => this.setProducts(resp)),
+      this.priceFromChanged
+        .pipe(
+          debounceTime(1000),
+          distinctUntilChanged()
+        )
+        .subscribe((event: KeyboardEvent) => {
+          if (event.key === 'Enter') {
+            return;
+          }
+          this.priceFrom = event.target['value'];
+          this.filterChanged();
+        }),
+      this.priceToChanged
+        .pipe(
+          debounceTime(1000),
+          distinctUntilChanged()
+        )
+        .subscribe((event: KeyboardEvent) => {
+          if (event.key === 'Enter') {
+            return;
+          }
+          this.priceTo = event.target['value'];
+          this.filterChanged();
+        })
     ];
 
     this.viewType = 'list';
@@ -154,6 +184,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   initFilter() {
     this.selectedBrands = [];
+    this.selectedFilterLists = [];
     this.priceFrom = 1;
     this.priceTo = 10000;
     this.sort = this.sortings[0];
