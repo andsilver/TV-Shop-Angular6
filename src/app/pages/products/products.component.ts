@@ -68,11 +68,11 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   totalProducts = 0;
   emptyMessage = '';
 
-  showMoreBrandsType = {
+  showMore = {
     show_more: {
       text: 'Toon meer',
       icon: 'keyboard_arrow_down',
-      count: 10
+      count: 6
     },
     show_less: {
       text: 'Toon minder',
@@ -99,7 +99,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.count = this.counts[0];
     this.sort  = this.sortings[0];
-    this.showMoreBrandsStatus = this.showMoreBrandsType.show_more;
 
     if (window.innerWidth < 960) {
       this.sidenavOpen = false;
@@ -176,6 +175,10 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.category_name = res.category_name;
     this.category_description = res.category_description;
     this.filterLists = res['filterLists'] ? res['filterLists'] : 0;
+    this.filterLists.forEach(filter => {
+      filter['display'] = filter.values.length > 6 ? 'show_more' : 'show_less';
+      filter['display'] = filter.values.some ( f => f.value_checked && filter.values.indexOf(f) > 5 ) ? 'show_less' : filter['display'];
+    });
 
     const ft = this.filterLists.findIndex(filter => filter.option_name.toLowerCase() === 'beeldformaat');
 
@@ -295,11 +298,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.filterChanged();
   }
 
-  changeShowMoreBrands() {
-    this.showMoreBrandsStatus
-      = (this.showMoreBrandsStatus === this.showMoreBrandsType.show_more)
-      ? this.showMoreBrandsType.show_less
-      : this.showMoreBrandsType.show_more;
+  changeShowMore(filter) {
+    filter.display = (filter.display === 'show_more') ? 'show_less' : 'show_more';
   }
 
   findTopCategoryId() {

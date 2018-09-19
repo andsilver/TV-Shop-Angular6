@@ -36,7 +36,7 @@
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <div fxLayout="column" class="filter-brands">
-                            <div *ngFor="let value of filt.values">
+                            <div *ngFor="let value of filt.values | slice:0:showMore[filt.display].count">
                                 <mat-checkbox
                                     [disabled]="value.result_counter == 0"
                                     [checked]="value.value_checked"
@@ -44,6 +44,7 @@
                                     {{value.value_name}} ( {{value.result_counter}} )
                                 </mat-checkbox>
                             </div>
+                            <a class="show_more_toggle" *ngIf="filt.values.length > 6" (click)="changeShowMore(filt)">{{showMore[filt.display].text}}<mat-icon>{{showMore[filt.display].icon}}</mat-icon></a>
                         </div>
                     </mat-expansion-panel>
 
