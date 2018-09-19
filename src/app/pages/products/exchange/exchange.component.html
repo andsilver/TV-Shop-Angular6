@@ -24,45 +24,45 @@
   
     <form [formGroup]="exchangeForm" (ngSubmit)="formSubmit()">
       <div>
-        <label class="margin-right-20" i18n>Salutation:</label>
+        <label class="margin-right-20">Salutation:</label>
         <mat-radio-group formControlName="salutation">
-          <mat-radio-button value="mr" class="margin-right-20" i18n>Mr.</mat-radio-button>
-          <mat-radio-button value="mrs" i18n>Ms.</mat-radio-button>
+          <mat-radio-button value="mr" class="margin-right-20">Mr.</mat-radio-button>
+          <mat-radio-button value="mrs">Ms.</mat-radio-button>
         </mat-radio-group>
       </div>
   
       <mat-form-field class="w-100 mt-2">
   
-        <input matInput i18n-placeholder placeholder="Your Name:" formControlName="name" required aria-label="name">
-        <mat-error *ngIf="exchangeForm.controls.name.errors?.required" i18n>Your name is required</mat-error>
+        <input matInput placeholder="Your Name:" formControlName="name" required aria-label="name">
+        <mat-error *ngIf="exchangeForm.controls.name.errors?.required">Your name is required</mat-error>
       </mat-form-field>
   
       <mat-form-field class="w-100 mt-2">
-        <input matInput i18n-placeholder placeholder="E-mail:" formControlName="email" required aria-label="email">
-        <mat-error *ngIf="exchangeForm.controls.email.errors?.required" i18n>E-mail is required</mat-error>
+        <input matInput placeholder="E-mail:" formControlName="email" required aria-label="email">
+        <mat-error *ngIf="exchangeForm.controls.email.errors?.required">E-mail is required</mat-error>
       </mat-form-field>
   
-      <mat-checkbox formControlName="allow" i18n>Send me exclusive promotions and offers via e-mail.
+      <mat-checkbox formControlName="allow">Send me exclusive promotions and offers via e-mail.
       </mat-checkbox>
   
       <mat-form-field class="w-100 mt-2">
-        <input matInput i18n-placeholder placeholder="Phone number:" formControlName="phone" required aria-label="phone">
-        <mat-error *ngIf="exchangeForm.controls.phone.errors?.required" i18n>Telephone number is required</mat-error>
+        <input matInput placeholder="Phone number:" formControlName="phone" required aria-label="phone">
+        <mat-error *ngIf="exchangeForm.controls.phone.errors?.required">Telephone number is required</mat-error>
       </mat-form-field>
   
       <mat-form-field class="w-100 mt-2">
-        <input matInput i18n-placeholder placeholder="Residence:" formControlName="residence" required aria-label="residence">
+        <input matInput placeholder="Residence:" formControlName="residence" required aria-label="residence">
       </mat-form-field>
   
       <mat-form-field class="w-100 mt-2">
-        <textarea matInput i18n-placeholder placeholder="Purchase item (s):"
+        <textarea matInput placeholder="Purchase item (s):"
           formControlName="purchase_items" rows="5" aria-label="purchase_items"></textarea>
       </mat-form-field>
 
       <mat-form-field class="w-100 mt-2">
-          <textarea matInput i18n-placeholder placeholder="Item (s) to be exchanged:"
+          <textarea matInput placeholder="Item (s) to be exchanged:"
             formControlName="exchange_items" rows="5" aria-label="exchange_items"></textarea>
         </mat-form-field>
     </form>
-    <button (click)="formSubmit()" class="control-normal" mat-button i18n>Submit <i class="fas fa fa-chevron-circle-right"></i></button>
+    <button (click)="formSubmit()" class="control-normal" mat-button>Submit <i class="fas fa fa-chevron-circle-right"></i></button>
   </div>

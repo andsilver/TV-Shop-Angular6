@@ -37,7 +37,8 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   selectedImage: any;
   form: FormGroup;
   relatedProducts: Array<Product>;
-  subscription: Subscription;
+  subscriptions: Subscription[];
+  stores: any = [];
 
   constructor(
     public appService: AppService,
@@ -47,9 +48,15 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     private store: Store<State>) {}
 
   ngOnInit() {
-    this.subscription = this.store.select(state => state.products).subscribe(data => {
-      this.relatedProducts = data.products;
-    });
+    this.subscriptions = [
+      this.store.select(state => state.products).subscribe(data => {
+        this.relatedProducts = data.products;
+      }),
+
+      this.appService.getStores().subscribe(res => {
+        this.stores = res;
+      })
+    ];
 
     this.form = this.formBuilder.group({
       'review': [null, Validators.required],
@@ -141,7 +148,7 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   onSubmit(values: Object): void {
