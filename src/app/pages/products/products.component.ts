@@ -85,6 +85,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   selectedFilterLists = [];
   tempFilterlist = [];
   popoverFilter: any;
+  priceFilterOrder = 0;
 
   showMoreBrandsStatus;
 
@@ -175,6 +176,14 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.category_name = res.category_name;
     this.category_description = res.category_description;
     this.filterLists = res['filterLists'] ? res['filterLists'] : 0;
+
+    const ft = this.filterLists.findIndex(filter => filter.option_name.toLowerCase() === 'beeldformaat');
+
+    if ( ft > -1) {
+      this.priceFilterOrder = ft;
+    } else {
+      this.priceFilterOrder = 0;
+    }
     this.totalProducts = res.total;
     window.scrollTo(0, 0);
     if (!this.products.length) {
