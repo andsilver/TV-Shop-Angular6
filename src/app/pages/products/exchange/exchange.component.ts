@@ -1,25 +1,24 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Inject, Component, OnInit } from '@angular/core';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-best-price-dialog',
-  templateUrl: './best-price-dialog.component.html',
-  styleUrls: ['./best-price-dialog.component.scss']
+  selector: 'app-exchange',
+  templateUrl: './exchange.component.html',
+  styleUrls: ['./exchange.component.scss']
 })
-export class BestPriceDialogComponent implements OnInit {
+export class ExchangeComponent implements OnInit {
 
-  requestForm: FormGroup;
+  exchangeForm: FormGroup;
 
-  constructor(
-    public formBuilder: FormBuilder,
+  constructor(public formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<BestPriceDialogComponent>) { }
+    public dialogRef: MatDialogRef<ExchangeComponent>) { }
 
   ngOnInit() {
-    this.requestForm = this.formBuilder.group({
+    this.exchangeForm = this.formBuilder.group({
       salutation: [''],
       name: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       email: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
@@ -27,11 +26,13 @@ export class BestPriceDialogComponent implements OnInit {
       allow: [false],
       residence: [''],
       description: [''],
+      purchase_items: [''],
+      exchange_items: ['']
     });
   }
 
   formSubmit() {
-    console.log(this.requestForm.value);
+    console.log(this.exchangeForm.value);
   }
 
 }

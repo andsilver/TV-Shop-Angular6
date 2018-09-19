@@ -73,7 +73,7 @@
             <div fxFlex="100" fxFlex.gt-md="70">
                 <div>
                     <h1>{{category_name}}</h1>
-                    <p [innerHTML]="category_description"></p>
+                    <p [innerHTML]="category_description | htmlSanitize"></p>
                 </div>
                 <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" class="filter-row mat-elevation-z1 text-muted">
                     <div>

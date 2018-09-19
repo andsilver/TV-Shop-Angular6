@@ -1,0 +1,56 @@
+@import "../../../theme/styles/variables";
+
+.exchange-products{
+
+    width: 596px;
+    max-height: 700px;
+
+    @media #{$medium-only} {
+        width: 400px;
+    }
+
+    @media #{$small-and-down} {
+        width: 300px;
+    }
+
+    .top-image img{
+        width: 100%;
+    }
+
+    .introduction{
+        line-height: 27px;
+        margin-top: 17px;
+        margin-bottom: 40px;
+
+        a {
+            color: #006eda;
+            text-decoration: underline;
+        }
+
+    }
+
+    .mat-button {
+        width: 100%;
+        font-family: "Poppins";
+        text-align: left;
+        padding: 0 1rem;
+        
+        &.control-normal {
+            width: 200px;
+            background-color: #FDC642;
+            color: #212226;
+            position: relative;
+            margin-bottom: 1rem;
+            .fas {
+                position: absolute;
+                right: 1rem;
+                top: 0;
+                line-height: 2.25rem;
+            }
+        }
+    }
+
+    .margin-right-20{
+        margin-right: 20px;
+    }
+}

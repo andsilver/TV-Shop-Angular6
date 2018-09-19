@@ -83,7 +83,7 @@
                                 <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)"><ng-container i18n>Add to cart</ng-container> <i class="fas fa fa-shopping-cart"></i></button>
                                 <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
                                 <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
-                                <button class="control-deal" mat-button><ng-container i18n>SUMMERDEAL</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
+                                <button class="control-deal" mat-button (click)="exchangeProduct()"><ng-container i18n>SUMMERDEAL</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
                                 <button class="control-normal" mat-button><ng-container i18n>Action: Exchange your TV</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
                             </div>
 
