@@ -22,61 +22,65 @@
             </mat-expansion-panel>
 
             <ng-container *ngIf="filterLists.length">
-                <mat-expansion-panel *ngFor="let filt of filterLists">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            <h4>
-                                {{filt.option_name}}
-                                <i *ngIf="filt?.description" class="fa fa-info-circle" [satPopoverAnchorFor]="p" (mouseenter)="popoverFilter=filt;p.open();" (mouseleave)="p.close()"></i>
-                            </h4>
-                            <sat-popover #p verticalAlign="below" horizontalAlign="start">
-                                <app-description-popover [title]="popoverFilter?.option_name" [content]="popoverFilter?.description"></app-description-popover>
-                            </sat-popover>
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <div fxLayout="column" class="filter-brands">
-                        <div *ngFor="let value of filt.values">
-                            <mat-checkbox
-                                [disabled]="value.result_counter == 0"
-                                [checked]="value.value_checked"
-                                (change)="selectFilter(filt.option_id, value.value_id)">
-                                {{value.value_name}} ( {{value.result_counter}} )
-                            </mat-checkbox>
+                <ng-container *ngFor="let filt of filterLists; let i = index">
+                    <mat-expansion-panel expanded>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <h4>
+                                    {{filt.option_name}}
+                                    <i *ngIf="filt?.description" class="fa fa-info-circle" [satPopoverAnchorFor]="p" (mouseenter)="popoverFilter=filt;p.open();" (mouseleave)="p.close()"></i>
+                                </h4>
+                                <sat-popover #p verticalAlign="below" horizontalAlign="start">
+                                    <app-description-popover [title]="popoverFilter?.option_name" [content]="popoverFilter?.description"></app-description-popover>
+                                </sat-popover>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div fxLayout="column" class="filter-brands">
+                            <div *ngFor="let value of filt.values">
+                                <mat-checkbox
+                                    [disabled]="value.result_counter == 0"
+                                    [checked]="value.value_checked"
+                                    (change)="selectFilter(filt.option_id, value.value_id)">
+                                    {{value.value_name}} ( {{value.result_counter}} )
+                                </mat-checkbox>
+                            </div>
                         </div>
-                    </div>
-                </mat-expansion-panel>
-            </ng-container>
+                    </mat-expansion-panel>
 
-            <mat-expansion-panel expanded>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        <h4 i18n>Price</h4>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <form class="filter-price" (ngSubmit)="filterChanged()">
-                    €
-                    <input [(ngModel)]="priceFrom" min="1" max="15000" (keyup)="priceFromChanged.next($event)" name="priceFrom" type="number">
-                    <span i18n> up to </span>
-                    €
-                    <input [(ngModel)]="priceTo" min="1" max="15000" (keyup)="priceToChanged.next($event)" name="priceTo" type="number">
-                    <button type="submit">Submit</button>
-                </form>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel expanded *ngIf="brands.length">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        <h4 i18n>Condition</h4>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div fxLayout="column" class="filter-brands">
-                   <div *ngFor="let brand of brands">
-                       <mat-checkbox (change)="selectBrand(brand)">{{brand.name}}</mat-checkbox>
-                   </div>
-                </div>
-            </mat-expansion-panel>
+                    <ng-container *ngIf="priceFilterOrder == i">
             
-            <mat-divider></mat-divider>
+                        <mat-expansion-panel expanded *ngIf="brands.length">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <h4 i18n>Condition</h4>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div fxLayout="column" class="filter-brands">
+                                <div *ngFor="let brand of brands">
+                                    <mat-checkbox (change)="selectBrand(brand)">{{brand.name}}</mat-checkbox>
+                                </div>
+                            </div>
+                        </mat-expansion-panel>
+
+                        <mat-expansion-panel expanded>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <h4 i18n>Price</h4>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <form class="filter-price" (ngSubmit)="filterChanged()">
+                                €
+                                <input [(ngModel)]="priceFrom" min="1" max="15000" (keyup)="priceFromChanged.next($event)" name="priceFrom" type="number">
+                                <span i18n> up to </span>
+                                €
+                                <input [(ngModel)]="priceTo" min="1" max="15000" (keyup)="priceToChanged.next($event)" name="priceTo" type="number">
+                                <button type="submit">Submit</button>
+                            </form>
+                        </mat-expansion-panel>
+
+                    </ng-container>
+                </ng-container>
+            </ng-container>
 
             <div class="filter-clear">
                 <a i18n (click)="initFilter();filterChanged();">Clear Selection </a><i class="fa fa-trash"></i>
