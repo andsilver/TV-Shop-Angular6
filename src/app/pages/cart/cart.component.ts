@@ -34,10 +34,9 @@ export class CartComponent implements OnInit {
   }
 
   public getTotalPrice(productArray) {
-    let totalPrice = productArray.reduce((acc, val) => {
+    return productArray.reduce((acc, val) => {
       return acc + (val.item_qty * val.item_price);
     }, 0);
-    return totalPrice;
   }
 
   public remove(product) {

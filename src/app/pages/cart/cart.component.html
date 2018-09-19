@@ -41,7 +41,7 @@
             </div>
           </td>
           <td class="quantity" align="center" valign="top" >
-            <input type="text" value="{{product.item_qty}}" *ngIf="product.item_price != 0" />
+            <input type="text" value="{{product.item_qty}}" [(ngModel)] ="product.item_qty"  *ngIf="product.item_price != 0" />
           </td>
           <td class="action" align="center" valign="top">
             <div class="btn-container">
