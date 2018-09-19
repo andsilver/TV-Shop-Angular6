@@ -134,5 +134,23 @@
         font-size: 11px;
     }
 
-    .shopping-cart { width:200px; }
+    .shopping-cart{
+        width: 200px;
+    }
+
+    
+}
+    
+
+.top-menu-dropdown-content {
+    width:200px;
+    div {
+        cursor: pointer;
+        line-height: 27px;
+        padding-left: 1rem;
+        transition: all .2s ease-in;
+        &:hover {
+            color: #fdc642;
+        }
+    }
 }

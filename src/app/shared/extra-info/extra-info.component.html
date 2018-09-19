@@ -1,5 +1,30 @@
 <div fxLayout="column" class="misc-bar" ngClass.gt-md="m-0">
   <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
+      <mat-card class="shopping-cart">
+        <mat-card-title>
+            <h4 i18n><a [routerLink]="['/cart']">Your shopping cart <i class="fa fa-shopping-cart"></i></a></h4>
+        </mat-card-title>
+        <mat-card-content *ngIf="appService.Data.totalPrice > 0">
+            <div class="shopping-cart-items">
+                <div *ngFor="let item of shopping_items | async">
+                    <span>{{item.quantity}} x </span>{{item.name}}
+                </div>
+            </div>
+            <div class="shopping-cart-sub-total">
+                <div fxLayout fxLayoutAlign="space-between start">
+                    <strong i18n>Subtotal:</strong>
+                    <strong>{{appService.Data.totalPrice | customCurrency}}</strong>
+                </div>
+                <div>
+                    <a [routerLink]="['/cart']" i18n><i class="fa fa-caret-right"></i> View your shopping cart</a>
+                </div>
+                <button mat-button class="btn btn-checkout" [routerLink]="['/checkout']">
+                    <span i18n>Ordering </span>
+                    <i class="fa fa-chevron-circle-right"></i>
+                </button>
+            </div>
+        </mat-card-content>
+      </mat-card>
       <mat-card class="branch-office">
           <mat-card-title><h4 i18n>Our stores</h4></mat-card-title>
           <mat-card-content>
