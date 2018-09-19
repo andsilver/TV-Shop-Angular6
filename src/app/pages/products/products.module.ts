@@ -13,6 +13,7 @@ import { LayoutComponent } from './layout/layout.component';
 
 import { NotMatchComponent } from './not-match/not-match.component';
 import { BestPriceDialogComponent } from './best-price-dialog/best-price-dialog.component';
+import { ExchangeComponent } from './exchange/exchange.component';
 
 export const routes = [
   {
@@ -34,11 +35,13 @@ export const routes = [
     ProductZoomComponent,
     LayoutComponent,
     NotMatchComponent,
-    BestPriceDialogComponent
+    BestPriceDialogComponent,
+    ExchangeComponent
   ],
   entryComponents: [
     ProductZoomComponent,
-    BestPriceDialogComponent
+    BestPriceDialogComponent,
+    ExchangeComponent
   ]
 })
 export class ProductsModule { }

@@ -9,6 +9,7 @@ import { Product } from '../../../app.models';
 import { emailValidator } from '../../../theme/utils/app-validators';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
 import { BestPriceDialogComponent } from '../best-price-dialog/best-price-dialog.component';
+import { ExchangeComponent } from '../exchange/exchange.component';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -36,7 +37,8 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   selectedImage: any;
   form: FormGroup;
   relatedProducts: Array<Product>;
-  subscription: Subscription;
+  subscriptions: Subscription[];
+  stores: any = [];
 
   constructor(
     public appService: AppService,
@@ -46,9 +48,15 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     private store: Store<State>) {}
 
   ngOnInit() {
-    this.subscription = this.store.select(state => state.products).subscribe(data => {
-      this.relatedProducts = data.products;
-    });
+    this.subscriptions = [
+      this.store.select(state => state.products).subscribe(data => {
+        this.relatedProducts = data.products;
+      }),
+
+      this.appService.getStores().subscribe(res => {
+        this.stores = res;
+      })
+    ];
 
     this.form = this.formBuilder.group({
       'review': [null, Validators.required],
@@ -140,7 +148,7 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   onSubmit(values: Object): void {
@@ -154,6 +162,14 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
 
   requestBestPrice() {
     const dialogRef = this.dialog.open(BestPriceDialogComponent);
+
+    dialogRef.afterClosed().subscribe(res => {
+
+    });
+  }
+
+  exchangeProduct() {
+    const dialogRef = this.dialog.open(ExchangeComponent);
 
     dialogRef.afterClosed().subscribe(res => {
 

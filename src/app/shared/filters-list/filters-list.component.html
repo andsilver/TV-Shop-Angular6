@@ -6,7 +6,7 @@
     </mat-expansion-panel-header>
     <div fxLayout="column" class="filter-brands">
         <div *ngFor="let value of filter.values">
-            <a>{{value.value_name}}</a>
+            <a [routerLink]="['']">{{value.value_name}}</a>
         </div>
     </div>
 </mat-expansion-panel>
@@ -19,7 +19,7 @@
     </mat-expansion-panel-header>
     <div class="categories-wrapper categories-dropdown" perfectScrollbar>
         <div *ngFor="let category of categories">
-          <a>{{category.name}}</a>
+          <a [routerLink]="[category.permalink]">{{category.name}}</a>
         </div>
     </div>
 </mat-expansion-panel>

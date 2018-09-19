@@ -11,7 +11,7 @@
 
                     <div fxLayout="row" fxLayout.lt-md="column">
 
-                        <div fxFlex="100" fxFlex.gt-md="60" fxFlex.md="55">
+                        <div fxFlex="100" fxFlex.gt-sm="55">
 
                             <h2 class="product-detail-title">{{product?.name}}</h2>
                             <div class="mb-2">
@@ -83,12 +83,23 @@
                                 <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)"><ng-container i18n>Add to cart</ng-container> <i class="fas fa fa-shopping-cart"></i></button>
                                 <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
                                 <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
-                                <button class="control-deal" mat-button><ng-container i18n>SUMMERDEAL</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
+                                <button class="control-deal" mat-button (click)="exchangeProduct()"><ng-container i18n>SUMMERDEAL</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
                                 <button class="control-normal" mat-button><ng-container i18n>Action: Exchange your TV</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
                             </div>
 
-                            <div [innerHTML]="product?.stockIndicator" class="new-stock-info-wrapper"></div>                        
+                            <div class="new-stock-info-wrapper">{{product?.stockIndicator}}</div>
 
+                            <div class="winkel-stock">
+                                <h3>Bezorgvoorraad</h3>
+                                <div><i class="fa fa-circle"></i><a href='/'>GREEN Voor 18:00 besteld, morgen in huis</a></div>
+
+                                <h3>Winkelvoorraad</h3>
+                                <div fxLayout="row wrap">
+                                    <div *ngFor="let store of stores" fxFlex="50">
+                                        <i class="fa fa-circle"></i><a [routerLink]="['/stores', store.store_location]">{{store.store_location}}</a>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- <div class="bezorg-title" i18n>Stock delivery</div>
                                 <div class="new-stock-info-bezorg">
                                     <div class="bezorg-cms-title">
@@ -119,13 +130,15 @@
                         </div>
                     </div>
                     <div class="mt-2" fxLayout fxLayout.lt-md="column" fxLayoutAlign="space-between start">
-                        <div fxFlex="59">
+                        <div fxFlex="55" fxFlex.lt-md="false">
                             <h3>{{product.name}}</h3>
                             <div class="shortdesc"><p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
-                            <h3>Kenmerken</h3>
-                            <p [innerHTML]="product?.featureHighlights | htmlSanitize"></p>
+                            <ng-container *ngIf="product?.featureHighlights">
+                                <h3>Kenmerken</h3>
+                                <p [innerHTML]="product.featureHighlights | htmlSanitize"></p>
+                            </ng-container>
                         </div>
-                        <div fxFlex="40" *ngIf="product?.description || product?.extra_description || product?.reviews.length || product?.expertReview">
+                        <div fxFlex="44" fxFlex.lt-md="false" ngClass.gt-md="pr-3 m-0" *ngIf="product?.description || product?.extra_description || product?.reviews.length || product?.expertReview">
                             <div class="extra-infos extra-infos-list">
                                 <h2>BEKIJK OOK</h2>
                                 <div class="extra-infos-link">

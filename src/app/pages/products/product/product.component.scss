@@ -9,7 +9,7 @@
 @media (min-width:960px) {
     .filter-sidenav {
         position: static;
-        width: 200px;
+        width: 180px;
         padding: 0;
         margin-right: 20px;
     }
@@ -64,6 +64,19 @@
         img {
             position: absolute;
         }
+    }
+}
+
+.winkel-stock {
+    .fa-circle {
+        font-size: .7rem;
+        color: #5AAD49;
+        margin-right: .25rem;
+        vertical-align: top;
+        line-height: 1.25rem;
+    }
+    >div:first-of-type{
+        margin-bottom: 1rem;
     }
 }
 
@@ -224,7 +237,7 @@ h2.product-detail-title,
     }
     &-list {
         border: 1px solid #E6E6DC;
-        margin: 0 0 30px;
+        margin-bottom: 30px;
 
         h2{
             font-size: 16px;
