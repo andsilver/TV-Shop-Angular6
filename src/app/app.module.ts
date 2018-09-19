@@ -35,7 +35,7 @@ import { AppEffects } from './store/effects/app.effects';
 
 
 @NgModule({
-   imports: [
+  imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -45,7 +45,7 @@ import { AppEffects } from './store/effects/app.effects';
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })    
   ],
   declarations: [
     AppComponent,
@@ -63,7 +63,8 @@ import { AppEffects } from './store/effects/app.effects';
     AppSettings,
     AppService,
     { provide: OverlayContainer, useClass: CustomOverlayContainer },
-    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
+    // LocalStorageService
   ],
   bootstrap: [AppComponent]
 })
