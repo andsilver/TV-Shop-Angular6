@@ -35,7 +35,7 @@
     <mat-menu #accountMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown account">
         <span (mouseleave)="accountMenuTrigger.closeMenu()">
             <div fxLayout="row" fxLayoutAlign="space-around center" class="user-info">                   
-                <img src="assets/images/others/user.jpg" alt="user-image" width="50">
+                <img [attr.ix-path]="'others/user.jpg'" ix-params='{"auto":"compress"}' alt="user-image" width="50">
                 <p><ng-container i18n>Bas van Beek</ng-container> <br> <small><ng-container i18n>basvanbeek (152</ng-container><mat-icon class="mat-icon-xs">star</mat-icon><ng-container i18n>)</ng-container></small></p>
             </div>
             <div class="divider"></div>
