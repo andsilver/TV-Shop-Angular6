@@ -69,7 +69,7 @@
             <h3 class="header-title" i18n>LET US INTRODUCE</h3>
             <div fxLayout="row wrap">
               <div *ngFor="let image of _store.employee_images" fxFlex="16" fxFlex.lt-sm="33">
-                <img [attr.ix-path]="image" ix-params='{"auto":"compress"}' width="100" alt="Image not arrived.">
+                <img [attr.ix-path]="image" ix-params='{"auto":"compress", "w":100}' width="100" alt="Image not arrived.">
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@
               </div> -->
               <div fxFlex fxLayout="row wrap" fxLayoutAlign="start start" class="atmosphere-r">
                 <div class="big-image" fxFlex="25" fxFlex.lt-sm="50" *ngFor="let image of _store.store_images">
-                  <img [attr.ix-path]="image" ix-params='{"auto":"compress"}' width="200"  alt="Image not arrived.">
+                  <img [attr.ix-path]="image" ix-params='{"auto":"compress", "w":200}' width="200"  alt="Image not arrived.">
                 </div>
               </div>
             </div>
