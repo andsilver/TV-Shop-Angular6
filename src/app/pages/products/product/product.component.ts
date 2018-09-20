@@ -14,6 +14,7 @@ import { ExchangeComponent } from '../exchange/exchange.component';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 declare var imgix: any;
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -55,9 +56,7 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
 
       this.appService.getStores().subscribe(res => {
         this.stores = res;
-        setTimeout(() => {
-          imgix.init()
-        }, 1)
+        setTimeout(() => imgix.init(), 1);
       })
     ];
 
@@ -136,8 +135,8 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
         zoomer.style.width = image.width * 1.5 + 'px';
         zoomer.style.backgroundImage = `url("${this.zoomImage}")`;
         setTimeout(() => {
-          imgix.init()
-        }, 1)
+          imgix.init();
+        }, 1);
       }
     }
   }
@@ -180,5 +179,9 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     dialogRef.afterClosed().subscribe(res => {
 
     });
+  }
+
+  scrollToElement($element): void {
+    $element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
   }
 }

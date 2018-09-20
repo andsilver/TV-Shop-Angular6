@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { AppService } from 'app/app.service';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
-import { ScrollToService } from 'ng2-scroll-to-el';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -25,7 +24,6 @@ export class ContactComponent implements OnInit, OnDestroy {
   constructor(
     private appService: AppService,
     private route: ActivatedRoute,
-    private scrollTo: ScrollToService,
     private store: Store<State>) { }
 
   ngOnInit() {
@@ -36,7 +34,7 @@ export class ContactComponent implements OnInit, OnDestroy {
       }),
       this.route.url.subscribe((paths: UrlSegment[]) => {
         if (paths.length > 1) {
-          setTimeout(() => this.scrollTo.scrollTo(this.customerServiceElement.nativeElement, 500), 500);
+          setTimeout(() => this.scrollToElement(this.customerServiceElement.nativeElement), 500);
           this.store.dispatch(new CrumbActions.SaveCrumbPath([
             {
               name: 'Advies & Contact',
@@ -63,6 +61,10 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  scrollToElement($element): void {
+    $element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
   }
 
 }

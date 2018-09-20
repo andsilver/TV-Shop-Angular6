@@ -15,6 +15,7 @@ import { ProductDialogComponent } from '../../shared/products-carousel/product-d
 import { AppService } from '../../app.service';
 import { Product, Category } from '../../app.models';
 declare var imgix: any;
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -119,7 +120,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.keyword = res.keyword;
         this.filterChanged();
       }),
-      this.store.select(state => state.brands).subscribe(res => this.tempBrands = res.manufacturer),      
+      this.store.select(state => state.brands).subscribe(res => this.tempBrands = res.manufacturer),
       this.store.select(state => state.products).subscribe( resp => this.setProducts(resp)),
       this.priceFromChanged
         .pipe(
@@ -149,8 +150,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.viewType = 'list';
     setTimeout(() => {
-      imgix.init()
-    }, 1)
+      imgix.init();
+    }, 1);
   }
 
   ngAfterViewInit() {
@@ -197,8 +198,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.emptyMessage = 'De opgegeven zoekopdracht heeft geen resultaten opgeleverd.';
     }
     setTimeout(() => {
-      imgix.init()
-    }, 1)
+      imgix.init();
+    }, 1);
   }
 
   initFilter() {
