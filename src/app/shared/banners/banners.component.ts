@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+declare var imgix:any;
 @Component({
   selector: 'app-banners',
   templateUrl: './banners.component.html',
@@ -17,7 +17,7 @@ export class BannersComponent implements OnInit {
   }
 
   public getBgImage(index) {
-    return index != null ? this.banners[index].image : 'https://via.placeholder.com/600x400/ff0000/fff/';
+    return index != null ? `//${imgix.config.host}/${this.banners[index].image}` : 'https://via.placeholder.com/600x400/ff0000/fff/';
   }
 
 }

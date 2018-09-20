@@ -10,20 +10,20 @@ import { State } from 'app/store';
 import * as KeywordActions from 'app/store/actions/keyword.action';
 
 import * as data from 'assets/data/banners.json';
-
+declare var imgix:any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-
+  
   slides = [
-    { title: 'Welkom in onze vernieuwde webwinkel!', subtitle: 'Nu nog meer bestelgemak', image: 'images/carousel/banner1.jpg' },
-    { title: 'Black Friday Deals', subtitle: 'Alleen bij PlatteTV', image: 'images/carousel/banner2.jpg' },
-    { title: 'Kerst Deals', subtitle: 'Alleen bij PlatteTV', image: 'images/carousel/banner3.jpg' },
-    { title: 'Zomer Deals', subtitle: 'Alleen bij PlatteTV', image: 'images/carousel/banner4.jpg' },
-    { title: 'Mega Deals', subtitle: 'Alleen bij PlatteTV', image: 'images/carousel/banner5.jpg' }
+    { title: 'Welkom in onze vernieuwde webwinkel!', subtitle: 'Nu nog meer bestelgemak', image: `//${imgix.config.host}/images/carousel/banner1.jpg?auto=compress` },
+    { title: 'Black Friday Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner2.jpg?auto=compress` },
+    { title: 'Kerst Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner3.jpg?auto=compress` },
+    { title: 'Zomer Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner4.jpg?auto=compress` },
+    { title: 'Mega Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner5.jpg?auto=compress` }
   ];
 
   brands = [];
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(public appService: AppService, private settings: AppSettings, private title: Title, private store: Store<State>) { }
 
-  ngOnInit() {
+  ngOnInit() {    
     // forkJoin([
     //     this.appService.getBanners(),
     //     this.appService.getBrandsByCategoryId(0),
