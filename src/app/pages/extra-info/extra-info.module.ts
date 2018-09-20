@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Route, RouterModule } from '@angular/router';
-import { ScrollToModule } from 'ng2-scroll-to-el';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -44,8 +43,7 @@ const routes: Route[] = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SharedModule,
-    ScrollToModule.forRoot()
+    SharedModule
   ],
   declarations: [ContactComponent, LearningCenterComponent, ForBusinessComponent, VacanciesComponent, LayoutComponent]
 })

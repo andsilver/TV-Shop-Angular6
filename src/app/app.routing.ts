@@ -32,10 +32,7 @@ export const routes: Routes = [
               path: 'stores', loadChildren: 'app/pages/stores/stores.module#StoresModule'
             },
             { path: 'extrainfo', loadChildren: 'app/pages/extra-info/extra-info.module#ExtraInfoModule' },
-            {
-              path: '**',
-              loadChildren: 'app/pages/products/products.module#ProductsModule'
-            }
+            { path: '**', loadChildren: 'app/pages/products/products.module#ProductsModule' }
         ]
     }
 ];

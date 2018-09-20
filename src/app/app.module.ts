@@ -45,7 +45,7 @@ import { AppEffects } from './store/effects/app.effects';
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })    
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [
     AppComponent,
