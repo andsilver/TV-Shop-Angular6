@@ -24,7 +24,7 @@
         <tr *ngFor="let product of productData">
           <td align="center" valign="top">
             <a routerLink="{{product.permalink}}">
-              <img class="mr-10" src="{{ product.item_image }}" alt="">
+              <img class="mr-10" [attr.ix-path]="product.item_image" ix-params='{"auto":"compress"}'  alt="">
             </a>
           </td>
           <td class="main" valign="top">
@@ -151,7 +151,7 @@
         <tr *ngFor="let product of relatedProductData">
           <td>
             <a>
-              <img src="{{product.item_image}}">
+              <img [attr.ix-path]="product.item_image" ix-params='{"auto":"compress"}'>
             </a>
           </td>
           <td>

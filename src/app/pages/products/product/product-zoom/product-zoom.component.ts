@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+declare var imgix: any;
 @Component({
   selector: 'app-product-zoom',
   templateUrl: './product-zoom.component.html',
@@ -15,9 +15,13 @@ export class ProductZoomComponent implements OnInit {
   @ViewChild('zoomImage') zoomImage;
 
   constructor(public dialogRef: MatDialogRef<ProductZoomComponent>,
-              @Inject(MAT_DIALOG_DATA) public image: any) { }
+    @Inject(MAT_DIALOG_DATA) public image: any) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    setTimeout(() => {
+      imgix.init()
+    }, 1)
+  }
 
   public close(): void {
     this.dialogRef.close();
@@ -25,6 +29,9 @@ export class ProductZoomComponent implements OnInit {
 
   public zoomIn() {
     if (this.count < 60) {
+      setTimeout(() => {
+        imgix.init()
+      }, 1)
       this.maxWidth = this.maxWidth + this.count;
       this.zoomImage.nativeElement.style.maxWidth = this.maxWidth + '%';
       this.count = this.count + 10;

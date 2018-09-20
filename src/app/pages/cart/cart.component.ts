@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../app.service';
 import { Router } from '@angular/router';
-
+declare var imgix: any;
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -30,6 +30,9 @@ export class CartComponent implements OnInit {
     this.appService.getCartDetails(this.cartId).subscribe((result) => {
       this.productData = result.cart_contents;
       this.totalPrice = this.getTotalPrice(this.productData);
+      setTimeout(() => {
+        imgix.init()
+      }, 1)
     });
   }
 

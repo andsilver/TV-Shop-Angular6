@@ -118,7 +118,7 @@
                                             {{product.specialLabel}}
                                         </div>
                                         <a [routerLink]="[product.permalink]" class="image-link">
-                                            <img [src]="product.images[0].small" alt="">
+                                            <img [attr.ix-path]="product.images[0].small" ix-params='{"auto":"compress"}' >
                                         </a>
                                     </div>
                                     <div fxFlex="100" fxLayout.lt-md="column" fxLayoutGap="1rem" class="listing-item-content">

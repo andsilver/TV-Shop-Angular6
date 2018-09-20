@@ -11,7 +11,7 @@ import * as BrandsActions from 'app/store/actions/brands.action';
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product, Category } from '../../app.models';
-
+declare var imgix: any;
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -53,8 +53,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   selectedBrands = [];
   priceFrom = 1;
   priceTo = 10000;
-  colors = [ '#5C6BC0', '#66BB6A', '#EF5350', '#BA68C8', '#FF4081', '#9575CD', '#90CAF9', '#B2DFDB', '#DCE775',
-                    '#FFD740', '#00E676', '#FBC02D', '#FF7043', '#F5F5F5', '#000000'];
+  colors = ['#5C6BC0', '#66BB6A', '#EF5350', '#BA68C8', '#FF4081', '#9575CD', '#90CAF9', '#B2DFDB', '#DCE775',
+    '#FFD740', '#00E676', '#FBC02D', '#FF7043', '#F5F5F5', '#000000'];
   selectedColors = [];
   sizes = ['S', 'M', 'L', 'XL', '2XL', '32', '36', '38', '46', '52', '13.3\'', '15.4\'', '17\'', '21\'', '23.4\''];
   selectedSizes = [];
@@ -91,7 +91,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
 
     this.count = this.counts[0];
-    this.sort  = this.sortings[0];
+    this.sort = this.sortings[0];
     this.showMoreBrandsStatus = this.showMoreBrandsType.show_more;
 
     if (window.innerWidth < 960) {
@@ -103,7 +103,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
     console.log(this.category);
 
-    this.categoryId =  this.category ? this.category.id : 0;
+    this.categoryId = this.category ? this.category.id : 0;
     this.store.dispatch(new BrandsActions.GetBrands(this.categoryId));
     this.findTopCategoryId();
 
@@ -113,10 +113,13 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.filterChanged();
       }),
       this.store.select(state => state.brands).subscribe(res => this.tempBrands = res.manufacturer),
-      this.store.select(state => state.products).subscribe( resp => this.setProducts(resp))
+      this.store.select(state => state.products).subscribe(resp => this.setProducts(resp))
     ];
 
     this.viewType = 'list';
+    setTimeout(() => {
+      imgix.init()
+    }, 1)
   }
 
   ngAfterViewInit() {
@@ -150,6 +153,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     if (!this.products.length) {
       this.emptyMessage = 'De opgegeven zoekopdracht heeft geen resultaten opgeleverd.';
     }
+    setTimeout(() => {
+      imgix.init()
+    }, 1)
   }
 
   initFilter() {
@@ -237,7 +243,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     const option = this.selectedFilterLists.find(filt => filt.id === optionId);
     if (option) {
       const ind = option.children.indexOf(valueId);
-      if ( ind > -1 ) {
+      if (ind > -1) {
         option.children.splice(ind, 1);
         if (option.children.length === 0) {
           this.selectedFilterLists.splice(this.selectedFilterLists.indexOf(option), 1);
@@ -248,7 +254,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     } else {
       this.selectedFilterLists.push({
         id: optionId,
-        children: [ valueId ]
+        children: [valueId]
       });
     }
     console.log(this.selectedFilterLists);
@@ -258,8 +264,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   changeShowMoreBrands() {
     this.showMoreBrandsStatus
       = (this.showMoreBrandsStatus === this.showMoreBrandsType.show_more)
-      ? this.showMoreBrandsType.show_less
-      : this.showMoreBrandsType.show_more;
+        ? this.showMoreBrandsType.show_less
+        : this.showMoreBrandsType.show_more;
   }
 
   findTopCategoryId() {
@@ -269,7 +275,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     let parent = this.category;
-    while ( parent.parentId !== 0 ) {
+    while (parent.parentId !== 0) {
       parent = this.categories.find(c => c.id === parent.parentId);
     }
 
