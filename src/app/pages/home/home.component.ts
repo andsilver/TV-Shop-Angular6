@@ -19,11 +19,11 @@ import * as data from 'assets/data/banners.json';
 export class HomeComponent implements OnInit, OnDestroy {
 
   slides = [
-    { title: 'Welkom in onze vernieuwde webwinkel!', subtitle: 'Nu nog meer bestelgemak', image: 'assets/images/carousel/banner1.jpg' },
-    { title: 'Black Friday Deals', subtitle: 'Alleen bij PlatteTV', image: 'assets/images/carousel/banner2.jpg' },
-    { title: 'Kerst Deals', subtitle: 'Alleen bij PlatteTV', image: 'assets/images/carousel/banner3.jpg' },
-    { title: 'Zomer Deals', subtitle: 'Alleen bij PlatteTV', image: 'assets/images/carousel/banner4.jpg' },
-    { title: 'Mega Deals', subtitle: 'Alleen bij PlatteTV', image: 'assets/images/carousel/banner5.jpg' }
+    { title: 'Welkom in onze vernieuwde webwinkel!', subtitle: 'Nu nog meer bestelgemak', image: 'images/carousel/banner1.jpg' },
+    { title: 'Black Friday Deals', subtitle: 'Alleen bij PlatteTV', image: 'images/carousel/banner2.jpg' },
+    { title: 'Kerst Deals', subtitle: 'Alleen bij PlatteTV', image: 'images/carousel/banner3.jpg' },
+    { title: 'Zomer Deals', subtitle: 'Alleen bij PlatteTV', image: 'images/carousel/banner4.jpg' },
+    { title: 'Mega Deals', subtitle: 'Alleen bij PlatteTV', image: 'images/carousel/banner5.jpg' }
   ];
 
   brands = [];
