@@ -20,7 +20,7 @@
 <div class="brands-container">
     <div class="brand-block text-center" *ngFor="let brand of brands | brandSearchPipe : searchText  | filterBrands: group.value">
         <a [routerLink]="['/brands', brand.name]" class="brand mat-elevation-z3">
-            <img [src]="brand.image" [alt]="brand.name">
+            <img [attr.ix-path]="brand.image" ix-params='{"auto":"compress"}' [alt]="brand.name">
         </a>
     </div>
 </div>

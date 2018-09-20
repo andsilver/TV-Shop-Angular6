@@ -79,7 +79,7 @@
                         <mat-chip color="warn" selected="true" i18n>{{product.discount}}% OFF</mat-chip>
                     </mat-chip-list>
                     <a [routerLink]="['/products', product.id, product.name]" class="image-link">
-                        <img [src]="product.images[0].medium" alt="">
+                        <img [attr.ix-path]="product.images[0].medium" ix-params='{"auto":"compress"}' alt="">
                     </a>
                     <h4 class="category text-muted">{{ ( appService.Data.categories | filterById : product.categoryId )?.name }}</h4>                                                                     
                     <a [routerLink]="['/products', product.id, product.name]" class="title text-truncate">
@@ -109,7 +109,7 @@
                                 <mat-chip color="warn" selected="true" i18n>{{product.discount}}% OFF</mat-chip>
                             </mat-chip-list>
                             <a [routerLink]="['/products', product.id, product.name]" class="image-link">
-                                <img [src]="product.images[0].medium" alt="">
+                                <img [attr.ix-path]="product.images[0].medium" ix-params='{"auto":"compress"}' alt="">
                             </a>
                         </div>
                         <div fxFlex="100" fxFlex.gt-xs="60" class="p-2">
