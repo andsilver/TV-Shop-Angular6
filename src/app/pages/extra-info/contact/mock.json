@@ -1,0 +1,197 @@
+{
+    "data": {
+        "customer_services": [
+            {
+                "title": "Winkels/Afhaalpunten",
+                "image": "https://www.plattetv.nl/var/images/cmsimages/icons/winkel.gif",
+                "link": "/",
+                "items": [
+                    {
+                        "title": "Winkelgegevens",
+                        "link": "/"
+                    },
+                    {
+                        "title": "Openingstijden / Koopzondagen",
+                        "link": "/"
+                    }
+                ]
+            },
+            {
+                "title": "Over PlatteTV.nl",
+                "image": "https://www.plattetv.nl/var/images/cmsimages/icons/informatie.gif",
+                "link": "/",
+                "items": [
+                    {
+                        "title": "Waarom PlatteTV.nl",
+                        "link" : "/"
+                    },
+                    {
+                        "title": "Algemene bedrijfsgegevens",
+                        "link": "/"
+                    },
+                    {
+                        "title": "Vacatures",
+                        "link": "/"
+                    }
+                ]
+            },
+            {
+                "title": "Contact",
+                "image": "https://www.plattetv.nl/var/images/cmsimages/icons/contact.gif",
+                "link": "/",
+                "items": [
+                    {
+                        "title": "Contact opnemen",
+                        "link": "/"
+                    }
+                ]
+            },
+            {
+                "title": "Uw bestelling ",
+                "image": "https://www.plattetv.nl/var/images/cmsimages/icons/bestell.gif",
+                "link": "/",
+                "items": [
+                    {
+                        "title": "Hulp bij plaatsen bestelling",
+                        "link": "/"
+                    },
+                    {
+                        "title": "Orderstatus per e-mail",
+                        "link": ""
+                    },
+                    {
+                        "title": "Wijzigen of annuleren",
+                        "link": ""
+                    }
+                ]
+            },
+            {
+                "title": "Betalen",
+                "image": "https://www.plattetv.nl/var/images/cmsimages/icons/betalen_22.gif",
+                "link": "/",
+                "items": [
+                    {
+                        "title": "Betaalmethoden",
+                        "link": ""
+                    },
+                    {
+                        "title": "iDeal",
+                        "link": ""
+                    },
+                    {
+                        "title": "Vooruitbetalen",
+                        "link": ""
+                    },
+                    {
+                        "title": "Creditcard",
+                        "link": ""
+                    },
+                    {
+                        "title": "Mister Cash/Bancontact",
+                        "link": ""
+                    },
+                    {
+                        "title": "Rembours",
+                        "link": ""
+                    },
+                    {
+                        "title": "Afhalen",
+                        "link": ""
+                    },
+                    {
+                        "title": "Findio Gespreid Betalen",
+                        "link": ""
+                    }
+                ]
+            },
+            {
+                "title": "Verzending en",
+                "image": "https://www.plattetv.nl/var/images/cmsimages/icons/verzend.gif",
+                "link": "/",
+                "items": [
+                    {
+                        "title": "Vandaag gratis bezorgd",
+                        "link": ""
+                    },
+                    {
+                        "title": "Levertijd",
+                        "link": ""
+                    },
+                    {
+                        "title": "Gratis bezorgd",
+                        "link": ""
+                    },
+                    {
+                        "title": "Spoedbezorging",
+                        "link": ""
+                    },
+                    {
+                        "title": "Rembours",
+                        "link": ""
+                    },
+                    {
+                        "title": "Bestelling online tracken",
+                        "link": ""
+                    },
+                    {
+                        "title": "Indien u niet thuis bent",
+                        "link": ""
+                    },
+                    {
+                        "title": "Producten afhalen",
+                        "link": ""
+                    }
+                ]
+            },
+            {
+                "title": "Ruilen en retouren",
+                "image": "https://www.plattetv.nl/var/images/cmsimages/icons/ruil.gif",
+                "link": "/",
+                "items": [
+                    {
+                        "title": "14 Dagen bedenktijd",
+                        "link": ""
+                    },
+                    {
+                        "title": "Procedure ruilen en retouren",
+                        "link": ""
+                    }
+                ]
+            },
+            {
+                "title": "Garantie",
+                "image": "https://www.plattetv.nl/var/images/cmsimages/icons/garantie&.gif",
+                "link": "/",
+                "items": [
+                    {
+                        "title": "Garantietermijn",
+                        "link": ""
+                    },
+                    {
+                        "title": "Defect bij ontvangst (DOA)",
+                        "link": ""
+                    }
+                ]
+            },
+            {
+                "title": "Uw veiligheid & privacy",
+                "image": "https://www.plattetv.nl/var/images/cmsimages/icons/locker.gif",
+                "link": "/",
+                "items": [
+                    {
+                        "title": "Algemene voorwaarden",
+                        "link": ""
+                    },
+                    {
+                        "title": "Privacy policy",
+                        "link": ""
+                    },
+                    {
+                        "title": "Cookies",
+                        "link": ""
+                    }
+                ]
+            }
+        ]
+    }
+}

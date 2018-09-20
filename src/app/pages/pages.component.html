@@ -74,12 +74,12 @@
                             </button>
                             <mat-menu #cartMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="top-menu-dropdown cart-dropdown">
                                 <span (mouseleave)="cartMenuTrigger.closeMenu()" class="d-block top-menu-dropdown-content">
-                                    <div i18n>Contact</div>
-                                    <div i18n>Customer Service</div>
+                                    <div i18n [routerLink]="['/extrainfo', 'advies-contact']">Contact</div>
+                                    <div i18n [routerLink]="['/extrainfo', 'advies-contact', 'klantenservice']">Customer Service</div>
                                     <div i18n>Order Status</div>
-                                    <div i18n>Learning Center</div>
-                                    <div i18n>For Business</div>
-                                    <div i18n>Vacancies</div>
+                                    <div i18n [routerLink]="['/extrainfo', 'learning-center']">Learning Center</div>
+                                    <div i18n [routerLink]="['/extrainfo', 'zakelijk']">For Business</div>
+                                    <div i18n [routerLink]="['/extrainfo', 'vacatures']">Vacancies</div>
                                 </span>
                             </mat-menu>
                         </div>
