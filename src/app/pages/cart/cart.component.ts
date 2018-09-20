@@ -82,7 +82,10 @@ export class CartComponent implements OnInit {
       this.appService.checkCouponCode(couponCodeData).subscribe((response) => {
         if (response.cart_coupon.valid !== undefined && response.cart_coupon.valid) {
           console.log(response, 'coupon code is valid');
-          this.getCartDetails()
+          if (response.cart_subtotal !== undefined) {
+            this.totalPrice = response.cart_subtotal;
+          }
+          // this.getCartDetails()
         }
       });
     }

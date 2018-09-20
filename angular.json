@@ -72,8 +72,63 @@
               "i18nLocale": "nl",
               "i18nMissingTranslation": "error"
             },
-            "nl": {
+            "development": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": true,
               "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
+              "serviceWorker": true
+            },            
+            "development-nl": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": true,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
+              "serviceWorker": true,
+              "outputPath": "dist/nl/",
+              "i18nFile": "src/locale/messages.nl.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "nl",
+              "i18nMissingTranslation": "error"
+            },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ]
+            },
+            "local-nl": {
+              "aot": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ],
               "outputPath": "dist/nl/",
               "i18nFile": "src/locale/messages.nl.xlf",
               "i18nFormat": "xlf",
@@ -90,6 +145,21 @@
           "configurations": {
             "production": {
               "browserTarget": "BVBMedia:build:production"
+            },
+            "production-nl": {
+              "browserTarget": "BVBMedia:build:production-nl"
+            },
+            "development": {
+              "browserTarget": "BVBMedia:build:development"
+            },
+            "development-nl": {
+              "browserTarget": "BVBMedia:build:development-nl"
+            },
+            "local": {
+              "browserTarget": "BVBMedia:build:local"
+            },
+            "local-nl": {
+              "browserTarget": "BVBMedia:build:local-nl"
             }
           }
         },

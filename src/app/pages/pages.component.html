@@ -70,57 +70,16 @@
 
                         <div fxLayoutAlign="center center">
                             <button mat-button [matMenuTriggerFor]="cartMenu" #cartMenuTrigger="matMenuTrigger" class="flex-row-button">
-                                <mat-icon class="mat-icon-lg">shopping_cart</mat-icon>
-                                <span *ngIf="appService.Data.cartList.length > 0" class="cart-items-count">{{appService.Data.totalQuantity}}</span>
-                                <div fxLayout="column" fxLayoutAlign="center center" fxShow="false" fxShow.gt-xs class="top-cart">
-                                    <span i18n>Shopping Cart</span>
-                                    <span *ngIf="appService.Data.cartList.length > 0">{{appService.Data.totalQuantity}} <ng-container i18n>product</ng-container>
-                                     <span *ngIf="appService.Data.cartList.length > 1" i18n>en</span> -
-                                        <span>{{appService.Data.totalPrice | customCurrency}}</span>
-                                    </span>
-                                </div>
-                                <mat-icon class="mat-icon-sm">arrow_drop_down</mat-icon>
+                                SERVICE <mat-icon>menu</mat-icon>
                             </button>
                             <mat-menu #cartMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="top-menu-dropdown cart-dropdown">
-                                <span (mouseleave)="cartMenuTrigger.closeMenu()" class="d-block">
-                                    <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted">
-                                        <b><span>{{appService.Data.totalQuantity}} <ng-container i18n>PRODUCT</ng-container><span *ngIf="appService.Data.cartList.length > 1" i18n>EN</span></span></b>
-                                        <b><a [routerLink]="['/cart']" class="text-muted" i18n>VIEW CART CONTENTS</a></b>
-                                    </div>
-                                    <div class="divider mt-1"></div>
-                                    <div *ngIf="appService.Data.cartList.length == 0" class="py-1 text-muted text-center" i18n>YOU HAVE NO ITEMS IN YOUR SHOPPING CART.</div>
-                                    <mat-list>
-                                        <mat-list-item *ngFor="let product of appService.Data.cartList" class="py-1">
-                                            <h3 matLine class="text-muted"> {{product.name}} </h3>
-                                            <p matLine class="text-muted">
-                                                <span> {{product.quantity }} x {{product.newPrice | customCurrency}} </span>
-                                            </p>
-                                            <p matLine class="text-muted" *ngFor="let attribute of product.attributes; let i=index;">
-                                                <ng-container *ngIf="attribute.selected">
-                                                    <span>{{attribute.products_options_name}}:{{getAttributeName(product, i, attribute.selected)}}</span>
-                                                </ng-container>
-                                            </p>
-                                            <img [src]="product.images[0].small" alt="image">
-                                            <span class="cdk-visually-hidden" #translatedTooltipMessage i18n >Back</span>
-                                            <button mat-icon-button color="warn" class="remove" (click)="remove(product);stopClickPropagate($event)"  [matTooltip]="translatedTooltipMessage.innerHTML" matTooltipPosition="before">
-                                                <mat-icon class="mat-icon-sm">close</mat-icon>
-                                            </button>
-                                        </mat-list-item>
-                                    </mat-list>
-                                    <div *ngIf="appService.Data.cartList.length > 0" class="cart-dropdown-footer">
-                                        <div class="divider mt-1"></div>
-                                        <div fxLayout="row" fxLayoutAlign="flex-end center" class="text-muted mt-1">
-                                            <b class="mr-1" i18n>Total:</b>
-                                            <b class="new-price">{{appService.Data.totalPrice | customCurrency}}</b>
-                                        </div>
-                                        <div class="divider mt-1"></div>
-                                        <div fxLayout="row" fxLayoutAlign="flex-end center" class="mt-1">
-                                                <span class="cdk-visually-hidden" i18n #translatedTooltipMessage2>Checkout</span>
-                                            <a [routerLink]="['/checkout']" mat-button mat-primary color="primary" class="cart-dropdown-submit" i18n [matTooltip]="translatedTooltipMessage2.innerHTML">
-                                                check
-                                            </a>
-                                        </div>
-                                    </div>
+                                <span (mouseleave)="cartMenuTrigger.closeMenu()" class="d-block top-menu-dropdown-content">
+                                    <div i18n>Contact</div>
+                                    <div i18n>Customer Service</div>
+                                    <div i18n>Order Status</div>
+                                    <div i18n>Learning Center</div>
+                                    <div i18n>For Business</div>
+                                    <div i18n>Vacancies</div>
                                 </span>
                             </mat-menu>
                         </div>
