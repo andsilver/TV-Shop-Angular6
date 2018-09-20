@@ -19,11 +19,11 @@ declare var imgix:any;
 export class HomeComponent implements OnInit, OnDestroy {
   
   slides = [
-    { title: 'Welkom in onze vernieuwde webwinkel!', subtitle: 'Nu nog meer bestelgemak', image: `//${imgix.config.host}/images/carousel/banner1.jpg?auto=compress` },
-    { title: 'Black Friday Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner2.jpg?auto=compress` },
-    { title: 'Kerst Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner3.jpg?auto=compress` },
-    { title: 'Zomer Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner4.jpg?auto=compress` },
-    { title: 'Mega Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner5.jpg?auto=compress` }
+    { title: 'Welkom in onze vernieuwde webwinkel!', subtitle: 'Nu nog meer bestelgemak', image: `//${imgix.config.host}/images/carousel/banner1.jpg?auto=compress&w=657` },
+    { title: 'Black Friday Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner2.jpg?auto=compress&w=657` },
+    { title: 'Kerst Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner3.jpg?auto=compress&w=657` },
+    { title: 'Zomer Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner4.jpg?auto=compress&w=657` },
+    { title: 'Mega Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner5.jpg?auto=compress&w=657` }
   ];
 
   brands = [];
