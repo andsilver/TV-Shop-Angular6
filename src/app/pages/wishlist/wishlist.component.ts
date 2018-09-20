@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../app.service';
 import { addObjectToArray } from 'app/theme/utils';
-
+declare var imgix: any; 
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
@@ -13,7 +13,11 @@ export class WishlistComponent implements OnInit {
 
   constructor(public appService: AppService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    setTimeout(() => {
+      imgix.init()
+    }, 1)
+  }
 
   public remove(product) {
     const index: number = this.appService.Data.wishList.indexOf(product);

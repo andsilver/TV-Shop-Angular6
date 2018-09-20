@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../app.service';
-
+declare var imgix: any;
 @Component({
   selector: 'app-brands',
   templateUrl: './brands.component.html',
@@ -17,6 +17,9 @@ export class BrandsComponent implements OnInit {
   ngOnInit() {
     this.appService.getBrands().subscribe(data => {
       this.brands = data.manufacturer;
+      setTimeout(() => {
+        imgix.init()
+      }, 1)
     });
   }
 

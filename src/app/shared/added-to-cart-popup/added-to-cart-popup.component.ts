@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Product } from 'app/app.models';
 import { AppService } from '../../app.service';
-
+declare var imgix: any; 
 @Component({
   selector: 'app-added-to-cart-popup',
   templateUrl: './added-to-cart-popup.component.html',
@@ -19,7 +19,9 @@ export class AddedToCartPopupComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    setTimeout(() => {
+      imgix.init()
+    }, 1)
   }
 
   navigateToDetail() {

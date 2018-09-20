@@ -8,7 +8,7 @@ import { BrandsService } from '../brands.service';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
-
+declare var imgix: any; 
 @Component({
   selector: 'app-brand',
   templateUrl: './brand.component.html',
@@ -62,11 +62,17 @@ export class BrandComponent implements OnInit, OnDestroy {
     this.routingSub = this.activatedRoute.paramMap.subscribe((params) => {
       this.brand = params.get('name');
       this.filterChanged();
+      setTimeout(() => {
+        imgix.init()
+      }, 1)
     });
 
     this.store.select(state => state.products).subscribe( res => {
       this.products = res.products;
       this.totalProducts = res.total;
+      setTimeout(() => {
+        imgix.init()
+      }, 1)
     });
   }
 
