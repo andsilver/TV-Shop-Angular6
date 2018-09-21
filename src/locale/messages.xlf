@@ -2779,6 +2779,69 @@
           <context context-type="linenumber">83</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="5cf0ec0799ec377592c4b653fc6490d3cbfd2749" datatype="html">
+        <source>LEARNING CENTER</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/extra-info/learning-center/learning-center.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6ee99e6f6074c31602e357828d93cc0142f069e8" datatype="html">
+        <source>Due to the large number of techniques and the different variations, it is not easy for a consumer to purchase a product that fits you perfectly. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/extra-info/learning-center/learning-center.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2d11340ace1e2afba1647939dda6376406b88c78" datatype="html">
+        <source>PlatteTV.nl is happy to help you make the right choice. On this page you can read tips and advice that are very useful when buying a TV, Home Cinema set, soundbar, wall bracket or other accessories. Terms are explained in a simple way, so that after reading you are completely familiar with the most important concepts.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/extra-info/learning-center/learning-center.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6270468ebc918ab48bde88eda4ac92d2687f6daf" datatype="html">
+        <source>Do you need more information? Our employees are at your disposal via the LiveChat, e-mail and telephone!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/extra-info/learning-center/learning-center.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7bbf36d74e9561fb0ca47c25cc08e35747fd549b" datatype="html">
+        <source>FOR BUSINESS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/extra-info/for-business/for-business.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a95740dc4d69bdb09595efb98dd4573cdf351c41" datatype="html">
+        <source>Business customer? Receive extra advantage!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/extra-info/for-business/for-business.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f3eb4161d204dc84916a126243ea087069ac621f" datatype="html">
+        <source>Are you looking for a total solution for your company? Do you want multiple screens in a meeting room? Looking for the perfect sound system for your restaurant? As a business customer, you will receive additional benefits from us!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/extra-info/for-business/for-business.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b35f3094a87d75630270ec69c4ff6d2649d9bf32" datatype="html">
+        <source>Contact us via the phone number below or via the Live Chat. Of course you can also send an e-mail to</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/extra-info/for-business/for-business.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bda27fe8c2e319fff248bf4a9b95bbac6789050c" datatype="html">
+        <source> We are happy to explain what we can do for you and how much benefit you will receive!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/extra-info/for-business/for-business.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="5e86eeef0186dc8e4b1d65cf99bf1c5c97bd555f" datatype="html">
         <source>BONUS PLUS</source>
         <context-group purpose="location">
