@@ -34,9 +34,6 @@ export class AppService {
     public url = 'assets/data/';
     constructor(public http: HttpClient, public snackBar: MatSnackBar, private dialog: MatDialog) { }
 
-    /***
-    *  ---------------- New Apis -----------------------------------------------------------
-    **/
     public getCategories(): Observable<Category[]> {
         let params = new HttpParams();
         params = params.append('mode', 'tree');
@@ -193,43 +190,35 @@ export class AppService {
             });
 
             dialogRef.afterClosed().subscribe(res => {
+
                 const productData: any = { item_id: product.id, item_qty: product.quantity };
-                if (res.isAddTocart !== undefined) {
-                    this.addToCartApi(productData).subscribe((data) => {
-                        localStorage.setItem('cart_id', data.cart_id)
-                    });
+
+                if (res['isAddTocart']) {
+
+                    this.addToCartApi(productData)
+                        .subscribe((data) => {
+                            localStorage.setItem('cart_id', data.cart_id);
+                        });
                 }
             });
         }
     }
 
     public addToCartApi(productData): any {
-        return this.http.get(`${environment.apiUrl}/cart?mode=add_item&item_id=${productData.item_id}&item_qty=${(productData.item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}`).pipe(
-            map((body: any) => {
-                return body;
-            })
-        );
+        return this.http.get(`/cart?mode=add_item&item_id=${productData.item_id}&item_qty=${(productData.item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}`);
     }
 
     public checkCouponCode(couponCode): any {
-        return this.http.get(`${environment.apiUrl}/cart?mode=check_coupon&coupon=${couponCode}&cart_id=${(localStorage.getItem('cart_id') || '')}`).pipe(
-            map((body: any) => {
-                return body;
-            })
-        );
+        return this.http.get(`/cart?mode=check_coupon&coupon=${couponCode}&cart_id=${(localStorage.getItem('cart_id') || '')}`);
 
     }
 
     public getRelatedProduct(cartId) {
-        return this.http.get(`${environment.apiUrl}/cart?mode=get_related_products&cart_id=${(cartId || localStorage.getItem('cart_id'))}`).pipe(
-            map((body: any) => {
-                return body;
-            })
-        );
+        return this.http.get(`/cart?mode=get_related_products&cart_id=${(cartId || localStorage.getItem('cart_id'))}`);
     }
 
     public getCartDetails(cartId): any {
-        return this.http.get(`${environment.apiUrl}/cart?mode=cart_details&cart_id=${(cartId || localStorage.getItem('cart_id'))}`).pipe(
+        return this.http.get(`/cart?mode=cart_details&cart_id=${(cartId || localStorage.getItem('cart_id'))}`).pipe(
             map((body: any) => {
                 return body;
             })
@@ -237,11 +226,7 @@ export class AppService {
     }
 
     public recalculatePrice(productData, item_qty): any {
-        return this.http.get(`${environment.apiUrl}/cart?mode=update_item&item_id=${productData.item_id}&item_qty=${(item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}`).pipe(
-            map((body: any) => {
-                return body;
-            })
-        );
+        return this.http.get(`/cart?mode=update_item&item_id=${productData.item_id}&item_qty=${(item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}`);
     }
 
     public removeFromCart(productId) {
@@ -253,11 +238,7 @@ export class AppService {
     }
 
     public removeFromCartApi(productRemove) {
-        return this.http.get(`${environment.apiUrl}/cart?mode=remove_item&cart_id=${(productRemove.cart_id || localStorage.getItem('cart_id'))}&cart_item_id=${productRemove.cart_item_id}`).pipe(
-            map((body: any) => {
-                return body;
-            })
-        );
+        return this.http.get(`/cart?mode=remove_item&cart_id=${(productRemove.cart_id || localStorage.getItem('cart_id'))}&cart_item_id=${productRemove.cart_item_id}`);
     }
 
     public calculateTotalPrice() {

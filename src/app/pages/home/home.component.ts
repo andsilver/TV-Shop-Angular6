@@ -78,9 +78,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     //     this.newArrivalsProducts = res[5].products;
     //     this.products = this.onSaleProducts;
     //   });
-    this.subscription = this.appService.getBrandsByCategoryId(0).subscribe( res => {
-      this.brands = res.manufacturer;
-    });
+    // this.subscription = this.appService.getBrandsByCategoryId(0).subscribe( res => {
+    //   this.brands = res.manufacturer;
+    // });
     this.banners = data['banners'];
     this.title.setTitle(this.settings.settings.name);
     this.store.dispatch(new KeywordActions.SetKeyword(''));
