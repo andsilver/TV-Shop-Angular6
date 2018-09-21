@@ -28,6 +28,7 @@
                                         *ngIf="selectedImage.have_image"
                                         [attr.ix-path]="image" ix-params='{"auto":"compress"}' 
                                         (mousemove)="onMouseMove($event)"
+                                        sizes="(min-width: 768px) 360px, (min-width: 320px) 370px, 100vw"
                                         (mouseleave)="onMouseLeave($event)"/>
                                     <img *ngIf="!selectedImage.have_image" [attr.ix-path]="image" ix-params='{"auto":"compress"}'  class="no-product-image">
                                 </ng-container>
@@ -39,7 +40,7 @@
                                         <div *ngFor="let image of product?.images" class="swiper-slide">
                                             <mat-card (click)="selectImage(image)" class="p-1">
                                                 <span *ngIf="image.have_image">
-                                                    <img [attr.ix-path]="image.small" ix-params='{"auto":"compress"}' class="swiper-lazy"/>
+                                                    <img [attr.ix-path]="image.small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 80px, (min-width: 320px) 90px, 100vw"  class="swiper-lazy"/>
                                                 </span>
                                             </mat-card>
                                         </div>
