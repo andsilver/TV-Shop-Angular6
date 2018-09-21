@@ -3,18 +3,12 @@
 }
 
 .filter-sidenav {
-    overflow: visible!important;
-    float: left;
-    left: 0;
-    width: 55vw;
+    position: static;
+    min-width: 180px;
     padding: 0;
+    display: inline-block;
 }
 
-@media (min-width:960px) {
-    .filter-sidenav {
-        position: static;
-        width: 180px;
-        padding: 0;
-        margin-right: 20px;
-    }
+.main-page {
+    display: inline-block;
 }

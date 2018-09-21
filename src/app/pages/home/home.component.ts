@@ -10,20 +10,41 @@ import { State } from 'app/store';
 import * as KeywordActions from 'app/store/actions/keyword.action';
 
 import * as data from 'assets/data/banners.json';
-declare var imgix:any;
+declare var imgix: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  
+
   slides = [
-    { title: 'Welkom in onze vernieuwde webwinkel!', subtitle: 'Nu nog meer bestelgemak', image: `//${imgix.config.host}/images/carousel/banner1.jpg?auto=compress&w=657` },
-    { title: 'Black Friday Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner2.jpg?auto=compress&w=657` },
-    { title: 'Kerst Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner3.jpg?auto=compress&w=657` },
-    { title: 'Zomer Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner4.jpg?auto=compress&w=657` },
-    { title: 'Mega Deals', subtitle: 'Alleen bij PlatteTV', image: `//${imgix.config.host}/images/carousel/banner5.jpg?auto=compress&w=657` }
+    {
+      title: 'Welkom in onze vernieuwde webwinkel!',
+      subtitle: 'Nu nog meer bestelgemak',
+      image: `//${imgix.config.host}/images/carousel/banner1.jpg?auto=compress&w=657`
+    },
+    {
+      title: 'Black Friday Deals',
+      subtitle: 'Alleen bij PlatteTV',
+      image: `//${imgix.config.host}/images/carousel/banner2.jpg?auto=compress&w=657`
+    },
+    {
+      title: 'Kerst Deals',
+      subtitle: 'Alleen bij PlatteTV',
+      image: `//${imgix.config.host}/images/carousel/banner3.jpg?auto=compress&w=657`
+    },
+    {
+      title: 'Zomer Deals',
+      subtitle: 'Alleen bij PlatteTV',
+      image: `//${imgix.config.host}/images/carousel/banner4.jpg?auto=compress&w=657`
+    },
+    {
+      title: 'Mega Deals',
+      subtitle: 'Alleen bij PlatteTV',
+      image: `//${imgix.config.host}/images/carousel/banner5.jpg?auto=compress&w=657`
+    }
   ];
 
   brands = [];
@@ -36,12 +57,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   topRatedProducts: Array<Product>;
   newArrivalsProducts: Array<Product>;
   products: Array<Product>;
-  sidenavOpen = true;
 
 
   constructor(public appService: AppService, private settings: AppSettings, private title: Title, private store: Store<State>) { }
 
-  ngOnInit() {    
+  ngOnInit() {
     // forkJoin([
     //     this.appService.getBanners(),
     //     this.appService.getBrandsByCategoryId(0),
@@ -64,19 +84,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.banners = data['banners'];
     this.title.setTitle(this.settings.settings.name);
     this.store.dispatch(new KeywordActions.SetKeyword(''));
-
-    if (window.innerWidth < 960) {
-      this.sidenavOpen = false;
-    }
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-  }
-
-  @HostListener('window:resize')
-  public onWindowResize(): void {
-    (window.innerWidth < 960) ? this.sidenavOpen = false : this.sidenavOpen = true;
   }
 
   onLinkClick(e) {
