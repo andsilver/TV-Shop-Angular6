@@ -9,35 +9,29 @@
 </mat-toolbar>
 <mat-toolbar class="top-navbar mat-elevation-z2" fxLayoutAlign="center center">
     <mat-toolbar-row fxLayoutAlign="space-around center" class="top-navbar-container">
-    <a *ngFor="let category of categories"
-        class="category-menu-item"
-        mat-button
-        (mouseenter)="triggerSubCategoryMenu(category, $event)"
-        (mouseleave)="hideSubCategoryMenu($event)"
-        [routerLink]="[ category.permalink ]"
-        routerLinkActive="horizontal-active-link"
-        [routerLinkActiveOptions]="{exact:false}">
-        {{category.name}}
-    </a>
-    <mat-card id="subCategories" (mouseleave)="hideSubCategoryMenu($event, false)">
-        <app-category-list *ngIf="parentCategory" [categories]="allCategories" [categoryParentId]="parentCategory.id" [selectedCategory]="selectedCategoryId" (change)="onChangeCategory($event)"></app-category-list>
-    </mat-card>
-    <mat-menu #animals="matMenu" [overlapTrigger]="false" class="app-dropdown">
-        <a mat-menu-item routerLink="/products" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}" i18n>All products</a>
-        <a mat-menu-item [routerLink]="['/products', '2', 'PC All-in-One']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}" i18n>Product detail</a> 
-        <a mat-menu-item routerLink="/contact" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}" i18n>Contact</a>  
-        <a mat-menu-item routerLink="/sign-in" i18n>Sign in</a>
-        <a mat-menu-item routerLink="/404" i18n>404 Error</a>
-        <a mat-menu-item [matMenuTriggerFor]="others" i18n>Others</a>
-    </mat-menu>
-
-    <mat-menu #others="matMenu" class="app-dropdown">
-        <a mat-menu-item href="http://themeseason.com" target="_blank" i18n>External Link</a>
-        <a mat-menu-item i18n>Menu item</a>
-        <a mat-menu-item i18n>Menu item</a>
-        <a mat-menu-item i18n>Menu item</a>
-    </mat-menu>
-    
+        <a *ngFor="let category of categories"
+            class="category-menu-item"
+            mat-button
+            [routerLink]="[ category.permalink ]"
+            routerLinkActive="horizontal-active-link"
+            [routerLinkActiveOptions]="{exact:false}">
+            {{category.name}}
+        </a>
     </mat-toolbar-row>
+    <!-- <mat-toolbar-row fxLayoutAlign="space-around center" class="top-navbar-container">
+        <a *ngFor="let category of categories"
+            class="category-menu-item"
+            mat-button
+            (mouseenter)="triggerSubCategoryMenu(category, $event)"
+            (mouseleave)="hideSubCategoryMenu($event)"
+            [routerLink]="[ category.permalink ]"
+            routerLinkActive="horizontal-active-link"
+            [routerLinkActiveOptions]="{exact:false}">
+            {{category.name}}
+        </a>
+        <mat-card id="subCategories" (mouseleave)="hideSubCategoryMenu($event, false)">
+            <app-category-list *ngIf="parentCategory" [categories]="allCategories" [categoryParentId]="parentCategory.id" [selectedCategory]="selectedCategoryId" (change)="onChangeCategory($event)"></app-category-list>
+        </mat-card>
+    </mat-toolbar-row> -->
 </mat-toolbar>
 

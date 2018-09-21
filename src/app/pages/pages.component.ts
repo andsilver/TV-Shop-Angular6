@@ -26,6 +26,7 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('sidenav')
   sidenav: any;
 
+  sidenavOpened = false;
   showBackToTop = false;
   categories: Category[] = [];
   category: Category;
@@ -85,7 +86,6 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscriptions.push(
       this.store.select(state => state.keyword).subscribe(data => setTimeout(() => this.keyword = data.keyword, 500))
     );
-    this.sidenavMenuService.expandActiveSubMenu(this.sidenavMenuService.getSidenavMenuItems());
   }
 
   ngOnDestroy() {

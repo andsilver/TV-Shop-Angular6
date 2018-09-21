@@ -1,11 +1,11 @@
 <mat-sidenav-container class="wrapper theme-container" ngClass="px-0" ngClass.gt-md="px-3">
 
     <mat-sidenav [opened]="false" mode="over" #sidenav class="sidenav mat-elevation-z6">
-        <button mat-icon-button color="warn" class="close" (click)="sidenav.close()">
+        <button mat-icon-button color="warn" class="close" (click)="sidenav.close();sidenavOpened=false;">
            <mat-icon color="warn">close</mat-icon>
         </button>
         <div class="divider"></div>
-        <app-sidenav-menu [menuItems]="sidenavMenuItems" [menuParentId]="0"></app-sidenav-menu>
+        <app-sidenav-menu *ngIf="sidenavOpened" [menuItems]="sidenavMenuItems" [menuParentId]="0"></app-sidenav-menu>
         <div class="divider"></div>
         <div class="text-center py-2">                   
             <svg class="social-icon" viewBox="0 0 24 24">
@@ -20,14 +20,7 @@
         </div> 
     </mat-sidenav>
 
-
     <mat-toolbar color="primary">
-        <!-- <mat-toolbar-row fxLayoutAlign="space-between center" class="top-toolbar theme-container">
-             
-            <span fxShow="false" fxShow.gt-xs fxLayoutAlign="center center"><mat-icon class="mat-icon-sm">call</mat-icon>  Hotline: (0418) 82 02 11 </span>
-            <span fxShow="false" fxShow.gt-sm>Welcome to our market!</span>
-            <app-top-menu></app-top-menu>
-        </mat-toolbar-row> -->
         <mat-toolbar-row fxLayout.lt-md="column" fxFlexAlign="center" id="main-header">
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" id="brand">
                 <a routerLink="/" (click)="closeSubMenus()" class="logo mr-4"><img src="assets/images/others/logo_plattetv.svg" alt="PlatteTV"></a>
@@ -55,11 +48,9 @@
                     <li class="links_city_utrecht"><a href="/extrainfo/winkel-utrecht-14.html"><span class="link_city_top" i18n>Utrecht</span><span class="link_city_bottom" i18n>030 310 1045</span></a></li>
                 </ul>
                 <div fxFlex fxLayout="row nowrap" fxFlexOffset.gt-sm="0" class="main-header-sub">
-                    <span fxHide="false" fxHide.gt-sm>
-                        <button mat-button (click)="sidenav.toggle()" class="sidenav-toggle" aria-label="sidenav-toggle">
-                            <mat-icon>menu</mat-icon>
-                        </button>
-                    </span>
+                    <button fxHide="false" fxHide.gt-sm mat-button (click)="sidenav.toggle();sidenavOpened = !sidenavOpened;" class="sidenav-toggle" aria-label="sidenav-toggle">
+                        <mat-icon>menu</mat-icon>
+                    </button>
                     <form method="get"  class="search-form" fxLayout="row" (ngSubmit)="search($event)">
                         <input type="text" i18n-placeholder placeholder="Type keyword..." name="search_key" [ngModel]="keyword" (keyup)="searchTerm.next($event)" fxFlex aria-label="search_key" autocomplete="off">
                         <button mat-button type="submit" class="search-btn mat-elevation-z0 text-muted" aria-label="search-btn">
@@ -67,42 +58,19 @@
                         </button>
                     </form>
                     <div fxLayout="row" fxLayoutAlign="center center" fxHide="true" fxShow.gt-sm class="shopping-cart">
-
-                        <div fxLayoutAlign="center center">
-                            <button mat-button [matMenuTriggerFor]="cartMenu" #cartMenuTrigger="matMenuTrigger" class="flex-row-button">
-                                SERVICE <mat-icon>menu</mat-icon>
-                            </button>
-                            <mat-menu #cartMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="top-menu-dropdown cart-dropdown">
-                                <span (mouseleave)="cartMenuTrigger.closeMenu()" class="d-block top-menu-dropdown-content">
-                                    <div i18n [routerLink]="['/extrainfo', 'advies-contact']">Contact</div>
-                                    <div i18n [routerLink]="['/extrainfo', 'advies-contact', 'klantenservice']">Customer Service</div>
-                                    <div i18n>Order Status</div>
-                                    <div i18n [routerLink]="['/extrainfo', 'learning-center']">Learning Center</div>
-                                    <div i18n [routerLink]="['/extrainfo', 'zakelijk']">For Business</div>
-                                    <div i18n [routerLink]="['/extrainfo', 'vacatures']">Vacancies</div>
-                                </span>
-                            </mat-menu>
-                        </div>
-
-                        <!-- <div fxLayoutAlign="center center" fxHide="false" fxHide.gt-sm>
-                            <button mat-icon-button [matMenuTriggerFor]="searchMenu" #searchMenuTrigger="matMenuTrigger" class="search-toggle-btn">
-                                <mat-icon class="mat-icon-lg">search</mat-icon>
-                            </button>
-                            <mat-menu #searchMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="search-dropdown mat-elevation-z8">
-                                <form method="get" fxFlex class="search-form">
-                                    <button mat-raised-button [matMenuTriggerFor]="categories2Menu" #categories2MenuTrigger="matMenuTrigger" type="button" class="mat-elevation-z0 categories text-muted" (click)="stopClickPropagate($event)">{{category?.name}}<mat-icon>arrow_drop_down</mat-icon></button>
-                                    <mat-menu #categories2Menu="matMenu" [overlapTrigger]="false" xPosition="before" class="categories-dropdown">
-                                        <span (mouseleave)="categories2MenuTrigger.closeMenu()">
-                                            <app-category-list [categories]="categories" [categoryParentId]="0" (change)="changeCategory($event)"></app-category-list>
-                                        </span>
-                                    </mat-menu>
-                                    <input type="text" placeholder="Typ zoekopdracht..." fxFlex (click)="stopClickPropagate($event)">
-                                    <button mat-mini-fab (click)="search()" type="button" class="search-btn mat-elevation-z0 text-muted">
-                                        <mat-icon>search</mat-icon>
-                                    </button>
-                                </form>
-                            </mat-menu>
-                        </div> -->
+                        <button mat-button [matMenuTriggerFor]="cartMenu" #cartMenuTrigger="matMenuTrigger" class="flex-row-button">
+                            SERVICE <mat-icon>menu</mat-icon>
+                        </button>
+                        <mat-menu #cartMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="top-menu-dropdown cart-dropdown">
+                            <span (mouseleave)="cartMenuTrigger.closeMenu()" class="d-block top-menu-dropdown-content">
+                                <div i18n [routerLink]="['/extrainfo', 'advies-contact']">Contact</div>
+                                <div i18n [routerLink]="['/extrainfo', 'advies-contact', 'klantenservice']">Customer Service</div>
+                                <div i18n>Order Status</div>
+                                <div i18n [routerLink]="['/extrainfo', 'learning-center']">Learning Center</div>
+                                <div i18n [routerLink]="['/extrainfo', 'zakelijk']">For Business</div>
+                                <div i18n [routerLink]="['/extrainfo', 'vacatures']">Vacancies</div>
+                            </span>
+                        </mat-menu>
                     </div>
                 </div>
 
@@ -111,7 +79,7 @@
         </mat-toolbar-row>
     </mat-toolbar> 
 
-    <app-menu fxShow="false" fxShow.gt-sm></app-menu>  
+    <app-menu fxHide.lt-md></app-menu>  
     
     <div class="theme-container main">
         <app-crumb-path [categories]="categories"></app-crumb-path>

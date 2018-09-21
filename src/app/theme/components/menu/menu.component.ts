@@ -36,16 +36,16 @@ export class MenuComponent implements OnInit {
     ];
   }
 
-  openMegaMenu() {
-    const pane = document.getElementsByClassName('cdk-overlay-pane');
-    [].forEach.call(pane, function (el) {
-        if (el.children.length > 0) {
-          if (el.children[0].classList.contains('mega-menu')) {
-            el.classList.add('mega-menu-pane');
-          }
-        }
-    });
-  }
+  // openMegaMenu() {
+  //   const pane = document.getElementsByClassName('cdk-overlay-pane');
+  //   [].forEach.call(pane, function (el) {
+  //       if (el.children.length > 0) {
+  //         if (el.children[0].classList.contains('mega-menu')) {
+  //           el.classList.add('mega-menu-pane');
+  //         }
+  //       }
+  //   });
+  // }
 
   triggerSubCategoryMenu(category, event) {
     if (!category.hasSubCategory) {
@@ -54,7 +54,6 @@ export class MenuComponent implements OnInit {
     const ele = event.target.getBoundingClientRect();
     this.parentCategory = category;
     const sub = document.getElementById('subCategories');
-    const subele = sub.getBoundingClientRect();
     sub.style.position = 'absolute';
     event.target.appendChild(sub);
     sub.style.display = 'block';
