@@ -117,6 +117,11 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     this.selectedImage = image;
     this.image = image.medium;
     this.zoomImage = image.big;
+    setTimeout(() => {
+      imgix.init({
+        force: true
+      });
+    }, 1);
   }
 
   onMouseMove(e) {
