@@ -17,24 +17,12 @@ export const routes: Routes = [
         // resolve: { data: InitStateService },
         children: [
             { path: '', loadChildren: 'app/pages/home/home.module#HomeModule' },
-            {
-              path: 'account',
-              loadChildren: 'app/pages/account/account.module#AccountModule'
-            },
-            { path: 'compare', loadChildren: 'app/pages/compare/compare.module#CompareModule'},
-            { path: 'wishlist', loadChildren: 'app/pages/wishlist/wishlist.module#WishlistModule'},
             { path: 'cart', loadChildren: 'app/pages/cart/cart.module#CartModule'},
             { path: 'checkout', loadChildren: 'app/pages/checkout/checkout.module#CheckoutModule'},
             { path: 'contact', loadChildren: 'app/pages/contact/contact.module#ContactModule'},
-            { path: 'sign-in', loadChildren: 'app/pages/sign-in/sign-in.module#SignInModule'},
-            { path: 'brands', loadChildren: 'app/pages/brands/brands.module#BrandsModule'},
-            {
-              path: 'stores', loadChildren: 'app/pages/stores/stores.module#StoresModule'
-            },
-            {
-              path: '**',
-              loadChildren: 'app/pages/products/products.module#ProductsModule'
-            }
+            { path: 'stores', loadChildren: 'app/pages/stores/stores.module#StoresModule' },
+            { path: 'extrainfo', loadChildren: 'app/pages/extra-info/extra-info.module#ExtraInfoModule' },
+            { path: '**', loadChildren: 'app/pages/products/products.module#ProductsModule' }
         ]
     }
 ];

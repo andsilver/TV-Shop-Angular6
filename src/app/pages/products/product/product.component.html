@@ -7,7 +7,7 @@
     <mat-sidenav-content>   
         <div fxLayout="row" *ngIf="product">
 
-            <div fxFlex="100" fxFlex.gt-md="73" fxLayout="column">
+            <div fxFlex="100" fxFlex.gt-md="77" fxLayout="column">
 
                     <div fxLayout="row" fxLayout.lt-md="column">
 
@@ -26,10 +26,11 @@
                                     </div>
                                     <img
                                         *ngIf="selectedImage.have_image"
-                                        [src]="image"
+                                        [attr.ix-path]="image" ix-params='{"auto":"compress"}' 
                                         (mousemove)="onMouseMove($event)"
+                                        sizes="(min-width: 768px) 360px, (min-width: 320px) 370px, 100vw"
                                         (mouseleave)="onMouseLeave($event)"/>
-                                    <img *ngIf="!selectedImage.have_image" [src]="image" class="no-product-image">
+                                    <img *ngIf="!selectedImage.have_image" [attr.ix-path]="image" ix-params='{"auto":"compress"}'  class="no-product-image">
                                 </ng-container>
                             </mat-card>
 
@@ -39,7 +40,7 @@
                                         <div *ngFor="let image of product?.images" class="swiper-slide">
                                             <mat-card (click)="selectImage(image)" class="p-1">
                                                 <span *ngIf="image.have_image">
-                                                    <img [src]="image.small" class="swiper-lazy"/>
+                                                    <img [attr.ix-path]="image.small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 80px, (min-width: 320px) 90px, 100vw"  class="swiper-lazy"/>
                                                 </span>
                                             </mat-card>
                                         </div>
@@ -123,7 +124,7 @@
 
                             <div class="divider"></div> 
 
-                        <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted py-1">
+                            <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted py-1">
                                 <button mat-button><mat-icon>mail_outline</mat-icon> Email to a Friend</button>
                                 <button mat-icon-button><mat-icon>share</mat-icon></button>
                             </div> --> 
@@ -142,10 +143,10 @@
                             <div class="extra-infos extra-infos-list">
                                 <h2>BEKIJK OOK</h2>
                                 <div class="extra-infos-link">
-                                    <div *ngIf="product?.reviews.length" [scrollTo]="info_reviews" [scrollDuration]="100"><i class="fa fa-circle"></i>Reviews</div>
-                                    <div *ngIf="product?.description" [scrollTo]="info_description" [scrollDuration]="200"><i class="fa fa-circle"></i>Beschrijving</div>
-                                    <div *ngIf="product?.extra_description" [scrollTo]="info_extra_description" [scrollDuration]="300"><i class="fa fa-circle"></i>Specificaties</div>
-                                    <div *ngIf="product?.expertReview" [scrollTo]="info_expert_reviews" [scrollDuration]="400"><i class="fa fa-circle"></i>Plus- en minpunten</div>
+                                    <div *ngIf="product?.reviews.length" (click)="scrollToElement(info_reviews)"><i class="fa fa-circle"></i>Reviews</div>
+                                    <div *ngIf="product?.description" (click)="scrollToElement(info_description)"><i class="fa fa-circle"></i>Beschrijving</div>
+                                    <div *ngIf="product?.extra_description" (click)="scrollToElement(info_extra_description)"><i class="fa fa-circle"></i>Specificaties</div>
+                                    <div *ngIf="product?.expertReview" (click)="scrollToElement(info_expert_reviews)"><i class="fa fa-circle"></i>Plus- en minpunten</div>
                                 </div>
                             </div>
                         </div>

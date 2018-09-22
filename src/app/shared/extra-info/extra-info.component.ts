@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from 'app/app.service';
+
+declare var imgix: any;
 
 @Component({
   selector: 'app-extra-info',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExtraInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public appService: AppService) { }
 
   ngOnInit() {
+    setTimeout(() => imgix.init(), 1);
   }
 
 }

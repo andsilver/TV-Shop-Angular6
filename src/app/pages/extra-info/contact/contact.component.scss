@@ -1,0 +1,101 @@
+.page-contact {
+
+    line-height: 28px;
+    padding-right: 1rem;
+
+    u {
+        color: #006eda;
+        cursor: pointer;
+    }
+
+    .page-section {
+        padding: 1rem 0;
+        border-top: 1px solid #ececec;
+        strong {
+            margin-bottom: 10px;
+            display: block;
+        }
+    }
+
+    .top-section {
+        h1 {
+            font-weight: bold;
+            font-size: 26px;
+            line-height: normal;
+            font-family: "Gotham Condensed";
+            letter-spacing: 1px;
+            color: #212226;
+            text-align: left;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            padding: 0 15px;
+        }
+        
+        img {
+            width: 100%;
+        }
+    }
+
+    .contact-customer-service {
+        padding: 1rem 0;
+
+        .contact-method {
+
+            cursor: pointer;
+
+            border: 1px solid #E6E6DC;
+            background: #e6e6dc;
+            margin-bottom: 7px;
+            padding: 14px 22px 14px 22px;
+
+            &:hover {
+                background: #212226;
+                h2, p {
+                    color: #fff;
+                }
+            }
+
+            h2 {
+                text-transform: uppercase;
+            }
+
+            i {
+                width: 40px;
+                height: 40px;
+                background: #fff;
+                font-size: 24px;
+                line-height: 40px;
+                text-align: center;
+                margin-right: 16px;
+                border-radius: 50%;
+            }
+
+        }
+    }
+
+    .customer-services {
+        .customer-service{
+            padding-bottom: 4rem;
+            .service-title {
+                img{
+                    vertical-align: middle;
+                }
+                a {
+                    font-weight: 700;
+                }
+
+                border-bottom: 2px solid grey;
+            }
+
+            .service-items {
+                padding-left: 20px;
+            }
+        }
+
+    }
+
+    .mr-5px {
+        margin-right: 5px;
+    }
+
+}

@@ -1,58 +1,53 @@
-<mat-sidenav-container>
-    <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
-        <mat-accordion displayMode="flat" multi="true">
-            <app-filters-list></app-filters-list>
-        </mat-accordion>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <div fxLayout="row" fxLayoutAlign="end start" fxLayoutGap="20px">
-            <div fxFlex="100" fxFlex.gt-md="73">
-                <app-main-carousel [slides]="slides"></app-main-carousel> 
+<div fxLayout>
+    <div class="filter-sidenav" *ngIf="windowSize == 'gt-md'">
+        <app-filters-list></app-filters-list>
+    </div>
+    <div fxFlex="65" fxFlex.lt-md="100" class="px-3">
+        <app-main-carousel [slides]="slides"></app-main-carousel> 
 
-                <div fxLayout="row wrap" class="info-bar">
-                    <div fxFlex="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
-                        <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                            <mat-icon class="mat-icon-xlg text-muted m-0">card_giftcard</mat-icon>
-                            <div class="content">
-                                <p i18n>BONUS PLUS</p>
-                                <span class="text-muted m-0" i18n>Make fun of shopping and collect bonuses</span>
-                            </div> 
-                        </mat-card> 
-                    </div>
-                    <div fxFlex="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
-                        <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                            <mat-icon class="mat-icon-xlg text-muted m-0">local_shipping</mat-icon>
-                            <div class="content">
-                                <p i18n>FREE SHIPPING</p>
-                                <span class="text-muted m-0" i18n>Free shipping on all orders over $99</span>
-                            </div>
-                        </mat-card>
-                    </div>
-                    <div fxFlex="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
-                        <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                            <mat-icon class="mat-icon-xlg text-muted m-0">monetization_on</mat-icon>
-                            <div class="content">
-                                <p i18n>MONEY BACK GUARANTEE</p>
-                                <span class="text-muted m-0" i18n>30 Days money return guarantee</span>
-                            </div> 
-                        </mat-card>
-                    </div>
-                    <div fxFlex="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
-                        <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                            <mat-icon class="mat-icon-xlg text-muted m-0">history</mat-icon>
-                            <div class="content">
-                                <p i18n>ONLINE SUPPORT 24/7</p> 
-                                <span class="text-muted m-0" i18n>Call us: (0418) 82 02 11</span>
-                            </div> 
-                        </mat-card>
-                    </div>
-                </div>
-
-                <app-banners [banners]="banners"></app-banners>
+        <div fxLayout="row wrap" class="info-bar">
+            <div fxFlex="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                    <mat-icon class="mat-icon-xlg text-muted m-0">card_giftcard</mat-icon>
+                    <div class="content">
+                        <p i18n>BONUS PLUS</p>
+                        <span class="text-muted m-0" i18n>Make fun of shopping and collect bonuses</span>
+                    </div> 
+                </mat-card> 
             </div>
-            <div fxFlex fxHide fxShow.gt-md>
-                <app-extra-info></app-extra-info>
+            <div fxFlex="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                    <mat-icon class="mat-icon-xlg text-muted m-0">local_shipping</mat-icon>
+                    <div class="content">
+                        <p i18n>FREE SHIPPING</p>
+                        <span class="text-muted m-0" i18n>Free shipping on all orders over $99</span>
+                    </div>
+                </mat-card>
+            </div>
+            <div fxFlex="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                    <mat-icon class="mat-icon-xlg text-muted m-0">monetization_on</mat-icon>
+                    <div class="content">
+                        <p i18n>MONEY BACK GUARANTEE</p>
+                        <span class="text-muted m-0" i18n>30 Days money return guarantee</span>
+                    </div> 
+                </mat-card>
+            </div>
+            <div fxFlex="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                    <mat-icon class="mat-icon-xlg text-muted m-0">history</mat-icon>
+                    <div class="content">
+                        <p i18n>ONLINE SUPPORT 24/7</p> 
+                        <span class="text-muted m-0" i18n>Call us: (0418) 82 02 11</span>
+                    </div> 
+                </mat-card>
             </div>
         </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+
+        <app-banners [banners]="banners"></app-banners>
+    </div>
+
+    <div fxFlex *ngIf="windowSize == 'gt-md'">
+        <app-extra-info></app-extra-info>
+    </div>
+</div>

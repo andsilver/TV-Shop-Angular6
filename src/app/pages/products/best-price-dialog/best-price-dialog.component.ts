@@ -3,7 +3,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+declare var imgix: any; 
 @Component({
   selector: 'app-best-price-dialog',
   templateUrl: './best-price-dialog.component.html',
@@ -28,6 +28,9 @@ export class BestPriceDialogComponent implements OnInit {
       residence: [''],
       description: [''],
     });
+    setTimeout(() => {
+      imgix.init()
+    }, 1)
   }
 
   formSubmit() {

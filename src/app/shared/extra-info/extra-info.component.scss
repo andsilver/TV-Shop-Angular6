@@ -1,0 +1,59 @@
+.misc-bar .mat-card {
+    box-shadow: none;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.shopping-cart {
+    padding-bottom: 0;
+    .mat-card-title{
+        border-bottom: none;
+        padding: 0 10px;
+        background-color: #212226;
+
+        h4 {
+            padding-bottom: 0;
+            line-height: 2.125rem;
+            a{
+                text-transform: uppercase;
+                color: #ffffff;
+                font-weight: 500;
+                i {
+                    font-size: 24px;
+                }
+                &:hover {
+                    text-decoration: underline;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+
+    &-items {
+        border-bottom: 1px dashed #ececec;
+
+        span {
+            width: 30px;
+            display: inline-block
+        }
+    }
+
+    &-items >div, &-sub-total >div {
+        line-height: 27px;
+    }
+
+    .btn-checkout {
+        background: #5AAD49;
+        color: #fff;
+        line-height: 27px;
+        font-size: 13px;
+        font-family: "Poppins";
+
+        i {
+            font-size: 17px;
+            margin-left: 5px;
+        }
+    }
+    
+}

@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductDialogComponent } from './product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product } from 'app/app.models';
-
+declare var imgix: any;
 @Component({
   selector: 'app-products-carousel',
   templateUrl: './products-carousel.component.html',
@@ -18,9 +18,9 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
   constructor(public appService: AppService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
-   }
+  }
 
-  ngAfterViewInit () {
+  ngAfterViewInit() {
     this.config = {
       observer: true,
       slidesPerView: 4,
@@ -50,14 +50,17 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
         }
       }
     };
+    setTimeout(() => {
+      imgix.init()
+    }, 1)
   }
 
   public openProductDialog(product) {
     const dialogRef = this.dialog.open(ProductDialogComponent, {
-        data: product,
-        panelClass: 'product-dialog'
+      data: product,
+      panelClass: 'product-dialog'
     });
-    dialogRef.afterClosed().subscribe( p => {
+    dialogRef.afterClosed().subscribe(p => {
       if (p) {
         this.router.navigate([p.permalink]);
       }

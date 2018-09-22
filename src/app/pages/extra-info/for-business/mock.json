@@ -1,0 +1,15 @@
+{
+    "data": {
+        "contacts": [
+            {
+                "image": "https://www.plattetv.nl/var/images/cmsimages/knoppen/livechat-button-zakelijk.png"
+            },
+            {
+                "image": "https://www.plattetv.nl/var/images/cmsimages/knoppen/email-button-zakelijk.png"
+            },
+            {
+                "image": "https://www.plattetv.nl/var/images/cmsimages/knoppen/telefoon-button-zakelijk.png"
+            }
+        ]
+    }
+}

@@ -2,6 +2,9 @@ import { Component, OnInit, OnDestroy, ViewChild, HostListener, Input, AfterView
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs/Subscription';
+import { Subject } from 'rxjs/Subject';
+import { debounceTime } from 'rxjs/operators/debounceTime';
+import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -11,6 +14,7 @@ import * as BrandsActions from 'app/store/actions/brands.action';
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product, Category } from '../../app.models';
+declare var imgix: any;
 
 @Component({
   selector: 'app-products',
@@ -29,6 +33,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   categories: Category[] = [];
 
   private Subscriptions: Subscription[];
+
+  priceToChanged = new Subject();
+  priceFromChanged = new Subject();
 
   isFirst = true;
   viewLoaded = false;
@@ -52,7 +59,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   tempBrands = [];
   selectedBrands = [];
   priceFrom = 1;
-  priceTo = 10000;
+  priceTo = 15000;
   colors = [ '#5C6BC0', '#66BB6A', '#EF5350', '#BA68C8', '#FF4081', '#9575CD', '#90CAF9', '#B2DFDB', '#DCE775',
                     '#FFD740', '#00E676', '#FBC02D', '#FF7043', '#F5F5F5', '#000000'];
   selectedColors = [];
@@ -62,11 +69,11 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   totalProducts = 0;
   emptyMessage = '';
 
-  showMoreBrandsType = {
+  showMore = {
     show_more: {
       text: 'Toon meer',
       icon: 'keyboard_arrow_down',
-      count: 10
+      count: 6
     },
     show_less: {
       text: 'Toon minder',
@@ -79,8 +86,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   selectedFilterLists = [];
   tempFilterlist = [];
   popoverFilter: any;
+  priceFilterOrder = 0;
 
-  showMoreBrandsStatus;
+  // showMoreBrandsStatus;
 
   constructor(
     public appService: AppService,
@@ -91,8 +99,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
 
     this.count = this.counts[0];
-    this.sort  = this.sortings[0];
-    this.showMoreBrandsStatus = this.showMoreBrandsType.show_more;
+    this.sort = this.sortings[0];
+    // this.showMoreBrandsStatus = this.showMoreBrandsType.show_more;
 
     if (window.innerWidth < 960) {
       this.sidenavOpen = false;
@@ -103,7 +111,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
     console.log(this.category);
 
-    this.categoryId =  this.category ? this.category.id : 0;
+    this.categoryId = this.category ? this.category.id : 0;
     this.store.dispatch(new BrandsActions.GetBrands(this.categoryId));
     this.findTopCategoryId();
 
@@ -113,10 +121,37 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.filterChanged();
       }),
       this.store.select(state => state.brands).subscribe(res => this.tempBrands = res.manufacturer),
-      this.store.select(state => state.products).subscribe( resp => this.setProducts(resp))
+      this.store.select(state => state.products).subscribe( resp => this.setProducts(resp)),
+      this.priceFromChanged
+        .pipe(
+          debounceTime(1000),
+          distinctUntilChanged()
+        )
+        .subscribe((event: KeyboardEvent) => {
+          if (event.key === 'Enter') {
+            return;
+          }
+          this.priceFrom = event.target['value'];
+          this.filterChanged();
+        }),
+      this.priceToChanged
+        .pipe(
+          debounceTime(1000),
+          distinctUntilChanged()
+        )
+        .subscribe((event: KeyboardEvent) => {
+          if (event.key === 'Enter') {
+            return;
+          }
+          this.priceTo = event.target['value'];
+          this.filterChanged();
+        })
     ];
 
     this.viewType = 'list';
+    setTimeout(() => {
+      imgix.init();
+    }, 1);
   }
 
   ngAfterViewInit() {
@@ -145,15 +180,31 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.category_name = res.category_name;
     this.category_description = res.category_description;
     this.filterLists = res['filterLists'] ? res['filterLists'] : 0;
+    this.filterLists.forEach(filter => {
+      filter['display'] = filter.values.length > 6 ? 'show_more' : 'show_less';
+      filter['display'] = filter.values.some ( f => f.value_checked && filter.values.indexOf(f) > 5 ) ? 'show_less' : filter['display'];
+    });
+
+    const ft = this.filterLists.findIndex(filter => filter.option_name.toLowerCase() === 'beeldformaat');
+
+    if ( ft > -1) {
+      this.priceFilterOrder = ft;
+    } else {
+      this.priceFilterOrder = 0;
+    }
     this.totalProducts = res.total;
     window.scrollTo(0, 0);
     if (!this.products.length) {
       this.emptyMessage = 'De opgegeven zoekopdracht heeft geen resultaten opgeleverd.';
     }
+    setTimeout(() => {
+      imgix.init();
+    }, 1);
   }
 
   initFilter() {
     this.selectedBrands = [];
+    this.selectedFilterLists = [];
     this.priceFrom = 1;
     this.priceTo = 10000;
     this.sort = this.sortings[0];
@@ -237,7 +288,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     const option = this.selectedFilterLists.find(filt => filt.id === optionId);
     if (option) {
       const ind = option.children.indexOf(valueId);
-      if ( ind > -1 ) {
+      if (ind > -1) {
         option.children.splice(ind, 1);
         if (option.children.length === 0) {
           this.selectedFilterLists.splice(this.selectedFilterLists.indexOf(option), 1);
@@ -248,18 +299,22 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     } else {
       this.selectedFilterLists.push({
         id: optionId,
-        children: [ valueId ]
+        children: [valueId]
       });
     }
     console.log(this.selectedFilterLists);
     this.filterChanged();
   }
 
-  changeShowMoreBrands() {
-    this.showMoreBrandsStatus
-      = (this.showMoreBrandsStatus === this.showMoreBrandsType.show_more)
-      ? this.showMoreBrandsType.show_less
-      : this.showMoreBrandsType.show_more;
+  // changeShowMoreBrands() {
+  //   this.showMoreBrandsStatus
+  //     = (this.showMoreBrandsStatus === this.showMoreBrandsType.show_more)
+  //       ? this.showMoreBrandsType.show_less
+  //       : this.showMoreBrandsType.show_more;
+  // }
+
+  changeShowMore(filter) {
+    filter.display = (filter.display === 'show_more') ? 'show_less' : 'show_more';
   }
 
   findTopCategoryId() {
@@ -269,7 +324,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     let parent = this.category;
-    while ( parent.parentId !== 0 ) {
+    while (parent.parentId !== 0) {
       parent = this.categories.find(c => c.id === parent.parentId);
     }
 
