@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-declare var imgix:any;
+declare var imgix: any;
+
 @Component({
   selector: 'app-banners',
   templateUrl: './banners.component.html',

@@ -1,3 +1,23 @@
-<p>
-  for-business works!
-</p>
+<div class="page-learning-center">
+  <div class="top-section page-section">
+    <h1 i18n>FOR BUSINESS</h1>
+    <strong i18n>Business customer? Receive extra advantage!</strong>
+    <div>
+      <p i18n>Are you looking for a total solution for your company? Do you want multiple screens in a meeting room? Looking for the perfect sound system for your restaurant? As a business customer, you will receive additional benefits from us!</p>
+      <p>
+        <ng-container i18n>Contact us via the phone number below or via the Live Chat. Of course you can also send an e-mail to</ng-container>
+        <a href="/"> contact@plattetv.nl </a>.
+        <ng-container i18n> We are happy to explain what we can do for you and how much benefit you will receive!</ng-container>
+      </p>
+    </div>
+    <div class="pt-3" fxLayout fxLayout.xs="column">
+      <a [routerLink]="['']" *ngFor="let contact of contacts" fxFlex>
+        <img [src]="contact.image" alt="Image not arrived">
+      </a>
+    </div>
+  </div>
+
+  <div class="page-section installation">
+
+  </div>
+</div>

@@ -3,66 +3,65 @@
       <img [attr.ix-path]="'images/cmsimages/inruil/2018/inruilweken_actie_header.png'" ix-params='{"auto":"compress"}' alt="Exchange Products">
     </div>
     <div class="introduction">
-      <ng-container>Exchange your old TV or audio during the trade-in weeks and </ng-container>
-      <strong><u>always</u></strong>
-      <ng-container> receive </ng-container>
-      <strong><u>a</u> trade-</strong>
-      <ng-container> in</ng-container>
-      <strong>discount</strong>
-      <ng-container> on one of our </ng-container>
-      <a>selected products</a> .
-      <ng-container> Your trade-in discount can amount to hundreds of euros! Prefer a different product? We are happy to make a nice trade-in price for you.</ng-container>
+      <ng-container i18n>Exchange your old TV or audio during the trade-in weeks and </ng-container>
+      <ng-container i18n>
+        <strong><u>always receive a trade - in</u></strong>
+        <strong> discount</strong>
+      </ng-container>
+      <ng-container i18n> on one of our </ng-container>
+      <a i18n>selected products</a> .
+      <ng-container i18n> Your trade-in discount can amount to hundreds of euros! Prefer a different product? We are happy to make a nice trade-in price for you.</ng-container>
       <br><br>
-      <ng-container>Visit one of our </ng-container>
-      <a><strong>stores</strong></a>
-      <ng-container> or ask for your trade-in discount via the </ng-container>
-      <a><strong>LiveChat</strong></a>
-      <ng-container> and you will receive a response within 30 seconds!  </ng-container>
+      <ng-container i18n>Visit one of our </ng-container>
+      <a><strong i18n>stores</strong></a>
+      <ng-container i18n> or ask for your trade-in discount via the </ng-container>
+      <a><strong i18n>LiveChat</strong></a>
+      <ng-container i18n> and you will receive a response within 30 seconds!  </ng-container>
       <br><br>
-      <ng-container>Or fill out the form below and receive a response within 10 minutes:</ng-container>
+      <ng-container i18n>Or fill out the form below and receive a response within 10 minutes:</ng-container>
     </div>
   
     <form [formGroup]="exchangeForm" (ngSubmit)="formSubmit()">
       <div>
-        <label class="margin-right-20">Salutation:</label>
+        <label class="margin-right-20" i18n>Salutation:</label>
         <mat-radio-group formControlName="salutation">
-          <mat-radio-button value="mr" class="margin-right-20">Mr.</mat-radio-button>
-          <mat-radio-button value="mrs">Ms.</mat-radio-button>
+          <mat-radio-button value="mr" class="margin-right-20" i18n>Mr.</mat-radio-button>
+          <mat-radio-button value="mrs" i18n>Ms.</mat-radio-button>
         </mat-radio-group>
       </div>
   
       <mat-form-field class="w-100 mt-2">
   
-        <input matInput placeholder="Your Name:" formControlName="name" required aria-label="name">
-        <mat-error *ngIf="exchangeForm.controls.name.errors?.required">Your name is required</mat-error>
+        <input matInput placeholder="Your Name:" i18n-placeholder formControlName="name" required aria-label="name">
+        <mat-error *ngIf="exchangeForm.controls.name.errors?.required" i18n>Your name is required</mat-error>
       </mat-form-field>
   
       <mat-form-field class="w-100 mt-2">
-        <input matInput placeholder="E-mail:" formControlName="email" required aria-label="email">
-        <mat-error *ngIf="exchangeForm.controls.email.errors?.required">E-mail is required</mat-error>
+        <input matInput placeholder="E-mail:" i18n-placeholder formControlName="email" required aria-label="email">
+        <mat-error *ngIf="exchangeForm.controls.email.errors?.required" i18n>E-mail is required</mat-error>
       </mat-form-field>
   
-      <mat-checkbox formControlName="allow">Send me exclusive promotions and offers via e-mail.
+      <mat-checkbox formControlName="allow" i18n>Send me exclusive promotions and offers via e-mail.
       </mat-checkbox>
   
       <mat-form-field class="w-100 mt-2">
-        <input matInput placeholder="Phone number:" formControlName="phone" required aria-label="phone">
-        <mat-error *ngIf="exchangeForm.controls.phone.errors?.required">Telephone number is required</mat-error>
+        <input matInput placeholder="Phone number:" i18n-placeholder formControlName="phone" required aria-label="phone">
+        <mat-error *ngIf="exchangeForm.controls.phone.errors?.required" i18n>Telephone number is required</mat-error>
       </mat-form-field>
   
       <mat-form-field class="w-100 mt-2">
-        <input matInput placeholder="Residence:" formControlName="residence" required aria-label="residence">
+        <input matInput placeholder="Residence:" i18n-placeholder formControlName="residence" required aria-label="residence">
       </mat-form-field>
   
       <mat-form-field class="w-100 mt-2">
-        <textarea matInput placeholder="Purchase item (s):"
+        <textarea matInput placeholder="Purchase item (s):" i18n-placeholder
           formControlName="purchase_items" rows="5" aria-label="purchase_items"></textarea>
       </mat-form-field>
 
       <mat-form-field class="w-100 mt-2">
-          <textarea matInput placeholder="Item (s) to be exchanged:"
+          <textarea matInput placeholder="Item (s) to be exchanged:" i18n-placeholder
             formControlName="exchange_items" rows="5" aria-label="exchange_items"></textarea>
         </mat-form-field>
     </form>
-    <button (click)="formSubmit()" class="control-normal" mat-button>Submit <i class="fas fa fa-chevron-circle-right"></i></button>
+    <button (click)="formSubmit()" class="control-normal" mat-button i18n>Submit <i class="fas fa fa-chevron-circle-right"></i></button>
   </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as mock from './mock.json';
 
 @Component({
   selector: 'app-for-business',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForBusinessComponent implements OnInit {
 
+  contacts = [];
+
   constructor() { }
 
   ngOnInit() {
+    this.contacts = mock['data']['contacts'];
   }
 
 }

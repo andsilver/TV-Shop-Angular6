@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../app.service';
 import { Router } from '@angular/router';
 declare var imgix: any;
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -13,9 +14,9 @@ export class CartComponent implements OnInit {
   addCouponForm = false;
   productData: any = [];
   relatedProductData: any = [];
-  cartId: string = '';
-  totalPrice: number = 0;
-  couponCode: string = '';
+  cartId = '';
+  totalPrice = 0;
+  couponCode = '';
   constructor(public appService: AppService, private router: Router) {
     this.cartId = localStorage.getItem('cart_id');
     this.getCartDetails();
@@ -30,9 +31,7 @@ export class CartComponent implements OnInit {
     this.appService.getCartDetails(this.cartId).subscribe((result) => {
       this.productData = result.cart_contents;
       this.totalPrice = this.getTotalPrice(this.productData);
-      setTimeout(() => {
-        imgix.init()
-      }, 1)
+      setTimeout(() => imgix.init(), 1);
     });
   }
 
@@ -66,9 +65,9 @@ export class CartComponent implements OnInit {
   /* 18th sep 2018 */
   public removeFromCart(product) {
     if (product.item_id !== undefined) {
-      let removeProductData: any = { 'cart_item_id': product.item_id, 'cart_id': this.cartId };
+      const removeProductData: any = { 'cart_item_id': product.item_id, 'cart_id': this.cartId };
       this.appService.removeFromCartApi(removeProductData).subscribe((response) => {
-        if (response.cart_remove !== undefined) {
+        if (response['cart_remove'] !== undefined) {
           this.getCartDetails();
           this.getRelatedProduct();
         }
@@ -78,7 +77,7 @@ export class CartComponent implements OnInit {
 
   public verifyCouponCode() {
     if (this.couponCode !== undefined) {
-      let couponCodeData: any = { 'coupon': this.couponCode };
+      const couponCodeData: any = { 'coupon': this.couponCode };
       this.appService.checkCouponCode(couponCodeData).subscribe((response) => {
         if (response.cart_coupon.valid !== undefined && response.cart_coupon.valid) {
           console.log(response, 'coupon code is valid');
@@ -94,7 +93,7 @@ export class CartComponent implements OnInit {
   public getRelatedProduct() {
     if (this.cartId !== undefined) {
       this.appService.getRelatedProduct(this.cartId).subscribe((result) => {
-        this.relatedProductData = result.cart_related_product;
+        this.relatedProductData = result['cart_related_product'];
         console.log(this.relatedProductData, 'related products');
       });
     }
@@ -105,13 +104,13 @@ export class CartComponent implements OnInit {
       this.appService.addToCartApi(product).subscribe((response) => {
         this.getCartDetails();
         this.getRelatedProduct();
-        console.log(response, 'add to cart')
+        console.log(response, 'add to cart');
       });
     }
   }
 
   public recalculatePrice(product, item_qty) {
-    if (product.item_id !== undefined && item_qty != undefined) {
+    if (product.item_id !== undefined && item_qty !== undefined) {
       this.appService.recalculatePrice(product, item_qty).subscribe((response) => {
         this.getCartDetails();
         this.getRelatedProduct();
