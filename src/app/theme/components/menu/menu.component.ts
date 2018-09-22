@@ -12,11 +12,9 @@ import { State } from 'app/store';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit, OnChanges {
+export class MenuComponent implements OnInit {
 
-  @Input()
   allCategories: Category[];
-
   categories: Category[];
   parentCategory: Category;
   selectedCategoryId = 0;
@@ -29,12 +27,12 @@ export class MenuComponent implements OnInit, OnChanges {
     this.subscriptions = [
       this.store.select(state => state.category).subscribe( data => {
         this.selectedCategoryId = data.category ? data.category.id : 0;
+      }),
+      this.store.select(state => state.categories).subscribe( data => {
+        this.allCategories = data.categories;
+        this.categories = this.allCategories.filter( c => c.parentId === 0 );
       })
     ];
-  }
-
-  ngOnChanges() {
-    this.categories = this.allCategories.filter( c => c.parentId === 0 );
   }
 
   // openMegaMenu() {
