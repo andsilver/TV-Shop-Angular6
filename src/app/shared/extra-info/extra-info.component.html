@@ -29,14 +29,14 @@
         <mat-card-content>
             <div *ngFor="let store of stores" class="branch_opening_hours_box">
                 <div class="branch_img">
-                    <a [routerLink]="[store.link]">
+                    <a [routerLink]="store.link">
                         <img [attr.ix-path]="store.img" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw">
                     </a>
                 </div>
                 <div class="branch_opening_hours">
-                    <div class="adbox_opening_times city_name"><a [routerLink]="[store.link]"> <strong>{{store.name}}</strong> </a></div>
-                    <div class="adbox_opening_times"><a [routerLink]="[store.link]" i18n>Open today</a></div>
-                    <div class="adbox_opening_times"><a [routerLink]="[store.link]" i18n>till 21:00</a></div>
+                    <div class="adbox_opening_times city_name"><a [routerLink]="store.link"> <strong>{{store.name}}</strong> </a></div>
+                    <div class="adbox_opening_times"><a [routerLink]="store.link" i18n>Open today</a></div>
+                    <div class="adbox_opening_times"><a [routerLink]="store.link" i18n>till 21:00</a></div>
                 </div>
                 <div class="image_overlay" *ngIf="store.new"><a href="extrainfo/winkel-eindhoven-9.html" i18n>new!</a></div>
             </div>
@@ -62,7 +62,7 @@
         <mat-card-content>
             <div class="extra_open_hours_box">
                 <div class="special_open_time"><span i18n>SUNDAY 2 SEP</span></div>
-                <div class="city_open_time" *ngFor="let store of stores"><a  [routerLink]="[store.link]">{{store.name}}</a></div>
+                <div class="city_open_time" *ngFor="let store of stores"><a  [routerLink]="store.link">{{store.name}}</a></div>
             </div>
             <div class="city_open_time" class="text-center"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#winkels" i18n>open from 12:00 till 17:00</a></div>
         </mat-card-content>
