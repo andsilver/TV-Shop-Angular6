@@ -30,8 +30,8 @@
     "xliffmerge": "xliffmerge --profile xliffmerge.json nl",
     "postbuild:dev": "scp -r dist/en/. root@deb1.bvb.vg:/var/www/plattetv.bvb.media/web/",
     "postbuild:dev:nl": "scp -r dist/nl/. root@deb1.bvb.vg:/var/www/plattetv.bvb.media/web/",
-    "postbuild:prod": "scp -r dist/en/. root@ct2node2.bvb.vg:/var/www/plattetvnl.ct2node2.bvb.vg/web/",
-    "postbuild:prod:nl": "scp -r dist/nl/. root@ct2node2.bvb.vg:/var/www/plattetvnl.ct2node2.bvb.vg/web/",
+    "postbuild:prod": "scp -r dist/en/. root@ct1node1.retailenclicks.nl:/var/www/plattetvnl.ct1node1.retailenclicks.nl/web/",
+    "postbuild:prod:nl": "scp -r dist/nl/. root@ct1node1.retailenclicks.nl:/var/www/plattetvnl.ct1node1.retailenclicks.nl/web/",
     "generate-debug-report": "ng build --prod --build-optimizer --aot --named-chunks --stats-json && gulp && sw-precache --root=dist/en --config=precache-config.js",
     "view-debug-report": "webpack-bundle-analyzer dist/stats.json"
   },

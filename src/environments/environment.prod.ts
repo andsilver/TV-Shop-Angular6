@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api-plattetvnl.ct2node2.bvb.vg'
+  apiUrl: 'https://api-plattetvnl.ct1node1.retailenclicks.nl'
 };
