@@ -1,3 +1,14 @@
+@import "../theme/styles/variables";
+
+.theme-container{
+    max-width: $theme-max-width;
+    margin: 0 auto;
+}
+
+.main.theme-container {
+    background-color: #fff;
+}
+
 .theme-container.wrapper{
     
     .main{
@@ -24,26 +35,7 @@
             max-width: 400px;
             padding: 6px 14px;
             font-size: 13px;
-            .mat-list{
-                padding: 0;
-                .mat-list-item{
-                    .mat-list-item-content{
-                        padding: 0;
-                        img{
-                            width: 70px;
-                            margin-left: 10px;
-                        }
-                    }
-                    .mat-list-text>*{
-                        font-size: 14px;
-                        font-weight: 500;
-                    }
-                    .mat-line:nth-child(n+2){
-                        font-size: 13px;
-                        font-weight: 400;
-                    }
-                }
-            }
+            
             .cart-dropdown-footer{
                 font-size: 14px;
         

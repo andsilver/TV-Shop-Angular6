@@ -33,7 +33,7 @@
     "postbuild:prod": "scp -r dist/en/. root@ct1node1.retailenclicks.nl:/var/www/plattetvnl.ct1node1.retailenclicks.nl/web/",
     "postbuild:prod:nl": "scp -r dist/nl/. root@ct1node1.retailenclicks.nl:/var/www/plattetvnl.ct1node1.retailenclicks.nl/web/",
     "generate-debug-report": "ng build --prod --build-optimizer --aot --named-chunks --stats-json && gulp && sw-precache --root=dist/en --config=precache-config.js",
-    "view-debug-report": "webpack-bundle-analyzer dist/stats.json"
+    "view-debug-report": "webpack-bundle-analyzer dist/nl/stats.json"
   },
   "private": true,
   "dependencies": {
@@ -68,7 +68,6 @@
     "ngx-lazy-load-images": "^1.3.1",
     "ngx-pagination": "3.1.1",
     "ngx-perfect-scrollbar": "6.1.0",
-    "ngx-spinner": "6.0.0",
     "ngx-swiper-wrapper": "6.2.1",
     "rxjs": "6.2.0",
     "rxjs-compat": "6.2.0",

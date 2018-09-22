@@ -59,10 +59,7 @@ a:focus {
 .wrapper > .mat-drawer-content {
     overflow: visible!important;
 }
-.theme-container{
-    max-width: $theme-max-width;
-    margin: 0 auto;
-}
+
 app-root .app.dark .mat-drawer-container {
     overflow: visible!important;
     background-color: transparent;
@@ -74,9 +71,6 @@ app-root .app.dark .mat-drawer-container::after {
     content: "";
 }
 
-.main.theme-container {
-    background-color: #fff;
-}
 .mat-toolbar-row, .mat-toolbar-single-row {
     padding-left: 0;
     padding-right: 0;
@@ -115,8 +109,7 @@ app-root .app.dark .mat-drawer-container::after {
     vertical-align: middle;
 }
 .mat-icon-button .mat-icon.mat-icon-sm,
-.mat-icon.mat-icon-sm,
-.mat-nav-list .mat-list-item .mat-list-icon.mat-icon-sm{
+.mat-icon.mat-icon-sm {
     font-size: 18px;
     line-height: 18px;
     height: 18px;
@@ -149,9 +142,6 @@ app-root .app.dark .mat-drawer-container::after {
 }
 .mat-button-wrapper{
     pointer-events: none;
-}
-.mat-list.reviews .mat-list-item .mat-list-item-content{
-    align-items: start;
 }
 .mat-step-text-label{
     text-transform: uppercase;
@@ -905,11 +895,6 @@ footer .mat-toolbar.usp-list {
             left: 10px;
             font-weight: 400;
         }
-        .mat-chip-list{
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-        }
     }
 }
 
@@ -934,14 +919,6 @@ button.swipe-arrow{
 /******* Product *******/
 .product-item{
     position: relative;
-    .mat-chip-list{
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        &.list-view{
-            left: 10px;
-        }
-    }
     .image-link{
         display: -ms-flexbox!important;
         display: flex!important;
