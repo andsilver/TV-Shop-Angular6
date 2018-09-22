@@ -41,7 +41,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   viewLoaded = false;
   keyword: string;
   sidenavOpen = true;
-  viewType = 'grid';
   viewCol = 25;
   counts = [12, 24, 36];
   count = 12;
@@ -112,7 +111,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log(this.category);
 
     this.categoryId = this.category ? this.category.id : 0;
-    this.store.dispatch(new BrandsActions.GetBrands(this.categoryId));
     this.findTopCategoryId();
 
     this.Subscriptions = [
@@ -120,7 +118,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.keyword = res.keyword;
         this.filterChanged();
       }),
-      this.store.select(state => state.brands).subscribe(res => this.tempBrands = res.manufacturer),
       this.store.select(state => state.products).subscribe( resp => this.setProducts(resp)),
       this.priceFromChanged
         .pipe(
@@ -148,7 +145,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         })
     ];
 
-    this.viewType = 'list';
     setTimeout(() => {
       imgix.init();
     }, 1);
@@ -173,13 +169,13 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       return;
     } else {
       this.viewLoaded = true;
-      this.brands = this.tempBrands;
     }
 
     this.products = res.products;
     this.category_name = res.category_name;
     this.category_description = res.category_description;
-    this.filterLists = res['filterLists'] ? res['filterLists'] : 0;
+    this.brands = res['filterLists'] ? res['filterLists']['manufacturers'] : [];
+    this.filterLists = res['filterLists'] ? res['filterLists']['options'] : [];
     this.filterLists.forEach(filter => {
       filter['display'] = filter.values.length > 6 ? 'show_more' : 'show_less';
       filter['display'] = filter.values.some ( f => f.value_checked && filter.values.indexOf(f) > 5 ) ? 'show_less' : filter['display'];
@@ -247,12 +243,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.filterChanged();
   }
 
-  changeViewType(viewType, viewCol) {
-    this.viewType = viewType;
-    this.viewCol = viewCol;
-    localStorage.setItem('viewType', viewType);
-  }
-
   openProductDialog(product) {
     const dialogRef = this.dialog.open(ProductDialogComponent, {
       data: product,
@@ -305,13 +295,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log(this.selectedFilterLists);
     this.filterChanged();
   }
-
-  // changeShowMoreBrands() {
-  //   this.showMoreBrandsStatus
-  //     = (this.showMoreBrandsStatus === this.showMoreBrandsType.show_more)
-  //       ? this.showMoreBrandsType.show_less
-  //       : this.showMoreBrandsType.show_more;
-  // }
 
   changeShowMore(filter) {
     filter.display = (filter.display === 'show_more') ? 'show_less' : 'show_more';
