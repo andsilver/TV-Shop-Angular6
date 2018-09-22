@@ -250,3 +250,13 @@ h2.product-detail-title,
         }
     }
 }
+
+.new-stock-info-wrapper { margin-top: 1rem; margin-bottom: 1rem; }
+.new-stock-info-wrapper .new-stock-info-bezorg { margin-bottom:10px; }
+.new-stock-info-wrapper .new-stock-info-winkel { overflow:hidden; }
+.new-stock-info-wrapper .new-stock-info-winkel .winkel-branch-city-stock { float:left; width:50%; font-size:12px; }
+.new-stock-info-wrapper .new-stock-info-winkel .winkel-branch-city-stock a { text-decoration:none; }
+.new-stock-info-wrapper .new-stock-info-winkel .winkel-branch-city-stock a:hover { text-decoration:underline; }
+
+.new-stock-info-wrapper .bezorg-title,
+.new-stock-info-wrapper .new-stock-info-winkel .winkel-title { font-weight:bold; color:#212226; padding-bottom:2px; }
