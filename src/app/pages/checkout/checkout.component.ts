@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { AppService } from '../../app.service';
+import * as data from './countries.json';
 
 @Component({
   selector: 'app-checkout',
@@ -26,10 +27,13 @@ export class CheckoutComponent implements OnInit {
     this.appService.Data.cartList.forEach(product => {
       this.grandTotal += product.newPrice;
     });
-    this.countries = this.appService.getCountries();
-    this.months = this.appService.getMonths();
-    this.years = this.appService.getYears();
-    this.deliveryMethods = this.appService.getDeliveryMethods();
+    this.countries = data['countries'];
+    this.months = data['months'];
+    this.years = data['years'];
+    this.deliveryMethods = [
+        { value: 'free', name: 'Gratis levering via PostNL', desc: '$0.00 / Vandaag besteld, morgen in huis' },
+        { value: 'express', name: 'Spoedlevering via PostNL', desc: '$29.99 / Vandaag besteld, dezelfde dag bezorgd' }
+    ];
     this.billingForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],

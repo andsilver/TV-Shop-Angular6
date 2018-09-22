@@ -12,8 +12,8 @@ import { SidenavMenu } from '../theme/components/sidenav-menu/sidenav-menu.model
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
-import * as KeywordActions from 'app/store/actions/keyword.action';
-import * as CategoriesActions from 'app/store/actions/categories.action';
+import { SetKeyword } from 'app/store/actions/keyword.action';
+import { SuccessGetCategories } from 'app/store/actions/categories.action';
 
 @Component({
   selector: 'app-pages',
@@ -50,7 +50,7 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
       this.appService.getCategories().subscribe(res => {
         this.categories = res;
         this.category = res[0];
-        this.store.dispatch(new CategoriesActions.SuccessGetCategories(res));
+        this.store.dispatch(new SuccessGetCategories(res));
         this.sidenavMenuItems = this.categories.map(c =>
             new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
       })
@@ -125,7 +125,7 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!this.categories.some(c => c.permalink === `${this.router.url}/`)) {
       this.router.navigate(['/products']);
     }
-    this.store.dispatch(new KeywordActions.SetKeyword(this.keyword));
+    this.store.dispatch(new SetKeyword(this.keyword));
   }
 
   clear() {

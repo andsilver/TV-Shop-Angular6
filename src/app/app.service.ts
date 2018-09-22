@@ -7,9 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Category, Product, Products } from './app.models';
 import { AddedToCartPopupComponent } from 'app/shared/added-to-cart-popup/added-to-cart-popup.component';
 
-import * as countries from 'assets/data/countries.json';
 import { map } from 'rxjs/operators';
-import { environment } from 'environments/environment';
 
 export class Data {
     constructor(
@@ -41,37 +39,29 @@ export class AppService {
         return this.http.get<Category[]>('/categories', { params: params });
     }
 
-    getCategoriesByParentId(parentId, limit: number = 10): Observable<Category[]> {
-        let params = new HttpParams();
-        params = params.append('mode', 'parent');
-        params = params.append('parentId', parentId);
-        params = params.append('limit', `${limit}`);
-        return this.http.get<Category[]>(`/categories`, { params: params });
-    }
+    // getProducts(mode: string, limit: number = 10, page: number = 1): Observable<Products> {
+    //     let params = new HttpParams();
+    //     params = params.append('mode', mode);
+    //     return this.productPagination(limit, page, params);
+    // }
 
-    getProducts(mode: string, limit: number = 10, page: number = 1): Observable<Products> {
-        let params = new HttpParams();
-        params = params.append('mode', mode);
-        return this.productPagination(limit, page, params);
-    }
-
-    getProductsByCategory(categoryId: number, limit: number = 6, page: number = 1) {
-        let params = new HttpParams();
-        params = params.append('mode', 'category');
-        params = params.append('category_id', `${categoryId}`);
-        return this.productPagination(limit, page, params);
-    }
+    // getProductsByCategory(categoryId: number, limit: number = 6, page: number = 1) {
+    //     let params = new HttpParams();
+    //     params = params.append('mode', 'category');
+    //     params = params.append('category_id', `${categoryId}`);
+    //     return this.productPagination(limit, page, params);
+    // }
 
     getProductsByFilter(filter: any): Observable<Products> {
         return this.http.post<Products>('/products/search', filter);
     }
 
-    getProductsByBrand(brand: string, limit: number = 6, page: number = 1) {
-        let params = new HttpParams();
-        params = params.append('mode', 'brand');
-        params = params.append('brands_name', brand);
-        return this.productPagination(limit, page, params);
-    }
+    // getProductsByBrand(brand: string, limit: number = 6, page: number = 1) {
+    //     let params = new HttpParams();
+    //     params = params.append('mode', 'brand');
+    //     params = params.append('brands_name', brand);
+    //     return this.productPagination(limit, page, params);
+    // }
 
     productPagination(limit, page, params): Observable<Products> {
         params = params.append('limit', `${limit}`);
@@ -80,13 +70,13 @@ export class AppService {
     }
 
 
-    getProduct(id, categoryId) {
-        return this.http.post<any>(`/products/listing`, { categoryId: categoryId });
-    }
+    // getProduct(id, categoryId) {
+    //     return this.http.post<any>(`/products/listing`, { categoryId: categoryId });
+    // }
 
-    getProductById(id): Observable<Product> {
-        return this.http.get<Product>(`/products/${id}/detail`);
-    }
+    // getProductById(id): Observable<Product> {
+    //     return this.http.get<Product>(`/products/${id}/detail`);
+    // }
 
     getProdcutByPermallink(permalink: string, categoryId: number = null): Observable<Product> {
         let param = new HttpParams();
@@ -115,16 +105,8 @@ export class AppService {
         return this.http.get<any>('/getStores');
     }
 
-    getStoreById(id: number) {
-        return this.http.get<any>(`/getStores/${id}`);
-    }
-
     getStoreByName(name: string): Observable<any> {
         return this.http.get<any>(`/getStoreByName/${name}`);
-    }
-
-    _getUserById(id): Observable<any> {
-        return this.http.get<any>(`/users/${id}/info`);
     }
 
     // ---------------------------------------------------------------------------------------
@@ -251,37 +233,4 @@ export class AppService {
         }
         // console.log(this.Data.totalPrice);
     }
-
-    getCountries() {
-        return countries['countries'];
-    }
-
-    getMonths() {
-        return [
-            { value: '01', name: 'January' },
-            { value: '02', name: 'February' },
-            { value: '03', name: 'March' },
-            { value: '04', name: 'April' },
-            { value: '05', name: 'May' },
-            { value: '06', name: 'June' },
-            { value: '07', name: 'July' },
-            { value: '08', name: 'August' },
-            { value: '09', name: 'September' },
-            { value: '10', name: 'October' },
-            { value: '11', name: 'November' },
-            { value: '12', name: 'December' }
-        ];
-    }
-
-    getYears() {
-        return ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'];
-    }
-
-    getDeliveryMethods() {
-        return [
-            { value: 'free', name: 'Gratis levering via PostNL', desc: '$0.00 / Vandaag besteld, morgen in huis' },
-            { value: 'express', name: 'Spoedlevering via PostNL', desc: '$29.99 / Vandaag besteld, dezelfde dag bezorgd' }
-        ];
-    }
-
 }

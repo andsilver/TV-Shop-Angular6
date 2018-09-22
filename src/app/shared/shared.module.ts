@@ -4,39 +4,23 @@ import { RouterModule } from '@angular/router';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
-import {
-        //  MatAutocompleteModule,
-         MatButtonModule,
-         MatButtonToggleModule,
-         MatCardModule,
-         MatCheckboxModule,
-         MatChipsModule,
-        //  MatDatepickerModule,
-         MatDialogModule,
-         MatExpansionModule,
-        //  MatGridListModule,
-         MatIconModule,
-         MatInputModule,
-         MatListModule,
-         MatMenuModule,
-        //  MatNativeDateModule,
-        //  MatPaginatorModule,
-        //  MatProgressBarModule,
-        //  MatProgressSpinnerModule,
-         MatRadioModule,
-        //  MatRippleModule,
-         MatSelectModule,
-         MatSidenavModule,
-        //  MatSliderModule,
-        //  MatSlideToggleModule,
-         MatSnackBarModule,
-        //  MatSortModule,
-         MatTableModule,
-         MatTabsModule,
-         MatToolbarModule,
-         MatTooltipModule,
-         MatStepperModule
-} from '@angular/material';
+
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -72,37 +56,22 @@ import { DescriptionPopoverComponent } from './description-popover/description-p
     FormsModule,
     SwiperModule,
     FlexLayoutModule,
-    // MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
-    MatChipsModule,
-    // MatDatepickerModule,
     MatDialogModule,
+    MatDividerModule,
     MatExpansionModule,
-    // MatGridListModule,
     MatIconModule,
     MatInputModule,
-    MatListModule,
     MatMenuModule,
-    // MatNativeDateModule,
-    // MatPaginatorModule,
-    // MatProgressBarModule,
-    // MatProgressSpinnerModule,
     MatRadioModule,
-    // MatRippleModule,
     MatSelectModule,
     MatSidenavModule,
-    // MatSliderModule,
-    // MatSlideToggleModule,
     MatSnackBarModule,
-    // MatSortModule,
-    MatTableModule,
-    MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatStepperModule,
     PerfectScrollbarModule,
     PipesModule,
     AgmCoreModule.forRoot({
@@ -115,37 +84,22 @@ import { DescriptionPopoverComponent } from './description-popover/description-p
     SwiperModule,
     FormsModule,
     FlexLayoutModule,
-    // MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
-    MatChipsModule,
-    // MatDatepickerModule,
     MatDialogModule,
+    MatDividerModule,
     MatExpansionModule,
-    // MatGridListModule,
     MatIconModule,
     MatInputModule,
-    MatListModule,
     MatMenuModule,
-    // MatNativeDateModule,
-    // MatPaginatorModule,
-    // MatProgressBarModule,
-    // MatProgressSpinnerModule,
     MatRadioModule,
-    // MatRippleModule,
     MatSelectModule,
     MatSidenavModule,
-    // MatSliderModule,
-    // MatSlideToggleModule,
     MatSnackBarModule,
-    // MatSortModule,
-    MatTableModule,
-    MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatStepperModule,
     PerfectScrollbarModule,
     PipesModule,
     RatingComponent,

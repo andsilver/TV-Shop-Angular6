@@ -4,8 +4,6 @@ import { ModuleWithProviders } from '@angular/core';
 import { PagesComponent } from './pages/pages.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
-// import { InitStateService } from './services';
-
 export const routes: Routes = [
     {
         path: '404',
@@ -14,7 +12,6 @@ export const routes: Routes = [
     {
         path: '',
         component: PagesComponent,
-        // resolve: { data: InitStateService },
         children: [
             { path: '', loadChildren: 'app/pages/home/home.module#HomeModule' },
             { path: 'cart', loadChildren: 'app/pages/cart/cart.module#CartModule'},

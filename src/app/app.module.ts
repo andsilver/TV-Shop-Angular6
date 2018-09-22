@@ -5,8 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
-import { NgxSpinnerModule } from 'ngx-spinner';
-
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
@@ -40,7 +38,6 @@ import { environment } from '../environments/environment';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgxSpinnerModule,
     SharedModule,
     routing,
     StoreModule.forRoot(reducers, { metaReducers }),
