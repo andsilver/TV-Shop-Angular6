@@ -5,7 +5,7 @@ declare var imgix: any;
 
 @Component({
   selector: 'app-root',
-  template: `<div id="app" class="h-100 app" [ngClass]="settings.theme">
+  template: `<div id="app" class="h-100 app" [ngClass]="settings.theme" lazy-load-images>
                <router-outlet></router-outlet>
             </div>`
 })
