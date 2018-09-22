@@ -32,20 +32,19 @@
             </div>
             <div fxFlex="90" fxLayout="column" class="main-header-right">
                 <ul *ngIf="windowSize == 'gt-md'" fxFlex fxLayout="row" fxlayoutalign="space-between center" id="links_city">
-                    <li class="links_city_amsterdam"><a href="/extrainfo/winkel-amsterdam-6.html"><span class="link_city_top" i18n>Amsterdam</span><span class="link_city_bottom" i18n>020 226 5700</span></a></li>
+                    <li class="links_city_amsterdam"><a [routerLink]="['/stores', 'amsterdam']"><span class="link_city_top" i18n>Amsterdam</span><span class="link_city_bottom" i18n>020 226 5700</span></a></li>
                     <li class="links_city_separator"></li>
-                    <li class="links_city_arnhem"><a href="/extrainfo/winkel-arnhem-1.html"><span class="link_city_top" i18n>Arnhem</span><span class="link_city_bottom" i18n>026 845 4658</span></a></li>
-
+                    <li class="links_city_arnhem"><a [routerLink]="['/stores', 'arnhem']"><span class="link_city_top" i18n>Arnhem</span><span class="link_city_bottom" i18n>026 845 4658</span></a></li>
                     <li class="links_city_separator"></li>
-                    <li class="links_city_breda"><a href="/extrainfo/winkel-breda-3.html"><span class="link_city_top" i18n>Breda</span><span class="link_city_bottom" i18n>076 711 2848</span></a></li>
+                    <li class="links_city_breda"><a [routerLink]="['/stores', 'breda']"><span class="link_city_top" i18n>Breda</span><span class="link_city_bottom" i18n>076 711 2848</span></a></li>
                     <li class="links_city_separator"></li>
-                    <li class="links_city_doetinchem"><a href="/extrainfo/winkel-doetinchem-4.html"><span class="link_city_top" i18n>Doetinchem</span><span class="link_city_bottom" i18n>0314 711 112</span></a></li>
+                    <li class="links_city_doetinchem"><a [routerLink]="['/stores', 'doetinchem']"><span class="link_city_top" i18n>Doetinchem</span><span class="link_city_bottom" i18n>0314 711 112</span></a></li>
                     <li class="links_city_separator"></li>
-                    <li class="links_city_eindhoven"><a href="/extrainfo/winkel-eindhoven-9.html"><span class="link_city_top" i18n>Eindhoven</span><span class="link_city_bottom" i18n>040 200 11 22</span></a></li>
+                    <li class="links_city_eindhoven"><a [routerLink]="['/stores', 'eindhoven']"><span class="link_city_top" i18n>Eindhoven</span><span class="link_city_bottom" i18n>040 200 11 22</span></a></li>
                     <li class="links_city_separator"></li>
-                    <li class="links_city_nijmegen"><a href="/extrainfo/winkel-nijmegen-2.html"><span class="link_city_top" i18n>Nijmegen</span><span class="link_city_bottom" i18n>024 323 0116</span></a></li>
+                    <li class="links_city_nijmegen"><a [routerLink]="['/stores', 'nijmegen']"><span class="link_city_top" i18n>Nijmegen</span><span class="link_city_bottom" i18n>024 323 0116</span></a></li>
                     <li class="links_city_separator"></li>
-                    <li class="links_city_utrecht"><a href="/extrainfo/winkel-utrecht-14.html"><span class="link_city_top" i18n>Utrecht</span><span class="link_city_bottom" i18n>030 310 1045</span></a></li>
+                    <li class="links_city_utrecht"><a [routerLink]="['/stores', 'utrecht']"><span class="link_city_top" i18n>Utrecht</span><span class="link_city_bottom" i18n>030 310 1045</span></a></li>
                 </ul>
                 <div fxFlex fxLayout="row nowrap" fxFlexOffset.gt-sm="0" class="main-header-sub">
                     <button *ngIf="windowSize == 'lt-md'" mat-button (click)="sidenav.toggle();sidenavOpened = !sidenavOpened;" class="sidenav-toggle" aria-label="sidenav-toggle">

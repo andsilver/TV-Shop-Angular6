@@ -90,10 +90,10 @@
         </mat-accordion>
 
     </mat-sidenav>
-    <mat-sidenav-content class="all-products" ngClass.gt-sm="p-left">
-        <div fxLayout fxLayoutAlign="end start" fxLayoutGap="10px">
-            <div fxFlex="100" fxFlex.gt-md="74">
-                <div>
+    <mat-sidenav-content class="all-products">
+        <div fxLayout fxLayoutAlign="end start">
+            <div fxFlex="100" fxFlex.gt-md="76" ngClass.gt-sm="px-3">
+                <div *ngIf="category_description" class="pb-3">
                     <h1>{{category_name}}</h1>
                     <p [innerHTML]="category_description | htmlSanitize"></p>
                 </div>
