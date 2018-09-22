@@ -1,114 +1,109 @@
-<div fxLayout="column" class="misc-bar m-0">
-    <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
-        <mat-card class="shopping-cart">
-          <mat-card-title>
-              <h4 i18n><a [routerLink]="['/cart']">Your shopping cart <i class="fa fa-shopping-cart"></i></a></h4>
-          </mat-card-title>
-          <mat-card-content *ngIf="appService.Data.totalPrice > 0">
-              <div class="shopping-cart-items">
-                  <div *ngFor="let item of appService.Data.cartList">
-                      <span>{{item.quantity}} x </span>{{item.name}}
-                  </div>
-              </div>
-              <div class="shopping-cart-sub-total">
-                  <div fxLayout fxLayoutAlign="space-between start">
-                      <strong i18n>Subtotal:</strong>
-                      <strong>{{appService.Data.totalPrice | customCurrency}}</strong>
-                  </div>
-                  <div>
-                      <a [routerLink]="['/cart']" i18n><i class="fa fa-caret-right"></i> View your shopping cart</a>
-                  </div>
-                  <button mat-button class="btn btn-checkout" [routerLink]="['/checkout']">
-                      <span i18n>Ordering </span>
-                      <i class="fa fa-chevron-circle-right"></i>
-                  </button>
-              </div>
-          </mat-card-content>
-        </mat-card>
-        <mat-card class="branch-office">
-            <mat-card-title><h4 i18n>Our stores</h4></mat-card-title>
-            <mat-card-content>
-                <div class="branch_opening_hours_box">
-                    <div class="branch_img"><a [routerLink]="['/stores/amsterdam']"><img [attr.ix-path]="'store_images/amsterdam.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
-                    <div class="branch_opening_hours">
-                        <div class="adbox_opening_times city_name"><a [routerLink]="['/stores/amsterdam']"> <strong i18n>Amsterdam</strong> </a></div>
-                        <div class="adbox_opening_times"><a [routerLink]="['/stores/amsterdam']" i18n>Open today</a></div>
-                        <div class="adbox_opening_times"><a [routerLink]="['/stores/amsterdam']" i18n>till 21:00</a></div>
-                    </div>
+<div class="misc-bar m-0">
+    <mat-card class="shopping-cart">
+        <mat-card-title>
+            <h4 i18n><a [routerLink]="['/cart']">Your shopping cart <i class="fa fa-shopping-cart"></i></a></h4>
+        </mat-card-title>
+        <mat-card-content *ngIf="appService.Data.totalPrice > 0">
+            <div class="shopping-cart-items">
+                <div *ngFor="let item of appService.Data.cartList">
+                    <span>{{item.quantity}} x </span>{{item.name}}
                 </div>
-                <div class="branch_opening_hours_box">
-                    <div class="branch_img"><a  [routerLink]="['/stores/arnhem']"><img [attr.ix-path]="'store_images/arnhem.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
-                    <div class="branch_opening_hours">
-                        <div class="adbox_opening_times city_name"><a Utrecht> <strong i18n>Arnhem</strong> </a></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/arnhem']" i18n>Open today</a></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/arnhem']" i18n>till 21:00</a></div>
-                    </div>
+            </div>
+            <div class="shopping-cart-sub-total">
+                <div fxLayout fxLayoutAlign="space-between start">
+                    <strong i18n>Subtotal:</strong>
+                    <strong>{{appService.Data.totalPrice | customCurrency}}</strong>
                 </div>
-                <div class="branch_opening_hours_box">
-                    <div class="branch_img"><a  [routerLink]="['/stores/breda']"><img [attr.ix-path]="'store_images/breda.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
-                    <div class="branch_opening_hours"><div class="adbox_opening_times city_name"><a  [routerLink]="['/stores/breda']"> <strong i18n>Breda</strong> </a></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/breda']" i18n>Open today</a></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/breda']" i18n>till 21:00</a></div>
-                    </div>
+                <div>
+                    <a [routerLink]="['/cart']" i18n><i class="fa fa-caret-right"></i> View your shopping cart</a>
                 </div>
-                <div class="branch_opening_hours_box">
-                    <div class="branch_img"><a  [routerLink]="['/stores/doesburg']"><img [attr.ix-path]="'store_images/doesburg.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
-                    <div class="branch_opening_hours">
-                        <div class="adbox_opening_times city_name"><a  [routerLink]="['/stores/doesburg']"> <strong i18n>Doesburg</strong> </a></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/doesburg']" i18n>Open today</a></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/doesburg']" i18n>till 21:00</a></div>
-                    </div>
+                <button mat-button class="btn btn-checkout" [routerLink]="['/checkout']">
+                    <span i18n>Ordering </span>
+                    <i class="fa fa-chevron-circle-right"></i>
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="branch-office">
+        <mat-card-title><h4 i18n>Our stores</h4></mat-card-title>
+        <mat-card-content>
+            <div class="branch_opening_hours_box">
+                <div class="branch_img"><a [routerLink]="['/stores/amsterdam']"><img [attr.ix-path]="'store_images/amsterdam.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
+                <div class="branch_opening_hours">
+                    <div class="adbox_opening_times city_name"><a [routerLink]="['/stores/amsterdam']"> <strong i18n>Amsterdam</strong> </a></div>
+                    <div class="adbox_opening_times"><a [routerLink]="['/stores/amsterdam']" i18n>Open today</a></div>
+                    <div class="adbox_opening_times"><a [routerLink]="['/stores/amsterdam']" i18n>till 21:00</a></div>
                 </div>
-                <div class="branch_opening_hours_box">
-                    <div class="branch_img"><a  [routerLink]="['/stores/doetinchem']"><img [attr.ix-path]="'store_images/doetinchem.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
-                    <div class="branch_opening_hours">
-                        <div class="adbox_opening_times city_name"><a  [routerLink]="['/stores/doetinchem']"> <strong i18n>Doetinchem</strong> </a></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/doetinchem']" i18n>Open today</a></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/doetinchem']" i18n>till 21:00</a></div></div>
+            </div>
+            <div class="branch_opening_hours_box">
+                <div class="branch_img"><a  [routerLink]="['/stores/arnhem']"><img [attr.ix-path]="'store_images/arnhem.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
+                <div class="branch_opening_hours">
+                    <div class="adbox_opening_times city_name"><a Utrecht> <strong i18n>Arnhem</strong> </a></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/arnhem']" i18n>Open today</a></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/arnhem']" i18n>till 21:00</a></div>
                 </div>
-                <div class="branch_opening_hours_box">
-                    <div class="branch_img"><a  [routerLink]="['/stores/eindhoven']"><img [attr.ix-path]="'store_images/eindhoven-thumb.jpg'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
-                    <div class="branch_opening_hours">
-                        <div class="adbox_opening_times city_name"><strong><a  [routerLink]="['/stores/eindhoven']" i18n>Eindhoven</a>&nbsp;</strong></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/eindhoven']" i18n>Open today</a></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/eindhoven']" i18n>till 21:00</a></div>
-                    </div>
-                    <div class="image_overlay"><a href="extrainfo/winkel-eindhoven-9.html" i18n>new!</a></div>
+            </div>
+            <div class="branch_opening_hours_box">
+                <div class="branch_img"><a  [routerLink]="['/stores/breda']"><img [attr.ix-path]="'store_images/breda.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
+                <div class="branch_opening_hours"><div class="adbox_opening_times city_name"><a  [routerLink]="['/stores/breda']"> <strong i18n>Breda</strong> </a></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/breda']" i18n>Open today</a></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/breda']" i18n>till 21:00</a></div>
                 </div>
-                <div class="branch_opening_hours_box">
-                    <div class="branch_img"><a  [routerLink]="['/stores/nijmegen']"><img [attr.ix-path]="'store_images/nijmegen.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
-                    <div class="branch_opening_hours"><div class="adbox_opening_times city_name"><a  [routerLink]="['/stores/nijmegen']"> <strong i18n>Nijmegen</strong> </a></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/nijmegen']" i18n>Open today</a></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/nijmegen']" i18n>till 21:00</a></div>
-                    </div>
+            </div>
+            <div class="branch_opening_hours_box">
+                <div class="branch_img"><a  [routerLink]="['/stores/doesburg']"><img [attr.ix-path]="'store_images/doesburg.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
+                <div class="branch_opening_hours">
+                    <div class="adbox_opening_times city_name"><a  [routerLink]="['/stores/doesburg']"> <strong i18n>Doesburg</strong> </a></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/doesburg']" i18n>Open today</a></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/doesburg']" i18n>till 21:00</a></div>
                 </div>
-                <div class="branch_opening_hours_box">
-                    <div class="branch_img"><a  [routerLink]="['/stores/utrecht']"><img [attr.ix-path]="'store_images/PlatteTV_Utrecht_vierkant_Thumbnail_Samsung.jpg'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
-                    <div class="branch_opening_hours">
-                        <div class="adbox_opening_times city_name"><strong><a  [routerLink]="['/stores/utrecht']" i18n>Utrecht</a>&nbsp;</strong></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/utrecht']" i18n>Open today</a></div>
-                        <div class="adbox_opening_times"><a  [routerLink]="['/stores/utrecht']" i18n>till 21:00</a></div>
-                    </div>
+            </div>
+            <div class="branch_opening_hours_box">
+                <div class="branch_img"><a  [routerLink]="['/stores/doetinchem']"><img [attr.ix-path]="'store_images/doetinchem.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
+                <div class="branch_opening_hours">
+                    <div class="adbox_opening_times city_name"><a  [routerLink]="['/stores/doetinchem']"> <strong i18n>Doetinchem</strong> </a></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/doetinchem']" i18n>Open today</a></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/doetinchem']" i18n>till 21:00</a></div></div>
+            </div>
+            <div class="branch_opening_hours_box">
+                <div class="branch_img"><a  [routerLink]="['/stores/eindhoven']"><img [attr.ix-path]="'store_images/eindhoven-thumb.jpg'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
+                <div class="branch_opening_hours">
+                    <div class="adbox_opening_times city_name"><strong><a  [routerLink]="['/stores/eindhoven']" i18n>Eindhoven</a>&nbsp;</strong></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/eindhoven']" i18n>Open today</a></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/eindhoven']" i18n>till 21:00</a></div>
                 </div>
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
-        <mat-card id="advice-and-contact">
-            <mat-card-title>
-                <h4 i18n>ADVICE AND CONTACT</h4>
-            </mat-card-title>
-            <mat-card-content>
-                <div class="adbox_opening_times"><strong> <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>Open today</a> </strong></div>
-                <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>till 21:00 hour</a></div>
-                <div class="contact_box contact_chat_live"><a onclick="LC_API.open_chat_window(); return false;" href="https://www.plattetv.nl/"> <i class="far fa fa-comment"></i><strong i18n>CHAT LIVE</strong> <span i18n>Reply within 30 sec.</span> </a></div>
-                <div class="contact_box contact_form"><a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS"> <i class="far fa fa-envelope"></i><strong i18n>Insert Form</strong> <span i18n>Reply within 10 min.</span> </a></div>
-                <div class="contact_box contact_whatsapp"><a href="https://api.whatsapp.com/send?phone=31633444433"> <i class="fab fa fa-whatsapp"></i><strong i18n>WHATSAPP US</strong> <span i18n>Reply within 30 sec.</span> </a></div>
-                <div class="contact_box contact_bel"><a href="tel:0268454658"> <i class="fas fa fa-phone"></i><strong i18n>CALL 026-84 54 658</strong> <span i18n>Direct reply</span> </a></div>
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
+                <div class="image_overlay"><a href="extrainfo/winkel-eindhoven-9.html" i18n>new!</a></div>
+            </div>
+            <div class="branch_opening_hours_box">
+                <div class="branch_img"><a  [routerLink]="['/stores/nijmegen']"><img [attr.ix-path]="'store_images/nijmegen.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
+                <div class="branch_opening_hours"><div class="adbox_opening_times city_name"><a  [routerLink]="['/stores/nijmegen']"> <strong i18n>Nijmegen</strong> </a></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/nijmegen']" i18n>Open today</a></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/nijmegen']" i18n>till 21:00</a></div>
+                </div>
+            </div>
+            <div class="branch_opening_hours_box">
+                <div class="branch_img"><a  [routerLink]="['/stores/utrecht']"><img [attr.ix-path]="'store_images/PlatteTV_Utrecht_vierkant_Thumbnail_Samsung.jpg'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
+                <div class="branch_opening_hours">
+                    <div class="adbox_opening_times city_name"><strong><a  [routerLink]="['/stores/utrecht']" i18n>Utrecht</a>&nbsp;</strong></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/utrecht']" i18n>Open today</a></div>
+                    <div class="adbox_opening_times"><a  [routerLink]="['/stores/utrecht']" i18n>till 21:00</a></div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card id="advice-and-contact">
+        <mat-card-title>
+            <h4 i18n>ADVICE AND CONTACT</h4>
+        </mat-card-title>
+        <mat-card-content>
+            <div class="adbox_opening_times"><strong> <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>Open today</a> </strong></div>
+            <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>till 21:00 hour</a></div>
+            <div class="contact_box contact_chat_live"><a onclick="LC_API.open_chat_window(); return false;" href="https://www.plattetv.nl/"> <i class="far fa fa-comment"></i><strong i18n>CHAT LIVE</strong> <span i18n>Reply within 30 sec.</span> </a></div>
+            <div class="contact_box contact_form"><a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS"> <i class="far fa fa-envelope"></i><strong i18n>Insert Form</strong> <span i18n>Reply within 10 min.</span> </a></div>
+            <div class="contact_box contact_whatsapp"><a href="https://api.whatsapp.com/send?phone=31633444433"> <i class="fab fa fa-whatsapp"></i><strong i18n>WHATSAPP US</strong> <span i18n>Reply within 30 sec.</span> </a></div>
+            <div class="contact_box contact_bel"><a href="tel:0268454658"> <i class="fas fa fa-phone"></i><strong i18n>CALL 026-84 54 658</strong> <span i18n>Direct reply</span> </a></div>
+        </mat-card-content>
+    </mat-card>
     <mat-card id="extra-open">
         <mat-card-title>
             <h4 i18n>EXTRA OPEN FOR YOU</h4>
@@ -126,8 +121,6 @@
             <div class="city_open_time" class="text-center"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#winkels" i18n>open from 12:00 till 17:00</a></div>
         </mat-card-content>
     </mat-card>
-    </div>
-    <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
     <mat-card id="customer-review">
         <mat-card-title>
             <h4 i18n>CLIENT REVIEWS</h4>
@@ -151,7 +144,5 @@
                 <span class="reviewboox--total-reviews"><a href="https://nl.trustpilot.com/review/www.plattetv.nl" rel="noopener" target="_blank" i18n>889 reviews</a></span>
             </div>
         </mat-card-content>
-    </mat-card>
-    </div>
-  
+    </mat-card>  
   </div>
