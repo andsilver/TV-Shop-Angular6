@@ -1,5 +1,5 @@
 <div fxLayout>
-    <div class="filter-sidenav" fxHide.lt-md>
+    <div class="filter-sidenav" *ngIf="windowSize == 'gt-md'">
         <app-filters-list></app-filters-list>
     </div>
     <div fxFlex="65" fxFlex.lt-md="100" class="px-3">
@@ -47,7 +47,7 @@
         <app-banners [banners]="banners"></app-banners>
     </div>
 
-    <div fxFlex fxHide.lt-md>
+    <div fxFlex *ngIf="windowSize == 'gt-md'">
         <app-extra-info></app-extra-info>
     </div>
 </div>

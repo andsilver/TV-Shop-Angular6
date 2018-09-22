@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
@@ -34,6 +34,8 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   keyword = '';
   searchTerm = new Subject();
 
+  windowSize: string;
+
   private subscriptions: Subscription[] = [];
 
   constructor(public appService: AppService,
@@ -43,6 +45,7 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
     this.subscriptions.push(
       this.appService.getCategories().subscribe(res => {
         this.categories = res;
@@ -93,6 +96,11 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   scrollListener($event) {
     ($event.target['documentElement'].scrollTop > 300) ? this.showBackToTop = true : this.showBackToTop = false;
+  }
+
+  @HostListener('window:resize')
+  public onWindowResize(): void {
+    this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
   }
 
   changeCategory(event) {

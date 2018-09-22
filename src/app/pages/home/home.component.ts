@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { AppService } from '../../app.service';
-import { Product } from '../../app.models';
+// import { Product } from '../../app.models';
 import { AppSettings } from '../../app.settings';
 import { Title } from '@angular/platform-browser';
-import { Subscription } from 'rxjs/Subscription';
+// import { Subscription } from 'rxjs/Subscription';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -47,16 +47,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   ];
 
-  brands = [];
+  // brands = [];
   banners = [];
 
-  subscription: Subscription;
+  // subscription: Subscription;
 
-  featuredProducts: Array<Product>;
-  onSaleProducts: Array<Product>;
-  topRatedProducts: Array<Product>;
-  newArrivalsProducts: Array<Product>;
-  products: Array<Product>;
+  // featuredProducts: Array<Product>;
+  // onSaleProducts: Array<Product>;
+  // topRatedProducts: Array<Product>;
+  // newArrivalsProducts: Array<Product>;
+  // products: Array<Product>;
+
+  windowSize: string;
 
 
   constructor(public appService: AppService, private settings: AppSettings, private title: Title, private store: Store<State>) { }
@@ -84,29 +86,36 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.banners = data['banners'];
     this.title.setTitle(this.settings.settings.name);
     this.store.dispatch(new KeywordActions.SetKeyword(''));
+
+    this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
-  onLinkClick(e) {
-    this.getProducts(e.tab.textLabel.toLowerCase());
-  }
+  // onLinkClick(e) {
+  //   this.getProducts(e.tab.textLabel.toLowerCase());
+  // }
 
-  getProducts(type) {
-    // if (type === 'featured') {
-    //   this.products = this.featuredProducts;
-    // }
-    if (type === 'aanbiedingen') {
-      this.products = this.onSaleProducts;
-    }
-    if (type === 'best beoordeeld') {
-      this.products = this.topRatedProducts;
-    }
-    if (type === 'nieuw') {
-      this.products = this.newArrivalsProducts;
-    }
+  // getProducts(type) {
+  //   // if (type === 'featured') {
+  //   //   this.products = this.featuredProducts;
+  //   // }
+  //   if (type === 'aanbiedingen') {
+  //     this.products = this.onSaleProducts;
+  //   }
+  //   if (type === 'best beoordeeld') {
+  //     this.products = this.topRatedProducts;
+  //   }
+  //   if (type === 'nieuw') {
+  //     this.products = this.newArrivalsProducts;
+  //   }
+  // }
+
+  @HostListener('window:resize')
+  public onWindowResize(): void {
+    this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
   }
 
 }

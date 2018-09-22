@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -12,10 +12,12 @@ import { State } from 'app/store';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnChanges {
+
+  @Input()
+  allCategories: Category[];
 
   categories: Category[];
-  allCategories: Category[];
   parentCategory: Category;
   selectedCategoryId = 0;
 
@@ -25,15 +27,14 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.subscriptions = [
-      this.store.select(state => state.categories).subscribe( data => {
-        this.allCategories = data.categories;
-        this.categories = this.allCategories.filter( c => c.parentId === 0 );
-        console.log(this.categories);
-      }),
       this.store.select(state => state.category).subscribe( data => {
         this.selectedCategoryId = data.category ? data.category.id : 0;
       })
     ];
+  }
+
+  ngOnChanges() {
+    this.categories = this.allCategories.filter( c => c.parentId === 0 );
   }
 
   // openMegaMenu() {

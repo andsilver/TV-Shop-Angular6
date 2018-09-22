@@ -1,4 +1,4 @@
-<div fxLayout="column" class="misc-bar" ngClass.gt-md="m-0">
+<div fxLayout="column" class="misc-bar m-0">
     <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
         <mat-card class="shopping-cart">
           <mat-card-title>
@@ -6,7 +6,7 @@
           </mat-card-title>
           <mat-card-content *ngIf="appService.Data.totalPrice > 0">
               <div class="shopping-cart-items">
-                  <div *ngFor="let item of shopping_items | async">
+                  <div *ngFor="let item of appService.Data.cartList">
                       <span>{{item.quantity}} x </span>{{item.name}}
                   </div>
               </div>
