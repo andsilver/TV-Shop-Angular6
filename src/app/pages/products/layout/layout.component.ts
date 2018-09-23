@@ -47,7 +47,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.store
         .select(state => state.product)
         .subscribe(data => {
-          if (!this.categories.length) {
+          if (!this.loaded) {
             return;
           }
           this.product = data.product;
@@ -78,7 +78,6 @@ export class LayoutComponent implements OnInit, OnDestroy {
               this.store.dispatch( new KeywordActions.SetKeyword(''));
             }
             if (this.category) {
-              // console.log(this.category);
               this.store.dispatch(new CategoryActions.SaveCategory(this.category));
               this.store.dispatch(new ProductActions.RemoveProduct());
               this.store.dispatch(new CrumbpathActions.SaveCrumbPath(this.generateCrumbPath(this.category.crumbPath)));

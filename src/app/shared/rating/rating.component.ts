@@ -9,6 +9,7 @@ export class RatingComponent implements DoCheck {
   @Input() ratingsCount: number;
   @Input() ratingsValue: number;
   @Input() direction: string;
+  @Input() review = null;
   avg: number;
   stars: Array<string>;
   constructor() { }

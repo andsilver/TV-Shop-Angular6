@@ -80,7 +80,6 @@
                             </div> -->
 
                             <div fxLayout="column" class="product-detail-control mb-2">
-                                <!-- <app-controls [product]="product" [type]="'all'"></app-controls> -->
                                 <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)"><ng-container i18n>Add to cart</ng-container> <i class="fas fa fa-shopping-cart"></i></button>
                                 <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
                                 <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
@@ -101,33 +100,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="bezorg-title" i18n>Stock delivery</div>
-                                <div class="new-stock-info-bezorg">
-                                    <div class="bezorg-cms-title">
-                                        <p><a href="#"><i class="fas fa fa-circle"></i><ng-container i18n>Order today, receive tomorrow</ng-container></a></p>
-                                    </div>
-                                </div>
-                                <div class="new-stock-info-winkel">
-                                    <div class="winkel-title" i18n>Stock store</div>
-                                    <div class="r-row r-col-2">
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=amsterdam-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Amsterdam</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=utrecht-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Utrecht</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=breda-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Breda</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=arnhem-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Arnhem</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=doetinchem-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Doetinchem</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=nijmegen-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Nijmegen</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=doesburg-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Doesburg</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=eindhoven-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Eindhoven</span></a></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="divider"></div> 
-
-                            <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted py-1">
-                                <button mat-button><mat-icon>mail_outline</mat-icon> Email to a Friend</button>
-                                <button mat-icon-button><mat-icon>share</mat-icon></button>
-                            </div> --> 
                         </div>
                     </div>
                     <div class="mt-2" fxLayout fxLayout.lt-md="column" fxLayoutAlign="space-between start">
@@ -159,9 +131,28 @@
                                 <div #info_reviews>
                                     <div *ngIf="product?.reviews.length">
                                         <h2>Reviews</h2>
-                                        <div class="mat-tab-reviews" ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                        <div ngClass.xs="py-2" ngClass.lt-md="p-2">
                                             <div class="reviews-item" *ngFor="let review of product.reviews">
-
+                                                <app-rating [review]="review.reviewScore" [ratingsCount]="1000" [ratingsValue]="review.ratingScore/10" [direction]="'row'"></app-rating>
+                                                <!-- <strong>{{review.reviewContent}}</strong> -->
+                                                <p>{{review.reviewAuthor}} | {{review.dateAdded}}</p>
+                                                <br>
+                                                <ng-container *ngIf="review.reviewPoints.plus || review.reviewPoints.plus">
+                                                    <div fxLayout>
+                                                        <div fxFlex *ngIf="review.reviewPoints.plus">
+                                                            <p *ngFor="let plus of review.reviewPoints.plus">
+                                                                <i class="fa fa-plus"></i> {{plus}}
+                                                            </p>
+                                                        </div>
+                                                        <div fxFlex *ngIf="review.reviewPoints.minus">
+                                                            <p *ngFor="let minus of review.reviewPoints.minus">
+                                                                <i class="fa fa-minus"></i> {{minus}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                </ng-container>
+                                                <div>{{review.reviewContent}}</div>
                                             </div>
                                         </div>
                                     </div>

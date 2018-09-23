@@ -10,11 +10,11 @@
 <mat-toolbar class="top-navbar mat-elevation-z2" fxLayoutAlign="center center">
     <mat-toolbar-row fxLayoutAlign="space-around center" class="top-navbar-container">
         <div *ngFor="let category of categories"
-            class="category-menu-item transition"
+            class="category-menu-item"
             mat-button
             (mouseenter)="triggerSubCategoryMenu(category, $event)"
             (mouseleave)="hideSubCategoryMenu($event)">
-            <a [routerLink]="[ category.permalink ]"
+            <a class="transition" [routerLink]="[ category.permalink ]"
                routerLinkActive="horizontal-active-link"
                [routerLinkActiveOptions]="{exact:false}">{{category.name}}</a>
         </div>
