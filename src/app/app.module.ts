@@ -26,7 +26,6 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { TopMenuComponent } from './theme/components/top-menu/top-menu.component';
 import { MenuComponent } from './theme/components/menu/menu.component';
 import { SidenavMenuComponent } from './theme/components/sidenav-menu/sidenav-menu.component';
-import { BreadcrumbComponent } from './theme/components/breadcrumb/breadcrumb.component';
 import { CrumbPathComponent } from './theme/components/crumb-path/crumb-path.component';
 import { OptionsComponent } from './theme/components/options/options.component';
 import { FooterComponent } from './theme/components/footer/footer.component';
@@ -52,7 +51,6 @@ import { environment } from '../environments/environment';
     TopMenuComponent,
     MenuComponent,
     SidenavMenuComponent,
-    BreadcrumbComponent,
     OptionsComponent,
     FooterComponent,
     CrumbPathComponent

@@ -76,10 +76,10 @@
         </mat-toolbar-row>
     </mat-toolbar>
 
-    <app-menu *ngIf="windowSize =='gt-md'"></app-menu>  
+    <app-menu *ngIf="windowSize =='gt-md' && categories.length" [allCategories]="categories"></app-menu>  
     
     <div class="theme-container main">
-        <app-crumb-path [categories]="categories"></app-crumb-path>
+        <app-crumb-path></app-crumb-path>
         <router-outlet></router-outlet>
     </div>
 

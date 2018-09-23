@@ -630,26 +630,6 @@ footer .mat-toolbar.usp-list {
         padding-left: 0;
         padding-right: 0;
     }
-    a{
-        -ms-flex: 1 1 auto!important;
-        flex: 1 1 auto!important;
-        min-width: 0;
-        line-height: 1.875rem;
-        color: #212226!important;
-        padding: 0;
-        border-radius: 0;
-
-        &:hover,
-        &:focus,
-        &.horizontal-active-link {
-            background-color:rgba(33,34,48,1)!important;
-            color:#fff!important;
-            text-decoration:none;
-        }
-        &+a {
-            border-left: 1px solid #fff;
-        }
-    }
 }
 
 .app.dark .top-navbar.mat-toolbar {

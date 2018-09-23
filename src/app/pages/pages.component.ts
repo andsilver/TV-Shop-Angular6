@@ -47,7 +47,7 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
     this.subscriptions.push(
-      this.appService.getCategories().subscribe(res => {
+      this.appService.getCategories('topnav').subscribe(res => {
         this.categories = res;
         this.category = res[0];
         this.store.dispatch(new SuccessGetCategories(res));

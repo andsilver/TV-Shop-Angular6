@@ -33,35 +33,17 @@ export class AppService {
     url = 'assets/data/';
     constructor(private http: HttpClient, private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
-    getCategories(): Observable<Category[]> {
+    getCategories(mode: string = 'tree'): Observable<Category[]> {
         let params = new HttpParams();
-        params = params.append('mode', 'tree');
+        params = params.append('mode', mode);
         return this.http.get<Category[]>('/categories', { params: params });
     }
 
-    // getProducts(mode: string, limit: number = 10, page: number = 1): Observable<Products> {
-    //     let params = new HttpParams();
-    //     params = params.append('mode', mode);
-    //     return this.productPagination(limit, page, params);
-    // }
-
-    // getProductsByCategory(categoryId: number, limit: number = 6, page: number = 1) {
-    //     let params = new HttpParams();
-    //     params = params.append('mode', 'category');
-    //     params = params.append('category_id', `${categoryId}`);
-    //     return this.productPagination(limit, page, params);
-    // }
 
     getProductsByFilter(filter: any): Observable<Products> {
         return this.http.post<Products>('/products/search', filter);
     }
 
-    // getProductsByBrand(brand: string, limit: number = 6, page: number = 1) {
-    //     let params = new HttpParams();
-    //     params = params.append('mode', 'brand');
-    //     params = params.append('brands_name', brand);
-    //     return this.productPagination(limit, page, params);
-    // }
 
     productPagination(limit, page, params): Observable<Products> {
         params = params.append('limit', `${limit}`);
@@ -69,14 +51,6 @@ export class AppService {
         return this.http.get<Products>(`/products/listing`, { params: params });
     }
 
-
-    // getProduct(id, categoryId) {
-    //     return this.http.post<any>(`/products/listing`, { categoryId: categoryId });
-    // }
-
-    // getProductById(id): Observable<Product> {
-    //     return this.http.get<Product>(`/products/${id}/detail`);
-    // }
 
     getProdcutByPermallink(permalink: string, categoryId: number = null): Observable<Product> {
         let param = new HttpParams();
