@@ -138,7 +138,7 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
         zoomer.style.display = 'block';
         zoomer.style.height = image.height * 1.5 + 'px';
         zoomer.style.width = image.width * 1.5 + 'px';
-        zoomer.style.backgroundImage = `url("//${imgix.config.host}/${this.zoomImage}?auto=compress")`;        
+        zoomer.style.backgroundImage = `url("//${imgix.config.host}/${this.zoomImage}?auto=compress")`;
       }
     }
   }

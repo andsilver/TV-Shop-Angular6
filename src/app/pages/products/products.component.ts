@@ -9,7 +9,6 @@ import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import * as ProductsActions from 'app/store/actions/products.action';
-import * as BrandsActions from 'app/store/actions/brands.action';
 
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
@@ -107,8 +106,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     if (window.innerWidth < 1280) {
       this.viewCol = 33.3;
     }
-
-    console.log(this.category);
 
     this.categoryId = this.category ? this.category.id : 0;
     this.findTopCategoryId();
@@ -261,6 +258,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onChangeCategory(event) {
+    console.log(event.permalink);
     this.router.navigate([event.permalink]);
   }
 
@@ -292,7 +290,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         children: [valueId]
       });
     }
-    console.log(this.selectedFilterLists);
     this.filterChanged();
   }
 

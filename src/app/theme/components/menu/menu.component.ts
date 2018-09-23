@@ -14,9 +14,11 @@ import { State } from 'app/store';
 })
 export class MenuComponent implements OnInit {
 
+  @Input()
   allCategories: Category[];
+
   categories: Category[];
-  parentCategory: Category;
+  parentCategoryId = 0;
   selectedCategoryId = 0;
 
   subscriptions: Subscription[] = [];
@@ -24,34 +26,22 @@ export class MenuComponent implements OnInit {
   constructor(private router: Router, private store: Store<State>) { }
 
   ngOnInit() {
+
+    this.categories = this.allCategories.filter( c => c.parentId === 0 );
+
     this.subscriptions = [
       this.store.select(state => state.category).subscribe( data => {
         this.selectedCategoryId = data.category ? data.category.id : 0;
-      }),
-      this.store.select(state => state.categories).subscribe( data => {
-        this.allCategories = data.categories;
-        this.categories = this.allCategories.filter( c => c.parentId === 0 );
       })
     ];
   }
-
-  // openMegaMenu() {
-  //   const pane = document.getElementsByClassName('cdk-overlay-pane');
-  //   [].forEach.call(pane, function (el) {
-  //       if (el.children.length > 0) {
-  //         if (el.children[0].classList.contains('mega-menu')) {
-  //           el.classList.add('mega-menu-pane');
-  //         }
-  //       }
-  //   });
-  // }
 
   triggerSubCategoryMenu(category, event) {
     if (!category.hasSubCategory) {
       return;
     }
     const ele = event.target.getBoundingClientRect();
-    this.parentCategory = category;
+    this.parentCategoryId = category.id;
     const sub = document.getElementById('subCategories');
     sub.style.position = 'absolute';
     event.target.appendChild(sub);
@@ -64,13 +54,14 @@ export class MenuComponent implements OnInit {
     if ( openBottom && x >= ele.left && x <= ele.right && y >= ele.bottom) {
       return;
     }
-    this.parentCategory = null;
+    this.parentCategoryId = 0;
     const sub = document.getElementById('subCategories');
     sub.style.display = 'none';
   }
 
   public onChangeCategory(event) {
-    this.parentCategory = null;
+    console.log(event.permalink);
+    this.parentCategoryId = 0;
     const sub = document.getElementById('subCategories');
     sub.style.display = 'none';
     this.router.navigate([event.permalink]);
