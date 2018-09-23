@@ -23,6 +23,8 @@ export class MenuComponent implements OnInit {
 
   subscriptions: Subscription[] = [];
 
+  displaySubCategories = false;
+
   constructor(private router: Router, private store: Store<State>) { }
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class MenuComponent implements OnInit {
     this.subscriptions = [
       this.store.select(state => state.category).subscribe( data => {
         this.selectedCategoryId = data.category ? data.category.id : 0;
+        console.log(this.selectedCategoryId);
       })
     ];
   }
@@ -40,12 +43,10 @@ export class MenuComponent implements OnInit {
     if (!category.hasSubCategory) {
       return;
     }
-    const ele = event.target.getBoundingClientRect();
     this.parentCategoryId = category.id;
     const sub = document.getElementById('subCategories');
-    sub.style.position = 'absolute';
     event.target.appendChild(sub);
-    sub.style.display = 'block';
+    this.displaySubCategories = true;
   }
 
   hideSubCategoryMenu(event, openBottom: boolean = true) {
@@ -54,16 +55,11 @@ export class MenuComponent implements OnInit {
     if ( openBottom && x >= ele.left && x <= ele.right && y >= ele.bottom) {
       return;
     }
-    this.parentCategoryId = 0;
-    const sub = document.getElementById('subCategories');
-    sub.style.display = 'none';
+    this.displaySubCategories = false;
   }
 
   public onChangeCategory(event) {
-    console.log(event.permalink);
-    this.parentCategoryId = 0;
-    const sub = document.getElementById('subCategories');
-    sub.style.display = 'none';
+    this.displaySubCategories = false;
     this.router.navigate([event.permalink]);
   }
 

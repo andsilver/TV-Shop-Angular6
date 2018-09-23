@@ -27,7 +27,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   parentCategory: Category;
   category: Category;
   product:  Product;
-  categories: Category[];
+  categories: Category[] = [];
   subscriptions: Subscription[];
   loaded = false;
 
@@ -44,24 +44,25 @@ export class LayoutComponent implements OnInit, OnDestroy {
         .select(state => state.category)
         .subscribe(data => this.parentCategory = data.category),
 
-    this.store
+      this.store
         .select(state => state.product)
         .subscribe(data => {
-
+          if (!this.categories.length) {
+            return;
+          }
           this.product = data.product;
-
           if ( this.product && this.product.crumbPath ) {
-
             this.product.crumbPath.push({ name: this.product.name, id: this.product.id });
             this.store.dispatch( new CrumbpathActions.SaveCrumbPath(this.generateCrumbPath(this.product.crumbPath, true)));
           }
         }),
 
-    this.appService
+      this.appService
         .getCategories()
         .pipe(
           switchMap(res => {
             this.categories = res;
+            console.log(this.router.url);
             return this.route.url;
           })
         )
@@ -102,7 +103,6 @@ export class LayoutComponent implements OnInit, OnDestroy {
       const path = { name: crumbPath[i].name, permalink: ''};
       if ( isProduct && i === crumbPath.length - 1) {
       } else {
-        console.log(this.categories);
         const category = this.categories.find( c => c.id === crumbPath[i].id);
         path.permalink = category.permalink;
       }

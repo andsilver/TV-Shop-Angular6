@@ -35,9 +35,7 @@ export class StoresComponent implements OnInit, OnDestroy {
       this.appService.getStores().subscribe(res => {
         console.log(res);
         this.stores = res;
-        setTimeout(() => {
-          imgix.init()
-        }, 1)
+        setTimeout(() => imgix.init(), 1);
       })
     );
     if (window.innerWidth < 960) {

@@ -98,7 +98,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.count = this.counts[0];
     this.sort = this.sortings[0];
-    // this.showMoreBrandsStatus = this.showMoreBrandsType.show_more;
+
+    console.log(this.category);
 
     if (window.innerWidth < 960) {
       this.sidenavOpen = false;
