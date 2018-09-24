@@ -30,7 +30,7 @@
                                     [disabled]="value.result_counter == 0"
                                     [checked]="value.value_checked"
                                     (change)="selectFilter(filt.option_id, value.value_id)">
-                                    {{value.value_name}} ( {{value.result_counter}} )
+                                    {{value.value_name}} ({{value.result_counter}})
                                 </mat-checkbox>
                             </div>
                             <a class="show_more_toggle" *ngIf="filt.values.length > 6" (click)="changeShowMore(filt)">{{showMore[filt.display].text}}<mat-icon>{{showMore[filt.display].icon}}</mat-icon></a>
@@ -47,7 +47,7 @@
                             </mat-expansion-panel-header>
                             <div fxLayout="column" class="filter-brands">
                                 <div *ngFor="let brand of brands">
-                                    <mat-checkbox (change)="selectBrand(brand)">{{brand.name}}</mat-checkbox>
+                                    <mat-checkbox (change)="selectBrand(brand)" [checked]="brand.value_checked">{{brand.name}} ({{brand.result_counter}})</mat-checkbox>
                                 </div>
                             </div>
                         </mat-expansion-panel>
