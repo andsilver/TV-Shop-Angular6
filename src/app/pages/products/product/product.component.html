@@ -115,10 +115,10 @@
                             <div class="extra-infos extra-infos-list">
                                 <h2>BEKIJK OOK</h2>
                                 <div class="extra-infos-link">
+                                    <div *ngIf="product?.expertReview" (click)="scrollToElement(info_expert_reviews)"><i class="fa fa-circle"></i>Plus- en minpunten</div>
                                     <div *ngIf="product?.reviews.length" (click)="scrollToElement(info_reviews)"><i class="fa fa-circle"></i>Reviews</div>
                                     <div *ngIf="product?.description" (click)="scrollToElement(info_description)"><i class="fa fa-circle"></i>Beschrijving</div>
                                     <div *ngIf="product?.extra_description" (click)="scrollToElement(info_extra_description)"><i class="fa fa-circle"></i>Specificaties</div>
-                                    <div *ngIf="product?.expertReview" (click)="scrollToElement(info_expert_reviews)"><i class="fa fa-circle"></i>Plus- en minpunten</div>
                                 </div>
                             </div>
                         </div>
@@ -128,6 +128,14 @@
                         <div ngClass.gt-md="pr-3">
 
                             <div fxFlex class="extra-infos">
+                                <div #info_expert_reviews>
+                                    <div *ngIf="product?.expertReview">
+                                        <h2>Plus- en minpunten</h2>
+                                        <div class="mat-tab-plus-en-min" ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                            <p [innerHTML]="product?.expertReview | htmlSanitize"></p>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div #info_reviews>
                                     <div *ngIf="product?.reviews.length">
                                         <h2>Reviews</h2>
@@ -170,14 +178,6 @@
                                         <h2>Specificaties</h2>
                                         <div class="mat-tab-specificaties" ngClass.xs="py-2" ngClass.lt-md="p-2">
                                             <p [innerHTML]="product?.extra_description | htmlSanitize"></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div #info_expert_reviews>
-                                    <div *ngIf="product?.expertReview">
-                                        <h2>Plus- en minpunten</h2>
-                                        <div class="mat-tab-plus-en-min" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                            <p [innerHTML]="product?.expertReview | htmlSanitize"></p>
                                         </div>
                                     </div>
                                 </div>
