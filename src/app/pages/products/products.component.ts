@@ -54,15 +54,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   topParentCategory;
 
   brands = [];
-  tempBrands = [];
   selectedBrands = [];
   priceFrom = 1;
   priceTo = 15000;
-  colors = [ '#5C6BC0', '#66BB6A', '#EF5350', '#BA68C8', '#FF4081', '#9575CD', '#90CAF9', '#B2DFDB', '#DCE775',
-                    '#FFD740', '#00E676', '#FBC02D', '#FF7043', '#F5F5F5', '#000000'];
-  selectedColors = [];
-  sizes = ['S', 'M', 'L', 'XL', '2XL', '32', '36', '38', '46', '52', '13.3\'', '15.4\'', '17\'', '21\'', '23.4\''];
-  selectedSizes = [];
   page = 0;
   totalProducts = 0;
   emptyMessage = '';
@@ -264,7 +258,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   selectBrand(brand) {
-    const index = this.selectedBrands.indexOf(brand);
+    const index = this.selectedBrands.findIndex(b => brand.name === b.name);
     if (index > -1) {
       this.selectedBrands.splice(index, 1);
     } else {
