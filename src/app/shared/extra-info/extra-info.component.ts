@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'app/app.service';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+// Add an icon to the library for convenient access in other components
+library.add(faShoppingCart);
 
 declare var imgix: any;
 

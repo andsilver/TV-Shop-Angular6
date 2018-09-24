@@ -30,6 +30,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
 import { SatPopoverModule } from '@ncstate/sat-popover';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 import { PipesModule } from '../theme/pipes/pipes.module';
@@ -78,7 +79,8 @@ import { DescriptionPopoverComponent } from './description-popover/description-p
       apiKey: 'AIzaSyBv2IOmt-5I3BoQ9xKl_y7anf7dEy-4194'
     }),
     LazyLoadImagesModule,
-    SatPopoverModule
+    SatPopoverModule,
+    FontAwesomeModule
   ],
   exports: [
     SwiperModule,
