@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
         //  MatAutocompleteModule,
          MatButtonModule,
@@ -110,8 +109,7 @@ import { DescriptionPopoverComponent } from './description-popover/description-p
       apiKey: 'AIzaSyBv2IOmt-5I3BoQ9xKl_y7anf7dEy-4194'
     }),
     LazyLoadImagesModule,
-    SatPopoverModule,
-    FontAwesomeModule
+    SatPopoverModule
   ],
   exports: [
     SwiperModule,

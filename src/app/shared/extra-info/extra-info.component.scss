@@ -6,12 +6,15 @@
 }
 
 .shopping-cart {
-
+    padding-bottom: 0;
     .mat-card-title{
         border-bottom: none;
         padding: 0 10px;
         background-color: #212226;
 
+        h4 {
+            padding-bottom: 0;
+            line-height: 2.125rem;
             a{
                 text-transform: uppercase;
                 color: #ffffff;
@@ -23,6 +26,7 @@
                     text-decoration: underline;
                     color: #ffffff;
                 }
+            }
         }
     }
 

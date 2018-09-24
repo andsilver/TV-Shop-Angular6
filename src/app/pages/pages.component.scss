@@ -1,7 +1,9 @@
 .theme-container.wrapper{
     
     .main{
-        padding: 1rem;
+        min-height: 400px;
+        min-height: calc(100vh - 288px);
+        padding: 16px;
     }
 
     .sidenav{
@@ -133,13 +135,10 @@
     }
 
     .shopping-cart{
-        .ng-fa-icon {
-            font-size: 16px;
-            margin-left: .25rem;
-        }
+        width: 200px;
     }
 
-
+    
 }
     
 

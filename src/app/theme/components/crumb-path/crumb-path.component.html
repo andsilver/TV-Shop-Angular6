@@ -2,7 +2,7 @@
   <div fxFlex="100">
       <mat-card fxLayout="row wrap" class="breadcrumb light-block">
           <a *ngIf="router.url != '/'" routerLink="/" class="breadcrumb-item" fxLayout="row" fxLayoutAlign="start center" (click)="closeSubMenus()">
-              <fa-icon [icon]="['fas', 'home']"></fa-icon>
+              <mat-icon>home</mat-icon>
               <span class="breadcrumb-title" i18n>Homepage</span>
           </a>
           <div *ngFor="let breadcrumb of breadcrumbs; let i = index;" class="breadcrumb-item" fxLayout="row" fxLayoutAlign="start center">                 

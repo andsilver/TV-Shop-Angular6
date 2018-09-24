@@ -2,7 +2,7 @@
     <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
         <mat-card class="shopping-cart">
           <mat-card-title>
-              <ng-container i18n><a [routerLink]="['/cart']">Your shopping cart <fa-icon [icon]="'shopping-cart'"></fa-icon></a></ng-container>
+              <h4 i18n><a [routerLink]="['/cart']">Your shopping cart <i class="fa fa-shopping-cart"></i></a></h4>
           </mat-card-title>
           <mat-card-content *ngIf="appService.Data.totalPrice > 0">
               <div class="shopping-cart-items">
@@ -26,9 +26,7 @@
           </mat-card-content>
         </mat-card>
         <mat-card class="branch-office">
-            <mat-card-title>
-                <h4 i18n>Our stores</h4>
-            </mat-card-title>
+            <mat-card-title><h4 i18n>Our stores</h4></mat-card-title>
             <mat-card-content>
                 <div class="branch_opening_hours_box">
                     <div class="branch_img"><a [routerLink]="['/stores/amsterdam']"><img [attr.ix-path]="'store_images/amsterdam.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw"></a></div>
@@ -103,10 +101,10 @@
             <mat-card-content>
                 <div class="adbox_opening_times"><strong> <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>Open today</a> </strong></div>
                 <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>till 21:00 hour</a></div>
-                <div class="contact_box contact_chat_live"><a onclick="LC_API.open_chat_window(); return false;" href="https://www.plattetv.nl/"> <fa-icon [icon]="['fas', 'comment']"></fa-icon><strong i18n>CHAT LIVE</strong> <span i18n>Reply within 30 sec.</span> </a></div>
-                <div class="contact_box contact_form"><a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS"> <fa-icon [icon]="['far', 'envelope']"></fa-icon><strong i18n>Insert Form</strong> <span i18n>Reply within 10 min.</span> </a></div>
-                <div class="contact_box contact_whatsapp"><a href="https://api.whatsapp.com/send?phone=31633444433"> <fa-icon [icon]="['fab', 'whatsapp']"></fa-icon><strong i18n>WHATSAPP US</strong> <span i18n>Reply within 30 sec.</span> </a></div>
-                <div class="contact_box contact_bel"><a href="tel:0268454658"> <fa-icon [icon]="['fas','phone']"></fa-icon><strong i18n>CALL 026-84 54 658</strong> <span i18n>Direct reply</span> </a></div>
+                <div class="contact_box contact_chat_live"><a onclick="LC_API.open_chat_window(); return false;" href="https://www.plattetv.nl/"> <i class="far fa fa-comment"></i><strong i18n>CHAT LIVE</strong> <span i18n>Reply within 30 sec.</span> </a></div>
+                <div class="contact_box contact_form"><a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS"> <i class="far fa fa-envelope"></i><strong i18n>Insert Form</strong> <span i18n>Reply within 10 min.</span> </a></div>
+                <div class="contact_box contact_whatsapp"><a href="https://api.whatsapp.com/send?phone=31633444433"> <i class="fab fa fa-whatsapp"></i><strong i18n>WHATSAPP US</strong> <span i18n>Reply within 30 sec.</span> </a></div>
+                <div class="contact_box contact_bel"><a href="tel:0268454658"> <i class="fas fa fa-phone"></i><strong i18n>CALL 026-84 54 658</strong> <span i18n>Direct reply</span> </a></div>
             </mat-card-content>
         </mat-card>
     </div>

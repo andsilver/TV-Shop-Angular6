@@ -10,11 +10,6 @@ import { SidenavMenuService } from '../../../theme/components/sidenav-menu/siden
 
 import { Category } from 'app/app.models';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faHome);
-
 @Component({
   selector: 'app-crumb-path',
   templateUrl: './crumb-path.component.html',
