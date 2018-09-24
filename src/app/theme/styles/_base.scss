@@ -953,26 +953,6 @@ button.swipe-arrow{
 .dot-orange-icon { background:#ff7900; }
 .dot-red-icon { background:#ff0000; }
 
-.mat-tab-reviews {
-    .reviews-item {
-        &+.reviews-item {
-            margin-top: 1rem;
-        }
-        .reviews-item--author {
-            font-weight: bold;
-        }
-        .reviews-item--date {
-            color: #6b6b6b;
-        }
-        .reviews-item--rate {
-            font-weight: bold;
-            font-size: 1rem;
-            font-family: "Poppins";
-            color: #212226;
-        }
-    }
-}
-
 #subCategories .mat-menu-item {
     height:24px;
     font-size:14px;

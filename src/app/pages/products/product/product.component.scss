@@ -249,6 +249,26 @@ h2.product-detail-title,
             text-decoration: underline;
         }
     }
+
+    .reviews-item {
+        margin-bottom: 3rem;
+        &+.reviews-item{
+            border-top: 1px solid #ececec;
+            padding-top: 1rem;
+        }
+
+        .fa {
+            margin-right: 5px;
+        }
+
+        .fa-plus {
+            color: #5AAD49;
+        }
+
+        .fa-minus {
+            color: #dd3333;
+        }
+    }
 }
 
 .new-stock-info-wrapper { margin-top: 1rem; margin-bottom: 1rem; }
