@@ -14,6 +14,8 @@ import { NotMatchComponent } from './not-match/not-match.component';
 import { BestPriceDialogComponent } from './best-price-dialog/best-price-dialog.component';
 import { ExchangeComponent } from './exchange/exchange.component';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 export const routes = [
   {
     path: '**', component: LayoutComponent
@@ -25,7 +27,8 @@ export const routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     NgxPaginationModule,
-    SharedModule
+    SharedModule,
+    FontAwesomeModule
   ],
   declarations: [
     ProductsComponent,

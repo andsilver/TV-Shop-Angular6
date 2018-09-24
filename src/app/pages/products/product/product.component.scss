@@ -68,7 +68,7 @@
 }
 
 .winkel-stock {
-    .fa-circle {
+    .ng-fa-icon {
         font-size: .7rem;
         color: #5AAD49;
         margin-right: .25rem;
@@ -173,22 +173,22 @@ h2.product-detail-title,
     padding-left: .5rem;
     padding-right: .5rem;
 }
-.r-row.r-col-2 > div .fa-circle,
-.bezorg-cms-title .fa-circle {
+.r-row.r-col-2 > div .ng-fa-icon,
+.bezorg-cms-title .ng-fa-icon {
     font-size: .5rem;
     color: #5AAD49;
     margin-right: .25rem;
     vertical-align: top;
     line-height: 1.25rem;
 }
-.product-detail-control .mat-button.control-add-to-cart .fas {
+.product-detail-control .mat-button.control-add-to-cart .ng-fa-icon {
     position: absolute;
     right: 1rem;
     top: 0;
     line-height: 3.125rem;
 }
-.product-detail-control .mat-button.control-normal .fas,
-.product-detail-control .mat-button.control-deal .fas {
+.product-detail-control .mat-button.control-normal .ng-fa-icon,
+.product-detail-control .mat-button.control-deal .ng-fa-icon {
     position: absolute;
     right: 1rem;
     top: 0;
@@ -245,7 +245,7 @@ h2.product-detail-title,
 
         >div {
             padding: 0 15px 15px;
-            i {
+            .ng-fa-icon {
                 font-size: 10px;
                 margin-right: 5px;
                 color: #2da6c1
