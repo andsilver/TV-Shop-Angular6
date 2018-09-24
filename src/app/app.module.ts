@@ -10,6 +10,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './store/effects/app.effects';
 import { reducers, metaReducers } from './store';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppSettings } from './app.settings';
 import { AppService } from './app.service';
@@ -32,6 +33,13 @@ import { FooterComponent } from './theme/components/footer/footer.component';
 
 import { environment } from '../environments/environment';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
+// Add an icon to the library for convenient access in other components
+library.add(faCoffee);
+//You can use it like below example
+//<fa-icon [icon]="'coffee'"></fa-icon>
 @NgModule({
   imports: [
     BrowserModule,
@@ -42,7 +50,8 @@ import { environment } from '../environments/environment';
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    FontAwesomeModule
   ],
   declarations: [
     AppComponent,
