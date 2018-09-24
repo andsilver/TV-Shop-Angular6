@@ -15,8 +15,8 @@ html{
 body{
     background-color: #dedede;
     height: 100%;
-    font-size: .875rem;
-    line-height: 1.45;
+    font-size: .8125rem;
+    line-height: 1.384615;
     font-family: $font-family!important;
     margin: 0;
     padding: 0;
@@ -467,9 +467,9 @@ app-root .app.dark .mat-drawer-container::after {
 .misc-bar{
     margin-top: 30px;
 
-    & > div+div {
+    /* & > div+div {
         margin-top: 2rem;
-    }
+    } */
     .mat-card{
         padding: 1.5rem;
 
@@ -503,11 +503,7 @@ app-root .app.dark .mat-drawer-container::after {
 }
 
 .mat-card {
-    font-family: $font-family!important;
     padding: 1rem;
-}
-.mat-card-title {
-    font-size: 1.25rem!important;
 }
 
 .branch_opening_hours_box { position:relative; overflow:hidden; border:1px solid #E6E6DC; padding:.5rem; }
@@ -531,18 +527,9 @@ app-root .app.dark .mat-drawer-container::after {
 #advice-and-contact .contact_box > span { display:block; border:1px solid #E6E6DC; background:#e6e6dc; margin-bottom:5px; padding:10px 0 10px 6px; }
 #advice-and-contact .contact_box > span { cursor:default; }
 #advice-and-contact .contact_box > a:hover { background:#212226; color:#fff; text-decoration:none; }
-#advice-and-contact .contact_box > a:hover .fa,
-#advice-and-contact .contact_box > a:hover .far,
-#advice-and-contact .contact_box > a:hover .fas,
-#advice-and-contact .contact_box > a:hover .fab { color:#000; }
-#advice-and-contact .contact_box > a > .fa,
-#advice-and-contact .contact_box > span > .fa,
-#advice-and-contact .contact_box > a > .far,
-#advice-and-contact .contact_box > span > .far,
-#advice-and-contact .contact_box > a > .fas,
-#advice-and-contact .contact_box > span > .fas,
-#advice-and-contact .contact_box > a > .fab,
-#advice-and-contact .contact_box > span > .fab { float:left; width:30px; height:30px; background:#fff; font-size:17px; line-height:30px; text-align:center; margin-right:10px; border-radius:50%; }
+#advice-and-contact .contact_box > a:hover .ng-fa-icon { color:#000; }
+#advice-and-contact .contact_box > a > .ng-fa-icon,
+#advice-and-contact .contact_box > span > .ng-fa-icon { float:left; width:30px; height:30px; background:#fff; font-size:17px; line-height:30px; text-align:center; margin-right:10px; border-radius:50%; }
 #advice-and-contact .contact_box > a > strong,
 #advice-and-contact .contact_box > a > span,
 #advice-and-contact .contact_box > span > strong,
@@ -799,7 +786,7 @@ app-root .app.dark .mat-drawer-container::after {
             &+div {
                 margin-left: 24px;
             }
-            .fas {
+            .ng-fa-icon {
                 color: #38a5bf;
                 margin-right: .5rem;
             }

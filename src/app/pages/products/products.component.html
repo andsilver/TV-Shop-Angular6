@@ -84,7 +84,7 @@
             </ng-container>
 
             <div class="filter-clear">
-                <a i18n (click)="initFilter();filterChanged();">Clear Selection </a><i class="fa fa-trash"></i>
+                <a i18n (click)="initFilter();filterChanged();">Clear Selection </a><fa-icon [icon]="'trash-alt'"></fa-icon>
             </div>
 
         </mat-accordion>
@@ -162,7 +162,7 @@
                                             <p class="new-price list-new-price" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</p>
                                             <p class="stock-indicator" [innerHTML]="product.stockIndicator | htmlSanitize"></p>
                                             <button class="control-normal" mat-button [routerLink]="[product.permalink]">
-                                                <ng-container i18n>GO TO PRODUCT</ng-container> <i class="fas fa fa-chevron-circle-right"></i>
+                                                <ng-container i18n>GO TO PRODUCT</ng-container> <fa-icon [icon]="'chevron-circle-right'"></fa-icon>
                                             </button>
                                             <p *ngIf="product.demoUnitText" [innerHTML]="product.demoUnitText | htmlSanitize"></p>
                                         </div>

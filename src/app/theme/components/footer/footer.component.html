@@ -2,9 +2,9 @@
     <mat-toolbar class="usp-list top-usp-list" fxLayoutAlign="flex-start center" fxShow="false" fxShow.gt-sm>
         <mat-toolbar-row class="theme-container" fxLayoutAlign="flex-start center">
             <div><a href="https://www.plattetv.nl/" i18n>The TV-store of the Netherlands</a></div>
-            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#winkels"><i class="fas fa fa-check-circle"></i><ng-container i18n>8 locations</ng-container></a></div>
-            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/installatie-op-maat-learning-center-1864.html"><i class="fas fa fa-check-circle"></i><ng-container i18n>Installation and  en assembly</ng-container></a></div>
-            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/verzending-en-bezorging-109.html#gratisbezorgen"><i class="fas fa fa-check-circle"></i><ng-container i18n>Free delivery</ng-container></a></div>
+            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#winkels"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>8 locations</ng-container></a></div>
+            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/installatie-op-maat-learning-center-1864.html"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>Installation and  en assembly</ng-container></a></div>
+            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/verzending-en-bezorging-109.html#gratisbezorgen"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>Free delivery</ng-container></a></div>
             <div class="review"><span class="review--score">9,4</span><span class="review--text"><span class="review--label" i18n>CLIENT REVIEWS</span><br><span class="review--total-reviews"><a href="https://www.kieskeurig.nl/winkels/plattetv/reviews" target="_blank" rel="noreferrer" i18n>20.510 reviews</a></span></span></div>
         </mat-toolbar-row>
     </mat-toolbar>
@@ -20,10 +20,10 @@
                 </div>
                 <div class="footer-info--contact-list">
                     <ul>
-                        <li class="footer-info--chat"><a onclick="LC_API.open_chat_window();return false;" href="https://www.plattetv.nl/"><i class="far fa fa-comment"></i><span><strong i18n>CHAT LIVE</strong><ng-container i18n>Reply within 30 sec.</ng-container></span></a></li>
-                        <li class="footer-info--email"><a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS"><i class="far fa fa-envelope"></i><span><strong i18n>Insert Form</strong><ng-container i18n>Reply within 10 min.</ng-container></span></a></li>
-                        <li class="footer-info--whatsapp"><a href="https://api.whatsapp.com/send?phone=31633444433"><i class="fab fa fa-whatsapp"></i><span><strong i18n>WHATSAPP US</strong><ng-container i18n>Reply within 30 sec.</ng-container></span></a></li>
-                        <li class="footer-info--phone"><a href="tel:0268454658"><i class="fas fa fa-phone"></i><span><strong i18n>CALL 026 - 84 54 658</strong><ng-container i18n>Direct reply</ng-container></span></a></li>
+                        <li class="footer-info--chat"><a onclick="LC_API.open_chat_window();return false;" href="https://www.plattetv.nl/"><fa-icon [icon]="['fas', 'comment']"></fa-icon><span><strong i18n>CHAT LIVE</strong><ng-container i18n>Reply within 30 sec.</ng-container></span></a></li>
+                        <li class="footer-info--email"><a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS"><fa-icon [icon]="['far', 'envelope']"></fa-icon><span><strong i18n>Insert Form</strong><ng-container i18n>Reply within 10 min.</ng-container></span></a></li>
+                        <li class="footer-info--whatsapp"><a href="https://api.whatsapp.com/send?phone=31633444433"><fa-icon [icon]="['fab', 'whatsapp']"></fa-icon><span><strong i18n>WHATSAPP US</strong><ng-container i18n>Reply within 30 sec.</ng-container></span></a></li>
+                        <li class="footer-info--phone"><a href="tel:0268454658"><fa-icon [icon]="['fas', 'phone']"></fa-icon><span><strong i18n>CALL 026 - 84 54 658</strong><ng-container i18n>Direct reply</ng-container></span></a></li>
                     </ul>
                 </div>
             </div>

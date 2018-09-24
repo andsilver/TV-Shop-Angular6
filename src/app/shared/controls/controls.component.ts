@@ -2,6 +2,12 @@ import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppService } from '../../app.service';
 import { Product } from '../../app.models';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faRulerCombined } from '@fortawesome/free-solid-svg-icons';
+import { faEye } from '@fortawesome/free-regular-svg-icons';
+
+library.add(faHeart,faRulerCombined,faEye);
 
 @Component({
   selector: 'app-controls',

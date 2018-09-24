@@ -35,6 +35,8 @@ import { FooterComponent } from './theme/components/footer/footer.component';
 
 import { environment } from '../environments/environment';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     NgxSpinnerModule,
     SharedModule,
+    FontAwesomeModule,
     routing,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
