@@ -5,6 +5,6 @@
 </div>
 <div mat-dialog-content>
     <div class="viewer">
-        <img [src]="image" #zoomImage>
+        <img [attr.ix-path]="image" ix-params='{"auto":"compress"}' #zoomImage>
     </div>    
 </div>

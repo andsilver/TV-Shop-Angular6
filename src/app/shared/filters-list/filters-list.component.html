@@ -4,7 +4,7 @@
             <h4>{{filter.option_name}}</h4>
         </mat-panel-title>
     </mat-expansion-panel-header>
-    <div fxLayout="column" class="filter-brands">
+    <div class="filter-brands">
         <div *ngFor="let value of filter.values">
             <a [routerLink]="['']">{{value.value_name}}</a>
         </div>
@@ -30,7 +30,7 @@
             <h4 i18n>Condition</h4>
         </mat-panel-title>
     </mat-expansion-panel-header>
-    <div fxLayout="column" class="filter-brands">
+    <div class="filter-brands">
        <div *ngFor="let brand of brands">
           <a>{{brand.name}}</a>
        </div>

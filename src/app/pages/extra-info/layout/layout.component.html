@@ -1,0 +1,17 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
+        <mat-accordion displayMode="flat" multi="true">
+            <app-filters-list></app-filters-list>
+        </mat-accordion>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div fxLayout="row" fxLayoutAlign="end start">
+            <div fxFlex="100" fxFlex.gt-md="77">
+              <router-outlet></router-outlet>
+            </div>
+            <div fxFlex fxHide fxShow.gt-md>
+                <app-extra-info></app-extra-info>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
