@@ -35,7 +35,7 @@ export class Product {
   featureHighlights: string;
   stockIndicator: string;
   stockInfo: string;
-  demoUnit: string;
+  demoUnitText: string;
 }
 
 export interface Brand {

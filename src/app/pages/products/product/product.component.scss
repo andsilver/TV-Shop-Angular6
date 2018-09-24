@@ -68,7 +68,7 @@
 }
 
 .winkel-stock {
-    fa-icon {
+    .ng-fa-icon {
         font-size: .7rem;
         color: #5AAD49;
         margin-right: .25rem;
@@ -169,8 +169,8 @@ h2.product-detail-title,
     top: 0;
     line-height: 3.125rem;
 }
-.product-detail-control .mat-button.control-normal fa-icon,
-.product-detail-control .mat-button.control-deal fa-icon {
+.product-detail-control .mat-button.control-normal .ng-fa-icon,
+.product-detail-control .mat-button.control-deal .ng-fa-icon {
     position: absolute;
     right: 1rem;
     top: 0;
@@ -227,7 +227,7 @@ h2.product-detail-title,
 
         >div {
             padding: 0 15px 15px;
-            fa-icon {
+            .ng-fa-icon {
                 font-size: 10px;
                 margin-right: 5px;
                 color: #2da6c1

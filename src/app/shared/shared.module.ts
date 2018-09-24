@@ -50,25 +50,36 @@ import { FiltersListComponent } from './filters-list/filters-list.component';
 import { DescriptionPopoverComponent } from './description-popover/description-popover.component';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
+
 import {
   faShoppingCart,
   faCheckCircle,
   faComment,
-  faEnvelope,
   faCircle,
   faPlus,
   faMinus,
   faPhone,
   faInfoCircle,
   faTrash,
+  faBars,
+  faSearch,
   faChevronCircleRight,
-  faCaretRight} from '@fortawesome/free-solid-svg-icons';
+  faCaretRight,
+  faTrashAlt,
+  faHeart,
+  faRulerCombined,
+  faEye,
+  faAngleLeft,
+  faAngleRight,
+  faHome
+} from '@fortawesome/free-solid-svg-icons';
+
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 import {
   faWhatsapp
 } from '@fortawesome/free-brands-svg-icons';
 
-// Add an icon to the library for convenient access in other components
 library.add(
   faShoppingCart,
   faCheckCircle,
@@ -80,9 +91,18 @@ library.add(
   faPhone,
   faInfoCircle,
   faTrash,
+  faBars,
+  faSearch,
   faChevronCircleRight,
   faCaretRight,
-  faWhatsapp);
+  faWhatsapp,
+  faTrashAlt,
+  faHeart,
+  faRulerCombined,
+  faEye,
+  faAngleLeft,
+  faAngleRight,
+  faHome);
 
 @NgModule({
   imports: [

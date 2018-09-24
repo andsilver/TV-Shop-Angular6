@@ -53,12 +53,12 @@
                     <form method="get"  class="search-form" fxLayout="row" (ngSubmit)="search($event)">
                         <input type="text" i18n-placeholder placeholder="Type keyword..." name="search_key" [ngModel]="keyword" (keyup)="searchTerm.next($event)" fxFlex aria-label="search_key" autocomplete="off">
                         <button mat-button type="submit" class="search-btn mat-elevation-z0 text-muted" aria-label="search-btn">
-                            <mat-icon>search</mat-icon>
+                            <fa-icon [icon]="['fas', 'search']"></fa-icon>
                         </button>
                     </form>
                     <div fxLayout="row" fxLayoutAlign="center center" *ngIf="windowSize == 'gt-md'" class="shopping-cart">
                         <button mat-button [matMenuTriggerFor]="cartMenu" #cartMenuTrigger="matMenuTrigger" class="flex-row-button">
-                            SERVICE <mat-icon>menu</mat-icon>
+                            SERVICE <fa-icon [icon]="['fas', 'bars']"></fa-icon>
                         </button>
                         <mat-menu #cartMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="top-menu-dropdown cart-dropdown">
                             <span (mouseleave)="cartMenuTrigger.closeMenu()" class="d-block top-menu-dropdown-content">

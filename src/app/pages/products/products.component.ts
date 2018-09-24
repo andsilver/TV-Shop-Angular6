@@ -13,6 +13,7 @@ import * as ProductsActions from 'app/store/actions/products.action';
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product, Category } from '../../app.models';
+
 declare var imgix: any;
 
 @Component({

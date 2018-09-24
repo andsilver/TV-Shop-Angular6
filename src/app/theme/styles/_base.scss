@@ -15,8 +15,8 @@ html{
 body{
     background-color: #dedede;
     height: 100%;
-    font-size: .875rem;
-    line-height: 1.45;
+    font-size: .8125rem;
+    line-height: 1.384615;
     font-family: $font-family!important;
     margin: 0;
     padding: 0;
@@ -457,9 +457,9 @@ app-root .app.dark .mat-drawer-container::after {
 .misc-bar{
     margin-top: 30px;
 
-    & > div+div {
+    /* & > div+div {
         margin-top: 2rem;
-    }
+    } */
     .mat-card{
         padding: 1.5rem;
 
@@ -491,11 +491,7 @@ app-root .app.dark .mat-drawer-container::after {
 }
 
 .mat-card {
-    font-family: $font-family!important;
     padding: 1rem;
-}
-.mat-card-title {
-    font-size: 1.25rem!important;
 }
 
 .social-icon{
@@ -571,7 +567,7 @@ app-root .app.dark .mat-drawer-container::after {
             &+div {
                 margin-left: 24px;
             }
-            fa-icon {
+            .ng-fa-icon {
                 color: #38a5bf;
                 margin-right: .5rem;
             }

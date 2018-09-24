@@ -4,6 +4,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { AppService } from '../../../app.service';
 import { Product } from '../../../app.models';
 import { CurrencyService } from 'app/services';
+
 declare var imgix: any;
 
 @Component({

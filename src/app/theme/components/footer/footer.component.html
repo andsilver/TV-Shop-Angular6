@@ -2,9 +2,9 @@
     <mat-toolbar class="usp-list top-usp-list" fxLayoutAlign="flex-start center" fxShow="false" fxShow.gt-sm>
         <mat-toolbar-row class="theme-container" fxLayoutAlign="flex-start center">
             <div><a href="https://www.plattetv.nl/" i18n>The TV-store of the Netherlands</a></div>
-            <div><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#winkels"><fa-icon [icon]="'check-circle'"></fa-icon><ng-container i18n>8 locations</ng-container></a></div>
-            <div><a href="https://www.plattetv.nl/extrainfo/installatie-op-maat-learning-center-1864.html"><fa-icon [icon]="'check-circle'"></fa-icon><ng-container i18n>Installation and  en assembly</ng-container></a></div>
-            <div><a href="https://www.plattetv.nl/extrainfo/verzending-en-bezorging-109.html#gratisbezorgen"><fa-icon [icon]="'check-circle'"></fa-icon><ng-container i18n>Free delivery</ng-container></a></div>
+            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#winkels"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>8 locations</ng-container></a></div>
+            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/installatie-op-maat-learning-center-1864.html"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>Installation and  en assembly</ng-container></a></div>
+            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/verzending-en-bezorging-109.html#gratisbezorgen"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>Free delivery</ng-container></a></div>
             <div class="review"><span class="review--score">9,4</span><span class="review--text"><span class="review--label" i18n>CLIENT REVIEWS</span><br><span class="review--total-reviews"><a href="https://www.kieskeurig.nl/winkels/plattetv/reviews" target="_blank" rel="noreferrer" i18n>20.510 reviews</a></span></span></div>
         </mat-toolbar-row>
     </mat-toolbar>
@@ -23,7 +23,7 @@
                         <li>
                             <a href="https://www.plattetv.nl/">
                                 <span>
-                                    <fa-icon [icon]="'comment'"></fa-icon>
+                                    <fa-icon [icon]="['fas', 'comment']"></fa-icon>
                                 </span>
                                 <span>
                                     <strong i18n>CHAT LIVE</strong>
@@ -34,7 +34,7 @@
                         <li>
                             <a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS">
                                 <span>
-                                    <fa-icon [icon]="'envelope'"></fa-icon>
+                                    <fa-icon [icon]="['far','envelope']"></fa-icon>
                                 </span>
                                 <span>
                                     <strong i18n>Insert Form</strong>
@@ -56,7 +56,7 @@
                         <li>
                             <a href="tel:0268454658">
                                 <span>
-                                    <fa-icon [icon]="'phone'"></fa-icon>
+                                    <fa-icon [icon]="['fas', 'phone']"></fa-icon>
                                 </span>
                                 <span>
                                     <strong i18n>CALL 026 - 84 54 658</strong>
