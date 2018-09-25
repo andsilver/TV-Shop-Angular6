@@ -9,6 +9,7 @@ import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import * as ProductsActions from 'app/store/actions/products.action';
+import * as FiltersListActions from 'app/store/actions/filters-list.action';
 
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
@@ -76,12 +77,13 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   };
 
   filterLists = [];
+  prevFiltersList = [];
   selectedFilterLists = [];
-  tempFilterlist = [];
+  brandsFilter = {
+    display: ''
+  };
   popoverFilter: any;
   priceFilterOrder = 0;
-
-  // showMoreBrandsStatus;
 
   constructor(
     public appService: AppService,
@@ -91,10 +93,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit() {
 
+    this.initFilter();
     this.count = this.counts[0];
-    this.sort = this.sortings[0];
-
-    console.log(this.category);
+    this.store.dispatch(new FiltersListActions.RemoveFilterList);
 
     if (window.innerWidth < 960) {
       this.sidenavOpen = false;
@@ -111,6 +112,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.keyword = res.keyword;
         this.filterChanged();
       }),
+      this.store.select(state => state.filtersList).subscribe(res => this.prevFiltersList = res.filtersList),
       this.store.select(state => state.products).subscribe( resp => this.setProducts(resp)),
       this.priceFromChanged
         .pipe(
@@ -169,10 +171,20 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.category_description = res.category_description;
     this.brands = res['filterLists'] ? res['filterLists']['manufacturers'] : [];
     this.filterLists = res['filterLists'] ? res['filterLists']['options'] : [];
-    this.filterLists.forEach(filter => {
-      filter['display'] = filter.values.length > 6 ? 'show_more' : 'show_less';
-      filter['display'] = filter.values.some ( f => f.value_checked && filter.values.indexOf(f) > 5 ) ? 'show_less' : filter['display'];
-    });
+
+    for ( let i = 0; i < this.filterLists.length; i++) {
+      if ( this.prevFiltersList ) {
+        this.filterLists[i]['display'] = this.prevFiltersList['options'][i]['display'];
+      } else {
+        this.filterLists[i]['display'] = this.filterLists[i].fold ? 'show_less' : 'show_more';
+      }
+    }
+
+    if (this.prevFiltersList) {
+      this.brandsFilter['display'] = this.prevFiltersList['manufacturers']['display'];
+    } else {
+      this.brandsFilter['display'] = 'show_less';
+    }
 
     const ft = this.filterLists.findIndex(filter => filter.option_name.toLowerCase() === 'beeldformaat');
 
@@ -286,11 +298,22 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         children: [valueId]
       });
     }
+
     this.filterChanged();
   }
 
   changeShowMore(filter) {
     filter.display = (filter.display === 'show_more') ? 'show_less' : 'show_more';
+
+    this.store.dispatch(new FiltersListActions.SaveFilterList(
+      {
+        manufacturers: this.brandsFilter,
+        options: this.filterLists.map(f => {
+          return {
+            display: f.display
+          };
+        })
+      }));
   }
 
   findTopCategoryId() {
