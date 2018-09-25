@@ -28,13 +28,6 @@ import { FooterComponent } from './theme/components/footer/footer.component';
 
 import { environment } from '../environments/environment';
 
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-
-// // Add an icon to the library for convenient access in other components
-// library.add(faCoffee);
-// You can use it like below example
-// <fa-icon [icon]="'coffee'"></fa-icon>
 @NgModule({
   imports: [
     BrowserModule,
