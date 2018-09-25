@@ -68,13 +68,15 @@ import {
   faTrashAlt,
   faHeart,
   faRulerCombined,
-  faEye,
   faAngleLeft,
   faAngleRight,
   faHome
 } from '@fortawesome/free-solid-svg-icons';
 
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import {
+  faEnvelope,
+  faEye
+} from '@fortawesome/free-regular-svg-icons';
 
 import {
   faWhatsapp
