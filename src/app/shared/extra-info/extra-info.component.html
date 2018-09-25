@@ -19,7 +19,10 @@
                     <strong>{{appService.Data.totalPrice | customCurrency}}</strong>
                 </div>
                 <div>
-                    <a [routerLink]="['/cart']" i18n><fa-icon [icon]="'caret-right'"></fa-icon> View your shopping cart</a>
+                    <a [routerLink]="['/cart']">
+                        <fa-icon [icon]="'caret-right'"></fa-icon>
+                        <ng-container i18n> View your shopping cart</ng-container>
+                    </a>
                 </div>
                 <button mat-button class="btn btn-checkout" [routerLink]="['/checkout']">
                     <span i18n>Ordering </span>
