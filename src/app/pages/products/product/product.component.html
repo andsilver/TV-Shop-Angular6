@@ -60,44 +60,24 @@
                                 <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18"></mat-card>
                             </div>
 
-                            <!-- <div class="py-1 lh">
-                                <p><span class="text-muted fw-500">Category: </span><span>{{ product?.category_name }}</span></p>
-                                <p><span class="text-muted fw-500">Availibility: </span><span>{{ (product?.availibilityCount > 0) ? 'In stock':'Unavailable'}}</span></p>
-                            </div>
-                            <div class="divider mt-1"></div>
-
-                            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="details text-muted py-1">
-                                <div *ngFor="let attribute of product?.attributes; let i=index;">
-                                    <ng-container *ngIf="attribute.listtype == 'select'">
-                                        <mat-form-field>
-                                            <mat-select [placeholder]="attribute.products_options_name" (selectionChange)="attributeSelected(i, $event)">
-                                                <mat-option *ngFor="let option of attribute.values" [value]="option.products_options_values_id">
-                                                    {{option.products_options_values_name}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </ng-container>
-                                </div>
-                            </div> -->
-
                             <div fxLayout="column" class="product-detail-control mb-2">
-                                <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)"><ng-container i18n>Add to cart</ng-container> <i class="fas fa fa-shopping-cart"></i></button>
-                                <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
-                                <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
-                                <button class="control-deal" mat-button (click)="exchangeProduct()"><ng-container i18n>SUMMERDEAL</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
-                                <button class="control-normal" mat-button><ng-container i18n>Action: Exchange your TV</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
+                                <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)"><ng-container i18n>Add to cart</ng-container> <fa-icon [icon]="'shopping-cart'"></fa-icon></button>
+                                <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><fa-icon [icon]="'chevron-circle-right'"></fa-icon></button>
+                                <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><fa-icon [icon]="'chevron-circle-right'"></fa-icon></button>
+                                <button class="control-deal" mat-button (click)="exchangeProduct()"><ng-container i18n>SUMMERDEAL</ng-container><fa-icon [icon]="'chevron-circle-right'"></fa-icon></button>
+                                <button class="control-normal" mat-button><ng-container i18n>Action: Exchange your TV</ng-container><fa-icon [icon]="'chevron-circle-right'"></fa-icon></button>
                             </div>
 
                             <div class="new-stock-info-wrapper">{{product?.stockIndicator}}</div>
 
                             <div class="winkel-stock">
                                 <h3>Bezorgvoorraad</h3>
-                                <div><i class="fa fa-circle"></i><a href='/'>GREEN Voor 18:00 besteld, morgen in huis</a></div>
+                                <div><fa-icon [icon]="'circle'"></fa-icon><a href='/'>GREEN Voor 18:00 besteld, morgen in huis</a></div>
 
                                 <h3>Winkelvoorraad</h3>
                                 <div fxLayout="row wrap">
                                     <div *ngFor="let store of stores" fxFlex="50">
-                                        <i class="fa fa-circle"></i><a [routerLink]="['/stores', store.store_location]">{{store.store_location}}</a>
+                                        <fa-icon [icon]="'circle'"></fa-icon><a [routerLink]="['/stores', store.store_location]">{{store.store_location}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -116,10 +96,10 @@
                             <div class="extra-infos extra-infos-list">
                                 <h2>BEKIJK OOK</h2>
                                 <div class="extra-infos-link">
-                                    <div *ngIf="product?.expertReview" (click)="scrollToElement(info_expert_reviews)"><i class="fa fa-circle"></i>Plus- en minpunten</div>
-                                    <div *ngIf="product?.reviews.length" (click)="scrollToElement(info_reviews)"><i class="fa fa-circle"></i>Reviews</div>
-                                    <div *ngIf="product?.description" (click)="scrollToElement(info_description)"><i class="fa fa-circle"></i>Beschrijving</div>
-                                    <div *ngIf="product?.extra_description" (click)="scrollToElement(info_extra_description)"><i class="fa fa-circle"></i>Specificaties</div>
+                                    <div *ngIf="product?.expertReview" (click)="scrollToElement(info_expert_reviews)"><fa-icon [icon]="'circle'"></fa-icon>Plus- en minpunten</div>
+                                    <div *ngIf="product?.reviews.length" (click)="scrollToElement(info_reviews)"><fa-icon [icon]="'circle'"></fa-icon>Reviews</div>
+                                    <div *ngIf="product?.description" (click)="scrollToElement(info_description)"><fa-icon [icon]="'circle'"></fa-icon>Beschrijving</div>
+                                    <div *ngIf="product?.extra_description" (click)="scrollToElement(info_extra_description)"><fa-icon [icon]="'circle'"></fa-icon>Specificaties</div>
                                 </div>
                             </div>
                         </div>
@@ -150,12 +130,12 @@
                                                     <div fxLayout>
                                                         <div fxFlex *ngIf="review.reviewPoints.plus">
                                                             <p *ngFor="let plus of review.reviewPoints.plus">
-                                                                <i class="fa fa-plus"></i> {{plus}}
+                                                                <fa-icon class="fa-plus" [icon]="'plus'"></fa-icon> {{plus}}
                                                             </p>
                                                         </div>
                                                         <div fxFlex *ngIf="review.reviewPoints.minus">
                                                             <p *ngFor="let minus of review.reviewPoints.minus">
-                                                                <i class="fa fa-minus"></i> {{minus}}
+                                                                <fa-icon class="fa-minus" [icon]="'minus'"></fa-icon> {{minus}}
                                                             </p>
                                                         </div>
                                                     </div>

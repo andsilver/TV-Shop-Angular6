@@ -1,8 +1,8 @@
 <div class="misc-bar m-0">
     <mat-card class="shopping-cart">
         <mat-card-title>
-            <h4 i18n>
-                <a [routerLink]="['/cart']">
+            <h4>
+                <a [routerLink]="['/cart']" i18n>
                     Your shopping cart <fa-icon [icon]="'shopping-cart'"></fa-icon>
                 </a>
             </h4>
@@ -19,11 +19,11 @@
                     <strong>{{appService.Data.totalPrice | customCurrency}}</strong>
                 </div>
                 <div>
-                    <a [routerLink]="['/cart']" i18n><i class="fa fa-caret-right"></i> View your shopping cart</a>
+                    <a [routerLink]="['/cart']" i18n><fa-icon [icon]="'caret-right'"></fa-icon> View your shopping cart</a>
                 </div>
                 <button mat-button class="btn btn-checkout" [routerLink]="['/checkout']">
                     <span i18n>Ordering </span>
-                    <i class="fa fa-chevron-circle-right"></i>
+                    <fa-icon [icon]="'chevron-circle-right'"></fa-icon>
                 </button>
             </div>
         </mat-card-content>
@@ -51,12 +51,50 @@
             <h4 i18n>ADVICE AND CONTACT</h4>
         </mat-card-title>
         <mat-card-content>
-            <div><strong> <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>Open today</a> </strong></div>
-            <div class="adbox_opening_times"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>till 21:00 hour</a></div>
-            <div class="contact_box contact_chat_live"><a onclick="LC_API.open_chat_window(); return false;" href="https://www.plattetv.nl/"> <i class="far fa fa-comment"></i><strong i18n>CHAT LIVE</strong> <span i18n>Reply within 30 sec.</span> </a></div>
-            <div class="contact_box contact_form"><a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS"> <i class="far fa fa-envelope"></i><strong i18n>Insert Form</strong> <span i18n>Reply within 10 min.</span> </a></div>
-            <div class="contact_box contact_whatsapp"><a href="https://api.whatsapp.com/send?phone=31633444433"> <i class="fab fa fa-whatsapp"></i><strong i18n>WHATSAPP US</strong> <span i18n>Reply within 30 sec.</span> </a></div>
-            <div class="contact_box contact_bel"><a href="tel:0268454658"> <i class="fas fa fa-phone"></i><strong i18n>CALL 026-84 54 658</strong> <span i18n>Direct reply</span> </a></div>
+            <div>
+                <strong>
+                    <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>Open today</a>
+                </strong>
+            </div>
+            <div class="adbox_opening_times">
+                <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>till 21:00 hour</a>
+            </div>
+            <div class="contact_box contact_chat_live">
+                <a onclick="LC_API.open_chat_window(); return false;" href="https://www.plattetv.nl/">
+                    <div class="contact_box_icon">
+                        <fa-icon [icon]="'comment'"></fa-icon>
+                    </div>
+                    <strong i18n>CHAT LIVE</strong>
+                    <span i18n>Reply within 30 sec.</span>
+                </a>
+            </div>
+            <div class="contact_box contact_form">
+                <a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS">
+                    <div class="contact_box_icon">
+                        <fa-icon [icon]="'envelope-open'"></fa-icon>
+                    </div>
+                    <strong i18n>Insert Form</strong>
+                    <span i18n>Reply within 10 min.</span>
+                </a>
+            </div>
+            <div class="contact_box contact_whatsapp">
+                <a href="https://api.whatsapp.com/send?phone=31633444433">
+                    <div class="contact_box_icon">
+                        <fa-icon [icon]="['fab', 'whatsapp']"></fa-icon>
+                    </div>
+                    <strong i18n>WHATSAPP US</strong>
+                    <span i18n>Reply within 30 sec.</span>
+                </a>
+            </div>
+            <div class="contact_box contact_bel">
+                <a href="tel:0268454658">
+                    <div class="contact_box_icon">
+                        <fa-icon [icon]="'phone'"></fa-icon>
+                    </div>
+                    <strong i18n>CALL 026-84 54 658</strong>
+                    <span i18n>Direct reply</span>
+                </a>
+            </div>
         </mat-card-content>
     </mat-card>
     <mat-card id="extra-open">
