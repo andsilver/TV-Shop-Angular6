@@ -521,18 +521,7 @@
       <trans-unit id="16b82b65915bed95bdb5258f476dbb163679b407" datatype="html">
         <source>Popular categories</source><target state="new">Populaire categorieën</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">118</context></context-group></trans-unit><trans-unit id="53af28f118cc0513eeb17a1ecca567d3ae95f787" datatype="html">
-        <source>
-                            <x id="INTERPOLATION" equiv-text="{{category.name}}"/>
-                        </source><target state="new">
-                            <x id="INTERPOLATION" equiv-text="{{category.name}}"/>
-                        </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context>
-          <context context-type="linenumber">121</context>
-        </context-group>
-        <note priority="1" from="description">category.i18n ? category.i18n : category.name</note>
-      </trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">118</context></context-group></trans-unit>
       
       
       
@@ -543,55 +532,31 @@
       <trans-unit id="f30d22784102fbee6898ddd7ab0c3d4c42597e15" datatype="html">
         <source>Popular brands</source><target state="new">Populaire merken</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">128</context></context-group></trans-unit>
-      <trans-unit id="a729f8bb6a40e928958240c28f93d8215735e242" datatype="html">
-        <source>Samsung</source><target state="new">Samsung</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">130</context></context-group></trans-unit>
-      <trans-unit id="f1b2f8f89be6e896dde92db751693f052180c0e0" datatype="html">
-        <source>LG</source><target state="new">LG</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">131</context></context-group></trans-unit>
-      <trans-unit id="e6947bdbc69ed2ae2c935c37974f62c64ce4af28" datatype="html">
-        <source>Sony</source><target state="new">Sony</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">132</context></context-group></trans-unit>
-      <trans-unit id="8a01239ca974f1af7f7e70c5da7cdfc66f8c30df" datatype="html">
-        <source>Philips</source><target state="new">Philips</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">133</context></context-group></trans-unit>
-      <trans-unit id="2e8bc4c19560205cebdee8578340728532c5039b" datatype="html">
-        <source>Panasonic</source><target state="new">Panasonic</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">134</context></context-group></trans-unit>
-      <trans-unit id="6f4a1c1c31b9c172279b074c54733e703f931f70" datatype="html">
-        <source>Sonos</source><target state="new">Sonos</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">135</context></context-group></trans-unit>
-      <trans-unit id="e302b0b4e605d174ebdf0f82a0ea65afa93d58c9" datatype="html">
-        <source>HEOS</source><target state="new">HEOS</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">136</context></context-group></trans-unit>
-      <trans-unit id="e57bd2c46bc8540c8370ea88f69fc9b2c1b84273" datatype="html">
-        <source>Denon</source><target state="new">Denon</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">137</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">126</context></context-group></trans-unit>
+      
+      
+      
+      
+      
+      
+      
+      
       <trans-unit id="85ae733267fd284c274d772ad94c555ddfffae73" datatype="html">
         <source>General conditions</source><target state="new">Algemene voorwaarden</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">154</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">143</context></context-group></trans-unit>
       <trans-unit id="3c78b53bca33467190c0b7a01320bc093a2b1427" datatype="html">
         <source>Privacy</source><target state="new">Privacy</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">154</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">143</context></context-group></trans-unit>
       <trans-unit id="4f489cc30da4fa5f11f653ae52eacef505ba9170" datatype="html">
         <source>Cookies</source><target state="new">Cookies</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">154</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">143</context></context-group></trans-unit>
       <trans-unit id="a1fa90a2f6a48fc6d0e2b296a40130200e5d6342" datatype="html">
         <source>All prices are incl. VAT</source><target state="new">Alle vermelde prijzen zijn incl. BTW.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">155</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context><context context-type="linenumber">144</context></context-group></trans-unit>
       
       
       
