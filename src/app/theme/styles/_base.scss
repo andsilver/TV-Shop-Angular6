@@ -15,8 +15,8 @@ html{
 body{
     background-color: #dedede;
     height: 100%;
-    font-size: .875rem;
-    line-height: 1.45;
+    font-size: .8125rem;
+    line-height: 1.384615;
     font-family: $font-family!important;
     margin: 0;
     padding: 0;
@@ -457,9 +457,9 @@ app-root .app.dark .mat-drawer-container::after {
 .misc-bar{
     margin-top: 30px;
 
-    & > div+div {
+    /* & > div+div {
         margin-top: 2rem;
-    }
+    } */
     .mat-card{
         padding: 1.5rem;
 
@@ -491,12 +491,92 @@ app-root .app.dark .mat-drawer-container::after {
 }
 
 .mat-card {
-    font-family: $font-family!important;
     padding: 1rem;
 }
-.mat-card-title {
-    font-size: 1.25rem!important;
+
+.branch_opening_hours_box { position:relative; overflow:hidden; border:1px solid #E6E6DC; padding:.5rem; }
+.branch_opening_hours_box+.branch_opening_hours_box { margin-top:.5rem; }
+.branch_img { float:left; margin-right:6px; }
+.branch_opening_hours { font-weight:600; font-size:12px; line-height:1.2; }
+.adbox_opening_times.city_name { font-size:13px; margin-bottom:4px; margin-top:2px; }
+.adbox_opening_times.city_name a { color:#000; }
+.adbox_opening_times:nth-child(2) > a { color:#66b23e; }
+.adbox_opening_times:nth-child(3) > a { color:#686868; }
+.image_overlay { position:absolute; left:-27px; top:11px; width:110px; background:#fdc642;font-weight:500; font-size:11px; line-height:1; color:#000; text-align:center; text-transform:uppercase; padding:4px 0; -webkit-transform:rotate(-33deg); transform:rotate(-33deg); z-index:10; }
+.image_overlay > a { color:#000; }
+.image_overlay > a:hover,
+.image_overlay > a:focus { text-decoration:none; }
+
+#advice-and-contact .adbox_opening_times { font-size:14px; }
+#advice-and-contact .adbox_opening_times:nth-child(1) a { color:#5aad49; }
+#advice-and-contact .adbox_opening_times:nth-child(2) a { color:#000; }
+#advice-and-contact .adbox_opening_times:nth-child(2) { margin-bottom:10px; }
+#advice-and-contact .contact_box > a,
+#advice-and-contact .contact_box > span { display:block; border:1px solid #E6E6DC; background:#e6e6dc; margin-bottom:5px; padding:10px 0 10px 6px; }
+#advice-and-contact .contact_box > span { cursor:default; }
+#advice-and-contact .contact_box > a:hover { background:#212226; color:#fff; text-decoration:none; }
+#advice-and-contact .contact_box > a:hover .ng-fa-icon { color:#000; }
+#advice-and-contact .contact_box > a > .ng-fa-icon,
+#advice-and-contact .contact_box > span > .ng-fa-icon { float:left; width:30px; height:30px; background:#fff; font-size:17px; line-height:30px; text-align:center; margin-right:10px; border-radius:50%; }
+#advice-and-contact .contact_box > a > strong,
+#advice-and-contact .contact_box > a > span,
+#advice-and-contact .contact_box > span > strong,
+#advice-and-contact .contact_box > span > span { display:block; line-height:14px; }
+#advice-and-contact .contact_box > a > strong,
+#advice-and-contact .contact_box > span > strong { font-weight:bold; font-size:12px; margin-top:2px; }
+#advice-and-contact .contact_box > a > span,
+#advice-and-contact .contact_box > span > span { font-size:10px; }
+#advice-and-contact .contact_box:last-child a { margin-bottom:0; }
+#advice-and-contact .contact_box.plattebox_cs_close:not(.contact_form) { pointer-events:none; cursor:default; opacity:.5; }
+
+.extra_open_hours_box > div a,
+.extra_open_hours_box > div.special_open_time span { display:block; border:1px solid #E6E6DC; font-weight:600; font-size:16px; line-height:32px; font-family:"Poppins"; text-align:center; margin-bottom:5px; }
+.extra_open_hours_box > div.special_open_time a,
+.extra_open_hours_box > div.special_open_time span { background:#2da6c1; font-weight:bold; font-size:31px; line-height:44px; font-family:"Gotham Condensed"; letter-spacing:.02em; color:#fff; }
+.extra_open_hours_box > div.special_open_time span { cursor:default; }
+.extra_open_hours_box > div.special_open_time a:hover { text-decoration:none; }
+.extra_open_hours_box > div.city_open_time:hover a { background:#212226; color:#fff; text-decoration:none; }
+.extra_open_hours_box > div.store_open_hours a { border:none; font-weight:normal; font-size:12px; line-height:18px; }
+.extra_open_hours_box > div.store_open_hours:hover a { background:none; color:#000; text-decoration:underline; }
+.extra_open_hours_box > div:last-child { margin-bottom:0; }
+
+.reviewbox {
+    display: -ms-flexbox!important;
+    display: flex!important;
+    -ms-flex-align: center!important;
+    align-items: center!important;
+    -ms-flex-pack: center!important;
+    justify-content: center!important;
+    height:73px;
+    border:1px solid #E6E6DC;
+    font-size:.875rem;
+    text-align:center;
 }
+.reviewbox-tweakers,
+.reviewbox-trustpilot {
+    -ms-flex-direction: column!important;
+    flex-direction: column!important;
+}
+.reviewbox+.reviewbox { margin-top:5px; }
+
+.reviewbox-kieskeurig .reviewbox--score { display:inline-block; width:35px; height:35px; background-color:#2da6c1; font-size:1.3125rem; line-height:35px; font-family:"Gotham Condensed"; color:#fff; text-align:center; margin-right:6px; border-radius:50%; }
+.reviewbox-kieskeurig .reviewbox--text { display:inline-block; font-weight:700; line-height:1.125rem; text-align:left; }
+.reviewbox-kieskeurig .reviewbox--text .reviewbox--label { display:block; font-weight:700; margin-bottom:2px; }
+.reviewbox-kieskeurig .reviewbox--text .reviewbox--total-reviews { display:block; font-weight:400; }
+
+.reviewbox .reviewbox--title { font-weight:700; line-height:1.125rem; margin-bottom:2px; }
+.reviewbox [class^=reviewbox--star-] {width:114px;height:18px;background:url(/assets/images/others/star-blue.png) no-repeat;background-size: cover;margin-left:auto;margin-right:auto;margin-bottom:3px;}
+.reviewbox .reviewbox--star-00 { background-position:left top; }
+.reviewbox .reviewbox--star-05 { background-position:left -18px; }
+.reviewbox .reviewbox--star-10 { background-position:left -36px; }
+.reviewbox .reviewbox--star-15 { background-position:left -54px; }
+.reviewbox .reviewbox--star-20 { background-position:left -72px; }
+.reviewbox .reviewbox--star-25 { background-position:left -90px; }
+.reviewbox .reviewbox--star-30 { background-position:left -108px; }
+.reviewbox .reviewbox--star-35 { background-position:left -126px; }
+.reviewbox .reviewbox--star-40 { background-position:left -144px; }
+.reviewbox .reviewbox--star-45 { background-position:left -162px; }
+.reviewbox .reviewbox--star-50 { background-position:left -180px; }
 
 .social-icon{
     width: 48px;
@@ -571,7 +651,7 @@ app-root .app.dark .mat-drawer-container::after {
             &+div {
                 margin-left: 24px;
             }
-            .fas {
+            .ng-fa-icon {
                 color: #38a5bf;
                 margin-right: .5rem;
             }

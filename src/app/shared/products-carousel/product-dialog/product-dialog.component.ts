@@ -4,6 +4,12 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { AppService } from '../../../app.service';
 import { Product } from '../../../app.models';
 import { CurrencyService } from 'app/services';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faAngleLeft, faAngleRight);
+
 declare var imgix: any;
 
 @Component({

@@ -1,12 +1,16 @@
-import { Component, OnInit,  OnDestroy, Input } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
+import { Subscription } from 'rxjs/Subscription';
 
 import { AppSettings } from '../../../app.settings';
-import { Title } from '@angular/platform-browser';
 import { SidenavMenuService } from '../../../theme/components/sidenav-menu/sidenav-menu.service';
+
+library.add(faHome);
 
 @Component({
   selector: 'app-crumb-path',

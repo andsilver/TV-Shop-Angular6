@@ -15,6 +15,12 @@ import { State } from 'app/store';
 import { SetKeyword } from 'app/store/actions/keyword.action';
 import { SuccessGetCategories } from 'app/store/actions/categories.action';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faSearch, faBars);
+
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',

@@ -40,6 +40,7 @@ import { environment } from '../environments/environment';
 // library.add(faCoffee);
 //You can use it like below example
 //<fa-icon [icon]="'coffee'"></fa-icon>
+
 @NgModule({
   imports: [
     BrowserModule,

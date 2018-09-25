@@ -9,7 +9,7 @@
         border-bottom: 1px solid #E6E6DC;
         box-shadow: none;
         .mat-expansion-panel-header {
-            font-size: .875rem;
+
             .mat-expansion-panel-header-title {
                 text-transform: uppercase;
                 .fa {
@@ -74,7 +74,7 @@
 .filter-clear{
     margin-top: 10px;
     cursor: pointer;
-    .fa {
+    .ng-fa-icon {
         font-size: 20px;
         vertical-align: middle;
     }
@@ -156,7 +156,7 @@
         background-color: #ebebe3;
         color: #212226;
         position: relative;
-        .fas {
+        .ng-fa-icon {
             position: absolute;
             right: 1rem;
             top: 0;

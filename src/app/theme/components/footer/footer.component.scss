@@ -17,10 +17,7 @@ footer .mat-toolbar .mat-toolbar-row {
 .footer-info--contact-list ul:before,
 .footer-info--contact-list ul:after { clear:both; display:table; content:""; }
 .footer-info--contact-list ul > li { float:left; width:50%; margin-top:20px; }
-.footer-info--contact-list ul > li .fa,
-.footer-info--contact-list ul > li .far,
-.footer-info--contact-list ul > li .fas,
-.footer-info--contact-list ul > li .fab { float:left; display:block; width:32px; height:32px; background:#fff; font-size:18px; line-height:32px; content:""; text-align:center; border-radius:50%; margin-right:10px; vertical-align:middle; }
+.footer-info--contact-list ul > li .ng-fa-icon { float:left; display:block; width:32px; height:32px; background:#fff; font-size:18px; line-height:32px; content:""; text-align:center; border-radius:50%; margin-right:10px; vertical-align:middle; }
 .footer-info--contact-list ul > li .fas-phone { font-size:20px; }
 .footer-info--contact-list ul > li .fab-whatsapp { font-size:22px; }
 .footer-info--contact-list ul > li span,
