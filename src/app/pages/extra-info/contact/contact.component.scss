@@ -59,17 +59,16 @@
                 text-transform: uppercase;
             }
 
-            i {
+            &-icon {
+                display: inline-block;
                 width: 40px;
                 height: 40px;
                 background: #fff;
-                font-size: 24px;
+                border-radius: 50%;
+                margin-right: 16px;
                 line-height: 40px;
                 text-align: center;
-                margin-right: 16px;
-                border-radius: 50%;
             }
-
         }
     }
 

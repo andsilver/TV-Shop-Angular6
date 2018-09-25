@@ -12,17 +12,21 @@
         padding: 0 10px;
         background-color: #212226;
 
+        h4 {
+            padding-bottom: 0;
+            line-height: 2.125rem;
             a{
                 text-transform: uppercase;
                 color: #ffffff;
                 font-weight: 500;
-                i {
-                    font-size: 24px;
+                fa-icon {
+                    font-size: 20px;
                 }
                 &:hover {
                     text-decoration: underline;
                     color: #ffffff;
                 }
+            }
         }
     }
 
@@ -46,7 +50,7 @@
         font-size: 13px;
         font-family: "Poppins";
 
-        i {
+        fa-icon {
             font-size: 17px;
             margin-left: 5px;
         }
@@ -55,35 +59,67 @@
 }
 
 #advice-and-contact {
-    .adbox_opening_times { font-size:14px; }
-    .adbox_opening_times:nth-child(1) a { color:#5aad49; }
-    .adbox_opening_times:nth-child(2) a { color:#000; }
-    .adbox_opening_times:nth-child(2) { margin-bottom:10px; }
-    .contact_box > a,
-    .contact_box > span { display:block; border:1px solid #E6E6DC; background:#e6e6dc; margin-bottom:5px; padding:10px 0 10px 6px; }
-    .contact_box > span { cursor:default; }
-    .contact_box > a:hover { background:#212226; color:#fff; text-decoration:none; }
-    .contact_box > a:hover .fa,
-    .contact_box > a:hover .far,
-    .contact_box > a:hover .fas,
-    .contact_box > a:hover .fab { color:#000; }
-    .contact_box > a > .fa,
-    .contact_box > span > .fa,
-    .contact_box > a > .far,
-    .contact_box > span > .far,
-    .contact_box > a > .fas,
-    .contact_box > span > .fas,
-    .contact_box > a > .fab,
-    .contact_box > span > .fab { float:left; width:30px; height:30px; background:#fff; font-size:17px; line-height:30px; text-align:center; margin-right:10px; border-radius:50%; }
-    .contact_box > a > strong,
-    .contact_box > a > span,
-    .contact_box > span > strong,
-    .contact_box > span > span { display:block; line-height:14px; }
-    .contact_box > a > strong,
-    .contact_box > span > strong { font-weight:bold; font-size:12px; margin-top:2px; }
-    .contact_box > a > span,
-    .contact_box > span > span { font-size:10px; }
-    .contact_box:last-child a { margin-bottom:0; }
+    .adbox_opening_times { 
+        font-size:14px;
+        &:nth-child(1) a {
+            color:#5aad49;
+        }
+        &:nth-child(2) {
+            margin-bottom: 10px;
+            a {
+                color:#000;
+            }
+        }
+    }
+
+    .contact_box {
+        >a, >span {
+            display:block;
+            border:1px solid #E6E6DC;
+            background:#e6e6dc;
+            margin-bottom:5px;
+            padding:10px 0 10px 6px;
+        }
+
+        > a {
+            .contact_box_icon {
+                float:left;
+                width:30px;
+                height:30px;
+                background:#fff;
+                font-size:17px; 
+                line-height:30px;
+                text-align:center; 
+                margin-right:10px;
+                border-radius:50%;
+            }
+
+            &:hover{
+                background:#212226;
+                color:#fff;
+                text-decoration:none;
+                fa-icon {
+                    color:#000;
+                }
+            }
+
+            strong {
+                display:block; line-height:14px;
+                font-weight:bold;
+                font-size:12px;
+                margin-top:2px;
+            }
+
+            >span {
+                font-size:10px;
+            }
+        }
+
+        &:last-child a{
+            margin-bottom:0;
+        }
+    }
+
     .contact_box.plattebox_cs_close:not(.contact_form) { pointer-events:none; cursor:default; opacity:.5; }
 }
 
@@ -142,6 +178,7 @@
 }
 
 .branch-office{
+
     .branch_opening_hours_box{
         position:relative;
         overflow:hidden;

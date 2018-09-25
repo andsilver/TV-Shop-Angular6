@@ -17,7 +17,7 @@
                             <mat-panel-title>
                                 <h4>
                                     {{filt.option_name}}
-                                    <i *ngIf="filt?.description" class="fa fa-info-circle" [satPopoverAnchorFor]="p" (mouseenter)="popoverFilter=filt;p.open();" (mouseleave)="p.close()"></i>
+                                    <fa-icon *ngIf="filt?.description" [icon]="'info-circle'" [satPopoverAnchorFor]="p" (mouseenter)="popoverFilter=filt;p.open();" (mouseleave)="p.close()"></fa-icon>
                                 </h4>
                                 <sat-popover #p verticalAlign="below" horizontalAlign="start">
                                     <app-description-popover [title]="popoverFilter?.option_name" [content]="popoverFilter?.description"></app-description-popover>
@@ -135,7 +135,7 @@
                                             {{product.specialLabel}}
                                         </div>
                                         <a [routerLink]="[product.permalink]" class="image-link">
-                                            <img [attr.ix-path]="product.images[0].small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" >
+                                            <img [attr.ix-path]="product.images[0].small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" alt="">
                                         </a>
                                     </div>
                                     <div fxFlex="100" fxLayout.lt-md="column" fxLayoutGap="1rem" class="listing-item-content">

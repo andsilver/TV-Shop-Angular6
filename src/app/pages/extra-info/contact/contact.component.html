@@ -2,7 +2,7 @@
   <div class="top-section page-section">
     <h1 i18n>ADVICE & CONTACT</h1>
     <div>
-      <img src="https://www.plattetv.nl/var/images/cmsimages/winkels/advies-en-contact.png" alt="Image not arrived">
+      <img src="https://www.plattetv.nl/var/images/cmsimages/winkels/advies-en-contact.png" alt="">
     </div>
     <div>
       <ng-container i18n>You can contact our customer service every day of the week! Want to know more about TV and Audio? Curious about how much</ng-container>
@@ -18,8 +18,8 @@
     <div fxLayout="row wrap" fxLayoutAlign="space-between start">
 
       <div class="contact-method" fxFlex="49" fxFlex.xs="100" fxLayout fxLayoutAlign="start center">
-        <div>
-          <i class="fa fa-comment"></i>
+        <div class="contact-method-icon">
+          <fa-icon [icon]="['fas', 'comment']" size="lg"></fa-icon>
         </div>
         <div>
           <h2 i18n>Chat live</h2>
@@ -28,8 +28,8 @@
       </div>
 
       <div class="contact-method" fxFlex="50" fxFlex.xs="100" fxLayout fxLayoutAlign="start center">
-        <div>
-          <i class="fa fa-envelope-o"></i>
+        <div class="contact-method-icon">
+          <fa-icon [icon]="['far', 'envelope']" size="lg"></fa-icon>
         </div>
         <div>
           <h2 i18n>Fill form in</h2>
@@ -38,8 +38,8 @@
       </div>
 
       <div class="contact-method" fxFlex="49" fxFlex.xs="100" fxLayout fxLayoutAlign="start center">
-        <div>
-          <i class="fa fa-whatsapp"></i>
+        <div class="contact-method-icon">
+          <fa-icon [icon]="['fab', 'whatsapp']" size="lg"></fa-icon>
         </div>
         <div>
           <h2 i18n>Whatsapp us</h2>
@@ -48,8 +48,8 @@
       </div>
 
       <div class="contact-method" fxFlex="50" fxFlex.xs="100" fxLayout fxLayoutAlign="start center">
-        <div>
-          <i class="fa fa-phone"></i>
+        <div class="contact-method-icon">
+          <fa-icon [icon]="['fas', 'phone']" size="lg"></fa-icon>
         </div>
         <div>
           <h2 i18n>Bel 026-84 54 658</h2>

@@ -29,8 +29,9 @@
                                         [attr.ix-path]="image" ix-params='{"auto":"compress"}' 
                                         (mousemove)="onMouseMove($event)"
                                         sizes="(min-width: 768px) 360px, (min-width: 320px) 370px, 100vw"
+                                        alt=""
                                         (mouseleave)="onMouseLeave($event)"/>
-                                    <img *ngIf="!selectedImage.have_image" [attr.ix-path]="image" ix-params='{"auto":"compress"}'  class="no-product-image">
+                                    <img *ngIf="!selectedImage.have_image" [attr.ix-path]="image" ix-params='{"auto":"compress"}'  class="no-product-image" alt="">
                                 </ng-container>
                             </mat-card>
 
@@ -40,7 +41,7 @@
                                         <div *ngFor="let image of product?.images" class="swiper-slide">
                                             <mat-card (click)="selectImage(image)" class="p-1">
                                                 <span *ngIf="image.have_image">
-                                                    <img [attr.ix-path]="image.small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 80px, (min-width: 320px) 90px, 100vw"  class="swiper-lazy"/>
+                                                    <img [attr.ix-path]="image.small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 80px, (min-width: 320px) 90px, 100vw"  class="swiper-lazy" alt=""/>
                                                 </span>
                                             </mat-card>
                                         </div>
@@ -53,34 +54,13 @@
                         <div fxFlex ngClass.gt-sm="px-3 m-0" ngClass.md="pl-3" ngClass.sm="mt-2" ngClass.xs="mt-2">
 
                             <h2 class="mb-2 new-price">{{product?.newPrice | customCurrency}}</h2>
-                            <div [innerHTML]="product?.demoUnit" class="product_deals_wrapper"></div>
+                            <div [innerHTML]="product?.demoUnitText" class="product_deals_wrapper"></div>
 
                             <div #zoomViewer fxShow="false" fxShow.gt-md>
                                 <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18"></mat-card>
                             </div>
 
-                            <!-- <div class="py-1 lh">
-                                <p><span class="text-muted fw-500">Category: </span><span>{{ product?.category_name }}</span></p>
-                                <p><span class="text-muted fw-500">Availibility: </span><span>{{ (product?.availibilityCount > 0) ? 'In stock':'Unavailable'}}</span></p>
-                            </div>
-                            <div class="divider mt-1"></div>
-
-                            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="details text-muted py-1">
-                                <div *ngFor="let attribute of product?.attributes; let i=index;">
-                                    <ng-container *ngIf="attribute.listtype == 'select'">
-                                        <mat-form-field>
-                                            <mat-select [placeholder]="attribute.products_options_name" (selectionChange)="attributeSelected(i, $event)">
-                                                <mat-option *ngFor="let option of attribute.values" [value]="option.products_options_values_id">
-                                                    {{option.products_options_values_name}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </ng-container>
-                                </div>
-                            </div> -->
-
                             <div fxLayout="column" class="product-detail-control mb-2">
-                                <!-- <app-controls [product]="product" [type]="'all'"></app-controls> -->
                                 <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)"><ng-container i18n>Add to cart</ng-container> <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon></button>
                                 <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
                                 <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
@@ -116,10 +96,10 @@
                             <div class="extra-infos extra-infos-list">
                                 <h2>BEKIJK OOK</h2>
                                 <div class="extra-infos-link">
+				    <div *ngIf="product?.expertReview" (click)="scrollToElement(info_expert_reviews)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Plus- en minpunten</div>
                                     <div *ngIf="product?.reviews.length" (click)="scrollToElement(info_reviews)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Reviews</div>
                                     <div *ngIf="product?.description" (click)="scrollToElement(info_description)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Beschrijving</div>
                                     <div *ngIf="product?.extra_description" (click)="scrollToElement(info_extra_description)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Specificaties</div>
-                                    <div *ngIf="product?.expertReview" (click)="scrollToElement(info_expert_reviews)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Plus- en minpunten</div>
                                 </div>
                             </div>
                         </div>
@@ -150,12 +130,12 @@
                                                     <div fxLayout>
                                                         <div fxFlex *ngIf="review.reviewPoints.plus">
                                                             <p *ngFor="let plus of review.reviewPoints.plus">
-                                                                <i class="fa fa-plus"></i> {{plus}}
+                                                                <fa-icon class="fa-plus" [icon]="'plus'"></fa-icon> {{plus}}
                                                             </p>
                                                         </div>
                                                         <div fxFlex *ngIf="review.reviewPoints.minus">
                                                             <p *ngFor="let minus of review.reviewPoints.minus">
-                                                                <i class="fa fa-minus"></i> {{minus}}
+                                                                <fa-icon class="fa-minus" [icon]="'minus'"></fa-icon> {{minus}}
                                                             </p>
                                                         </div>
                                                     </div>

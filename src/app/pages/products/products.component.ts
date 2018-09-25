@@ -14,13 +14,6 @@ import { ProductDialogComponent } from '../../shared/products-carousel/product-d
 import { AppService } from '../../app.service';
 import { Product, Category } from '../../app.models';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faChevronCircleRight, faTrashAlt, faCircle);
-
 declare var imgix: any;
 
 @Component({
