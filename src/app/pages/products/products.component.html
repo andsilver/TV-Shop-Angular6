@@ -46,9 +46,10 @@
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
                             <div fxLayout="column" class="filter-brands">
-                                <div *ngFor="let brand of brands">
-                                    <mat-checkbox (change)="selectBrand(brand)" [checked]="brand.value_checked">{{brand.name}} ({{brand.result_counter}})</mat-checkbox>
+                                <div *ngFor="let brand of brands | slice:0:showMore[brandsFilter.display].count">
+                                    <mat-checkbox (change)="selectBrand(brand)" [disabled]="brand.result_counter == 0" [checked]="brand.value_checked">{{brand.name}} ({{brand.result_counter}})</mat-checkbox>
                                 </div>
+                                <a class="show_more_toggle" *ngIf="brands.length > 6" (click)="changeShowMore(brandsFilter)">{{showMore[brandsFilter.display].text}}<mat-icon>{{showMore[brandsFilter.display].icon}}</mat-icon></a>
                             </div>
                         </mat-expansion-panel>
 
