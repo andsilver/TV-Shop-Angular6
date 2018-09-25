@@ -1,8 +1,11 @@
 <div class="misc-bar m-0">
     <mat-card class="shopping-cart">
         <mat-card-title>
-            <h4 i18n><a [routerLink]="['/cart']">Your shopping cart <fa-icon [icon]="'shopping-cart'"></fa-icon>
-            </a></h4>
+            <h4 i18n>
+                <a [routerLink]="['/cart']">
+                    Your shopping cart <fa-icon [icon]="'shopping-cart'"></fa-icon>
+                </a>
+            </h4>
         </mat-card-title>
         <mat-card-content *ngIf="appService.Data.totalPrice > 0">
             <div class="shopping-cart-items">
@@ -31,7 +34,7 @@
             <div *ngFor="let store of stores" class="branch_opening_hours_box">
                 <div class="branch_img">
                     <a [routerLink]="store.link">
-                        <img [attr.ix-path]="store.img" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw">
+                        <img [attr.ix-path]="store.img" alt="" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw">
                     </a>
                 </div>
                 <div class="branch_opening_hours">

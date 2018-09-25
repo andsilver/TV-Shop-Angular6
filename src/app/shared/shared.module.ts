@@ -32,7 +32,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 import { SatPopoverModule } from '@ncstate/sat-popover';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-
 import { PipesModule } from '../theme/pipes/pipes.module';
 import { RatingComponent } from './rating/rating.component';
 import { ControlsComponent } from './controls/controls.component';
@@ -49,6 +48,41 @@ import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 import { ExtraInfoComponent } from './extra-info/extra-info.component';
 import { FiltersListComponent } from './filters-list/filters-list.component';
 import { DescriptionPopoverComponent } from './description-popover/description-popover.component';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faShoppingCart,
+  faCheckCircle,
+  faComment,
+  faEnvelopeOpen,
+  faCircle,
+  faPlus,
+  faMinus,
+  faPhone,
+  faInfoCircle,
+  faTrash,
+  faChevronCircleRight,
+  faCaretRight} from '@fortawesome/free-solid-svg-icons';
+
+import {
+  faWhatsapp
+} from '@fortawesome/free-brands-svg-icons';
+
+// Add an icon to the library for convenient access in other components
+library.add(
+  faShoppingCart,
+  faCheckCircle,
+  faComment,
+  faEnvelopeOpen,
+  faCircle,
+  faPlus,
+  faMinus,
+  faPhone,
+  faInfoCircle,
+  faTrash,
+  faChevronCircleRight,
+  faCaretRight,
+  faWhatsapp);
 
 @NgModule({
   imports: [
@@ -119,7 +153,8 @@ import { DescriptionPopoverComponent } from './description-popover/description-p
     DescriptionPopoverComponent,
     AgmCoreModule,
     LazyLoadImagesModule,
-    SatPopoverModule
+    SatPopoverModule,
+    FontAwesomeModule
   ],
   declarations: [
     RatingComponent,

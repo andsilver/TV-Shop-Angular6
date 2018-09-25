@@ -3,7 +3,7 @@
         <div *ngFor="let product of products" class="swiper-slide">
             <mat-card class="product-item">
                 <a [routerLink]="[ product.permalink ]" class="image-link">
-                    <img [attr.ix-path]="product.images[0].medium" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 280px, (min-width: 320px) 260px, 100vw"  class="swiper-lazy"/>
+                    <img [attr.ix-path]="product.images[0].medium" ix-params='{"auto":"compress"}' alt="" sizes="(min-width: 768px) 280px, (min-width: 320px) 260px, 100vw"  class="swiper-lazy"/>
                 </a>
                 <h4 class="category text-muted">{{ ( appService.Data.categories | filterById : product.categoryId )?.name }}</h4>
                 <a [routerLink]="[ product.permalink ]" class="title text-truncate">

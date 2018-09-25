@@ -76,16 +76,9 @@
 
           <div class="atmosphere">
             <h3 class="header-title" i18n>ATMOSPHERE</h3>
-            <div fxLayout fxLayout="start stretch">
-              <!-- <div fxFlex="25" fxLayout="column" fxLayout="space-between start" class="atmosphere-l">
-                <div class="small-image" *ngFor="let image of data.atmosphere.small">
-                  <img [src]="image">
-                </div>
-              </div> -->
-              <div fxFlex fxLayout="row wrap" fxLayoutAlign="start start" class="atmosphere-r">
-                <div class="big-image" fxFlex="25" fxFlex.lt-sm="50" *ngFor="let image of _store.store_images">
-                  <img [attr.ix-path]="image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 200px, (min-width: 320px) 200px, 100vw"  alt="Image not arrived.">
-                </div>
+            <div fxFlex fxLayout="row wrap" fxLayoutAlign="start start" class="atmosphere-r">
+              <div class="big-image" fxFlex="25" fxFlex.lt-sm="50" *ngFor="let image of _store.store_images">
+                <img [attr.ix-path]="image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 200px, (min-width: 320px) 200px, 100vw"  alt="Image not arrived.">
               </div>
             </div>
           </div>

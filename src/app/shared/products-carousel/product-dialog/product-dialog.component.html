@@ -7,7 +7,7 @@
             <div class="swiper-container h-100" [swiper]="config">
                 <div class="swiper-wrapper">      
                     <div *ngFor="let image of product.images" class="swiper-slide">
-                        <img [attr.ix-path]="image.medium" ix-params='{"auto":"compress"}' class="swiper-lazy"/>
+                        <img [attr.ix-path]="image.medium" ix-params='{"auto":"compress"}' class="swiper-lazy" alt=""/>
                         <div class="swiper-lazy-preloader"></div>
                     </div>
                 </div>

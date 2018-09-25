@@ -155,7 +155,7 @@
             <div class="mat-header-cell" i18n>Total</div>
           </div>
           <div *ngFor="let product of appService.Data.cartList" class="mat-row">
-            <div class="mat-cell"><img [src]="product.images[0].small"></div>
+            <div class="mat-cell"><img [src]="product.images[0].small" alt=""></div>
             <div class="mat-cell">{{product.name}}</div>
             <div class="mat-cell">{{product.newPrice | customCurrency:0:999}}</div>      
             <div class="mat-cell text-muted"> 1 </div>
@@ -394,7 +394,7 @@
             <div class="mat-header-cell" i18n>Total</div>
           </div>
           <div *ngFor="let product of appService.Data.cartList" class="mat-row">
-            <div class="mat-cell"><img [src]="product.images[0].small"></div>
+            <div class="mat-cell"><img [src]="product.images[0].small" alt=""></div>
             <div class="mat-cell">{{product.name}}</div>
             <div class="mat-cell">{{product.newPrice | customCurrency:0:999}}</div>      
             <div class="mat-cell text-muted"> 1 </div>
