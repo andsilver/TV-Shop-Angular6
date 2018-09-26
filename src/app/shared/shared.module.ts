@@ -70,7 +70,12 @@ import {
   faRulerCombined,
   faAngleLeft,
   faAngleRight,
-  faHome
+  faHome,
+  faGift,
+  faTruck,
+  faDollarSign,
+  faHeadset,
+  faTimes
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -104,7 +109,12 @@ library.add(
   faEye,
   faAngleLeft,
   faAngleRight,
-  faHome);
+  faHome,
+  faGift,
+  faTruck,
+  faDollarSign,
+  faHeadset,
+  faTimes);
 
 @NgModule({
   imports: [

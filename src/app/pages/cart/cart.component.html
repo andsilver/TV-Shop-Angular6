@@ -39,7 +39,7 @@
           <td class="action" align="center" valign="top">
             <div class="btn-container">
               <button class="item-button" title="Remove this product" (click)="removeFromCart(product)" i18n-title>
-                <mat-icon>close</mat-icon>
+                <fa-icon [icon]="['fas', 'times']"></fa-icon>
               </button>
               <button class="item-button" title="Recalculate price" (click)="recalculatePrice(product,product.item_qty)" i18n-title *ngIf="product.item_price != 0">
                 <mat-icon>autorenew</mat-icon>
@@ -125,16 +125,16 @@
         <div class="add-coupon-form" *ngIf="addCouponForm">
           <input type="text" [(ngModel)]="couponCode"/> <br>
           <button class="btn btn-checkout" (click)="verifyCouponCode()"><span i18n>Activate code</span>
-            <mat-icon>keyboard_arrow_right</mat-icon>
+            <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
           </button>
         </div>
       </div>
       <div class="checkout-btn-container">
         <button class="btn btn-shopping"><span i18n>continue shopping</span>
-          <mat-icon>keyboard_arrow_right</mat-icon>
+          <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
         </button>
         <button class="btn btn-checkout"><span i18n>place order</span>
-          <mat-icon>keyboard_arrow_right</mat-icon>
+          <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
         </button>
       </div>
     </div>
@@ -153,7 +153,7 @@
           <td align="right"><span class="check-price">{{ product.item_old_price | customCurrency}}</span></td>
           <td align="right">{{ product.item_price | customCurrency}}</td>
           <td align="right"><button class="btn add-item-btn" (click)="addToCartApi(product)"><span i18n>Add</span>
-              <mat-icon>keyboard_arrow_right</mat-icon>
+            <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
             </button></td>
         </tr>
         <!-- <tr>
@@ -168,7 +168,7 @@
           <td align="right"><span class="check-price">€&nbsp;59,99</span></td>
           <td align="right">€ 29,99</td>
           <td align="right"><button class="btn add-item-btn"><span i18n>Add </span>
-              <mat-icon>keyboard_arrow_right</mat-icon>
+              <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
             </button></td>
         </tr> -->
         <!-- <tr>
@@ -183,7 +183,7 @@
           <td align="right"></td>
           <td align="right">€ 349,00</td>
           <td align="right"><button class="btn add-item-btn"><span i18n>Add </span>
-              <mat-icon>keyboard_arrow_right</mat-icon>
+              <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
             </button></td>
         </tr> -->
         <tr>
@@ -192,7 +192,7 @@
         <tr>
           <td align="right" colspan="5">
             <button class="btn btn-checkout"><span i18n>place order</span>
-              <mat-icon>keyboard_arrow_right</mat-icon>
+              <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
             </button>
           </td>
         </tr>
@@ -203,7 +203,7 @@
     <p i18n>Your basket is empty</p>
     <div class="btn-container">
       <button class="btn btn-checkout"><span i18n>proceed to home page</span>
-        <mat-icon>keyboard_arrow_right</mat-icon>
+        <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
       </button>
       <div class="clear"></div>
     </div>
