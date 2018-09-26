@@ -31,9 +31,6 @@
             &:hover {
                 font-weight: bold;
             }
-            .mat-icon {
-                vertical-align: middle;
-            }
         }
     }
 }
@@ -166,7 +163,6 @@
     font-size: 36px;
     font-weight: bold;
     letter-spacing: 1px;
-    text-align: right;
 }
 .old-price {
     text-decoration: line-through;
@@ -194,13 +190,6 @@
     .listing-item-content {
         padding: .75rem;
         padding-top: 0;
-    }
-    .old-price {
-        text-align: right;
-    }
-
-    .stock-indicator{
-        text-align: right;
     }
 }
 @media (max-width: 419px) {

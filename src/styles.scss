@@ -1,9 +1,9 @@
 @import '~swiper/dist/css/swiper.min.css';
+@import '~@angular/material/theming';
 @import "app/theme/styles/variables";
 @import "app/theme/styles/base";
-@import "app/theme/styles/font";
+@import 'app/theme/styles/theme-reset';
 
-@import '~@angular/material/theming';
 $general-typography: mat-typography-config(
     $font-family: '"Poppins", sans-serif',
     $body-1:        mat-typography-level(.8125rem, 1.384615, 400),
@@ -19,7 +19,6 @@ $custom-mat-card-typography: mat-typography-config(
 
 @include mat-card-typography($custom-mat-card-typography);
 @include mat-core($general-typography);
-@import 'app/theme/styles/theme-reset';
 
 .app{
     $dark-primary: mat-palette($mat-grey, 900);

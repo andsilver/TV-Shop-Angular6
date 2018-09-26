@@ -33,7 +33,7 @@
                                     {{value.value_name}} ({{value.result_counter}})
                                 </mat-checkbox>
                             </div>
-                            <a class="show_more_toggle" *ngIf="filt.values.length > 6" (click)="changeShowMore(filt)">{{showMore[filt.display].text}}<mat-icon>{{showMore[filt.display].icon}}</mat-icon></a>
+                            <a class="show_more_toggle" *ngIf="filt.values.length > 6" (click)="changeShowMore(filt)">{{showMore[filt.display].text}} <fa-icon [icon]="['fas', showMore[filt.display].icon]"></fa-icon></a>
                         </div>
                     </mat-expansion-panel>
 
@@ -49,7 +49,7 @@
                                 <div *ngFor="let brand of brands | slice:0:showMore[brandsFilter.display].count">
                                     <mat-checkbox (change)="selectBrand(brand)" [disabled]="brand.result_counter == 0" [checked]="brand.value_checked">{{brand.name}} ({{brand.result_counter}})</mat-checkbox>
                                 </div>
-                                <a class="show_more_toggle" *ngIf="brands.length > 6" (click)="changeShowMore(brandsFilter)">{{showMore[brandsFilter.display].text}}<mat-icon>{{showMore[brandsFilter.display].icon}}</mat-icon></a>
+                                <a class="show_more_toggle" *ngIf="brands.length > 6" (click)="changeShowMore(brandsFilter)">{{showMore[brandsFilter.display].text}} <fa-icon [icon]="['fas', showMore[brandsFilter.display].icon]"></fa-icon></a>
                             </div>
                         </mat-expansion-panel>
 
@@ -95,10 +95,10 @@
                     <div fxLayout>
                         <div>
                             <button *ngIf="!sidenavOpen" mat-icon-button (click)="sidenav.toggle()">
-                                <mat-icon>more_vert</mat-icon>
+                                <fa-icon [icon]="['fas', 'ellipsis-v']"></fa-icon>
                             </button>
                             <a mat-button [matMenuTriggerFor]="sortMenu" #sortMenuTrigger="matMenuTrigger">
-                                {{sort}}<mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
+                                {{sort}} <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
                             </a>
                             <mat-menu #sortMenu="matMenu" xPosition="before" class="app-dropdown">
                                 <span (mouseleave)="sortMenuTrigger.closeMenu()">
@@ -110,7 +110,7 @@
                         </div>
                         <div fxLayout="row" fxLayoutAlign="center center" fxHide.lt-sm>
                             <a mat-button [matMenuTriggerFor]="countsMenu" #countsMenuTrigger="matMenuTrigger">
-                            <ng-container i18n>Show</ng-container> {{count}}<mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
+                                <ng-container i18n>Show</ng-container> {{count}} <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
                             </a>
                             <mat-menu #countsMenu="matMenu" xPosition="before" class="app-dropdown">
                                 <span (mouseleave)="countsMenuTrigger.closeMenu()">
@@ -139,18 +139,18 @@
                                             <img [attr.ix-path]="product.images[0].small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" alt="">
                                         </a>
                                     </div>
-                                    <div fxFlex="100" fxLayout.lt-md="column" fxLayoutGap="1rem" class="listing-item-content">
+                                    <div fxFlex="100" fxLayout.xs="column" fxLayoutGap="1rem" class="listing-item-content">
                                         <div fxFlex.md="40">
                                             <a [routerLink]="[product.permalink]" class="title">{{product.name}}</a>
                                             <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'row'"></app-rating>
                                             <div class="product-item-feature-highlights" [innerHTML]="product.featureHighlights | htmlSanitize"></div>
                                         </div>
                                         <div fxFlex.md="60">
-                                            <p class="old-price text-muted">
+                                            <p class="text-muted" [ngClass.gt-xs]="['text-right']">
                                                 <span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency:2:3:false}}</span>
                                             </p>
-                                            <p class="new-price list-new-price" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</p>
-                                            <p class="stock-indicator" [innerHTML]="product.stockIndicator | htmlSanitize"></p>
+                                            <p class="new-price list-new-price"  [ngClass.gt-xs]="['text-right']" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</p>
+                                            <p [ngClass.gt-xs]="['text-right']" [innerHTML]="product.stockIndicator | htmlSanitize"></p>
                                             <button class="control-normal" mat-button [routerLink]="[product.permalink]">
                                                 <ng-container i18n>GO TO PRODUCT</ng-container> <fa-icon [icon]="'chevron-circle-right'"></fa-icon>
                                             </button>
