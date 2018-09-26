@@ -1,5 +1,5 @@
 <div class="close-btn-outer">
-    <button mat-mini-fab color="warn" (click)="close()"><mat-icon>close</mat-icon></button>
+    <button mat-mini-fab color="warn" (click)="close()"><fa-icon [icon]="['fas', 'times']"></fa-icon></button>
 </div>
 <div mat-dialog-content>
     <div fxLayout="row wrap">
@@ -27,7 +27,7 @@
             <p class="py-1 text-muted lh" [innerHTML]="product.shortdescription"></p>
             <div fxLayoutAlign="end center" class="text-muted">   
 <span class="cdk-visually-hidden" #translatedTooltipMessage i18n>View full details</span>
-                 <button [mat-dialog-close]="product" mat-icon-button  [matTooltip]="translatedTooltipMessage.innerHTML"><mat-icon>arrow_forward</mat-icon></button>
+                 <button [mat-dialog-close]="product" mat-icon-button  [matTooltip]="translatedTooltipMessage.innerHTML"><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
             </div>
             <div class="divider"></div>
             <h2 class="mt-2 new-price">{{product.newPrice | customCurrency}}</h2>

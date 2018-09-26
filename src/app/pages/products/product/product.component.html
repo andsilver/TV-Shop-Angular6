@@ -19,7 +19,7 @@
                             </div>
 
                             <mat-card class="product-image">
-                                <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><mat-icon>fullscreen</mat-icon></button>
+                                <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><fa-icon [icon]="['fas', 'expand']"></fa-icon></button>
                                 <ng-container *ngIf="selectedImage">
                                     <div *ngIf="product?.specialLabel" class="product-item-image-speciallabel">
                                         {{product.specialLabel}}

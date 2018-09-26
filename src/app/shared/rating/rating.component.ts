@@ -11,7 +11,7 @@ export class RatingComponent implements DoCheck {
   @Input() direction: string;
   @Input() review = null;
   avg: number;
-  stars: Array<string>;
+  stars: Array<any>;
   constructor() { }
 
   ngDoCheck() {
@@ -28,50 +28,53 @@ export class RatingComponent implements DoCheck {
   }
 
   calculateAvgValue() {
+    const fullStar = ['fas', 'star'];
+    const halfStar = ['fas', 'star-half-alt'];
+    const emptyStar = ['far', 'star'];
     this.avg = this.ratingsValue;
     switch (true) {
       case this.avg > 0 && this.avg < 20 : {
-          this.stars = ['star_half', 'star_border', 'star_border', 'star_border', 'star_border'];
+          this.stars = [halfStar, emptyStar, emptyStar, emptyStar, emptyStar];
           break;
       }
       case this.avg === 20 : {
-          this.stars = ['star', 'star_border', 'star_border', 'star_border', 'star_border'];
+          this.stars = [fullStar, emptyStar, emptyStar, emptyStar, emptyStar];
           break;
       }
       case this.avg > 20 && this.avg < 40 : {
-          this.stars = ['star', 'star_half', 'star_border', 'star_border', 'star_border'];
+          this.stars = [fullStar, halfStar, emptyStar, emptyStar, emptyStar];
           break;
       }
       case this.avg === 40 : {
-        this.stars = ['star', 'star', 'star_border', 'star_border', 'star_border'];
+        this.stars = [fullStar, fullStar, emptyStar, emptyStar, emptyStar];
           break;
       }
       case this.avg > 40 && this.avg < 60 : {
-          this.stars = ['star', 'star', 'star_half', 'star_border', 'star_border'];
+          this.stars = [fullStar, fullStar, halfStar, emptyStar, emptyStar];
           break;
       }
       case this.avg === 60 : {
-          this.stars = ['star', 'star', 'star', 'star_border', 'star_border'];
+          this.stars = [fullStar, fullStar, fullStar, emptyStar, emptyStar];
           break;
       }
       case this.avg > 60 && this.avg < 80 : {
-          this.stars = ['star', 'star', 'star', 'star_half', 'star_border'];
+          this.stars = [fullStar, fullStar, fullStar, halfStar, emptyStar];
           break;
       }
       case this.avg === 80 : {
-          this.stars = ['star', 'star', 'star', 'star', 'star_border'];
+          this.stars = [fullStar, fullStar, fullStar, fullStar, emptyStar];
           break;
       }
       case this.avg > 80 && this.avg < 100 : {
-          this.stars = ['star', 'star', 'star', 'star', 'star_half'];
+          this.stars = [fullStar, fullStar, fullStar, fullStar, halfStar];
           break;
       }
       case this.avg >= 100 : {
-          this.stars = ['star', 'star', 'star', 'star', 'star'];
+          this.stars = [fullStar, fullStar, fullStar, fullStar, fullStar];
           break;
       }
       default: {
-          this.stars = ['star_border', 'star_border', 'star_border', 'star_border', 'star_border'];
+          this.stars = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar];
           break;
       }
     }

@@ -66,12 +66,12 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   showMore = {
     show_more: {
       text: 'Toon meer',
-      icon: 'keyboard_arrow_down',
+      icon: 'caret-down',
       count: 6
     },
     show_less: {
       text: 'Toon minder',
-      icon: 'keyboard_arrow_up',
+      icon: 'caret-up',
       count: 9999
     }
   };
