@@ -435,23 +435,24 @@ app-root .app.dark .mat-drawer-container::after {
 
 .info-bar {
     margin-top: 1rem;
-}
-
-.info-bar .mat-card {
-    height: 100px
-}
-
-.info-bar .mat-card .content {
-    margin-left: 10px
-}
-
-.info-bar .mat-card .content p {
-    font-weight: 500;
-    color:#212121;
-}
-
-.info-bar .mat-card .content span {
-    font-size: 13px
+    .mat-card {
+        height: 100px;
+        margin-left: 10px;
+        p {
+            font-weight: 500;
+            color: #212121;
+        }
+        span {
+            font-size: 13px
+        }
+        .ng-fa-icon {
+            display: block;
+            width: 2.1rem;
+            min-width: 2.1rem;
+            text-align: center;
+            margin-right: .5rem;
+        }
+    }
 }
 
 .misc-bar{

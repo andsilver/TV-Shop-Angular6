@@ -2,7 +2,7 @@
 
     <mat-sidenav [opened]="false" mode="over" #sidenav class="sidenav mat-elevation-z6">
         <button mat-icon-button color="warn" class="close" (click)="sidenav.close();sidenavOpened=false;">
-           <mat-icon color="warn">close</mat-icon>
+            <fa-icon [icon]="['fas', 'times']" size="lg"></fa-icon>
         </button>
         <div class="divider"></div>
         <app-sidenav-menu *ngIf="sidenavOpened" [menuItems]="sidenavMenuItems" [menuParentId]="0"></app-sidenav-menu>
@@ -48,7 +48,7 @@
                 </ul>
                 <div fxFlex fxLayout="row nowrap" fxFlexOffset.gt-sm="0" class="main-header-sub">
                     <button *ngIf="windowSize == 'lt-md'" mat-button (click)="sidenav.toggle();sidenavOpened = !sidenavOpened;" class="sidenav-toggle" aria-label="sidenav-toggle">
-                        <mat-icon>menu</mat-icon>
+                        <fa-icon [icon]="['fas', 'bars']" size="2x"></fa-icon>
                     </button>
                     <form method="get"  class="search-form" fxLayout="row" (ngSubmit)="search($event)">
                         <input type="text" i18n-placeholder placeholder="Type keyword..." name="search_key" [ngModel]="keyword" (keyup)="searchTerm.next($event)" fxFlex aria-label="search_key" autocomplete="off">

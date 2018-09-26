@@ -18,11 +18,8 @@
                 }
             }
         }
-        .mat-checkbox{
-            font-weight: 400;
-            font-size: .8125rem;
-            font-family: "Poppins";
-            line-height: 1.125rem;
+        &.mat-checkbox+.mat-checkbox {
+            margin-bottom: .5rem;
         }
 
         .show_more_toggle {
