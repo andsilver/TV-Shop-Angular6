@@ -12,7 +12,7 @@
 
             <ng-container *ngIf="filterLists.length">
                 <ng-container *ngFor="let filt of filterLists; let i = index">
-                    <mat-expansion-panel [expanded]="filt.fold">
+                    <mat-expansion-panel [expanded]="!filt.fold">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
                                 <h4>
