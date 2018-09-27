@@ -66,22 +66,17 @@
         }
         &:nth-child(2) {
             margin-bottom: 10px;
-            a {
-                color:#000;
-            }
         }
     }
 
     .contact_box {
-        >a, >span {
+        >a {
             display:block;
             border:1px solid #E6E6DC;
             background:#e6e6dc;
             margin-bottom:5px;
             padding:10px 0 10px 6px;
-        }
-
-        > a {
+            
             .contact_box_icon {
                 float:left;
                 width:30px;
@@ -119,8 +114,6 @@
             margin-bottom:0;
         }
     }
-
-    .contact_box.plattebox_cs_close:not(.contact_form) { pointer-events:none; cursor:default; opacity:.5; }
 }
 
 .extra_open_hours_box {
