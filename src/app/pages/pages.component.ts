@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
@@ -12,8 +12,8 @@ import { SidenavMenu } from '../theme/components/sidenav-menu/sidenav-menu.model
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
-import * as KeywordActions from 'app/store/actions/keyword.action';
-import * as CategoriesActions from 'app/store/actions/categories.action';
+import { SetKeyword } from 'app/store/actions/keyword.action';
+import { SuccessGetCategories } from 'app/store/actions/categories.action';
 
 @Component({
   selector: 'app-pages',
@@ -26,12 +26,15 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('sidenav')
   sidenav: any;
 
+  sidenavOpened = false;
   showBackToTop = false;
   categories: Category[] = [];
   category: Category;
   sidenavMenuItems: Array<any> = [];
   keyword = '';
   searchTerm = new Subject();
+
+  windowSize: string;
 
   private subscriptions: Subscription[] = [];
 
@@ -42,17 +45,12 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
     this.subscriptions.push(
-      // this.store.select(state => state.categories ).subscribe(res => {
-      //   this.categories = res.categories;
-      //   this.category = res.categories[0];
-      //   this.sidenavMenuItems = this.categories.map(c =>
-      //       new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
-      // })
-      this.appService.getCategories().subscribe(res => {
+      this.appService.getCategories('topnav').subscribe(res => {
         this.categories = res;
         this.category = res[0];
-        this.store.dispatch(new CategoriesActions.SuccessGetCategories(res));
+        this.store.dispatch(new SuccessGetCategories(res));
         this.sidenavMenuItems = this.categories.map(c =>
             new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
       })
@@ -71,6 +69,7 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
         console.log(event);
         this.search();
       });
+
   }
 
   ngAfterViewInit() {
@@ -78,6 +77,7 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
       this.router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
           this.sidenav.close();
+          this.sidenavOpened = false;
         }
       })
     );
@@ -85,11 +85,22 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscriptions.push(
       this.store.select(state => state.keyword).subscribe(data => setTimeout(() => this.keyword = data.keyword, 500))
     );
-    this.sidenavMenuService.expandActiveSubMenu(this.sidenavMenuService.getSidenavMenuItems());
+
+    window.addEventListener('scroll', (event) => this.scrollListener(event), {passive: true});
   }
 
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
+    window.removeEventListener('scroll', (event) => this.scrollListener(event));
+  }
+
+  scrollListener($event) {
+    ($event.target['documentElement'].scrollTop > 300) ? this.showBackToTop = true : this.showBackToTop = false;
+  }
+
+  @HostListener('window:resize')
+  public onWindowResize(): void {
+    this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
   }
 
   changeCategory(event) {
@@ -99,11 +110,11 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   remove(product) {
-      const index: number = this.appService.Data.cartList.indexOf(product);
-      if (index !== -1) {
-          this.appService.Data.cartList.splice(index, 1);
-          this.appService.Data.totalPrice = this.appService.Data.totalPrice - product.newPrice;
-      }
+    const index: number = this.appService.Data.cartList.indexOf(product);
+    if (index !== -1) {
+        this.appService.Data.cartList.splice(index, 1);
+        this.appService.Data.totalPrice = this.appService.Data.totalPrice - product.newPrice;
+    }
   }
 
   search(event: any = null) {
@@ -114,7 +125,7 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!this.categories.some(c => c.permalink === `${this.router.url}/`)) {
       this.router.navigate(['/products']);
     }
-    this.store.dispatch(new KeywordActions.SetKeyword(this.keyword));
+    this.store.dispatch(new SetKeyword(this.keyword));
   }
 
   clear() {
@@ -139,10 +150,6 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
     if (window.innerWidth <= 768) {
       setTimeout(() => window.scrollTo(0, 0));
     }
-  }
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll($event) {
-    ($event.target.documentElement.scrollTop > 300) ? this.showBackToTop = true : this.showBackToTop = false;
   }
 
   closeSubMenus() {

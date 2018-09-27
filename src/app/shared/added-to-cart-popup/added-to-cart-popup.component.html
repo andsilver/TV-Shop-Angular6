@@ -1,7 +1,7 @@
 <div class="added-to-cart">
   <h3 class="mat-dialog-title" i18n>Added to your shopping cart</h3>
   <div class="product" fxLayout fxLayout.lt-md="column" fxLayoutAlign="space-between start" fxLayoutAlign.lt-md="start center" fxLayoutGap="25px">
-    <img class="product-image" (click)="navigateToDetail()" [src]="product.images[0].small">
+    <img class="product-image" (click)="navigateToDetail()" alt="" [attr.ix-path]="product.images[0].small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 180px, (min-width: 320px) 180px, 100vw">
     <div>
       <a (click)="navigateToDetail()" class="title text-truncate">
           {{product.name}}
@@ -18,7 +18,7 @@
   </div>
   <div class="close-popup">
     <a mat-icon-button (click)="dialogRef.close()">
-      <mat-icon>close</mat-icon>
+      <fa-icon [icon]="['fas', 'times']" size="lg"></fa-icon>
     </a>
   </div>
 </div>

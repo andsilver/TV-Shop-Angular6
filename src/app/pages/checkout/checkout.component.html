@@ -72,7 +72,7 @@
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
 <span class="cdk-visually-hidden" #translatedTooltipMessage i18n>Next</span>
-        <button mat-mini-fab matStepperNext color="primary" [matTooltip]="translatedTooltipMessage.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary" [matTooltip]="translatedTooltipMessage.innerHTML" matTooltipPosition="after"><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
       </div>
     </form>
   </mat-step>
@@ -84,8 +84,8 @@
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
 <span class="cdk-visually-hidden" #translatedTooltipMessage2 i18n>Back</span>
 <span class="cdk-visually-hidden" #translatedTooltipMessage3 i18n>Next</span>
-        <button mat-mini-fab matStepperPrevious color="primary"  [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary"   [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
+        <button mat-mini-fab matStepperPrevious color="primary"  [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><fa-icon [icon]="['fas', 'chevron-left']"></fa-icon></button>
+        <button mat-mini-fab matStepperNext color="primary"   [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
       </div>
     </form>
   </mat-step>
@@ -136,8 +136,8 @@
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperPrevious color="primary"  [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary"  [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>navigate_next</mat-icon></button>
+        <button mat-mini-fab matStepperPrevious color="primary"  [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><fa-icon [icon]="['fas', 'chevron-left']"></fa-icon></button>
+        <button mat-mini-fab matStepperNext color="primary"  [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
       </div>
     </form>
   </mat-step>
@@ -155,7 +155,7 @@
             <div class="mat-header-cell" i18n>Total</div>
           </div>
           <div *ngFor="let product of appService.Data.cartList" class="mat-row">
-            <div class="mat-cell"><img [src]="product.images[0].small"></div>
+            <div class="mat-cell"><img [src]="product.images[0].small" alt=""></div>
             <div class="mat-cell">{{product.name}}</div>
             <div class="mat-cell">{{product.newPrice | customCurrency:0:999}}</div>      
             <div class="mat-cell text-muted"> 1 </div>
@@ -223,13 +223,13 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
 
-      <button mat-mini-fab matStepperPrevious color="primary" [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>navigate_before</mat-icon></button>
+      <button mat-mini-fab matStepperPrevious color="primary" [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><fa-icon [icon]="['fas', 'chevron-left']"></fa-icon></button>
       <button mat-raised-button matStepperNext color="primary" (click)="placeOrder()" i18n>Place order now</button>
     </div>     
   </mat-step>
   <mat-step label="Confirmation">
     <div fxLayout="column" fxLayoutAlign="center center" class="p-2 text-center"> 
-      <button mat-fab color="primary"><mat-icon>check</mat-icon></button>
+      <button mat-fab color="primary"><fa-icon [icon]="['fas', 'check']"></fa-icon></button>
       <h2 class="py-2" i18n>Congratulation! Your order has been processed</h2>
       <p class="text-muted" i18n>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus dolor ante, ut luctus mi faucibus a. Ut eu tincidunt neque. Proin porttitor id ligula id placerat. Integer nec nulla varius, dapibus libero quis, semper eros. Aliquam erat volutpat. Proin volutpat tellus vel purus interdum euismod.</p>
     </div>
@@ -313,7 +313,7 @@
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperNext color="primary"  [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
+        <button mat-mini-fab matStepperNext color="primary"  [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><fa-icon [icon]="['fas', 'chevron-down']"></fa-icon></button>
       </div>
     </form>
   </mat-step>
@@ -323,8 +323,8 @@
         <mat-radio-button *ngFor="let method of deliveryMethods" color="primary" [value]="method" class="mt-1"><b>{{method.name}}</b> {{method.desc}}</mat-radio-button>
       </mat-radio-group> 
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperPrevious color="primary"  [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary"   [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
+        <button mat-mini-fab matStepperPrevious color="primary"  [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><fa-icon [icon]="['fas', 'chevron-up']"></fa-icon></button>
+        <button mat-mini-fab matStepperNext color="primary"   [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><fa-icon [icon]="['fas', 'chevron-down']"></fa-icon></button>
       </div>
     </form>
   </mat-step>
@@ -375,8 +375,8 @@
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-        <button mat-mini-fab matStepperPrevious color="primary"  [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
-        <button mat-mini-fab matStepperNext color="primary"   [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><mat-icon>expand_more</mat-icon></button>
+        <button mat-mini-fab matStepperPrevious color="primary"  [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><fa-icon [icon]="['fas', 'chevron-up']"></fa-icon></button>
+        <button mat-mini-fab matStepperNext color="primary"   [matTooltip]="translatedTooltipMessage3.innerHTML" matTooltipPosition="after"><fa-icon [icon]="['fas', 'chevron-down']"></fa-icon></button>
       </div>
     </form>
   </mat-step>
@@ -394,7 +394,7 @@
             <div class="mat-header-cell" i18n>Total</div>
           </div>
           <div *ngFor="let product of appService.Data.cartList" class="mat-row">
-            <div class="mat-cell"><img [src]="product.images[0].small"></div>
+            <div class="mat-cell"><img [src]="product.images[0].small" alt=""></div>
             <div class="mat-cell">{{product.name}}</div>
             <div class="mat-cell">{{product.newPrice | customCurrency:0:999}}</div>      
             <div class="mat-cell text-muted"> 1 </div>
@@ -461,13 +461,13 @@
          <span>{{grandTotal | customCurrency}}</span></h2>    
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="mt-2 p-1"> 
-      <button mat-mini-fab matStepperPrevious color="primary" [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><mat-icon>expand_less</mat-icon></button>
+      <button mat-mini-fab matStepperPrevious color="primary" [matTooltip]="translatedTooltipMessage2.innerHTML" matTooltipPosition="before" class="mr-1"><fa-icon [icon]="['fas', 'chevron-up']"></fa-icon></button>
       <button mat-raised-button matStepperNext color="primary" (click)="placeOrder()" i18n>Place order now</button>
     </div>     
   </mat-step>
   <mat-step label="Confirmation">
     <div fxLayout="column" fxLayoutAlign="center center" class="p-2 text-center"> 
-      <button mat-fab color="primary"><mat-icon>check</mat-icon></button>
+      <button mat-fab color="primary"><fa-icon [icon]="['fas', 'check']"></fa-icon></button>
       <h2 class="py-2" i18n>Congratulation! Your order has been processed</h2>
       <p class="text-muted lh" i18n>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus dolor ante, ut luctus mi faucibus a. Ut eu tincidunt neque. Proin porttitor id ligula id placerat. Integer nec nulla varius, dapibus libero quis, semper eros. Aliquam erat volutpat. Proin volutpat tellus vel purus interdum euismod.</p>
     </div>

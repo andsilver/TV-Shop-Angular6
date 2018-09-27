@@ -4,37 +4,23 @@ import { RouterModule } from '@angular/router';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
-import { MatAutocompleteModule,
-         MatButtonModule,
-         MatButtonToggleModule,
-         MatCardModule,
-         MatCheckboxModule,
-         MatChipsModule,
-         MatDatepickerModule,
-         MatDialogModule,
-         MatExpansionModule,
-         MatGridListModule,
-         MatIconModule,
-         MatInputModule,
-         MatListModule,
-         MatMenuModule,
-         MatNativeDateModule,
-         MatPaginatorModule,
-         MatProgressBarModule,
-         MatProgressSpinnerModule,
-         MatRadioModule,
-         MatRippleModule,
-         MatSelectModule,
-         MatSidenavModule,
-         MatSliderModule,
-         MatSlideToggleModule,
-         MatSnackBarModule,
-         MatSortModule,
-         MatTableModule,
-         MatTabsModule,
-         MatToolbarModule,
-         MatTooltipModule,
-         MatStepperModule } from '@angular/material';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -44,7 +30,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
 import { SatPopoverModule } from '@ncstate/sat-popover';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { PipesModule } from '../theme/pipes/pipes.module';
 import { RatingComponent } from './rating/rating.component';
@@ -63,6 +49,103 @@ import { ExtraInfoComponent } from './extra-info/extra-info.component';
 import { FiltersListComponent } from './filters-list/filters-list.component';
 import { DescriptionPopoverComponent } from './description-popover/description-popover.component';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+import {
+  faAngleLeft,
+  faAngleRight,
+  faArrowUp,
+  faBars,
+  faCaretDown,
+  faCaretRight,
+  faCaretUp,
+  faCheck,
+  faCheckCircle,
+  faChevronCircleRight,
+  faChevronDown,
+  faChevronLeft,
+  faChevronRight,
+  faChevronUp,
+  faCircle,
+  faComment,
+  faDollarSign,
+  faEllipsisV,
+  faExpand,
+  faGift,
+  faHeadset,
+  faHeart,
+  faHome,
+  faInfoCircle,
+  faMinus,
+  faPhone,
+  faPlus,
+  faRulerCombined,
+  faSearch,
+  faSearchPlus,
+  faSearchMinus,
+  faShoppingCart,
+  faStar,
+  faStarHalfAlt,
+  faTimes,
+  faTrash,
+  faTrashAlt,
+  faTruck
+} from '@fortawesome/free-solid-svg-icons';
+
+import {
+  faEnvelope,
+  faEye,
+  faStar as faStarBorder
+} from '@fortawesome/free-regular-svg-icons';
+
+import {
+  faWhatsapp
+} from '@fortawesome/free-brands-svg-icons';
+
+library.add(
+  faAngleLeft,
+  faAngleRight,
+  faArrowUp,
+  faBars,
+  faCaretDown,
+  faCaretRight,
+  faCaretUp,
+  faCheck,
+  faCheckCircle,
+  faChevronCircleRight,
+  faChevronDown,
+  faChevronLeft,
+  faChevronRight,
+  faChevronUp,
+  faCircle,
+  faComment,
+  faDollarSign,
+  faEllipsisV,
+  faEnvelope,
+  faExpand,
+  faEye,
+  faGift,
+  faHeadset,
+  faHeart,
+  faHome,
+  faInfoCircle,
+  faMinus,
+  faPhone,
+  faPlus,
+  faRulerCombined,
+  faSearch,
+  faSearchPlus,
+  faSearchMinus,
+  faShoppingCart,
+  faStar,
+  faStarBorder,
+  faStarHalfAlt,
+  faTimes,
+  faTrash,
+  faTrashAlt,
+  faTruck,
+  faWhatsapp);
+
 @NgModule({
   imports: [
     CommonModule,
@@ -70,80 +153,51 @@ import { DescriptionPopoverComponent } from './description-popover/description-p
     FormsModule,
     SwiperModule,
     FlexLayoutModule,
-    MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
-    MatChipsModule,
-    MatDatepickerModule,
     MatDialogModule,
+    MatDividerModule,
     MatExpansionModule,
-    MatGridListModule,
     MatIconModule,
     MatInputModule,
-    MatListModule,
     MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
     MatRadioModule,
-    MatRippleModule,
     MatSelectModule,
     MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
     MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatStepperModule,
     PerfectScrollbarModule,
     PipesModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBv2IOmt-5I3BoQ9xKl_y7anf7dEy-4194'
     }),
     LazyLoadImagesModule,
-    SatPopoverModule
+    SatPopoverModule,
+    FontAwesomeModule
   ],
   exports: [
     SwiperModule,
     FormsModule,
     FlexLayoutModule,
-    MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
-    MatChipsModule,
-    MatDatepickerModule,
     MatDialogModule,
+    MatDividerModule,
     MatExpansionModule,
-    MatGridListModule,
     MatIconModule,
     MatInputModule,
-    MatListModule,
     MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
     MatRadioModule,
-    MatRippleModule,
     MatSelectModule,
     MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
     MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatStepperModule,
     PerfectScrollbarModule,
     PipesModule,
     RatingComponent,
@@ -161,7 +215,8 @@ import { DescriptionPopoverComponent } from './description-popover/description-p
     DescriptionPopoverComponent,
     AgmCoreModule,
     LazyLoadImagesModule,
-    SatPopoverModule
+    SatPopoverModule,
+    FontAwesomeModule
   ],
   declarations: [
     RatingComponent,

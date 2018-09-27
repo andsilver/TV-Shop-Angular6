@@ -9,11 +9,13 @@ import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import * as ProductsActions from 'app/store/actions/products.action';
-import * as BrandsActions from 'app/store/actions/brands.action';
+import * as FiltersListActions from 'app/store/actions/filters-list.action';
 
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product, Category } from '../../app.models';
+
+declare var imgix: any;
 
 @Component({
   selector: 'app-products',
@@ -40,7 +42,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   viewLoaded = false;
   keyword: string;
   sidenavOpen = true;
-  viewType = 'grid';
   viewCol = 25;
   counts = [12, 24, 36];
   count = 12;
@@ -55,39 +56,34 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   topParentCategory;
 
   brands = [];
-  tempBrands = [];
   selectedBrands = [];
   priceFrom = 1;
   priceTo = 15000;
-  colors = [ '#5C6BC0', '#66BB6A', '#EF5350', '#BA68C8', '#FF4081', '#9575CD', '#90CAF9', '#B2DFDB', '#DCE775',
-                    '#FFD740', '#00E676', '#FBC02D', '#FF7043', '#F5F5F5', '#000000'];
-  selectedColors = [];
-  sizes = ['S', 'M', 'L', 'XL', '2XL', '32', '36', '38', '46', '52', '13.3\'', '15.4\'', '17\'', '21\'', '23.4\''];
-  selectedSizes = [];
   page = 0;
   totalProducts = 0;
   emptyMessage = '';
 
-  showMoreBrandsType = {
+  showMore = {
     show_more: {
       text: 'Toon meer',
-      icon: 'keyboard_arrow_down',
-      count: 10
+      icon: 'caret-down',
+      count: 6
     },
     show_less: {
       text: 'Toon minder',
-      icon: 'keyboard_arrow_up',
+      icon: 'caret-up',
       count: 9999
     }
   };
 
   filterLists = [];
+  prevFiltersList = [];
   selectedFilterLists = [];
-  tempFilterlist = [];
+  brandsFilter = {
+    display: ''
+  };
   popoverFilter: any;
   priceFilterOrder = 0;
-
-  showMoreBrandsStatus;
 
   constructor(
     public appService: AppService,
@@ -97,9 +93,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit() {
 
+    this.initFilter();
     this.count = this.counts[0];
-    this.sort  = this.sortings[0];
-    this.showMoreBrandsStatus = this.showMoreBrandsType.show_more;
+    this.store.dispatch(new FiltersListActions.RemoveFilterList);
 
     if (window.innerWidth < 960) {
       this.sidenavOpen = false;
@@ -108,10 +104,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.viewCol = 33.3;
     }
 
-    console.log(this.category);
-
-    this.categoryId =  this.category ? this.category.id : 0;
-    this.store.dispatch(new BrandsActions.GetBrands(this.categoryId));
+    this.categoryId = this.category ? this.category.id : 0;
     this.findTopCategoryId();
 
     this.Subscriptions = [
@@ -119,7 +112,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.keyword = res.keyword;
         this.filterChanged();
       }),
-      this.store.select(state => state.brands).subscribe(res => this.tempBrands = res.manufacturer),
+      this.store.select(state => state.filtersList).subscribe(res => this.prevFiltersList = res.filtersList),
       this.store.select(state => state.products).subscribe( resp => this.setProducts(resp)),
       this.priceFromChanged
         .pipe(
@@ -147,7 +140,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         })
     ];
 
-    this.viewType = 'list';
+    setTimeout(() => {
+      imgix.init();
+    }, 1);
   }
 
   ngAfterViewInit() {
@@ -169,13 +164,27 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       return;
     } else {
       this.viewLoaded = true;
-      this.brands = this.tempBrands;
     }
 
     this.products = res.products;
     this.category_name = res.category_name;
     this.category_description = res.category_description;
-    this.filterLists = res['filterLists'] ? res['filterLists'] : 0;
+    this.brands = res['filterLists'] ? res['filterLists']['manufacturers'] : [];
+    this.filterLists = res['filterLists'] ? res['filterLists']['options'] : [];
+
+    for ( let i = 0; i < this.filterLists.length; i++) {
+      if ( this.prevFiltersList ) {
+        this.filterLists[i]['display'] = this.prevFiltersList['options'][i]['display'];
+      } else {
+        this.filterLists[i]['display'] = this.filterLists[i].fold ? 'show_less' : 'show_more';
+      }
+    }
+
+    if (this.prevFiltersList) {
+      this.brandsFilter['display'] = this.prevFiltersList['manufacturers']['display'];
+    } else {
+      this.brandsFilter['display'] = 'show_less';
+    }
 
     const ft = this.filterLists.findIndex(filter => filter.option_name.toLowerCase() === 'beeldformaat');
 
@@ -189,6 +198,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     if (!this.products.length) {
       this.emptyMessage = 'De opgegeven zoekopdracht heeft geen resultaten opgeleverd.';
     }
+    setTimeout(() => {
+      imgix.init();
+    }, 1);
   }
 
   initFilter() {
@@ -236,12 +248,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.filterChanged();
   }
 
-  changeViewType(viewType, viewCol) {
-    this.viewType = viewType;
-    this.viewCol = viewCol;
-    localStorage.setItem('viewType', viewType);
-  }
-
   openProductDialog(product) {
     const dialogRef = this.dialog.open(ProductDialogComponent, {
       data: product,
@@ -260,11 +266,12 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onChangeCategory(event) {
+    console.log(event.permalink);
     this.router.navigate([event.permalink]);
   }
 
   selectBrand(brand) {
-    const index = this.selectedBrands.indexOf(brand);
+    const index = this.selectedBrands.findIndex(b => brand.name === b.name);
     if (index > -1) {
       this.selectedBrands.splice(index, 1);
     } else {
@@ -277,7 +284,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     const option = this.selectedFilterLists.find(filt => filt.id === optionId);
     if (option) {
       const ind = option.children.indexOf(valueId);
-      if ( ind > -1 ) {
+      if (ind > -1) {
         option.children.splice(ind, 1);
         if (option.children.length === 0) {
           this.selectedFilterLists.splice(this.selectedFilterLists.indexOf(option), 1);
@@ -288,18 +295,25 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     } else {
       this.selectedFilterLists.push({
         id: optionId,
-        children: [ valueId ]
+        children: [valueId]
       });
     }
-    console.log(this.selectedFilterLists);
+
     this.filterChanged();
   }
 
-  changeShowMoreBrands() {
-    this.showMoreBrandsStatus
-      = (this.showMoreBrandsStatus === this.showMoreBrandsType.show_more)
-      ? this.showMoreBrandsType.show_less
-      : this.showMoreBrandsType.show_more;
+  changeShowMore(filter) {
+    filter.display = (filter.display === 'show_more') ? 'show_less' : 'show_more';
+
+    this.store.dispatch(new FiltersListActions.SaveFilterList(
+      {
+        manufacturers: this.brandsFilter,
+        options: this.filterLists.map(f => {
+          return {
+            display: f.display
+          };
+        })
+      }));
   }
 
   findTopCategoryId() {
@@ -309,7 +323,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     let parent = this.category;
-    while ( parent.parentId !== 0 ) {
+    while (parent.parentId !== 0) {
       parent = this.categories.find(c => c.id === parent.parentId);
     }
 

@@ -13,6 +13,7 @@ import { ExchangeComponent } from '../exchange/exchange.component';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
+declare var imgix: any;
 
 @Component({
   selector: 'app-product',
@@ -45,7 +46,7 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
     private router: Router,
-    private store: Store<State>) {}
+    private store: Store<State>) { }
 
   ngOnInit() {
     this.subscriptions = [
@@ -55,6 +56,7 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
 
       this.appService.getStores().subscribe(res => {
         this.stores = res;
+        setTimeout(() => imgix.init(), 1);
       })
     ];
 
@@ -115,6 +117,11 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     this.selectedImage = image;
     this.image = image.medium;
     this.zoomImage = image.big;
+    setTimeout(() => {
+      imgix.init({
+        force: true
+      });
+    }, 1);
   }
 
   onMouseMove(e) {
@@ -131,7 +138,7 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
         zoomer.style.display = 'block';
         zoomer.style.height = image.height * 1.5 + 'px';
         zoomer.style.width = image.width * 1.5 + 'px';
-        zoomer.style.backgroundImage = `url("${this.zoomImage}")`;
+        zoomer.style.backgroundImage = `url("//${imgix.config.host}/${this.zoomImage}?auto=compress")`;
       }
     }
   }
@@ -174,5 +181,9 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     dialogRef.afterClosed().subscribe(res => {
 
     });
+  }
+
+  scrollToElement($element): void {
+    $element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
   }
 }

@@ -1,0 +1,64 @@
+.page-learning-center {
+
+    line-height: 28px;
+    padding-right: 1rem;
+
+    .page-section {
+        padding: 1rem 0;
+        strong {
+            margin-bottom: 10px;
+            display: block;
+        }
+    }
+
+    .top-section {
+        h1 {
+            font-weight: bold;
+            font-size: 26px;
+            line-height: normal;
+            font-family: "Gotham Condensed";
+            letter-spacing: 1px;
+            color: #212226;
+            text-align: left;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            padding: 0 15px;
+        }
+        
+        img {
+            width: 100%;
+        }
+    }
+
+    .learning-list{
+        &-category{
+            padding-bottom: 4rem;
+            &-title {
+                img{
+                    vertical-align: middle;
+                }
+
+                border-bottom: 2px solid grey;
+            }
+
+            &-courses {
+                padding-left: 20px;
+
+                a {
+                    color: #006eda
+                }
+            }
+        }
+    }
+
+    .learning-contact {
+        img {
+            width: 100%;
+        }
+    }
+
+    .mr-5px {
+        margin-right: 5px;
+    }
+
+}

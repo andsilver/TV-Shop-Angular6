@@ -1,52 +1,125 @@
-footer .mat-toolbar.footer-info {
-    background-color:#e6e6dc!important;
+footer {
+    .mat-toolbar.footer-info {
+        background-color:#e6e6dc!important
+    }
+
+    .mat-toolbar .mat-toolbar-row {
+        height: auto;
+    }
 }
-footer .mat-toolbar .mat-toolbar-row {
-    height: auto;
-}
+
 
 .footer-info {
     background-color: #e6e6dc;
+
+    &--representative > a{
+        display:block;
+        width:167px;
+        height:204px;
+        background:url(/assets/images/others/footer_tim.png) right top no-repeat;
+    }
+
+    &--text {
+        font-size:12.6px;
+        white-space:nowrap;
+
+        strong {
+            display:inline-block;
+            font-weight:bold;
+            font-size:20px;
+            line-height:20px;
+            font-family:"Gotham Condensed";
+            margin-bottom:3px;
+        }
+    }
+
+    &--contact {
+        padding-top: 23px;
+        &-list{
+            ul {
+                list-style:none;
+                &:before, &:after {
+                    clear:both;
+                    display:table;
+                    content:"";
+                }
+
+                >li {
+                    float:left;
+                    width:50%;
+                    margin-top:20px;
+
+                    span {
+                        &:first-child {
+                            float:left;
+                            width:32px;
+                            height:32px;
+                            background:#fff;
+                            font-size:18px;
+                            line-height:32px;
+                            text-align:center;
+                            border-radius:50%;
+                            margin-right:10px;
+                            vertical-align:middle;
+                        }
+                        &:last-child {
+                            strong {
+                                display: block;
+                                font-size:18px;
+                                font-family:"Gotham Condensed";
+                            }
+                        }
+                    }
+
+                    a:hover {
+                        text-decoration: none;
+                        strong {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                > li.footer_cs_close:not(.footer-info--email) { pointer-events:none; cursor:default; opacity:.5; }
+            }
+        }
+    }
+
+    &--newsletter {
+        padding-top:23px;
+        input[type="text"] {
+            width:100%;
+            height:32px;
+            border:1px solid #8f8f8f;
+            margin-bottom:10px;
+            padding:0 10px;
+        }
+        button[type="submit"] { 
+            width:100%;
+            height:32px;
+            border:none;
+            background:#fbbb34 url(/assets/images/others/icons-circle-arrow-space.png.png) right center no-repeat;
+            font-weight:500;
+            font-family:"Poppins";
+            text-align:left;
+            margin-bottom:20px;
+            padding:0 10px;
+            cursor:pointer;
+
+            &:hover {
+                background-color:#212226;
+                color:#fff;
+            }
+        }
+
+        .footer-info--text {
+            font-size:12px; margin-bottom:5px;
+        }
+    }
 }
 
-.footer-info--representative { }
-.footer-info--representative > a { display:block; width:167px; height:204px; background:url(/assets/images/others/footer_tim.png) right top no-repeat; }
-
-.footer-info--contact { padding-top:23px; }
-.footer-info--contact-list ul { list-style:none; }
-.footer-info--contact-list ul:before,
-.footer-info--contact-list ul:after { clear:both; display:table; content:""; }
-.footer-info--contact-list ul > li { float:left; width:50%; margin-top:20px; }
-.footer-info--contact-list ul > li .fa,
-.footer-info--contact-list ul > li .far,
-.footer-info--contact-list ul > li .fas,
-.footer-info--contact-list ul > li .fab { float:left; display:block; width:32px; height:32px; background:#fff; font-size:18px; line-height:32px; content:""; text-align:center; border-radius:50%; margin-right:10px; vertical-align:middle; }
-.footer-info--contact-list ul > li .fas-phone { font-size:20px; }
-.footer-info--contact-list ul > li .fab-whatsapp { font-size:22px; }
-.footer-info--contact-list ul > li span,
-.footer-info--contact-list ul > li span > strong { display:block; }
-.footer-info--contact-list ul > li span > strong { font-size:18px; font-family:"Gotham Condensed"; }
-.footer-info--contact-list ul > li a:hover { text-decoration:none; }
-.footer-info--contact-list ul > li a:hover strong { text-decoration:underline; }
-.footer-info--contact-list ul > li.footer_cs_close:not(.footer-info--email) { pointer-events:none; cursor:default; opacity:.5; }
-.footer-info--text { font-size:12.6px; white-space:nowrap; }
-.footer-info--text strong { display:inline-block; font-weight:bold; font-size:20px; line-height:20px; font-family:"Gotham Condensed"; margin-bottom:3px;  }
 @media (max-width:959px) {
     .footer-info--contact-list ul > li { float:none; width:100%; }
 }
-
-.footer-info--newsletter { padding-top:23px; }
-.footer-info--newsletter input[type="text"] { width:100%; height:32px; border:1px solid #8f8f8f; margin-bottom:10px; padding:0 10px; }
-.footer-info--newsletter button[type="submit"] { width:100%; height:32px; border:none; background:#fbbb34 url(/assets/images/others/icons-circle-arrow-space.png.png) right center no-repeat; font-weight:500; font-family:"Poppins"; text-align:left; margin-bottom:20px; padding:0 10px; cursor:pointer; }
-.footer-info--newsletter button[type="submit"]:hover { background-color:#212226; color:#fff; }
-
-.footer-info--newsletter .footer-info--text { font-size:12px; margin-bottom:5px; }
-
-.footer-info--social-media ul:before,
-.footer-info--social-media ul:after { clear:both; display:table; content:""; }
-.footer-info--social-media ul > li { float:left; }
-.footer-info--social-media ul > li:first-child { font-size:20px; font-family:"Gotham Condensed"; line-height:23px; margin-right:10px; }
-.footer-info--social-media ul > li+li { margin-right:6px; }
 
 footer .mat-toolbar.footer-nav {
     background-color:#212226!important;
