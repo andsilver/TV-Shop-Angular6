@@ -84,9 +84,9 @@
 }
 
 .products-wrapper{
-    margin: 8px -8px;
+    margin: .5rem -.5rem;
     .col{
-        padding: 8px;
+        padding: .5rem;
     }
 }
 
@@ -191,6 +191,8 @@
         padding: .75rem;
         padding-top: 0;
     }
+
+
 }
 @media (max-width: 419px) {
     .product-item-list.mat-card {
