@@ -198,9 +198,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     if (!this.products.length) {
       this.emptyMessage = 'De opgegeven zoekopdracht heeft geen resultaten opgeleverd.';
     }
-    setTimeout(() => {
-      imgix.init();
-    }, 1);
+    setTimeout(() => imgix.init(), 1);
   }
 
   initFilter() {
