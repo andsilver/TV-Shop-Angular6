@@ -41,6 +41,9 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   subscriptions: Subscription[];
   stores: any = [];
 
+  stockCodeColors = ['red', 'orange', 'green', 'green'];
+  tooltipStore: any;
+
   constructor(
     public appService: AppService,
     private dialog: MatDialog,
@@ -78,6 +81,8 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
       this.router.navigate(['/404']);
       return;
     }
+
+    console.log(this.product);
 
     this.selectImage(this.product.images[0]);
     setTimeout(() => {
