@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const gzip = require('gulp-gzip');
 const minify = require('gulp-minify-css');
+const purify = require('gulp-purifycss');
 const clean = require('gulp-clean');
 const uglify = require('gulp-uglify-es').default;
 const htmlmin = require('gulp-htmlmin');
@@ -25,6 +26,7 @@ gulp.task('pack-js', () => {
 
 gulp.task('pack-css', () => {
   return gulp.src([`${src}/*.css`])
+    .pipe(purify([`${src}/index.html`, `${src}/app-pages-*.js`, `${src}/main.*.js`]))
     .pipe(minify())
     .pipe(gulp.dest(`${src}`));
 });
