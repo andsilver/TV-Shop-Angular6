@@ -750,6 +750,11 @@
       <context-group purpose="location"><context context-type="sourcefile">app/shared/filters-list/filters-list.component.ts</context><context context-type="linenumber">17</context></context-group></trans-unit>
       <trans-unit id="4d6ee53858628de558a18623894a03c8673bce9e" datatype="html">
         <source>Price</source><target state="new">KIES ZELF EEN PRIJS</target>
+<<<<<<< HEAD
+        
+        
+=======
+>>>>>>> 5a27b78ce3f401999d6d6c1e51d28e0a0f91ab29
         
         
         
