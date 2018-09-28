@@ -34,7 +34,7 @@ export class Product {
   specialLabel: string;
   featureHighlights: string;
   stockIndicator: string;
-  stockInfo: string;
+  stockInfo: any;
   demoUnitText: string;
 }
 
