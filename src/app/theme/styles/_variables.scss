@@ -22,17 +22,21 @@ $large-only: 'only screen and (min-width : #{$medium-screen-up}) and (max-width 
   !default;
 
 
-// @font-face {
-//   font-family: "Gotham Condensed Bold";
-//   font-display: swap;
-//   src: local("Gotham Condensed Bold"),
-//     url(/assets/fonts/hinted-GothamCondensed-Bold.woff2) format('woff2');
-// }
+@font-face {
+  font-family: "Gotham Condensed Bold";
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: local("Gotham Condensed Bold"),
+     url(/assets/fonts/hinted-GothamCondensed-Bold.woff2) format('woff2');
+}
 
 @font-face {
   font-family: "Gotham Condensed";
+  font-style: normal;
+  font-weight: normal;
   font-display: swap;
-  src: local("Gotham Condensed"), 
+  src: local("Gotham Condensed"),
     url(/assets/fonts/hinted-GothamCondensed-Medium.woff2) format('woff2');
 }
 
