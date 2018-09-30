@@ -243,24 +243,40 @@ h2.product-detail-title,
         }
     }
 
+    fa-icon {
+        margin-right: 5px;
+    }
+
+    .fa-plus {
+        color: #5AAD49;
+    }
+
+    .fa-minus {
+        color: #dd3333;
+    }
+
     .reviews-item {
         margin-bottom: 3rem;
         &+.reviews-item{
             border-top: 1px solid #ececec;
             padding-top: 1rem;
         }
+    }
 
-        fa-icon {
-            margin-right: 5px;
-        }
+    .expert-review-title {
+        background: none;
+        font-size: 13px;
+        font-weight: bold;
+        color: #08084d;
+        padding: 0 0 10px;
+    }
 
-        .fa-plus {
-            color: #5AAD49;
-        }
+    .font-italic {
+        font-style: italic;
+    }
 
-        .fa-minus {
-            color: #dd3333;
-        }
+    .border-left {
+        border-left: 1px solid #ddd;
     }
 }
 

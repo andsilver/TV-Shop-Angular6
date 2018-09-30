@@ -4,7 +4,7 @@
             <app-filters-list></app-filters-list>
         </mat-accordion>
     </mat-sidenav>
-    <mat-sidenav-content>   
+    <mat-sidenav-content>
         <div fxLayout="row" *ngIf="product">
 
             <div fxFlex="100" fxFlex.gt-md="77" fxLayout="column">
@@ -105,7 +105,7 @@
                             <div class="extra-infos extra-infos-list">
                                 <h2>BEKIJK OOK</h2>
                                 <div class="extra-infos-link">
-				    <div *ngIf="product?.expertReview" (click)="scrollToElement(info_expert_reviews)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Plus- en minpunten</div>
+				                    <div *ngIf="product?.expertReview.expertAuthor" (click)="scrollToElement(info_expert_reviews)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Plus- en minpunten</div>
                                     <div *ngIf="product?.reviews.length" (click)="scrollToElement(info_reviews)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Reviews</div>
                                     <div *ngIf="product?.description" (click)="scrollToElement(info_description)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Beschrijving</div>
                                     <div *ngIf="product?.extra_description" (click)="scrollToElement(info_extra_description)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Specificaties</div>
@@ -119,10 +119,28 @@
 
                             <div fxFlex class="extra-infos">
                                 <div #info_expert_reviews>
-                                    <div *ngIf="product?.expertReview">
+                                    <div *ngIf="product?.expertReview.expertAuthor" class="expert-review">
                                         <h2>Plus- en minpunten</h2>
-                                        <div class="mat-tab-plus-en-min" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                            <p [innerHTML]="product?.expertReview | htmlSanitize"></p>
+                                        <div ngClass.xs="py-2" ngClass.lt-md="p-2" fxLayout fxLayout.xs="column">
+                                            <div fxFlex="55" class="px-4 mb-3">
+                                                <div *ngIf="product.expertReview.expertPoints.plus.length" class="pb-2">
+                                                    <div class="expert-review-title">Pluspunten</div>
+                                                    <p *ngFor="let point of product.expertReview.expertPoints.plus" class="pb-1">
+                                                        <fa-icon class="fa-plus" [icon]="'plus'"></fa-icon> {{point}}
+                                                    </p>
+                                                </div>
+                                                <div *ngIf="product.expertReview.expertPoints.minus.length">
+                                                    <div class="expert-review-title">Minpunten</div>
+                                                    <p *ngFor="let point of product.expertReview.expertPoints.minus" class="pb-1">
+                                                        <fa-icon class="fa-minus" [icon]="'minus'"></fa-icon> {{point}}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div fxFlex class="px-4" [ngClass.gt-xs]="{'border-left': true}">
+                                                <div class="expert-review-title">{{product.expertReview.expertAuthor}}</div>
+                                                <div class="expert-review-title font-italic">{{product.expertReview.expertTitle}}</div>
+                                                <img [attr.data-src]="'https://www.plattetv.nl/var/' + product.expertReview.expertImage" alt="">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
