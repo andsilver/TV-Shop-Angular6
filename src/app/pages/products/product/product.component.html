@@ -107,6 +107,7 @@
                                 <div class="extra-infos-link">
 				                    <div *ngIf="product?.expertReview.expertAuthor" (click)="scrollToElement(info_expert_reviews)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Plus- en minpunten</div>
                                     <div *ngIf="product?.reviews.length" (click)="scrollToElement(info_reviews)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Reviews</div>
+                                    <div *ngIf="product?.productPackages.length" (click)="scrollToElement(info_product_packages)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Aanbevolen combideals</div>
                                     <div *ngIf="product?.description" (click)="scrollToElement(info_description)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Beschrijving</div>
                                     <div *ngIf="product?.extra_description" (click)="scrollToElement(info_extra_description)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Specificaties</div>
                                 </div>
@@ -173,10 +174,47 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div #info_product_packages>
+                                    <div *ngIf="product?.productPackages.length">
+                                        <h2>AANBEVOLEN COMBIDEALS</h2>
+                                        <div ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                            <div *ngFor="let package of product.productPackages" class="product-package" fxLayout fxLayoutAlign="space-between center">
+                                                <div fxLayout fxLayoutAlign="start center" class="product-package-products">
+                                                    <a [routerLink]="[package.permalink]">
+                                                        <div>
+                                                            <div>
+                                                                <img [attr.data-src]="'https://www.plattetv.nl/var/' + package.main.image" alt="">
+                                                            </div>
+                                                        </div>
+                                                        <p>{{package.main.productName}}</p>
+                                                    </a>
+                                                    <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+                                                    <a [routerLink]="[package.permalink]">
+                                                        <div>
+                                                            <div>
+                                                                <img [attr.data-src]="'https://www.plattetv.nl/var/' + package.subs[0].image" alt="">
+                                                            </div>
+                                                        </div>
+                                                        <p>{{package.subs[0].productName}}</p>
+                                                    </a>
+                                                </div>
+                                                <div class="product-package-price">
+                                                    <p class="product-package-price-special">{{integer(package.specialPrice)}}<sup>{{float(package.specialPrice)}}</sup></p>
+                                                    <p class="product-package-price-normal">{{integer(package.normalPrice)}}<sup>{{float(package.normalPrice)}}</sup></p>
+                                                    <p class="product-package-price-saving">{{integer(package.savingPrice)}}<sup>{{float(package.savingPrice)}}</sup></p>
+                                                    <button class="control-add-to-cart" mat-button (click)="addToCartHash(package)">
+                                                        <ng-container i18n>Add to cart</ng-container>
+                                                        <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div #info_description>
                                     <div *ngIf="product?.description">
                                         <h2>Beschrijving</h2>
-                                        <div class="mat-tab-beschrijving" ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                        <div ngClass.xs="py-2" ngClass.lt-md="p-2">
                                             <p [innerHTML]="product?.description | htmlSanitize"></p>
                                         </div>
                                     </div>
