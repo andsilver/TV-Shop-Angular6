@@ -191,4 +191,22 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   scrollToElement($element): void {
     $element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
   }
+
+  addToCartHash(pkg: any) {
+    this.appService.addToCartApi({
+      item_id: pkg.addToCartHash,
+      item_qty: 1
+    }).subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  integer(str: string) {
+    return str.split(',')[0] + ',';
+  }
+
+  float(str: string) {
+    const v = str.split(',')[1];
+    return Number(v) === 0 ? '-' : v;
+  }
 }

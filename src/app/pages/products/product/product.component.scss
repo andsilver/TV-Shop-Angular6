@@ -95,7 +95,7 @@
 }
 
 
-@media (min-width: 1280px) {  
+@media (min-width: 1280px) {
     .mat-card.product-image img{
         cursor: zoom-in;
         cursor:url('../../../../assets/images/others/zoom.svg') 10 10, zoom-in;
@@ -115,7 +115,7 @@ h2.product-detail-title,
     color:#000!important;
 }
 
-.product-detail-control .mat-button {
+.mat-button {
     width: 100%;
     font-family: "Poppins";
     text-align: left;
@@ -243,23 +243,109 @@ h2.product-detail-title,
         }
     }
 
+    fa-icon {
+        margin-right: 5px;
+    }
+
+    .fa-plus {
+        color: #5AAD49;
+    }
+
+    .fa-minus {
+        color: #dd3333;
+    }
+
     .reviews-item {
         margin-bottom: 3rem;
         &+.reviews-item{
             border-top: 1px solid #ececec;
             padding-top: 1rem;
         }
+    }
 
-        fa-icon {
-            margin-right: 5px;
+    .expert-review-title {
+        background: none;
+        font-size: 13px;
+        font-weight: bold;
+        color: #08084d;
+        padding: 0 0 10px;
+    }
+
+    .font-italic {
+        font-style: italic;
+    }
+
+    .border-left {
+        border-left: 1px solid #ddd;
+    }
+
+    .product-package {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #ddd;
+        &-products {
+            a {
+                width: 110px;
+                div{
+                    display: table;
+                    width: 110px;
+                    height: 88px;
+                    table-layout: fixed;
+                    div {
+                        display: table-cell;
+                        width: 110px;
+                        height: 88px;
+                        text-align: center;
+                        vertical-align: middle;
+                    }
+                }
+                img {
+                    width: auto;
+                    max-width: 110px;
+                    height: auto;
+                    max-height: 88px;
+                    vertical-align: middle;
+                }
+                margin: 0 10px;
+            }
+            p {
+                font-size: 14px;
+                color: #00157f !important;
+                font-weight: bold;
+            }
         }
+        &-price {
+            font-family: "Gotham Condensed";
+            line-height: normal;
+            letter-spacing: 1px;
+            &-special{
+                font-size: 18px;
+                text-decoration: line-through;
+                color: #b5b5b5;
+            }
+            &-normal{
+                font-size: 36px;
+                font-weight: bold;
+                color: #000;
+            }
+            &-saving {
+                color: #5AAD49;
+                margin-bottom: 7px;
+            }
 
-        .fa-plus {
-            color: #5AAD49;
-        }
-
-        .fa-minus {
-            color: #dd3333;
+            button {
+                width: 125px;
+                height: 35px;
+                font-size: 16px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                padding: 0 10px;
+                position: relative;
+                border-radius: 5px;
+                fa-icon {
+                    position: absolute;
+                    right: 5px;
+                }
+            }
         }
     }
 }
