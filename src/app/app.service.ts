@@ -141,14 +141,14 @@ export class AppService {
         this.calculateTotalPrice();
 
         if (openPopup) {
-
+            
             const dialogRef = this.dialog.open(AddedToCartPopupComponent, {
                 data: product
             });
-
+            
             dialogRef.afterClosed().subscribe(res => {
 
-                const productData: any = { item_id: product.id, item_qty: product.quantity };
+                const productData: any = { item_id: product.id, item_qty: product.quantity, category_id: product.categoryId };
 
                 if (res['isAddTocart']) {
 
@@ -162,7 +162,7 @@ export class AppService {
     }
 
     addToCartApi(productData): any {
-        return this.http.get(`/cart?mode=add_item&item_id=${productData.item_id}&item_qty=${(productData.item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}`);
+        return this.http.get(`/cart?mode=add_item&item_id=${productData.item_id}&item_qty=${(productData.item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}&category_id=${(productData.category_id || '')}`);
     }
 
     checkCouponCode(couponCode): any {
@@ -183,7 +183,7 @@ export class AppService {
     }
 
     recalculatePrice(productData, item_qty): any {
-        return this.http.get(`/cart?mode=update_item&item_id=${productData.item_id}&item_qty=${(item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}`);
+        return this.http.get(`/cart?mode=update_item&cart_item_id=${productData.cart_item_id}&item_qty=${(item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}`);
     }
 
     removeFromCart(productId) {

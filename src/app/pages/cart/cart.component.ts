@@ -30,6 +30,10 @@ export class CartComponent implements OnInit {
   public getCartDetails() {
     this.appService.getCartDetails(this.cartId).subscribe((result) => {
       this.productData = result.cart_contents;
+      this.productData = this.productData.map((p) => {
+        p.item_qty_copy = p.item_qty;
+        return p;
+      });
       this.totalPrice = this.getTotalPrice(this.productData);
       setTimeout(() => imgix.init(), 1);
     });
@@ -65,12 +69,12 @@ export class CartComponent implements OnInit {
   /* 18th sep 2018 */
   public removeFromCart(product) {
     if (product.item_id !== undefined) {
-      const removeProductData: any = { 'cart_item_id': product.item_id, 'cart_id': this.cartId };
+      const removeProductData: any = { 'cart_item_id': product.cart_item_id, 'cart_id': this.cartId };
       this.appService.removeFromCartApi(removeProductData).subscribe((response) => {
-        if (response['cart_remove'] !== undefined) {
-          this.getCartDetails();
-          this.getRelatedProduct();
-        }
+        
+        this.getCartDetails();
+        this.getRelatedProduct();
+      
       });
     }
   }
@@ -109,9 +113,9 @@ export class CartComponent implements OnInit {
     }
   }
 
-  public recalculatePrice(product, item_qty) {
-    if (product.item_id !== undefined && item_qty !== undefined) {
-      this.appService.recalculatePrice(product, item_qty).subscribe((response) => {
+  public recalculatePrice(product) {
+    if (product.item_id !== undefined) {
+      this.appService.recalculatePrice(product, product.item_qty_copy).subscribe((response) => {
         this.getCartDetails();
         this.getRelatedProduct();
         console.log(response, 'recalculation product price');

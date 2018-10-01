@@ -89,7 +89,8 @@ import {
   faTimes,
   faTrash,
   faTrashAlt,
-  faTruck
+  faTruck,
+  faSyncAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -144,7 +145,8 @@ library.add(
   faTrash,
   faTrashAlt,
   faTruck,
-  faWhatsapp);
+  faWhatsapp,
+  faSyncAlt);
 
 @NgModule({
   imports: [

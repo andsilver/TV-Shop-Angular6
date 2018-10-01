@@ -14,7 +14,7 @@
       <tbody>
 
 
-        <tr *ngFor="let product of productData">
+        <tr *ngFor="let product of productData">          
           <td align="center" valign="top">
             <a routerLink="{{product.permalink}}">
               <img class="mr-10" [attr.ix-path]="product.item_image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 123px, (min-width: 320px) 55px, 100vw"  alt="">
@@ -34,16 +34,18 @@
             </div>
           </td>
           <td class="quantity" align="center" valign="top" >
-            <input type="text" value="{{product.item_qty}}" [(ngModel)] ="product.item_qty"  *ngIf="product.item_price != 0" />
+            <input type="text" [(ngModel)] ="product.item_qty_copy"  *ngIf="product.item_price != 0" />
           </td>
           <td class="action" align="center" valign="top">
             <div class="btn-container">
               <button class="item-button" title="Remove this product" (click)="removeFromCart(product)" i18n-title>
                 <fa-icon [icon]="['fas', 'times']"></fa-icon>
               </button>
-              <button class="item-button" title="Recalculate price" (click)="recalculatePrice(product,product.item_qty)" i18n-title *ngIf="product.item_price != 0">
-                <mat-icon>autorenew</mat-icon>
+              <button class="item-button" title="Recalculate price" (click)="recalculatePrice(product)" i18n-title *ngIf="product.item_price != 0">
+                <!-- <mat-icon>autorenew</mat-icon> -->
+                <fa-icon [icon]="['fas', 'sync-alt']"></fa-icon>
               </button>
+
             </div>
           </td>
 
