@@ -7,7 +7,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Category, Product, Products } from './app.models';
 import { AddedToCartPopupComponent } from 'app/shared/added-to-cart-popup/added-to-cart-popup.component';
 
-import { map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { State } from 'app/store';
+import * as CartActions from './store/actions/cart.action';
 
 export class Data {
     constructor(
@@ -21,6 +23,7 @@ export class Data {
 
 @Injectable()
 export class AppService {
+
     Data = new Data(
         [], // categories
         [], // compareList
@@ -29,9 +32,17 @@ export class AppService {
         null, // totalPrice
         0
     );
-    filter: any = {};
-    url = 'assets/data/';
-    constructor(private http: HttpClient, private snackBar: MatSnackBar, private dialog: MatDialog) { }
+
+    constructor(
+        private http: HttpClient,
+        private snackBar: MatSnackBar,
+        private dialog: MatDialog,
+        private store: Store<State>) { }
+
+    /* +------------+
+    *  |    Apis    |
+    *  +------------+
+    */
 
     getCategories(mode: string = 'tree'): Observable<Category[]> {
         let params = new HttpParams();
@@ -53,12 +64,12 @@ export class AppService {
 
 
     getProdcutByPermallink(permalink: string, categoryId: number = null): Observable<Product> {
-        let param = new HttpParams();
-        param = param.append('permalink', permalink);
+        let params = new HttpParams();
+        params = params.append('permalink', permalink);
         if (categoryId) {
-            return this.http.post<Product>('/products/detail', { categoryId: categoryId }, { params: param });
+            return this.http.post<Product>('/products/detail', { categoryId: categoryId }, { params: params });
         } else {
-            return this.http.get<Product>('/products/detail', { params: param });
+            return this.http.get<Product>('/products/detail', { params: params });
         }
     }
 
@@ -83,10 +94,58 @@ export class AppService {
         return this.http.get<any>(`/getStoreByName/${name}`);
     }
 
-    // ---------------------------------------------------------------------------------------
-    getBanners(): Observable<any[]> {
-        return this.http.get<any[]>(this.url + 'banners.json');
+    addToCartApi(productData): any {
+        let params = new HttpParams();
+        params = params.append('mode', 'add_item');
+        params = params.append('item_id', `${productData.item_id}`);
+        params = params.append('item_qty', `${productData.item_qty || '1'}`);
+        params = params.append('cart_id', `${(localStorage.getItem('cart_id') || '')}`);
+        return this.http.get('/cart', {params: params});
     }
+
+    checkCouponCode(couponCode): any {
+        let params = new HttpParams();
+        params = params.append('mode', 'check_coupon');
+        params = params.append('coupon', `${couponCode}`);
+        params = params.append('cart_id', `${localStorage.getItem('cart_id') || ''}`);
+        return this.http.get('/cart', {params: params});
+    }
+
+    getRelatedProduct(cartId) {
+        let params = new HttpParams();
+        params = params.append('mode', 'get_related_products');
+        params = params.append('cart_id', `${cartId || localStorage.getItem('cart_id')}`);
+        return this.http.get('/cart', {params: params});
+    }
+
+    getCartDetails(cartId): any {
+        let params = new HttpParams();
+        params = params.append('mode', 'cart_details');
+        params = params.append('cart_id', `${cartId || localStorage.getItem('cart_id')}`);
+        return this.http.get('/cart', {params: params});
+    }
+
+    recalculatePrice(productData, item_qty): any {
+        let params = new HttpParams();
+        params = params.append('mode', 'update_item');
+        params = params.append('item_id', `${productData.item_id}`);
+        params = params.append('item_qty', `${item_qty || '1'}`);
+        params = params.append('cart_id', `${localStorage.getItem('cart_id') || ''}`);
+        return this.http.get('/cart', {params: params});
+    }
+
+    removeFromCartApi(productRemove) {
+        let params = new HttpParams();
+        params = params.append('mode', 'remove_item');
+        params = params.append('cart_id', `${productRemove.cart_id || localStorage.getItem('cart_id')}`);
+        params = params.append('cart_item_id', `${productRemove.cart_item_id}`);
+        return this.http.get('/cart', {params: params});
+    }
+
+    /* +------------+
+    *  |    Util    |
+    *  +------------+
+    */
 
     addToCompare(product: Product) {
         let message, status;
@@ -155,35 +214,11 @@ export class AppService {
                     this.addToCartApi(productData)
                         .subscribe((data) => {
                             localStorage.setItem('cart_id', data.cart_id);
+                            this.store.dispatch(new CartActions.SetCartId(data.cart_id));
                         });
                 }
             });
         }
-    }
-
-    addToCartApi(productData): any {
-        return this.http.get(`/cart?mode=add_item&item_id=${productData.item_id}&item_qty=${(productData.item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}`);
-    }
-
-    checkCouponCode(couponCode): any {
-        return this.http.get(`/cart?mode=check_coupon&coupon=${couponCode}&cart_id=${(localStorage.getItem('cart_id') || '')}`);
-
-    }
-
-    getRelatedProduct(cartId) {
-        return this.http.get(`/cart?mode=get_related_products&cart_id=${(cartId || localStorage.getItem('cart_id'))}`);
-    }
-
-    getCartDetails(cartId): any {
-        return this.http.get(`/cart?mode=cart_details&cart_id=${(cartId || localStorage.getItem('cart_id'))}`).pipe(
-            map((body: any) => {
-                return body;
-            })
-        );
-    }
-
-    recalculatePrice(productData, item_qty): any {
-        return this.http.get(`/cart?mode=update_item&item_id=${productData.item_id}&item_qty=${(item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}`);
     }
 
     removeFromCart(productId) {
@@ -194,10 +229,6 @@ export class AppService {
         }
     }
 
-    removeFromCartApi(productRemove) {
-        return this.http.get(`/cart?mode=remove_item&cart_id=${(productRemove.cart_id || localStorage.getItem('cart_id'))}&cart_item_id=${productRemove.cart_item_id}`);
-    }
-
     calculateTotalPrice() {
         this.Data.totalPrice = 0;
         this.Data.totalQuantity = 0;
@@ -205,6 +236,5 @@ export class AppService {
             this.Data.totalPrice += Number(c.newPrice) * c.quantity;
             this.Data.totalQuantity += c.quantity;
         }
-        // console.log(this.Data.totalPrice);
     }
 }

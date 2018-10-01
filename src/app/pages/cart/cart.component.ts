@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AppService } from '../../app.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { State } from 'app/store';
 declare var imgix: any;
 
 @Component({
@@ -8,7 +10,7 @@ declare var imgix: any;
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
   total = [];
   grandTotal = 0;
   addCouponForm = false;
@@ -17,25 +19,43 @@ export class CartComponent implements OnInit {
   cartId = '';
   totalPrice = 0;
   couponCode = '';
-  constructor(public appService: AppService, private router: Router) {
-    this.cartId = localStorage.getItem('cart_id');
-    this.getCartDetails();
-    this.getRelatedProduct();
-  }
+
+  subscriptions = [];
+
+  constructor(public appService: AppService, private router: Router, private store: Store<State>) {}
 
   ngOnInit() {
-    this.grandTotal = this.appService.Data.totalPrice;
+
+    this.subscriptions = [
+      this.store.select(state => state.cart).subscribe(res => {
+        this.cartId = res.CartId;
+        if (!this.cartId) {
+          return;
+        }
+        console.log(this.cartId);
+        this.getCartDetails();
+        this.getRelatedProduct();
+        this.grandTotal = this.appService.Data.totalPrice;
+      })
+    ];
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   public getCartDetails() {
     this.appService.getCartDetails(this.cartId).subscribe((result) => {
-      this.productData = result.cart_contents;
+      this.productData = result.cart_contents ? result.cart_contents : [];
       this.totalPrice = this.getTotalPrice(this.productData);
       setTimeout(() => imgix.init(), 1);
     });
   }
 
   public getTotalPrice(productArray) {
+    if (!productArray) {
+      return 0;
+    }
     return productArray.reduce((acc, val) => {
       return acc + (val.item_qty * val.item_price);
     }, 0);
@@ -58,7 +78,6 @@ export class CartComponent implements OnInit {
   }
 
   public addCouponFormToggle() {
-
     this.addCouponForm = !this.addCouponForm;
   }
 
@@ -67,10 +86,8 @@ export class CartComponent implements OnInit {
     if (product.item_id !== undefined) {
       const removeProductData: any = { 'cart_item_id': product.item_id, 'cart_id': this.cartId };
       this.appService.removeFromCartApi(removeProductData).subscribe((response) => {
-        if (response['cart_remove'] !== undefined) {
-          this.getCartDetails();
-          this.getRelatedProduct();
-        }
+        this.getCartDetails();
+        this.getRelatedProduct();
       });
     }
   }
