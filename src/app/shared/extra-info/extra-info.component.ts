@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'app/app.service';
+import { State } from 'app/store';
+import { Store } from '@ngrx/store';
 
 declare var imgix: any;
 
@@ -54,10 +56,25 @@ export class ExtraInfoComponent implements OnInit {
     }
   ];
 
-  constructor(public appService: AppService) { }
+  subscriptions = [];
+
+  cart = null;
+
+  constructor(public appService: AppService, private store: Store<State>) { }
 
   ngOnInit() {
     setTimeout(() => imgix.init(), 1);
+    this.subscriptions = [
+      this.store.select(state => state.cart).subscribe(res => {
+        if (!res.CartId) {
+          return;
+        }
+        this.appService.getCartDetails(res.CartId).subscribe(re => {
+          this.cart = re;
+          console.log(re);
+        });
+      })
+    ];
   }
 
 }
