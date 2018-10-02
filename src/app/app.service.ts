@@ -207,7 +207,7 @@ export class AppService {
 
             dialogRef.afterClosed().subscribe(res => {
 
-                const productData: any = { item_id: product.id, item_qty: product.quantity };
+                const productData: any = { item_id: product.id, item_qty: product.quantity, category_id: product.categoryId };
 
                 if (res['isAddTocart']) {
 

@@ -34,20 +34,22 @@
             </div>
           </td>
           <td class="quantity" align="center" valign="top" >
-            <input type="text" value="{{product.item_qty}}" [(ngModel)] ="product.item_qty"  *ngIf="product.item_price != 0" />
+            <input type="text" [(ngModel)] ="product.item_qty_copy"  *ngIf="product.item_price != 0" />
           </td>
           <td class="action" align="center" valign="top">
             <div class="btn-container">
               <button class="item-button" title="Remove this product" (click)="removeFromCart(product)" i18n-title>
                 <fa-icon [icon]="['fas', 'times']"></fa-icon>
               </button>
-              <button class="item-button" title="Recalculate price" (click)="recalculatePrice(product,product.item_qty)" i18n-title *ngIf="product.item_price != 0">
-                <fa-icon [icon]="['fas', 'recycle']"></fa-icon>
+              <button class="item-button" title="Recalculate price" (click)="recalculatePrice(product)" i18n-title *ngIf="product.item_price != 0">
+                <!-- <mat-icon>autorenew</mat-icon> -->
+                <fa-icon [icon]="['fas', 'sync-alt']"></fa-icon>
               </button>
+
             </div>
           </td>
 
-          <td align="right" valign="top"><strong class="price-content">{{ product.item_price | customCurrency }}</strong></td>
+          <td align="right" valign="top"><strong class="price-content">{{ (product.item_price * product.item_qty) | customCurrency }}</strong></td>
 
         </tr>
         <tr>
