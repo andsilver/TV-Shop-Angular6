@@ -105,8 +105,9 @@ export class AppService {
 
     checkCouponCode(couponCode): any {
         let params = new HttpParams();
+        console.log(couponCode);
         params = params.append('mode', 'check_coupon');
-        params = params.append('coupon', `${couponCode}`);
+        params = params.append('coupon', `${couponCode.coupon}`);
         params = params.append('cart_id', `${localStorage.getItem('cart_id') || ''}`);
         return this.http.get('/cart', {params: params});
     }

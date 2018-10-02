@@ -52,7 +52,7 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     private store: Store<State>) { }
 
   ngOnInit() {
-    console.log(this.product.categoryId, ' this.product data')
+    console.log(this.product.categoryId, ' this.product data');
     this.subscriptions = [
       this.store.select(state => state.products).subscribe(data => {
         this.relatedProducts = data.products;
@@ -201,10 +201,9 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
       category_id: this.product.categoryId
     }).subscribe(res => {
       if (res.cart_id !== undefined) {
-        setTimeout(()=>{
+        setTimeout(() => {
           this.router.navigate(['/cart']);
-        },1000);
-        
+        }, 1000);
       }
     });
   }
