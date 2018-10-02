@@ -89,7 +89,7 @@ export class CartComponent implements OnInit, OnDestroy {
   /* 18th sep 2018 */
   public removeFromCart(product) {
     if (product.item_id !== undefined) {
-      const removeProductData: any = { 'cart_item_id': product.cart_item_id, 'cart_id': this.cartId };
+      const removeProductData: any = { 'item_id': product.item_id, 'cart_id': this.cartId };
       this.appService.removeFromCartApi(removeProductData).subscribe((response) => {
         this.getCartDetails();
         this.getRelatedProduct();
