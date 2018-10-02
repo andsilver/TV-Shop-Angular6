@@ -31,15 +31,11 @@
     }
 
     &-items {
-        border-bottom: 1px dashed #ececec;
-
-        span {
-            width: 30px;
-            display: inline-block
-        }
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed #999;
     }
 
-    &-items >div, &-sub-total >div {
+    &-sub-total >div {
         line-height: 27px;
     }
 

@@ -7,16 +7,19 @@
                 </a>
             </h4>
         </mat-card-title>
-        <mat-card-content *ngIf="appService.Data.totalPrice > 0">
+        <mat-card-content *ngIf="cart">
             <div class="shopping-cart-items">
-                <div *ngFor="let item of appService.Data.cartList">
-                    <span>{{item.quantity}} x </span>{{item.name}}
+                <div *ngFor="let item of cart.cart_contents" fxLayout>
+                    <div fxFlex="17">{{item.item_qty}} x </div>
+                    <div>
+                        <a [routerLink]="[item.permalink]">{{item.item_name}}</a>
+                    </div>
                 </div>
             </div>
             <div class="shopping-cart-sub-total">
                 <div fxLayout fxLayoutAlign="space-between start">
                     <strong i18n>Subtotal:</strong>
-                    <strong>{{appService.Data.totalPrice | customCurrency}}</strong>
+                    <strong>{{cart.cart_subtotal | customCurrency}}</strong>
                 </div>
                 <div>
                     <a [routerLink]="['/cart']">

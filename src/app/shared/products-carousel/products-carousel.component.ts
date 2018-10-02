@@ -6,6 +6,7 @@ import { ProductDialogComponent } from './product-dialog/product-dialog.componen
 import { AppService } from '../../app.service';
 import { Product } from 'app/app.models';
 declare var imgix: any;
+
 @Component({
   selector: 'app-products-carousel',
   templateUrl: './products-carousel.component.html',
@@ -15,6 +16,7 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
 
   @Input() products: Array<Product> = [];
   public config: SwiperConfigInterface = {};
+
   constructor(public appService: AppService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
@@ -50,9 +52,8 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
         }
       }
     };
-    setTimeout(() => {
-      imgix.init()
-    }, 1)
+
+    setTimeout(() => imgix.init(), 1);
   }
 
   public openProductDialog(product) {

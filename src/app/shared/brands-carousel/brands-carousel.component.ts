@@ -1,6 +1,7 @@
 import { Component, Input, AfterViewInit } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-declare var imgix: any; 
+declare var imgix: any;
+
 @Component({
   selector: 'app-brands-carousel',
   templateUrl: './brands-carousel.component.html',
@@ -52,9 +53,7 @@ export class BrandsCarouselComponent implements AfterViewInit {
         }
       }
     };
-    setTimeout(() => {
-      imgix.init()
-    }, 1)
+    setTimeout(() => imgix.init(), 1);
   }
 
 }

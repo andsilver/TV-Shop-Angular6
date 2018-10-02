@@ -167,17 +167,10 @@
             margin-left: 20px;
             color: #fff;
         }
-        .mat-icon {
-            height: 16px;
-            width: 16px;
+        fa-icon {
             position: absolute;
-            top: 50%;
             right: 8px;
-            transform: translateY(-50%);
-            background: #fff;
             color: #212226;
-            border-radius: 100%;
-            font-size: 16px;
         }
     }
     .checkout-container {
@@ -226,6 +219,11 @@
                     }
                     .btn.add-item-btn {
                         line-height: 22px;
+                        position: relative;
+                        fa-icon {
+                            position: absolute;
+                            right: 7px;
+                        }
                     }
                 }
             }

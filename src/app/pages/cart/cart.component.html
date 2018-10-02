@@ -14,7 +14,7 @@
       <tbody>
 
 
-        <tr *ngFor="let product of productData">          
+        <tr *ngFor="let product of productData">
           <td align="center" valign="top">
             <a routerLink="{{product.permalink}}">
               <img class="mr-10" [attr.ix-path]="product.item_image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 123px, (min-width: 320px) 55px, 100vw"  alt="">
@@ -52,62 +52,6 @@
           <td align="right" valign="top"><strong class="price-content">{{ (product.item_price * product.item_qty) | customCurrency }}</strong></td>
 
         </tr>
-        <!-- <tr>
-          <td align="center" valign="top">
-            <a>
-              <img class="mr-10" src="https://www.plattetv.nl/var/images/thumbnails_50/tim-lifetime-support.png" alt="">
-            </a>
-          </td>
-          <td class="main" valign="top">
-            <a class="product-title"><strong>Gratis Lifetime Support</strong></a>
-            <ul>
-              <li>op voorraad</li>
-              <li><a>gratis bezorgd in NL en BE</a></li>
-            </ul>
-            <br>
-            <p>
-              Bij aanschaf van dit product ontvangt u levenslang ondersteunde service van PlatteTV.nl. U kunt ons van
-              09.00 uur tot 18.00 uur bereiken op een speciaal voor u ingesteld telefoonnummer.
-            </p>
-          </td>
-          <td class="quantity" align="center" valign="top"></td>
-          <td class="action" align="center" valign="top">
-            <div class="btn-container">
-              <button class="item-button" title="Remove this product" i18n-title>
-                <mat-icon>close</mat-icon>
-              </button>
-            </div>
-          </td>
-          <td align="right" valign="top"><strong class="price-content">€ 0,00</strong></td>
-        </tr> -->
-        <!-- <tr>
-          <td align="center" valign="top">
-            <a>
-              <img class="mr-10" src="https://www.plattetv.nl/var/images/thumbnails_50/overlay-bol-100_075cc3dde0de44aedf6223b9b58be8d6.png"
-                alt="">
-            </a>
-          </td>
-          <td class="main" valign="top">
-            <a class="product-title"><strong>€100 retour op deze Samsung TV!</strong></a>
-            <ul>
-              <li>op voorraad</li>
-              <li><a>gratis bezorgd in NL en BE</a></li>
-            </ul>
-            <br>
-            <p>
-              Ontvang nu 100 euro retour op deze Samsung TV!
-            </p>
-          </td>
-          <td class="quantity" align="center" valign="top"></td>
-          <td class="action" align="center" valign="top">
-            <div class="btn-container">
-              <button class="item-button" title="Remove this product" i18n-title>
-                <mat-icon>close</mat-icon>
-              </button>
-            </div>
-          </td>
-          <td align="right" valign="top"><strong class="price-content">€ 0,00</strong></td>
-        </tr> -->
         <tr>
           <td colspan="6" class="no-border"><br></td>
         </tr>
@@ -132,15 +76,15 @@
         </div>
       </div>
       <div class="checkout-btn-container">
-        <button class="btn btn-shopping"><span i18n>continue shopping</span>
+        <button class="btn btn-shopping" mat-button><span i18n>continue shopping</span>
           <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
         </button>
-        <button class="btn btn-checkout"><span i18n>place order</span>
+        <button class="btn btn-checkout" mat-button><span i18n>place order</span>
           <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
         </button>
       </div>
     </div>
-    <div class="related-product-container">
+    <div class="related-product-container" *ngIf="relatedProductData?.length">
       <h4 i18n>Complete your order:</h4>
       <table>
         <tr *ngFor="let product of relatedProductData">
@@ -152,42 +96,15 @@
           <td>
             <a routerLink="{{product.permalink}}">{{product.item_name}}(High Quality)</a>
           </td>
-          <td align="right"><span class="check-price">{{ product.item_old_price | customCurrency}}</span></td>
+          <!-- <td align="right"><span class="check-price">{{ product.item_old_price | customCurrency}}</span></td> -->
           <td align="right">{{ product.item_price | customCurrency}}</td>
-          <td align="right"><button class="btn add-item-btn" (click)="addToCartApi(product)"><span i18n>Add</span>
-            <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
-            </button></td>
+          <td align="right">
+            <button class="btn add-item-btn" mat-button (click)="addToCartApi(product)">
+              <span i18n>Add</span>
+              <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
+            </button>
+          </td>
         </tr>
-        <!-- <tr>
-          <td>
-            <a>
-              <img src="https://www.plattetv.nl/var/images/thumbnails_50/hdmi3.jpg">
-            </a>
-          </td>
-          <td>
-            <a> 3 meter HDMI Kabel (High Quality)</a>
-          </td>
-          <td align="right"><span class="check-price">€&nbsp;59,99</span></td>
-          <td align="right">€ 29,99</td>
-          <td align="right"><button class="btn add-item-btn"><span i18n>Add </span>
-              <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
-            </button></td>
-        </tr> -->
-        <!-- <tr>
-          <td>
-            <a>
-              <img src="https://www.plattetv.nl/var/images/thumbnails_50/vogels-thin-550-1.png">
-            </a>
-          </td>
-          <td>
-            <a>Vogels THIN 550</a>
-          </td>
-          <td align="right"></td>
-          <td align="right">€ 349,00</td>
-          <td align="right"><button class="btn add-item-btn"><span i18n>Add </span>
-              <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
-            </button></td>
-        </tr> -->
         <tr>
           <td colspan="5"><br></td>
         </tr>
@@ -211,69 +128,3 @@
     </div>
   </div>
 </div>
-
-<!-- <mat-card *ngIf="appService.Data.cartList?.length > 0" class="p-0">
-
-  <div class="mat-table cart-table">
-    <div class="mat-header-row">
-      <div class="mat-header-cell" i18n>Product</div>
-      <div class="mat-header-cell" i18n>Name</div>
-      <div class="mat-header-cell" i18n>Price</div>
-      <div class="mat-header-cell" i18n>Quantity</div>
-      <div class="mat-header-cell" i18n>Total</div>
-      <div class="mat-header-cell text-center">
-        <div class="px-1">
-          <button mat-raised-button color="warn" (click)="clear()" i18n>Clear All</button>
-        </div>
-      </div>
-    </div>
-    <div *ngFor="let product of appService.Data.cartList" class="mat-row">
-      <div class="mat-cell"><img [src]="product.images[0].small" alt="coming soon..."></div>
-      <div class="mat-cell">
-        <a [routerLink]="[product.permalink]" class="product-name">{{product.name}}</a>
-        <p class="text-muted" *ngFor="let attribute of product.attributes; let i=index;">
-          <ng-container *ngIf="attribute.selected">
-            <span>{{attribute.products_options_name}}:{{getAttributeName(product, i, attribute.selected)}}</span>
-          </ng-container>
-        </p>
-      </div>
-      <div class="mat-cell">{{product.newPrice | customCurrency}}</div>
-      <div class="mat-cell text-muted">
-        <app-controls [product]="product" [type]="'wish'" (quantityChanged)="getTotalPrice($event)"></app-controls>
-      </div>
-      <div class="mat-cell">{{product.newPrice * product.quantity | customCurrency}}</div>
-      <div class="mat-cell text-center overflow-visible">
-        <div class="p-1">
-          <span class="cdk-visually-hidden" #translatedTooltipMessage i18n>Clear</span>
-          <button mat-mini-fab color="warn" (click)="remove(product)" [matTooltip]="translatedTooltipMessage.innerHTML">
-            <mat-icon>close</mat-icon>
-          </button>
-        </div>
-      </div>
-
-    </div>
-    <div class="mat-row">
-      <div class="mat-cell"><a [routerLink]="['/']" mat-raised-button color="primary" i18n>Continue shopping</a></div>
-      <div class="mat-cell"></div>
-      <div class="mat-cell"></div>
-      <div class="mat-cell text-right">
-        <div fxLayout="column" fxLayoutAlign="center end" class="grand-total px-2">
-          <span i18n>SubTotal:</span>
-          <span class="text-muted" i18n>Discount:</span>
-          <span class="new-price" i18n>Grand total:</span>
-        </div>
-      </div>
-      <div class="mat-cell">
-        <div fxLayout="column" fxLayoutAlign="center start" class="grand-total">
-          <span>{{ grandTotal | customCurrency}}</span>
-          <span class="text-muted" i18n>15%</span>
-          <span class="new-price">{{ (grandTotal - (grandTotal*0.15)) | customCurrency}}</span>
-        </div>
-      </div>
-      <div class="mat-cell text-center"><a [routerLink]="['/checkout']" mat-raised-button color="primary" i18n>Proceed To
-          Checkout
-        </a></div>
-    </div>
-  </div>
-
-</mat-card> -->
