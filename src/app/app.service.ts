@@ -129,6 +129,7 @@ export class AppService {
     recalculatePrice(productData, item_qty): any {
         let params = new HttpParams();
         params = params.append('mode', 'update_item');
+        console.log(productData);
         params = params.append('item_id', `${productData.item_id}`);
         params = params.append('item_qty', `${item_qty || '1'}`);
         params = params.append('cart_id', `${localStorage.getItem('cart_id') || ''}`);
@@ -139,7 +140,7 @@ export class AppService {
         let params = new HttpParams();
         params = params.append('mode', 'remove_item');
         params = params.append('cart_id', `${productRemove.cart_id || localStorage.getItem('cart_id')}`);
-        params = params.append('cart_item_id', `${productRemove.cart_item_id}`);
+        params = params.append('item_id', `${productRemove.item_id}`);
         return this.http.get('/cart', {params: params});
     }
 

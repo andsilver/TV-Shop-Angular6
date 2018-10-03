@@ -44,12 +44,8 @@ export class StoreComponent implements OnInit {
                   static: true
                 }
               ]));
-              setTimeout(() => {
-                imgix.init()
-              }, 1)
+              setTimeout(() => imgix.init(), 1);
             });
-            
-           
         })
     );
 
