@@ -1,6 +1,14 @@
 <div class="cart-page-container">
-  <h3 class="page-title" i18n>CONTENTS BASKET</h3>
-  <div>
+  <h3 class="page-title" i18n>CART CONTENTS</h3>
+  <div *ngIf="!productData.length && loaded">
+    <p i18n>Your shopping cart is empty.</p>
+    <button class="btn btn-checkout float-right" mat-button [routerLink]="['/']">
+      <span i18n>Continue to homepage</span>
+      <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
+    </button>
+    <div class="clear"></div>
+  </div>
+  <div *ngIf="productData.length">
     <table class="cart-table" border="0" width="100%" cellspacing="0" cellpadding="2">
       <thead>
         <tr>
@@ -12,8 +20,6 @@
         </tr>
       </thead>
       <tbody>
-
-
         <tr *ngFor="let product of productData">
           <td align="center" valign="top">
             <a routerLink="{{product.permalink}}">
@@ -24,8 +30,6 @@
             <a routerLink="{{product.permalink}}" class="product-title"><strong>{{product.item_name}}</strong></a>
             <ul>
               <li>{{product.stock_indicator}}</li>
-
-
               <li><a>{{product.shipping_info}}</a></li>
             </ul>
             <br>
@@ -116,15 +120,6 @@
           </td>
         </tr>
       </table>
-    </div>
-  </div>
-  <div class="no-data-container" style="display:none;">
-    <p i18n>Your basket is empty</p>
-    <div class="btn-container">
-      <button class="btn btn-checkout"><span i18n>proceed to home page</span>
-        <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
-      </button>
-      <div class="clear"></div>
     </div>
   </div>
 </div>

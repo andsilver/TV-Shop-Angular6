@@ -3,6 +3,7 @@ import { AppService } from '../../app.service';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
+import { SaveCrumbPath } from 'app/store/actions/crumb-path.action';
 declare var imgix: any;
 
 @Component({
@@ -19,12 +20,20 @@ export class CartComponent implements OnInit, OnDestroy {
   cartId = '';
   totalPrice = 0;
   couponCode = '';
+  loaded = false;
 
   subscriptions = [];
 
   constructor(public appService: AppService, private router: Router, private store: Store<State>) {}
 
   ngOnInit() {
+
+    this.store.dispatch(new SaveCrumbPath([
+      {
+        name: 'Cart',
+        permalink: '/cart'
+      }
+    ]));
 
     this.subscriptions = [
       this.store.select(state => state.cart).subscribe(res => {
@@ -53,6 +62,7 @@ export class CartComponent implements OnInit, OnDestroy {
       });
       this.totalPrice = this.getTotalPrice(this.productData);
       setTimeout(() => imgix.init(), 1);
+      this.loaded = true;
     });
   }
 
