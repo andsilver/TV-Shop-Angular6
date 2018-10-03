@@ -7,7 +7,7 @@
                 </a>
             </h4>
         </mat-card-title>
-        <mat-card-content *ngIf="cart">
+        <mat-card-content *ngIf="cart?.cart_contents?.length">
             <div class="shopping-cart-items">
                 <div *ngFor="let item of cart.cart_contents" fxLayout>
                     <div fxFlex="17">{{item.item_qty}} x </div>
