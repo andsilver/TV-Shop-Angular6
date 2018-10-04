@@ -14,6 +14,12 @@ const apiEnv = {
   prod: 'https://api-plattetvnl.ct1node1.retailenclicks.nl'
 }
 
+const tagManagerId = {
+  local: 'GTM-W52QXGC',
+  dev: 'GTM-PH82WNL',
+  prod: 'GTM-PH82WNL'
+}
+
 const [command, value] = (process.argv[2]) ? process.argv[2].split('=') : '';
 const [command1, env] = (process.argv[3]) ? process.argv[3].split('=') : '';
 const src = (value) ? `./dist/${value}` : `./dist`;
@@ -36,6 +42,16 @@ gulp.task('pack-index-html', () => {
     .pipe(dom((document) => {
       document.querySelectorAll('html')[0].setAttribute('lang', value);
       document.getElementById('apiPreconnect').setAttribute('href', apiEnv[env]);
+
+      const ns = document.createElement('noscript');
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.googletagmanager.com/ns.html?id=${tagManagerId[env]}`;
+      iframe.width = 0;
+      iframe.height = 0;
+      iframe.style.display = 'none';
+      iframe.style.visibility = 'hidden';
+      ns.appendChild(iframe);
+      document.body.appendChild(ns);
     }))
     .pipe(htmlmin({ collapseWhitespace: true, minifyJS: true }))
     .pipe(replace(new RegExp('script ', 'g'), 'script async '))
