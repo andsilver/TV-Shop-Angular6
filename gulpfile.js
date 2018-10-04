@@ -16,7 +16,7 @@ const apiEnv = {
 
 const tagManagerId = {
   local: 'GTM-W52QXGC',
-  dev: 'GTM-PH82WNL',
+  dev: 'GTM-W52QXGC',
   prod: 'GTM-PH82WNL'
 }
 
