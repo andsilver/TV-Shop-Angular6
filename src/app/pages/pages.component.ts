@@ -51,8 +51,8 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
         this.categories = res;
         this.category = res[0];
         this.store.dispatch(new SuccessGetCategories(res));
-        this.sidenavMenuItems = this.categories.map(c =>
-            new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
+        // this.sidenavMenuItems = this.categories.map(c =>
+        //     new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
       })
     );
 

@@ -5,7 +5,8 @@
             <fa-icon [icon]="['fas', 'times']" size="lg"></fa-icon>
         </button>
         <div class="divider"></div>
-        <app-sidenav-menu *ngIf="sidenavOpened" [menuItems]="sidenavMenuItems" [menuParentId]="0"></app-sidenav-menu>
+        <app-filters-list *ngIf="sidenavOpened"></app-filters-list>
+        <!-- <app-sidenav-menu *ngIf="sidenavOpened" [menuItems]="sidenavMenuItems" [menuParentId]="0"></app-sidenav-menu> -->
         <div class="divider"></div>
         <div class="text-center py-2">                   
             <svg class="social-icon" viewBox="0 0 24 24">
