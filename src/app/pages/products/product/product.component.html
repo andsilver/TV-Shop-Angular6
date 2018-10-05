@@ -119,7 +119,7 @@
                         <div ngClass.gt-md="pr-3">
 
                             <div fxFlex class="extra-infos">
-                                <div #info_expert_reviews>
+                                <div id="info-expert-review" #info_expert_reviews>
                                     <div *ngIf="product?.expertReview.expertAuthor" class="expert-review">
                                         <h2>Plus- en minpunten</h2>
                                         <div ngClass.xs="py-2" ngClass.lt-md="p-2" fxLayout fxLayout.xs="column">
@@ -145,7 +145,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div #info_reviews>
+                                <div id="info-reviews" #info_reviews>
                                     <div *ngIf="product?.reviews.length">
                                         <h2>Reviews</h2>
                                         <div ngClass.xs="py-2" ngClass.lt-md="p-2">
@@ -174,7 +174,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div #info_product_packages>
+                                <div id="info-product-packages" #info_product_packages>
                                     <div *ngIf="product?.productPackages.length">
                                         <h2>AANBEVOLEN COMBIDEALS</h2>
                                         <div ngClass.xs="py-2" ngClass.lt-md="p-2">
@@ -211,7 +211,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div #info_description>
+                                <div id="info-description" #info_description>
                                     <div *ngIf="product?.description">
                                         <h2>Beschrijving</h2>
                                         <div ngClass.xs="py-2" ngClass.lt-md="p-2">
@@ -219,11 +219,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div #info_extra_description>
+                                <div id="info-extra-description" #info_extra_description>
                                     <div *ngIf="product?.extra_description">
                                         <h2>Specificaties</h2>
                                         <div class="mat-tab-specificaties" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                            <p [innerHTML]="product?.extra_description | htmlSanitize"></p>
+                                            <div [innerHTML]="product?.extra_description | htmlSanitize"></div>
                                         </div>
                                     </div>
                                 </div>
