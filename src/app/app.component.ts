@@ -29,6 +29,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     imgix.config.srcsetAttribute = 'data-srcset';
     imgix.config.sizesAttribute = 'data-sizes';
     this.setGoogleTagManager();
+    this.setHotJarManager();
   }
 
   ngAfterViewInit() {
@@ -47,5 +48,19 @@ export class AppComponent implements OnInit, AfterViewInit {
         j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
         f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', '${environment.tagManagerId}');`;
     this.doc.getElementsByTagName('head')[0].appendChild(s);
+  }
+
+  setHotJarManager() {
+    const hotjarScript = this.doc.createElement('script');
+    hotjarScript.type = 'text/javascript';
+    hotjarScript.innerHTML = `(function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:${environment.hotjarId},hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`;
+    this.doc.getElementsByTagName('head')[0].appendChild(hotjarScript);
   }
 }
