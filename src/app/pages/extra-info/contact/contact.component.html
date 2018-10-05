@@ -70,7 +70,7 @@
     <div fxLayout="row wrap" fxLayoutAlign="space start">
         <div fxFlex="20" fxFlex.sm="25" fxFlex.xs="50" *ngFor="let store of stores" class="stores-individual-store">
             <div>
-                <img [src]="store.store_image_thumbnail" [routerLink]="['/stores', store.store_location]" [alt]="store.store_title">
+                <img [attr.ix-path]="store.store_image_thumbnail" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" [routerLink]="['/stores', store.store_location]" alt="">
             </div>
             <div>
                 <a [routerLink]="['/stores', store.store_location]">{{store.store_title}}</a>

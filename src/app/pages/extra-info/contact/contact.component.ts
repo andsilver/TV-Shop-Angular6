@@ -7,6 +7,8 @@ import { State } from 'app/store';
 import * as CrumbActions from 'app/store/actions/crumb-path.action';
 import * as mock from './mock.json';
 
+declare var imgix: any;
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -31,6 +33,7 @@ export class ContactComponent implements OnInit, OnDestroy {
       this.appService.getStores().subscribe(res => {
         console.log(res);
         this.stores = res;
+        setTimeout(() => imgix.init(), 1);
       }),
       this.route.url.subscribe((paths: UrlSegment[]) => {
         if (paths.length > 1) {
