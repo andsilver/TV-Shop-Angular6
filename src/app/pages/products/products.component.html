@@ -145,7 +145,7 @@
                                             <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'row'"></app-rating>
                                             <div class="product-item-feature-highlights" [innerHTML]="product.featureHighlights | htmlSanitize"></div>
                                         </div>
-                                        <div fxFlex.md="60">
+                                        <div fxFlex="55">
                                             <p class="text-muted" [ngClass.gt-xs]="['text-right']">
                                                 <span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency:2:3:false}}</span>
                                             </p>
@@ -154,7 +154,7 @@
                                             <button class="control-normal" mat-button [routerLink]="[product.permalink]">
                                                 <ng-container i18n>GO TO PRODUCT</ng-container> <fa-icon [icon]="'chevron-circle-right'"></fa-icon>
                                             </button>
-                                            <div *ngIf="product.haveDemoUnit" class="demo-unit">
+                                            <div *ngIf="product.haveDemoUnit" class="demo-unit text-right">
                                                 <a i18n (click)="openDemoUnit(product)">View the Buitenkansje</a>
                                                 <strong><ng-container i18n> of</ng-container> {{product.demoUnitStartPrice}}</strong>
                                             </div>

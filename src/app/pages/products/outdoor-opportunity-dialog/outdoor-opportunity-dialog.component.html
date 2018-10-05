@@ -8,7 +8,7 @@
       <span [innerHTML]="product.description | htmlSanitize"></span>
     </div>
     <div class="text-right">
-      <div>Nieuwprijs {{product.original_price | customCurrency}}</div>
+      <div><ng-container i18n>New Price </ng-container>{{product.original_price | customCurrency}}</div>
       <h2>{{product.price | customCurrency }}</h2>
     </div>
     <button mat-button (click)="addToCart(product)">
