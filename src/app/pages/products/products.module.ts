@@ -13,6 +13,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { NotMatchComponent } from './not-match/not-match.component';
 import { BestPriceDialogComponent } from './best-price-dialog/best-price-dialog.component';
 import { ExchangeComponent } from './exchange/exchange.component';
+import { OutdoorOpportunityDialogComponent } from './outdoor-opportunity-dialog/outdoor-opportunity-dialog.component';
 
 export const routes = [
   {
@@ -34,12 +35,14 @@ export const routes = [
     LayoutComponent,
     NotMatchComponent,
     BestPriceDialogComponent,
-    ExchangeComponent
+    ExchangeComponent,
+    OutdoorOpportunityDialogComponent
   ],
   entryComponents: [
     ProductZoomComponent,
     BestPriceDialogComponent,
-    ExchangeComponent
+    ExchangeComponent,
+    OutdoorOpportunityDialogComponent
   ]
 })
 export class ProductsModule { }

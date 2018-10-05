@@ -11,6 +11,7 @@ import { State } from 'app/store';
 import * as ProductsActions from 'app/store/actions/products.action';
 import * as FiltersListActions from 'app/store/actions/filters-list.action';
 
+import { OutdoorOpportunityDialogComponent } from './outdoor-opportunity-dialog/outdoor-opportunity-dialog.component';
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product, Category } from '../../app.models';
@@ -334,6 +335,15 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       return product.stockIndicator.indexOf('Vraag naar levertijd') > -1;
     }
     return false;
+  }
+
+  openDemoUnit(product) {
+    const dialogRef = this.dialog.open(OutdoorOpportunityDialogComponent, {
+      data: product
+    });
+    dialogRef.afterClosed().subscribe(res => {
+
+    });
   }
 
 }

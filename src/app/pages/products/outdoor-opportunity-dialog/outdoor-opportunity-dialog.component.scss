@@ -1,0 +1,33 @@
+.top-parent {
+    max-width: 653px;
+    .description {
+        background: #d4d4d4;
+    }
+
+    .border {
+        border: 1px solid #cdcdcd;
+    }
+
+    .mat-button {
+        width: 200px;
+        font-family: "Poppins";
+        text-align: left;
+        padding: 0 1rem;
+        position: relative;
+        height: 3.125rem;
+        font-size: 1.375rem;
+        background-color: #5AAD49;
+        font-weight: normal;
+        font-family: "Gotham Condensed";
+        text-transform: uppercase;
+        color:#fff;
+        border-radius: .5rem;
+        float: right;
+        clear: both;
+        
+        fa-icon {
+            position: absolute;
+            right: 10px;
+        }
+    }
+}

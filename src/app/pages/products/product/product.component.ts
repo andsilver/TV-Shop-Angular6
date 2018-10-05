@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, AfterViewInit, OnDestroy, ViewChild, Input, HostListener } from '@angular/core';
+import { Component, OnInit, OnChanges, AfterViewInit, OnDestroy, ViewChild, Input, HostListener, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,7 +10,6 @@ import { emailValidator } from '../../../theme/utils/app-validators';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
 import { BestPriceDialogComponent } from '../best-price-dialog/best-price-dialog.component';
 import { ExchangeComponent } from '../exchange/exchange.component';
-import { ViewEncapsulation  } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
