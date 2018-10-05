@@ -992,3 +992,21 @@ app-root .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not
         }
     }
 }
+
+#info-extra-description strong {
+    display: block;
+    padding: 5px;
+}
+#info-extra-description table {
+    border-collapse: collapse;
+    padding: 0;
+}
+#info-extra-description table tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+#info-extra-description table td {
+    padding: 5px;
+}
+#info-extra-description table td:first-child {
+    width: 200px!important;
+}
