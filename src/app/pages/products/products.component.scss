@@ -18,19 +18,16 @@
                 }
             }
         }
-        &.mat-checkbox+.mat-checkbox {
+        .mat-checkbox {
+            display: block;
             margin-bottom: .5rem;
         }
 
         .show_more_toggle {
-            cursor: pointer;
-            margin-top: 10px;
-            font-size: 14px;
+
             font-weight: 600;
-            font-family: "Poppins";
-            &:hover {
-                font-weight: bold;
-            }
+            color: #1d4f92;
+            cursor: pointer;
         }
     }
 }
