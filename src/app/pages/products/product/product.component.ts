@@ -10,6 +10,7 @@ import { emailValidator } from '../../../theme/utils/app-validators';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
 import { BestPriceDialogComponent } from '../best-price-dialog/best-price-dialog.component';
 import { ExchangeComponent } from '../exchange/exchange.component';
+import { ViewEncapsulation  } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -18,7 +19,8 @@ declare var imgix: any;
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 

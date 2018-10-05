@@ -348,6 +348,25 @@ h2.product-detail-title,
             }
         }
     }
+    #info-extra-description {
+        strong {
+            display: block;
+            padding: 5px;
+        }
+        table {
+            border-collapse: collapse;
+            padding: 0;
+        }
+        tr:nth-of-type(odd) {
+            background-color: #f2f2f2;
+        }
+        td {
+            padding: 5px;
+        }
+        td:first-child {
+            width: 200px!important;
+        }
+    }
 }
 
 .new-stock-info-wrapper { margin-top: 1rem; margin-bottom: 1rem; }
