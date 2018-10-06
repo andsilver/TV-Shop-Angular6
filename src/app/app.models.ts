@@ -38,6 +38,7 @@ export class Product {
   haveDemoUnit: boolean;
   demoUnitStartPrice: string;
   productPackages: any;
+  productSidepoints: any;
 }
 
 export interface Brand {
