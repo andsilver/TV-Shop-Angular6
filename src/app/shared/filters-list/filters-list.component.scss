@@ -1,33 +1,10 @@
-.filter-brands{
-    button{
-        width: 66px;
-        height: 44px;
-        min-width: 66px;
-        margin: 0 6px 10px 0;
-        padding: 0px;
-        overflow: hidden;
-        img{
-            width: 66px;
-            height: 44px;
-        }
+.filter-box{
+    margin-bottom: 20px;
+
+    h3 {
+        border-bottom: 1px solid #212226;
+        margin-bottom: .625rem;
+        padding-bottom: 0.375rem;
     }
 }
 
-.mat-expansion-panel {
-    border-bottom: 1px solid #E6E6DC;
-    box-shadow: none !important;
-    .mat-expansion-panel-header {
-
-        .mat-expansion-panel-header-title {
-            text-transform: uppercase;
-        }
-    }
-}
-
-@media (min-width:960px) {
-    .mat-expansion-panel {
-        .mat-expansion-panel-header {
-            padding: 0;
-        }
-    }
-}

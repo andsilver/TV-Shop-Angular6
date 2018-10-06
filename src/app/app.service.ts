@@ -151,6 +151,12 @@ export class AppService {
         return this.http.get('/products/demounit', {params: params});
     }
 
+    getFiltersList() {
+        let params = new HttpParams();
+        params = params.append('cms_type', 'adbox-above-merken');
+        return this.http.get('/cms', {params: params});
+    }
+
     /* +------------+
     *  |    Util    |
     *  +------------+
