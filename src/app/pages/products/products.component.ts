@@ -48,7 +48,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   count = 12;
   sortings = ['Relevantie', 'Best verkocht', 'Prijs laag-hoog', 'Prijs hoog-laag'];
   sort: any;
-  products: Array<Product> = [];
+  products: Product[] = [];
   category_name: string;
   category_description: string;
 
@@ -196,7 +196,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     this.totalProducts = res.total;
     window.scrollTo(0, 0);
-    if (!this.products.length) {
+    if (!this.products || !this.products.length) {
       this.emptyMessage = 'De opgegeven zoekopdracht heeft geen resultaten opgeleverd.';
     }
     setTimeout(() => imgix.init(), 1);

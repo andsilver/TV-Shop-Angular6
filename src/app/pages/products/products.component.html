@@ -1,7 +1,9 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
         
-        <mat-accordion displayMode="flat" multi="true">
+        <app-filters-list *ngIf="viewLoaded && !filterLists?.length"></app-filters-list>
+
+        <mat-accordion displayMode="flat" multi="true" *ngIf="filterLists?.length">
 
             <div class="pb-3" *ngIf="totalProducts">
                 <h4>{{totalProducts}} <span i18n>results</span></h4>
@@ -81,13 +83,13 @@
 
     </mat-sidenav>
     <mat-sidenav-content class="all-products">
-        <div fxLayout fxLayoutAlign="end start">
+        <div fxLayout fxLayoutAlign="end start" *ngIf="viewLoaded">
             <div fxFlex="100" fxFlex.gt-md="76" ngClass.gt-sm="px-3">
                 <div *ngIf="category_description" class="pb-3">
                     <h1>{{category_name}}</h1>
                     <p [innerHTML]="category_description | htmlSanitize"></p>
                 </div>
-                <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" class="filter-row mat-elevation-z1 text-muted">
+                <div *ngIf="products" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" class="filter-row mat-elevation-z1 text-muted">
                     <h2>
                         <ng-container i18n>Overview </ng-container>
                         {{category_name}}
@@ -123,12 +125,12 @@
                     </div>
                 </div>
 
-                <div fxLayout="row wrap" class="products-wrapper">
-                    <div *ngIf="!products.length">
+                <div fxLayout="row wrap" class="products-wrapper" *ngIf="products">
+                    <div *ngIf="!products?.length">
                         {{emptyMessage}}
                     </div>
                     <ng-container>
-                        <div  *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }" fxFlex="100" class="col">
+                        <div *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }" fxFlex="100" class="col">
                             <mat-card class="product-item product-item-list">
                                 <div fxLayout fxLayout="row" fxLayoutAlign="start start">
                                     <div fxFlex="160px" class="product-item-image">
@@ -166,7 +168,7 @@
                     </ng-container>
                 </div>
 
-                <div *ngIf="products.length > 0" fxLayout="row wrap" class="product-pagination-wrapper">
+                <div *ngIf="products?.length > 0" fxLayout="row wrap" class="product-pagination-wrapper">
                     <div fxFlex="100">
                         <mat-card class="p-0 text-center">
                             <pagination-controls class="product-pagination" previousLabel="Vorige" nextLabel="Volgende" autoHide="true" maxSize="5" (pageChange)="onPageChanged($event)">
