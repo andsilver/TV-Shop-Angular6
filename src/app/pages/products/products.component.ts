@@ -339,7 +339,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   openDemoUnit(product) {
     const dialogRef = this.dialog.open(OutdoorOpportunityDialogComponent, {
-      data: product
+      data: product,
+      panelClass: 'popup-demo-unit'
     });
     dialogRef.afterClosed().subscribe(res => {
 

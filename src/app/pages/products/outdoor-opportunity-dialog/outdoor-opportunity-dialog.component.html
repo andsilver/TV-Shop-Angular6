@@ -3,16 +3,28 @@
   <div class="description p-2 mb-2" [innerHTML]="widget.description | htmlSanitize"></div>
   <div *ngFor="let product of widget.demo_unit_products">
     <h3 class="mb-2">{{product.condition}}</h3>
-    <div fxLayout="row" fxLayoutAlign="space-between start">
-      <img class="p-2 border" [attr.ix-path]="product.images[0].medium" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 210px, (min-width: 320px) 210px, 100vw" alt="">
-      <span [innerHTML]="product.description | htmlSanitize"></span>
+    <div fxLayout="row">
+      <div class="mr-5">
+        <img class="p-2 border" [attr.ix-path]="product.images[0].medium" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 210px, (min-width: 320px) 210px, 100vw" alt="">
+      </div>
+      <div class="product-description">
+        <div [innerHTML]="product.description | htmlSanitize"></div>
+        <div class="text-right mt-4">
+          <div class="original-price">
+            <ng-container i18n>New Price </ng-container>
+            {{integer(product.original_price | customCurrency)}}
+            <sup>{{float(product.original_price | customCurrency)}}</sup>
+          </div>
+          <h2>
+            {{integer(product.price | customCurrency)}}
+            <sup>{{float(product.price | customCurrency)}}</sup>
+          </h2>
+          <button mat-button (click)="addToCart(product)">
+            <ng-container i18n>Add to cart</ng-container> <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="text-right">
-      <div><ng-container i18n>New Price </ng-container>{{product.original_price | customCurrency}}</div>
-      <h2>{{product.price | customCurrency }}</h2>
-    </div>
-    <button mat-button (click)="addToCart(product)">
-      <ng-container i18n>Add to cart</ng-container> <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
-    </button>
   </div>
+  <fa-icon class="close-button" [icon]="['fas', 'times']"></fa-icon>
 </div>

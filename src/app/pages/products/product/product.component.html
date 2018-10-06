@@ -105,7 +105,7 @@
                             </ng-container>
                         </div>
                         <div fxFlex="44" fxFlex.lt-md="false" ngClass.gt-md="pr-3 m-0" *ngIf="product?.description || product?.extra_description || product?.reviews.length || product?.expertReview">
-                            <div class="extra-infos side-points extra-infos-list">
+                            <div class="extra-infos side-points extra-infos-list" *ngIf="product.productSidepoints.length">
                                 <h2>LOPENDE ACTIES</h2>
                                 <div *ngFor="let point of product.productSidepoints" fxLayout="row">
                                     <fa-icon class="mt-1" [icon]="['fas', 'circle']"></fa-icon><div [innerHTML]="point | htmlSanitize"></div>

@@ -30,7 +30,7 @@ export class AddedToCartPopupComponent implements OnInit {
     setTimeout(() => {
       this.router.navigate(['/cart']);
       this.dialogRef.close({ isAddTocart: true });
-    }, 2000);    
+    }, 2000);
   }
 
 }
