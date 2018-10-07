@@ -76,8 +76,8 @@
                             <div class="winkel-stock">
                                 <h3>Bezorgvoorraad</h3>
                                 <div>
-                                    <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[product.stockInfo.shippingInfo.stockCode]}" [satPopoverAnchorFor]="p" (mouseenter)="p.open()" (mouseleave)="p.close()"></fa-icon>
-                                    <a href='/'> {{product?.stockInfo.shippingInfo.shippingTitle}}</a>
+                                    <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[product.stockInfo.shippingInfo.stockCode]}"></fa-icon>
+                                    <a [satPopoverAnchorFor]="p" (mouseenter)="p.open()" (mouseleave)="p.close()"> {{product?.stockInfo.shippingInfo.shippingTitle}}</a>
                                 </div>
                                 <sat-popover #p verticalAlign="below" horizontalAlign="start">
                                     <app-description-popover [title]="product?.stockInfo.shippingInfo.shippingTitle" [content]="product?.stockInfo.shippingInfo.toolTipContent"></app-description-popover>
@@ -85,8 +85,8 @@
                                 <h3>Winkelvoorraad</h3>
                                 <div fxLayout="row wrap">
                                     <div *ngFor="let store of product.stockInfo.storeStock" fxFlex="50">
-                                        <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[store.storeStockCode]}" [satPopoverAnchorFor]="p_s" (mouseenter)="tooltipStore=store;p_s.open()" (mouseleave)="p_s.close()"></fa-icon>
-                                        <a [routerLink]="['/stores', store.storeId]"> {{store.branchCity}}</a>
+                                        <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[store.storeStockCode]}"></fa-icon>
+                                        <a [satPopoverAnchorFor]="p_s" (mouseenter)="tooltipStore=store;p_s.open()" (mouseleave)="p_s.close()"> {{store.branchCity}}</a>
                                         <sat-popover #p_s verticalAlign="below" horizontalAlign="start">
                                             <app-description-popover [title]="tooltipStore?.branchCity" [content]="tooltipStore?.toolTipContent"></app-description-popover>
                                         </sat-popover>
