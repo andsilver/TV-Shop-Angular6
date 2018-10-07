@@ -83,7 +83,7 @@
         <button class="btn btn-shopping" mat-button><span i18n>continue shopping</span>
           <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
         </button>
-        <button class="btn btn-checkout" mat-button><span i18n>place order</span>
+        <button class="btn btn-checkout" mat-button [routerLink]="['/checkout']"><span i18n>place order</span>
           <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
         </button>
       </div>

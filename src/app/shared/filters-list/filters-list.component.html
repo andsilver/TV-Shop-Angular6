@@ -1,38 +1,15 @@
-<mat-expansion-panel expanded>
-    <mat-expansion-panel-header>
-        <mat-panel-title>
-            <h4>{{filter.option_name}}</h4>
-        </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="filter-brands">
-        <div *ngFor="let value of filter.values">
-            <a [routerLink]="['']">{{value.value_name}}</a>
-        </div>
+<div *ngFor="let f of filtersList" class="filter-box" (click)="navigate($event)">
+    <div>
+        <h3>{{f.title}}</h3>
     </div>
-</mat-expansion-panel>
+    <div [innerHTML]="f.content"></div>
+</div>
 
-<mat-expansion-panel expanded>
-    <mat-expansion-panel-header>
-        <mat-panel-title>
-            <h4 i18n>Categories</h4>
-        </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="categories-wrapper categories-dropdown" perfectScrollbar>
-        <div *ngFor="let category of categories">
-          <a [routerLink]="[category.permalink]">{{category.name}}</a>
-        </div>
+<div class="filter-box">
+    <div>
+        <h3 i18n>Condition</h3>
     </div>
-</mat-expansion-panel>
-
-<mat-expansion-panel expanded *ngIf="brands">
-    <mat-expansion-panel-header>
-        <mat-panel-title>
-            <h4 i18n>Condition</h4>
-        </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="filter-brands">
-       <div *ngFor="let brand of brands">
-          <a>{{brand.name}}</a>
-       </div>
+    <div *ngFor="let brand of brands">
+        <a>{{brand.name}}</a>
     </div>
-</mat-expansion-panel>
+</div>

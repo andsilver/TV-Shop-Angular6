@@ -200,7 +200,15 @@ h2.product-detail-title,
     padding: 5px 10px;
 }
 
+.demo-unit a {
+    color: #2e4be5;
+    cursor: pointer;
+}
+
 .extra-infos {
+    &.side-points h2 {
+        background: #2da7c2;
+    }
     >div {
         margin-bottom: 10px;
     }
@@ -218,7 +226,7 @@ h2.product-detail-title,
         padding: 0 15px;
     }
     &-list {
-        border: 1px solid #E6E6DC;
+        border: 1px solid rgb(235, 235, 118);
         margin-bottom: 30px;
 
         h2{

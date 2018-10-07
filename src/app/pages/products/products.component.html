@@ -1,7 +1,9 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
         
-        <mat-accordion displayMode="flat" multi="true">
+        <app-filters-list *ngIf="viewLoaded && !filterLists?.length"></app-filters-list>
+
+        <mat-accordion displayMode="flat" multi="true" *ngIf="filterLists?.length">
 
             <div class="pb-3" *ngIf="totalProducts">
                 <h4>{{totalProducts}} <span i18n>results</span></h4>
@@ -81,13 +83,13 @@
 
     </mat-sidenav>
     <mat-sidenav-content class="all-products">
-        <div fxLayout fxLayoutAlign="end start">
+        <div fxLayout fxLayoutAlign="end start" *ngIf="viewLoaded">
             <div fxFlex="100" fxFlex.gt-md="76" ngClass.gt-sm="px-3">
                 <div *ngIf="category_description" class="pb-3">
                     <h1>{{category_name}}</h1>
                     <p [innerHTML]="category_description | htmlSanitize"></p>
                 </div>
-                <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" class="filter-row mat-elevation-z1 text-muted">
+                <div *ngIf="products" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" class="filter-row mat-elevation-z1 text-muted">
                     <h2>
                         <ng-container i18n>Overview </ng-container>
                         {{category_name}}
@@ -123,12 +125,12 @@
                     </div>
                 </div>
 
-                <div fxLayout="row wrap" class="products-wrapper">
-                    <div *ngIf="!products.length">
+                <div fxLayout="row wrap" class="products-wrapper" *ngIf="products">
+                    <div *ngIf="!products?.length">
                         {{emptyMessage}}
                     </div>
                     <ng-container>
-                        <div  *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }" fxFlex="100" class="col">
+                        <div *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }" fxFlex="100" class="col">
                             <mat-card class="product-item product-item-list">
                                 <div fxLayout fxLayout="row" fxLayoutAlign="start start">
                                     <div fxFlex="160px" class="product-item-image">
@@ -139,13 +141,13 @@
                                             <img [attr.ix-path]="product.images[0].small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" alt="">
                                         </a>
                                     </div>
-                                    <div fxFlex="100" fxLayout.xs="column" fxLayoutGap="1rem" class="listing-item-content">
+                                    <div fxFlex="100" fxLayout.xs="column" class="listing-item-content">
                                         <div fxFlex.md="40">
                                             <a [routerLink]="[product.permalink]" class="title">{{product.name}}</a>
                                             <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'row'"></app-rating>
                                             <div class="product-item-feature-highlights" [innerHTML]="product.featureHighlights | htmlSanitize"></div>
                                         </div>
-                                        <div fxFlex.md="60">
+                                        <div fxFlex="55">
                                             <p class="text-muted" [ngClass.gt-xs]="['text-right']">
                                                 <span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency:2:3:false}}</span>
                                             </p>
@@ -154,7 +156,10 @@
                                             <button class="control-normal" mat-button [routerLink]="[product.permalink]">
                                                 <ng-container i18n>GO TO PRODUCT</ng-container> <fa-icon [icon]="'chevron-circle-right'"></fa-icon>
                                             </button>
-                                            <p *ngIf="product.demoUnitText" [innerHTML]="product.demoUnitText | htmlSanitize"></p>
+                                            <div *ngIf="product.haveDemoUnit" class="demo-unit text-right">
+                                                <a i18n (click)="openDemoUnit(product)">View the Buitenkansje</a>
+                                                <strong><ng-container i18n> of</ng-container> {{product.demoUnitStartPrice}}</strong>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -163,7 +168,7 @@
                     </ng-container>
                 </div>
 
-                <div *ngIf="products.length > 0" fxLayout="row wrap" class="product-pagination-wrapper">
+                <div *ngIf="products?.length > 0" fxLayout="row wrap" class="product-pagination-wrapper">
                     <div fxFlex="100">
                         <mat-card class="p-0 text-center">
                             <pagination-controls class="product-pagination" previousLabel="Vorige" nextLabel="Volgende" autoHide="true" maxSize="5" (pageChange)="onPageChanged($event)">

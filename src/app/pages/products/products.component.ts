@@ -11,6 +11,7 @@ import { State } from 'app/store';
 import * as ProductsActions from 'app/store/actions/products.action';
 import * as FiltersListActions from 'app/store/actions/filters-list.action';
 
+import { OutdoorOpportunityDialogComponent } from './outdoor-opportunity-dialog/outdoor-opportunity-dialog.component';
 import { ProductDialogComponent } from '../../shared/products-carousel/product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product, Category } from '../../app.models';
@@ -47,7 +48,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   count = 12;
   sortings = ['Relevantie', 'Best verkocht', 'Prijs laag-hoog', 'Prijs hoog-laag'];
   sort: any;
-  products: Array<Product> = [];
+  products: Product[] = [];
   category_name: string;
   category_description: string;
 
@@ -195,7 +196,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     this.totalProducts = res.total;
     window.scrollTo(0, 0);
-    if (!this.products.length) {
+    if (!this.products || !this.products.length) {
       this.emptyMessage = 'De opgegeven zoekopdracht heeft geen resultaten opgeleverd.';
     }
     setTimeout(() => imgix.init(), 1);
@@ -334,6 +335,16 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       return product.stockIndicator.indexOf('Vraag naar levertijd') > -1;
     }
     return false;
+  }
+
+  openDemoUnit(product) {
+    const dialogRef = this.dialog.open(OutdoorOpportunityDialogComponent, {
+      data: product,
+      panelClass: 'popup-demo-unit'
+    });
+    dialogRef.afterClosed().subscribe(res => {
+
+    });
   }
 
 }

@@ -144,6 +144,19 @@ export class AppService {
         return this.http.get('/cart', {params: params});
     }
 
+    getDemoUnitProduct(productId) {
+        let params = new HttpParams();
+        params = params.append('product_id', `${productId}`);
+        params = params.append('is_demo_unit', '1');
+        return this.http.get('/products/demounit', {params: params});
+    }
+
+    getFiltersList() {
+        let params = new HttpParams();
+        params = params.append('cms_type', 'adbox-above-merken');
+        return this.http.get('/cms', {params: params});
+    }
+
     /* +------------+
     *  |    Util    |
     *  +------------+

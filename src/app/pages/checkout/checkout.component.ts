@@ -21,9 +21,33 @@ export class CheckoutComponent implements OnInit {
   deliveryMethods = [];
   grandTotal = 0;
 
+  steps = [
+    {
+      title: 'Uw Gegevens',
+      index: 1
+    },
+    {
+      title: 'Bezorg/Betaalmethode',
+      index: 2
+    },
+    {
+      title: 'Overzicht',
+      index: 3
+    },
+    {
+      title: 'Afgerond',
+      index: 4
+    }
+  ];
+
+  stepNow: any;
+
   constructor(public appService: AppService, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
+
+    this.stepNow = this.steps[0];
+
     this.appService.Data.cartList.forEach(product => {
       this.grandTotal += product.newPrice;
     });

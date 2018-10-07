@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, AfterViewInit, OnDestroy, ViewChild, Input, HostListener } from '@angular/core';
+import { Component, OnInit, OnChanges, AfterViewInit, OnDestroy, ViewChild, Input, HostListener, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,7 +10,7 @@ import { emailValidator } from '../../../theme/utils/app-validators';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
 import { BestPriceDialogComponent } from '../best-price-dialog/best-price-dialog.component';
 import { ExchangeComponent } from '../exchange/exchange.component';
-import { ViewEncapsulation  } from '@angular/core';
+import { OutdoorOpportunityDialogComponent } from '../outdoor-opportunity-dialog/outdoor-opportunity-dialog.component';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -207,6 +207,15 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
           this.router.navigate(['/cart']);
         }, 1000);
       }
+    });
+  }
+
+  openDemoUnit(product) {
+    const dialogRef = this.dialog.open(OutdoorOpportunityDialogComponent, {
+      data: product
+    });
+    dialogRef.afterClosed().subscribe(res => {
+
     });
   }
 

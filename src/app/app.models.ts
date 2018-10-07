@@ -35,8 +35,10 @@ export class Product {
   featureHighlights: string;
   stockIndicator: string;
   stockInfo: any;
-  demoUnitText: string;
+  haveDemoUnit: boolean;
+  demoUnitStartPrice: string;
   productPackages: any;
+  productSidepoints: any;
 }
 
 export interface Brand {

@@ -1,0 +1,137 @@
+<div class="checkout-step">
+  <form [formGroup]="form" (ngSubmit)="formSubmit()">
+
+    <div fxLayout="row" fxLayoutAlign="space-between start" class="form-title">
+      <h3 i18n>Your data</h3>
+      <span i18n>fields with * are obligated</span>
+    </div>
+
+    <div class="form-content">
+      <div>
+        <label i18n>type of order</label>
+        <mat-radio-group #order_type formControlName="customer_type" required>
+          <mat-radio-button value="private" radioGroup="order_type" class="mr-4">
+            <ng-container i18n>Private</ng-container>
+          </mat-radio-button>
+          <mat-radio-button value="for_business" radioGroup="order_type">
+            <ng-container i18n>For Business</ng-container>
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div *ngIf="form.value.customer_type == 'for_business'">
+        <div>
+          <label for="company_name">Company Name:</label>
+          <input id="company_name" type="text" formControlName="company_name">
+        </div>
+      </div>
+
+      <div *ngIf="form.value.customer_type == 'for_business'">
+          <div>
+            <label for="vat_number">VAT number:</label>
+            <input id="vat_number" type="text" formControlName="tax_id">
+          </div>
+        </div>
+
+      <div>
+        <label for="gender" i18n>Saluation: *</label>
+        <mat-radio-group id="gender" #gender formControlName="customer_gender" required>
+            <mat-radio-button value="mr" radioGroup="gender" class="mr-4">
+              <ng-container i18n>Mr.</ng-container>
+            </mat-radio-button>
+    
+            <mat-radio-button value="mrs" radioGroup="gender">
+              <ng-container i18n>Mrs.</ng-container>
+            </mat-radio-button>
+    
+          </mat-radio-group>
+      </div>
+
+      <div>
+        <label for="first_name" i18n>First name: *</label>
+        <input id="first_name" type="text" formControlName="first_name" required>
+      </div>
+
+      <div>
+        <label for="last_name" i18n>Last name: *</label>
+        <input id="last_name" type="text" formControlName="last_name" required>
+      </div>
+
+      <div>
+        <label for="street_address" i18n>Street: *</label>
+        <input id="street_address" type="text" formControlName="street_address" required>
+      </div>
+
+      <div>
+        <label for="house_number" i18n>House number: *</label>
+        <input id="house_number" type="text" formControlName="house_number" required>
+      </div>
+
+      <div>
+        <label for="postcode" i18n>Postal Code: *</label>
+        <input id="postcode" type="text" formControlName="postcode" required>
+      </div>
+
+      <div>
+        <label for="place" i18n>Place: *</label>
+        <input id="place" type="text" formControlName="city" required>
+      </div>
+
+      <div>
+        <label for="country" i18n>Country: *</label>
+        <select id="country" formControlName="country">
+          <option *ngFor="let ctry of countries" [value]="ctry.code">{{ctry.name}}</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="phone_number" i18n>Phone number: *</label>
+        <input id="phone_number" type="text" formControlName="telephone" required>
+      </div>
+
+      <div>
+        <label for="email_address" i18n>E-mail address: *</label>
+        <input id="email_address" type="text" formControlName="email_address" required>
+      </div>
+
+      <div>
+        <mat-checkbox formControlName="delivery_address" i18n>Click here if your delivery address differs from the billing address</mat-checkbox>
+      </div>
+    </div>
+
+    <ng-container *ngIf="form.value.delivery_address">
+      <div class="form-title">
+        <h3 i18n>DELIVERY ADDRESS</h3>
+      </div>
+
+      <div class="form-content">
+          <div>
+            <label for="delivery_street_address" i18n>Street: *</label>
+            <input id="delivery_street_address" type="text" formControlName="delivery_street_address" required>
+          </div>
+    
+          <div>
+            <label for="delivery_house_number" i18n>House number: *</label>
+            <input id="delivery_house_number" type="text" formControlName="delivery_house_number" required>
+          </div>
+    
+          <div>
+            <label for="delivery_postcode" i18n>Postal Code: *</label>
+            <input id="delivery_postcode" type="text" formControlName="delivery_postcode" required>
+          </div>
+    
+          <div>
+            <label for="delivery_place" i18n>Place: *</label>
+            <input id="delivery_place" type="text" formControlName="delivery_city" required>
+          </div>
+    
+          <div>
+            <label for="delivery_country" i18n>Country: *</label>
+            <select id="delivery_country" formControlName="delivery_country">
+              <option *ngFor="let ctry of countries" [value]="ctry.code">{{ctry.name}}</option>
+            </select>
+          </div>
+      </div>
+    </ng-container>
+  </form>
+</div>

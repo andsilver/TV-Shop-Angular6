@@ -1,0 +1,31 @@
+.checkout-step {
+    .form-title{
+        margin: 15px 0;
+        h3 {
+            text-transform: uppercase;
+        }
+        span {
+            color: #dddddd;
+        }
+    }
+
+    .form-content {
+        padding: 20px 15px;
+        background: #f4f4ef;
+        color: #212226;
+        >div {
+            margin-bottom: 20px;
+            label {
+                width: 25%;
+                display: inline-block;
+            }
+
+            input, select {
+                padding: .25rem .5rem;
+                font-size: .8125rem;
+                line-height: 1.5;
+                border: 1px solid #e6e6dc;
+            }
+        }
+    }
+}
