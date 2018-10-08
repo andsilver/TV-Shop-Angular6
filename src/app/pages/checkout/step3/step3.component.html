@@ -7,16 +7,16 @@
     </div>
     <div class="products-table-content">
       <div *ngFor="let product of widget.order_details.products" fxLayout>
-          <div fxFlex="14">{{product.qty}}</div>
-          <div fxFlex>{{product.product_name}}</div>
-          <div fxFlex="20" class="text-right">{{product.item_total}}</div>
+          <div fxFlex="14"><strong>{{product.qty}}</strong></div>
+          <div fxFlex><strong>{{product.product_name}}</strong></div>
+          <div fxFlex="20" class="text-right"><strong>{{product.item_total}}</strong>
       </div>
     </div>
     <div class="text-right">
       <p i18n class="py-1">Shipping costs <span class="width-70">{{widget.order_details.Verzendkosten}}</span></p>
       <p i18n class="py-1">Payment costs <span class="width-70">{{widget.order_details.Betaalkosten}}</span></p>
       <p class="py-1"><strong i18n>Totaal (incl. BTW): <span class="width-70">€{{widget.order_details.Totaal}}</span></strong></p>
-      <button mat-button class="next-step float-right clear" (click)="placeOrder()" i18n>
+      <button mat-button class="next-step float-right clear mt-4" (click)="placeOrder()" i18n>
         Place Order
         <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
       </button>

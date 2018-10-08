@@ -31,7 +31,7 @@ export class Step2Component extends CheckoutStep implements OnInit {
     afhalen_parent: '',
     payment: '',
     issuer_bank: '',
-    creditcard_type: ''
+    creditcard_type: '',
   };
 
   constructor(
@@ -58,7 +58,9 @@ export class Step2Component extends CheckoutStep implements OnInit {
           afhalen_parent: '',
           payment: '',
           issuer_bank: '',
-          creditcard_type: ''
+          creditcard_type: '',
+          delivery_by_urgently: '0',
+          have_delivery_time: '1'
         });
 
         this.currentMethod = this.pickupMethod.input_value;
