@@ -26,6 +26,41 @@
                 line-height: 1.5;
                 border: 1px solid #e6e6dc;
             }
+
+            mat-error {
+                display: block;
+                margin-left: 25%;
+            }
+        }
+    }
+
+    .mat-button {
+        font-family: "Poppins";
+        text-align: left;
+        position: relative;
+    
+        &.next-step {
+            background-color: #5AAD49;
+            font-weight: normal;
+            color:#fff;
+            font-size: .8125rem;
+            line-height: 2.5rem;
+            padding: 0 2.25rem 0 1rem;
+            fa-icon {
+                position: absolute;
+                right: 5px;
+            }
+        }
+        &.prev-step {
+            background-color: #ebebe3;
+            color: #212226;
+            padding-left: 2.25rem;
+            padding-right: 1rem;
+            fa-icon {
+                position: absolute;
+                left: 5px;
+                color: #bbb;
+            }
         }
     }
 }

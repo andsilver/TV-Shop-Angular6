@@ -9,8 +9,37 @@ import { Step2Component } from './step2/step2.component';
 import { Step3Component } from './step3/step3.component';
 import { Step4Component } from './step4/step4.component';
 
-export const routes = [
-  { path: '', component: CheckoutComponent, pathMatch: 'full' }
+import { DisableControlDirective } from './disable-control.directive';
+import { CheckoutService } from './checkout.service';
+
+const routes = [
+  {
+    path: '',
+    component: CheckoutComponent,
+    children: [
+      {
+        path: 'customers-info',
+        component: Step1Component
+      },
+      {
+        path: 'methods',
+        component: Step2Component
+      },
+      {
+        path: 'order-overviews',
+        component: Step3Component
+      },
+      {
+        path: 'order-processing',
+        component: Step4Component
+      },
+      {
+        path: '',
+        redirectTo: 'customers-info',
+        pathMatch: 'full'
+      }
+    ]
+  }
 ];
 
 @NgModule({
@@ -25,7 +54,11 @@ export const routes = [
     Step1Component,
     Step2Component,
     Step3Component,
-    Step4Component
+    Step4Component,
+    DisableControlDirective
+  ],
+  providers: [
+    CheckoutService
   ]
 })
 export class CheckoutModule { }

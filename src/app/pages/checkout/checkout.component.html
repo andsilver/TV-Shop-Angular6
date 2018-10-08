@@ -3,20 +3,20 @@
     <app-filters-list></app-filters-list>
   </div>
   <div fxFlex>
-    <h2 class="pl-2 mb-3">
+    <h2 class="pl-2 mb-3" *ngIf="loaded">
       <ng-container i18n>STEP </ng-container>
-      {{stepNow.index}} - {{stepNow.title}}
+      {{currentStep.index}} - {{currentStep.title}}
     </h2>
     
     <div class="checkout-steps" fxLayout>
       <div fxFlex *ngFor="let step of steps" fxLayout="column" fxLayoutAlign="start center" 
-      [ngClass]="{'active-step': step === stepNow}" class="py-1 step-box">
+      [ngClass]="{'active-step': step === currentStep}" class="py-1 step-box">
         <p><ng-container i18n>Step </ng-container>{{step.index}}</p>
         <div>{{step.title}}</div>
       </div>
     </div>
 
-    <app-step1 *ngIf="stepNow.index == 1"></app-step1>
+    <router-outlet></router-outlet>
   </div>
   <div fxFlex="21" class="pl-2" fxHide.lt-md>
     <app-extra-info></app-extra-info>
