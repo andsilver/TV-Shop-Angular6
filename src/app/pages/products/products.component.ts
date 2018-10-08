@@ -169,7 +169,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.products = res.products;
     this.category_name = res.category_name;
-    this.category_description = res.category_description;
+    this.category_description = res.category_description.replace(/href="#"/g, ' ');
     this.brands = res['filterLists'] ? res['filterLists']['manufacturers'] : [];
     this.filterLists = res['filterLists'] ? res['filterLists']['options'] : [];
 
@@ -345,6 +345,15 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     dialogRef.afterClosed().subscribe(res => {
 
     });
+  }
+
+  navigateToCategory(event) {
+    console.log(event);
+    const categoryId = event.srcElement.parentElement.getAttribute('data-catid');
+    const cate = this.categories.find(c => c.id === categoryId);
+    if (cate) {
+      this.router.navigate([cate.permalink]);
+    }
   }
 
 }
