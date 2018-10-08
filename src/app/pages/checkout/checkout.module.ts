@@ -9,6 +9,7 @@ import { Step2Component } from './step2/step2.component';
 import { Step3Component } from './step3/step3.component';
 import { Step4Component } from './step4/step4.component';
 
+import { DisableControlDirective } from './disable-control.directive';
 import { CheckoutService } from './checkout.service';
 
 const routes = [
@@ -53,7 +54,8 @@ const routes = [
     Step1Component,
     Step2Component,
     Step3Component,
-    Step4Component
+    Step4Component,
+    DisableControlDirective
   ],
   providers: [
     CheckoutService

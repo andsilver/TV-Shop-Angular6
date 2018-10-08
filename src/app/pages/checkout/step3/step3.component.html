@@ -1,3 +1,65 @@
-<p>
-  step3 works!
-</p>
+<div *ngIf="arrived">
+  <div class="mt-4">
+    <div class="products-table-header" fxLayout>
+      <div fxFlex="14"><strong i18n>Number</strong></div>
+      <div fxFlex><strong i18n>Products</strong></div>
+      <div fxFlex="20"><strong i18n class="text-right">Total</strong></div>
+    </div>
+    <div class="products-table-content">
+      <div *ngFor="let product of widget.order_details.products" fxLayout>
+          <div fxFlex="14">{{product.qty}}</div>
+          <div fxFlex>{{product.product_name}}</div>
+          <div fxFlex="20" class="text-right">{{product.item_total}}</div>
+      </div>
+    </div>
+    <div class="text-right">
+      <p i18n class="py-1">Shipping costs <span class="width-70">{{widget.order_details.Verzendkosten}}</span></p>
+      <p i18n class="py-1">Payment costs <span class="width-70">{{widget.order_details.Betaalkosten}}</span></p>
+      <p class="py-1"><strong i18n>Totaal (incl. BTW): <span class="width-70">€{{widget.order_details.Totaal}}</span></strong></p>
+      <button mat-button class="next-step float-right clear" (click)="placeOrder()" i18n>
+        Place Order
+        <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="form-title">
+    <h3 i18n>YOUR DATA</h3>
+  </div>
+
+  <div class="form-content">
+    <p>{{widget.customer_info.name}}</p>
+    <p>{{widget.customer_info.street}} {{widget.customer_info.house_number}}</p>
+    <p>{{widget.customer_info.postcode}}, {{widget.customer_info.city}}</p>
+    <p>{{widget.customer_info.country}}</p>
+    <p>E-mail. {{widget.customer_info.email_address}}</p>
+    <p>Telefoon. {{widget.customer_info.telephone}}</p>
+    <button mat-button i18n class="modify-button">modify<fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
+  </div>
+
+  <div class="form-title">
+    <h3 i18n>DELIVERY / PAYMENT METHOD</h3>
+  </div>
+
+  <div class="form-content">
+    <p i18n>Delivery method:</p>
+    <p i18n>Payment method:</p>
+    <p i18n>Delivery date:</p>
+    <button mat-button i18n class="modify-button">modify<fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
+  </div>
+
+  <div class="py-3">
+    <ng-container i18n>By continuing to the next step, you confirm your agreement with the </ng-container>
+    <a i18n class="color-blue cursor-pointer">terms and conditions</a>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-between start" class="mt-4">
+    <button mat-button i18n class="prev-step" (click)="gotoPreviousStep()">
+      <fa-icon [icon]="['fas', 'chevron-circle-left']"></fa-icon>Back
+    </button>
+    <button mat-button class="next-step" (click)="placeOrder()">
+      <ng-container i18n>Step </ng-container>{{nextStep.index + ' ' + nextStep.title}}
+      <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
+    </button>
+  </div>
+</div>
