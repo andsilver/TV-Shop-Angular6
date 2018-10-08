@@ -3,13 +3,13 @@
     <div class="products-table-header" fxLayout>
       <div fxFlex="14"><strong i18n>Number</strong></div>
       <div fxFlex><strong i18n>Products</strong></div>
-      <div fxFlex="20"><strong i18n class="text-right">Total</strong></div>
+      <div fxFlex="20" class="text-right"><strong i18n>Total</strong></div>
     </div>
     <div class="products-table-content">
       <div *ngFor="let product of widget.order_details.products" fxLayout>
           <div fxFlex="14"><strong>{{product.qty}}</strong></div>
           <div fxFlex><strong>{{product.product_name}}</strong></div>
-          <div fxFlex="20" class="text-right"><strong>{{product.item_total}}</strong>
+          <div fxFlex="20" class="text-right"><strong>{{product.item_total | customCurrency}}</strong>
       </div>
     </div>
     <div class="text-right">
@@ -42,9 +42,9 @@
   </div>
 
   <div class="form-content">
-    <p i18n>Delivery method:</p>
-    <p i18n>Payment method:</p>
-    <p i18n>Delivery date:</p>
+    <p i18n *ngIf="widget.method_info?.shipping_method">Delivery method: {{widget.method_info.shipping_method}}</p>
+    <p i18n *ngIf="widget.method_info?.payment_method">Payment method: {{widget.method_info.payment_method}}</p>
+    <p i18n *ngIf="widget.method_info?.delivery_date">Delivery date: {{widget.method_info.delivery_date}}</p>
     <button mat-button i18n class="modify-button">modify<fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
   </div>
 

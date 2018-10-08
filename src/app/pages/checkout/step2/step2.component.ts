@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { CheckoutStep } from '../step';
 import { CheckoutService } from '../checkout.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -23,17 +23,6 @@ export class Step2Component extends CheckoutStep implements OnInit {
   currentMethod: string;
   altDeliver: false;
 
-  body = {
-    shipping_selected: 'AFHALEN_Nijmegen',
-    customers_delivery_time: '',
-    delivery_on_sunday: '0',
-    alt_customers_delivery_time: '',
-    afhalen_parent: '',
-    payment: '',
-    issuer_bank: '',
-    creditcard_type: '',
-  };
-
   constructor(
     checkoutService: CheckoutService,
     router: Router,
@@ -51,7 +40,7 @@ export class Step2Component extends CheckoutStep implements OnInit {
         this.widget = res;
 
         this.form = this.formBuilder.group({
-          shipping_selected: '',
+          shipping_selected: '-',
           customers_delivery_time: '',
           delivery_on_sunday: '0',
           alt_customers_delivery_time: '',
@@ -62,8 +51,6 @@ export class Step2Component extends CheckoutStep implements OnInit {
           delivery_by_urgently: '0',
           have_delivery_time: '1'
         });
-
-        this.currentMethod = this.pickupMethod.input_value;
         this.arrived = true;
         setTimeout(() => imgix.init(), 1);
       })

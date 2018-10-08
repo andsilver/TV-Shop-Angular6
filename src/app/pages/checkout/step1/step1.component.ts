@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppService } from 'app/app.service';
 import { CheckoutStep } from '../step';
 import { CheckoutService } from '../checkout.service';
-import * as data from '../countries.json';
 
 @Component({
   selector: 'app-step1',
@@ -33,14 +32,14 @@ export class Step1Component extends CheckoutStep implements OnInit {
 
     this.form = this.formBuilder.group({
       customer_type: ['private', Validators.required],
-      customer_gender: ['mrs', Validators.required],
+      customer_gender: ['mr', Validators.required],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       street_address: ['', Validators.required],
       house_number: ['', Validators.required],
       postcode: ['', Validators.required],
       city: ['', Validators.required],
-      country: ['', Validators.required],
+      country: ['NL', Validators.required],
       telephone: ['', Validators.required],
       email_address: ['', Validators.required],
       delivery_address: [false, Validators.required]
@@ -59,7 +58,10 @@ export class Step1Component extends CheckoutStep implements OnInit {
       delivery_country: ['', Validators.required]
     });
 
-    this.countries = data['countries'];
+    this.countries = [
+        {name: 'Netherlands', code: 'NL'},
+        {name: 'Belgium', code: 'BE'}
+    ];
   }
 
   get fc() { return this.form.controls; }

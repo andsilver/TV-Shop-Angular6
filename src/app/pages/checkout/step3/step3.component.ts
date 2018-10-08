@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CheckoutStep } from '../step';
 import { CheckoutService } from '../checkout.service';
 
@@ -17,8 +16,7 @@ export class Step3Component extends CheckoutStep implements OnInit {
   constructor(
     checkoutService: CheckoutService,
     router: Router,
-    route: ActivatedRoute,
-    private formBuilder: FormBuilder) {
+    route: ActivatedRoute) {
       super(checkoutService, router, route);
     }
 
