@@ -68,6 +68,10 @@ export abstract class CheckoutStep implements OnDestroy {
         if (!this.currentStep) {
             this.router.navigate(['404']);
         }
+
+        if (this.currentStep !== this.steps[0] && !localStorage.getItem('customer_id')) {
+            this.router.navigate(['/checkout', 'customers-info']);
+        }
     }
 
     gotoNextStep() {
