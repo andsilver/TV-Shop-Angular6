@@ -34,7 +34,7 @@
     <p>{{widget.customer_info.country}}</p>
     <p>E-mail. {{widget.customer_info.email_address}}</p>
     <p>Telefoon. {{widget.customer_info.telephone}}</p>
-    <button mat-button i18n class="modify-button">modify<fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
+    <button mat-button i18n class="modify-button" [routerLink]="['/checkout', 'customers-info']">modify<fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
   </div>
 
   <div class="form-title">
@@ -45,7 +45,7 @@
     <p i18n *ngIf="widget.method_info?.shipping_method">Delivery method: {{widget.method_info.shipping_method}}</p>
     <p i18n *ngIf="widget.method_info?.payment_method">Payment method: {{widget.method_info.payment_method}}</p>
     <p i18n *ngIf="widget.method_info?.delivery_date">Delivery date: {{widget.method_info.delivery_date}}</p>
-    <button mat-button i18n class="modify-button">modify<fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
+    <button mat-button i18n class="modify-button" (click)="gotoPreviousStep()">modify<fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
   </div>
 
   <div class="py-3">
