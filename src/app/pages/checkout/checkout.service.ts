@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class CheckoutService {
-
-    public stepChanged: Subject<any> = new Subject();
 
     constructor(private http: HttpClient) {}
 
