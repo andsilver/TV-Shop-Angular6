@@ -17,8 +17,9 @@ export const routes: Routes = [
             { path: 'cart', loadChildren: 'app/pages/cart/cart.module#CartModule'},
             { path: 'checkout', loadChildren: 'app/pages/checkout/checkout.module#CheckoutModule'},
             { path: 'contact', loadChildren: 'app/pages/contact/contact.module#ContactModule'},
-            { path: 'stores', loadChildren: 'app/pages/stores/stores.module#StoresModule' },
             { path: 'extrainfo', loadChildren: 'app/pages/extra-info/extra-info.module#ExtraInfoModule' },
+            { path: 'psp', loadChildren: 'app/pages/payment/payment.module#PaymentModule'},
+            { path: 'stores', loadChildren: 'app/pages/stores/stores.module#StoresModule' },
             { path: '**', loadChildren: 'app/pages/products/products.module#ProductsModule' }
         ]
     }
