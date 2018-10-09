@@ -8,7 +8,6 @@ import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { AppService } from '../app.service';
 import { Category } from '../app.models';
 import { SidenavMenuService } from '../theme/components/sidenav-menu/sidenav-menu.service';
-import { SidenavMenu } from '../theme/components/sidenav-menu/sidenav-menu.model';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
@@ -51,8 +50,6 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
         this.categories = res;
         this.category = res[0];
         this.store.dispatch(new SuccessGetCategories(res));
-        // this.sidenavMenuItems = this.categories.map(c =>
-        //     new SidenavMenu(c.id, c.name, `${c.permalink}`, null, null, c.hasSubCategory, c.parentId));
       })
     );
 
@@ -66,7 +63,6 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
           return;
         }
         this.keyword = event.target['value'];
-        console.log(event);
         this.search();
       });
 

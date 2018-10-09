@@ -14,7 +14,6 @@ import { OutdoorOpportunityDialogComponent } from '../outdoor-opportunity-dialog
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
-declare var imgix: any;
 
 @Component({
   selector: 'app-product',

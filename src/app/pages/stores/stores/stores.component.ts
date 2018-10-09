@@ -3,9 +3,8 @@ import { AppService } from 'app/app.service';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import * as CrumbActions from 'app/store/actions/crumb-path.action';
-
 import * as mock from './mock.json';
-declare var imgix: any;
+
 @Component({
   selector: 'app-stores',
   templateUrl: './stores.component.html',

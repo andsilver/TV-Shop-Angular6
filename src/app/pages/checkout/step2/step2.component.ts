@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { CheckoutStep } from '../step';
 import { CheckoutService } from '../checkout.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-declare var imgix: any;
 
 @Component({
   selector: 'app-step2',
@@ -86,8 +85,9 @@ export class Step2Component extends CheckoutStep implements OnInit {
           delivery_by_urgently: '0',
           have_delivery_time: '1'
         });
+
         this.arrived = true;
-        setTimeout(() => imgix.init(), 1);
+        setTimeout(() => imgix.init(), 1000);
       })
     );
   }
@@ -115,6 +115,7 @@ export class Step2Component extends CheckoutStep implements OnInit {
   methodChange(event) {
     console.log(event);
     this.currentMethod = event.value;
+    setTimeout(() => imgix.init(), 1000);
   }
 
 }

@@ -6,8 +6,6 @@ import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import * as CartActions from 'app/store/actions/cart.action';
 
-declare var imgix: any;
-
 @Component({
   selector: 'app-outdoor-opportunity-dialog',
   templateUrl: './outdoor-opportunity-dialog.component.html',

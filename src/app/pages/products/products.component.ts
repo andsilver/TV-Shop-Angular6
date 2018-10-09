@@ -16,8 +16,6 @@ import { ProductDialogComponent } from '../../shared/products-carousel/product-d
 import { AppService } from '../../app.service';
 import { Product, Category } from '../../app.models';
 
-declare var imgix: any;
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',

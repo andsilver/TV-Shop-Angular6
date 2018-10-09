@@ -5,8 +5,6 @@ import { AppService } from '../../../app.service';
 import { Product } from '../../../app.models';
 import { CurrencyService } from 'app/services';
 
-declare var imgix: any;
-
 @Component({
   selector: 'app-product-dialog',
   templateUrl: './product-dialog.component.html',

@@ -1,6 +1,5 @@
 import { Component, Input, AfterViewInit } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-declare var imgix: any;
 
 @Component({
   selector: 'app-brands-carousel',

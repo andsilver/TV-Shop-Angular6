@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import { SaveCrumbPath } from 'app/store/actions/crumb-path.action';
-declare var imgix: any;
 
 @Component({
   selector: 'app-cart',

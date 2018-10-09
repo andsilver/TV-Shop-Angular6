@@ -3,8 +3,6 @@ import { AppService } from 'app/app.service';
 import { State } from 'app/store';
 import { Store } from '@ngrx/store';
 
-declare var imgix: any;
-
 @Component({
   selector: 'app-extra-info',
   templateUrl: './extra-info.component.html',

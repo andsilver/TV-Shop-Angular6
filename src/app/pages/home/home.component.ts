@@ -7,8 +7,6 @@ import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import * as KeywordActions from 'app/store/actions/keyword.action';
 
-declare var imgix: any;
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
