@@ -1,3 +1,159 @@
-<p>
-  step4 works!
-</p>
+<div class="checkout-step">
+  <div class="page-header">
+    <strong i18n>Thanks. Your order has been successfully completed!</strong>
+    <div>
+      <ng-container i18n>You will receive  an automatic order confirmation by e-mail. This is an overview of your order. We will keep you informed of the status of the order by e-mail.</ng-container>
+      <br>
+      <ng-container i18n>You can also check the status of your order under </ng-container> <a class="color-blue">Order status </a>.
+      <br>
+      <ng-container i18n>The order number can be found on the order confirmation that you receive by e-mail.</ng-container> 
+    </div>
+  </div>
+
+  <div class="image-container">
+    <div>
+      <img [attr.data-src]="'https://www.plattetv.nl/var/images/cmsimages/service_pakket/Aanbevolen-Servicepakket_01.jpg'">
+    </div>
+    <div class="image-content" fxLayout fxLayoutAlign="start stretch">
+      <div fxFlex>
+        <img [attr.data-src]="'https://www.plattetv.nl/var/images/cmsimages/service_pakket/Aanbevolen-Servicepakket_02.jpg'">
+      </div>
+      <div fxFlex fxLayout="column">
+        <img [attr.data-src]="'https://www.plattetv.nl/var/images/cmsimages/service_pakket/Aanbevolen-Servicepakket_03.jpg'">
+        <img [attr.data-src]="'https://www.plattetv.nl/var/images/cmsimages/service_pakket/Aanbevolen-Servicepakket_05.jpg'">
+        <img [attr.data-src]="'https://www.plattetv.nl/var/images/cmsimages/service_pakket/Aanbevolen-Servicepakket_06.jpg'">
+      </div>
+    </div>
+    <div class="mt-4">
+      <img [attr.data-src]="'https://www.plattetv.nl/var/images/cmsimages/ServicePagina/handige_accesoires.jpg'">
+    </div>
+  </div>
+
+  <div class="order-expiration">
+    <h4 i18n class="py-4">Your order will expire as follows:</h4>
+
+    <div class="order-expiration-item" fxLayout>
+      <fa-icon [icon]="['fas', 'caret-right']"></fa-icon>
+      <div>
+        <strong i18n>Order placed</strong>
+        <div i18n>
+          Your order will be processed and the products will be reserved for you if they are in stock.
+          If you want to pick up the products and they are in stock, you will receive a confirmation.
+        </div>
+      </div>
+    </div>
+
+    <div class="order-expiration-item" fxLayout>
+      <fa-icon [icon]="['fas', 'caret-right']"></fa-icon>
+      <div>
+        <strong i18n>Payment received (2-3 business days for bank transfer)</strong>
+        <div i18n>
+          You will receive a confirmation by e-mail as soon as we receive your payment and the products are ready for shipment.
+        </div>
+        <div i18n>
+          Have you indicated that you would like to pick up your products? 
+        </div>
+        <div i18n>
+          You can pay in cash or with debit card in our stores.
+        </div>
+      </div>
+    </div>
+
+    <div class="order-expiration-item" fxLayout>
+      <fa-icon [icon]="['fas', 'caret-right']"></fa-icon>
+      <div>
+        <strong i18n>Prepayment data</strong>
+        <div i18n>Name receiver: PlatteTV.nl</div>
+        <div i18n>Account number (IBAN): NL 73 ING B 0665 919808</div>
+
+        <strong i18n>Payment reference: Your order number</strong>
+        <div i18n>For payments from Belgium:</div>
+        <div i18n>IBAN: NL 73 ING B 0665 919808</div>
+        <div i18n>BIC: INGBNL2A</div>
+      </div>
+    </div>
+
+    <div class="order-expiration-item" fxLayout>
+      <fa-icon [icon]="['fas', 'caret-right']"></fa-icon>
+      <div>
+        <strong i18n>Send / pick up your order</strong>
+        <div i18n>
+          We ship the products through qualified delivery services.
+          Small packages are sent via PostNL.
+          As soon as these are sent you will receive a Track & Trace number with which you can track your order.
+        </div>
+        <div i18n>Have you indicated that you would like to pick up your products?</div>
+        <div i18n>Then you will receive notification from us when the products are ready for you.</div>
+      </div>
+    </div>
+
+    <div class="order-expiration-item" fxLayout>
+      <fa-icon [icon]="['fas', 'caret-right']"></fa-icon>
+      <div>
+        <strong i18n>Order Received</strong>
+        <div i18n>In most cases you will receive your order within 3 working days.</div>
+        <div i18n>You will receive an invoice upon delivery. Keep it well.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-with-question">
+    <div>
+      <strong i18n>Do you have any questions?</strong>
+      <br>
+      <ng-container i18n>Contact our customer service:</ng-container>
+      <br>
+      <a i18n>Open today until 9 p.m.</a>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+
+      <div class="contact-method" fxFlex="49" fxFlex.xs="100" fxLayout fxLayoutAlign="start center">
+        <div class="contact-method-icon">
+          <fa-icon [icon]="['fas', 'comment']" size="lg"></fa-icon>
+        </div>
+        <div>
+          <h2 i18n>Chat live</h2>
+          <p i18n>Response within 30 sec.</p>
+        </div>
+      </div>
+
+      <div class="contact-method" fxFlex="50" fxFlex.xs="100" fxLayout fxLayoutAlign="start center">
+        <div class="contact-method-icon">
+          <fa-icon [icon]="['far', 'envelope']" size="lg"></fa-icon>
+        </div>
+        <div>
+          <h2 i18n>Fill form in</h2>
+          <p i18n>Response within 10 min.</p>
+        </div>
+      </div>
+
+      <div class="contact-method" fxFlex="49" fxFlex.xs="100" fxLayout fxLayoutAlign="start center">
+        <div class="contact-method-icon">
+          <fa-icon [icon]="['fab', 'whatsapp']" size="lg"></fa-icon>
+        </div>
+        <div>
+          <h2 i18n>Whatsapp us</h2>
+          <p i18n>Response within 30 sec.</p>
+        </div>
+      </div>
+
+      <div class="contact-method" fxFlex="50" fxFlex.xs="100" fxLayout fxLayoutAlign="start center">
+        <div class="contact-method-icon">
+          <fa-icon [icon]="['fas', 'phone']" size="lg"></fa-icon>
+        </div>
+        <div>
+          <h2 i18n>Bel 026-84 54 658</h2>
+          <p i18n>Direct Reaction.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <button mat-button class="continue-home" [routerLink]="['/']">
+      <ng-container i18n>Continue to Home</ng-container>
+      <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
+    </button>
+  </div>
+</div>

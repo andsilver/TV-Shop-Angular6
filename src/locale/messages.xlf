@@ -1286,22 +1286,22 @@
           <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4bc60f5f50cd5d0328215c9fd271ddbe7d825ee2" datatype="html">
-        <source>Delivery method:</source>
+      <trans-unit id="4f6ba28d317e64343e5b133fa82dc662bf7c792f" datatype="html">
+        <source>Delivery method: <x id="INTERPOLATION" equiv-text="{{widget.method_info.shipping_method}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context>
           <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="617b5f5a988ff435b434c7bd2e14d03c45bd8c91" datatype="html">
-        <source>Payment method:</source>
+      <trans-unit id="f7e00aae22127cdabe04d23a311ff1a7f9d2c0b6" datatype="html">
+        <source>Payment method: <x id="INTERPOLATION" equiv-text="{{widget.method_info.payment_method}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context>
           <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="12e269653e7463265d3cc10ad6512c6bdd07bf04" datatype="html">
-        <source>Delivery date:</source>
+      <trans-unit id="0bcfd352d7acb776553fbfc410dcbc252874045c" datatype="html">
+        <source>Delivery date: <x id="INTERPOLATION" equiv-text="{{widget.method_info.delivery_date}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context>
           <context context-type="linenumber">47</context>

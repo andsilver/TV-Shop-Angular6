@@ -5,7 +5,7 @@
     <div [innerHTML]="f.content"></div>
 </div>
 
-<div class="filter-box">
+<div class="filter-box" *ngIf="brands.length">
     <div>
         <h3 i18n>Condition</h3>
     </div>

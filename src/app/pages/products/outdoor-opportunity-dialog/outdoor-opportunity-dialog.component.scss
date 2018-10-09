@@ -1,6 +1,5 @@
 .top-parent {
     position: relative;
-    width: 653px;
     margin-bottom: 40px;
     
     .close-button {
@@ -43,11 +42,9 @@
     }
 
     .mat-button {
-        width: 200px;
         font-family: "Poppins";
         text-align: left;
         padding: 0 1rem;
-        position: relative;
         height: 3.125rem;
         font-size: 1.375rem;
         background-color: #5AAD49;
@@ -60,12 +57,13 @@
         clear: both;
         
         fa-icon {
-            position: absolute;
-            right: 10px;
+            margin-left: 5px;
         }
     }
 }
 
 .popup-demo-unit .mat-dialog-container{
     overflow: visible;
+    width: 653px;
+    min-height: 400px;
 }

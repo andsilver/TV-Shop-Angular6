@@ -880,16 +880,25 @@
       </trans-unit><trans-unit id="e596019a7264c029dffcc7f442e7d40377634ce7" datatype="html">
         <source>DELIVERY / PAYMENT METHOD</source><target state="new">BEZORG / BETAALMETHODE</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context><context context-type="linenumber">41</context></context-group></trans-unit><trans-unit id="4bc60f5f50cd5d0328215c9fd271ddbe7d825ee2" datatype="html">
-        <source>Delivery method:</source><target state="new">Delivery method:</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context><context context-type="linenumber">45</context></context-group></trans-unit><trans-unit id="617b5f5a988ff435b434c7bd2e14d03c45bd8c91" datatype="html">
-        <source>Payment method:</source><target state="new">Payment method:</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context><context context-type="linenumber">46</context></context-group></trans-unit><trans-unit id="12e269653e7463265d3cc10ad6512c6bdd07bf04" datatype="html">
-        <source>Delivery date:</source><target state="new">Delivery date:</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context><context context-type="linenumber">47</context></context-group></trans-unit><trans-unit id="2d8b9c31a7bcc72f9307cb5170b0551722c1cbb6" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context><context context-type="linenumber">41</context></context-group></trans-unit><trans-unit id="4f6ba28d317e64343e5b133fa82dc662bf7c792f" datatype="html">
+        <source>Delivery method: <x id="INTERPOLATION" equiv-text="{{widget.method_info.shipping_method}}"/></source><target state="new">Delivery method: <x id="INTERPOLATION" equiv-text="{{widget.method_info.shipping_method}}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit><trans-unit id="f7e00aae22127cdabe04d23a311ff1a7f9d2c0b6" datatype="html">
+        <source>Payment method: <x id="INTERPOLATION" equiv-text="{{widget.method_info.payment_method}}"/></source><target state="new">Payment method: <x id="INTERPOLATION" equiv-text="{{widget.method_info.payment_method}}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit><trans-unit id="0bcfd352d7acb776553fbfc410dcbc252874045c" datatype="html">
+        <source>Delivery date: <x id="INTERPOLATION" equiv-text="{{widget.method_info.delivery_date}}"/></source><target state="new">Delivery date: <x id="INTERPOLATION" equiv-text="{{widget.method_info.delivery_date}}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit><trans-unit id="2d8b9c31a7bcc72f9307cb5170b0551722c1cbb6" datatype="html">
         <source>By continuing to the next step, you confirm your agreement with the </source><target state="new">Door verder te gaan naar de volgende stap bevestigt u akkoord te gaan met de </target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context><context context-type="linenumber">52</context></context-group></trans-unit><trans-unit id="d34747ee79222c47096af23735b538c03e9b0da9" datatype="html">

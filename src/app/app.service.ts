@@ -94,12 +94,17 @@ export class AppService {
         return this.http.get<any>(`/getStoreByName/${name}`);
     }
 
-    addToCartApi(productData): any {
+    addToCartApi(productData, demoUnit = false): any {
         let params = new HttpParams();
         params = params.append('mode', 'add_item');
         params = params.append('item_id', `${productData.item_id}`);
         params = params.append('item_qty', `${productData.item_qty || '1'}`);
         params = params.append('cart_id', `${(localStorage.getItem('cart_id') || '')}`);
+
+        if (demoUnit) {
+            params = params.append('is_demo_unit', '1');
+        }
+
         return this.http.get('/cart', {params: params});
     }
 
@@ -147,7 +152,6 @@ export class AppService {
     getDemoUnitProduct(productId) {
         let params = new HttpParams();
         params = params.append('product_id', `${productId}`);
-        params = params.append('is_demo_unit', '1');
         return this.http.get('/products/demounit', {params: params});
     }
 
