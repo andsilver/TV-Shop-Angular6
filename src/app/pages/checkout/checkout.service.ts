@@ -12,7 +12,6 @@ export class CheckoutService {
     getCheckoutCustomer() {
         let params = new HttpParams();
         params = params.append('cart_id', `${(localStorage.getItem('cart_id') || '')}`);
-        params = params.append('customer_id', `${localStorage.getItem('customer_id')}`);
         return this.http.get('/checkout/customer/get', {params: params});
     }
 
