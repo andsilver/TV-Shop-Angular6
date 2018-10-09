@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { CheckoutStep } from '../step';
 import { CheckoutService } from '../checkout.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { select } from '@ngrx/store';
 declare var imgix: any;
 
 @Component({

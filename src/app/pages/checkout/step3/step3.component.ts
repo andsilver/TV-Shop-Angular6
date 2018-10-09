@@ -33,6 +33,7 @@ export class Step3Component extends CheckoutStep implements OnInit {
   placeOrder() {
     this.checkoutService.placeOrder().subscribe(res => {
       console.log(res);
+      this.gotoNextStep();
     });
   }
 

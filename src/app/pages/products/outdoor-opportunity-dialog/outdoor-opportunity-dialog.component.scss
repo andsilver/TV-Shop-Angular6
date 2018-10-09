@@ -1,6 +1,5 @@
 .top-parent {
     position: relative;
-    width: 653px;
     margin-bottom: 40px;
     
     .close-button {
@@ -68,4 +67,6 @@
 
 .popup-demo-unit .mat-dialog-container{
     overflow: visible;
+    width: 653px;
+    min-height: 400px;
 }
