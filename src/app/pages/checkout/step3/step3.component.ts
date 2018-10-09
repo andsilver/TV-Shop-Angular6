@@ -18,7 +18,7 @@ export class Step3Component extends CheckoutStep implements OnInit {
     router: Router,
     route: ActivatedRoute) {
       super(checkoutService, router, route);
-    }
+  }
 
   ngOnInit() {
     this.subscriptions.push(
