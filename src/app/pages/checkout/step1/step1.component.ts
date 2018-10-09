@@ -66,6 +66,9 @@ export class Step1Component extends CheckoutStep implements OnInit {
     if (localStorage.getItem('customer_id')) {
       this.checkoutService.getCheckoutCustomer().subscribe(res => {
         console.log(res);
+        if ( !res['customers_info'] ) {
+          return;
+        }
         this.form.setValue({
           customer_type: res['customers_info'].customer_type,
           customer_gender: res['customers_info'].customer_gender,

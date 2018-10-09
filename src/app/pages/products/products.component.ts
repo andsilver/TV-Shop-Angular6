@@ -171,7 +171,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.category_name = res.category_name;
     this.category_description = res.category_description.replace(/href="#"/g, ' ');
     this.brands = res['filterLists'] ? res['filterLists']['manufacturers'] : [];
-    this.filterLists = res['filterLists'] ? res['filterLists']['options'] : [];
+    this.filterLists = res['filterLists'] && res['filterLists']['options'] ? res['filterLists']['options'] : [];
 
     for ( let i = 0; i < this.filterLists.length; i++) {
       if ( this.prevFiltersList ) {
@@ -217,9 +217,15 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getProducts() {
     this.emptyMessage = '';
+
+    const _categoryId =
+      (this.category.name === 'Buitenkansje' || this.category.name === 'Acties') ?
+      this.category.name.toLowerCase() :
+      this.categoryId;
+
     const filt = {
       keyword: this.keyword,
-      categoryId: this.categoryId,
+      categoryId: _categoryId,
       fromPrice: this.priceFrom,
       toPrice: this.priceTo,
       filterAttributes: {

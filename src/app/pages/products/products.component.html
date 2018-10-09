@@ -89,7 +89,7 @@
                     <h1>{{category_name}}</h1>
                     <p (click)="navigateToCategory($event)" [innerHTML]="category_description | htmlSanitize"></p>
                 </div>
-                <div *ngIf="products" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" class="filter-row mat-elevation-z1 text-muted">
+                <div *ngIf="products && products.length" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" class="filter-row mat-elevation-z1 text-muted">
                     <h2>
                         <ng-container i18n>Overview </ng-container>
                         {{category_name}}
