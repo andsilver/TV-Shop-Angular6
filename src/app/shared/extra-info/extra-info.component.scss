@@ -15,11 +15,14 @@
         h4 {
             padding-bottom: 0;
             line-height: 2.125rem;
+            position: relative;
             a{
                 text-transform: uppercase;
                 color: #ffffff;
                 font-weight: 500;
                 fa-icon {
+                    position: absolute;
+                    right: 0px;
                     font-size: 20px;
                 }
                 &:hover {
@@ -45,10 +48,12 @@
         line-height: 27px;
         font-size: 13px;
         font-family: "Poppins";
+        position: relative;
 
         fa-icon {
             font-size: 17px;
-            margin-left: 5px;
+            position: absolute;
+            right: 5px;
         }
     }
     

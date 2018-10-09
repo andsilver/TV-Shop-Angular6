@@ -38,7 +38,7 @@ export class OutdoorOpportunityDialogComponent implements OnInit, OnDestroy {
   }
 
   addToCart(product) {
-    this.appService.addToCartApi({item_id: product.unit_id}).subscribe(res => {
+    this.appService.addToCartApi({item_id: product.unit_id}, true).subscribe(res => {
       localStorage.setItem('cart_id', res.cart_id);
       this.store.dispatch(new CartActions.SetCartId(res.cart_id));
       this.router.navigate(['/cart']);
