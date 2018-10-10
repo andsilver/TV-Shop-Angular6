@@ -56,13 +56,6 @@ export class CheckoutComponent extends CheckoutStep implements OnInit {
       static: true,
       default_title: true
     }]));
-
-    this.subscriptions.push(
-      this.checkoutService.stepChanged.subscribe(index => {
-        console.log(index);
-        this.currentStep = steps.find(step => step.index === index);
-      })
-    );
   }
 
 }

@@ -47,37 +47,37 @@
 
     <div class="form-content" *ngIf="currentMethod == deliverMethod.input_value">
       <mat-radio-group #payment_method formControlName="payment">
-        <div *ngFor="let payment of deliverMethod.payments">
-          <mat-radio-button radioGroup="payment_method" [value]="payment.input_value">
-            <div fxLayout="row">
-              <div>
-                <img [attr.ix-path]="payment.image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 60px, (min-width: 320px) 40px, 100vw" alt="">
-              </div>
-              <div class="px-2">
+        <table *ngFor="let payment of deliverMethod.payments">
+          <tbody>
+            <tr>
+              <td>
+                <mat-radio-button radioGroup="payment_method" [value]="payment.input_value"></mat-radio-button>
+              </td>
+              <td>
+                <img [attr.ix-path]="payment.image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 54px, (min-width: 320px) 40px, 100vw" alt="">
+              </td>
+              <td class="px-2">
                 <div>
                   <strong>{{payment.label}}</strong>
-
                   <select *ngIf="payment.banks_list && form.value.payment === payment.input_value" [formControlName]="payment.banks_list.input_name">
-                      <option i18n value="" disabled>Choose your bank:</option>
-                      <option *ngFor="let value of payment.banks_list.input_value" [value]="value.value">
-                        {{value.label}}
-                      </option>
-                    </select>
-      
-                    <select *ngIf="payment.cards_list && form.value.payment === payment.input_value" [formControlName]="payment.cards_list.input_name">
-                      <option i18n value="" disabled>Choose your type:</option>
-                      <option *ngFor="let value of payment.cards_list.input_value" [value]="value.value">
-                        {{value.label}}
-                      </option>
-                    </select>
-
+                    <option i18n value="" disabled>Choose your bank:</option>
+                    <option *ngFor="let value of payment.banks_list.input_value" [value]="value.value">
+                      {{value.label}}
+                    </option>
+                  </select>
+    
+                  <select *ngIf="payment.cards_list && form.value.payment === payment.input_value" [formControlName]="payment.cards_list.input_name">
+                    <option i18n value="" disabled>Choose your type:</option>
+                    <option *ngFor="let value of payment.cards_list.input_value" [value]="value.value">
+                      {{value.label}}
+                    </option>
+                  </select>
                 </div>
-                <p>{{payment.description}}</p>
-              </div>
-
-            </div>
-          </mat-radio-button>
-        </div>
+                <div>{{payment.description}}</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </mat-radio-group>
     </div>
 

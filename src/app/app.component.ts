@@ -3,7 +3,6 @@ import { DOCUMENT } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 import { Settings, AppSettings } from './app.settings';
 import { environment } from '../environments/environment';
-declare var imgix: any;
 
 @Component({
   selector: 'app-root',
@@ -28,6 +27,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     imgix.config.srcAttribute = 'data-src';
     imgix.config.srcsetAttribute = 'data-srcset';
     imgix.config.sizesAttribute = 'data-sizes';
+
     this.setGoogleTagManager();
     this.setHotJarManager();
   }
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-          window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
       }
     });
   }

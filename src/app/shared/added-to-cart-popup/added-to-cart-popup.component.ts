@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Product } from 'app/app.models';
-declare var imgix: any;
 
 @Component({
   selector: 'app-added-to-cart-popup',

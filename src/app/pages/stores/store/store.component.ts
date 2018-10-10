@@ -6,7 +6,7 @@ import * as mock from './mock.json';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import * as CrumbActions from 'app/store/actions/crumb-path.action';
-declare var imgix: any;
+
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',

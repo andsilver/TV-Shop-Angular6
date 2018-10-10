@@ -5,7 +5,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductDialogComponent } from './product-dialog/product-dialog.component';
 import { AppService } from '../../app.service';
 import { Product } from 'app/app.models';
-declare var imgix: any;
 
 @Component({
   selector: 'app-products-carousel',

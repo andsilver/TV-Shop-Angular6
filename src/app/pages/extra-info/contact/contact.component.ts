@@ -7,8 +7,6 @@ import { State } from 'app/store';
 import * as CrumbActions from 'app/store/actions/crumb-path.action';
 import * as mock from './mock.json';
 
-declare var imgix: any;
-
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
