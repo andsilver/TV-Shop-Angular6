@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CheckoutStep } from '../step';
 import { CheckoutService } from '../checkout.service';
@@ -16,13 +17,19 @@ export class Step3Component extends CheckoutStep implements OnInit {
   constructor(
     checkoutService: CheckoutService,
     router: Router,
-    route: ActivatedRoute) {
+    route: ActivatedRoute,
+    @Inject(DOCUMENT) private document: any) {
       super(checkoutService, router, route);
   }
 
   ngOnInit() {
     this.subscriptions.push(
       this.checkoutService.getOrderView().subscribe(res => {
+
+        if (!res || !res['order_details']) {
+          return;
+        }
+
         this.arrived = true;
         this.widget = res;
         console.log(res);
@@ -33,7 +40,13 @@ export class Step3Component extends CheckoutStep implements OnInit {
   placeOrder() {
     this.checkoutService.placeOrder().subscribe(res => {
       console.log(res);
-      this.gotoNextStep();
+
+      if (res && res['pay_link']) {
+        localStorage.removeItem('cart_id');
+        this.document.location.href = res['pay_link'];
+      } else {
+        this.gotoNextStep();
+      }
     });
   }
 

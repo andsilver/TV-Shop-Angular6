@@ -44,6 +44,10 @@ export class Step2Component extends CheckoutStep implements OnInit {
         let bank = '';
         let card = '';
 
+        if (!res || !res['methods']) {
+          return;
+        }
+
         if (this.pickupMethod.input_selected) {
 
           this.currentMethod = this.pickupMethod.input_value;
