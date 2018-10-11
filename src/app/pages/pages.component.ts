@@ -105,14 +105,6 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  remove(product) {
-    const index: number = this.appService.Data.cartList.indexOf(product);
-    if (index !== -1) {
-        this.appService.Data.cartList.splice(index, 1);
-        this.appService.Data.totalPrice = this.appService.Data.totalPrice - product.newPrice;
-    }
-  }
-
   search(event: any = null) {
     if (event) {
       this.keyword = event.target.firstChild.value;
@@ -122,10 +114,6 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
       this.router.navigate(['/products']);
     }
     this.store.dispatch(new SetKeyword(this.keyword));
-  }
-
-  clear() {
-    this.appService.Data.cartList.length = 0;
   }
 
   stopClickPropagate(event: any) {

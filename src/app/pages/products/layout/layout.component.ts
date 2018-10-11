@@ -34,7 +34,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private store: Store<State>) { }
+    private store: Store<State>,
+    private appService: AppService) { }
 
   ngOnInit() {
 
@@ -56,10 +57,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
           }
         }),
 
-      this.store.select(state => state.categories)
+      this.appService.getCategories()
         .pipe(
           switchMap(res => {
-            this.categories = res.categories;
+            this.categories = res;
             console.log(this.router.url);
             return this.route.url;
           })

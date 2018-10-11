@@ -223,7 +223,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
     const filt = {
       keyword: this.keyword,
-      categoryId: _categoryId,
+      categoryPath: this.category.permalink,
       fromPrice: this.priceFrom,
       toPrice: this.priceTo,
       filterAttributes: {

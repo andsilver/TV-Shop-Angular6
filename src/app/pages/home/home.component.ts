@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
-import { AppService } from '../../app.service';
+import { HomeService } from './home.service';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 import { AppSettings } from '../../app.settings';
 import { Title } from '@angular/platform-browser';
 
@@ -14,43 +15,30 @@ import * as KeywordActions from 'app/store/actions/keyword.action';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  slides = [
-    {
-      title: 'Welkom in onze vernieuwde webwinkel!',
-      subtitle: 'Nu nog meer bestelgemak',
-      image: `//${imgix.config.host}/images/carousel/banner1.jpg?auto=compress&w=657`
-    },
-    {
-      title: 'Black Friday Deals',
-      subtitle: 'Alleen bij PlatteTV',
-      image: `//${imgix.config.host}/images/carousel/banner2.jpg?auto=compress&w=657`
-    },
-    {
-      title: 'Kerst Deals',
-      subtitle: 'Alleen bij PlatteTV',
-      image: `//${imgix.config.host}/images/carousel/banner3.jpg?auto=compress&w=657`
-    },
-    {
-      title: 'Zomer Deals',
-      subtitle: 'Alleen bij PlatteTV',
-      image: `//${imgix.config.host}/images/carousel/banner4.jpg?auto=compress&w=657`
-    },
-    {
-      title: 'Mega Deals',
-      subtitle: 'Alleen bij PlatteTV',
-      image: `//${imgix.config.host}/images/carousel/banner5.jpg?auto=compress&w=657`
-    }
-  ];
-
   windowSize: string;
+  widget: any;
 
-
-  constructor(public appService: AppService, private settings: AppSettings, private title: Title, private store: Store<State>) { }
+  constructor(
+    public homeService: HomeService,
+    private settings: AppSettings,
+    private title: Title,
+    private store: Store<State>
+  ) { }
 
   ngOnInit() {
 
     this.title.setTitle(this.settings.settings.name);
     this.store.dispatch(new KeywordActions.SetKeyword(''));
+
+    forkJoin([
+      this.homeService.getTopBanner(),
+      this.homeService.getMiddleBanner(),
+      this.homeService.getMostPopular()
+    ]).subscribe(r => {
+      this.widget = r;
+      setTimeout(() => imgix.init(), 1);
+      console.log(r);
+    });
 
     this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
   }

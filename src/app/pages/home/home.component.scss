@@ -7,3 +7,62 @@
     min-width: 180px;
     padding: 0;
 }
+
+.most-popular {
+    &-title {
+        background: #212226;
+        font-size: 31px;
+        line-height: 40px;
+        font-family: "Gotham Condensed";
+        letter-spacing: 1px;
+        color: #fff;
+        padding: 0 13px;
+        text-transform: uppercase
+    }
+
+    .image-link {
+        height: 130px;
+    }
+}
+
+.product-item-widget{
+    border: 1px solid #E6E6DC;
+    margin: 4px;
+    padding: .5rem;
+
+    .product-name {
+        font-weight: 700;
+        font-size: .9375rem;
+    }
+
+    .product-feature-highlights {
+        padding-left: 20px;
+    }
+
+    .product-price {
+        font-weight: bold;
+        line-height: 1;
+        font-family: "Gotham Condensed";
+        letter-spacing: .02em;
+        padding: 0;
+
+        .product-old-price {
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 1.4;
+            color: #b5b5b5;
+            text-decoration: line-through;
+            margin-right: 7px;
+            vertical-align: top;
+        }
+
+        .product-new-price {
+            font-size: 30px;
+            vertical-align: top;
+        }
+    
+        .only-new-price {
+            color: #df0000;
+        }
+    }
+}
