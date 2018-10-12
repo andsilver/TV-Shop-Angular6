@@ -1013,53 +1013,63 @@ app-root .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not
     flex-wrap: wrap!important;
     margin-left: -.5rem;
     margin-right: -.5rem;
-}
-#categories-main-boxes .categorybox {
-    width: 50%;
-    padding-left: .5rem;
-    padding-right: .5rem;
-}
-#categories-main-boxes .categorybox table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0;
-    padding: 0;
-}
-#categories-main-boxes .categorybox table * {
-    padding: 0;
-}
-#categories-main-boxes .categorybox table a {
-    display: -ms-flexbox!important;
-    display: flex!important;
-    -ms-flex-align: center!important;
-    align-items: center!important;
-    -ms-flex-pack: center!important;
-    justify-content: center!important;
-    width: 100%;
-    height: 150px;
-}
-#categories-main-boxes .categorybox table a img {
-    max-width: 100%;
-    height: auto;
-}
-#categories-main-boxes .categorybox-prod {
-    margin-bottom: .5rem;
-    box-shadow: 0 0 10px rgba(0,0,0,.25);
-    transition: box-shadow .25s ease;
-}
-#categories-main-boxes .categorybox:hover .categorybox-prod {
-    box-shadow: 0 0 10px rgba(0,0,0,.5);
-}
+    .categorybox {
+        width: 50%;
+        padding-left: .5rem;
+        padding-right: .5rem;
+        .categorybox-prod {
+            margin-bottom: .5rem;
+            box-shadow: 0 0 10px rgba(0,0,0,.25);
+            transition: box-shadow .25s ease;
 
-#categories-main-boxes .categorybox-desc {
-    text-align: center;
-    margin-bottom: 1rem;
-}
-#categories-main-boxes .categorybox-desc a {
-    color: #212126;
-}
-@media (min-width: 992px) {
-    #categories-main-boxes .categorybox {
-        width: 33.3333333%;
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 0;
+                padding: 0;
+                * {
+                    padding: 0;
+                }
+                a {
+                    display: -ms-flexbox!important;
+                    display: flex!important;
+                    -ms-flex-align: center!important;
+                    align-items: center!important;
+                    -ms-flex-pack: center!important;
+                    justify-content: center!important;
+                    width: 100%;
+                    height: 150px;
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+        }
+        &:hover {
+            .categorybox-prod {
+                box-shadow: 0 0 10px rgba(0,0,0,.5);
+            }
+        }
+
+        .categorybox-desc {
+            text-align: center;
+            margin-bottom: 1rem;
+            a {
+                color: #212126;
+            }
+        }
     }
 }
+@media (min-width: 992px) {
+    #categories-main-boxes {
+        .categorybox {
+            width: 33.3333333%;
+        }
+    }
+}
+
+
+
+
+
