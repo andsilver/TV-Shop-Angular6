@@ -18,7 +18,9 @@ export class MainCarouselComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    setTimeout(() => imgix.init(), 1000);
+  }
 
   ngAfterViewInit() {
     this.config = {
@@ -36,7 +38,7 @@ export class MainCarouselComponent implements OnInit, AfterViewInit {
         disableOnInteraction: false
       },
       speed: 500,
-      effect: 'slide'
+      effect: 'splash'
     };
   }
 

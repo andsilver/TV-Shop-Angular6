@@ -2,19 +2,13 @@
   <div class="swiper-container h-100" [swiper]="config">
     <div class="swiper-wrapper h-100">      
       <div *ngFor="let slide of slides" class="swiper-slide">
-        <div [attr.data-background]="slide.image" class="slide-item swiper-lazy">
-            <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-            <div class="mask"></div>  
-            <div fxLayout="column" fxLayoutAlign="center center" class="content">
-              <h1>{{slide.title}}</h1>
-              <h3>{{slide.subtitle}}</h3>
-              <button [routerLink]="['/oled-tv/lg-oled65c7v']" mat-raised-button color="primary" i18n>Shop now</button>
-            </div> 
+        <div class="slide-item swiper-lazy">
+            <img [attr.ix-path]="slide.image" ix-params='{"auto":"compress"}' alt=""> 
         </div>
       </div>
     </div>
     <div class="swiper-pagination white"></div>
-    <button mat-mini-fab color="primary" class="swiper-button-prev swipe-arrow"><fa-icon [icon]="['fas', 'angle-left']" size="lg"></fa-icon></button>
-    <button mat-mini-fab color="primary" class="swiper-button-next swipe-arrow"><fa-icon [icon]="['fas', 'angle-right']" size="lg"></fa-icon></button>
+    <!-- <button mat-mini-fab color="primary" class="swiper-button-prev swipe-arrow"><fa-icon [icon]="['fas', 'angle-left']" size="lg"></fa-icon></button>
+    <button mat-mini-fab color="primary" class="swiper-button-next swipe-arrow"><fa-icon [icon]="['fas', 'angle-right']" size="lg"></fa-icon></button> -->
   </div>
 </div>

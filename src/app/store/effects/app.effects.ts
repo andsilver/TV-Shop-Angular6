@@ -66,16 +66,19 @@ export class AppEffects {
         .ofType(CategoriesActions.GET_CATEGORIES)
         .pipe(
           map((action: any) => action.payload),
-          switchMap(payload => {
-            if (payload) {
-              return this.appService.getCategories();
-            } else {
-              return this.appService.getCategories();
-            }
-          }),
+          switchMap(payload => this.appService.getCategories(payload)),
+          map(data => new CategoriesActions.SuccessGetCategories(data)),
+          catchError(err => of(new CategoriesActions.FailedGetCategories({ message: err.message })))
+        );
+
+  @Effect()
+  GetAllCategories: Observable<any>
+    = this.actions
+        .ofType(CategoriesActions.GET_ALL_CATEGORIES)
+        .pipe(
+          switchMap(() => this.appService.getCategories('tree')),
           map(data => {
-            console.log(data);
-            return new CategoriesActions.SuccessGetCategories(data);
+            return new CategoriesActions.SuccessGetAllCategories(data);
           }),
           catchError(err => of(new CategoriesActions.FailedGetCategories({ message: err.message })))
         );
