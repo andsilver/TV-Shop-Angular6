@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 import { HomeService } from './home.service';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 import { AppSettings } from '../../app.settings';
@@ -22,7 +23,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     public homeService: HomeService,
     private settings: AppSettings,
     private title: Title,
-    private store: Store<State>
+    private store: Store<State>,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -49,6 +51,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   @HostListener('window:resize')
   public onWindowResize(): void {
     this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
+  }
+
+  navigate(event) {
+    console.log(event);
+    const ele = event.target;
+    const link = ele.getAttribute('data-routerlink');
+    console.log(ele, link);
+    if (link) {
+      this.router.navigate([link]);
+    }
   }
 
 }

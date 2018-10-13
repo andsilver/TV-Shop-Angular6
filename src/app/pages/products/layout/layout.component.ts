@@ -34,7 +34,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private store: Store<State>) { }
+    private store: Store<State>,
+    private appService: AppService) { }
 
   ngOnInit() {
 
@@ -56,23 +57,24 @@ export class LayoutComponent implements OnInit, OnDestroy {
           }
         }),
 
-      this.store.select(state => state.categories)
+      // this.appService.getCategories('topnav')
+      this.store.select(store => store.categories)
         .pipe(
           switchMap(res => {
             this.categories = res.categories;
             console.log(this.router.url);
+            console.log(this.categories);
             return this.route.url;
           })
         )
         .subscribe(() => {
             if (!this.categories.length) {
-                return;
+              return;
             }
             this.loaded = true;
             if (this.router.url === '/products') {
               this.category = {id: 0, name: '', crumbPath: [], parentId: 0, permalink: '', hasSubCategory: true};
             } else {
-              console.log(this.categories);
               this.category = this.categories.find((c) => c.permalink === `${this.router.url}/` || c.permalink === this.router.url);
               console.log(this.category);
             }

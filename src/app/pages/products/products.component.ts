@@ -216,11 +216,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   getProducts() {
     this.emptyMessage = '';
 
-    const _categoryId =
-      (this.category.name === 'Buitenkansje' || this.category.name === 'Acties') ?
-      this.category.name.toLowerCase() :
-      this.categoryId;
-
     const filt = {
       keyword: this.keyword,
       categoryPath: this.category.permalink,

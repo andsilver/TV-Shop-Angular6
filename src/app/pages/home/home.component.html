@@ -5,7 +5,7 @@
     <div fxFlex="65" fxFlex.lt-md="100" class="px-3">
         <ng-container *ngIf="widget">
             <app-main-carousel *ngIf="widget" [slides]="widget[0]"></app-main-carousel>
-            <div *ngFor="let mid of widget[1]" [innerHTML]="mid.content | htmlSanitize"></div>
+            <div *ngFor="let mid of widget[1]" [innerHTML]="mid.content | htmlSanitize" (click)="navigate($event)"></div>
             <div class="most-popular mt-4">
                 <div class="px-1">
                     <div class="most-popular-title mb-2" i18n>Most Popular</div>
