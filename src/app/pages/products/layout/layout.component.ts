@@ -57,11 +57,11 @@ export class LayoutComponent implements OnInit, OnDestroy {
           }
         }),
 
-      // this.appService.getCategories('topnav')
-      this.store.select(store => store.categories)
+      this.appService.getCategories()
+      // this.store.select(store => store.categories)
         .pipe(
           switchMap(res => {
-            this.categories = res.categories;
+            this.categories = res;
             console.log(this.router.url);
             console.log(this.categories);
             return this.route.url;

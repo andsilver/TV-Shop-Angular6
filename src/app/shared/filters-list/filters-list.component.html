@@ -2,7 +2,7 @@
     <div>
         <h3>{{f.title}}</h3>
     </div>
-    <div [innerHTML]="f.content"></div>
+    <div [innerHTML]="f.content | htmlSanitize"></div>
 </div>
 
 <div class="filter-box" *ngIf="brands.length">
