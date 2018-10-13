@@ -12,7 +12,7 @@ import { SidenavMenuService } from '../theme/components/sidenav-menu/sidenav-men
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import { SetKeyword } from 'app/store/actions/keyword.action';
-import { SuccessGetCategories } from 'app/store/actions/categories.action';
+import * as CategoriesActions from 'app/store/actions/categories.action';
 
 @Component({
   selector: 'app-pages',
@@ -45,27 +45,27 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
-    this.subscriptions.push(
+    this.subscriptions = [
       this.appService.getCategories('topnav').subscribe(res => {
         this.categories = res;
         this.category = res[0];
-        this.store.dispatch(new SuccessGetCategories(res));
-      })
-    );
+        console.log('Categories arrived.');
+        this.store.dispatch(new CategoriesActions.SuccessGetCategories(res));
+      }),
 
-    this.searchTerm
-      .pipe(
-        debounceTime(2000),
-        distinctUntilChanged()
-      )
-      .subscribe((event: KeyboardEvent) => {
-        if (event.key === 'Enter') {
-          return;
-        }
-        this.keyword = event.target['value'];
-        this.search();
-      });
-
+      this.searchTerm
+        .pipe(
+          debounceTime(2000),
+          distinctUntilChanged()
+        )
+        .subscribe((event: KeyboardEvent) => {
+          if (event.key === 'Enter') {
+            return;
+          }
+          this.keyword = event.target['value'];
+          this.search();
+        })
+    ];
   }
 
   ngAfterViewInit() {

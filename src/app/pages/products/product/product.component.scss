@@ -264,7 +264,81 @@ h2.product-detail-title,
     }
 
     .reviews-item {
+        color: #212226;
         margin-bottom: 3rem;
+        font-size: 16px;
+        
+        strong {
+            font-size: 20px;
+            &:before{
+                content: open-quote;
+            }
+            &:after{
+                content: close-quote;
+            }
+            &:before, &:after {
+                display: inline-block;
+                font-weight: bold;
+                font-size: 16px;
+                vertical-align: top;
+            }
+        }
+
+        .review-author-date{
+            color: #666;
+        }
+
+        .like-item {
+            float: right;
+            clear: both;
+            padding-right: 15px;
+            a {
+                display: inline-block;
+                width: 22px;
+                height: 0;
+                padding: 26px 0 0;
+                background: url(https://www.plattetv.nl/var/templates/images/icon_helpful.png) left top no-repeat;
+                margin-right: 7px;
+                vertical-align: middle;
+            }
+            >span{
+                position: relative;
+                border: 1px solid #d9d9d9;
+                line-height: 20px;
+                border-radius: 4px;
+                text-align: center;
+                padding: 0 5px;
+                span {
+                    &:before{
+                        position: absolute;
+                        left: -7px;
+                        top: 3px;
+                        display: block;
+                        border-right: 7px solid #e5e5e5;
+                        border-top: 7px solid transparent;
+                        border-bottom: 7px solid transparent;
+                        content: "";
+                        z-index: 0;
+                    }
+
+                    &:after{
+                        position: absolute;
+                        left: -5px;
+                        top: 5px;
+                        display: block;
+                        border-right: 5px solid #fff;
+                        border-top: 5px solid transparent;
+                        border-bottom: 5px solid transparent;
+                        content: "";
+                        z-index: 1;
+                    }
+
+                    display: inline-block;
+                    line-height: 20px;
+                }
+            }
+        }
+
         &+.reviews-item{
             border-top: 1px solid #ececec;
             padding-top: 1rem;

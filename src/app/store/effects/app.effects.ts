@@ -72,18 +72,6 @@ export class AppEffects {
         );
 
   @Effect()
-  GetAllCategories: Observable<any>
-    = this.actions
-        .ofType(CategoriesActions.GET_ALL_CATEGORIES)
-        .pipe(
-          switchMap(() => this.appService.getCategories('tree')),
-          map(data => {
-            return new CategoriesActions.SuccessGetAllCategories(data);
-          }),
-          catchError(err => of(new CategoriesActions.FailedGetCategories({ message: err.message })))
-        );
-
-  @Effect()
   GetProduct: Observable<any>
     = this.actions
         .ofType(ProductActions.GET_PRODUCT)

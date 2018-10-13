@@ -22,16 +22,15 @@ export class FiltersListComponent implements OnInit, OnDestroy {
   constructor(private appService: AppService, private store: Store<State>, private router: Router) { }
 
   ngOnInit() {
-    this.subscriptions = [
-      this.store.select(store => store.categories).subscribe(res => this.categories = res.categories),
+
+      this.store.select(store => store.categories).subscribe(res => console.log('categories'));
       this.appService.getFiltersList().subscribe(res => {
         this.filtersList = res;
         this.filtersList.forEach(f => {
-          f.content = f.content.replace(/href="#"/g, '');
+          // f.content = f.content.replace(/href="#"/g, '');
         });
-      }),
-      this.appService.getBrands(20).subscribe(res => this.brands = res.manufacturer)
-    ];
+      });
+      this.appService.getBrands(20).subscribe(res => this.brands = res.manufacturer);
   }
 
   ngOnDestroy() {
