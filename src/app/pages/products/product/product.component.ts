@@ -11,6 +11,7 @@ import { ProductZoomComponent } from './product-zoom/product-zoom.component';
 import { BestPriceDialogComponent } from '../best-price-dialog/best-price-dialog.component';
 import { ExchangeComponent } from '../exchange/exchange.component';
 import { OutdoorOpportunityDialogComponent } from '../outdoor-opportunity-dialog/outdoor-opportunity-dialog.component';
+import { AddedToCartPopupComponent } from 'app/shared/added-to-cart-popup/added-to-cart-popup.component';
 
 import { ProductsService } from '../products.service';
 
@@ -176,17 +177,13 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   requestBestPrice() {
     const dialogRef = this.dialog.open(BestPriceDialogComponent);
 
-    dialogRef.afterClosed().subscribe(res => {
-
-    });
+    dialogRef.afterClosed().subscribe(res => {});
   }
 
   exchangeProduct() {
     const dialogRef = this.dialog.open(ExchangeComponent);
 
-    dialogRef.afterClosed().subscribe(res => {
-
-    });
+    dialogRef.afterClosed().subscribe(res => {});
   }
 
   scrollToElement($element): void {
@@ -200,11 +197,26 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
       item_qty: 1,
       category_id: this.product.categoryId
     }).subscribe(res => {
-      if (res.cart_id !== undefined) {
-        setTimeout(() => {
-          this.router.navigate(['/cart']);
-        }, 1000);
-      }
+      // if (res.cart_id !== undefined) {
+      //   setTimeout(() => {
+      //     this.router.navigate(['/cart']);
+      //   }, 1000);
+      // }
+      const dialogRef = this.dialog.open(AddedToCartPopupComponent, {
+        data: {
+          name: pkg.main.productName,
+          quantity: 1,
+          newPrice: '€' + this.integer(pkg.normalPrice) + this.float(pkg.normalPrice),
+          permalink: pkg.main.permalink,
+          images: [
+            {
+              small: pkg.main.image
+            }
+          ]
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(r => {});
     });
   }
 

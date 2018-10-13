@@ -32,4 +32,8 @@ export class AddedToCartPopupComponent implements OnInit {
     }, 2000);
   }
 
+  isNumber(price) {
+    return Number(price) ? true : false;
+  }
+
 }

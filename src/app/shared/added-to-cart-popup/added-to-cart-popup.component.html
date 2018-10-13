@@ -9,7 +9,8 @@
       <p class="product-quantity" [ngStyle.lt-md]="{'text-align': 'center'}"><ng-container i18n>Quantity:</ng-container> {{product.quantity}}</p>
     </div>
     <div class="product-price" [ngStyle.gt-sm]="{'margin-left': '40px'}">
-      {{product.newPrice | customCurrency}}
+      <ng-container *ngIf="isNumber(product.newPrice)">{{product.newPrice | customCurrency}}</ng-container>
+      <ng-container *ngIf="!isNumber(product.newPrice)">{{product.newPrice}}</ng-container>
     </div>
     <div fxLayout="column" fxLayoutGap="10px">
         <button class="control-add-to-cart" mat-button (click)="navigateToCartList()" i18n>Order</button>

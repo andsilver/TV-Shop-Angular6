@@ -57,7 +57,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="4eaa396a0686e4c364766a65e22dac1e59b9e100" datatype="html">
-        <source>Add to cart</source><target state="new">Toevoegen aan winkelwagen</target>
+        <source>Add to cart</source><target state="new">IN WINKELWAGEN</target>
         
         
         
