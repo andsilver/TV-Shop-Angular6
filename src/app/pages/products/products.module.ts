@@ -14,6 +14,7 @@ import { NotMatchComponent } from './not-match/not-match.component';
 import { BestPriceDialogComponent } from './best-price-dialog/best-price-dialog.component';
 import { ExchangeComponent } from './exchange/exchange.component';
 import { OutdoorOpportunityDialogComponent } from './outdoor-opportunity-dialog/outdoor-opportunity-dialog.component';
+import { ProductsService } from './products.service';
 
 export const routes = [
   {
@@ -43,6 +44,7 @@ export const routes = [
     BestPriceDialogComponent,
     ExchangeComponent,
     OutdoorOpportunityDialogComponent
-  ]
+  ],
+  providers: [ProductsService]
 })
 export class ProductsModule { }

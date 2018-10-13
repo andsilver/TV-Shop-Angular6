@@ -12,6 +12,8 @@ import { BestPriceDialogComponent } from '../best-price-dialog/best-price-dialog
 import { ExchangeComponent } from '../exchange/exchange.component';
 import { OutdoorOpportunityDialogComponent } from '../outdoor-opportunity-dialog/outdoor-opportunity-dialog.component';
 
+import { ProductsService } from '../products.service';
+
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 
@@ -50,7 +52,9 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
     private router: Router,
-    private store: Store<State>) { }
+    private store: Store<State>,
+    private productsService: ProductsService
+  ) { }
 
   ngOnInit() {
     console.log(this.product.categoryId, ' this.product data');
@@ -165,11 +169,6 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  onSubmit(values: Object): void {
-    if (this.form.valid) {
-    }
-  }
-
   attributeSelected(index, event) {
     this.product.attributes[index]['selected'] = event.value;
   }
@@ -225,5 +224,12 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   float(str: string) {
     const v = str.split(',')[1];
     return Number(v) === 0 ? '-' : v;
+  }
+
+  likeItem(review) {
+    this.productsService.likeReviewItem(review.reviewId).subscribe(res => {
+      console.log(res);
+      review.reviewLikeCount = res['reviewLikeCount'];
+    });
   }
 }

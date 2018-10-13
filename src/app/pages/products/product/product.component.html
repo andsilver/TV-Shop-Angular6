@@ -156,12 +156,12 @@
                                 </div>
                                 <div id="info-reviews" #info_reviews>
                                     <div *ngIf="product?.reviews.length">
-                                        <h2>Reviews</h2>
+                                        <h2 i18n>Reviews about the {{product.name}}</h2>
                                         <div ngClass.xs="py-2" ngClass.lt-md="p-2">
                                             <div class="reviews-item" *ngFor="let review of product.reviews">
                                                 <app-rating [review]="review.reviewScore" [ratingsCount]="1000" [ratingsValue]="review.ratingScore/10" [direction]="'row'"></app-rating>
-                                                <!-- <strong>{{review.reviewContent}}</strong> -->
-                                                <p>{{review.reviewAuthor}} | {{review.dateAdded}}</p>
+                                                <strong>{{review.reviewTitle}}</strong>
+                                                <div class="review-author-date">{{review.reviewAuthor}} | {{review.dateAdded}}</div>
                                                 <br>
                                                 <ng-container *ngIf="review.reviewPoints.plus || review.reviewPoints.plus">
                                                     <div fxLayout>
@@ -179,6 +179,12 @@
                                                     <br>
                                                 </ng-container>
                                                 <div>{{review.reviewContent}}</div>
+                                                <div class="like-item">
+                                                    <a (click)="likeItem(review)"></a>
+                                                    <span>
+                                                        <span>{{review.reviewLikeCount}}</span>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
