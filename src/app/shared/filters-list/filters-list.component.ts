@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AppService } from 'app/app.service';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
-import * as CategoriesActions from 'app/store/actions/categories.action';
 
 @Component({
   selector: 'app-filters-list',
@@ -23,7 +22,6 @@ export class FiltersListComponent implements OnInit, OnDestroy {
   constructor(private appService: AppService, private store: Store<State>, private router: Router) { }
 
   ngOnInit() {
-    setTimeout(() => this.store.dispatch(new CategoriesActions.SuccessGetCategories([])), 5000);
 
       this.store.select(store => store.categories).subscribe(res => console.log('categories'));
       this.appService.getFiltersList().subscribe(res => {

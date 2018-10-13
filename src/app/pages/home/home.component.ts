@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   navigate(event) {
     console.log(event);
-    const ele = event.target;
+    const ele = event.target.parentElement;
     const link = ele.getAttribute('data-routerlink');
     console.log(ele, link);
     if (link) {
