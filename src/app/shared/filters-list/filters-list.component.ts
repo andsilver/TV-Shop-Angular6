@@ -15,6 +15,21 @@ export class FiltersListComponent implements OnInit, OnDestroy {
 
   subscriptions = [];
 
+  showMore = {
+    show_more: {
+      text: 'Toon meer',
+      icon: 'caret-down',
+      count: 10
+    },
+    show_less: {
+      text: 'Toon minder',
+      icon: 'caret-up',
+      count: 9999
+    }
+  };
+
+  brandShow = 'show_more';
+
   constructor(private appService: AppService, private router: Router) { }
 
   ngOnInit() {
@@ -22,7 +37,7 @@ export class FiltersListComponent implements OnInit, OnDestroy {
       this.filtersList = res;
       console.log(res);
     });
-    this.appService.getBrands(20).subscribe(res => this.brands = res.manufacturer);
+    this.appService.getBrands(100).subscribe(res => this.brands = res.manufacturer);
   }
 
   ngOnDestroy() {

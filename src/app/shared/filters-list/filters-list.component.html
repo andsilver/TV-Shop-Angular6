@@ -9,7 +9,12 @@
     <div>
         <h3 i18n>Condition</h3>
     </div>
-    <div *ngFor="let brand of brands">
-        <a>{{brand.name}}</a>
+    <div *ngFor="let brand of brands | slice:0:showMore[brandShow].count">
+        <a [routerLink]="brand.permalink">{{brand.name}}</a>
     </div>
+    <a class="show_more_toggle" *ngIf="brands.length > 10"
+        (click)="brandShow = (brandShow === 'show_more') ? 'show_less' : 'show_more'">
+        <strong>{{showMore[brandShow].text}} </strong>
+        <fa-icon [icon]="['fas', showMore[brandShow].icon]"></fa-icon>
+    </a>
 </div>

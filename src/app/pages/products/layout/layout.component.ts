@@ -72,7 +72,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
               return;
             }
             this.loaded = true;
-            if (this.router.url === '/products') {
+            if (this.router.url === '/products' || this.router.url.indexOf('leverancier') > -1) {
               this.category = {id: 0, name: '', crumbPath: [], parentId: 0, permalink: '', hasSubCategory: true};
             } else {
               this.category = this.categories.find((c) => c.permalink === `${this.router.url}/` || c.permalink === this.router.url);
