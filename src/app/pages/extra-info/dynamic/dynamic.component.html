@@ -1,0 +1,4 @@
+<div *ngFor="let widget of widgets" (click)="navigate($event)">
+    <h1>{{widget?.title}}</h1>
+    <div [innerHTML]="widget?.content | htmlSanitize"></div>
+  </div>
