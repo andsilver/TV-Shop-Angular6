@@ -204,7 +204,7 @@
                                                         <p>{{package.main.productName}}</p>
                                                     </a>
                                                     <fa-icon [icon]="['fas', 'plus']"></fa-icon>
-                                                    <a [routerLink]="package.permalink">
+                                                    <a (click)="subProductDialog(package.subs[0])">
                                                         <div>
                                                             <div>
                                                                 <img [attr.data-src]="'https://www.plattetv.nl/var/' + package.subs[0].image" alt="">

@@ -12,6 +12,7 @@ import { BestPriceDialogComponent } from '../best-price-dialog/best-price-dialog
 import { ExchangeComponent } from '../exchange/exchange.component';
 import { OutdoorOpportunityDialogComponent } from '../outdoor-opportunity-dialog/outdoor-opportunity-dialog.component';
 import { AddedToCartPopupComponent } from 'app/shared/added-to-cart-popup/added-to-cart-popup.component';
+import { SubProductDialogComponent } from '../sub-product-dialog/sub-product-dialog.component';
 
 import { ProductsService } from '../products.service';
 
@@ -243,5 +244,14 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
       console.log(res);
       review.reviewLikeCount = res['reviewLikeCount'];
     });
+  }
+
+  subProductDialog(subProduct) {
+    const dialogRef = this.dialog.open(SubProductDialogComponent, {
+      data: subProduct,
+      panelClass: 'sub-product-detail'
+    });
+
+    dialogRef.afterClosed().subscribe(() => {});
   }
 }

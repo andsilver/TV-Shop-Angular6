@@ -1,0 +1,215 @@
+<div class="dialog-main">
+    <div>
+        <div>
+            <h2 class="product-detail-title">{{product?.name}}</h2>
+            <div class="mb-2">
+                <app-rating [ratingsCount]="product?.ratingsCount" [ratingsValue]="product?.ratingsValue" [direction]="'row'"></app-rating>
+            </div>
+
+            <div class="small-carousel" *ngIf="product">
+                <div class="swiper-container" [swiper]="config">
+                    <div class="swiper-wrapper">
+                        <div *ngFor="let image of product?.images" class="swiper-slide">
+                            <div class="p-1">
+                                <ng-container *ngIf="image.have_image">
+                                    <img [attr.ix-path]="image.big" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 280px, (min-width: 320px) 280px, 100vw"  class="swiper-lazy" alt=""/>
+                                </ng-container>
+                              </div>
+                        </div>
+                    </div>
+                    <button mat-icon-button class="swiper-button-prev swipe-arrow"><fa-icon [icon]="['fas', 'angle-left']" size="lg"></fa-icon></button>
+                    <button mat-icon-button class="swiper-button-next swipe-arrow"><fa-icon [icon]="['fas', 'angle-right']" size="lg"></fa-icon></button>
+                </div>
+            </div>
+        </div>
+        <div class="mt-2">
+
+            <h2 class="mb-2 new-price">{{product?.newPrice | customCurrency}}</h2>
+            <div *ngIf="product.haveDemoUnit" class="demo-unit mb-2">
+                <a i18n (click)="openDemoUnit(product)">View the Buitenkansje</a>
+                <strong><ng-container i18n> of</ng-container> {{product.demoUnitStartPrice}}</strong>
+            </div>
+
+            <div fxLayout="column" class="product-detail-control mb-2">
+                <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)"><ng-container i18n>Add to cart</ng-container> <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon></button>
+                <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
+                <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
+                <button class="control-deal" mat-button (click)="exchangeProduct()"><ng-container i18n>SUMMERDEAL</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
+                <button class="control-normal" mat-button><ng-container i18n>Action: Exchange your TV</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
+            </div>
+
+            <div class="new-stock-info-wrapper">{{product?.stockIndicator}}</div>
+
+            <div class="winkel-stock">
+                <h3>Bezorgvoorraad</h3>
+                <div>
+                    <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[product.stockInfo.shippingInfo.stockCode]}"></fa-icon>
+                    <a [satPopoverAnchorFor]="p" (mouseenter)="p.open()" (mouseleave)="p.close()"> {{product?.stockInfo.shippingInfo.shippingTitle}}</a>
+                </div>
+                <sat-popover #p verticalAlign="below" horizontalAlign="start">
+                    <app-description-popover [title]="product?.stockInfo.shippingInfo.shippingTitle" [content]="product?.stockInfo.shippingInfo.toolTipContent"></app-description-popover>
+                </sat-popover>
+                <h3>Winkelvoorraad</h3>
+                <div fxLayout="row wrap">
+                    <div *ngFor="let store of product.stockInfo.storeStock" fxFlex="50">
+                        <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[store.storeStockCode]}"></fa-icon>
+                        <a [satPopoverAnchorFor]="p_s" (mouseenter)="tooltipStore=store;p_s.open()" (mouseleave)="p_s.close()"> {{store.branchCity}}</a>
+                        <sat-popover #p_s verticalAlign="below" horizontalAlign="start">
+                            <app-description-popover [title]="tooltipStore?.branchCity" [content]="tooltipStore?.toolTipContent"></app-description-popover>
+                        </sat-popover>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2">
+        <div>
+            <h3>{{product.name}}</h3>
+            <div class="shortdesc"><p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
+            <ng-container *ngIf="product?.featureHighlights">
+                <h3>Kenmerken</h3>
+                <p [innerHTML]="product.featureHighlights | htmlSanitize"></p>
+            </ng-container>
+        </div>
+        <div *ngIf="product?.description || product?.extra_description || product?.reviews.length || product?.expertReview">
+            <div class="extra-infos side-points extra-infos-list" *ngIf="product.productSidepoints.length">
+                <h2>LOPENDE ACTIES</h2>
+                <div *ngFor="let point of product.productSidepoints" fxLayout="row">
+                    <fa-icon class="mt-1" [icon]="['fas', 'circle']"></fa-icon><div [innerHTML]="point | htmlSanitize"></div>
+                </div>
+            </div>
+            <div class="extra-infos extra-infos-list">
+                <h2>BEKIJK OOK</h2>
+                <div class="extra-infos-link">
+            <div *ngIf="product?.expertReview.expertAuthor" (click)="scrollToElement(info_expert_reviews)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Plus- en minpunten</div>
+                    <div *ngIf="product?.reviews.length" (click)="scrollToElement(info_reviews)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Reviews</div>
+                    <div *ngIf="product?.productPackages.length" (click)="scrollToElement(info_product_packages)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Aanbevolen combideals</div>
+                    <div *ngIf="product?.description" (click)="scrollToElement(info_description)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Beschrijving</div>
+                    <div *ngIf="product?.extra_description" (click)="scrollToElement(info_extra_description)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Specificaties</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2">
+
+        <div>
+
+            <div fxFlex class="extra-infos">
+                <div id="info-expert-review" #info_expert_reviews>
+                    <div *ngIf="product?.expertReview.expertAuthor" class="expert-review">
+                        <h2>Plus- en minpunten</h2>
+                        <div ngClass.xs="py-2" ngClass.lt-md="p-2" fxLayout fxLayout.xs="column">
+                            <div fxFlex="55" class="px-4 mb-3">
+                                <div *ngIf="product.expertReview.expertPoints.plus.length" class="pb-2">
+                                    <div class="expert-review-title">Pluspunten</div>
+                                    <p *ngFor="let point of product.expertReview.expertPoints.plus" class="pb-1">
+                                        <fa-icon class="fa-plus" [icon]="'plus'"></fa-icon> {{point}}
+                                    </p>
+                                </div>
+                                <div *ngIf="product.expertReview.expertPoints.minus.length">
+                                    <div class="expert-review-title">Minpunten</div>
+                                    <p *ngFor="let point of product.expertReview.expertPoints.minus" class="pb-1">
+                                        <fa-icon class="fa-minus" [icon]="'minus'"></fa-icon> {{point}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div fxFlex class="px-4" [ngClass.gt-xs]="{'border-left': true}">
+                                <div class="expert-review-title">{{product.expertReview.expertAuthor}}</div>
+                                <div class="expert-review-title font-italic">{{product.expertReview.expertTitle}}</div>
+                                <img [attr.data-src]="'https://www.plattetv.nl/var/' + product.expertReview.expertImage" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="info-reviews" #info_reviews>
+                    <div *ngIf="product?.reviews.length">
+                        <h2 i18n>Reviews about the {{product.name}}</h2>
+                        <div class="p-2">
+                            <div class="reviews-item" *ngFor="let review of product.reviews">
+                                <app-rating [review]="review.reviewScore" [ratingsCount]="1000" [ratingsValue]="review.ratingScore/10" [direction]="'row'"></app-rating>
+                                <strong>{{review.reviewTitle}}</strong>
+                                <div class="review-author-date">{{review.reviewAuthor}} | {{review.dateAdded}}</div>
+                                <br>
+                                <ng-container *ngIf="review.reviewPoints.plus || review.reviewPoints.plus">
+                                    <div fxLayout>
+                                        <div fxFlex *ngIf="review.reviewPoints.plus">
+                                            <p *ngFor="let plus of review.reviewPoints.plus">
+                                                <fa-icon class="fa-plus" [icon]="'plus'"></fa-icon> {{plus}}
+                                            </p>
+                                        </div>
+                                        <div fxFlex *ngIf="review.reviewPoints.minus">
+                                            <p *ngFor="let minus of review.reviewPoints.minus">
+                                                <fa-icon class="fa-minus" [icon]="'minus'"></fa-icon> {{minus}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </ng-container>
+                                <div>{{review.reviewContent}}</div>
+                                <div class="like-item">
+                                    <a (click)="likeItem(review)"></a>
+                                    <span>
+                                        <span>{{review.reviewLikeCount}}</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="info-product-packages" #info_product_packages>
+                    <div *ngIf="product?.productPackages.length">
+                        <h2>AANBEVOLEN COMBIDEALS</h2>
+                        <div ngClass.xs="py-2" ngClass.lt-md="p-2">
+                            <div *ngFor="let package of product.productPackages" class="product-package" fxLayout fxLayoutAlign="space-between center">
+                                <div fxLayout fxLayoutAlign="start center" class="product-package-products">
+                                    <a [routerLink]="package.permalink">
+                                        <div>
+                                            <div>
+                                                <img [attr.data-src]="'https://www.plattetv.nl/var/' + package.main.image" alt="">
+                                            </div>
+                                        </div>
+                                        <p>{{package.main.productName}}</p>
+                                    </a>
+                                    <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+                                    <a>
+                                        <div>
+                                            <div>
+                                                <img [attr.data-src]="'https://www.plattetv.nl/var/' + package.subs[0].image" alt="">
+                                            </div>
+                                        </div>
+                                        <p>{{package.subs[0].productName}}</p>
+                                    </a>
+                                </div>
+                                <div class="product-package-price">
+                                    <p class="product-package-price-special">{{integer(package.specialPrice)}}<sup>{{float(package.specialPrice)}}</sup></p>
+                                    <p class="product-package-price-normal">{{integer(package.normalPrice)}}<sup>{{float(package.normalPrice)}}</sup></p>
+                                    <p class="product-package-price-saving">{{integer(package.savingPrice)}}<sup>{{float(package.savingPrice)}}</sup></p>
+                                    <button class="control-add-to-cart" mat-button (click)="addToCartHash(package)">
+                                        <ng-container i18n>Add to cart</ng-container>
+                                        <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="info-description" #info_description>
+                    <div *ngIf="product?.description">
+                        <h2>Beschrijving</h2>
+                        <div ngClass.xs="py-2" ngClass.lt-md="p-2">
+                            <p [innerHTML]="product?.description | htmlSanitize"></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="info-extra-description" #info_extra_description>
+                    <div *ngIf="product?.extra_description">
+                        <h2>Specificaties</h2>
+                        <div class="mat-tab-specificaties" ngClass.xs="py-2" ngClass.lt-md="p-2">
+                            <div [innerHTML]="product?.extra_description | htmlSanitize"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
