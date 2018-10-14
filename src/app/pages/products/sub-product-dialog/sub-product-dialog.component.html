@@ -43,7 +43,7 @@
             <div class="winkel-stock">
                 <h3>Bezorgvoorraad</h3>
                 <div>
-                    <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[product.stockInfo.shippingInfo.stockCode]}"></fa-icon>
+                    <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[product?.stockInfo.shippingInfo.stockCode]}"></fa-icon>
                     <a [satPopoverAnchorFor]="p" (mouseenter)="p.open()" (mouseleave)="p.close()"> {{product?.stockInfo.shippingInfo.shippingTitle}}</a>
                 </div>
                 <sat-popover #p verticalAlign="below" horizontalAlign="start">

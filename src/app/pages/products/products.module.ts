@@ -16,6 +16,7 @@ import { ExchangeComponent } from './exchange/exchange.component';
 import { OutdoorOpportunityDialogComponent } from './outdoor-opportunity-dialog/outdoor-opportunity-dialog.component';
 import { ProductsService } from './products.service';
 import { SubProductDialogComponent } from './sub-product-dialog/sub-product-dialog.component';
+import { RecommendedCombidealDialogComponent } from './recommended-combideal-dialog/recommended-combideal-dialog.component';
 
 export const routes = [
   {
@@ -39,14 +40,16 @@ export const routes = [
     BestPriceDialogComponent,
     ExchangeComponent,
     OutdoorOpportunityDialogComponent,
-    SubProductDialogComponent
+    SubProductDialogComponent,
+    RecommendedCombidealDialogComponent
   ],
   entryComponents: [
     ProductZoomComponent,
     BestPriceDialogComponent,
     ExchangeComponent,
     OutdoorOpportunityDialogComponent,
-    SubProductDialogComponent
+    SubProductDialogComponent,
+    RecommendedCombidealDialogComponent
   ],
   providers: [ProductsService]
 })
