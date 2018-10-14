@@ -254,4 +254,8 @@ export class AppService {
             this.Data.totalQuantity += c.quantity;
         }
     }
+
+    getExtraInfoContent(param) {
+        return this.http.get(`/cms?permalink=${param}`);
+    }
 }

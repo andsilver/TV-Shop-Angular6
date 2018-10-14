@@ -1,4 +1,4 @@
-<div class="page-learning-center">
+<!-- <div class="page-learning-center">
   <div class="top-section page-section">
     <h1 i18n>LEARNING CENTER</h1>
     <div>
@@ -37,4 +37,9 @@
       </a>
     </div>
   </div>
+</div> -->
+
+<div *ngFor="let widget of widgets">
+  <h1>{{widget?.title}}</h1>
+  <div [innerHTML]="widget?.content | htmlSanitize"></div>
 </div>

@@ -24,7 +24,7 @@ const routes: Route[] = [
         component: ContactComponent
       },
       {
-        path: 'learning-center',
+        path: 'installatie-op-maat-learning-center',
         component: LearningCenterComponent
       },
       {
