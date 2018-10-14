@@ -199,7 +199,6 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
       item_qty: 1,
       category_id: this.product.categoryId
     }).subscribe(res => {
-      
       const dialogRef = this.dialog.open(RecommendedCombidealDialogComponent, {
         data: pkg
       });

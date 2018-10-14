@@ -85,10 +85,18 @@
                                 <h3>Winkelvoorraad</h3>
                                 <div fxLayout="row wrap">
                                     <div *ngFor="let store of product.stockInfo.storeStock" fxFlex="50">
-                                        <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[store.storeStockCode]}"></fa-icon>
-                                        <a [satPopoverAnchorFor]="p_s" (mouseenter)="tooltipStore=store;p_s.open()" (mouseleave)="p_s.close()"> {{store.branchCity}}</a>
+                                        <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[store.storeStockCode]}">
+                                        </fa-icon>
+                                        <a [satPopoverAnchorFor]="p_s"
+                                            (mouseenter)="tooltipStore=store;p_s.open()"
+                                            (mouseleave)="p_s.close()">
+                                            {{store.branchCity}}
+                                        </a>
                                         <sat-popover #p_s verticalAlign="below" horizontalAlign="start">
-                                            <app-description-popover [title]="tooltipStore?.branchCity" [content]="tooltipStore?.toolTipContent"></app-description-popover>
+                                            <app-description-popover
+                                                [title]="tooltipStore?.branchCity"
+                                                [content]="tooltipStore?.toolTipContent">
+                                            </app-description-popover>
                                         </sat-popover>
                                     </div>
                                 </div>
@@ -98,6 +106,17 @@
                     <div class="mt-2" fxLayout fxLayout.lt-md="column" fxLayoutAlign="space-between start">
                         <div fxFlex="55" fxFlex.lt-md="false">
                             <h3>{{product.name}}</h3>
+                            <div>
+                                <strong i18n>Available in:</strong>
+                                <div class="product-size">
+                                    <a *ngFor="let size of product?.productSizes"
+                                        [routerLink]="size.permalink"
+                                        routerLinkActive="horizontal-active-link"
+                                        [routerLinkActiveOptions]="{exact:false}">
+                                        <img [attr.ix-path]="size.image" ix-params='{"auto":"compress"}' alt="">
+                                    </a>
+                                </div>
+                            </div>
                             <div class="shortdesc"><p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
                             <ng-container *ngIf="product?.featureHighlights">
                                 <h3>Kenmerken</h3>

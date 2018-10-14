@@ -200,6 +200,18 @@ h2.product-detail-title,
     padding: 5px 10px;
 }
 
+.product-size a{
+    display: inline-block;
+    margin: 3px;
+    img {
+        width: 70px;
+        height: auto;
+    }
+    &.horizontal-active-link img{
+        border: 1px solid #ececec;        
+    }
+}
+
 .demo-unit a {
     color: #2e4be5;
     cursor: pointer;
