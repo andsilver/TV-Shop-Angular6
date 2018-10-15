@@ -45,6 +45,7 @@ export class Step2Component extends CheckoutStep implements OnInit {
         let card = '';
 
         if (!res || !res['methods']) {
+          this.arrived = true;
           return;
         }
 

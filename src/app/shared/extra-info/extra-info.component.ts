@@ -65,6 +65,7 @@ export class ExtraInfoComponent implements OnInit {
     this.subscriptions = [
       this.store.select(state => state.cart).subscribe(res => {
         if (!res.CartId) {
+          this.cart = null;
           return;
         }
         this.appService.getCartDetails(res.CartId).subscribe(re => {
