@@ -1,68 +1,125 @@
 .products-tabs{
     margin-top: 30px;   
 }
-
+.middle-content {
+    min-width: 1px;
+}
 .filter-sidenav {
     position: static;
-    min-width: 180px;
+    -ms-flex: 0 0 187px;
+    flex: 0 0 187px;
+    max-width: 187px;
     padding: 0;
 }
+.misc-sidenav {
+    -ms-flex: 0 0 187px;
+    flex: 0 0 187px;
+    max-width: 187px;
+}
 
-.most-popular {
-    &-title {
+.most-popular-wrapper {
+    .most-popular-title {
         background: #212226;
-        font-size: 31px;
-        line-height: 40px;
-        font-family: "Gotham Condensed";
+        font-weight: bold;
+        font-size: 2rem;
+        line-height: 2.875rem;
+        font-family: "Gotham Condensed Bold";
         letter-spacing: 1px;
         color: #fff;
-        padding: 0 13px;
-        text-transform: uppercase
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     .image-link {
         height: 130px;
     }
+
+    .most-popular {
+        margin-left: -.5rem;
+        margin-right: -.5rem;
+        .product-item-widget{
+            margin-bottom: 1rem;
+            padding-left: .5rem;
+            padding-right: .5rem;
+
+            .listing-item {
+                border: 1px solid #E6E6DC;
+                padding: .5rem;
+            }
+            .product-name {
+                display: block;
+                overflow: hidden;
+                height: 2.25rem;
+                font-weight: 700;
+                font-size: .9375rem;
+                line-height: 1.125rem;
+                letter-spacing: 0;
+                text-transform: uppercase;
+                margin-bottom: .25rem;
+                padding: 0;
+            }
+            .product-rating {
+                margin-bottom: .625rem;
+            }
+            .product-feature-highlights {
+                padding-left: 20px;
+
+                ul.listing_attribute {
+                    padding-left: 0;
+                    margin-bottom: .625rem;
+                }
+
+                ul.listing_attribute > li {
+                    overflow: hidden;
+                    background-image: none;
+                    font-weight: 500;
+                    font-size: .75rem;
+                    line-height: 19px;
+                    line-height: inherit;
+                    padding-left: 0;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                ul.listing_attribute > li:before {
+                    content: "-";
+                    margin-right: 5px;
+                }
+
+                ul.listing_attribute > li > a:hover,
+                ul.listing_attribute > li > a:focus {
+                    text-decoration: none;
+                }
+            }
+
+
+            .product-price {
+                font-weight: bold;
+                line-height: 1;
+                font-family: "Gotham Condensed Bold";
+                letter-spacing: .02em;
+                padding: 0;
+                vertical-align: top;
+
+                .product-old-price {
+                    font-size: 18px;
+                    line-height: 1.4;
+                    color: #b5b5b5;
+                    text-decoration: line-through;
+                    margin-right: 7px;
+                }
+
+                .product-new-price {
+                    font-size: 30px;
+                }
+
+                .only-new-price {
+                    color: #df0000;
+                }
+            }
+        }
+    }
 }
 
-.product-item-widget{
-    border: 1px solid #E6E6DC;
-    margin: 4px;
-    padding: .5rem;
-
-    .product-name {
-        font-weight: 700;
-        font-size: .9375rem;
-    }
-
-    .product-feature-highlights {
-        padding-left: 20px;
-    }
-
-    .product-price {
-        font-weight: bold;
-        line-height: 1;
-        font-family: "Gotham Condensed";
-        letter-spacing: .02em;
-        padding: 0;
-
-        .product-old-price {
-            font-weight: bold;
-            font-size: 18px;
-            line-height: 1.4;
-            color: #b5b5b5;
-            text-decoration: line-through;
-            margin-right: 7px;
-            vertical-align: top;
-        }
-
-        .product-new-price {
-            font-size: 30px;
-            vertical-align: top;
-        }
-    
-        .only-new-price {
-            color: #df0000;
-        }
-    }
-}

@@ -51,13 +51,13 @@
                     <button *ngIf="windowSize == 'lt-md'" mat-button (click)="sidenav.toggle();sidenavOpened = !sidenavOpened;" class="sidenav-toggle" aria-label="sidenav-toggle">
                         <fa-icon [icon]="['fas', 'bars']" size="2x"></fa-icon>
                     </button>
-                    <form method="get"  class="search-form" fxLayout="row" (ngSubmit)="search($event)">
+                    <form method="get" class="search-form" fxLayout="row" ngClass.gt-sm="pr-5" (ngSubmit)="search($event)">
                         <input type="text" i18n-placeholder placeholder="Type keyword..." name="search_key" [ngModel]="keyword" (keyup)="searchTerm.next($event)" fxFlex aria-label="search_key" autocomplete="off">
                         <button mat-button type="submit" class="search-btn mat-elevation-z0 text-muted" aria-label="search-btn">
                             <fa-icon [icon]="['fas', 'search']"></fa-icon>
                         </button>
                     </form>
-                    <div fxLayout="row" fxLayoutAlign="center center" *ngIf="windowSize == 'gt-md'" class="shopping-cart">
+                    <div fxLayout="row" fxLayoutAlign="center center" *ngIf="windowSize == 'gt-md'" id="miscnav-container">
                         <button mat-button [matMenuTriggerFor]="cartMenu" #cartMenuTrigger="matMenuTrigger" class="flex-row-button">
                             SERVICE <fa-icon [icon]="['fas', 'bars']"></fa-icon>
                         </button>
