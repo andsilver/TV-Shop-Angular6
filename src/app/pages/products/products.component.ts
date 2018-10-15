@@ -231,8 +231,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       page: this.page
     };
 
-    if (this.isFirst && this.router.url.indexOf('leverancier') > -1) {
-      filt.filterAttributes.brands = [ this.router.url.split('/')[2] ];
+    if (this.router.url.indexOf('leverancier') > -1) {
+      filt['manufacturersPath'] = this.router.url;
     }
 
     this.selectedFilterLists.forEach(f => {
