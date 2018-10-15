@@ -1,12 +1,12 @@
-<mat-sidenav-container>
-  <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
+<mat-sidenav-container fxLayout="row" fxLayoutAlign="start start">
+  <mat-sidenav fxFlex="0 0 187px" #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
       <mat-accordion displayMode="flat" multi="true">
           <app-filters-list></app-filters-list>
       </mat-accordion>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div fxLayout="row" >
-      <div fxFlex="100" fxFlex.gt-md="75" ngClass.gt-md="pr-3" class="store">
+    <div fxFlex fxLayout="row">
+      <div fxFlex class="px-3" id="page-store">
         <ng-container *ngIf="_store">
           <h1>{{_store.store_title}}</h1>
           <div fxLayout="space-between start" fxLayout.lt-md="column" fxLayoutGap="30px" ngClass="mb-3">
@@ -76,8 +76,8 @@
 
           <div class="atmosphere">
             <h3 class="header-title" i18n>ATMOSPHERE</h3>
-            <div fxFlex fxLayout="row wrap" fxLayoutAlign="start start" class="atmosphere-r">
-              <div class="big-image" fxFlex="25" fxFlex.lt-sm="50" *ngFor="let image of _store.store_images">
+            <div class="atmosphere-r">
+              <div class="big-image" *ngFor="let image of _store.store_images">
                 <img [attr.ix-path]="image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 200px, (min-width: 320px) 200px, 100vw"  alt="Image not arrived.">
               </div>
             </div>
@@ -85,7 +85,7 @@
         </ng-container>
       </div>
 
-      <div fxFlex fxHide fxShow.gt-md>
+      <div fxFlex="0 0 187px" fxHide fxShow.gt-md>
         <app-extra-info></app-extra-info>
       </div>
     </div>
