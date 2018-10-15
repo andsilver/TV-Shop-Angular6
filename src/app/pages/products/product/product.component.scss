@@ -200,6 +200,62 @@ h2.product-detail-title,
     padding: 5px 10px;
 }
 
+.product-size a{
+    display: inline-block;
+    margin: 3px;
+    img {
+        width: 70px;
+        height: auto;
+    }
+    &.horizontal-active-link img{
+        border: 1px solid #ececec;        
+    }
+}
+
+.product-accesories {
+
+    margin-bottom: 50px;
+
+    &-header {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 7px;
+        color: #212226;
+        font-weight: bold;
+    }
+
+    &-content {
+        padding: 20px 0;
+        a {
+            text-decoration: underline;
+        }
+        img {
+            border: 1px solid #999;
+            width: 59px;
+        }
+
+        input{
+            width: 100%;
+        }
+
+        > div > fa-icon {
+            color: #5AAD49;
+        }
+    }
+
+    button{
+        width: 135px;
+        height: 35px !important;
+        font-size: 16px !important;
+        letter-spacing: 1px;
+        float: right;
+        clear: both;
+        fa-icon {
+            position: absolute;
+            right: 0;
+        }
+    }
+}
+
 .demo-unit a {
     color: #2e4be5;
     cursor: pointer;
@@ -460,3 +516,7 @@ h2.product-detail-title,
 
 .new-stock-info-wrapper .bezorg-title,
 .new-stock-info-wrapper .new-stock-info-winkel .winkel-title { font-weight:bold; color:#212226; padding-bottom:2px; }
+
+.cursor-default {
+    cursor: default;
+}

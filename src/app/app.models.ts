@@ -39,6 +39,8 @@ export class Product {
   demoUnitStartPrice: string;
   productPackages: any;
   productSidepoints: any;
+  productSizes: any;
+  productAccesories: any;
 }
 
 export interface Brand {

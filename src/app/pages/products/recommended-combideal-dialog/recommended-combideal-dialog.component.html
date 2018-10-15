@@ -1,0 +1,35 @@
+<div>
+  <h3 class="mat-dialog-title" i18n>Added to your shopping cart</h3>
+  <div class="product-package" fxLayout fxLayoutAlign="space-between center" fxLayoutGap.gt-sm="100px" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="start">
+    <div fxLayout fxLayoutAlign="start center" class="product-package-products">
+        <a class="cursor-default">
+            <div>
+                <div>
+                    <img [attr.data-src]="'https://www.plattetv.nl/var/' + combideal.main.image" alt="">
+                </div>
+            </div>
+            <p>{{combideal.main.productName}}</p>
+        </a>
+        <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+        <a (click)="navigateToDetail(combideal.subs[0].permalink)">
+            <div>
+                <div>
+                    <img [attr.data-src]="'https://www.plattetv.nl/var/' + combideal.subs[0].image" alt="">
+                </div>
+            </div>
+            <p>{{combideal.subs[0].productName}}</p>
+        </a>
+    </div>
+    <div class="product-package-price">
+        <div>
+          <p class="product-package-price-special">{{integer(combideal.specialPrice)}}<sup>{{float(combideal.specialPrice)}}</sup></p>
+          <p class="product-package-price-normal">{{integer(combideal.normalPrice)}}<sup>{{float(combideal.normalPrice)}}</sup></p>
+          <p class="product-package-price-saving">{{integer(combideal.savingPrice)}}<sup>{{float(combideal.savingPrice)}}</sup></p>
+        </div>
+        <div fxLayout="column">
+          <button class="control-add-to-cart" mat-button (click)="navigateToCartList()" i18n>Order</button>
+          <button class="control-normal" mat-button (click)="dialogRef.close()" i18n>Return to Shop</button>
+        </div>
+    </div>
+  </div>
+</div>

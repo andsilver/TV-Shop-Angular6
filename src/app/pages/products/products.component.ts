@@ -167,7 +167,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.products = res.products;
     this.category_name = res.category_name;
-    this.category_description = res.category_description.replace(/href="#"/g, ' ');
+    if ( res && res.category_description) {
+      this.category_description = res.category_description.replace(/href="#"/g, ' ');
+    }
     this.brands = res['filterLists'] ? res['filterLists']['manufacturers'] : [];
     this.filterLists = res['filterLists'] && res['filterLists']['options'] ? res['filterLists']['options'] : [];
 
@@ -228,6 +230,10 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       limit: this.count,
       page: this.page
     };
+
+    if (this.router.url.indexOf('leverancier') > -1) {
+      filt['manufacturersPath'] = this.router.url;
+    }
 
     this.selectedFilterLists.forEach(f => {
       filt.filterAttributes[f.id] = f.children;
@@ -348,10 +354,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   navigateToCategory(event) {
     console.log(event);
-    const categoryId = event.srcElement.parentElement.getAttribute('data-catid');
-    const cate = this.categories.find(c => c.id === categoryId);
-    if (cate) {
-      this.router.navigate([cate.permalink]);
+    const link = event.srcElement.parentElement.getAttribute('data-routerlink');
+    if (link) {
+      this.router.navigate([link]);
     }
   }
 

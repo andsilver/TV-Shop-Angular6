@@ -11,12 +11,10 @@ import { ProductZoomComponent } from './product-zoom/product-zoom.component';
 import { BestPriceDialogComponent } from '../best-price-dialog/best-price-dialog.component';
 import { ExchangeComponent } from '../exchange/exchange.component';
 import { OutdoorOpportunityDialogComponent } from '../outdoor-opportunity-dialog/outdoor-opportunity-dialog.component';
-import { AddedToCartPopupComponent } from 'app/shared/added-to-cart-popup/added-to-cart-popup.component';
+import { SubProductDialogComponent } from '../sub-product-dialog/sub-product-dialog.component';
+import { RecommendedCombidealDialogComponent } from '../recommended-combideal-dialog/recommended-combideal-dialog.component';
 
 import { ProductsService } from '../products.service';
-
-import { Store } from '@ngrx/store';
-import { State } from 'app/store';
 
 @Component({
   selector: 'app-product',
@@ -41,7 +39,6 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   zoomImage: any;
   selectedImage: any;
   form: FormGroup;
-  relatedProducts: Array<Product>;
   subscriptions: Subscription[];
   stores: any = [];
 
@@ -53,17 +50,12 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
     private router: Router,
-    private store: Store<State>,
     private productsService: ProductsService
   ) { }
 
   ngOnInit() {
     console.log(this.product.categoryId, ' this.product data');
     this.subscriptions = [
-      this.store.select(state => state.products).subscribe(data => {
-        this.relatedProducts = data.products;
-      }),
-
       this.appService.getStores().subscribe(res => {
         this.stores = res;
         setTimeout(() => imgix.init(), 1);
@@ -90,6 +82,11 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     }
 
     console.log(this.product);
+
+    this.product.productAccesories.forEach(acc => {
+      acc['quantity'] = 1;
+      acc['orderTogether'] = true;
+    });
 
     this.selectImage(this.product.images[0]);
     setTimeout(() => {
@@ -197,23 +194,8 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
       item_qty: 1,
       category_id: this.product.categoryId
     }).subscribe(res => {
-      // if (res.cart_id !== undefined) {
-      //   setTimeout(() => {
-      //     this.router.navigate(['/cart']);
-      //   }, 1000);
-      // }
-      const dialogRef = this.dialog.open(AddedToCartPopupComponent, {
-        data: {
-          name: pkg.main.productName,
-          quantity: 1,
-          newPrice: '€' + this.integer(pkg.normalPrice) + this.float(pkg.normalPrice),
-          permalink: pkg.main.permalink,
-          images: [
-            {
-              small: pkg.main.image
-            }
-          ]
-        }
+      const dialogRef = this.dialog.open(RecommendedCombidealDialogComponent, {
+        data: pkg
       });
 
       dialogRef.afterClosed().subscribe(r => {});
@@ -243,5 +225,14 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
       console.log(res);
       review.reviewLikeCount = res['reviewLikeCount'];
     });
+  }
+
+  subProductDialog(subProduct) {
+    const dialogRef = this.dialog.open(SubProductDialogComponent, {
+      data: subProduct,
+      panelClass: 'sub-product-detail'
+    });
+
+    dialogRef.afterClosed().subscribe(() => {});
   }
 }

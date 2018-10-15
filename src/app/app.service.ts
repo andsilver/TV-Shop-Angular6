@@ -218,26 +218,24 @@ export class AppService {
 
         this.calculateTotalPrice();
 
-        if (openPopup) {
 
-            const dialogRef = this.dialog.open(AddedToCartPopupComponent, {
-                data: product
-            });
+        const dialogRef = this.dialog.open(AddedToCartPopupComponent, {
+            data: product
+        });
 
-            dialogRef.afterClosed().subscribe(res => {
+        dialogRef.afterClosed().subscribe(res => {
 
-                const productData: any = { item_id: product.id, item_qty: product.quantity, category_id: product.categoryId };
+            const productData: any = { item_id: product.id, item_qty: product.quantity, category_id: product.categoryId };
 
-                if (res['isAddTocart']) {
+            if (res['isAddTocart']) {
 
-                    this.addToCartApi(productData)
-                        .subscribe((data) => {
-                            localStorage.setItem('cart_id', data.cart_id);
-                            this.store.dispatch(new CartActions.SetCartId(data.cart_id));
-                        });
-                }
-            });
-        }
+                this.addToCartApi(productData)
+                    .subscribe((data) => {
+                        localStorage.setItem('cart_id', data.cart_id);
+                        this.store.dispatch(new CartActions.SetCartId(data.cart_id));
+                    });
+            }
+        });
     }
 
     removeFromCart(productId) {
@@ -255,5 +253,9 @@ export class AppService {
             this.Data.totalPrice += Number(c.newPrice) * c.quantity;
             this.Data.totalQuantity += c.quantity;
         }
+    }
+
+    getExtraInfoContent(param) {
+        return this.http.get(`/cms?permalink=${param}`);
     }
 }

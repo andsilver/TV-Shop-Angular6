@@ -15,6 +15,8 @@ import { BestPriceDialogComponent } from './best-price-dialog/best-price-dialog.
 import { ExchangeComponent } from './exchange/exchange.component';
 import { OutdoorOpportunityDialogComponent } from './outdoor-opportunity-dialog/outdoor-opportunity-dialog.component';
 import { ProductsService } from './products.service';
+import { SubProductDialogComponent } from './sub-product-dialog/sub-product-dialog.component';
+import { RecommendedCombidealDialogComponent } from './recommended-combideal-dialog/recommended-combideal-dialog.component';
 
 export const routes = [
   {
@@ -37,13 +39,17 @@ export const routes = [
     NotMatchComponent,
     BestPriceDialogComponent,
     ExchangeComponent,
-    OutdoorOpportunityDialogComponent
+    OutdoorOpportunityDialogComponent,
+    SubProductDialogComponent,
+    RecommendedCombidealDialogComponent
   ],
   entryComponents: [
     ProductZoomComponent,
     BestPriceDialogComponent,
     ExchangeComponent,
-    OutdoorOpportunityDialogComponent
+    OutdoorOpportunityDialogComponent,
+    SubProductDialogComponent,
+    RecommendedCombidealDialogComponent
   ],
   providers: [ProductsService]
 })

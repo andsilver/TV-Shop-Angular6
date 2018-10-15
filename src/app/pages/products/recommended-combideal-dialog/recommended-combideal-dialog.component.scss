@@ -1,0 +1,71 @@
+.product-package {
+    padding-bottom: 1rem;
+    &-products {
+        a {
+            width: 110px;
+            div{
+                display: table;
+                width: 110px;
+                height: 88px;
+                table-layout: fixed;
+                div {
+                    display: table-cell;
+                    width: 110px;
+                    height: 88px;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+            }
+            img {
+                width: auto;
+                max-width: 110px;
+                height: auto;
+                max-height: 88px;
+                vertical-align: middle;
+            }
+            margin: 0 10px;
+        }
+        p {
+            font-size: 14px;
+            color: #00157f !important;
+            font-weight: bold;
+        }
+    }
+    &-price {
+        font-family: "Gotham Condensed";
+        line-height: normal;
+        letter-spacing: 1px;
+        &-special{
+            font-size: 18px;
+            text-decoration: line-through;
+            color: #b5b5b5;
+        }
+        &-normal{
+            font-size: 36px;
+            font-weight: bold;
+            color: #000;
+        }
+        &-saving {
+            color: #5AAD49;
+            margin-bottom: 7px;
+        }
+
+        button {
+            height: 35px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0 10px;
+            position: relative;
+            border-radius: 5px;
+            fa-icon {
+                position: absolute;
+                right: 5px;
+            }
+        }
+    }
+}
+
+.cursor-default {
+    cursor: default;
+}

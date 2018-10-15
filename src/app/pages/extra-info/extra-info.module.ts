@@ -5,10 +5,10 @@ import { Route, RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 
 import { ContactComponent } from './contact/contact.component';
-import { LearningCenterComponent } from './learning-center/learning-center.component';
 import { ForBusinessComponent } from './for-business/for-business.component';
 import { VacanciesComponent } from './vacancies/vacancies.component';
 import { LayoutComponent } from './layout/layout.component';
+import { DynamicComponent } from './dynamic/dynamic.component';
 
 const routes: Route[] = [
   {
@@ -24,16 +24,16 @@ const routes: Route[] = [
         component: ContactComponent
       },
       {
-        path: 'learning-center',
-        component: LearningCenterComponent
-      },
-      {
         path: 'zakelijk',
         component: ForBusinessComponent
       },
       {
         path: 'vacatures',
         component: VacanciesComponent
+      },
+      {
+        path: ':id',
+        component: DynamicComponent
       }
     ]
   }
@@ -45,6 +45,6 @@ const routes: Route[] = [
     RouterModule.forChild(routes),
     SharedModule
   ],
-  declarations: [ContactComponent, LearningCenterComponent, ForBusinessComponent, VacanciesComponent, LayoutComponent]
+  declarations: [ContactComponent, ForBusinessComponent, VacanciesComponent, LayoutComponent, DynamicComponent]
 })
 export class ExtraInfoModule { }
