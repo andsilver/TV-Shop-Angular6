@@ -40,9 +40,8 @@ export class Step3Component extends CheckoutStep implements OnInit {
   placeOrder() {
     this.checkoutService.placeOrder().subscribe(res => {
       console.log(res);
-
+      localStorage.removeItem('cart_id');
       if (res && res['pay_link']) {
-        localStorage.removeItem('cart_id');
         this.document.location.href = res['pay_link'];
       } else {
         this.gotoNextStep();
