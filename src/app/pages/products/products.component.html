@@ -98,7 +98,7 @@
                         <ng-container i18n>Overview </ng-container>
                         {{category_name}}
                     </h2>
-                    <div fxLayout>
+                    <div fxLayout *ngIf="!isTop5">
                         <div>
                             <button *ngIf="!sidenavOpen" mat-icon-button (click)="sidenav.toggle()">
                                 <fa-icon [icon]="['fas', 'ellipsis-v']"></fa-icon>

@@ -108,7 +108,7 @@
                     <div class="mt-2" fxLayout fxLayout.lt-md="column" fxLayoutAlign="space-between start">
                         <div fxFlex="55" fxFlex.lt-md="false">
                             <h3>{{product.name}}</h3>
-                            <div>
+                            <div *ngIf="product?.productSizes?.length">
                                 <strong i18n>Available in:</strong>
                                 <div class="product-size">
                                     <a *ngFor="let size of product?.productSizes"

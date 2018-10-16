@@ -62,6 +62,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   page = 0;
   totalProducts = 0;
   emptyMessage = '';
+  isTop5 = false;
 
   showMore = {
     show_more: {
@@ -165,7 +166,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     } else {
       this.viewLoaded = true;
     }
-
+    this.isTop5 = res.category_name.indexOf('Top 5') > -1 ? true : false;
     this.products = res.products;
     this.category_name = res.category_name;
     if ( res && res.category_description) {
