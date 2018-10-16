@@ -22,13 +22,13 @@
     </div>
     <div class="product-package-price">
         <div>
-          <p class="product-package-price-special">{{integer(combideal.specialPrice)}}<sup>{{float(combideal.specialPrice)}}</sup></p>
-          <p class="product-package-price-normal">{{integer(combideal.normalPrice)}}<sup>{{float(combideal.normalPrice)}}</sup></p>
-          <p class="product-package-price-saving">{{integer(combideal.savingPrice)}}<sup>{{float(combideal.savingPrice)}}</sup></p>
+          <div class="product-package-price-special">{{integer(combideal.specialPrice)}}<sup>{{float(combideal.specialPrice)}}</sup></div>
+          <div class="product-package-price-normal">{{integer(combideal.normalPrice)}}<sup>{{float(combideal.normalPrice)}}</sup></div>
+          <div class="product-package-price-saving">{{integer(combideal.savingPrice)}}<sup>{{float(combideal.savingPrice)}}</sup></div>
         </div>
         <div fxLayout="column">
-          <button class="control-add-to-cart" mat-button (click)="navigateToCartList()" i18n>Order</button>
-          <button class="control-normal" mat-button (click)="dialogRef.close()" i18n>Return to Shop</button>
+          <button class="control-add-to-cart-medium" mat-button (click)="navigateToCartList()" i18n>Order</button>
+          <button class="control-normal" mat-button (click)="dialogRef.close()" i18n>Return to Shop<fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
         </div>
     </div>
   </div>
