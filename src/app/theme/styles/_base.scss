@@ -57,6 +57,14 @@ hr {
     border: 0;
     border-top: 1px solid rgba(0,0,0,.1);
 }
+.d-flex {
+    display: -ms-flexbox!important;
+    display: flex!important;
+}
+.justify-content-between {
+    -ms-flex-pack: justify!important;
+    justify-content: space-between!important;
+}
 .h-100 {
     height: 100% !important;
 }
@@ -688,7 +696,7 @@ button.swipe-arrow{
     background-image: none;
 }
 .swiper-pagination.white .swiper-pagination-bullet{
-    background: #fff;
+    background: #FDC642;
 }
 .swiper-pagination-bullet-active{
     width: 12px;

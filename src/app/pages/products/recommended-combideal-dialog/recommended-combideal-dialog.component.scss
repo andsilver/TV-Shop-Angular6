@@ -39,29 +39,91 @@
             font-size: 18px;
             text-decoration: line-through;
             color: #b5b5b5;
+            sup {
+                top: 0;
+                font-weight: normal;
+                font-size: .5625rem;
+                vertical-align: super;
+            }
         }
         &-normal{
             font-size: 36px;
             font-weight: bold;
             color: #000;
+            sup {
+                top: 0;
+                font-weight: normal;
+                font-size: 1.1875rem;
+                vertical-align: super;
+            }
         }
         &-saving {
+            font-family: "Poppins";
+            letter-spacing: 0;
             color: #5AAD49;
             margin-bottom: 7px;
-        }
-
-        button {
-            height: 35px;
-            font-size: 16px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            padding: 0 10px;
-            position: relative;
-            border-radius: 5px;
-            fa-icon {
-                position: absolute;
-                right: 5px;
+            sup {
+                top: 0;
+                font-weight: normal;
+                font-size: .4375rem;
+                vertical-align: super;
             }
+        }
+    }
+}
+
+.mat-button {
+    font-family: "Poppins";
+    text-align: left;
+    padding: 0 1rem;
+
+    &+.mat-button {
+        margin-top:5px;
+    }
+    &.control-add-to-cart-medium {
+        display: inline-block;
+        overflow: hidden;
+        min-width: 0;
+        height: 2.25rem;
+        border: none;
+        background-color: #5AAD49;
+        background-image: url(/assets/images/others/icon_cart.png);
+        background-position: right .75rem center;
+        background-repeat: no-repeat;
+        background-size: 21px auto;
+        font-size: 16px;
+        letter-spacing: 1px;
+        line-height: 2.25rem;
+        font-family: "Gotham Condensed";
+        color: #fff;
+        text-align: left;
+        text-transform: uppercase;
+        padding: 0 2.5rem 0 1rem;
+        border-radius: .5rem;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+    &.control-normal {
+        height: 1.5625rem;
+        font-size: .9375rem;
+        line-height: 1.5625rem;
+        padding: 0 2.35rem 0 1.35rem;
+        background-color: #ebebe3;
+        color: #212226;
+        .ng-fa-icon {
+            position: absolute;
+            right: .5rem;
+            top: 50%;
+            width: 13px;
+            height: 13px;
+            background-color: #fff;
+            font-weight: 600;
+            font-size: .5rem;
+            line-height: 13px;
+            text-align: center;
+            margin-left: .5rem;
+            border-radius: 50%;
+            transform: translateY(-50%);
         }
     }
 }
