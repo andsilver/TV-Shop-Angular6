@@ -145,14 +145,25 @@
     }
     
     &.control-normal {
-        background-color: #ebebe3;
-        color: #212226;
         position: relative;
+        height: 2rem;
+        background-color: #ebebe3;
+        line-height: 2rem;
+        color: #212226;
         .ng-fa-icon {
             position: absolute;
-            right: 1rem;
-            top: 0;
-            line-height: 2.25rem;
+            right: .5rem;
+            top: 50%;
+            width: 13px;
+            height: 13px;
+            background-color: #fff;
+            font-weight: 600;
+            font-size: .5rem;
+            line-height: 13px;
+            text-align: center;
+            margin-left: .5rem;
+            border-radius: 50%;
+            transform: translateY(-50%);
         }
     }
 }
