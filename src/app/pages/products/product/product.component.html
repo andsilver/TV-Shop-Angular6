@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<mat-sidenav-container class="product-details-page">
     <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
         <mat-accordion displayMode="flat" multi="true">
             <app-filters-list></app-filters-list>
@@ -77,29 +77,16 @@
                                 <h3>Bezorgvoorraad</h3>
                                 <div>
                                     <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[product.stockInfo.shippingInfo.stockCode]}"></fa-icon>
-                                    <a [satPopoverAnchorFor]="p" (mouseenter)="p.open()" (mouseleave)="p.close()"> {{product?.stockInfo.shippingInfo.shippingTitle}}</a>
+                                    <a (click)="openCmsDialog(product.stockInfo.shippingInfo.permalink)"> {{product.stockInfo.shippingInfo.shippingTitle}}</a>
                                 </div>
-                                <sat-popover #p verticalAlign="below" horizontalAlign="start">
-                                    <app-description-popover [title]="product?.stockInfo.shippingInfo.shippingTitle" [permalink]="product?.stockInfo.shippingInfo.permalink"></app-description-popover>
-                                </sat-popover>
-                                <div class="new-stock-info-winkel">
-                                    <p class="mb-0"><strong>Winkelvoorraad</strong></p>
-                                    <div fxLayout="row wrap">
-                                        <div *ngFor="let store of product.stockInfo.storeStock" fxFlex="50">
-                                            <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[store.storeStockCode]}">
-                                            </fa-icon>
-                                            <a [satPopoverAnchorFor]="p_s"
-                                                (mouseenter)="tooltipStore=store;p_s.open()"
-                                                (mouseleave)="p_s.close()">
-                                                {{store.branchCity}}
-                                            </a>
-                                            <sat-popover #p_s verticalAlign="below" horizontalAlign="start">
-                                                <app-description-popover
-                                                    [title]="store?.branchCity"
-                                                    [permalink]="store?.permalink">
-                                                </app-description-popover>
-                                            </sat-popover>
-                                        </div>
+                                <h3>Winkelvoorraad</h3>
+                                <div fxLayout="row wrap">
+                                    <div *ngFor="let store of product.stockInfo.storeStock" fxFlex="50">
+                                        <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[store.storeStockCode]}">
+                                        </fa-icon>
+                                        <a (click)="openCmsDialog(store.permalink)">
+                                            {{store.branchCity}}
+                                        </a>
                                     </div>
                                 </div>
                             </div>

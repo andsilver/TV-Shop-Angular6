@@ -13,6 +13,7 @@ import { ExchangeComponent } from '../exchange/exchange.component';
 import { OutdoorOpportunityDialogComponent } from '../outdoor-opportunity-dialog/outdoor-opportunity-dialog.component';
 import { SubProductDialogComponent } from '../sub-product-dialog/sub-product-dialog.component';
 import { RecommendedCombidealDialogComponent } from '../recommended-combideal-dialog/recommended-combideal-dialog.component';
+import { CmsContentDialogComponent } from '../cms-content-dialog/cms-content-dialog.component';
 
 import { ProductsService } from '../products.service';
 
@@ -234,5 +235,11 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     });
 
     dialogRef.afterClosed().subscribe(() => {});
+  }
+
+  openCmsDialog(permalink) {
+    const dialogRef = this.dialog.open(CmsContentDialogComponent, {
+      data: permalink
+    });
   }
 }
