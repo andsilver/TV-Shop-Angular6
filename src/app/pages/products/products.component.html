@@ -158,7 +158,7 @@
                                             <p class="new-price list-new-price"  [ngClass.gt-xs]="['text-right']" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</p>
                                             <div [innerHTML]="product.stockIndicator | htmlSanitize"></div>
                                             <button class="control-normal" mat-button [routerLink]="[product.permalink]">
-                                                <ng-container i18n>GO TO PRODUCT</ng-container> <fa-icon [icon]="'chevron-circle-right'"></fa-icon>
+                                                <ng-container i18n>GO TO PRODUCT</ng-container> <fa-icon [icon]="'chevron-right'"></fa-icon>
                                             </button>
                                             <div *ngIf="product.haveDemoUnit" class="demo-unit">
                                                 <a i18n (click)="openDemoUnit(product)">View the Buitenkansje</a>
