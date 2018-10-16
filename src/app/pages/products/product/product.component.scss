@@ -214,17 +214,15 @@ h2.product-detail-title,
 
 .product-accesories {
 
-    margin-bottom: 50px;
-
     &-header {
-        border-bottom: 1px solid #ddd;
         padding-bottom: 7px;
         color: #212226;
         font-weight: bold;
     }
 
     &-content {
-        padding: 20px 0;
+        padding: 10px 0;
+        border-top: 1px solid #ddd;
         a {
             text-decoration: underline;
         }
@@ -234,7 +232,9 @@ h2.product-detail-title,
         }
 
         input{
+            height: 32px !important;
             width: 100%;
+            padding-left: 3px;
         }
 
         > div > fa-icon {

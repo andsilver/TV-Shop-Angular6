@@ -1,10 +1,10 @@
 <div class="added-to-cart">
   <h3 class="mat-dialog-title" i18n>Added to your shopping cart</h3>
   <div class="product" fxLayout fxLayout.lt-md="column" fxLayoutAlign="space-between start" fxLayoutAlign.lt-md="start center" fxLayoutGap="25px">
-    <img class="product-image" (click)="navigateToDetail()" alt="" [attr.ix-path]="product.images[0].small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 180px, (min-width: 320px) 180px, 100vw">
+    <img class="product-image" (click)="navigateToDetail()" alt="" [attr.ix-path]="product['image']? product['image'].small : product.images[0].small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 180px, (min-width: 320px) 180px, 100vw">
     <div>
       <a (click)="navigateToDetail()" class="title text-truncate">
-          {{product.name}}
+          {{product.name ? product.name : product['products_name']}}
       </a>
       <p class="product-quantity" [ngStyle.lt-md]="{'text-align': 'center'}"><ng-container i18n>Quantity:</ng-container> {{product.quantity}}</p>
     </div>

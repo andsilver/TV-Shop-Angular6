@@ -80,7 +80,7 @@
                                     <a [satPopoverAnchorFor]="p" (mouseenter)="p.open()" (mouseleave)="p.close()"> {{product?.stockInfo.shippingInfo.shippingTitle}}</a>
                                 </div>
                                 <sat-popover #p verticalAlign="below" horizontalAlign="start">
-                                    <app-description-popover [title]="product?.stockInfo.shippingInfo.shippingTitle" [content]="product?.stockInfo.shippingInfo.toolTipContent"></app-description-popover>
+                                    <app-description-popover [title]="product?.stockInfo.shippingInfo.shippingTitle" [permalink]="product?.stockInfo.shippingInfo.permalink"></app-description-popover>
                                 </sat-popover>
                                 <h3>Winkelvoorraad</h3>
                                 <div fxLayout="row wrap">
@@ -94,8 +94,8 @@
                                         </a>
                                         <sat-popover #p_s verticalAlign="below" horizontalAlign="start">
                                             <app-description-popover
-                                                [title]="tooltipStore?.branchCity"
-                                                [content]="tooltipStore?.toolTipContent">
+                                                [title]="store?.branchCity"
+                                                [permalink]="store?.permalink">
                                             </app-description-popover>
                                         </sat-popover>
                                     </div>
@@ -259,39 +259,35 @@
                                         <h2>Aanbevolen Accessoires</h2>
                                         <div class="product-accesories-header" fxLayout>
                                             <div fxFlex="10"></div>
-                                            <div fxFlex="45">producten</div>
-                                            <div fxFlex="13" class="text-center">voorraad</div>
+                                            <div fxFlex="42">producten</div>
+                                            <div fxFlex="10" class="text-center">voorraad</div>
                                             <div fxFlex="9" class="text-center">prijs</div>                    
                                             <div fxFlex="9" class="text-center">aantal</div>
-                                            <div fxFlex>meebestellen</div>
                                         </div>
-                                        <div *ngFor="let accesory of product.productAccesories" fxLayout class="product-accesories-content">
+                                        <div *ngFor="let accesory of product.productAccesories" fxLayout fxLayoutAlign="start center" class="product-accesories-content">
                                             <div fxFlex="10">
                                                 <img [attr.ix-path]="accesory.image.small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 80px, (min-width: 320px) 80px, 100vw"alt=""/>
                                             </div>
-                                            <div fxFlex="45">
+                                            <div fxFlex="42">
                                                 <div>
                                                     <a [routerLink]="accesory.permalink">{{accesory.products_name}}</a>
                                                     <p>{{accesory.shortdescription}}</p>
                                                 </div>
                                             </div>
-                                            <div fxFlex="13" class="text-center">
+                                            <div fxFlex="10" class="text-center">
                                                 <fa-icon [icon]="['fas', 'circle']"></fa-icon>
                                             </div>
                                             <div fxFlex="9" class="text-center">
                                                 {{accesory.price | customCurrency}}
-                                            </div>                    
+                                            </div>        
                                             <div fxFlex="9">
                                                 <input type="number" [(ngModel)]="accesory.quantity">
                                             </div>
-                                            <div fxFlex class="text-center">
-                                                <mat-checkbox [(ngModel)]="accesory.orderTogether"></mat-checkbox>
-                                            </div>
+                                            <button class="ml-3 control-add-to-cart" mat-button (click)="appService.addToCart(accesory, 1)">
+                                                <ng-container i18n>Add to cart</ng-container>
+                                                <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
+                                            </button>
                                         </div>
-                                        <button class="control-add-to-cart" mat-button (click)="appService.addToCart(product, 1, true)">
-                                            <ng-container i18n>Add to cart</ng-container>
-                                            <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
-                                        </button>
                                     </div>
                                 </div>
                                 <div #info_extra_description>
