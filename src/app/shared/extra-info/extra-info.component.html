@@ -1,11 +1,7 @@
 <div class="misc-bar m-0">
     <mat-card class="shopping-cart">
         <mat-card-title>
-            <h3>
-                <a [routerLink]="['/cart']" i18n>
-                    Your shopping cart <fa-icon [icon]="'shopping-cart'"></fa-icon>
-                </a>
-            </h3>
+            <h3><a [routerLink]="['/cart']" i18n>Uw winkelwagen</a></h3>
         </mat-card-title>
         <mat-card-content *ngIf="cart?.cart_contents?.length">
             <div class="shopping-cart-items">

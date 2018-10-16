@@ -39,7 +39,7 @@
                                 <div class="swiper-container" [swiper]="config">
                                     <div class="swiper-wrapper">
                                         <div *ngFor="let image of product?.images" class="swiper-slide">
-                                            <mat-card (click)="selectImage(image)" class="p-1">
+                                            <mat-card (click)="selectImage(image)">
                                                 <span *ngIf="image.have_image">
                                                     <img [attr.ix-path]="image.small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 80px, (min-width: 320px) 90px, 100vw"  class="swiper-lazy" alt=""/>
                                                 </span>
@@ -63,12 +63,12 @@
                                 <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18"></mat-card>
                             </div>
 
-                            <div fxLayout="column" class="product-detail-control mb-2">
-                                <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)"><ng-container i18n>Add to cart</ng-container> <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon></button>
-                                <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
-                                <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
-                                <button class="control-deal" mat-button (click)="exchangeProduct()"><ng-container i18n>SUMMERDEAL</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
-                                <button class="control-normal" mat-button><ng-container i18n>Action: Exchange your TV</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
+                            <div fxLayout="column" class="product-detail-control">
+                                <button class="control-add-to-cart-big" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)"><ng-container i18n>Add to cart</ng-container> <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon></button>
+                                <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
+                                <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
+                                <button class="control-deal" mat-button (click)="exchangeProduct()"><ng-container i18n>SUMMERDEAL</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
+                                <button class="control-normal" mat-button><ng-container i18n>Action: Exchange your TV</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
                             </div>
 
                             <div class="new-stock-info-wrapper">{{product?.stockIndicator}}</div>
@@ -82,22 +82,24 @@
                                 <sat-popover #p verticalAlign="below" horizontalAlign="start">
                                     <app-description-popover [title]="product?.stockInfo.shippingInfo.shippingTitle" [permalink]="product?.stockInfo.shippingInfo.permalink"></app-description-popover>
                                 </sat-popover>
-                                <h3>Winkelvoorraad</h3>
-                                <div fxLayout="row wrap">
-                                    <div *ngFor="let store of product.stockInfo.storeStock" fxFlex="50">
-                                        <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[store.storeStockCode]}">
-                                        </fa-icon>
-                                        <a [satPopoverAnchorFor]="p_s"
-                                            (mouseenter)="tooltipStore=store;p_s.open()"
-                                            (mouseleave)="p_s.close()">
-                                            {{store.branchCity}}
-                                        </a>
-                                        <sat-popover #p_s verticalAlign="below" horizontalAlign="start">
-                                            <app-description-popover
-                                                [title]="store?.branchCity"
-                                                [permalink]="store?.permalink">
-                                            </app-description-popover>
-                                        </sat-popover>
+                                <div class="new-stock-info-winkel">
+                                    <p><strong>Winkelvoorraad</strong></p>
+                                    <div fxLayout="row wrap">
+                                        <div *ngFor="let store of product.stockInfo.storeStock" fxFlex="50">
+                                            <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[store.storeStockCode]}">
+                                            </fa-icon>
+                                            <a [satPopoverAnchorFor]="p_s"
+                                                (mouseenter)="tooltipStore=store;p_s.open()"
+                                                (mouseleave)="p_s.close()">
+                                                {{store.branchCity}}
+                                            </a>
+                                            <sat-popover #p_s verticalAlign="below" horizontalAlign="start">
+                                                <app-description-popover
+                                                    [title]="store?.branchCity"
+                                                    [permalink]="store?.permalink">
+                                                </app-description-popover>
+                                            </sat-popover>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -117,10 +119,10 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="shortdesc"><p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
+                            <div class="shortdesc"><p class="mb-3" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
                             <ng-container *ngIf="product?.featureHighlights">
-                                <h3>Kenmerken</h3>
-                                <p [innerHTML]="product.featureHighlights | htmlSanitize"></p>
+                                <p><strong>Kenmerken</strong></p>
+                                <div [innerHTML]="product.featureHighlights | htmlSanitize"></div>
                             </ng-container>
                         </div>
                         <div fxFlex="44" fxFlex.lt-md="false" ngClass.gt-md="pr-3 m-0" *ngIf="product?.description || product?.extra_description || product?.reviews.length || product?.expertReview">
@@ -152,7 +154,7 @@
                                     <div *ngIf="product?.expertReview.expertAuthor" class="expert-review">
                                         <h2>Plus- en minpunten</h2>
                                         <div ngClass.xs="py-2" ngClass.lt-md="p-2" fxLayout fxLayout.xs="column">
-                                            <div fxFlex="55" class="px-4 mb-3">
+                                            <div fxFlex="55" class="pr-4 mb-3">
                                                 <div *ngIf="product.expertReview.expertPoints.plus.length" class="pb-2">
                                                     <div class="expert-review-title">Pluspunten</div>
                                                     <p *ngFor="let point of product.expertReview.expertPoints.plus" class="pb-1">
@@ -237,9 +239,8 @@
                                                     <p class="product-package-price-special">{{integer(package.specialPrice)}}<sup>{{float(package.specialPrice)}}</sup></p>
                                                     <p class="product-package-price-normal">{{integer(package.normalPrice)}}<sup>{{float(package.normalPrice)}}</sup></p>
                                                     <p class="product-package-price-saving">{{integer(package.savingPrice)}}<sup>{{float(package.savingPrice)}}</sup></p>
-                                                    <button class="control-add-to-cart" mat-button (click)="addToCartHash(package)">
+                                                    <button class="control-add-to-cart-medium" mat-button (click)="addToCartHash(package)">
                                                         <ng-container i18n>Add to cart</ng-container>
-                                                        <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
                                                     </button>
                                                 </div>
                                             </div>
@@ -258,35 +259,35 @@
                                     <div *ngIf="product?.productAccesories.length" class="product-accesories">
                                         <h2>Aanbevolen Accessoires</h2>
                                         <div class="product-accesories-header" fxLayout>
-                                            <div fxFlex="10"></div>
-                                            <div fxFlex="42">producten</div>
-                                            <div fxFlex="10" class="text-center">voorraad</div>
-                                            <div fxFlex="9" class="text-center">prijs</div>                    
-                                            <div fxFlex="9" class="text-center">aantal</div>
+                                            <div fxFlex="0 0 59px" class="cell-image mr-3"></div>
+                                            <div fxFlex="42" class="cell-products">producten</div>
+                                            <div fxFlex="11" class="cell-stock text-center">voorraad</div>
+                                            <div fxFlex="0 0 62px" class="ml-3 cell-price text-right text-nowrap">prijs</div>
+                                            <div fxFlex="9" class="cell-quantity ml-3">aantal</div>
+                                            <div fxFlex="0 0 40px" class="cell-submit ml-3"></div>
                                         </div>
                                         <div *ngFor="let accesory of product.productAccesories" fxLayout fxLayoutAlign="start center" class="product-accesories-content">
-                                            <div fxFlex="10">
+                                            <div fxFlex="0 0 59px" class="cell-image mr-3">
                                                 <img [attr.ix-path]="accesory.image.small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 80px, (min-width: 320px) 80px, 100vw"alt=""/>
                                             </div>
-                                            <div fxFlex="42">
+                                            <div fxFlex="42" class="cell-products">
                                                 <div>
                                                     <a [routerLink]="accesory.permalink">{{accesory.products_name}}</a>
                                                     <p>{{accesory.shortdescription}}</p>
                                                 </div>
                                             </div>
-                                            <div fxFlex="10" class="text-center">
+                                            <div fxFlex="11" class="cell-stock text-center">
                                                 <fa-icon [icon]="['fas', 'circle']"></fa-icon>
                                             </div>
-                                            <div fxFlex="9" class="text-center">
+                                            <div fxFlex="0 0 62px" class="ml-3 cell-price text-right text-nowrap">
                                                 {{accesory.price | customCurrency}}
                                             </div>        
-                                            <div fxFlex="9">
+                                            <div fxFlex="9" class="cell-quantity ml-3">
                                                 <input type="number" [(ngModel)]="accesory.quantity">
                                             </div>
-                                            <button class="ml-3 control-add-to-cart" mat-button (click)="appService.addToCart(accesory, 1)">
-                                                <ng-container i18n>Add to cart</ng-container>
-                                                <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
-                                            </button>
+                                            <div fxFlex="0 0 40px" class="cell-submit ml-3">
+                                                <button class="control-add-to-cart-small" mat-button (click)="appService.addToCart(accesory, 1)"></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

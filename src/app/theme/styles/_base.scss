@@ -987,7 +987,7 @@ app-root .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not
     .filter-sidenav {
         .mat-expansion-panel {
             .mat-expansion-panel-body {
-                padding: 0 0 1rem;
+                padding: 0 0 1rem 1rem;
             }
         }
     }
@@ -1070,7 +1070,6 @@ app-root .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not
     }
 }
 
-
-
-
-
+.text-nowrap {
+    white-space: nowrap!important;
+}
