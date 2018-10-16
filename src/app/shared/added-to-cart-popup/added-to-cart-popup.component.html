@@ -6,15 +6,15 @@
       <a (click)="navigateToDetail()" class="title text-truncate">
           {{product.name ? product.name : product['products_name']}}
       </a>
-      <p class="product-quantity" [ngStyle.lt-md]="{'text-align': 'center'}"><ng-container i18n>Quantity:</ng-container> {{product.quantity}}</p>
-    </div>
-    <div class="product-price" [ngStyle.gt-sm]="{'margin-left': '40px'}">
-      <ng-container *ngIf="isNumber(product.newPrice)">{{product.newPrice | customCurrency}}</ng-container>
-      <ng-container *ngIf="!isNumber(product.newPrice)">{{product.newPrice}}</ng-container>
+      <p class="product-quantity mb-3" [ngStyle.lt-md]="{'text-align': 'center'}"><ng-container i18n>Quantity:</ng-container> {{product.quantity}}</p>
+      <div class="product-price text-nowrap">
+        <ng-container *ngIf="isNumber(product.newPrice)">{{product.newPrice | customCurrency}}</ng-container>
+        <ng-container *ngIf="!isNumber(product.newPrice)">{{product.newPrice}}</ng-container>
+      </div>
     </div>
     <div fxLayout="column" fxLayoutGap="10px">
-        <button class="control-add-to-cart" mat-button (click)="navigateToCartList()" i18n>Order</button>
-        <button class="control-normal" mat-button (click)="dialogRef.close()" i18n>Return to Shop</button>
+        <button class="control-add-to-cart-medium" mat-button (click)="navigateToCartList()" i18n>Order</button>
+        <button class="control-normal" mat-button (click)="dialogRef.close()" i18n>Return to Shop<fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
     </div>
   </div>
   <div class="close-popup">
