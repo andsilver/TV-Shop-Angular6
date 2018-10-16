@@ -1,10 +1,23 @@
 .filter-box{
-    margin-bottom: 20px;
-
-    h3 {
-        border-bottom: 1px solid #212226;
-        margin-bottom: .625rem;
-        padding-bottom: 0.375rem;
+    margin-bottom: 1rem;
+    .filter-box-heading {
+        h3 {
+            border-bottom: 1px solid #212226;
+            font-weight: 700;
+            font-size: .875rem;
+            line-height: 1.125rem;
+            text-transform: uppercase;
+            margin-bottom: .625rem;
+            padding-left: 1rem;
+            padding-bottom: 0.375rem;
+        }
+    }
+    .filter-box-content {
+        padding-left: 1rem;
+    }
+    a.show_more_toggle {
+        display: block;
+        padding-left: 1rem;
     }
 }
 

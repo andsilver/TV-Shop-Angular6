@@ -8,14 +8,19 @@
 .shopping-cart {
 
     .mat-card-title{
-        border-bottom: none;
-        padding: 0 10px;
-        background-color: #212226;
 
-        h4 {
-            padding-bottom: 0;
-            line-height: 2.125rem;
+        h3 {
             position: relative;
+            border-bottom: none;
+            background-color: #212226;
+            background-image:  url(/assets/images/others/icon_cart.png);
+            background-position: right 1rem center;
+            background-repeat: no-repeat;
+            background-size: 21px auto;
+            font-size: .875rem;
+            line-height: 1.125rem;
+            padding: 4px 1rem;
+
             a{
                 text-transform: uppercase;
                 color: #ffffff;

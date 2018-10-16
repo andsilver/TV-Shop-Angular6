@@ -1,4 +1,4 @@
-<div fxLayout="row wrap" *ngIf="router.url != '/'">
+<div fxLayout="row wrap" *ngIf="router.url != '/'" class="px-3">
   <div fxFlex="100">
       <mat-card fxLayout="row wrap" class="breadcrumb light-block">
           <a *ngIf="router.url != '/'" routerLink="/" class="breadcrumb-item" fxLayout="row" fxLayoutAlign="start center" (click)="closeSubMenus()">

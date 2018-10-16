@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, HostListener, Input, AfterViewInit } from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild, HostListener, Input, AfterViewInit, ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs/Subscription';
@@ -19,7 +19,8 @@ import { Product, Category } from '../../app.models';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 

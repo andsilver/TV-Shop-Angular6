@@ -1,11 +1,7 @@
 <div class="misc-bar m-0">
     <mat-card class="shopping-cart">
         <mat-card-title>
-            <h4>
-                <a [routerLink]="['/cart']" i18n>
-                    Your shopping cart <fa-icon [icon]="'shopping-cart'"></fa-icon>
-                </a>
-            </h4>
+            <h3><a [routerLink]="['/cart']" i18n>Uw winkelwagen</a></h3>
         </mat-card-title>
         <mat-card-content *ngIf="cart?.cart_contents?.length">
             <div class="shopping-cart-items">
@@ -35,7 +31,7 @@
         </mat-card-content>
     </mat-card>
     <mat-card class="branch-office">
-        <mat-card-title><h4 i18n>Our stores</h4></mat-card-title>
+        <mat-card-title><h3 i18n>Our stores</h3></mat-card-title>
         <mat-card-content>
             <div *ngFor="let store of stores" class="branch_opening_hours_box">
                 <div class="branch_img">
@@ -54,7 +50,7 @@
     </mat-card>
     <mat-card id="advice-and-contact">
         <mat-card-title>
-            <h4 i18n>ADVICE AND CONTACT</h4>
+            <h3 i18n>ADVICE AND CONTACT</h3>
         </mat-card-title>
         <mat-card-content>
             <div>
@@ -105,7 +101,7 @@
     </mat-card>
     <mat-card id="extra-open">
         <mat-card-title>
-            <h4 i18n>EXTRA OPEN FOR YOU</h4>
+            <h3 i18n>EXTRA OPEN FOR YOU</h3>
         </mat-card-title>
         <mat-card-content>
             <div class="extra_open_hours_box">
@@ -117,7 +113,7 @@
     </mat-card>
     <mat-card id="customer-review">
         <mat-card-title>
-            <h4 i18n>CLIENT REVIEWS</h4>
+            <h3 i18n>CLIENT REVIEWS</h3>
         </mat-card-title>
         <mat-card-content>
             <div class="reviewbox reviewbox-kieskeurig">

@@ -1,15 +1,15 @@
 <div *ngFor="let f of filtersList" class="filter-box" (click)="navigate($event)">
-    <div>
+    <div class="filter-box-heading">
         <h3>{{f.title}}</h3>
     </div>
-    <div [innerHTML]="f.content | htmlSanitize"></div>
+    <div class="filter-box-content" [innerHTML]="f.content | htmlSanitize"></div>
 </div>
 
 <div class="filter-box" *ngIf="brands.length">
-    <div>
+    <div class="filter-box-heading">
         <h3 i18n>Condition</h3>
     </div>
-    <div *ngFor="let brand of brands | slice:0:showMore[brandShow].count">
+    <div class="filter-box-content" *ngFor="let brand of brands | slice:0:showMore[brandShow].count">
         <a [routerLink]="brand.permalink">{{brand.name}}</a>
     </div>
     <a class="show_more_toggle" *ngIf="brands.length > 10"

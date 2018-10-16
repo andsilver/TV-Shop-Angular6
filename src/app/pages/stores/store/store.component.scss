@@ -7,15 +7,14 @@
 }
 
 @media (min-width:960px) {
-    .filter-sidenav {
+    /* .filter-sidenav {
         position: static;
-        width: 200px;
+        width: 187px;
         padding: 0;
-        margin-right: 20px;
-    }
+    } */
 }
 
-.store {
+#page-store {
     max-width: 960px;
     margin: 0 auto;
     h1 {
@@ -48,13 +47,12 @@
     }
 
     .header-title {
-        background: #212226;
-        font-weight: normal;
-        font-size: 1.25rem;
-        font-family: "Gotham Condensed";
-        letter-spacing: 1px;
-        color: #fff;
-        margin: 0 0 1rem;
+        font-weight: 700;
+        font-size: .875rem;
+        line-height: 1.125rem;
+        font-family: "Poppins";
+        text-transform: none;
+        margin-bottom: .5rem;
     }
 
     .weekday {
@@ -79,7 +77,7 @@
         }
     }
 
-    .atmosphere {
+    /*.atmosphere {
         .small-image {
             overflow: hidden;
             position: relative;
@@ -101,13 +99,70 @@
                 max-width: 100%;
             }
         }
-    }
+
+    }*/
+
+
 
     .introduce img {
         padding-right: 15px;
         padding-bottom: 15px;
     }
 }
+.atmosphere-r {
+    position: relative;
+    overflow: hidden;
+    display: -ms-flexbox!important;
+    display: flex!important;
+    -ms-flex-wrap: wrap!important;
+    flex-wrap: wrap!important;
+    height: 400px;
+    margin-left: -.25rem;
+    margin-right: -.25rem;
+    padding-left: calc(25% + .125rem);
+}
+
+.atmosphere-r .big-image {
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    padding: .25rem;
+}
+
+.atmosphere-r .big-image:nth-child(1), .atmosphere-r .big-image:nth-child(2), .atmosphere-r .big-image:nth-child(3) {
+    position: absolute;
+    left: 0;
+    width: 25%;
+    height: 33.333333%;
+}
+
+.atmosphere-r .big-image:nth-child(1) {
+    top: 0;
+}
+
+.atmosphere-r .big-image:nth-child(2) {
+    top: 33.333333%;
+}
+
+.atmosphere-r .big-image:nth-child(3) {
+    bottom: 0;
+}
+
+.atmosphere-r .big-image:nth-child(4), .atmosphere-r .big-image:nth-child(5), .atmosphere-r .big-image:nth-child(6), .atmosphere-r .big-image:nth-child(7) {
+    ms-flex: 1 1 50%;
+    flex: 1 1 50%;
+    max-width: 50%;
+    height: 50%;
+    max-height: 50%;
+}
+
+.atmosphere-r .big-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*
 .atmosphere > div {
     margin-left: -10px;
     margin-right: -10px;
@@ -121,8 +176,9 @@
 .atmosphere-r .big-image:nth-child(2) {
     padding-bottom: 20px;
 }
+*/
 @media (min-width:600px) {
-    .store {
+    #page-store {
         .features {
             ul {
                 &::before,

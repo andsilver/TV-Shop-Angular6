@@ -1,29 +1,29 @@
 <div fxLayout>
-    <div class="filter-sidenav" *ngIf="windowSize == 'gt-md'">
+    <div fxFlex="0 0 187px" class="filter-sidenav" *ngIf="windowSize == 'gt-md'">
         <app-filters-list></app-filters-list>
     </div>
-    <div fxFlex="65" fxFlex.lt-md="100" class="px-3">
+    <div fxFlex ngClass="px-3" class="middle-content">
         <ng-container *ngIf="widget">
             <app-main-carousel *ngIf="widget" [slides]="widget[0]"></app-main-carousel>
             <div *ngFor="let mid of widget[1]" [innerHTML]="mid.content | htmlSanitize" (click)="navigate($event)"></div>
-            <div class="most-popular mt-4">
-                <div class="px-1">
-                    <div class="most-popular-title mb-2" i18n>Most Popular</div>
-                </div>
-                <div fxLayout="row wrap" fxLayoutAlign="start stretch">
-                    <div fxFlex="32" *ngFor="let product of widget[2].products" class="product-item-widget">
-                        <a [routerLink]="[product.permalink]" class="image-link d-block text-center">
-                            <img [attr.ix-path]="product.images[0].medium" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" alt="">
-                        </a>
-                        <div>
-                            <a [routerLink]="[product.permalink]" class="product-name"><strong class="text-capitalize">{{product.name}}</strong></a>
-                            <div class="py-3">
-                                <app-rating [ratingsCount]="product?.ratingsCount" [ratingsValue]="product?.ratingsValue" [direction]="'row'"></app-rating>
-                            </div>
-                            <div class="product-feature-highlights" [innerHTML]="product.featureHighlights"></div>
-                            <div class="product-price mt-2">
-                                <span *ngIf="product.oldPrice > '0'" class="product-old-price">{{product.oldPrice | customCurrency:2:3:false}}</span>
-                                <span class="product-new-price" [ngClass]="{'only-new-price': product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</span>
+            <div class="most-popular-wrapper">
+                <div class="most-popular-title" i18n>Most Popular</div>
+                <div fxLayout="row wrap" fxLayoutAlign="start stretch" class="most-popular">
+                    <div fxFlex="50" fxFlex.gt-sm="33.3333333" *ngFor="let product of widget[2].products" class="product-item-widget">
+                        <div class="listing-item">
+                            <a [routerLink]="[product.permalink]" class="image-link d-block text-center">
+                                <img [attr.ix-path]="product.images[0].medium" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" alt="">
+                            </a>
+                            <div>
+                                <a [routerLink]="[product.permalink]" class="product-name"><strong class="text-capitalize">{{product.name}}</strong></a>
+                                <div class="product-rating">
+                                    <app-rating [ratingsCount]="product?.ratingsCount" [ratingsValue]="product?.ratingsValue" [direction]="'row'"></app-rating>
+                                </div>
+                                <div class="product-feature-highlights" [innerHTML]="product.featureHighlights"></div>
+                                <div class="product-price mt-2">
+                                    <span *ngIf="product.oldPrice > '0'" class="product-old-price">{{product.oldPrice | customCurrency:2:3:false}}</span>
+                                    <span class="product-new-price" [ngClass]="{'only-new-price': product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
         </ng-container>
     </div>
 
-    <div fxFlex *ngIf="windowSize == 'gt-md'">
+    <div fxFlex="0 0 187px" class="misc-sidenav" *ngIf="windowSize == 'gt-md'">
         <app-extra-info></app-extra-info>
     </div>
 </div>
