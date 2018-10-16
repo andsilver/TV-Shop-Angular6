@@ -49,7 +49,9 @@
             </div>
 
             <div fxFlex fxFlex.lt-md="false">
-              <app-google-map></app-google-map>
+              <app-google-map 
+                [lat]="coordinates[_store.store_location]['lat']"
+                [lng]="coordinates[_store.store_location]['lng']"></app-google-map>
             </div>
           </div>
 

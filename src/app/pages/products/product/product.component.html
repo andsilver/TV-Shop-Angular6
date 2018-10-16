@@ -80,7 +80,7 @@
                                     <a [satPopoverAnchorFor]="p" (mouseenter)="p.open()" (mouseleave)="p.close()"> {{product?.stockInfo.shippingInfo.shippingTitle}}</a>
                                 </div>
                                 <sat-popover #p verticalAlign="below" horizontalAlign="start">
-                                    <app-description-popover [title]="product?.stockInfo.shippingInfo.shippingTitle" [content]="product?.stockInfo.shippingInfo.toolTipContent"></app-description-popover>
+                                    <app-description-popover [title]="product?.stockInfo.shippingInfo.shippingTitle" [permalink]="product?.stockInfo.shippingInfo.permalink"></app-description-popover>
                                 </sat-popover>
                                 <h3>Winkelvoorraad</h3>
                                 <div fxLayout="row wrap">
@@ -94,8 +94,8 @@
                                         </a>
                                         <sat-popover #p_s verticalAlign="below" horizontalAlign="start">
                                             <app-description-popover
-                                                [title]="tooltipStore?.branchCity"
-                                                [content]="tooltipStore?.toolTipContent">
+                                                [title]="store?.branchCity"
+                                                [permalink]="store?.permalink">
                                             </app-description-popover>
                                         </sat-popover>
                                     </div>
