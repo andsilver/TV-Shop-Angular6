@@ -806,7 +806,7 @@
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit><trans-unit id="635e726973a1f0a825756f7d3a12a3f0f011d43b" datatype="html">
-        <source>CHOOSE YOUR METHOD OF PAYMENT</source><target state="new">UW GEGEVENS</target>
+        <source>CHOOSE YOUR METHOD OF PAYMENT</source><target state="new">KIES UW BETAALMETHODE</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step2/step2.component.ts</context>
           <context context-type="linenumber">45</context>
@@ -818,7 +818,7 @@
         <source>Choose your type:</source><target state="new">Kies uw type:</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step2/step2.component.ts</context><context context-type="linenumber">70</context></context-group></trans-unit><trans-unit id="4253671bba3c63a73c8aa7f80feef20a14e3b4b0" datatype="html">
-        <source>YOUR DATA</source><target state="new">YOUR DATA</target>
+        <source>YOUR DATA</source><target state="new">Uw Gegevens</target>
         
         
       <context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step2/step2.component.ts</context><context context-type="linenumber">85</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context><context context-type="linenumber">27</context></context-group></trans-unit><trans-unit id="012906c01fe36941d87690e90fa2bdd9fb3350ab" datatype="html">
@@ -903,37 +903,37 @@
     </target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context><context context-type="linenumber">57</context></context-group></trans-unit><trans-unit id="e80b88d716e20e9ed293fdcb92f4379004e3a893" datatype="html">
-        <source>Thanks. Your order has been successfully completed!</source><target state="new">Thanks. Your order has been successfully completed!</target>
+        <source>Thanks. Your order has been successfully completed!</source><target state="new">Bedankt. Uw bestelling is met succes afgerond!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit><trans-unit id="9c184148553181a3a31d5efba36abc803ea62a0a" datatype="html">
-        <source>You will receive  an automatic order confirmation by e-mail. This is an overview of your order. We will keep you informed of the status of the order by e-mail.</source><target state="new">You will receive  an automatic order confirmation by e-mail. This is an overview of your order. We will keep you informed of the status of the order by e-mail.</target>
+        <source>You will receive  an automatic order confirmation by e-mail. This is an overview of your order. We will keep you informed of the status of the order by e-mail.</source><target state="new">U ontvangt een automatische orderbevestiging per e-mail. Hierin staat een overzicht van uw bestelling. Wij houden u per mail op de hoogte van de status van de bestelling.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit><trans-unit id="7633e2ffd9e4d8faa1107d1ed7bf1ff6f5226fb3" datatype="html">
-        <source>You can also check the status of your order under </source><target state="new">You can also check the status of your order under </target>
+        <source>You can also check the status of your order under </source><target state="new">Ook kunt u zelf de status van uw bestelling volgen onder </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit><trans-unit id="ae3ddcb77392ed4ad0d1d506e2c9bed2fd5c9604" datatype="html">
-        <source>The order number can be found on the order confirmation that you receive by e-mail.</source><target state="new">The order number can be found on the order confirmation that you receive by e-mail.</target>
+        <source>The order number can be found on the order confirmation that you receive by e-mail.</source><target state="new">Het ordernummer vindt u op de orderbevestiging die u per mail ontvangt.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit><trans-unit id="5a1438abd0dcea2ccd117f1209ed9aa6bc22d3f6" datatype="html">
-        <source>Your order will expire as follows:</source><target state="new">Your order will expire as follows:</target>
+        <source>Your order will expire as follows:</source><target state="new">Uw bestelling verloopt als volgt:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit><trans-unit id="518d4fc7f2e50c7bce9eb74b9a1fdf188daa2e51" datatype="html">
-        <source>Order placed</source><target state="new">Order placed</target>
+        <source>Order placed</source><target state="new">Order geplaatst</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">38</context>
@@ -943,15 +943,15 @@
           Your order will be processed and the products will be reserved for you if they are in stock.
           If you want to pick up the products and they are in stock, you will receive a confirmation.
         </source><target state="new">
-          Your order will be processed and the products will be reserved for you if they are in stock.
-          If you want to pick up the products and they are in stock, you will receive a confirmation.
+          Uw order wordt in behandeling genomen en de producten worden voor u gereserveerd als deze op voorraad zijn.
+          Als u de producten wilt afhalen en deze zijn op voorraad dan krijgt u hiervan een bevestiging.
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit><trans-unit id="a4715a2ffb03775abd6e7c5d48f8a87c9fbd2282" datatype="html">
-        <source>Payment received (2-3 business days for bank transfer)</source><target state="new">Payment received (2-3 business days for bank transfer)</target>
+        <source>Payment received (2-3 business days for bank transfer)</source><target state="new">Betaling ontvangen (2-3 werkdagen bij overboeking)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">49</context>
@@ -960,7 +960,7 @@
         <source>
           You will receive a confirmation by e-mail as soon as we receive your payment and the products are ready for shipment.
         </source><target state="new">
-          You will receive a confirmation by e-mail as soon as we receive your payment and the products are ready for shipment.
+          U ontvangt per e-mail een bevestiging zodra wij uw betaling hebben ontvangen en de producten klaar staan voor verzending.
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
@@ -970,7 +970,7 @@
         <source>
           Have you indicated that you would like to pick up your products? 
         </source><target state="new">
-          Have you indicated that you would like to pick up your products? 
+          Heeft u aangegeven uw producten te willen afhalen?
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
@@ -980,38 +980,38 @@
         <source>
           You can pay in cash or with debit card in our stores.
         </source><target state="new">
-          You can pay in cash or with debit card in our stores.
+          U kunt bij ons in de winkels contant of met pin betalen.
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">56</context>
         </context-group>
       </trans-unit><trans-unit id="0c49e860474139c1447ff935bc7e06c11a810fee" datatype="html">
-        <source>Prepayment data</source><target state="new">Prepayment data</target>
+        <source>Prepayment data</source><target state="new">Gegevens voor vooruitbetaling</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit><trans-unit id="84ff51918d428237ef43e792cd21375e3462bdb4" datatype="html">
-        <source>Name receiver: PlatteTV.nl</source><target state="new">Name receiver: PlatteTV.nl</target>
+        <source>Name receiver: PlatteTV.nl</source><target state="new">Naam ontvanger: PlatteTV.nl</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit><trans-unit id="a912f3dab4ef0a73e1428254e0a152c6abaf8e69" datatype="html">
-        <source>Account number (IBAN): NL 73 ING B 0665 919808</source><target state="new">Account number (IBAN): NL 73 ING B 0665 919808</target>
+        <source>Account number (IBAN): NL 73 ING B 0665 919808</source><target state="new">Rekeningnummer (IBAN): NL 73 ING B 0665 919808</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">67</context>
         </context-group>
       </trans-unit><trans-unit id="3e7cadf07008952d2ca9c9b83b8852f439800fe3" datatype="html">
-        <source>Payment reference: Your order number</source><target state="new">Payment reference: Your order number</target>
+        <source>Payment reference: Your order number</source><target state="new">Betalingskenmerk: Uw ordernummer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">69</context>
         </context-group>
       </trans-unit><trans-unit id="df792dffd5725731affb0d741eaf2835734425b8" datatype="html">
-        <source>For payments from Belgium:</source><target state="new">For payments from Belgium:</target>
+        <source>For payments from Belgium:</source><target state="new">Voor betalingen vanuit België:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">70</context>
@@ -1029,7 +1029,7 @@
           <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit><trans-unit id="ecabaea0a3af6434ee323667e2505cdf596121ef" datatype="html">
-        <source>Send / pick up your order</source><target state="new">Send / pick up your order</target>
+        <source>Send / pick up your order</source><target state="new">Versturen/afhalen van uw bestelling</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">79</context>
@@ -1040,52 +1040,50 @@
           Small packages are sent via PostNL.
           As soon as these are sent you will receive a Track &amp; Trace number with which you can track your order.
         </source><target state="new">
-          We ship the products through qualified delivery services.
-          Small packages are sent via PostNL.
-          As soon as these are sent you will receive a Track &amp; Trace number with which you can track your order.
+          Wij versturen de producten via gekwalificeerde bezorgdiensten. Kleine pakketten worden via PostNL verstuurd. Zodra deze verstuurd zijn ontvangt u een Track & Trace nummer waarmee u uw bestelling kunt volgen.
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">80</context>
         </context-group>
       </trans-unit><trans-unit id="e276ec9d4ae5dfb989ace32b9f1b96cd1eaab2c8" datatype="html">
-        <source>Have you indicated that you would like to pick up your products?</source><target state="new">Have you indicated that you would like to pick up your products?</target>
+        <source>Have you indicated that you would like to pick up your products?</source><target state="new">Heeft u aangegeven uw producten te willen afhalen?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit><trans-unit id="67c5455a65395e97912e8f5563292c7b57e111f3" datatype="html">
-        <source>Then you will receive notification from us when the products are ready for you.</source><target state="new">Then you will receive notification from us when the products are ready for you.</target>
+        <source>Then you will receive notification from us when the products are ready for you.</source><target state="new">Dan ontvangt u van ons bericht wanneer de producten voor u klaar liggen.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">86</context>
         </context-group>
       </trans-unit><trans-unit id="fd48b1ce6241f7c2165a2226bb3ecb1600307a6e" datatype="html">
-        <source>Order Received</source><target state="new">Order Received</target>
+        <source>Order Received</source><target state="new">Bestelling ontvangen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">93</context>
         </context-group>
       </trans-unit><trans-unit id="ecc9bb96757afb20f1173fd856fbdee5c6234ebc" datatype="html">
-        <source>In most cases you will receive your order within 3 working days.</source><target state="new">In most cases you will receive your order within 3 working days.</target>
+        <source>In most cases you will receive your order within 3 working days.</source><target state="new">In de meeste gevallen zult u uw bestelling binnen 3 werkdagen ontvangen.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">94</context>
         </context-group>
       </trans-unit><trans-unit id="2240b4ea9cbf8d80898a23b3468d2a104021cd3e" datatype="html">
-        <source>You will receive an invoice upon delivery. Keep it well.</source><target state="new">You will receive an invoice upon delivery. Keep it well.</target>
+        <source>You will receive an invoice upon delivery. Keep it well.</source><target state="new">Bij aflevering ontvangt u een factuur. Bewaar deze goed.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">95</context>
         </context-group>
       </trans-unit><trans-unit id="83b7c21131cb7d8c50d1362c39704df83b96af68" datatype="html">
-        <source>Do you have any questions?</source><target state="new">Do you have any questions?</target>
+        <source>Do you have any questions?</source><target state="new">Heeft u nog vragen?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">102</context>
         </context-group>
       </trans-unit><trans-unit id="01786758838c1b5a5a3a857c595a0409768decd0" datatype="html">
-        <source>Contact our customer service:</source><target state="new">Contact our customer service:</target>
+        <source>Contact our customer service:</source><target state="new">Neem contact op met onze klantenservice:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">104</context>
@@ -1182,7 +1180,7 @@
         
         
       <context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/checkout.component.ts</context><context context-type="linenumber">14</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step1/step1.component.ts</context><context context-type="linenumber">153</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step2/step2.component.ts</context><context context-type="linenumber">103</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context><context context-type="linenumber">61</context></context-group></trans-unit><trans-unit id="af43c003c303816111f461221c24ef96e3a1f880" datatype="html">
-        <source>Your data</source><target state="new">Your data</target>
+        <source>Your data</source><target state="new">Uw gegevens</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step1/step1.component.ts</context>
           <context context-type="linenumber">5</context>
@@ -1194,19 +1192,19 @@
           <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit><trans-unit id="540f9fefd163fc997bcbfcddd61221b6a624a6e0" datatype="html">
-        <source>type of order</source><target state="new">type of order</target>
+        <source>type of order</source><target state="new">Type bestelling</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step1/step1.component.ts</context>
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit><trans-unit id="ddd8a4986d2d1717a274a5a0fbed04988a819e69" datatype="html">
-        <source>Private</source><target state="new">Private</target>
+        <source>Private</source><target state="new">Particulier</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step1/step1.component.ts</context>
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit><trans-unit id="03da760e8cf66408801094b7705d213bf78c7cb9" datatype="html">
-        <source>Saluation: *</source><target state="new">Saluation: *</target>
+        <source>Saluation: *</source><target state="new">Aanhef: *</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step1/step1.component.ts</context>
           <context context-type="linenumber">35</context>
@@ -1401,7 +1399,7 @@
         <source>Direct Reaction.</source><target state="new">Direct reactie</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context><context context-type="linenumber">147</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/extra-info/contact/contact.component.ts</context><context context-type="linenumber">56</context></context-group></trans-unit><trans-unit id="aa85485557852d120c96ad93d674a738b537da3a" datatype="html">
-        <source>Continue to Home</source><target state="new">Continue to Home</target>
+        <source>Continue to Home</source><target state="new">Verder naar Home</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step4/step4.component.ts</context>
           <context context-type="linenumber">155</context>
@@ -1537,13 +1535,13 @@
         <source>Mr.</source><target state="new">Dhr.</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/pages/checkout/step1/step1.component.ts</context><context context-type="linenumber">38</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/best-price-dialog/best-price-dialog.component.ts</context><context context-type="linenumber">21</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/exchange/exchange.component.ts</context><context context-type="linenumber">28</context></context-group></trans-unit><trans-unit id="2508a3dcbdcdb622aac26dd6ea67f18e3f2cb534" datatype="html">
-        <source>Mrs.</source><target state="new">Mrs.</target>
+        <source>Mrs.</source><target state="new">Mevr.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step1/step1.component.ts</context>
           <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit><trans-unit id="ee7ee45e7fe6009df16fbcd484233597bd84f0e5" datatype="html">
-        <source>First name: *</source><target state="new">First name: *</target>
+        <source>First name: *</source><target state="new">Voorletter(s): *</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step1/step1.component.ts</context>
           <context context-type="linenumber">49</context>
