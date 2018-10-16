@@ -77,27 +77,16 @@
                                 <h3>Bezorgvoorraad</h3>
                                 <div>
                                     <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[product.stockInfo.shippingInfo.stockCode]}"></fa-icon>
-                                    <a [satPopoverAnchorFor]="p" (mouseenter)="p.open()" (mouseleave)="p.close()"> {{product?.stockInfo.shippingInfo.shippingTitle}}</a>
+                                    <a (click)="openCmsDialog(product.stockInfo.shippingInfo.permalink)"> {{product.stockInfo.shippingInfo.shippingTitle}}</a>
                                 </div>
-                                <sat-popover #p verticalAlign="below" horizontalAlign="start">
-                                    <app-description-popover [title]="product?.stockInfo.shippingInfo.shippingTitle" [permalink]="product?.stockInfo.shippingInfo.permalink"></app-description-popover>
-                                </sat-popover>
                                 <h3>Winkelvoorraad</h3>
                                 <div fxLayout="row wrap">
                                     <div *ngFor="let store of product.stockInfo.storeStock" fxFlex="50">
                                         <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[store.storeStockCode]}">
                                         </fa-icon>
-                                        <a [satPopoverAnchorFor]="p_s"
-                                            (mouseenter)="tooltipStore=store;p_s.open()"
-                                            (mouseleave)="p_s.close()">
+                                        <a (click)="openCmsDialog(store.permalink)">
                                             {{store.branchCity}}
                                         </a>
-                                        <sat-popover #p_s verticalAlign="below" horizontalAlign="start">
-                                            <app-description-popover
-                                                [title]="store?.branchCity"
-                                                [permalink]="store?.permalink">
-                                            </app-description-popover>
-                                        </sat-popover>
                                     </div>
                                 </div>
                             </div>
