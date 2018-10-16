@@ -64,7 +64,7 @@
                             </div>
 
                             <div fxLayout="column" class="product-detail-control">
-                                <button class="control-add-to-cart-big" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)"><ng-container i18n>Add to cart</ng-container> <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon></button>
+                                <button class="control-add-to-cart-big" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)"><ng-container i18n>Add to cart</ng-container></button>
                                 <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
                                 <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
                                 <button class="control-deal" mat-button (click)="exchangeProduct()"><ng-container i18n>SUMMERDEAL</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>

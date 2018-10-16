@@ -117,14 +117,24 @@ h2.product-detail-title,
         margin-top:5px;
     }
     &.control-add-to-cart-big {
-        min-width: 0;
+        width: 100%;
         height: 3.125rem;
-        font-size: 1.375rem;
+        border: none;
         background-color: #5AAD49;
+        background-image: url(/assets/images/others/icon_cart.png);
+        background-position: right .75rem center;
+        background-repeat: no-repeat;
+        background-size: 21px auto;
         font-weight: normal;
+        font-size: 1.375rem;
+        line-height: 3.125rem;
         font-family: "Gotham Condensed";
+        color: #fff;
         text-transform: uppercase;
-        color:#fff;
+        letter-spacing: 1px;
+        text-align: left;
+        margin-bottom: .5rem;
+        padding: 0 1.25rem;
         border-radius: .5rem;
     }
     &.control-add-to-cart-medium {
@@ -179,10 +189,6 @@ h2.product-detail-title,
     &.control-deal {
         background-color: #FDC642;
         color: #212226;
-    }
-    &.control-normal::after,
-    &.control-deal::after {
-
     }
 }
 
