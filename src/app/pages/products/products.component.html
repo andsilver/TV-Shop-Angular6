@@ -5,7 +5,7 @@
 
         <mat-accordion displayMode="flat" multi="true" *ngIf="filterLists?.length">
 
-            <div class="pb-3" *ngIf="totalProducts">
+            <div class="pl-3 pb-3" *ngIf="totalProducts">
                 <h4>{{totalProducts}} <span i18n>results</span></h4>
                 <p i18n>Search easily and quickly</p>
             </div>
@@ -156,11 +156,11 @@
                                                 <span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency:2:3:false}}</span>
                                             </p>
                                             <p class="new-price list-new-price"  [ngClass.gt-xs]="['text-right']" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</p>
-                                            <p [ngClass.gt-xs]="['text-right']" [innerHTML]="product.stockIndicator | htmlSanitize"></p>
+                                            <div [innerHTML]="product.stockIndicator | htmlSanitize"></div>
                                             <button class="control-normal" mat-button [routerLink]="[product.permalink]">
                                                 <ng-container i18n>GO TO PRODUCT</ng-container> <fa-icon [icon]="'chevron-circle-right'"></fa-icon>
                                             </button>
-                                            <div *ngIf="product.haveDemoUnit" class="demo-unit text-right">
+                                            <div *ngIf="product.haveDemoUnit" class="demo-unit">
                                                 <a i18n (click)="openDemoUnit(product)">View the Buitenkansje</a>
                                                 <strong><ng-container i18n> of</ng-container> {{product.demoUnitStartPrice}}</strong>
                                             </div>
