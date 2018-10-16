@@ -48,6 +48,15 @@ h1 {
     margin-bottom: 1rem;
     padding: 0 1rem;
 }
+p, ul, ol {
+    margin-bottom: 1rem;
+}
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
 .h-100 {
     height: 100% !important;
 }
@@ -469,8 +478,6 @@ app-root .app.dark .mat-drawer-container::after {
 }
 
 .misc-bar{
-    margin-top: 30px;
-
     /* & > div+div {
         margin-top: 2rem;
     } */

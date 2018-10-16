@@ -88,7 +88,7 @@
     </mat-sidenav>
     <mat-sidenav-content class="all-products">
         <div fxLayout fxLayoutAlign="end start" *ngIf="viewLoaded">
-            <div fxFlex="100" fxFlex.gt-md="76" ngClass.gt-sm="px-3">
+            <div fxFlex class="px-3">
                 <div *ngIf="category_description" class="pb-3">
                     <h1>{{category_name}}</h1>
                     <p (click)="navigateToCategory($event)" [innerHTML]="category_description | htmlSanitize"></p>
@@ -181,7 +181,7 @@
                     </div>
                 </div>
             </div>
-            <div fxFlex fxHide fxShow.gt-md>
+            <div fxFlex="0 0 187px" fxHide fxShow.gt-md>
                 <app-extra-info></app-extra-info>
             </div>
         </div>
