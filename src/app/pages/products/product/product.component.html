@@ -39,7 +39,7 @@
                                 <div class="swiper-container" [swiper]="config">
                                     <div class="swiper-wrapper">
                                         <div *ngFor="let image of product?.images" class="swiper-slide">
-                                            <mat-card (click)="selectImage(image)" class="p-1">
+                                            <mat-card (click)="selectImage(image)">
                                                 <span *ngIf="image.have_image">
                                                     <img [attr.ix-path]="image.small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 80px, (min-width: 320px) 90px, 100vw"  class="swiper-lazy" alt=""/>
                                                 </span>
@@ -108,7 +108,7 @@
                             </div>
                             <div class="shortdesc"><p class="mb-3" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
                             <ng-container *ngIf="product?.featureHighlights">
-                                <p><strong>Kenmerken</strong></p>
+                                <p class="mb-0"><strong>Kenmerken</strong></p>
                                 <div [innerHTML]="product.featureHighlights | htmlSanitize"></div>
                             </ng-container>
                         </div>
@@ -144,9 +144,9 @@
                                             <div fxFlex="55" class="pr-4 mb-3">
                                                 <div *ngIf="product.expertReview.expertPoints.plus.length" class="pb-2">
                                                     <div class="expert-review-title">Pluspunten</div>
-                                                    <p *ngFor="let point of product.expertReview.expertPoints.plus" class="pb-1">
+                                                    <div *ngFor="let point of product.expertReview.expertPoints.plus" class="pb-1">
                                                         <fa-icon class="fa-plus" [icon]="'plus'"></fa-icon> {{point}}
-                                                    </p>
+                                                    </div>
                                                 </div>
                                                 <div *ngIf="product.expertReview.expertPoints.minus.length">
                                                     <div class="expert-review-title">Minpunten</div>
@@ -223,9 +223,9 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-package-price">
-                                                    <p class="product-package-price-special">{{integer(package.specialPrice)}}<sup>{{float(package.specialPrice)}}</sup></p>
-                                                    <p class="product-package-price-normal">{{integer(package.normalPrice)}}<sup>{{float(package.normalPrice)}}</sup></p>
-                                                    <p class="product-package-price-saving">{{integer(package.savingPrice)}}<sup>{{float(package.savingPrice)}}</sup></p>
+                                                    <div class="product-package-price-special">{{integer(package.specialPrice)}}<sup>{{float(package.specialPrice)}}</sup></div>
+                                                    <div class="product-package-price-normal">{{integer(package.normalPrice)}}<sup>{{float(package.normalPrice)}}</sup></div>
+                                                    <div class="product-package-price-saving">{{integer(package.savingPrice)}}<sup>{{float(package.savingPrice)}}</sup></div>
                                                     <button class="control-add-to-cart-medium" mat-button (click)="addToCartHash(package)">
                                                         <ng-container i18n>Add to cart</ng-container>
                                                     </button>
