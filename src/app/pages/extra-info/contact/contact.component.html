@@ -67,14 +67,12 @@
       <p i18n>Of course you are welcome in one of our eight stores. View the opening hours, directions and other information about our stores here. </p>
     </div>
     <br>
-    <div fxLayout="row wrap" fxLayoutAlign="space start">
-        <div fxFlex="20" fxFlex.sm="25" fxFlex.xs="50" *ngFor="let store of stores" class="stores-individual-store">
-            <div>
-                <img [attr.ix-path]="store.store_image_thumbnail" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" [routerLink]="['/stores', store.store_location]" alt="">
-            </div>
-            <div>
-                <a [routerLink]="['/stores', store.store_location]">{{store.store_title}}</a>
-            </div>
+    <div fxLayout="row wrap" fxLayoutAlign="space start" class="stores-individual-store">
+        <div fxFlex="50" fxFlex.gt-sm="33.3333333" *ngFor="let store of stores" class="stores-individual-store-item">
+          <a [routerLink]="['/stores', store.store_location]">
+            <figure><img [attr.ix-path]="store.store_image_thumbnail" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" [routerLink]="['/stores', store.store_location]" alt=""></figure>
+            <figcaption>{{store.store_title}}</figcaption>
+          </a>
         </div>
     </div>
   </div>

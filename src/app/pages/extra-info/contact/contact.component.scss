@@ -10,6 +10,10 @@
     .page-section {
         padding: 1rem 0;
         border-top: 1px solid #ececec;
+        &.top-section {
+            border-top: none;
+            padding-top: 0;
+        }
         strong {
             margin-bottom: 10px;
             display: block;
@@ -96,4 +100,32 @@
         margin-right: 5px;
     }
 
+}
+
+.stores-individual-store {
+    margin-left: -.5rem;
+    margin-right: -.5rem;
+    &-item {
+        margin-bottom: 1rem;
+        padding-left: .5rem;
+        padding-right: .5rem;
+
+        figure {
+            border: 2px solid #D6D6D6;
+            line-height: 0;
+            text-align: center;
+
+            img {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        figcaption {
+            background-color: #f4f4ef;
+            font-size: .875rem;
+            color: #212226;
+            text-align: center;
+            padding: .5rem;
+        }
+    }
 }
