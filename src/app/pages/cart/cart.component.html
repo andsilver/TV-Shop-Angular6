@@ -22,20 +22,18 @@
       <tbody>
         <tr *ngFor="let product of productData">
           <td align="center" valign="top">
-            <a routerLink="{{product.permalink}}">
+            <a (click)="navigate(product.permalink)">
               <img class="mr-10" [attr.ix-path]="product.item_image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 123px, (min-width: 320px) 55px, 100vw"  alt="">
             </a>
           </td>
           <td class="main" valign="top">
-            <a routerLink="{{product.permalink}}" class="product-title"><strong>{{product.item_name}}</strong></a>
+            <a (click)="navigate(product.permalink)" class="product-title"><strong>{{product.item_name}}</strong></a>
             <ul>
               <li>{{product.stock_indicator}}</li>
               <li><a>{{product.shipping_info}}</a></li>
             </ul>
             <br>
-            <div *ngIf="product.item_description">
-              {{product.item_description}}
-            </div>
+            <div *ngIf="product.item_description" [innerHTML]="product.item_description | htmlSanitize"></div>
           </td>
           <td class="quantity" align="center" valign="top" >
             <input type="text" [(ngModel)] ="product.item_qty_copy"  *ngIf="product.item_price != 0" />
