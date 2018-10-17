@@ -16,6 +16,7 @@ export class StoreComponent implements OnInit {
   data: any;
   subscriptions = [];
   _store: any;
+  windowSize: string;
 
   coordinates = {
     'Amsterdam': {
@@ -82,14 +83,12 @@ export class StoreComponent implements OnInit {
         })
     );
 
-    if (window.innerWidth < 960) {
-      this.sidenavOpen = false;
-    }
+    this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
   }
 
   @HostListener('window:resize')
   public onWindowResize(): void {
-    (window.innerWidth < 960) ? this.sidenavOpen = false : this.sidenavOpen = true;
+    this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
   }
 
 }
