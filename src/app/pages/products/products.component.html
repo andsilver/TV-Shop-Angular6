@@ -152,10 +152,10 @@
                                             <div class="product-item-feature-highlights" [innerHTML]="product.featureHighlights | htmlSanitize"></div>
                                         </div>
                                         <div fxFlex="55">
-                                            <p class="text-muted" [ngClass.gt-xs]="['text-right']">
+                                            <div class="text-muted" [ngClass.gt-xs]="['text-right']">
                                                 <span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency:2:3:false}}</span>
-                                            </p>
-                                            <p class="new-price list-new-price"  [ngClass.gt-xs]="['text-right']" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</p>
+                                            </div>
+                                            <div class="new-price list-new-price"  [ngClass.gt-xs]="['text-right']" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</div>
                                             <div [innerHTML]="product.stockIndicator | htmlSanitize"></div>
                                             <button class="control-normal" mat-button [routerLink]="[product.permalink]">
                                                 <ng-container i18n>GO TO PRODUCT</ng-container> <fa-icon [icon]="'chevron-right'"></fa-icon>

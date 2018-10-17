@@ -175,9 +175,9 @@
                                                 <ng-container *ngIf="review.reviewPoints.plus || review.reviewPoints.plus">
                                                     <div fxLayout>
                                                         <div fxFlex *ngIf="review.reviewPoints.plus">
-                                                            <p *ngFor="let plus of review.reviewPoints.plus">
+                                                            <div *ngFor="let plus of review.reviewPoints.plus">
                                                                 <fa-icon class="fa-plus" [icon]="'plus'"></fa-icon> {{plus}}
-                                                            </p>
+                                                            </div>
                                                         </div>
                                                         <div fxFlex *ngIf="review.reviewPoints.minus">
                                                             <p *ngFor="let minus of review.reviewPoints.minus">
