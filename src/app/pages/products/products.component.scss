@@ -23,7 +23,24 @@
             display: block;
             margin-bottom: .5rem;
         }
+        .filter-price {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
 
+            input[type="number"] {
+                width: 30%;
+                border: 1px solid #E6E6DC;
+            }
+
+            span {
+                padding-left: .25rem;
+                padding-right: .25rem;
+            }
+        }
         .show_more_toggle {
 
             font-weight: 600;
