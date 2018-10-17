@@ -33,9 +33,7 @@
               <li><a>{{product.shipping_info}}</a></li>
             </ul>
             <br>
-            <div *ngIf="product.item_description">
-              {{product.item_description}}
-            </div>
+            <div *ngIf="product.item_description" [innerHTML]="product.item_description | htmlSanitize"></div>
           </td>
           <td class="quantity" align="center" valign="top" >
             <input type="text" [(ngModel)] ="product.item_qty_copy"  *ngIf="product.item_price != 0" />
