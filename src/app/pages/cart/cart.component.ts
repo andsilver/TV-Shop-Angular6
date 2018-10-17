@@ -150,4 +150,10 @@ export class CartComponent implements OnInit, OnDestroy {
     }
   }
 
+  public navigate(permalink) {
+    if (permalink) {
+      this.router.navigate([permalink]);
+    }
+  }
+
 }
