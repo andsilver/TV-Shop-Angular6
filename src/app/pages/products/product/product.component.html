@@ -4,7 +4,7 @@
             <app-filters-list></app-filters-list>
         </mat-accordion>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="position-static">
         <div fxLayout="row" *ngIf="product">
 
             <div fxFlex="100" fxFlex.gt-md="77" fxLayout="column">
@@ -18,7 +18,7 @@
                                 <app-rating [ratingsCount]="product?.ratingsCount" [ratingsValue]="product?.ratingsValue" [direction]="'row'"></app-rating>
                             </div>
 
-                            <mat-card class="product-image">
+                            <mat-card class="product-image mb-3">
                                 <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><fa-icon [icon]="['fas', 'expand']"></fa-icon></button>
                                 <ng-container *ngIf="selectedImage">
                                     <div *ngIf="product?.specialLabel" class="product-item-image-speciallabel">
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div fxFlex="100%" fxFlex.gt-sm="0 0 218px" ngClass.gt-sm="m-0" ngClass.md="pl-3" ngClass.sm="mt-4" ngClass.xs="mt-4">
+                        <div fxFlex="100%" fxFlex.gt-sm="0 0 218px" ngClass="mt-4" ngClass.gt-sm="mt-0">
 
                             <h2 class="mb-2 new-price">{{product?.newPrice | customCurrency}}</h2>
                             <div *ngIf="product.haveDemoUnit" class="demo-unit mb-2">
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-2 px-3" fxLayout fxLayout.lt-md="column" fxLayoutAlign="space-between start">
+                    <div class="mt-2 px-3" fxLayout fxLayout.lt-md="column" fxLayoutAlign.gt-sm="space-between start">
                         <div fxFlex fxFlex.lt-md="false" ngClass.gt-sm="pr-3">
                             <h3>{{product.name}}</h3>
                             <div *ngIf="product?.productSizes?.length">
