@@ -1,95 +1,88 @@
-<mat-sidenav-container fxLayout="row" fxLayoutAlign="start start">
-  <mat-sidenav fxFlex="0 0 187px" #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
-      <mat-accordion displayMode="flat" multi="true">
-          <app-filters-list></app-filters-list>
-      </mat-accordion>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div fxLayout="row" fxLayoutAlign="end start">
-      <div fxFlex class="px-3" id="page-store">
-        <ng-container *ngIf="_store">
-          <h1>{{_store.store_title}}</h1>
-          <div fxLayout="space-between start" fxLayout.lt-md="column" fxLayoutGap="30px" ngClass="mb-3">
-            <div fxFlex="40%" fxFlex.lt-md="false">
-              <div class="address-field">{{_store.address_field1}}</div>
-              <div class="address-field">{{_store.address_field2}}</div>
-              <div class="phone-number">{{_store.telephone_number}}</div>
-              <a class="email">{{_store.email_address}}</a>
-              <h4 ngClass="mt-2" i18n>OPENING HOURS</h4>
-              <div>
-                <div>
-                  <span class="weekday">ma:</span>
-                  <span>{{_store.opening_times.ma.from}} - {{_store.opening_times.ma.till}}</span>
-                </div>
-                <div>
-                  <span class="weekday">di:</span>
-                  <span>{{_store.opening_times.di.from}} - {{_store.opening_times.di.till}}</span>
-                </div>
-                <div>
-                  <span class="weekday">wo:</span>
-                  <span>{{_store.opening_times.wo.from}} - {{_store.opening_times.wo.till}}</span>
-                </div>
-                <div>
-                  <span class="weekday">do:</span>
-                  <span>{{_store.opening_times.do.from}} - {{_store.opening_times.do.till}}</span>
-                </div>
-                <div>
-                  <span class="weekday">vr:</span>
-                  <span>{{_store.opening_times.vr.from}} - {{_store.opening_times.vr.till}}</span>
-                </div>
-                <div>
-                  <span class="weekday">za:</span>
-                  <span>{{_store.opening_times.za.from}} - {{_store.opening_times.za.till}}</span>
-                </div>
-                <div>
-                  <span class="weekday">zo:</span>
-                  <span>{{_store.opening_times.zo.from}} - {{_store.opening_times.zo.till}}</span>
-                </div>
-              </div>
+<div fxLayout="row">
+  <div fxFlex="0 0 187px" class="filter-sidenav" *ngIf="windowSize == 'gt-md'">
+      <app-filters-list></app-filters-list>
+  </div>
+  <div fxFlex class="px-3" id="page-store">
+    <ng-container *ngIf="_store">
+      <h1>{{_store.store_title}}</h1>
+      <div fxLayout="space-between start" fxLayout.lt-md="column" fxLayoutGap="30px" ngClass="mb-3">
+        <div fxFlex="40%" fxFlex.lt-md="false">
+          <div class="address-field">{{_store.address_field1}}</div>
+          <div class="address-field">{{_store.address_field2}}</div>
+          <div class="phone-number">{{_store.telephone_number}}</div>
+          <a class="email">{{_store.email_address}}</a>
+          <h4 ngClass="mt-2" i18n>OPENING HOURS</h4>
+          <div>
+            <div>
+              <span class="weekday">ma:</span>
+              <span>{{_store.opening_times.ma.from}} - {{_store.opening_times.ma.till}}</span>
             </div>
-
-            <div fxFlex fxFlex.lt-md="false">
-              <app-google-map 
-                [lat]="coordinates[_store.store_location]['lat']"
-                [lng]="coordinates[_store.store_location]['lng']"></app-google-map>
+            <div>
+              <span class="weekday">di:</span>
+              <span>{{_store.opening_times.di.from}} - {{_store.opening_times.di.till}}</span>
+            </div>
+            <div>
+              <span class="weekday">wo:</span>
+              <span>{{_store.opening_times.wo.from}} - {{_store.opening_times.wo.till}}</span>
+            </div>
+            <div>
+              <span class="weekday">do:</span>
+              <span>{{_store.opening_times.do.from}} - {{_store.opening_times.do.till}}</span>
+            </div>
+            <div>
+              <span class="weekday">vr:</span>
+              <span>{{_store.opening_times.vr.from}} - {{_store.opening_times.vr.till}}</span>
+            </div>
+            <div>
+              <span class="weekday">za:</span>
+              <span>{{_store.opening_times.za.from}} - {{_store.opening_times.za.till}}</span>
+            </div>
+            <div>
+              <span class="weekday">zo:</span>
+              <span>{{_store.opening_times.zo.from}} - {{_store.opening_times.zo.till}}</span>
             </div>
           </div>
+        </div>
 
-          <div class="features" ngClass="mb-3">
-            <ul>
-              <li *ngFor="let item of _store.usp | jsonLoop; let i=index;" >
-                {{item.value}}
-              </li>
-            </ul>
-          </div>
-
-          <div class="video" ngClass="mb-3">
-            <iframe *ngIf="_store" width='100%' height='435' [src]="_store.video_url | urlSanitize" frameborder='0' allowfullscreen=''></iframe>
-          </div>
-
-          <div class="introduce" ngClass="mb-3">
-            <h3 class="header-title" i18n>LET US INTRODUCE</h3>
-            <div fxLayout="row wrap">
-              <div *ngFor="let image of _store.employee_images" fxFlex="16" fxFlex.lt-sm="33">
-                <img [attr.ix-path]="image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 100px, (min-width: 320px) 100px, 100vw" alt="Image not arrived.">
-              </div>
-            </div>
-          </div>
-
-          <div class="atmosphere">
-            <h3 class="header-title" i18n>ATMOSPHERE</h3>
-            <div class="atmosphere-r">
-              <div class="big-image" *ngFor="let image of _store.store_images">
-                <img [attr.ix-path]="image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 200px, (min-width: 320px) 200px, 100vw"  alt="Image not arrived.">
-              </div>
-            </div>
-          </div>
-        </ng-container>
+        <div fxFlex fxFlex.lt-md="false">
+          <app-google-map 
+            [lat]="coordinates[_store.store_location]['lat']"
+            [lng]="coordinates[_store.store_location]['lng']"></app-google-map>
+        </div>
       </div>
 
-      <div fxFlex="0 0 187px" fxHide fxShow.gt-md>
-        <app-extra-info></app-extra-info>
+      <div class="features" ngClass="mb-3">
+        <ul>
+          <li *ngFor="let item of _store.usp | jsonLoop; let i=index;" >
+            {{item.value}}
+          </li>
+        </ul>
       </div>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+
+      <div class="video" ngClass="mb-3">
+        <iframe *ngIf="_store" width='100%' height='435' [src]="_store.video_url | urlSanitize" frameborder='0' allowfullscreen=''></iframe>
+      </div>
+
+      <div class="introduce" ngClass="mb-3">
+        <h3 class="header-title" i18n>LET US INTRODUCE</h3>
+        <div fxLayout="row wrap">
+          <div *ngFor="let image of _store.employee_images" fxFlex="16" fxFlex.lt-sm="33">
+            <img [attr.ix-path]="image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 100px, (min-width: 320px) 100px, 100vw" alt="Image not arrived.">
+          </div>
+        </div>
+      </div>
+
+      <div class="atmosphere">
+        <h3 class="header-title" i18n>ATMOSPHERE</h3>
+        <div class="atmosphere-r">
+          <div class="big-image" *ngFor="let image of _store.store_images">
+            <img [attr.ix-path]="image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 200px, (min-width: 320px) 200px, 100vw"  alt="Image not arrived.">
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div fxFlex="0 0 187px" *ngIf="windowSize == 'gt-md'">
+      <app-extra-info></app-extra-info>
+  </div>
+</div>

@@ -49,8 +49,8 @@
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="e3750d1e3f6e7a12b30a856ced43fecd913f1c64" datatype="html">
-        <source>Return to Shop</source>
+      <trans-unit id="62ad26c52e86b71306fc4972edcdfd88406187f5" datatype="html">
+        <source>Return to Shop<x id="START_TAG_FA-ICON" ctype="x-fa-icon" equiv-text="&lt;fa-icon&gt;"/><x id="CLOSE_TAG_FA-ICON" ctype="x-fa-icon" equiv-text="&lt;/fa-icon&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/added-to-cart-popup/added-to-cart-popup.component.ts</context>
           <context context-type="linenumber">17</context>
@@ -75,7 +75,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/cart/cart.component.ts</context>
-          <context context-type="linenumber">107</context>
+          <context context-type="linenumber">105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8e86cd53b24d62cc48b9344e22a9245593be679d" datatype="html">
@@ -109,11 +109,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/products/product/product.component.ts</context>
-          <context context-type="linenumber">241</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/products/product/product.component.ts</context>
-          <context context-type="linenumber">287</context>
+          <context context-type="linenumber">230</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5d0317c4ed9a2076d4c9ac0ba89e16e84bef6ec9" datatype="html">
@@ -178,41 +174,39 @@
           <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9af2b793443a1fdb1a35618b4e52f6bc5c9f664b" datatype="html">
-        <source>
-                    Your shopping cart <x id="START_TAG_FA-ICON" ctype="x-fa-icon" equiv-text="&lt;fa-icon&gt;"/><x id="CLOSE_TAG_FA-ICON" ctype="x-fa-icon" equiv-text="&lt;/fa-icon&gt;"/>
-                </source>
+      <trans-unit id="f1de2abb2510b582b57cddc43adfa5023485e757" datatype="html">
+        <source>Uw winkelwagen</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b82dcdc3b188d150f4596b5112f416f5dcbe0fb9" datatype="html">
         <source>Subtotal:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ad06f3d25e93b0470de7b911301af7f8ff74d357" datatype="html">
         <source> View your shopping cart</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8fbeb8aa049e9d18be5e9bd8424cbb05827abd7c" datatype="html">
         <source>Ordering </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="63a113b788821cb4adc3109646e9c77d902c50fe" datatype="html">
         <source>Our stores</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">34</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context>
@@ -223,46 +217,46 @@
         <source>Open today</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">44</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e34670ecedf197fdab890afd7f65797adf25ad7b" datatype="html">
         <source>till 21:00</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="496ce7eb7a154e06438d6bbb5391a093181c60a8" datatype="html">
         <source>new!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1c7e6c2ff2cf975f10cf6e3c59ce6379f627be0e" datatype="html">
         <source>ADVICE AND CONTACT</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="137fb9f1384b7d34af11f2b7c0d9eca1711731ce" datatype="html">
         <source>till 21:00 hour</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a5e53023536e3eca3961a59e6342b2c21a992b00" datatype="html">
         <source>CHAT LIVE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">69</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context>
@@ -273,11 +267,11 @@
         <source>Reply within 30 sec.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">70</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">92</context>
+          <context context-type="linenumber">88</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context>
@@ -292,7 +286,7 @@
         <source>Insert Form</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">78</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context>
@@ -303,7 +297,7 @@
         <source>Reply within 10 min.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">83</context>
+          <context context-type="linenumber">79</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context>
@@ -314,7 +308,7 @@
         <source>WHATSAPP US</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">91</context>
+          <context context-type="linenumber">87</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context>
@@ -325,14 +319,14 @@
         <source>CALL 026-84 54 658</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">100</context>
+          <context context-type="linenumber">96</context>
         </context-group>
       </trans-unit>
       <trans-unit id="12d00bd7a2fb3019c71a10402844f7a41b83e0e1" datatype="html">
         <source>Direct reply</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">97</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/footer/footer.component.ts</context>
@@ -343,28 +337,28 @@
         <source>EXTRA OPEN FOR YOU</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="linenumber">104</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4320aebeb8eaf7dc682e7699c92811b0ec073aef" datatype="html">
         <source>SUNDAY 2 SEP</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">112</context>
+          <context context-type="linenumber">108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="eded387d88d8f3434443e594d9ad35aa1fc129a0" datatype="html">
         <source>open from 12:00 till 17:00</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">115</context>
+          <context context-type="linenumber">111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ecb1d14e0c0c7160d9815133cd877a6dcfd5d981" datatype="html">
         <source>CLIENT REVIEWS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">120</context>
+          <context context-type="linenumber">116</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/menu/menu.component.ts</context>
@@ -379,21 +373,21 @@
         <source>9,4</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">124</context>
+          <context context-type="linenumber">120</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7339e44c254878eee04a4405f0a336a8e5f58bd1" datatype="html">
         <source>Kieskeurig.nl</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">126</context>
+          <context context-type="linenumber">122</context>
         </context-group>
       </trans-unit>
       <trans-unit id="016209fd89038b051f565d1bbad0aaf322a3c097" datatype="html">
         <source>20.510 reviews</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">127</context>
+          <context context-type="linenumber">123</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/theme/components/menu/menu.component.ts</context>
@@ -408,28 +402,28 @@
         <source>Tweakers</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">131</context>
+          <context context-type="linenumber">127</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f91e121519731a5d2729fc64bb73340ce5aa8c4b" datatype="html">
         <source>234 reviews</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">133</context>
+          <context context-type="linenumber">129</context>
         </context-group>
       </trans-unit>
       <trans-unit id="155b72f4d6bc502aa3efc306b404f4b62aca092e" datatype="html">
         <source>Trustpilot</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">136</context>
+          <context context-type="linenumber">132</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a3dc37b680bace84dbb3be494e5e1d404d8650d2" datatype="html">
         <source>889 reviews</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/extra-info/extra-info.component.ts</context>
-          <context context-type="linenumber">138</context>
+          <context context-type="linenumber">134</context>
         </context-group>
       </trans-unit>
       <trans-unit id="bb0d8c7d921bc9d97697d3e41b1f8dda01cc1c39" datatype="html">
@@ -854,60 +848,60 @@
         <source>Remove this product</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/cart/cart.component.ts</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f4a4aeec1f42dab310073f630610cce951713f76" datatype="html">
         <source>Recalculate price</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/cart/cart.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="307fb18a82971df3f52fc6a108873cb90c175417" datatype="html">
         <source>Subtotal (Incl. TAX):</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/cart/cart.component.ts</context>
-          <context context-type="linenumber">64</context>
+          <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d421ed45622751903f64590eafaa621e2ab6fa72" datatype="html">
         <source>Insert code</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/cart/cart.component.ts</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="327636ad0ff1b421abccb389bb89cb3918e093dd" datatype="html">
         <source>Activate code</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/cart/cart.component.ts</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f8628a08c25d0120dc148ad9a0feedc2cb6a7ebc" datatype="html">
         <source>continue shopping</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/cart/cart.component.ts</context>
-          <context context-type="linenumber">83</context>
+          <context context-type="linenumber">81</context>
         </context-group>
       </trans-unit>
       <trans-unit id="87de5bd6fd3592643980067d062b3bf7bfb5c50a" datatype="html">
         <source>place order</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/cart/cart.component.ts</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">84</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/cart/cart.component.ts</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="75c04987bf9465074ae52f557213ffdca8319239" datatype="html">
         <source>Complete your order:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/cart/cart.component.ts</context>
-          <context context-type="linenumber">92</context>
+          <context context-type="linenumber">90</context>
         </context-group>
       </trans-unit>
       <trans-unit id="46e8bc2227589f4820bc133067cf6b9053089e8d" datatype="html">
@@ -1817,7 +1811,7 @@
         <source>CUSTOMER SERVICE:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/extra-info/contact/contact.component.ts</context>
-          <context context-type="linenumber">83</context>
+          <context context-type="linenumber">81</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7bbf36d74e9561fb0ca47c25cc08e35747fd549b" datatype="html">
@@ -1859,7 +1853,7 @@
         <source>Most Popular</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ea797424c71315134fde608b36c75d821ac943ca" datatype="html">
@@ -2284,35 +2278,35 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/products/product/product.component.ts</context>
-          <context context-type="linenumber">179</context>
+          <context context-type="linenumber">168</context>
         </context-group>
       </trans-unit>
       <trans-unit id="35cd6be8cbdbc97bfa8a8fba6c858e934853d6bb" datatype="html">
         <source>Available in:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/products/product/product.component.ts</context>
-          <context context-type="linenumber">110</context>
+          <context context-type="linenumber">99</context>
         </context-group>
       </trans-unit>
       <trans-unit id="27b96566ddce35d2774912f250108a1d5112aeb2" datatype="html">
         <source>OPENING HOURS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/stores/store/store.component.ts</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f644c1ac6599469e2448db5aad3288b8f8b3081b" datatype="html">
         <source>LET US INTRODUCE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/stores/store/store.component.ts</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="df930fb6430f4172073dc47a7ac52266ab1e2df7" datatype="html">
         <source>ATMOSPHERE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/stores/store/store.component.ts</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
     </body>
