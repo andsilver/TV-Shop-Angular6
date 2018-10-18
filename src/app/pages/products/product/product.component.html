@@ -106,6 +106,18 @@
                                     </a>
                                 </div>
                             </div>
+                            <div *ngIf="product.productColors?.length">
+                                <strong i18n>Available in Colors:</strong>
+                                <div class="product-size">
+                                    <a *ngFor="let color of product.productColors"
+                                        [routerLink]="color.permalink"
+                                        routerLinkActive="horizontal-active-link"
+                                        [routerLinkActiveOptions]="{exact:false}">
+                                        <img [attr.ix-path]="color.image" ix-params='{"auto":"compress"}' alt="">
+                                    </a>
+                                </div>
+                            </div>
+
                             <div class="shortdesc"><p class="mb-3" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
                             <ng-container *ngIf="product?.featureHighlights">
                                 <p class="mb-0"><strong>Kenmerken</strong></p>

@@ -41,6 +41,7 @@ export class Product {
   productSidepoints: any;
   productSizes: any;
   productAccesories: any;
+  productColors: any;
 }
 
 export interface Brand {

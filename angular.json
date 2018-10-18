@@ -89,7 +89,7 @@
                 }
               ],
               "serviceWorker": true
-            },            
+            },
             "development-nl": {
               "optimization": true,
               "outputHashing": "all",
