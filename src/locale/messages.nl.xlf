@@ -64,7 +64,7 @@
         
         
         
-      <context-group purpose="location"><context context-type="sourcefile">app/shared/controls/controls.component.ts</context><context context-type="linenumber">12</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/outdoor-opportunity-dialog/outdoor-opportunity-dialog.component.ts</context><context context-type="linenumber">23</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/sub-product-dialog/sub-product-dialog.component.ts</context><context context-type="linenumber">34</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/sub-product-dialog/sub-product-dialog.component.ts</context><context context-type="linenumber">188</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/product/product.component.ts</context><context context-type="linenumber">67</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/product/product.component.ts</context><context context-type="linenumber">230</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/shared/controls/controls.component.ts</context><context context-type="linenumber">12</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/outdoor-opportunity-dialog/outdoor-opportunity-dialog.component.ts</context><context context-type="linenumber">23</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/sub-product-dialog/sub-product-dialog.component.ts</context><context context-type="linenumber">34</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/sub-product-dialog/sub-product-dialog.component.ts</context><context context-type="linenumber">188</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/product/product.component.ts</context><context context-type="linenumber">67</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/product/product.component.ts</context><context context-type="linenumber">242</context></context-group></trans-unit>
       <trans-unit id="5d0317c4ed9a2076d4c9ac0ba89e16e84bef6ec9" datatype="html">
         <source>Add to compare</source><target state="new">Toevoegen aan vergelijkingslijst</target>
         <context-group purpose="location">
@@ -1710,10 +1710,16 @@
         <source>Reviews about the <x id="INTERPOLATION" equiv-text="{{product.name}}"/></source><target state="new">Reviews about the <x id="INTERPOLATION" equiv-text="{{product.name}}"/></target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/products/sub-product-dialog/sub-product-dialog.component.ts</context><context context-type="linenumber">126</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/product/product.component.ts</context><context context-type="linenumber">168</context></context-group></trans-unit><trans-unit id="35cd6be8cbdbc97bfa8a8fba6c858e934853d6bb" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/products/sub-product-dialog/sub-product-dialog.component.ts</context><context context-type="linenumber">126</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/products/product/product.component.ts</context><context context-type="linenumber">180</context></context-group></trans-unit><trans-unit id="35cd6be8cbdbc97bfa8a8fba6c858e934853d6bb" datatype="html">
         <source>Available in:</source><target state="new">Verkrijgbaar in:</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/products/product/product.component.ts</context><context context-type="linenumber">99</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/products/product/product.component.ts</context><context context-type="linenumber">99</context></context-group></trans-unit><trans-unit id="fc9ab3b72907fa2ad0caefffea4d3e9e2637a37e" datatype="html">
+        <source>Available in Colors:</source><target state="new">Verkrijgbaar in de kleur::</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/products/product/product.component.ts</context>
+          <context context-type="linenumber">110</context>
+        </context-group>
+      </trans-unit>
       
       
       
