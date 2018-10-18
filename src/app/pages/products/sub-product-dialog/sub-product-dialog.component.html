@@ -31,11 +31,11 @@
             </div>
 
             <div fxLayout="column" class="product-detail-control mb-2">
-                <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true);dialogRef.close();"><ng-container i18n>Add to cart</ng-container> <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon></button>
-                <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
-                <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
-                <button class="control-deal" mat-button (click)="exchangeProduct()"><ng-container i18n>SUMMERDEAL</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
-                <button class="control-normal" mat-button><ng-container i18n>Action: Exchange your TV</ng-container><fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
+                <button class="control-add-to-cart-big" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true);dialogRef.close();"><ng-container i18n>Add to cart</ng-container></button>
+                <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
+                <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
+                <button class="control-deal" mat-button (click)="exchangeProduct()"><ng-container i18n>SUMMERDEAL</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
+                <button class="control-normal" mat-button><ng-container i18n>Action: Exchange your TV</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
             </div>
 
             <div class="new-stock-info-wrapper">{{product?.stockIndicator}}</div>
@@ -65,7 +65,7 @@
     <div class="mt-2">
         <div>
             <h3>{{product.name}}</h3>
-            <div class="shortdesc"><p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
+            <div class="shortdesc"><p class="py-1" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
             <ng-container *ngIf="product?.featureHighlights">
                 <h3>Kenmerken</h3>
                 <p [innerHTML]="product.featureHighlights | htmlSanitize"></p>
@@ -99,18 +99,18 @@
                     <div *ngIf="product?.expertReview.expertAuthor" class="expert-review">
                         <h2>Plus- en minpunten</h2>
                         <div ngClass.xs="py-2" ngClass.lt-md="p-2" fxLayout fxLayout.xs="column">
-                            <div fxFlex="55" class="px-4 mb-3">
+                            <div fxFlex="55" class="pr-3 mb-3">
                                 <div *ngIf="product.expertReview.expertPoints.plus.length" class="pb-2">
                                     <div class="expert-review-title">Pluspunten</div>
-                                    <p *ngFor="let point of product.expertReview.expertPoints.plus" class="pb-1">
+                                    <div *ngFor="let point of product.expertReview.expertPoints.plus" class="pb-1">
                                         <fa-icon class="fa-plus" [icon]="'plus'"></fa-icon> {{point}}
-                                    </p>
+                                    </div>
                                 </div>
                                 <div *ngIf="product.expertReview.expertPoints.minus.length">
                                     <div class="expert-review-title">Minpunten</div>
-                                    <p *ngFor="let point of product.expertReview.expertPoints.minus" class="pb-1">
+                                    <div *ngFor="let point of product.expertReview.expertPoints.minus" class="pb-1">
                                         <fa-icon class="fa-minus" [icon]="'minus'"></fa-icon> {{point}}
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                             <div fxFlex class="px-4" [ngClass.gt-xs]="{'border-left': true}">
@@ -133,14 +133,14 @@
                                 <ng-container *ngIf="review.reviewPoints.plus || review.reviewPoints.plus">
                                     <div fxLayout>
                                         <div fxFlex *ngIf="review.reviewPoints.plus">
-                                            <p *ngFor="let plus of review.reviewPoints.plus">
+                                            <div *ngFor="let plus of review.reviewPoints.plus">
                                                 <fa-icon class="fa-plus" [icon]="'plus'"></fa-icon> {{plus}}
-                                            </p>
+                                            </div>
                                         </div>
                                         <div fxFlex *ngIf="review.reviewPoints.minus">
-                                            <p *ngFor="let minus of review.reviewPoints.minus">
+                                            <div *ngFor="let minus of review.reviewPoints.minus">
                                                 <fa-icon class="fa-minus" [icon]="'minus'"></fa-icon> {{minus}}
-                                            </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <br>
@@ -181,12 +181,11 @@
                                     </a>
                                 </div>
                                 <div class="product-package-price">
-                                    <p class="product-package-price-special">{{integer(package.specialPrice)}}<sup>{{float(package.specialPrice)}}</sup></p>
-                                    <p class="product-package-price-normal">{{integer(package.normalPrice)}}<sup>{{float(package.normalPrice)}}</sup></p>
-                                    <p class="product-package-price-saving">{{integer(package.savingPrice)}}<sup>{{float(package.savingPrice)}}</sup></p>
-                                    <button class="control-add-to-cart" mat-button (click)="addToCartHash(package)">
+                                    <div class="product-package-price-special">{{integer(package.specialPrice)}}<sup>{{float(package.specialPrice)}}</sup></div>
+                                    <div class="product-package-price-normal">{{integer(package.normalPrice)}}<sup>{{float(package.normalPrice)}}</sup></div>
+                                    <div class="product-package-price-saving">{{integer(package.savingPrice)}}<sup>{{float(package.savingPrice)}}</sup></div>
+                                    <button class="control-add-to-cart-medium" mat-button (click)="addToCartHash(package)">
                                         <ng-container i18n>Add to cart</ng-container>
-                                        <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
                                     </button>
                                 </div>
                             </div>

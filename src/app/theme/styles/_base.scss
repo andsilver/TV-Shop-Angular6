@@ -1088,3 +1088,9 @@ app-root .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not
 .text-nowrap {
     white-space: nowrap!important;
 }
+.min-width-fix {
+    min-width: 1px!important;
+}
+.position-static {
+    position: static!important;
+}
