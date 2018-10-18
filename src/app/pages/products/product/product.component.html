@@ -149,8 +149,8 @@
                             <div #info_expert_reviews>
                                 <div *ngIf="product?.expertReview.expertAuthor" class="expert-review">
                                     <h2>Plus- en minpunten</h2>
-                                    <div ngClass.xs="py-2" ngClass.lt-md="p-2" fxLayout fxLayout.xs="column">
-                                        <div fxFlex="55" class="pr-4 mb-3">
+                                    <div ngClass.xs="py-2" fxLayout="column" fxLayout.gt-sm="row">
+                                        <div fxFlex="55" class="mb-3" ngClass.gt-sm="pr-3 mb-0">
                                             <div *ngIf="product.expertReview.expertPoints.plus.length" class="pb-2">
                                                 <div class="expert-review-title">Pluspunten</div>
                                                 <div *ngFor="let point of product.expertReview.expertPoints.plus" class="pb-1">
@@ -159,12 +159,12 @@
                                             </div>
                                             <div *ngIf="product.expertReview.expertPoints.minus.length">
                                                 <div class="expert-review-title">Minpunten</div>
-                                                <p *ngFor="let point of product.expertReview.expertPoints.minus" class="pb-1">
+                                                <div *ngFor="let point of product.expertReview.expertPoints.minus" class="pb-1">
                                                     <fa-icon class="fa-minus" [icon]="'minus'"></fa-icon> {{point}}
-                                                </p>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div fxFlex class="px-4" [ngClass.gt-xs]="{'border-left': true}">
+                                        <div fxFlex ngClass.gt-sm="pl-3 border-left">
                                             <div class="expert-review-title">{{product.expertReview.expertAuthor}}</div>
                                             <div class="expert-review-title font-italic">{{product.expertReview.expertTitle}}</div>
                                             <img [attr.data-src]="'https://www.plattetv.nl/var/' + product.expertReview.expertImage" alt="">
@@ -211,7 +211,7 @@
                                 <div *ngIf="product?.productPackages.length">
                                     <h2>AANBEVOLEN COMBIDEALS</h2>
                                     <div ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                        <div *ngFor="let package of product.productPackages" class="product-package" fxLayout fxLayoutAlign="space-between center">
+                                        <div *ngFor="let package of product.productPackages" class="product-package" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
                                             <div fxLayout fxLayoutAlign="start center" class="product-package-products">
                                                 <a class="cursor-default">
                                                     <div>
@@ -243,7 +243,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div #info_description>
+                            <div #info_description fxHide fxShow.gt-sm>
                                 <div *ngIf="product?.description">
                                     <h2>Beschrijving</h2>
                                     <div ngClass.xs="py-2" ngClass.lt-md="p-2">

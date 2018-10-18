@@ -1,8 +1,8 @@
-<div [fxLayout]="direction" [fxLayoutAlign]="(direction == 'row') ? 'start center' : 'center end'">    
-    <div class="ratings">
+<div fxLayout="column" fxLayout.gt-xs="row">
+    <div class="ratings mr-2">
         <fa-icon [icon]="star" *ngFor="let star of stars; let i=index;" (click)="rate(i)"></fa-icon>
     </div>
-    <span class="ratings-count text-muted" [ngClass]="{'margin-left-10': direction == 'row'}">
+    <span class="ratings-count text-muted">
         <ng-container *ngIf="!review">
             {{ratingsCount}}
             <ng-container *ngIf="ratingsCount != 1" i18n>reviews</ng-container>

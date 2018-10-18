@@ -14,9 +14,13 @@
     }
     .filter-box-content {
         padding-left: 1rem;
+        a {
+            color: #212126;
+        }
     }
     a.show_more_toggle {
         display: block;
+        color: #212126;
         padding-left: 1rem;
     }
 }

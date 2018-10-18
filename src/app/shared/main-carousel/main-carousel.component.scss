@@ -1,5 +1,8 @@
-.main-slider{ 
-    height: 319px;
+.swiper-container {
+    padding-bottom: 2rem;
+}
+.main-slider{
+    /* height: 319px; */
 
     .slide-item{
         height: 100%;
@@ -15,7 +18,7 @@
 
 @media (max-width: 575px) { 
     .main-slider{ 
-        height: 280px;
+        /*height: 280px; */
         .slide-item .content {
             h1{
                 font-size: 24px;

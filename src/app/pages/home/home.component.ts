@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import {Component, OnInit, OnDestroy, HostListener, ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeService } from './home.service';
 import { forkJoin } from 'rxjs/observable/forkJoin';
@@ -12,7 +12,8 @@ import * as KeywordActions from 'app/store/actions/keyword.action';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
