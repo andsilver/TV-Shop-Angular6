@@ -68,7 +68,6 @@ import {
   faChevronRight,
   faChevronUp,
   faCircle,
-  faComment,
   faDollarSign,
   faEllipsisV,
   faExpand,
@@ -98,6 +97,7 @@ import {
 import {
   faEnvelope,
   faEye,
+  faComment,
   faStar as faStarBorder
 } from '@fortawesome/free-regular-svg-icons';
 
