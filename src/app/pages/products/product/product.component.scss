@@ -3,7 +3,7 @@
 	    overflow: visible!important;
 	    float: left;
 	    left: 0;
-	    width: 55vw;
+	    width: 75vw;
 	    padding: 0;
 	}
 
@@ -33,7 +33,7 @@
 	.small-carousel{
 	    margin-top: 8px;
 	    .swiper-container{
-
+			padding-bototm: 2rem;
 		.swiper-slide{
 		    text-align: center;
 		    .mat-card {
@@ -279,31 +279,32 @@
 	    }
 
 	    &-content {
-		border-top: 1px solid #ddd;
-		a {
-		    text-decoration: underline;
-		}
-		img {
-		    border: 1px solid #999;
-		    width: 59px;
-		}
+			border-top: 1px solid #ddd;
+			a {
+				color: #212126;
+				text-decoration: underline;
+			}
+			img {
+				border: 1px solid #999;
+				width: 59px;
+			}
 
-		input{
-		    height: 32px !important;
-		    width: 100%;
-		    padding-left: 3px;
-		}
+			input{
+				height: 32px !important;
+				width: 100%;
+				padding-left: 3px;
+			}
 
-		> div > fa-icon {
-		    color: #5AAD49;
-		}
-		[class*="cell-"] {
-		    padding-top: .5rem;
-		    padding-bottom: .5rem;
-		}
-		.cell-submit {
-		    padding-right: 0;
-		}
+			> div > fa-icon {
+				color: #5AAD49;
+			}
+			[class*="cell-"] {
+				padding-top: .5rem;
+				padding-bottom: .5rem;
+			}
+			.cell-submit {
+				padding-right: 0;
+			}
 	    }
 	}
 
@@ -315,6 +316,9 @@
 	.winkel-stock {
 	    margin-top: 1rem;
 	    margin-bottom: 2rem;
+		a {
+			color: #212126;
+		}
 	    .new-stock-info-winkel {
 		font-size: .75rem;
 	    }
@@ -563,6 +567,15 @@
 		        }
 		    }
 		}
+			@media (max-width: 959px) {
+				&-price {
+					text-align: right;
+					.mat-button.control-add-to-cart-medium {
+						display: block;
+						width: 100%;
+					}
+				}
+			}
 	    }
 	    .mat-tab-specificaties {
 			strong {

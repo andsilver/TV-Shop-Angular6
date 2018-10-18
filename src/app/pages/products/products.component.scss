@@ -2,7 +2,7 @@
     overflow: visible!important;
     float: left;
     left: 0;
-    width: 55vw;
+    width: 75vw;
     padding: 0;
 
     .mat-expansion-panel {
@@ -42,9 +42,8 @@
             }
         }
         .show_more_toggle {
-
-            font-weight: 600;
-            color: #1d4f92;
+            font-weight: 700;
+            color: #212126;
             cursor: pointer;
         }
     }

@@ -81,7 +81,7 @@
             </div>  
         </mat-toolbar-row>
     </mat-toolbar>
-    <mat-toolbar class="footer-nav">
+    <mat-toolbar class="footer-nav" fxHide fxShow.gt-sm ngClass.gt-sm="d-block">
         <mat-toolbar-row class="theme-container" fxLayout="row" fxLayout.lt-md="row wrap" fxLayoutAlign="center flex-start">
             <div fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25" ngClass.lt-md="mb-2">
                 <strong i18n>BVBMedia</strong>
@@ -132,8 +132,7 @@
             </div>
         </mat-toolbar-row>
     </mat-toolbar>
-
-    <mat-toolbar class="footer-payment">
+    <mat-toolbar class="footer-payment" fxHide fxShow.gt-sm ngClass.gt-sm="d-block">
         <mat-toolbar-row class="theme-container" fxLayout="column" fxLayoutAlign="flex-start center">
             <ul fxLayout="row wrap" fxLayoutAlign="center center">
                 <li lazy-load-images *ngFor="let payment of payments">

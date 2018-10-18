@@ -1,11 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from 'app/app.service';
 
 @Component({
   selector: 'app-filters-list',
   templateUrl: './filters-list.component.html',
-  styleUrls: ['./filters-list.component.scss']
+  styleUrls: ['./filters-list.component.scss'],
+  encapsulation: ViewEncapsulation.None
+
 })
 export class FiltersListComponent implements OnInit, OnDestroy {
 

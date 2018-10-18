@@ -26,14 +26,14 @@ body{
     padding: 0;
 }
 a{
-    color:#212226;
+    color: #3366ff;
     outline: none;
     text-decoration: none;
     cursor: pointer;
 }
 a:hover,
 a:focus {
-    color:#212226;
+    color: #3366ff;
     text-decoration: underline;
 }
 h1 {
@@ -56,6 +56,18 @@ hr {
     margin-bottom: 1rem;
     border: 0;
     border-top: 1px solid rgba(0,0,0,.1);
+}
+dl {
+    margin-bottom: 1rem;
+}
+dt {
+    font-weight: 700;
+}
+dd {
+    margin-bottom: 1rem;
+}
+.d-block {
+    display: block!important;
 }
 .d-flex {
     display: -ms-flexbox!important;
@@ -100,6 +112,9 @@ hr {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
+}
+.border-left {
+    border-left: 1px solid #dee2e6;
 }
 @media (min-width: 600px) {
     .col-sm-4 {
@@ -519,7 +534,7 @@ app-root .app.dark .mat-drawer-container::after {
         margin-left: 10px;
         p {
             font-weight: 500;
-            color: #212121;
+            color: #212126;
         }
         span {
             font-size: 13px
@@ -565,6 +580,9 @@ app-root .app.dark .mat-drawer-container::after {
         }
         .mat-card-content {
             padding-right: 1rem;
+            a {
+                color: #212126;
+            }
         }
     }
 }
@@ -1041,7 +1059,7 @@ button.swipe-arrow{
 
 .app.dark .swiper-button-prev.mat-mini-fab.mat-primary,
 .app.dark .swiper-button-next.mat-mini-fab.mat-primary {
-    background-color: #212121!important;
+    background-color: #212126!important;
 }
 
 app-root .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
@@ -1174,20 +1192,10 @@ app-root .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not
         margin-bottom: 2rem;
         padding-left: 0;
         li {
-            position: relative;
-            padding-left: .5rem;
-
-            a:after {
-                position: absolute;
-                left: 0;
-                top: 3px;
-                font-weight: 900;
-                font-size: .75rem;
-                line-height: 1;
-                font-family: "Font Awesome 5 Free";
-                content: "\f0da";
-                color: #3366ff;
-            }
+            background-image: url(/assets/images/others/content_li.gif);
+            background-position: left .4rem;
+            background-repeat: no-repeat;
+            padding-left: .75rem;
         }
     }
 }

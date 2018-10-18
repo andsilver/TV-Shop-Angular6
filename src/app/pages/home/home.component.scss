@@ -5,11 +5,13 @@
     min-width: 1px;
 }
 .filter-sidenav {
+    /*
     position: static;
     -ms-flex: 0 0 187px;
     flex: 0 0 187px;
     max-width: 187px;
     padding: 0;
+    */
 }
 .misc-sidenav {
     -ms-flex: 0 0 187px;
@@ -60,6 +62,7 @@
                 font-size: .9375rem;
                 line-height: 1.125rem;
                 letter-spacing: 0;
+                color: #212126;
                 text-transform: uppercase;
                 margin-bottom: .25rem;
                 padding: 0;
@@ -67,9 +70,12 @@
             .product-rating {
                 margin-bottom: .625rem;
             }
+            @media (max-width: 599px) {
+                .product-rating {
+                    height: 34px;
+                }
+            }
             .product-feature-highlights {
-                padding-left: 20px;
-
                 ul.listing_attribute {
                     padding-left: 0;
                     margin-bottom: .625rem;
@@ -126,4 +132,3 @@
         }
     }
 }
-
