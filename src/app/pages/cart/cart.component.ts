@@ -38,6 +38,7 @@ export class CartComponent implements OnInit, OnDestroy {
       this.store.select(state => state.cart).subscribe(res => {
         this.cartId = res.CartId;
         if (!this.cartId) {
+          this.loaded = true;
           return;
         }
         console.log(this.cartId);
