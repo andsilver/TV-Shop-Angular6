@@ -59,7 +59,16 @@
             }
 
             h2 {
+                font-weight: bold;
+                font-size: 19px;
+                line-height: 1.4;
+                margin-top: 2px;
                 text-transform: uppercase;
+            }
+            p {
+                font-size: 1rem;
+                line-height: 1.4;
+                margin-bottom: 0;
             }
 
             &-icon {
