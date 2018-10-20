@@ -21,12 +21,12 @@
 
       <form *ngIf="form.value.customer_type == 'for_business'" [formGroup]="businessForm" class="form-content">
         <div>
-          <label for="company_name">Company Name:</label>
+          <label for="company_name" i18n>Company Name:</label>
           <input id="company_name" type="text" formControlName="company_name">
         </div>
 
         <div>
-          <label for="vat_number">VAT number:</label>
+          <label for="vat_number" i18n>VAT number:</label>
           <input id="vat_number" type="text" formControlName="tax_id">
         </div>
       </form>

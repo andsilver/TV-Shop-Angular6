@@ -26,9 +26,9 @@ export class AddedToCartPopupComponent implements OnInit {
   }
 
   navigateToCartList() {
+    this.dialogRef.close({ isAddTocart: true });
     setTimeout(() => {
       this.router.navigate(['/cart']);
-      this.dialogRef.close({ isAddTocart: true });
     }, 2000);
   }
 

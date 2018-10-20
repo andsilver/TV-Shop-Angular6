@@ -227,14 +227,11 @@ export class AppService {
 
             const productData: any = { item_id: product.id, item_qty: product.quantity, category_id: product.categoryId };
 
-            if (res['isAddTocart']) {
-
-                this.addToCartApi(productData)
-                    .subscribe((data) => {
-                        localStorage.setItem('cart_id', data.cart_id);
-                        this.store.dispatch(new CartActions.SetCartId(data.cart_id));
-                    });
-            }
+            this.addToCartApi(productData)
+                .subscribe((data) => {
+                    localStorage.setItem('cart_id', data.cart_id);
+                    this.store.dispatch(new CartActions.SetCartId(data.cart_id));
+                });
         });
     }
 

@@ -109,7 +109,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/products/product/product.component.ts</context>
-          <context context-type="linenumber">242</context>
+          <context context-type="linenumber">239</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5d0317c4ed9a2076d4c9ac0ba89e16e84bef6ec9" datatype="html">
@@ -923,7 +923,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step2/step2.component.ts</context>
-          <context context-type="linenumber">103</context>
+          <context context-type="linenumber">102</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context>
@@ -956,6 +956,20 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step1/step1.component.ts</context>
           <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dd32c5e178c7815314cdaef35253401206c28e9b" datatype="html">
+        <source>Company Name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/checkout/step1/step1.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="37d2fa9cafbc5e9ffd3c8d5ee1d22dba47c88b7e" datatype="html">
+        <source>VAT number:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/checkout/step1/step1.component.ts</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="03da760e8cf66408801094b7705d213bf78c7cb9" datatype="html">
@@ -1177,7 +1191,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step2/step2.component.ts</context>
-          <context context-type="linenumber">99</context>
+          <context context-type="linenumber">98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="857d2e5fd2526801da157334c2ef258d4363d24e" datatype="html">
@@ -1212,21 +1226,21 @@
         <source>Choose your bank:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step2/step2.component.ts</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b16cfaa606892b170bd1d477ab0328f0d9c33137" datatype="html">
         <source>Choose your type:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step2/step2.component.ts</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4253671bba3c63a73c8aa7f80feef20a14e3b4b0" datatype="html">
         <source>YOUR DATA</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step2/step2.component.ts</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">84</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context>
@@ -1237,7 +1251,7 @@
         <source>modify<x id="START_TAG_FA-ICON" ctype="x-fa-icon" equiv-text="&lt;fa-icon&gt;"/><x id="CLOSE_TAG_FA-ICON" ctype="x-fa-icon" equiv-text="&lt;/fa-icon&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step2/step2.component.ts</context>
-          <context context-type="linenumber">95</context>
+          <context context-type="linenumber">94</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/checkout/step3/step3.component.ts</context>
@@ -2278,7 +2292,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/products/product/product.component.ts</context>
-          <context context-type="linenumber">180</context>
+          <context context-type="linenumber">177</context>
         </context-group>
       </trans-unit>
       <trans-unit id="35cd6be8cbdbc97bfa8a8fba6c858e934853d6bb" datatype="html">
