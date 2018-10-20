@@ -191,10 +191,13 @@ app-root .app.dark .mat-drawer-container::after {
     overflow: hidden;
 }
 .text-center{
-    text-align: center;
+    text-align: center!important;
+}
+.text-left {
+    text-align: left!important;
 }
 .text-right{
-    text-align: right;
+    text-align: right!important;
 }
 .divider{
     border-top: 1px solid rgba(204, 204, 204, 0.6);
@@ -652,6 +655,7 @@ app-root .app.dark .mat-drawer-container::after {
     padding-right: 0;
 }
 .usp-list.mat-toolbar {
+    background-color: #fff!important;
     height: auto;
     padding-left: 0;
     padding-right: 0;
