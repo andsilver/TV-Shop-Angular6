@@ -82,6 +82,9 @@
             min-width: 0;
             margin-right: .5rem;
         }
+        .sidenav-toggle.mat-button img {
+            height: 32px;
+        }
         #brand {
             .mobilenav {
                 a {
@@ -192,7 +195,6 @@
 }
 
 .search-form{
-    overflow: hidden;
     width: 100%;
 
     input[type=text]{
