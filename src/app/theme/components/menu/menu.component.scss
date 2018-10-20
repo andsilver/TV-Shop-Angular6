@@ -3,17 +3,20 @@
     z-index: 99;
 }
 
-.category-menu-item{
+.category-menu-item {
     position: relative;
     -ms-flex: 1 1 auto!important;
     flex: 1 1 auto!important;
     min-width: 0;
+    border-left: 1px solid #fff;
     line-height: 1.875rem;
     
     padding: 0;
     border-radius: 0;
     text-align: center;
-
+    &:first-child {
+        border-left: none;
+    }
     a{
         display: block;
         color: #212226!important;
@@ -28,6 +31,4 @@
             color:#fff!important;
         }
     }
-
-    border-left: 1px solid #fff;
 }

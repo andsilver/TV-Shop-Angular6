@@ -24,14 +24,14 @@
     <mat-toolbar color="primary">
         <mat-toolbar-row fxLayout.lt-md="column" fxFlexAlign="center" id="main-header">
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" id="brand">
-                <a routerLink="/" (click)="closeSubMenus()" class="logo mr-4"><img src="assets/images/others/logo_plattetv.svg" alt="PlatteTV"></a>
+                <a fxFlex="0 0 226px" routerLink="/" (click)="closeSubMenus()" class="logo"><img src="assets/images/others/logo_plattetv.svg" alt="PlatteTV"></a>
                 <nav fxLayout="row" fxShow fxHide.gt-sm class="mobilenav">
                     <a href="/extrainfo/advies-contact"><img src="assets/images/others/icon_chat.png" alt="Chat"></a>
                     <a href="/extrainfo/winkels-amsterdam-arnhem-breda-doesburg-doetinchem-eindhoven-nijmegen-en-utrecht-885.html"><img src="assets/images/others/icon_locator.png" alt="Locaties"></a>
                     <a href="/winkelwagen"><img src="assets/images/others/icon_cart.png" alt="Winkelwagen"></a>
                 </nav>
             </div>
-            <div fxFlex="90" fxLayout="column" class="main-header-right">
+            <div fxFlex="90" fxLayout="row" fxLayout.gt-sm="column" class="main-header-right" ngClass.gt-sm="ml-4">
                 <ul *ngIf="windowSize == 'gt-md'" fxFlex fxLayout="row" fxlayoutalign="space-between center" id="links_city">
                     <li class="links_city_amsterdam"><a [routerLink]="['/stores', 'amsterdam']"><span class="link_city_top" i18n>Amsterdam</span><span class="link_city_bottom" i18n>020 226 5700</span></a></li>
                     <li class="links_city_separator"></li>
@@ -48,8 +48,8 @@
                     <li class="links_city_utrecht"><a [routerLink]="['/stores', 'utrecht']"><span class="link_city_top" i18n>Utrecht</span><span class="link_city_bottom" i18n>030 310 1045</span></a></li>
                 </ul>
                 <div fxFlex fxLayout="row nowrap" fxFlexOffset.gt-sm="0" class="main-header-sub">
-                    <button *ngIf="windowSize == 'lt-md'" mat-button (click)="sidenav.toggle();sidenavOpened = !sidenavOpened;" class="sidenav-toggle" aria-label="sidenav-toggle">
-                        <fa-icon [icon]="['fas', 'bars']" size="2x"></fa-icon>
+                    <button fxFlex="0 0 40px" *ngIf="windowSize == 'lt-md'" mat-button (click)="sidenav.toggle();sidenavOpened = !sidenavOpened;" class="sidenav-toggle" aria-label="sidenav-toggle">
+                        <img src="/assets/images/others/icon_bar.png">
                     </button>
                     <form method="get" class="search-form" fxLayout="row" ngClass.gt-sm="pr-5" (ngSubmit)="search($event)">
                         <input type="text" i18n-placeholder placeholder="Type keyword..." name="search_key" [ngModel]="keyword" (keyup)="searchTerm.next($event)" fxFlex aria-label="search_key" autocomplete="off">

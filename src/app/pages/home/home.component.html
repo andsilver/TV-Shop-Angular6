@@ -2,7 +2,7 @@
     <div fxFlex="0 0 187px" class="filter-sidenav" *ngIf="windowSize == 'gt-md'">
         <app-filters-list></app-filters-list>
     </div>
-    <div fxFlex ngClass="px-3" class="middle-content">
+    <div fxFlex ngClass.xs="px-2" ngClass.sm="px-4" ngClass.gt-sm="px-3" class="middle-content">
         <ng-container *ngIf="widget">
             <app-main-carousel *ngIf="widget" [slides]="widget[0]"></app-main-carousel>
             <div *ngFor="let mid of widget[1]" [innerHTML]="mid.content | htmlSanitize" (click)="navigate($event)"></div>
