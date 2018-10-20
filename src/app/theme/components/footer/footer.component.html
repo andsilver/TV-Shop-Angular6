@@ -1,5 +1,5 @@
 <footer class="bg-primary footer">
-    <mat-toolbar fxFlex fxLayoutAlign="space-around center" class="usp-list top-usp-list" ngClass.xs="px-2" ngClass.gt-xs="px-4" ngClass.gt-md="px-5">
+    <mat-toolbar fxFlex fxLayoutAlign="space-around center" class="usp-list usp-list-footer" ngClass.xs="px-2" ngClass.gt-xs="px-4" ngClass.gt-md="px-5">
         <div fxHide.lt-md class="mr-4"><a href="https://www.plattetv.nl/" i18n><strong>The TV-store of the Netherlands</strong></a></div>
         <div class="usp-list-item mr-4"><a routerLink="/extrainfo/advies-contact"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>8 locations</ng-container></a></div>
         <div fxHide.lt-md class="usp-list-item mr-4"><a routerLink="/extrainfo/installatie-op-maat-learning-center"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>Installation and  en assembly</ng-container></a></div>
@@ -11,14 +11,14 @@
             <div fxFlexOrder.lt-md="2" class="footer-info--representative" ngClass.md="mr-4" ngClass.gt-md="mr-5">
                 <a href="#"><img src="/assets/images/others/footer_tim_logo.png" class="img-fluid px-4" fxHide.gt-sm></a>
             </div>
-            <div fxFlex="100" fxFlexOrder.lt-md="0" class="footer-info--contact mt-3" ngClass.lt-md="mt-4 mb-4">
-                <div class="footer-info--text">
+            <div fxFlex="100" fxFlexOrder.lt-md="0" class="footer-info--contact mt-3" ngClass.lt-md="w-100 mt-4 mb-4">
+                <div class="footer-info--text" ngClass.gt-sm="text-nowrap">
                     <strong i18n>NEED HELP?</strong><br>
                     <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>Customer service today open till 21:00</a>
                 </div>
                 <div class="footer-info--contact-list">
-                    <ul>
-                        <li>
+                    <ul fxFlex fxLayout="row wrap">
+                        <li fxFlex="100" fxFlex.gt-xs="50">
                             <a href="https://www.plattetv.nl/">
                                 <span>
                                     <fa-icon [icon]="['far', 'comment']"></fa-icon>
@@ -29,7 +29,7 @@
                                 </span>
                             </a>
                         </li>
-                        <li>
+                        <li  fxFlex="100" fxFlex.gt-xs="50">
                             <a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS">
                                 <span>
                                     <fa-icon [icon]="['far','envelope']"></fa-icon>
@@ -40,7 +40,7 @@
                                 </span>
                             </a>
                         </li>
-                        <li>
+                        <li fxFlex="100" fxFlex.gt-xs="50">
                             <a href="https://api.whatsapp.com/send?phone=31633444433">
                                 <span>
                                     <fa-icon [icon]="['fab', 'whatsapp']"></fa-icon>
@@ -51,7 +51,7 @@
                                 </span>
                             </a>
                         </li>
-                        <li>
+                        <li fxFlex="100" fxFlex.gt-xs="50">
                             <a href="tel:0268454658">
                                 <span>
                                     <fa-icon [icon]="['fas', 'phone']"></fa-icon>
@@ -65,18 +65,16 @@
                     </ul>
                 </div>
             </div>
-            <div  fxFlexOrder.lt-md="1" class="footer-info--newsletter" ngClass="mb-4" ngClass.gt-sm="mt-3 mb-0">
-                <div fxLayout="column">
-                    <div class="footer-info--text">
-                        <strong i18n>SUBSCRIBE NEWSLETTER</strong><br i18n>
-                        Don't miss any specials, news and bonuses
-                    </div>
-                    <form method="get" class="subscribe-search-form" fxLayout="column">
-                        <input type="text"  i18n-placeholder placeholder="Email" fxFlex aria-label="Email">
-                        <button mat-raised-button color="accent" (click)="subscribe()" type="button" class="mat-elevation-z0 text-muted" i18n>Yes, I sign me up</button>
-                    </form>
+            <div fxFlex fxLayout="column" fxFlexOrder.lt-md="1" class="footer-info--newsletter" ngClass.lt-md="w-100 mb-4" ngClass.gt-sm="mt-3 mb-0">
+                <div class="footer-info--text" ngClass.gt-sm="text-nowrap">
+                    <strong i18n>SUBSCRIBE NEWSLETTER</strong><br i18n>
+                    Don't miss any specials, news and bonuses
                 </div>
-            </div>  
+                <form method="get" class="subscribe-search-form" fxLayout="column">
+                    <input type="text"  i18n-placeholder placeholder="Email" fxFlex aria-label="Email">
+                    <button mat-raised-button color="accent" (click)="subscribe()" type="button" class="mat-elevation-z0 text-left text-muted" i18n>Yes, I sign me up</button>
+                </form>
+            </div>
         </mat-toolbar-row>
     </mat-toolbar>
     <mat-toolbar fxFlex fxLayout="row" fxLayoutAlign="start start" class="footer-nav h-auto" fxHide.lt-md ngClass.md="p-4" ngClass.gt-md="p-5">

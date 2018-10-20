@@ -1,8 +1,4 @@
 footer {
-    .mat-toolbar.footer-info {
-        background-color:#e6e6dc!important
-    }
-
     .mat-toolbar .mat-toolbar-row {
         height: auto;
         padding-left: 0;
@@ -23,6 +19,13 @@ footer {
         background: url(/assets/images/others/footer_tim.png) right top no-repeat;
     }
     @media (max-width:959px) {
+        & {
+            background-color: #212126;
+            color: #fff;
+        }
+        a {
+            color: #fff;
+        }
         &--representative > a{
             display: block;
             width: 100%;
@@ -32,9 +35,12 @@ footer {
     }
 
     &--text {
-        font-size:12.6px;
-        white-space:nowrap;
-
+        white-space: normal;
+        @media (max-width:959px) {
+            a {
+                color: #fdc642;
+            }
+        }
         strong {
             display:inline-block;
             font-weight:bold;
@@ -57,8 +63,6 @@ footer {
                 }
 
                 >li {
-                    float:left;
-                    width:50%;
                     margin-top: 1.25rem;
 
                     span {
@@ -73,6 +77,11 @@ footer {
                             border-radius:50%;
                             margin-right:10px;
                             vertical-align:middle;
+                            @media (max-width: 959px) {
+                                .ng-fa-icon {
+                                    color: #212126;
+                                }
+                            }
                         }
                         &:last-child {
                             strong {
@@ -92,6 +101,7 @@ footer {
     }
 
     &--newsletter {
+        white-space: normal;
 
         input[type="text"] {
             width:100%;
@@ -121,7 +131,6 @@ footer {
         .footer-info--text {
             font-size:12px;
             margin-bottom:5px;
-            white-space: nowrap;
         }
     }
 }
@@ -185,7 +194,6 @@ footer .mat-toolbar.footer-payment {
 .footer{
     min-height: 100px;
     .mat-toolbar.usp-list {
-        border-top:1px solid #cdcdcd;
         background-color: #fff!important;
     }
     .subscribe-block{
