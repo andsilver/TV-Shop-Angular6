@@ -102,7 +102,7 @@
                                         [routerLink]="size.permalink"
                                         routerLinkActive="horizontal-active-link"
                                         [routerLinkActiveOptions]="{exact:false}">
-                                        <img [attr.ix-path]="size.image" ix-params='{"auto":"compress"}' alt="">
+                                        <img [attr.ix-path]="size.image" ix-params='{"auto":"compress"}' alt="" sizes="(min-width: 768px) 70px, (min-width: 320px) 70px, 100vw">
                                     </a>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                         [routerLink]="color.permalink"
                                         routerLinkActive="horizontal-active-link"
                                         [routerLinkActiveOptions]="{exact:false}">
-                                        <img [attr.ix-path]="color.image" ix-params='{"auto":"compress"}' alt="">
+                                        <img [attr.ix-path]="color.image" ix-params='{"auto":"compress"}' alt="" sizes="(min-width: 768px) 70px, (min-width: 320px) 70px, 100vw">
                                     </a>
                                 </div>
                             </div>
