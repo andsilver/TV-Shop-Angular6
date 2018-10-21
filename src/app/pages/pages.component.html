@@ -28,7 +28,7 @@
                 <nav fxLayout="row" fxShow fxHide.gt-sm class="mobilenav">
                     <a href="/extrainfo/advies-contact"><img src="assets/images/others/icon_chat.png" alt="Chat"></a>
                     <a href="/extrainfo/winkels-amsterdam-arnhem-breda-doesburg-doetinchem-eindhoven-nijmegen-en-utrecht-885.html"><img src="assets/images/others/icon_locator.png" alt="Locaties"></a>
-                    <a href="/winkelwagen"><img src="assets/images/others/icon_cart.png" alt="Winkelwagen"></a>
+                    <a href="/winkelwagen" style="position: relative;"><img src="assets/images/others/icon_cart.png" alt="Winkelwagen"><div *ngIf="cart" class="cart-badge"></div></a>
                 </nav>
             </div>
             <div fxFlex="90" fxLayout="row" fxLayout.gt-sm="column" class="main-header-right" ngClass.gt-sm="ml-4">

@@ -32,7 +32,7 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   sidenavMenuItems: Array<any> = [];
   keyword = '';
   searchTerm = new Subject();
-
+  cart = null;
   windowSize: string;
 
   private subscriptions: Subscription[] = [];
@@ -64,7 +64,18 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
           }
           this.keyword = event.target['value'];
           this.search();
-        })
+        }),
+
+      this.store.select(state => state.cart).subscribe(res => {
+          if (!res.CartId) {
+              this.cart = null;
+              return;
+          }
+          this.appService.getCartDetails(res.CartId).subscribe(re => {
+              this.cart = re;
+              console.log('cart = ', this.cart);
+          });
+      })
     ];
   }
 
