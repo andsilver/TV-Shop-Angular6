@@ -70,6 +70,16 @@
                     max-height: 40px;
                 }
             }
+
+            .cart-badge {
+                width: 23px;
+                height: 23px;
+                background-color: #2da6c1;
+                border-radius: 50%;
+                position: absolute;
+                top: -8px;
+                left: 15px;
+            }
     
         }
     }
