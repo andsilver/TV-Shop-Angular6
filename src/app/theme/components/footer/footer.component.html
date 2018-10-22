@@ -6,6 +6,85 @@
         <div class="usp-list-item"><a routerLink="/extrainfo/verzending-en-bezorging"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>Free delivery</ng-container></a></div>
         <div fxFlex="0 0 auto" fxLayoutAlign="start center" fxHide.lt-sm class="review ml-auto"><span class="review--score">9,4</span><span class="review--text"><span class="review--label" i18n>CLIENT REVIEWS</span><br><span class="review--total-reviews"><a href="https://www.kieskeurig.nl/winkels/plattetv/reviews" target="_blank" rel="noreferrer" i18n>20.510 reviews</a></span></span></div>
     </mat-toolbar>
+
+    <div *ngIf="windowSize == 'lt-md'" class="collapse-menu">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                <mat-panel-title>
+                    Service
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="panel-content">
+                <li><a class="nav-link" href="/extrainfo/advies-contact-2316.html">Contact</a></li>
+                <li><a class="nav-link" href="/extrainfo/advies-contact-2316.html#klantenservice">Klantenservice</a></li>
+                <li><a class="nav-link" href="/bestelstatus">Bestelstatus</a></li>
+                <li><a class="nav-link" href="/extrainfo/learning-center-1756.html">Learning Center</a></li>
+                <li><a class="nav-link" href="/extrainfo/zakelijk-2019.html">Zakelijk</a></li>
+                <li><a class="nav-link" href="/extrainfo/vacatures-2320.html">Vacatures</a></li>
+            </ul>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                <mat-panel-title>
+                    Beeldformaten
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="panel-content">
+                <li><a class="nav-link" href="/categorie/alle-tvs-894.html#cat=894&so=1&pr=0-15000&op=38:8720;8317;8329;8353;8672;8355;8325;8351&page=1">70 inch en groter</a></li>
+                <li><a class="nav-link" href="/categorie/alle-tvs-894.html#cat=894&so=1&pr=0-15000&op=38:8306;8334;8313;8315&page=1">55 t/m 65 inch</a></li>
+                <li><a class="nav-link" href="/categorie/alle-tvs-894.html#cat=894&so=1&pr=0-15000&op=38:8281;8288;8303;8332&page=1">40 t/m 50 inch</a></li>
+                <li><a class="nav-link" href="/categorie/alle-tvs-894.html#cat=894&so=1&pr=0-15000&op=38:8341;8271;8273;8275&page=1">32 inch en kleiner</a></li>
+                <li><a class="nav-link" href="/categorie/alle-tvs-894.html">Alle TV's</a></li>
+            </ul>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                <mat-panel-title>
+                    Categorieën
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="panel-content">
+                <li *ngFor="let category of categories">
+                    <a class="transition nav-link" [routerLink]="[ category.permalink ]"
+                       routerLinkActive="horizontal-active-link"
+                       [routerLinkActiveOptions]="{exact:false}">{{category.name}}</a>
+                </li>
+            </ul>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                <mat-panel-title>
+                    Merken
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="panel-content">
+                <li *ngFor="let brand of brands">
+                    <a class="transition nav-link" [routerLink]="[ brand['permalink'] ]"
+                       routerLinkActive="horizontal-active-link"
+                       [routerLinkActiveOptions]="{exact:false}">{{brand['name']}}</a>
+                </li>
+            </ul>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                <mat-panel-title>
+                    Accessoires
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="panel-content">
+                <li><a class="nav-link" href="/categorie/muurbeugels-133.html">Muurbeugels</a></li>
+                <li><a class="nav-link" href="/categorie/afstandsbedieningen-274.html">Afstandsbedieningen</a></li>
+                <li><a class="nav-link" href="/categorie/aansluitkabels-236.html">Aansluitkabels</a></li>
+                <li><a class="nav-link" href="/categorie/accessoires-195.html">Alle accessoires</a></li>
+            </ul>
+        </mat-expansion-panel>
+
+    </div>
+
     <mat-toolbar class="footer-info" ngClass.xs="px-2" ngClass.gt-xs="px-4" ngClass.gt-md="px-5">
         <mat-toolbar-row fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center flex-start">
             <div fxFlexOrder.lt-md="2" class="footer-info--representative" ngClass.md="mr-4" ngClass.gt-md="mr-5">

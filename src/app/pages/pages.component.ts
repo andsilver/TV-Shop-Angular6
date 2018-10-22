@@ -28,6 +28,8 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
   sidenavOpened = false;
   showBackToTop = false;
   categories: Category[] = [];
+  brands = [];
+
   category: Category;
   sidenavMenuItems: Array<any> = [];
   keyword = '';
@@ -52,6 +54,8 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
         console.log('Categories arrived.');
         this.store.dispatch(new CategoriesActions.SuccessGetCategories(res));
       }),
+
+      this.appService.getBrands(100).subscribe(res => this.brands = res.manufacturer),
 
       this.searchTerm
         .pipe(

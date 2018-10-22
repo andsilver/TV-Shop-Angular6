@@ -1,11 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { Category } from 'app/app.models';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnChanges {
+
+  @Input() allCategories: Category[];
+  @Input() allBrands: Array<any>;
+
+  categories: Category[];
+  brands = [];
+  windowSize: string;
 
   stores = [
     {
@@ -42,77 +50,6 @@ export class FooterComponent implements OnInit {
     }
   ];
 
-  categories = [
-    {
-      name: 'OLED TV',
-      link: '/oled-tv',
-    },
-    {
-      name: '4K UHD TV',
-      link: '/4k-uhd-tv'
-    },
-    {
-      name: 'LED TV',
-      link: '/led-tv'
-    },
-    {
-      name: 'QLED TV',
-      link: '/qled-tv'
-    },
-    {
-      name: 'Smart TV',
-      link: '/smart-tv'
-    },
-    {
-      name: '8K Ultra HD TV',
-      link: '/8k-ultra-hd-tv'
-    },
-    {
-      name: 'Alle TV\'s',
-      link: '/alle-tv-s',
-      i18n: 'Alle TV\'s'
-    },
-    {
-      name: 'Soundbars',
-      link: '/soundbars'
-    }
-  ];
-
-  brands = [
-    {
-      name: 'Samsung',
-      link: 'https://www.plattetv.nl/leverancier/samsung-18.html'
-    },
-    {
-      name: 'LG',
-      link: 'https://www.plattetv.nl/leverancier/lg-19.html'
-    },
-    {
-      name: 'Sony',
-      link: 'https://www.plattetv.nl/leverancier/sony-10.html'
-    },
-    {
-      name: 'Philips',
-      link: 'https://www.plattetv.nl/leverancier/philips-9.html'
-    },
-    {
-      name: 'Panasonic',
-      link: 'https://www.plattetv.nl/leverancier/panasonic-5.html'
-    },
-    {
-      name: 'Sonos',
-      link: 'https://www.plattetv.nl/leverancier/sonos-190.html'
-    },
-    {
-      name: 'HEOS',
-      link: 'https://www.plattetv.nl/leverancier/heos-by-denon-207.html'
-    },
-    {
-      name: 'Denon',
-      link: 'https://www.plattetv.nl/leverancier/denon-203.html'
-    }
-  ];
-
   payments = [
     {
       img: '/assets/images/others/icons_footer_ideal.png',
@@ -146,7 +83,23 @@ export class FooterComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+      this.categories = this.allCategories.filter( c => c.parentId === 0 );
+      this.brands = this.allBrands;
+      this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('changes = ', changes);
+    if (changes.allCategories) {
+        this.categories = this.allCategories.filter( c => c.parentId === 0 );
+    }
+
+    if (changes.allBrands) {
+        this.brands = this.allBrands;
+        console.log('this.brands = ', this.brands);
+    }
+  }
 
   subscribe() { }
 

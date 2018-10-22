@@ -4,6 +4,46 @@ footer {
         padding-left: 0;
         padding-right: 0;
     }
+
+    .collapse-menu {
+        background-color: #212126;
+    }
+
+    .mat-expansion-panel {
+        margin: 8px;
+        background-color: #e6e6dc;
+    }
+
+    .mat-expansion-panel-header-title {
+        font-size: 1rem;
+        color: #212226;
+        font-family: inherit;
+        font-weight: 400;
+    }
+
+    .mat-expansion-panel-header {
+        padding: 0 12px;
+    }
+
+    ::ng-deep .mat-expansion-panel-body {
+        padding: 0px;
+    }
+
+    ul.panel-content {
+        background-color: white;
+        list-style-type: none;
+
+        li {
+            border-bottom: 1px solid #b6b6b7;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            color: #212226;
+
+            a.nav-link {
+                color: #212226;
+            }
+        }
+    }
 }
 
 
