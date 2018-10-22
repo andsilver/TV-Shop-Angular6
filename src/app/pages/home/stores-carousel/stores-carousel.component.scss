@@ -1,0 +1,24 @@
+.stores-carousel{
+    background: rgba(0,0,0,0.03);
+    position: relative;
+
+    h1 {
+        padding: 10px;
+        background: #212121;
+        color: #fff;
+        text-transform: uppercase;
+        margin-bottom: .5rem;
+    }
+
+    .swiper-container{
+        .store-item{
+            display: flex;
+            align-items: center;
+            img{
+                max-width: 100%;
+                max-height: 100%;
+                margin: 0 auto;
+            }
+        }        
+    }
+}
