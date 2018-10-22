@@ -41,10 +41,16 @@
     &-items {
         padding-bottom: 1rem;
         border-bottom: 1px dashed #999;
+        a {
+            color: #212126;
+        }
     }
 
     &-sub-total >div {
         line-height: 27px;
+        a {
+            color: #212126;
+        }
     }
 
     .btn-checkout {
