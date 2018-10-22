@@ -13,6 +13,7 @@ import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import { SetKeyword } from 'app/store/actions/keyword.action';
 import * as CategoriesActions from 'app/store/actions/categories.action';
+import * as BrandsActions from 'app/store/actions/brands.action';
 
 @Component({
   selector: 'app-pages',
@@ -51,6 +52,11 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
         this.category = res[0];
         console.log('Categories arrived.');
         this.store.dispatch(new CategoriesActions.SuccessGetCategories(res));
+      }),
+
+      this.appService.getBrands().subscribe(res => {
+        console.log('Brands arrived.');
+        this.store.dispatch(new BrandsActions.SuccessGetBrands(res));
       }),
 
       this.searchTerm

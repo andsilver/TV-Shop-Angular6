@@ -21,6 +21,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTreeModule } from '@angular/material/tree';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -48,6 +49,7 @@ import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 import { ExtraInfoComponent } from './extra-info/extra-info.component';
 import { FiltersListComponent } from './filters-list/filters-list.component';
 import { DescriptionPopoverComponent } from './description-popover/description-popover.component';
+import { SideNavFiltersListComponent } from './sidenav-filters-list/sidenav-filters-list.component';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -91,7 +93,7 @@ import {
   faTrash,
   faTrashAlt,
   faTruck,
-  faSyncAlt
+  faSyncAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -175,6 +177,7 @@ library.add(
     MatSnackBarModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatTreeModule,
     PerfectScrollbarModule,
     PipesModule,
     AgmCoreModule.forRoot({
@@ -204,6 +207,7 @@ library.add(
     MatSnackBarModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatTreeModule,
     PerfectScrollbarModule,
     PipesModule,
     RatingComponent,
@@ -218,6 +222,7 @@ library.add(
     GoogleMapComponent,
     ExtraInfoComponent,
     FiltersListComponent,
+    SideNavFiltersListComponent,
     DescriptionPopoverComponent,
     AgmCoreModule,
     LazyLoadImagesModule,
@@ -237,6 +242,7 @@ library.add(
     GoogleMapComponent,
     ExtraInfoComponent,
     FiltersListComponent,
+    SideNavFiltersListComponent,
     DescriptionPopoverComponent
   ],
   entryComponents: [
