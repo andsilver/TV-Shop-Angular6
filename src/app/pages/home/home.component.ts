@@ -9,6 +9,8 @@ import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import * as KeywordActions from 'app/store/actions/keyword.action';
 
+import { AppService } from 'app/app.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,13 +21,15 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   windowSize: string;
   widget: any;
+  stores = [];
 
   constructor(
     public homeService: HomeService,
     private settings: AppSettings,
     private title: Title,
     private store: Store<State>,
-    private router: Router
+    private router: Router,
+    private appService: AppService
   ) { }
 
   ngOnInit() {
@@ -36,12 +40,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     forkJoin([
       this.homeService.getTopBanner(),
       this.homeService.getMiddleBanner(),
-      this.homeService.getMostPopular()
+      this.homeService.getMostPopular(),
+      this.appService.getStores()
     ]).subscribe(r => {
       this.widget = r;
       setTimeout(() => imgix.init(), 1);
       console.log(r);
+      this.stores = r[3];
+      console.log(this.stores);
     });
+
 
     this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
   }
