@@ -1,0 +1,16 @@
+<div class="listing-item">
+    <a [routerLink]="[product.permalink]" class="image-link d-block text-center">
+        <img [attr.ix-path]="product.images[0].medium" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" alt="">
+    </a>
+    <div>
+        <a [routerLink]="[product.permalink]" class="product-name"><strong class="text-capitalize">{{product.name}}</strong></a>
+        <div class="product-rating">
+            <app-rating [ratingsCount]="product?.ratingsCount" [ratingsValue]="product?.ratingsValue" [direction]="'row'"></app-rating>
+        </div>
+        <div class="product-feature-highlights" [innerHTML]="product.featureHighlights"></div>
+        <div class="product-price mt-2">
+            <span *ngIf="product.oldPrice > '0'" class="product-old-price">{{product.oldPrice | customCurrency:2:3:false}}</span>
+            <span class="product-new-price" [ngClass]="{'only-new-price': product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</span>
+        </div>
+    </div>
+</div>

@@ -29,8 +29,12 @@ export class ContactComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions = [
       this.appService.getStores().subscribe(res => {
-        console.log(res);
-        this.stores = res;
+        console.log('stores = ', res);
+        res.forEach(store => {
+          if (store.store_title && store.store_images.length > 0) {
+              this.stores.push(store);
+          }
+        });
         setTimeout(() => imgix.init(), 1);
       }),
       this.route.url.subscribe((paths: UrlSegment[]) => {

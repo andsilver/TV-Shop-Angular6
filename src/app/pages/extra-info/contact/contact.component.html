@@ -70,7 +70,7 @@
     <div fxLayout="row wrap" fxLayoutAlign="space start" class="stores-individual-store">
         <div fxFlex="50" fxFlex.gt-sm="33.3333333" *ngFor="let store of stores" class="stores-individual-store-item">
           <a [routerLink]="['/stores', store.store_location]">
-            <figure><img [attr.ix-path]="store.store_image_thumbnail" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" [routerLink]="['/stores', store.store_location]" alt=""></figure>
+            <figure><img [attr.ix-path]="store.store_images[0]" ix-params='{"auto":"compress"}' style="height: 160px; object-fit: cover;" sizes="(min-width: 768px) 160px, (min-width: 320px) 160px, 100vw" [routerLink]="['/stores', store.store_location]" alt=""></figure>
             <figcaption>{{store.store_title}}</figcaption>
           </a>
         </div>
