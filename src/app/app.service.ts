@@ -196,6 +196,7 @@ export class AppService {
 
     addToCart(product: Product, count: number = 1, openPopup: boolean = false) {
         let message, status;
+
         if (product.attributes && product.attributes.find(attr => attr.required && !attr.selected)) {
             message = 'Verplichte attributen zijn niet geselecteerd.';
             status = 'error';
