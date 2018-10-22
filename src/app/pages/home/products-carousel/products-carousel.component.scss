@@ -1,0 +1,18 @@
+.products-carousel{
+    background: rgba(0,0,0,0.03);
+    position: relative;
+
+    .most-popular-title {
+        background: #212226;
+        font-weight: bold;
+        font-size: 2rem;
+        line-height: 2.875rem;
+        font-family: "Gotham Condensed Bold";
+        letter-spacing: 1px;
+        color: #fff;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

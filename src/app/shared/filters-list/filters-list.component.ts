@@ -2,6 +2,9 @@ import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from 'app/app.service';
 
+import { Store } from '@ngrx/store';
+import { State } from 'app/store';
+
 @Component({
   selector: 'app-filters-list',
   templateUrl: './filters-list.component.html',
@@ -32,14 +35,14 @@ export class FiltersListComponent implements OnInit, OnDestroy {
 
   brandShow = 'show_more';
 
-  constructor(private appService: AppService, private router: Router) { }
+  constructor(private appService: AppService, private router: Router, private store: Store<State>) { }
 
   ngOnInit() {
     this.appService.getFiltersList().subscribe(res => {
       this.filtersList = res;
       console.log(res);
     });
-    this.appService.getBrands(100).subscribe(res => this.brands = res.manufacturer);
+    this.store.select(state => state.brands).subscribe(res => this.brands = res.manufacturer);
   }
 
   ngOnDestroy() {

@@ -1,24 +1,25 @@
 import { Component, Input, AfterViewInit } from '@angular/core';
+
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
-  selector: 'app-brands-carousel',
-  templateUrl: './brands-carousel.component.html',
-  styleUrls: ['./brands-carousel.component.scss']
+  selector: 'app-most-popular-products-carousel',
+  templateUrl: './products-carousel.component.html',
+  styleUrls: ['./products-carousel.component.scss']
 })
-export class BrandsCarouselComponent implements AfterViewInit {
+export class ProductsCarouselComponent implements AfterViewInit {
 
-  @Input() brands: Array<any> = [];
+  @Input()
+  products = [];
 
   public config: SwiperConfigInterface = { };
 
   constructor() { }
 
   ngAfterViewInit() {
-    console.log(this.brands);
     this.config = {
-      slidesPerView: 4,
-      spaceBetween: 16,
+      slidesPerView: 2,
+      spaceBetween: 5,
       keyboard: true,
       navigation: true,
       pagination: false,
@@ -27,7 +28,7 @@ export class BrandsCarouselComponent implements AfterViewInit {
       preloadImages: false,
       lazy: true,
       autoplay: {
-        delay: 6000,
+        delay: 60000,
         disableOnInteraction: false
       },
       speed: 500,
@@ -43,7 +44,7 @@ export class BrandsCarouselComponent implements AfterViewInit {
           slidesPerView: 2,
         },
         960: {
-          slidesPerView: 4,
+          slidesPerView: 2,
         },
         1280: {
           slidesPerView: 4,

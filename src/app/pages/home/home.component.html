@@ -5,30 +5,25 @@
     <div fxFlex ngClass.xs="px-2" ngClass.sm="px-4" ngClass.gt-sm="px-3" class="middle-content">
         <ng-container *ngIf="widget">
             <app-main-carousel *ngIf="widget" [slides]="widget[0]"></app-main-carousel>
-            <div *ngFor="let mid of widget[1]" [innerHTML]="mid.content | htmlSanitize" (click)="navigate($event)"></div>
-            <div class="most-popular-wrapper">
-                <div class="most-popular-title" i18n>Most Popular</div>
-                <div fxLayout="row wrap" fxLayoutAlign="start stretch" class="most-popular">
-                    <div fxFlex="50" fxFlex.gt-sm="33.3333333" *ngFor="let product of widget[2].products" class="product-item-widget">
-                        <div class="listing-item">
-                            <a [routerLink]="[product.permalink]" class="image-link d-block text-center">
-                                <img [attr.ix-path]="product.images[0].medium" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" alt="">
-                            </a>
-                            <div>
-                                <a [routerLink]="[product.permalink]" class="product-name"><strong class="text-capitalize">{{product.name}}</strong></a>
-                                <div class="product-rating">
-                                    <app-rating [ratingsCount]="product?.ratingsCount" [ratingsValue]="product?.ratingsValue" [direction]="'row'"></app-rating>
-                                </div>
-                                <div class="product-feature-highlights" [innerHTML]="product.featureHighlights"></div>
-                                <div class="product-price mt-2">
-                                    <span *ngIf="product.oldPrice > '0'" class="product-old-price">{{product.oldPrice | customCurrency:2:3:false}}</span>
-                                    <span class="product-new-price" [ngClass]="{'only-new-price': product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</span>
-                                </div>
-                            </div>
+            
+            <ng-container *ngIf="windowSize == 'gt-md'">
+                <div *ngFor="let mid of widget[1]" [innerHTML]="mid.content | htmlSanitize" (click)="navigate($event)">
+                </div>
+                <div class="most-popular-wrapper">
+                    <div class="most-popular-title" i18n>Most Popular</div>
+                    <div fxLayout="row wrap" fxLayoutAlign="start stretch" class="most-popular">
+                        <div fxFlex="50" fxFlex.gt-sm="33.3333333" *ngFor="let product of widget[2].products" class="product-item-widget">
+                            <app-product [product]="product"></app-product>
                         </div>
                     </div>
                 </div>
-            </div>
+            </ng-container>
+
+            <ng-container *ngIf="windowSize == 'lt-md'">
+                <app-stores-carousel *ngIf="stores.length" [stores]="stores"></app-stores-carousel>
+                <app-most-popular-products-carousel *ngIf="widget" [products]="widget[2].products"></app-most-popular-products-carousel>
+            </ng-container>
+
         </ng-container>
     </div>
 
