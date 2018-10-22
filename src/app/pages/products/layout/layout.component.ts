@@ -62,6 +62,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
         .pipe(
           switchMap(res => {
             this.categories = res;
+            console.log(this.router.url);
+            console.log(this.categories);
             return this.route.url;
           })
         )
@@ -69,22 +71,22 @@ export class LayoutComponent implements OnInit, OnDestroy {
             if (!this.categories.length) {
               return;
             }
-
-            const url = this.router.url.split('?')[0];
             this.loaded = true;
-            if (url === '/products' || url.indexOf('leverancier') > -1) {
+            if (this.router.url === '/products' || this.router.url.indexOf('leverancier') > -1) {
               this.category = {id: 0, name: '', crumbPath: [], parentId: 0, permalink: '', hasSubCategory: true};
             } else {
-              this.category = this.categories.find((c) => c.permalink === `${url}/` || c.permalink === url);
+              this.category = this.categories.find((c) => c.permalink === `${this.router.url}/` || c.permalink === this.router.url);
+              console.log(this.category);
             }
             if (this.category) {
               this.store.dispatch(new CategoryActions.SaveCategory(this.category));
               this.store.dispatch(new ProductActions.RemoveProduct());
               this.store.dispatch(new CrumbpathActions.SaveCrumbPath(this.generateCrumbPath(this.category.crumbPath)));
             } else if (!this.category) {
-              const payload = { permalink: url, categoryId: this.parentCategory ? this.parentCategory.id : null };
+              const payload = { permalink: this.router.url, categoryId: this.parentCategory ? this.parentCategory.id : null };
               this.store.dispatch( new ProductActions.GetProduct(payload));
               this.store.dispatch( new CategoryActions.RemoveCategory());
+              this.store.dispatch( new ProductsActions.ModeProducts('related'));
             }
 
         })
