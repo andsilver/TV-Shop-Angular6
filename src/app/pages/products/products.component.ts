@@ -50,6 +50,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   category_name: string;
   category_description: string;
   banners: any;
+  sponsoredProducts: any;
 
   categoryId = 0;
   topParentCategoryId = 0;
@@ -163,6 +164,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   setProducts(res) {
+    console.log('product res = ', res);
+
     if (this.isFirst) {
       this.isFirst = false;
       return;
@@ -175,6 +178,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
     if (res && res.banners) {
         this.banners = res.banners;
         setTimeout(() => imgix.init(), 1);
+    }
+
+    if (res && res.sponsoredProducts) {
+      this.sponsoredProducts = res.sponsoredProducts;
+      console.log('sponsoredProducts = ', this.sponsoredProducts);
     }
 
     this.category_name = res.category_name;
