@@ -1,6 +1,6 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
-
+        
         <app-filters-list *ngIf="viewLoaded && !filterLists?.length"></app-filters-list>
 
         <mat-accordion displayMode="flat" multi="true" *ngIf="filterLists?.length">
@@ -29,9 +29,9 @@
                         <div fxLayout="column" class="filter-brands">
                             <div *ngFor="let value of filt.values | slice:0:showMore[filt.display].count">
                                 <mat-checkbox
-                                        [disabled]="value.result_counter == 0"
-                                        [checked]="value.value_checked"
-                                        (change)="selectFilter(filt.option_id, value.value_id)">
+                                    [disabled]="value.result_counter == 0"
+                                    [checked]="value.value_checked"
+                                    (change)="selectFilter(filt.option_id, value.value_id)">
                                     {{value.value_name}} ({{value.result_counter}})
                                 </mat-checkbox>
                             </div>
@@ -40,7 +40,7 @@
                     </mat-expansion-panel>
 
                     <ng-container *ngIf="priceFilterOrder == i">
-
+            
                         <mat-expansion-panel expanded *ngIf="brands.length">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
@@ -86,101 +86,103 @@
         </mat-accordion>
 
     </mat-sidenav>
-    <div *ngIf="viewLoaded" class="px-3" fxLayout fxLayoutAlign="end start">
-        <div fxFlex>
-            <div>
-                <app-main-carousel *ngIf="banners" [slides]="banners"></app-main-carousel>
-            </div>
-            <div fxFlex class="px-3">
-                <div *ngIf="category_description" class="pb-3">
-                    <h1>{{category_name}}</h1>
-                    <p (click)="navigateToCategory($event)" [innerHTML]="category_description | htmlSanitize"></p>
+    <mat-sidenav-content class="all-products">
+        <div *ngIf="viewLoaded" fxLayout="row" fxLayoutAlign="end start">
+            <div fxFlex="100" fxFlex.gt-sm="77" class="px-3">
+                <div>
+                    <app-main-carousel *ngIf="banners" [slides]="banners"></app-main-carousel>
                 </div>
-                <div *ngIf="products && products.length" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" class="filter-row mat-elevation-z1">
-                    <h2>
-                        <ng-container i18n>Overview </ng-container>
-                        {{category_name}}
-                    </h2>
-                    <div fxLayout *ngIf="!isTop5">
-                        <div>
-                            <button *ngIf="!sidenavOpen" mat-icon-button (click)="sidenav.toggle()">
-                                <fa-icon [icon]="['fas', 'ellipsis-v']"></fa-icon>
-                            </button>
-                            <a mat-button [matMenuTriggerFor]="sortMenu" #sortMenuTrigger="matMenuTrigger">
-                                {{sort}} <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
-                            </a>
-                            <mat-menu #sortMenu="matMenu" xPosition="before" class="app-dropdown">
-                                <span (mouseleave)="sortMenuTrigger.closeMenu()">
-                                    <button mat-menu-item *ngFor="let sort of sortings" (click)="changeSorting(sort)">
-                                        <span>{{sort}}</span>
-                                    </button>
-                                </span>
-                            </mat-menu>
-                        </div>
-                        <div fxLayout="row" fxLayoutAlign="center center" fxHide.lt-sm>
-                            <a mat-button [matMenuTriggerFor]="countsMenu" #countsMenuTrigger="matMenuTrigger">
-                                <ng-container i18n>Show</ng-container> {{count}} <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
-                            </a>
-                            <mat-menu #countsMenu="matMenu" xPosition="before" class="app-dropdown">
-                                <span (mouseleave)="countsMenuTrigger.closeMenu()">
-                                    <button mat-menu-item *ngFor="let count of counts" (click)="changeCount(count)">
-                                        <span>{{count}}</span>
-                                    </button>
-                                </span>
-                            </mat-menu>
+                <div>
+                    <div *ngIf="category_description" class="pb-3">
+                        <h1>{{category_name}}</h1>
+                        <p (click)="navigateToCategory($event)" [innerHTML]="category_description | htmlSanitize"></p>
+                    </div>
+                    <div *ngIf="products && products.length" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" class="filter-row mat-elevation-z1">
+                        <h2>
+                            <ng-container i18n>Overview </ng-container>
+                            {{category_name}}
+                        </h2>
+                        <div fxLayout *ngIf="!isTop5">
+                            <div>
+                                <button *ngIf="!sidenavOpen" mat-icon-button (click)="sidenav.toggle()">
+                                    <fa-icon [icon]="['fas', 'ellipsis-v']"></fa-icon>
+                                </button>
+                                <a mat-button [matMenuTriggerFor]="sortMenu" #sortMenuTrigger="matMenuTrigger">
+                                    {{sort}} <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
+                                </a>
+                                <mat-menu #sortMenu="matMenu" xPosition="before" class="app-dropdown">
+                                    <span (mouseleave)="sortMenuTrigger.closeMenu()">
+                                        <button mat-menu-item *ngFor="let sort of sortings" (click)="changeSorting(sort)">
+                                            <span>{{sort}}</span>
+                                        </button>
+                                    </span>
+                                </mat-menu>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="center center" fxHide.lt-sm>
+                                <a mat-button [matMenuTriggerFor]="countsMenu" #countsMenuTrigger="matMenuTrigger">
+                                    <ng-container i18n>Show</ng-container> {{count}} <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
+                                </a>
+                                <mat-menu #countsMenu="matMenu" xPosition="before" class="app-dropdown">
+                                    <span (mouseleave)="countsMenuTrigger.closeMenu()">
+                                        <button mat-menu-item *ngFor="let count of counts" (click)="changeCount(count)">
+                                            <span>{{count}}</span>
+                                        </button>
+                                    </span>
+                                </mat-menu>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="products-wrapper" *ngIf="products">
-                    <div *ngIf="!products?.length">
-                        {{emptyMessage}}
+                    <div class="products-wrapper" *ngIf="products">
+                        <div *ngIf="!products?.length">
+                            {{emptyMessage}}
+                        </div>
+                        <ng-container>
+                            <div *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }">
+                                <mat-card class="product-item product-item-list">
+                                    <div fxLayout fxLayout="row">
+                                        <div fxFlex="0 0 150px" class="product-item--image">
+                                            <div *ngIf="product.specialLabel" class="product-item--image-speciallabel">
+                                                {{product.specialLabel}}
+                                            </div>
+                                            <a [routerLink]="[product.permalink]" class="product-item--image-link">
+                                                <img [attr.ix-path]="product.images[0].small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" alt="">
+                                            </a>
+                                        </div>
+                                        <div fxFlex="100" fxLayout.lt-md="column" class="product-item--content">
+                                            <div fxFlex class="product-item--info">
+                                                <a [routerLink]="[product.permalink]" class="product-item--info-title"><strong>{{product.name}}</strong></a>
+                                                <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'row'" class="product-item--info-rating"></app-rating>
+                                                <div class="product-item--info-feature-highlights" [innerHTML]="product.featureHighlights | htmlSanitize"></div>
+                                            </div>
+                                            <div fxFlex fxFlex.gt-sm="0 0 226px" class="product-item--pricesubmit">
+                                                <div class="text-muted" [ngClass.gt-xs]="['text-right']" class="product-item--pricesubmit-old-price">
+                                                    <span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency:2:3:false}}</span>
+                                                </div>
+                                                <div class="product-item--pricesubmit-new-price" [ngClass.gt-sm]="['text-right']" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</div>
+                                                <div [innerHTML]="product.stockIndicator | htmlSanitize" class="product-item--content-stock"></div>
+                                                <button class="product-item--pricesubmit-submit control-normal" mat-button [routerLink]="[product.permalink]">
+                                                    <ng-container i18n>GO TO PRODUCT</ng-container> <fa-icon [icon]="'chevron-right'"></fa-icon>
+                                                </button>
+                                                <div *ngIf="product.haveDemoUnit" class="product-item--pricesubmit-demo-unit">
+                                                    <a i18n (click)="openDemoUnit(product)">View the Buitenkansje</a>
+                                                    <strong><ng-container i18n> of</ng-container> {{product.demoUnitStartPrice}}</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mat-card>
+                            </div>
+                        </ng-container>
                     </div>
-                    <ng-container>
-                        <div *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }">
-                            <mat-card class="product-item product-item-list">
-                                <div fxLayout fxLayout="row">
-                                    <div fxFlex="0 0 150px" class="product-item--image">
-                                        <div *ngIf="product.specialLabel" class="product-item--image-speciallabel">
-                                            {{product.specialLabel}}
-                                        </div>
-                                        <a [routerLink]="[product.permalink]" class="product-item--image-link">
-                                            <img [attr.ix-path]="product.images[0].small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" alt="">
-                                        </a>
-                                    </div>
-                                    <div fxFlex="100" fxLayout.lt-md="column" class="product-item--content">
-                                        <div fxFlex class="product-item--info">
-                                            <a [routerLink]="[product.permalink]" class="product-item--info-title"><strong>{{product.name}}</strong></a>
-                                            <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'row'" class="product-item--info-rating"></app-rating>
-                                            <div class="product-item--info-feature-highlights" [innerHTML]="product.featureHighlights | htmlSanitize"></div>
-                                        </div>
-                                        <div fxFlex fxFlex.gt-sm="0 0 226px" class="product-item--pricesubmit">
-                                            <div class="text-muted" [ngClass.gt-xs]="['text-right']" class="product-item--pricesubmit-old-price">
-                                                <span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency:2:3:false}}</span>
-                                            </div>
-                                            <div class="product-item--pricesubmit-new-price" [ngClass.gt-sm]="['text-right']" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</div>
-                                            <div [innerHTML]="product.stockIndicator | htmlSanitize" class="product-item--content-stock"></div>
-                                            <button class="product-item--pricesubmit-submit control-normal" mat-button [routerLink]="[product.permalink]">
-                                                <ng-container i18n>GO TO PRODUCT</ng-container> <fa-icon [icon]="'chevron-right'"></fa-icon>
-                                            </button>
-                                            <div *ngIf="product.haveDemoUnit" class="product-item--pricesubmit-demo-unit">
-                                                <a i18n (click)="openDemoUnit(product)">View the Buitenkansje</a>
-                                                <strong><ng-container i18n> of</ng-container> {{product.demoUnitStartPrice}}</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
+                    <div *ngIf="products?.length > 0" fxLayout="row wrap" class="product-pagination-wrapper">
+                        <div fxFlex="100">
+                            <mat-card class="p-0 text-center">
+                                <pagination-controls class="product-pagination" previousLabel="" nextLabel="" autoHide="true" maxSize="5" (pageChange)="onPageChanged($event)">
+                                </pagination-controls>
                             </mat-card>
                         </div>
-                    </ng-container>
-                </div>
-
-                <div *ngIf="products?.length > 0" fxLayout="row wrap" class="product-pagination-wrapper">
-                    <div fxFlex="100">
-                        <mat-card class="p-0 text-center">
-                            <pagination-controls class="product-pagination" previousLabel="" nextLabel="" autoHide="true" maxSize="5" (pageChange)="onPageChanged($event)">
-                            </pagination-controls>
-                        </mat-card>
                     </div>
                 </div>
             </div>
