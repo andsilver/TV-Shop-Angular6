@@ -1,6 +1,6 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
-        
+
         <app-filters-list *ngIf="viewLoaded && !filterLists?.length"></app-filters-list>
 
         <mat-accordion displayMode="flat" multi="true" *ngIf="filterLists?.length">
@@ -29,9 +29,9 @@
                         <div fxLayout="column" class="filter-brands">
                             <div *ngFor="let value of filt.values | slice:0:showMore[filt.display].count">
                                 <mat-checkbox
-                                    [disabled]="value.result_counter == 0"
-                                    [checked]="value.value_checked"
-                                    (change)="selectFilter(filt.option_id, value.value_id)">
+                                        [disabled]="value.result_counter == 0"
+                                        [checked]="value.value_checked"
+                                        (change)="selectFilter(filt.option_id, value.value_id)">
                                     {{value.value_name}} ({{value.result_counter}})
                                 </mat-checkbox>
                             </div>
@@ -40,7 +40,7 @@
                     </mat-expansion-panel>
 
                     <ng-container *ngIf="priceFilterOrder == i">
-            
+
                         <mat-expansion-panel expanded *ngIf="brands.length">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
@@ -87,11 +87,8 @@
 
     </mat-sidenav>
     <mat-sidenav-content class="all-products">
-        <div *ngIf="viewLoaded" class="px-3" fxLayout fxLayoutAlign="end start">
-            <div fxFlex>
-                <div>
-                    <app-main-carousel *ngIf="banners" [slides]="banners"></app-main-carousel>
-                </div>
+        <div fxLayout fxLayoutAlign="end start" *ngIf="viewLoaded">
+            <div fxFlex class="px-3">
                 <div *ngIf="category_description" class="pb-3">
                     <h1>{{category_name}}</h1>
                     <p (click)="navigateToCategory($event)" [innerHTML]="category_description | htmlSanitize"></p>
