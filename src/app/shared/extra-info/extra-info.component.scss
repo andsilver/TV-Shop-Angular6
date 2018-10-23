@@ -8,10 +8,10 @@
 .shopping-cart {
 
     .mat-card-title{
-
+        border-bottom: none;
+        padding-bottom: 0;
         h3 {
             position: relative;
-            border-bottom: none;
             background-color: #212226;
             background-image:  url(/assets/images/others/icon_cart.png);
             background-position: right 1rem center;
@@ -84,22 +84,23 @@
 
     .contact_box {
         >a {
-            display:block;
-            border:1px solid #E6E6DC;
-            background:#e6e6dc;
-            margin-bottom:5px;
-            padding:10px 0 10px 6px;
+            display: block;
+            border: 1px solid #E6E6DC;
+            background: #e6e6dc;
+            line-height: .875rem;
+            margin-bottom: .5rem;
+            padding: .5rem 0 .5rem .5rem;
             
             .contact_box_icon {
-                float:left;
-                width:30px;
-                height:30px;
-                background:#fff;
-                font-size:17px; 
-                line-height:30px;
-                text-align:center; 
-                margin-right:10px;
-                border-radius:50%;
+                float: left;
+                width: 1.875rem;
+                height: 1.875rem;
+                background: #fff;
+                font-size: 1.0625rem;
+                line-height: 1.875rem;
+                text-align: center;
+                margin-right: .5rem;
+                border-radius: 50%;
             }
 
             &:hover{
@@ -112,14 +113,16 @@
             }
 
             strong {
-                display:block; line-height:14px;
-                font-weight:bold;
-                font-size:12px;
-                margin-top:2px;
+                display: block;
+                font-weight: bold;
+                font-size: .75rem;
+                line-height: .875rem;
+                margin-top: .125rem;
             }
 
             >span {
-                font-size:10px;
+                font-size: .625rem;
+                line-height: .875rem;
             }
         }
 
@@ -189,15 +192,15 @@
         position:relative;
         overflow:hidden;
         border:1px solid #E6E6DC;
-        padding:.5rem;
+        padding:.25rem;
         .branch_opening_hours{
             font-weight:600;
             font-size:12px;
             line-height:1.2;
             .adbox_opening_times.city_name {
-                font-size:13px;
-                margin-bottom:4px;
-                margin-top:2px;
+                font-size: .8125rem;
+                margin-bottom: .125rem;
+                margin-top: .125rem;
                 a {
                     color: #000;
                 }
@@ -214,6 +217,7 @@
     }
     .branch_img {
         float:left;
+        line-height: 0;
         margin-right:6px;
     }
 }

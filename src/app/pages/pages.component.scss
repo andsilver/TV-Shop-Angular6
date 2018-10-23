@@ -10,7 +10,7 @@
 }
 
 .theme-container.wrapper{
-    
+
     .sidenav{
         width: 250px;
         padding: 8px 16px;
@@ -23,21 +23,41 @@
         }
     }
 
+    .main-header {
+        .main-header-right .main-header-sub .shopping-cart .cart-dropdown.mat-menu-panel{
+            min-width: 400px;
+            max-width: 400px;
+            padding: 6px 14px;
+            font-size: 13px;
+
+            .cart-dropdown-footer{
+                font-size: 14px;
+
+                .cart-dropdown-submit {
+                    background-color: #5AAD49;
+                    font-family: "Poppins";
+                    color: #fff!important;
+                    text-decoration: none!important;
+                }
+            }
+        }
+    }
+
     #brand {
         margin-bottom: .5rem;
         .logo {
             line-height:0;
-    
+
             img {
                 width: 226px;
                 height: auto;
             }
         }
         .mobilenav {
-    
+
             a {
                 display: block;
-    
+
                 &+a {
                     margin-left: 1rem;
                 }
@@ -46,16 +66,6 @@
                 }
             }
 
-            .cart-badge {
-                width: 23px;
-                height: 23px;
-                background-color: #2da6c1;
-                border-radius: 50%;
-                position: absolute;
-                top: -8px;
-                left: 15px;
-            }
-    
         }
     }
     @media (max-width: 959px) {
@@ -82,7 +92,7 @@
         #brand {
             .logo {
                 img {
-                    max-width: 25vw;
+                    max-width: 35vw;
                 }
             }
         }
@@ -119,26 +129,7 @@
             margin-left: .25rem;
         }
     }
-    
-}
 
-
-#main-header.mat-toolbar-row {
-    height: auto;
-    padding: .5rem;
-}
-@media (min-width: 960px) {
-    #main-header.mat-toolbar-row {
-        height: 126px;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-}
-@media (min-width: 1280px) {
-    #main-header.mat-toolbar-row {
-        padding-left: 3rem;
-        padding-right: 3rem;
-    }
 }
 
 

@@ -177,7 +177,7 @@ app-root .app.dark .mat-drawer-container::after {
 }
 .light-block.mat-card{
     background: rgba(0,0,0,0.03) !important;
-    box-shadow: none !important;    
+    box-shadow: none !important;
 }
 .transition{
     -webkit-transition: 0.3s;
@@ -616,6 +616,29 @@ app-root .app.dark .mat-drawer-container::after {
 
 
 /******* Toolbar *******/
+
+#main-header.mat-toolbar-row {
+    height: auto;
+    padding: .5rem;
+}
+@media (min-width: 600px) {
+    #main-header.mat-toolbar-row {
+        padding: 1.5rem;
+    }
+}
+@media (min-width: 960px) {
+    #main-header.mat-toolbar-row {
+        height: 126px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+@media (min-width: 1280px) {
+    #main-header.mat-toolbar-row {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
 
 .img-fluid {
     max-width: 100%;
