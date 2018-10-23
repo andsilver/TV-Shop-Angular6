@@ -1,5 +1,6 @@
-import {Component, OnInit, OnDestroy, ViewChild, HostListener, Input, AfterViewInit, ViewEncapsulation} from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit, OnDestroy, ViewChild, HostListener, Input, ViewEncapsulation} from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
@@ -22,7 +23,7 @@ import { Product, Category } from '../../app.models';
   styleUrls: ['./products.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ProductsComponent implements OnInit, OnDestroy {
 
   @ViewChild('sidenav')
   sidenav: any;
@@ -44,23 +45,18 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   sidenavOpen = true;
   viewCol = 25;
   counts = [12, 24, 36];
-  count = 12;
   sortings = ['Relevantie', 'Best verkocht', 'Prijs laag-hoog', 'Prijs hoog-laag'];
-  sort: any;
   products: Product[] = [];
   category_name: string;
   category_description: string;
+  banners: any;
 
   categoryId = 0;
   topParentCategoryId = 0;
   topParentCategory;
 
   brands = [];
-  selectedBrands = [];
-  priceFrom = 1;
-  priceTo = 15000;
-  page = 0;
-  totalProducts = 0;
+
   emptyMessage = '';
   isTop5 = false;
 
@@ -86,11 +82,21 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   popoverFilter: any;
   priceFilterOrder = 0;
 
+  sort: any;
+  count = 12;
+  selectedBrands = [];
+  priceFrom = 1;
+  priceTo = 15000;
+  page = 0;
+  totalProducts = 0;
+
   constructor(
     public appService: AppService,
     public dialog: MatDialog,
     private router: Router,
-    private store: Store<State>) { }
+    private store: Store<State>,
+    private route: ActivatedRoute,
+    private location: Location) { }
 
   ngOnInit() {
 
@@ -146,9 +152,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     }, 1);
   }
 
-  ngAfterViewInit() {
-  }
-
   ngOnDestroy() {
     this.Subscriptions.forEach(sub => sub.unsubscribe());
   }
@@ -168,6 +171,12 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     this.isTop5 = res.category_name.indexOf('Top 5') > -1 ? true : false;
     this.products = res.products;
+
+    if (res && res.banners) {
+        this.banners = res.banners;
+        setTimeout(() => imgix.init(), 1);
+    }
+
     this.category_name = res.category_name;
     if ( res && res.category_description) {
       this.category_description = res.category_description.replace(/href="#"/g, ' ');
@@ -196,8 +205,11 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     } else {
       this.priceFilterOrder = 0;
     }
+
     this.totalProducts = res.total;
+
     window.scrollTo(0, 0);
+
     if (!this.products || !this.products.length) {
       this.emptyMessage = 'De opgegeven zoekopdracht heeft geen resultaten opgeleverd.';
     }
@@ -207,9 +219,29 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   initFilter() {
     this.selectedBrands = [];
     this.selectedFilterLists = [];
-    this.priceFrom = 1;
-    this.priceTo = 10000;
     this.sort = this.sortings[0];
+
+    const f = this.route.snapshot.queryParamMap['params'];
+    console.log(f);
+
+    const priceRange = f['pr'];
+    this.priceFrom = priceRange ? Number(priceRange.split('-')[0]) : 1;
+    this.priceTo = priceRange ? Number(priceRange.split('-')[1]) : 10000;
+    this.sort = f['so'] ? this.sortings[Number(f['so'])] : this.sortings[0];
+
+    const brands = f['merk'] ? f['merk'].split('|') : [];
+    brands.forEach(b => this.selectedBrands.push({name: b.split(':')[0], id: Number(b.split(':')[1])}));
+
+    const options = f['op'] ? f['op'].split('|') : [];
+    options.forEach(o => {
+      const v = o.split(':');
+      this.selectedFilterLists.push({
+        id: Number(v[0]),
+        children: v[1].split(';').map(c => Number(c))
+      });
+    });
+
+    this.page = f['page'] ? Number(f['page']) : 1;
   }
 
   filterChanged() {
@@ -232,6 +264,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       limit: this.count,
       page: this.page
     };
+
+    this.replaceUrl();
 
     if (this.router.url.indexOf('leverancier') > -1) {
       filt['manufacturersPath'] = this.router.url;
@@ -360,6 +394,39 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     if (link) {
       this.router.navigate([link]);
     }
+  }
+
+  replaceUrl() {
+
+    const query: string[] = [];
+
+    if (this.sortings.indexOf(this.sort)) {
+      query.push(`so=${this.sortings.indexOf(this.sort)}`);
+    }
+
+    if (this.selectedBrands.length) {
+      const params = this.selectedBrands.map(b => `${b.name}:${b.id}`);
+      query.push(`merk=${params.join('|')}`);
+    }
+
+    if (this.priceFrom !== 1 && this.priceTo !== 15000) {
+      query.push(`pr=${this.priceFrom}-${this.priceTo}`);
+    }
+
+    if (this.selectedFilterLists.length) {
+      const params = this.selectedFilterLists.map((o, index) => `${o.id}:${o.children.join(';')}`);
+      query.push(`op=${params.join('|')}`);
+    }
+
+    if (this.page !== 1) {
+      query.push(`page=${this.page}`);
+    }
+
+    const url = query.length ? `?${query.join('&')}` : '';
+
+    console.log(url);
+
+    this.location.replaceState(`${this.router.url.split('?')[0]}${url}`);
   }
 
 }

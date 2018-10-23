@@ -54,6 +54,7 @@ export class ExtraInfoComponent implements OnInit {
     }
   ];
 
+  contents = [];
   subscriptions = [];
 
   cart = null;
@@ -72,7 +73,15 @@ export class ExtraInfoComponent implements OnInit {
           this.cart = re;
           console.log(re);
         });
-      })
+      }),
+
+      this.appService.getOpenStores().subscribe(res => {
+          this.contents = res;
+
+          for (let i = 0; i < this.contents.length; i++) {
+            this.contents[i]['index'] = i;
+          }
+      }),
     ];
   }
 

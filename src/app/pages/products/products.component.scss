@@ -30,6 +30,7 @@
             align-items: center;
             -ms-flex-pack: justify;
             justify-content: space-between;
+            font-weight: bold;
 
             input[type="number"] {
                 width: 30%;
@@ -43,7 +44,7 @@
         }
         .show_more_toggle {
             font-weight: 700;
-            color: #212126;
+            color: #1d4f92;
             cursor: pointer;
         }
     }
@@ -97,13 +98,6 @@
     }
 }
 
-.products-wrapper{
-    margin: .5rem -.5rem;
-    .col{
-        padding: .5rem;
-    }
-}
-
 .categories-wrapper{
     position: relative;
     max-height: 300px;
@@ -131,22 +125,113 @@
     box-shadow: 0 0 0px 2px rgba(114, 210, 25, 0.46);
 }
 
+/******* Product *******/
+.product-item{
+
+
+    .icons{
+        margin-top: 18px;
+    }
+}
+
 .product-item {
-    &-image {
+    position: relative;
+    border-bottom: 1px solid #E6E6DC;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none!important;
+    &--image {
         position: relative;
+        padding: .75rem .25rem .75rem .75rem;
+
         &-speciallabel {
             position: absolute;
-            top: 6px;
-            left: 21px;
+            top: .75rem;
+            left: .75rem;
             background-color: #2da7c2;
             color: #fff;
-            padding: 0px 7px;
+            padding: 0 .5rem;
+        }
+        &-link {
+
+            img {
+                max-width: 100%;
+                max-height: 235px;
+            }
         }
     }
+    &--content {
+        padding: .75rem;
 
-    &-feature-highlights {
-        margin-top: 5px;
-        margin-left: 20px;
+        .product-item--info {
+            &-title {
+                font-weight: bold;
+                font-size: .9375rem;
+                color: #212126;
+                text-decoration: none;
+                text-transform: uppercase;
+                margin-bottom: .25rem;
+            }
+            &-feature-highlights {
+                ul.listing_attribute {
+                    padding-left: 0;
+                    margin-bottom: .625rem;
+                }
+                ul.listing_attribute > li {
+                    overflow: hidden;
+                    background-image: none;
+                    font-weight: 500;
+                    font-size: .75rem;
+                    line-height: 19px;
+                    line-height: inherit;
+                    padding-left: 0;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                ul.listing_attribute > li:before {
+                    content: "-";
+                    margin-right: 5px;
+                }
+                ul.listing_attribute > li > a:hover,
+                ul.listing_attribute > li > a:focus {
+                    text-decoration: none;
+                }
+            }
+            &-rating {
+                display: block;
+                margin-bottom: .75rem;
+            }
+        }
+        .product-item--pricesubmit {
+            &-old-price{
+                display: block;
+                font-size: 18px;
+                line-height: 1;
+                font-family: "Gotham Condensed";
+                letter-spacing: 1px;
+                color: #b5b5b5;
+            }
+            &-new-price{
+                display: block;
+                width: auto;
+                font-weight: bold;
+                font-size: 36px;
+                line-height: 1;
+                font-family: "Gotham Condensed";
+                letter-spacing: 1px;
+                color: #000;
+                margin-bottom: .25rem;
+            }
+            &-demo-unit {
+                clear: right;
+                font-size: .75rem;
+                color: #000;
+                white-space: nowrap;
+                margin-bottom: 0;
+                padding-top: .25rem;
+                text-align: left;
+            }
+        }
     }
 }
 
@@ -208,16 +293,7 @@
 .prodlist-stock-desc-orange {
     color: #ff6501;
 }
-.demo-unit {
-    clear: right;
-    font-size: .75rem;
-    color: #000;
-    white-space: nowrap;
-    margin-bottom: 0;
-    padding-top: .25rem;
-    text-align: left;
-}
-
+/*
 .product-item-list.mat-card {
     padding: 0;
     box-shadow: none;
@@ -244,6 +320,7 @@
 
 
 }
+*/
 @media (max-width: 419px) {
     .product-item-list.mat-card {
         & > div {

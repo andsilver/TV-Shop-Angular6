@@ -17,7 +17,7 @@
                 <nav fxLayout="row" fxShow fxHide.gt-sm class="mobilenav">
                     <a href="/extrainfo/advies-contact"><img src="assets/images/others/icon_chat.png" alt="Chat"></a>
                     <a href="/extrainfo/winkels-amsterdam-arnhem-breda-doesburg-doetinchem-eindhoven-nijmegen-en-utrecht-885.html"><img src="assets/images/others/icon_locator.png" alt="Locaties"></a>
-                    <a href="/winkelwagen" style="position: relative;"><img src="assets/images/others/icon_cart.png" alt="Winkelwagen"><div *ngIf="cart" class="cart-badge"></div></a>
+                    <a href="/winkelwagen" style="position: relative;"><img src="assets/images/others/icon_cart.png" alt="Winkelwagen"><div class="cart-badge" *ngIf="windowSize == 'lt-md' && cart"></div></a>
                 </nav>
             </div>
             <div fxFlex="90" fxLayout="row" fxLayout.gt-sm="column" class="main-header-right" ngClass.gt-sm="ml-4">
@@ -72,8 +72,8 @@
         <div class="usp-list-item"><a routerLink="/extrainfo/verzending-en-bezorging"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>Free delivery</ng-container></a></div>
         <div fxFlex="0 0 auto" fxLayoutAlign="start center" fxHide.lt-sm class="review ml-auto"><span class="review--score">9,4</span><span class="review--text"><span class="review--label" i18n>CLIENT REVIEWS</span><br><span class="review--total-reviews"><a href="https://www.kieskeurig.nl/winkels/plattetv/reviews" target="_blank" rel="noreferrer" i18n>20.510 reviews</a></span></span></div>
     </mat-toolbar>
-    <app-menu *ngIf="windowSize =='gt-md' && categories.length" [allCategories]="categories"></app-menu>  
-    
+    <app-menu *ngIf="windowSize =='gt-md' && categories.length" [allCategories]="categories"></app-menu>
+
     <div class="theme-container main" ngClass.gt-sm="py-3">
         <app-crumb-path></app-crumb-path>
         <router-outlet></router-outlet>
@@ -85,4 +85,4 @@
         <fa-icon [icon]="['fas', 'arrow-up']"></fa-icon>
     </div>
 
- </mat-sidenav-container>
+</mat-sidenav-container>

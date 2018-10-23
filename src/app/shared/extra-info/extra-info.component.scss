@@ -5,6 +5,8 @@
     padding-right: 0;
 }
 
+
+
 .shopping-cart {
 
     .mat-card-title{
@@ -68,68 +70,22 @@
             right: 5px;
         }
     }
-    
+
 }
 
-#advice-and-contact {
-    .adbox_opening_times { 
-        font-size:14px;
-        &:nth-child(1) a {
-            color:#5aad49;
-        }
-        &:nth-child(2) {
-            margin-bottom: 10px;
-        }
-    }
+//::ng-deep .adbox_opening_times {
+//    font-size:14px;
+//    &:nth-child(1) a {
+//        color:#5aad49;
+//    }
+//    &:nth-child(2) {
+//        margin-bottom: 10px;
+//    }
+//}
 
-    .contact_box {
-        >a {
-            display:block;
-            border:1px solid #E6E6DC;
-            background:#e6e6dc;
-            margin-bottom:5px;
-            padding:10px 0 10px 6px;
-            
-            .contact_box_icon {
-                float:left;
-                width:30px;
-                height:30px;
-                background:#fff;
-                font-size:17px; 
-                line-height:30px;
-                text-align:center; 
-                margin-right:10px;
-                border-radius:50%;
-            }
 
-            &:hover{
-                background:#212226;
-                color:#fff;
-                text-decoration:none;
-                fa-icon {
-                    color:#000;
-                }
-            }
 
-            strong {
-                display:block; line-height:14px;
-                font-weight:bold;
-                font-size:12px;
-                margin-top:2px;
-            }
-
-            >span {
-                font-size:10px;
-            }
-        }
-
-        &:last-child a{
-            margin-bottom:0;
-        }
-    }
-}
-
-.extra_open_hours_box {
+::ng-deep .extra_open_hours_box {
     > div a,
     > div.special_open_time span { display:block; border:1px solid #E6E6DC; font-weight:600; font-size:16px; line-height:32px; font-family:"Poppins"; text-align:center; margin-bottom:5px; }
     > div.special_open_time a,
@@ -183,43 +139,125 @@
     .reviewbox--text .reviewbox--total-reviews { display:block; font-weight:400; }
 }
 
-.branch-office{
+::ng-deep .branch_opening_hours_box{
+    position:relative;
+    overflow:hidden;
+    border:1px solid #E6E6DC;
+    padding: .25rem;
+    display: flex!important;
 
-    .branch_opening_hours_box{
-        position:relative;
-        overflow:hidden;
-        border:1px solid #E6E6DC;
-        padding:.5rem;
-        .branch_opening_hours{
-            font-weight:600;
-            font-size:12px;
-            line-height:1.2;
-            .adbox_opening_times.city_name {
-                font-size:13px;
-                margin-bottom:4px;
-                margin-top:2px;
-                a {
-                    color: #000;
-                }
+    .branch_opening_hours{
+        font-weight:600;
+        font-size: .75rem;
+        line-height:1.2;
+
+        .adbox_opening_times.city_name {
+            font-size:13px;
+            margin-bottom:4px;
+            margin-top:2px;
+            a {
+                color: #000;
             }
-            .adbox_opening_times{
-                &:nth-child(2) > a{
-                    color:#66b23e;
-                }
-                &:nth-child(3) > a{
-                    color:#686868;
-                }
+        }
+        .adbox_opening_times{
+            &:nth-child(2) > a{
+                color:#66b23e;
+            }
+            &:nth-child(3) > a{
+                color:#686868;
             }
         }
     }
-    .branch_img {
-        float:left;
-        margin-right:6px;
+}
+
+::ng-deep .adbox_opening_times:nth-child(1) a{
+    color:#66b23e !important;
+}
+
+::ng-deep .adbox_opening_times:nth-child(2) {
+    margin-bottom: .5rem;
+}
+
+::ng-deep .branch_img {
+    float:left;
+    margin-right:6px;
+}
+
+::ng-deep .branch_opening_hours_box+.branch_opening_hours_box {
+    margin-top:.5rem;
+}
+
+
+::ng-deep .contact_box {
+    >a {
+        display:block;
+        border:1px solid #E6E6DC;
+        background:#e6e6dc;
+        margin-bottom:5px;
+        padding:10px 0 10px 6px;
+
+        .contact_box_icon {
+            float:left;
+            width:30px;
+            height:30px;
+            background:#fff;
+            font-size:17px;
+            line-height:30px;
+            text-align:center;
+            margin-right:10px;
+            border-radius:50%;
+        }
+
+        i {
+            float: left;
+            width: 1.875rem;
+            height: 1.875rem;
+            background: #fff;
+            font-size: 1.0625rem;
+            line-height: 1.875rem;
+            text-align: center;
+            margin-right: .5rem;
+            border-radius: 50%;
+        }
+
+        &:hover{
+            background:#212226;
+            color:#fff;
+            text-decoration:none;
+            fa-icon {
+                color:#000;
+            }
+            strong {
+                color: #fff;
+            }
+            span {
+                color: #fff;
+            }
+        }
+
+        strong {
+            display:block;
+            line-height:14px;
+            font-weight:bold;
+            font-size:12px;
+            margin-top:2px;
+        }
+
+        >span {
+            font-size:10px;
+        }
+    }
+
+    &:last-child a{
+        margin-bottom:0;
     }
 }
 
-.branch_opening_hours_box+.branch_opening_hours_box { 
-    margin-top:.5rem;
+::ng-deep .mat-card-content {
+    table {
+        table-layout: fixed;
+        width: 100%;
+    }
 }
 
 .image_overlay { position:absolute; left:-27px; top:11px; width:110px; background:#fdc642;font-weight:500; font-size:11px; line-height:1; color:#000; text-align:center; text-transform:uppercase; padding:4px 0; -webkit-transform:rotate(-33deg); transform:rotate(-33deg); z-index:10; }
