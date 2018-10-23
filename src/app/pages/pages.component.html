@@ -1,6 +1,6 @@
 <mat-sidenav-container class="wrapper theme-container">
 
-    <mat-sidenav [opened]="false" mode="over" #sidenav class="sidenav mat-elevation-z6">
+    <mat-sidenav [opened]="false" mode="over" #sidenav class="sidenav mat-elevation-z6" (swipeleft)="sidenav.close();sidenavOpened=false;">
         <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" class="sidenav-header">
             <h3 i18n>Menu</h3>
             <button mat-icon-button color="warn" class="close" (click)="sidenav.close();sidenavOpened=false;">

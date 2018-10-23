@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation, Inject, LOCALE_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { FlatTreeControl } from '@angular/cdk/tree';
@@ -20,6 +20,7 @@ import { SidenavMenuService } from './sidenav-menu.service';
 })
 
 export class SidenavMenuComponent implements OnInit, OnDestroy {
+
   brands = [];
   filtersList: any = [];
   subscriptions = [];
@@ -33,8 +34,7 @@ export class SidenavMenuComponent implements OnInit, OnDestroy {
   private getChildren = (node: TreeMenuNode): Observable<TreeMenuNode[]> => observableOf(node.children);
   hasChild = (_: number, nodeData: TreeMenuFlatNode) => nodeData.expandable;
 
-  constructor(private appService: AppService,
-              private router: Router,
+  constructor(@Inject(LOCALE_ID) public locale: string,
               private store: Store<State>,
               private sidenavService: SidenavMenuService) {
     this.treeFlattener = new MatTreeFlattener(this.transformer, this.getLevel, this.isExpandable, this.getChildren);
@@ -53,7 +53,7 @@ export class SidenavMenuComponent implements OnInit, OnDestroy {
 
     this.subscriptions = [
       combined.subscribe(([brandData, categoryData]) => {
-        const menuItems = this.sidenavService.getMainItems();
+        const menuItems = this.sidenavService.getMainItems(this.locale);
         console.log(categoryData.categories);
         menuItems[0].children = categoryData.categories;
         menuItems[2].children = brandData.manufacturer;

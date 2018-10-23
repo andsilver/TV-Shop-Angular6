@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of as observableOf } from 'rxjs';
 import { TreeMenuNode } from './tree-menu-node.model';
-import { mainMenuItems } from './sidenav-menu';
+import { mainMenuItemsNl, mainMenuItemsEn } from './sidenav-menu';
 
 @Injectable()
 export class SidenavMenuService {
@@ -14,8 +14,8 @@ export class SidenavMenuService {
         return this.dataChange.value;
     }
 
-    getMainItems() {
-        return mainMenuItems;
+    getMainItems(locale: string) {
+        return locale === 'nl' ? mainMenuItemsNl : mainMenuItemsEn;
     }
 
     buildTreeMenu(items: any[]) {

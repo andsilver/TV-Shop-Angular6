@@ -2,4 +2,7 @@
     cursor: pointer;
     min-height: 30px !important;
     border-bottom: 1px solid #e6e6dc;
+    &.child {
+        background-color: #f4f4ef;
+    }
 }
