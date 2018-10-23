@@ -191,7 +191,7 @@
         <div fxFlex="50">
             <strong i18n>Popular categories</strong>
             <ul>
-                <li *ngFor="let category of categories">
+                <li *ngFor="let category of popular_categories">
                     <a [routerLink]="[category.link]">{{category.name}}</a>
                 </li>
             </ul>
@@ -199,7 +199,7 @@
         <div fxFlex="50">
             <strong i18n>Popular brands</strong>
             <ul>
-                <li *ngFor="let brand of brands">
+                <li *ngFor="let brand of popular_brands">
                     <a [href]="brand.link">{{brand.name}}</a>
                 </li>
             </ul>
