@@ -79,7 +79,7 @@
         <router-outlet></router-outlet>
     </div>
 
-    <app-footer [allCategories]="categories" [allBrands]="brands"></app-footer>
+    <app-footer [allCategories]="categories" [allBrands]="brands" [windowSize]="windowSize"></app-footer>
 
     <div *ngIf="showBackToTop" fxLayout="row" fxLayoutAlign="center center" class="back-to-top transition" (click)="scrollToTop()">
         <fa-icon [icon]="['fas', 'arrow-up']"></fa-icon>

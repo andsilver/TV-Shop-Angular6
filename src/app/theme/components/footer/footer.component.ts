@@ -10,10 +10,10 @@ export class FooterComponent implements OnInit, OnChanges {
 
   @Input() allCategories: Category[];
   @Input() allBrands: Array<any>;
+  @Input() windowSize: string;
 
   categories: Category[];
   brands = [];
-  windowSize: string;
 
   popular_categories = [
       {
@@ -157,19 +157,22 @@ export class FooterComponent implements OnInit, OnChanges {
           this.categories = this.allCategories.filter( c => c.parentId === 0 );
       }
 
-      this.brands = this.allBrands;
-      this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
+      if (this.allBrands) {
+          this.brands = this.allBrands;
+      }
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('changes = ', changes);
     if (changes.allCategories) {
         this.categories = this.allCategories.filter( c => c.parentId === 0 );
     }
 
     if (changes.allBrands) {
         this.brands = this.allBrands;
-        console.log('this.brands = ', this.brands);
+    }
+
+    if (changes.windowSize) {
+        // this.windowSize = changes['windowSize'];
     }
   }
 
