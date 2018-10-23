@@ -75,7 +75,7 @@
     <app-menu *ngIf="windowSize =='gt-md' && categories.length" [allCategories]="categories"></app-menu>
 
     <div class="theme-container main" ngClass.gt-sm="py-3">
-        <app-crumb-path></app-crumb-path>
+        <app-crumb-path fxHide.lt-md></app-crumb-path>
         <router-outlet></router-outlet>
     </div>
 

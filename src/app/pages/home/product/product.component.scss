@@ -2,6 +2,11 @@
     border: 1px solid #E6E6DC;
     padding: .5rem;
 
+    .image-link {
+        min-height: 120px;
+        display: block;
+    }
+
     .product-name {
         display: block;
         overflow: hidden;
