@@ -153,7 +153,10 @@ export class FooterComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
-      this.categories = this.allCategories.filter( c => c.parentId === 0 );
+      if (this.allCategories) {
+          this.categories = this.allCategories.filter( c => c.parentId === 0 );
+      }
+
       this.brands = this.allBrands;
       this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
   }
