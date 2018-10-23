@@ -15,6 +15,75 @@ export class FooterComponent implements OnInit, OnChanges {
   brands = [];
   windowSize: string;
 
+  popular_categories = [
+      {
+          name: 'OLED TV',
+          link: '/oled-tv'
+      },
+      {
+          name: '4K UHD TV',
+          link: '/4k-uhd-tv'
+      },
+      {
+          name: 'LED TV',
+          link: '/led-tv'
+      },
+      {
+          name: 'QLED TV',
+          link: '/qled-tv'
+      },
+      {
+          name: 'Smart TV',
+          link: '/smart-tv'
+      },
+      {
+          name: '8K Ultra HD TV',
+          link: '/8k-uhd-tv'
+      },
+      {
+          name: 'Alle TV\'s',
+          link: '/alle-tv-s'
+      },
+      {
+          name: 'Soundbars',
+          link: '/audio/geluid-voor-uw-tv/soundbars'
+      }
+  ];
+  popular_brands = [
+      {
+          name: 'Samsung',
+          link: '/leverancier/samsung'
+      },
+      {
+          name: 'LG',
+          link: '/leverancier/lg'
+      },
+      {
+          name: 'Sony',
+          link: '/leverancier/sony'
+      },
+      {
+          name: 'Philips',
+          link: '/leverancier/philips'
+      },
+      {
+          name: 'Panasonic',
+          link: '/leverancier/panasonic'
+      },
+      {
+          name: 'Sonos',
+          link: '/leverancier/sonos'
+      },
+      {
+          name: 'HEOS',
+          link: '/leverancier/heos-by-denon'
+      },
+      {
+          name: 'Denon',
+          link: '/leverancier/denon'
+      }
+  ];
+
   stores = [
     {
       name: 'Amsterdam',

@@ -30,85 +30,64 @@
             </div>
         </mat-card-content>
     </mat-card>
-    <mat-card class="branch-office">
-        <mat-card-title><h3 i18n>Our stores</h3></mat-card-title>
-        <mat-card-content>
-            <div *ngFor="let store of stores" class="branch_opening_hours_box">
-                <div class="branch_img">
-                    <a [routerLink]="store.link">
-                        <img [attr.ix-path]="store.img" alt="" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 55px, 100vw">
-                    </a>
+
+    <div *ngFor="let content of contents" >
+        <mat-card>
+            <mat-card-title><h3 i18n>{{content.title}}</h3></mat-card-title>
+            <mat-card-content>
+                <div *ngIf="content.index != 1">
+                    <div [innerHtml]="content.content"></div>
                 </div>
-                <div class="branch_opening_hours">
-                    <div class="adbox_opening_times city_name"><a [routerLink]="store.link"> <strong>{{store.name}}</strong> </a></div>
-                    <div class="adbox_opening_times"><a [routerLink]="store.link" i18n>Open today</a></div>
-                    <div class="adbox_opening_times"><a [routerLink]="store.link" i18n>till 21:00</a></div>
-                </div>
-                <div class="image_overlay" *ngIf="store.new"><a href="extrainfo/winkel-eindhoven-9.html" i18n>new!</a></div>
-            </div>
-        </mat-card-content>
-    </mat-card>
-    <mat-card id="advice-and-contact">
-        <mat-card-title>
-            <h3 i18n>ADVICE AND CONTACT</h3>
-        </mat-card-title>
-        <mat-card-content>
-            <div class="adbox_opening_times">
-                <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n><strong>Open today</strong></a>
-            </div>
-            <div class="adbox_opening_times">
-                <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>till 21:00 hour</a>
-            </div>
-            <div class="contact_box contact_chat_live">
-                <a onclick="LC_API.open_chat_window(); return false;" href="https://www.plattetv.nl/">
-                    <div class="contact_box_icon">
-                        <fa-icon [icon]="['far', 'comment']"></fa-icon>
+
+                <div *ngIf="content.index == 1">
+                    <div *ngIf="content.index == 1">
+                        <div class="adbox_opening_times">
+                            <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n><strong>Open today</strong></a>
+                        </div>
+                        <div class="adbox_opening_times">
+                            <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>till 21:00 hour</a>
+                        </div>
+                        <div class="contact_box contact_chat_live">
+                            <a onclick="LC_API.open_chat_window(); return false;" href="https://www.plattetv.nl/">
+                                <div class="contact_box_icon">
+                                    <fa-icon [icon]="['far', 'comment']"></fa-icon>
+                                </div>
+                                <strong i18n>CHAT LIVE</strong>
+                                <span i18n>Reply within 30 sec.</span>
+                            </a>
+                        </div>
+                        <div class="contact_box contact_form">
+                            <a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS">
+                                <div class="contact_box_icon">
+                                    <fa-icon [icon]="['far','envelope']"></fa-icon>
+                                </div>
+                                <strong i18n>Insert Form</strong>
+                                <span i18n>Reply within 10 min.</span>
+                            </a>
+                        </div>
+                        <div class="contact_box contact_whatsapp">
+                            <a href="https://api.whatsapp.com/send?phone=31633444433">
+                                <div class="contact_box_icon">
+                                    <fa-icon [icon]="['fab', 'whatsapp']"></fa-icon>
+                                </div>
+                                <strong i18n>WHATSAPP US</strong>
+                                <span i18n>Reply within 30 sec.</span>
+                            </a>
+                        </div>
+                        <div class="contact_box contact_bel">
+                            <a href="tel:0268454658">
+                                <div class="contact_box_icon">
+                                    <fa-icon [icon]="['fas', 'phone']"></fa-icon>
+                                </div>
+                                <strong i18n>CALL 026-84 54 658</strong>
+                                <span i18n>Direct reply</span>
+                            </a>
+                        </div>
                     </div>
-                    <strong i18n>CHAT LIVE</strong>
-                    <span i18n>Reply within 30 sec.</span>
-                </a>
-            </div>
-            <div class="contact_box contact_form">
-                <a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS">
-                    <div class="contact_box_icon">
-                        <fa-icon [icon]="['far','envelope']"></fa-icon>
-                    </div>
-                    <strong i18n>Insert Form</strong>
-                    <span i18n>Reply within 10 min.</span>
-                </a>
-            </div>
-            <div class="contact_box contact_whatsapp">
-                <a href="https://api.whatsapp.com/send?phone=31633444433">
-                    <div class="contact_box_icon">
-                        <fa-icon [icon]="['fab', 'whatsapp']"></fa-icon>
-                    </div>
-                    <strong i18n>WHATSAPP US</strong>
-                    <span i18n>Reply within 30 sec.</span>
-                </a>
-            </div>
-            <div class="contact_box contact_bel">
-                <a href="tel:0268454658">
-                    <div class="contact_box_icon">
-                        <fa-icon [icon]="['fas', 'phone']"></fa-icon>
-                    </div>
-                    <strong i18n>CALL 026-84 54 658</strong>
-                    <span i18n>Direct reply</span>
-                </a>
-            </div>
-        </mat-card-content>
-    </mat-card>
-    <mat-card id="extra-open">
-        <mat-card-title>
-            <h3 i18n>EXTRA OPEN FOR YOU</h3>
-        </mat-card-title>
-        <mat-card-content>
-            <div class="extra_open_hours_box">
-                <div class="special_open_time"><span i18n>SUNDAY 2 SEP</span></div>
-                <div class="city_open_time" *ngFor="let store of stores"><a  [routerLink]="store.link">{{store.name}}</a></div>
-            </div>
-            <div class="city_open_time" class="text-center"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#winkels" i18n>open from 12:00 till 17:00</a></div>
-        </mat-card-content>
-    </mat-card>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
     <mat-card id="customer-review">
         <mat-card-title>
             <h3 i18n>CLIENT REVIEWS</h3>

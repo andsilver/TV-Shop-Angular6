@@ -94,6 +94,10 @@ export class AppService {
         return this.http.get<any>(`/getStoreByName/${name}`);
     }
 
+    getOpenStores() {
+        return this.http.get<any>('/dynaadboxes');
+    }
+
     addToCartApi(productData, demoUnit = false): any {
         let params = new HttpParams();
         params = params.append('mode', 'add_item');
