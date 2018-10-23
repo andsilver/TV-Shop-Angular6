@@ -50,7 +50,7 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     public appService: AppService,
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
-    private router: Router,
+    public router: Router,
     private productsService: ProductsService
   ) { }
 
@@ -108,11 +108,8 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit, OnDes
       preloadImages: false,
       lazy: true,
       breakpoints: {
-        480: {
-          slidesPerView: 2
-        },
-        600: {
-          slidesPerView: 3
+        961: {
+          slidesPerView: 1
         }
       }
     };

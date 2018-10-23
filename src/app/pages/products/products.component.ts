@@ -169,7 +169,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     } else {
       this.viewLoaded = true;
     }
-    this.isTop5 = res.category_name.indexOf('Top 5') > -1 ? true : false;
+    this.isTop5 = res.category_name && res.category_name.indexOf('Top 5') > -1 ? true : false;
     this.products = res.products;
 
     if (res && res.banners) {
