@@ -70,7 +70,7 @@
             right: 5px;
         }
     }
-    
+
 }
 
 //::ng-deep .adbox_opening_times {
@@ -259,99 +259,6 @@
         width: 100%;
     }
 }
-
-//::ng-deep .contact_box > a, #plattebox2592 .contact_box > span {
-//    display: block;
-//    border: 1px solid #E6E6DC;
-//    background: #e6e6dc;
-//    margin-bottom: .5rem;
-//    padding: .5rem 0 .5rem .5rem;
-//}
-//
-
-//
-//::ng-deep .contact_box > a:hover [class*="fa"] {
-//    color: #000;
-//}
-//
-
-//
-//::ng-deep .contact_box > a > strong, #plattebox2592 .contact_box > a > span, #plattebox2592 .contact_box > span > strong, #plattebox2592 .contact_box > span > span {
-//    display: block;
-//    line-height: 14px;
-//}
-//
-//::ng-deep .contact_box > a > strong, #plattebox2592 .contact_box > span > strong {
-//    font-weight: bold;
-//    font-size: .75rem;
-//    margin-top: .125rem;
-//}
-//
-//::ng-deep .contact_box > a > span, #plattebox2592 .contact_box > span > span {
-//    font-size: 10px;
-//}
-//
-//::ng-deep .contact_box:last-child a {
-//    margin-bottom: 0;
-//}
-//
-//::ng-deep .contact_box.plattebox_cs_close:not(.contact_form) {
-//    pointer-events: none;
-//    cursor: default;
-//    opacity: .5;
-//}
-//
-//::ng-deep .extra_open_hours_box > div a, .extra_open_hours_box > div.special_open_time span {
-//    display: block;
-//    border: 1px solid #E6E6DC;
-//    font-weight: 600;
-//    font-size: 16px;
-//    line-height: 32px;
-//    font-family: "Poppins";
-//    text-align: center;
-//    margin-bottom: 5px;
-//}
-//
-//::ng-deep .extra_open_hours_box > div.special_open_time a, .extra_open_hours_box > div.special_open_time span {
-//    background: #2da6c1;
-//    font-weight: bold;
-//    font-size: 31px;
-//    line-height: 44px;
-//    font-family: "Gotham Condensed";
-//    letter-spacing: .02em;
-//    color: #fff;
-//}
-//
-//::ng-deep .extra_open_hours_box > div.special_open_time span {
-//    cursor: default;
-//}
-//
-//::ng-deep .extra_open_hours_box > div.special_open_time a:hover {
-//    text-decoration: none;
-//}
-//
-//::ng-deep .extra_open_hours_box > div.city_open_time:hover a {
-//    background: #212226;
-//    color: #fff;
-//    text-decoration: none;
-//}
-//
-//::ng-deep .extra_open_hours_box > div.store_open_hours a {
-//    border: none;
-//    font-weight: normal;
-//    font-size: 12px;
-//    line-height: 18px;
-//}
-//
-//::ng-deep .extra_open_hours_box > div.store_open_hours:hover a {
-//    background: none;
-//    color: #000;
-//    text-decoration: underline;
-//}
-//
-//::ng-deep .extra_open_hours_box > div:last-child {
-//    margin-bottom: 0;
-//}
 
 .image_overlay { position:absolute; left:-27px; top:11px; width:110px; background:#fdc642;font-weight:500; font-size:11px; line-height:1; color:#000; text-align:center; text-transform:uppercase; padding:4px 0; -webkit-transform:rotate(-33deg); transform:rotate(-33deg); z-index:10; }
 .image_overlay > a { color:#000; }

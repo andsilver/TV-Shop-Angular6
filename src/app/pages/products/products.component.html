@@ -130,38 +130,38 @@
                     </div>
                 </div>
 
-                <div fxLayout="row wrap" class="products-wrapper" *ngIf="products">
+                <div class="products-wrapper" *ngIf="products">
                     <div *ngIf="!products?.length">
                         {{emptyMessage}}
                     </div>
                     <ng-container>
-                        <div *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }" fxFlex="100" class="col">
+                        <div *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page, totalItems: totalProducts }">
                             <mat-card class="product-item product-item-list">
-                                <div fxLayout fxLayout="row" fxLayoutAlign="start start">
-                                    <div fxFlex="160px" class="product-item-image">
-                                        <div *ngIf="product.specialLabel" class="product-item-image-speciallabel">
+                                <div fxLayout fxLayout="row">
+                                    <div fxFlex="0 0 150px" class="product-item--image">
+                                        <div *ngIf="product.specialLabel" class="product-item--image-speciallabel">
                                             {{product.specialLabel}}
                                         </div>
-                                        <a [routerLink]="[product.permalink]" class="image-link">
+                                        <a [routerLink]="[product.permalink]" class="product-item--image-link">
                                             <img [attr.ix-path]="product.images[0].small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 140px, (min-width: 320px) 140px, 100vw" alt="">
                                         </a>
                                     </div>
-                                    <div fxFlex="100" fxLayout.xs="column" class="listing-item-content">
-                                        <div fxFlex.md="40">
-                                            <a [routerLink]="[product.permalink]" class="title">{{product.name}}</a>
-                                            <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'row'"></app-rating>
-                                            <div class="product-item-feature-highlights" [innerHTML]="product.featureHighlights | htmlSanitize"></div>
+                                    <div fxFlex="100" fxLayout.lt-md="column" class="product-item--content">
+                                        <div fxFlex class="product-item--info">
+                                            <a [routerLink]="[product.permalink]" class="product-item--info-title"><strong>{{product.name}}</strong></a>
+                                            <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'row'" class="product-item--info-rating"></app-rating>
+                                            <div class="product-item--info-feature-highlights" [innerHTML]="product.featureHighlights | htmlSanitize"></div>
                                         </div>
-                                        <div fxFlex="55">
-                                            <div class="text-muted" [ngClass.gt-xs]="['text-right']">
+                                        <div fxFlex fxFlex.gt-sm="0 0 226px" class="product-item--pricesubmit">
+                                            <div class="text-muted" [ngClass.gt-xs]="['text-right']" class="product-item--pricesubmit-old-price">
                                                 <span *ngIf="product.oldPrice">{{product.oldPrice | customCurrency:2:3:false}}</span>
                                             </div>
-                                            <div class="new-price list-new-price"  [ngClass.gt-xs]="['text-right']" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</div>
-                                            <div [innerHTML]="product.stockIndicator | htmlSanitize"></div>
-                                            <button class="control-normal" mat-button [routerLink]="[product.permalink]">
+                                            <div class="product-item--pricesubmit-new-price" [ngClass.gt-sm]="['text-right']" [ngClass]="{'price-only-new': !product.oldPrice}">{{product.newPrice | customCurrency:2:3:false}}</div>
+                                            <div [innerHTML]="product.stockIndicator | htmlSanitize" class="product-item--content-stock"></div>
+                                            <button class="product-item--pricesubmit-submit control-normal" mat-button [routerLink]="[product.permalink]">
                                                 <ng-container i18n>GO TO PRODUCT</ng-container> <fa-icon [icon]="'chevron-right'"></fa-icon>
                                             </button>
-                                            <div *ngIf="product.haveDemoUnit" class="demo-unit">
+                                            <div *ngIf="product.haveDemoUnit" class="product-item--pricesubmit-demo-unit">
                                                 <a i18n (click)="openDemoUnit(product)">View the Buitenkansje</a>
                                                 <strong><ng-container i18n> of</ng-container> {{product.demoUnitStartPrice}}</strong>
                                             </div>
@@ -176,13 +176,13 @@
                 <div *ngIf="products?.length > 0" fxLayout="row wrap" class="product-pagination-wrapper">
                     <div fxFlex="100">
                         <mat-card class="p-0 text-center">
-                            <pagination-controls class="product-pagination" previousLabel="Vorige" nextLabel="Volgende" autoHide="true" maxSize="5" (pageChange)="onPageChanged($event)">
+                            <pagination-controls class="product-pagination" previousLabel="" nextLabel="" autoHide="true" maxSize="5" (pageChange)="onPageChanged($event)">
                             </pagination-controls>
                         </mat-card>
                     </div>
                 </div>
             </div>
-            <div fxFlex="0 0 187px" fxHide fxShow.gt-md>
+            <div fxFlex="0 0 187px" fxHide fxShow.gt-sm>
                 <app-extra-info></app-extra-info>
             </div>
         </div>
