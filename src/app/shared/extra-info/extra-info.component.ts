@@ -78,49 +78,9 @@ export class ExtraInfoComponent implements OnInit {
       this.appService.getOpenStores().subscribe(res => {
           this.contents = res;
 
-          // Replace icon to svg icons.
-          if (this.contents.length > 2) {
-            let content = this.contents[1].content;
-            console.log('content = ', content);
-            content = content.replace('<i class="far fa-comment"></i>', '<div class="contact_box_icon"><fa-icon [icon]="[\'far\', \'comment\']"></fa-icon></div>');
-            this.contents[1].content = content;
+          for (let i = 0; i < this.contents.length; i++) {
+            this.contents[i]['index'] = i;
           }
-          // <div class="contact_box contact_chat_live">
-          // <a onclick="LC_API.open_chat_window(); return false;" href="https://www.plattetv.nl/">
-          // <div class="contact_box_icon">
-          // <fa-icon [icon]="['far', 'comment']"></fa-icon>
-          //     </div>
-          //     <strong i18n>CHAT LIVE</strong>
-          // <span i18n>Reply within 30 sec.</span>
-          // </a>
-          // </div>
-          // <div class="contact_box contact_form">
-          // <a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS">
-          // <div class="contact_box_icon">
-          // <fa-icon [icon]="['far','envelope']"></fa-icon>
-          //     </div>
-          //     <strong i18n>Insert Form</strong>
-          // <span i18n>Reply within 10 min.</span>
-          // </a>
-          // </div>
-          // <div class="contact_box contact_whatsapp">
-          // <a href="https://api.whatsapp.com/send?phone=31633444433">
-          // <div class="contact_box_icon">
-          // <fa-icon [icon]="['fab', 'whatsapp']"></fa-icon>
-          //     </div>
-          //     <strong i18n>WHATSAPP US</strong>
-          // <span i18n>Reply within 30 sec.</span>
-          // </a>
-          // </div>
-          // <div class="contact_box contact_bel">
-          // <a href="tel:0268454658">
-          // <div class="contact_box_icon">
-          // <fa-icon [icon]="['fas', 'phone']"></fa-icon>
-          //     </div>
-          //     <strong i18n>CALL 026-84 54 658</strong>
-          // <span i18n>Direct reply</span>
-          // </a>
-          // </div>
       }),
     ];
   }
