@@ -87,9 +87,11 @@
 
     </mat-sidenav>
     <mat-sidenav-content class="all-products">
-        <div *ngIf="viewLoaded" class="px-3">
-            <app-main-carousel *ngIf="banners" [slides]="banners" fxFlex="100"></app-main-carousel>
+        <div *ngIf="viewLoaded" class="px-3" fxLayout fxLayoutAlign="end start">
             <div fxFlex>
+                <div>
+                    <app-main-carousel *ngIf="banners" [slides]="banners"></app-main-carousel>
+                </div>
                 <div *ngIf="category_description" class="pb-3">
                     <h1>{{category_name}}</h1>
                     <p (click)="navigateToCategory($event)" [innerHTML]="category_description | htmlSanitize"></p>

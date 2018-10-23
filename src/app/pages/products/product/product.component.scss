@@ -34,17 +34,17 @@
 	    margin-top: 8px;
 	    .swiper-container{
 			padding-bototm: 2rem;
-		.swiper-slide{
-		    text-align: center;
-		    .mat-card {
-		        padding: 0;
-		        box-shadow: none!important;
-		        img {
-		            max-width: 100%;
-		            height: auto;
-		        }
-		    }
-		}
+			.swiper-slide{
+				text-align: center;
+				.mat-card {
+					padding: 0;
+					box-shadow: none!important;
+					img {
+						max-width: 100%;
+						height: auto;
+					}
+				}
+			}
 	    }
 	    .swiper-button-next.swiper-button-disabled, 
 	    .swiper-button-prev.swiper-button-disabled{
@@ -114,81 +114,81 @@
 	    padding: 0 1rem;
 
 	    &+.mat-button {
-		margin-top:5px;
+			margin-top:5px;
 	    }
 	    &.control-add-to-cart-big {
-		width: 100%;
-		height: 3.125rem;
-		border: none;
-		background-color: #5AAD49;
-		background-image: url(/assets/images/others/icon_cart.png);
-		background-position: right .75rem center;
-		background-repeat: no-repeat;
-		background-size: 21px auto;
-		font-weight: normal;
-		font-size: 1.375rem;
-		line-height: 3.125rem;
-		font-family: "Gotham Condensed";
-		color: #fff;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		text-align: left;
-		margin-bottom: .5rem;
-		padding: 0 1.25rem;
-		border-radius: .5rem;
+			width: 100%;
+			height: 3.125rem;
+			border: none;
+			background-color: #5AAD49;
+			background-image: url(/assets/images/others/icon_cart.png);
+			background-position: right .75rem center;
+			background-repeat: no-repeat;
+			background-size: 21px auto;
+			font-weight: normal;
+			font-size: 1.375rem;
+			line-height: 3.125rem;
+			font-family: "Gotham Condensed";
+			color: #fff;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			text-align: left;
+			margin-bottom: .5rem;
+			padding: 0 1.25rem;
+			border-radius: .5rem;
 	    }
 	    &.control-add-to-cart-medium {
-		display: inline-block;
-		overflow: hidden;
-		min-width: 0;
-		height: 2.25rem;
-		border: none;
-		background-color: #5AAD49;
-		background-image: url(/assets/images/others/icon_cart.png);
-		background-position: right .75rem center;
-		background-repeat: no-repeat;
-		background-size: 21px auto;
-		font-size: 16px;
-		letter-spacing: 1px;
-		line-height: 2.25rem;
-		font-family: "Gotham Condensed";
-		color: #fff;
-		text-align: left;
-		text-transform: uppercase;
-		padding: 0 2.5rem 0 1rem;
-		border-radius: .5rem;
-		white-space: nowrap;
-		cursor: pointer;
+			display: inline-block;
+			overflow: hidden;
+			min-width: 0;
+			height: 2.25rem;
+			border: none;
+			background-color: #5AAD49;
+			background-image: url(/assets/images/others/icon_cart.png);
+			background-position: right .75rem center;
+			background-repeat: no-repeat;
+			background-size: 21px auto;
+			font-size: 16px;
+			letter-spacing: 1px;
+			line-height: 2.25rem;
+			font-family: "Gotham Condensed";
+			color: #fff;
+			text-align: left;
+			text-transform: uppercase;
+			padding: 0 2.5rem 0 1rem;
+			border-radius: .5rem;
+			white-space: nowrap;
+			cursor: pointer;
 	    }
 	    &.control-add-to-cart-small {
-		float: right;
-		overflow: hidden;
-		display: block;
-		min-width: 0;
-		width: 40px;
-		height: 30px;
-		text-indent: -9999em;
-		background-color: #5AAD49;
-		background-image: url(/assets/images/others/icon_cart.png);
-		background-position: 10px center;
-		background-repeat: no-repeat;
-		background-size: 21px auto;
-		padding: 0;
+			float: right;
+			overflow: hidden;
+			display: block;
+			min-width: 0;
+			width: 40px;
+			height: 30px;
+			text-indent: -9999em;
+			background-color: #5AAD49;
+			background-image: url(/assets/images/others/icon_cart.png);
+			background-position: 10px center;
+			background-repeat: no-repeat;
+			background-size: 21px auto;
+			padding: 0;
 	    }
 	    &.control-normal,
 	    &.control-deal {
-		height: 1.5625rem;
-		font-size: .9375rem;
-		line-height: 1.5625rem;
-		padding: 0 1.35rem;
+			height: 1.5625rem;
+			font-size: .9375rem;
+			line-height: 1.5625rem;
+			padding: 0 1.35rem;
 	    }
 	    &.control-normal {
-		background-color: #ebebe3;
-		color: #212226;
+			background-color: #ebebe3;
+			color: #212226;
 	    }
 	    &.control-deal {
-		background-color: #FDC642;
-		color: #212226;
+			background-color: #FDC642;
+			color: #212226;
 	    }
 	}
 
@@ -235,15 +235,24 @@
 	    transform: translateY(-50%);
 	}
 
-	.small-carousel span {
+	.small-carousel .content-image, .big-carousel .content-image {
 	    display: -ms-flexbox!important;
 	    display: flex!important;
 	    -ms-flex-align: center!important;
 	    align-items: center!important;
 	    -ms-flex-pack: center!important;
 	    justify-content: center!important;
-	    height: 40px;
+	    // height: 40px;
 	}
+
+	.small-carousel .content-image {
+		height: 40px;
+	}
+
+	.big-carousel .content-image {
+		height: 400px;
+	}
+
 	.no-product-image {
 	    width: auto;
 	    max-height: 280px;
@@ -622,4 +631,80 @@
 			padding-left: .8125rem;
 		}
 	}
+	.display-block {
+		display: none;
+	}
 }
+
+@media (max-width: 768px) {
+	.new-price{
+		text-align: right;
+		display: inline-block;
+		width: 50%;
+	}
+	.extra-infos-list {
+		display: none;
+	}
+	.product-accesories-content {
+		align-items: start !important;
+   		position: relative;
+	}
+	.product-details-page .product-accesories-content a {
+		font-weight: 600;
+	}
+	.cell-stock {
+		display: none;
+	}
+	.cell-products {
+		max-width: 50% !important;
+	}
+	.cell-price {
+		position: absolute;
+		font-size: 18px;
+		right: 5px;
+		top: 10px;
+	}
+	.cell-quantity {
+		display: none;
+	}
+	.cell-submit {
+		position: absolute;
+		right: 0;
+		bottom: 15px;
+	}
+	.product-accesories-header {
+		display: none !important;
+	}
+	.cell-products p {
+		margin-top: 10px !important;
+		-webkit-line-clamp: 3;
+		overflow: hidden;
+		/* autoprefixer: off */
+		-webkit-box-orient: vertical;
+		/* autoprefixer: on */
+		display: -webkit-box;
+	}
+	.d-none {
+		display: none !important;
+	}
+	.display-block {
+		display: inline-block !important;
+		width: 50%;
+	}
+	select {
+		background-color: buttonface;
+		font-size: 1rem;
+		margin-bottom: 1rem;
+		padding: 1rem;
+		border: 1px solid rgb(169, 169, 169);
+
+		option {
+			font-weight: normal;
+			display: block;
+			white-space: pre;
+			min-height: 1.2em;
+			padding: 0px 2px 1px;
+			font-size: 1rem;
+		}
+	}
+} 
