@@ -55,7 +55,7 @@ export class SidenavMenuComponent implements OnInit, OnDestroy {
       combined.subscribe(([brandData, categoryData]) => {
         const menuItems = this.sidenavService.getMainItems(this.locale);
         console.log(categoryData.categories);
-        menuItems[0].children = categoryData.categories;
+        menuItems[0].children = categoryData.categories.filter(c => c.parentId === 0);
         menuItems[2].children = brandData.manufacturer;
         this.sidenavService.buildTreeMenu(menuItems);
       })
