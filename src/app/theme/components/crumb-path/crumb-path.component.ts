@@ -53,10 +53,4 @@ export class CrumbPathComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  public closeSubMenus() {
-    if (window.innerWidth < 960) {
-        this.sidenavMenuService.closeAllSubMenus();
-    }
-  }
-
 }

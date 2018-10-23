@@ -49,7 +49,6 @@ import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 import { ExtraInfoComponent } from './extra-info/extra-info.component';
 import { FiltersListComponent } from './filters-list/filters-list.component';
 import { DescriptionPopoverComponent } from './description-popover/description-popover.component';
-import { SideNavFiltersListComponent } from './sidenav-filters-list/sidenav-filters-list.component';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -222,7 +221,6 @@ library.add(
     GoogleMapComponent,
     ExtraInfoComponent,
     FiltersListComponent,
-    SideNavFiltersListComponent,
     DescriptionPopoverComponent,
     AgmCoreModule,
     LazyLoadImagesModule,
@@ -242,7 +240,6 @@ library.add(
     GoogleMapComponent,
     ExtraInfoComponent,
     FiltersListComponent,
-    SideNavFiltersListComponent,
     DescriptionPopoverComponent
   ],
   entryComponents: [
