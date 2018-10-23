@@ -49,6 +49,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   category_name: string;
   category_description: string;
+  banners: any;
 
   categoryId = 0;
   topParentCategoryId = 0;
@@ -170,6 +171,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }
     this.isTop5 = res.category_name.indexOf('Top 5') > -1 ? true : false;
     this.products = res.products;
+
+    if (res && res.banners) {
+        this.banners = res.banners;
+        setTimeout(() => imgix.init(), 1);
+    }
+
     this.category_name = res.category_name;
     if ( res && res.category_description) {
       this.category_description = res.category_description.replace(/href="#"/g, ' ');
