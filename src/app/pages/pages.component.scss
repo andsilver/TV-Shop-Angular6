@@ -23,6 +23,16 @@
         }
     }
 
+    .cart-badge {
+        width: 25px;
+        height: 25px;
+        background: #2da6c1;
+        position: absolute;
+        top: -10px;
+        left: 14px;
+        border-radius: 50%;
+    }
+
     .main-header {
         .main-header-right .main-header-sub .shopping-cart .cart-dropdown.mat-menu-panel{
             min-width: 400px;
