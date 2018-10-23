@@ -45,7 +45,7 @@ export class SidenavMenuComponent implements OnInit, OnDestroy {
   }
 
   transformer = (node: TreeMenuNode, level: number) => {
-    return new TreeMenuFlatNode(node.children && node.children.length > 0, node.name, level);
+    return new TreeMenuFlatNode(node.children && node.children.length > 0, node.name, level, node.link);
   }
 
   ngOnInit() {
@@ -54,6 +54,7 @@ export class SidenavMenuComponent implements OnInit, OnDestroy {
     this.subscriptions = [
       combined.subscribe(([brandData, categoryData]) => {
         const menuItems = this.sidenavService.getMainItems();
+        console.log(categoryData.categories);
         menuItems[0].children = categoryData.categories;
         menuItems[2].children = brandData.manufacturer;
         this.sidenavService.buildTreeMenu(menuItems);

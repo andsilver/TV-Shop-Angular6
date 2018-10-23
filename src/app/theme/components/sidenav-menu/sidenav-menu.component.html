@@ -1,5 +1,5 @@
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-    <mat-tree-node *matTreeNodeDef="let node" class="menu-item" matTreeNodeToggle matTreeNodePadding [matTreeNodePaddingIndent]="10" >
+    <mat-tree-node *matTreeNodeDef="let node" class="menu-item" matTreeNodeToggle matTreeNodePadding [matTreeNodePaddingIndent]="10" [routerLink]="[node.link]">
       <button mat-icon-button>
         <fa-icon [icon]="['fas', 'chevron-right']"></fa-icon>
       </button>

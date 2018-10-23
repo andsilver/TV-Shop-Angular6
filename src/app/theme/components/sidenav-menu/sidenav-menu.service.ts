@@ -24,13 +24,14 @@ export class SidenavMenuService {
     }
 
     buildTree(arr: any[], level: number): TreeMenuNode[] {
-        return arr.reduce<TreeMenuNode[]>((accumulator, filter) => {
+        return arr.reduce<TreeMenuNode[]>((accumulator, item) => {
             const node = new TreeMenuNode();
-            node.id = filter.id;
-            node.name = filter.name;
+            node.id = item.id;
+            node.name = item.name;
+            node.link = item.permalink;
 
-            if (filter.children && filter.children.length) {
-                node.children = this.buildTree(filter.children, level + 1);
+            if (item.children && item.children.length) {
+                node.children = this.buildTree(item.children, level + 1);
             }
 
             return accumulator.concat(node);
