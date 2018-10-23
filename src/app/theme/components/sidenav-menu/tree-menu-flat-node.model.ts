@@ -1,4 +1,4 @@
-export class TreeFilterFlatNode {
+export class TreeMenuFlatNode {
     constructor(
       public expandable: boolean, public name: string, public level: number) {}
 }

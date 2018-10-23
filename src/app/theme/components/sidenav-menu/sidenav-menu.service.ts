@@ -1,75 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
-
-import { SidenavMenu } from './sidenav-menu.model';
-import { sidenavMenuItems } from './sidenav-menu';
+import { BehaviorSubject, Observable, of as observableOf } from 'rxjs';
+import { TreeMenuNode } from './tree-menu-node.model';
+import { mainMenuItems } from './sidenav-menu';
 
 @Injectable()
 export class SidenavMenuService {
+    dataChange = new BehaviorSubject<TreeMenuNode[]>([]);
 
-    constructor(private location: Location, private router: Router) { }
-
-    public getSidenavMenuItems(): Array<SidenavMenu> {
-        return sidenavMenuItems;
+    constructor() {
     }
 
-    public expandActiveSubMenu(menu: Array<SidenavMenu>) {
-        const url = this.location.path();
-        const routerLink = decodeURIComponent(url);
-        const activeMenuItem = menu.filter(item => item.routerLink === routerLink);
-        if (activeMenuItem[0]) {
-            let menuItem = activeMenuItem[0];
-            while (menuItem.parentId !== 0) {
-                const parentMenuItem = menu.filter(item => item.id === menuItem.parentId)[0];
-                menuItem = parentMenuItem;
-                this.toggleMenuItem(menuItem.id);
-            }
-        }
+    get data(): TreeMenuNode[] {
+        return this.dataChange.value;
     }
 
-    public toggleMenuItem(menuId) {
-        const menuItem = document.getElementById('menu-item-' + menuId);
-        const subMenu = document.getElementById('sub-menu-' + menuId);
-        if (subMenu) {
-            if (subMenu.classList.contains('show')) {
-                subMenu.classList.remove('show');
-                menuItem.classList.remove('expanded');
-            } else {
-                subMenu.classList.add('show');
-                menuItem.classList.add('expanded');
-            }
-        }
+    getMainItems() {
+        return mainMenuItems;
     }
 
-    public closeOtherSubMenus(menu: Array<SidenavMenu>, menuId) {
-        const currentMenuItem = menu.filter(item => item.id === menuId)[0];
-        menu.forEach(item => {
-            if ((item.id !== menuId && item.parentId === currentMenuItem.parentId)
-                || (currentMenuItem.parentId === 0 && item.id !== menuId) ) {
-                const subMenu = document.getElementById('sub-menu-' + item.id);
-                const menuItem = document.getElementById('menu-item-' + item.id);
-                if (subMenu) {
-                    if (subMenu.classList.contains('show')) {
-                        subMenu.classList.remove('show');
-                        menuItem.classList.remove('expanded');
-                    }
-                }
-            }
-        });
+    buildTreeMenu(items: any[]) {
+        const data = this.buildTree(items, 0);
+        this.dataChange.next(data);
     }
 
-    public closeAllSubMenus() {
-        sidenavMenuItems.forEach(item => {
-            const subMenu = document.getElementById('sub-menu-' + item.id);
-            const menuItem = document.getElementById('menu-item-' + item.id);
-            if (subMenu) {
-                if (subMenu.classList.contains('show')) {
-                    subMenu.classList.remove('show');
-                    menuItem.classList.remove('expanded');
-                }
+    buildTree(arr: any[], level: number): TreeMenuNode[] {
+        return arr.reduce<TreeMenuNode[]>((accumulator, filter) => {
+            const node = new TreeMenuNode();
+            node.id = filter.id;
+            node.name = filter.name;
+
+            if (filter.children && filter.children.length) {
+                node.children = this.buildTree(filter.children, level + 1);
             }
-        });
+
+            return accumulator.concat(node);
+            }, []);
     }
 
 }

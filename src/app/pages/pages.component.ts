@@ -156,12 +156,6 @@ export class PagesComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  closeSubMenus() {
-    if (window.innerWidth < 960) {
-      this.sidenavMenuService.closeAllSubMenus();
-    }
-  }
-
   getAttributeName(product, id, value) {
     return product.attributes[id].values.find(v => v.products_options_values_id === value).products_options_values_name;
   }

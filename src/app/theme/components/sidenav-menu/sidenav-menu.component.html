@@ -1,24 +1,16 @@
-<div *ngFor="let menu of parentMenu" class="menu-item">
-    <a *ngIf="menu.routerLink && !menu.hasSubMenu" mat-button
-        fxLayout="row" fxLayoutAlign="start center"
-        [routerLink]="[menu.routerLink]" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"        
-        (click)="onClick(menu.id)" [id]="'menu-item-'+menu.id">
-        {{menu.title}}
-    </a>
-    <a *ngIf="menu.href && !menu.subMenu" mat-button 
-        fxLayout="row" fxLayoutAlign="start center"
-        [attr.href]="menu.href || ''" [attr.target]="menu.target || ''"       
-        (click)="onClick(menu.id)" [id]="'menu-item-'+menu.id">
-        {{menu.title}}
-    </a>
-    <a *ngIf="menu.hasSubMenu" mat-button 
-        fxLayout="row" fxLayoutAlign="start center"       
-        (click)="onClick(menu.id)" [id]="'menu-item-'+menu.id">
-        {{menu.title}}
-        <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
-    </a>
-
-    <div *ngIf="menu.hasSubMenu" class="sub-menu" [id]="'sub-menu-'+menu.id">
-        <app-sidenav-menu [menuItems]="menuItems" [menuParentId]="menu.id"></app-sidenav-menu>
-    </div>
-</div>
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <mat-tree-node *matTreeNodeDef="let node" class="menu-item" matTreeNodeToggle matTreeNodePadding [matTreeNodePaddingIndent]="10" >
+      <button mat-icon-button>
+        <fa-icon [icon]="['fas', 'chevron-right']"></fa-icon>
+      </button>
+      {{node.name}}
+    </mat-tree-node>
+  
+    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" class="menu-item" matTreeNodePadding [matTreeNodePaddingIndent]="10" matTreeNodeToggle>
+      <button mat-icon-button [attr.aria-label]="'toggle ' + node.name">
+        <fa-icon [icon]="['fas', 'chevron-down']" *ngIf="treeControl.isExpanded(node); else rightArrow"></fa-icon>
+        <ng-template #rightArrow><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></ng-template>
+      </button>
+      {{node.name}}
+    </mat-tree-node>
+</mat-tree>
