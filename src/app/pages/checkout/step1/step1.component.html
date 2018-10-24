@@ -84,7 +84,8 @@
       <div>
         <label for="country" i18n>Country: *</label>
         <select id="country" formControlName="country" required>
-          <option *ngFor="let ctry of countries" [value]="ctry.code">{{ctry.name}}</option>
+          <option value="NL" i18n>Netherlands</option>
+          <option value="BE" i18n>Belgium</option>
         </select>
         <mat-error *ngIf="submitted && fc.country.errors?.required" i18n>Country is required</mat-error>
       </div>
@@ -139,7 +140,8 @@
         <div>
           <label for="delivery_country" i18n>Country: *</label>
           <select id="delivery_country" formControlName="delivery_country" required>
-            <option *ngFor="let ctry of countries" [value]="ctry.code">{{ctry.name}}</option>
+            <option value="NL" i18n>Netherlands</option>
+            <option value="BE" i18n>Belgium</option>
           </select>
           <mat-error *ngIf="submitted && afc.delivery_country.errors?.required" i18n>Country is required</mat-error>
         </div>
