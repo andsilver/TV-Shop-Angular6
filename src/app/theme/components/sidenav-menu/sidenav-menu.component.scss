@@ -1,7 +1,10 @@
 .menu-item {
     cursor: pointer;
-    min-height: 30px !important;
+    min-height: 44px !important;
     border-bottom: 1px solid #e6e6dc;
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: #212126;
     &.child {
         background-color: #f4f4ef;
     }
