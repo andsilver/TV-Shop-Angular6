@@ -15,12 +15,12 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <ul class="panel-content">
-                <li><a class="nav-link" href="/extrainfo/advies-contact-2316.html">Contact</a></li>
-                <li><a class="nav-link" href="/extrainfo/advies-contact-2316.html#klantenservice">Klantenservice</a></li>
+                <li><a class="nav-link" href="/extrainfo/advies-contact">Contact</a></li>
+                <li><a class="nav-link" href="/extrainfo/advies-contact/klantenservice">Klantenservice</a></li>
                 <li><a class="nav-link" href="/bestelstatus">Bestelstatus</a></li>
-                <li><a class="nav-link" href="/extrainfo/learning-center-1756.html">Learning Center</a></li>
-                <li><a class="nav-link" href="/extrainfo/zakelijk-2019.html">Zakelijk</a></li>
-                <li><a class="nav-link" href="/extrainfo/vacatures-2320.html">Vacatures</a></li>
+                <li><a class="nav-link" href="/extrainfo/installatie-op-maat-learning-center">Learning Center</a></li>
+                <li><a class="nav-link" href="/extrainfo/zakelijk">Zakelijk</a></li>
+                <li><a class="nav-link" href="/extrainfo/vacatures">Vacatures</a></li>
             </ul>
         </mat-expansion-panel>
 
@@ -31,11 +31,11 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <ul class="panel-content">
-                <li><a class="nav-link" href="/categorie/alle-tvs-894.html#cat=894&so=1&pr=0-15000&op=38:8720;8317;8329;8353;8672;8355;8325;8351&page=1">70 inch en groter</a></li>
-                <li><a class="nav-link" href="/categorie/alle-tvs-894.html#cat=894&so=1&pr=0-15000&op=38:8306;8334;8313;8315&page=1">55 t/m 65 inch</a></li>
-                <li><a class="nav-link" href="/categorie/alle-tvs-894.html#cat=894&so=1&pr=0-15000&op=38:8281;8288;8303;8332&page=1">40 t/m 50 inch</a></li>
-                <li><a class="nav-link" href="/categorie/alle-tvs-894.html#cat=894&so=1&pr=0-15000&op=38:8341;8271;8273;8275&page=1">32 inch en kleiner</a></li>
-                <li><a class="nav-link" href="/categorie/alle-tvs-894.html">Alle TV's</a></li>
+                <li><a class="nav-link" href="/alle-tv-s?op=38:8329;8317;8325;8720;8672;8353;8355">70 inch en groter</a></li>
+                <li><a class="nav-link" href="/alle-tv-s?op=38:8306;8315;8334;8313">55 t/m 65 inch</a></li>
+                <li><a class="nav-link" href="/alle-tv-s?op=38:8281;8332;8303;8288">40 t/m 50 inch</a></li>
+                <li><a class="nav-link" href="/alle-tv-s?op=38:8341;8273;8271;8275">32 inch en kleiner</a></li>
+                <li><a class="nav-link" href="/alle-tv-s">Alle TV's</a></li>
             </ul>
         </mat-expansion-panel>
 
@@ -61,10 +61,21 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <ul class="panel-content">
-                <li *ngFor="let brand of brands">
-                    <a class="transition nav-link" [routerLink]="[ brand['permalink'] ]"
+                <li *ngFor="let brand of show_brands">
+                    <span class="transition nav-link additional-nav" *ngIf="brand['permalink'] == 'show_extra_item'" (click)="expandAdditionalBrands()">
+                        {{brand['name']}}
+                        <span class="down-arrow-indicator"></span>
+                    </span>
+
+                    <span class="transition nav-link additional-nav" *ngIf="brand['permalink'] == 'hide_extra_item'" (click)="collapseAdditionalBrands()">
+                        {{brand['name']}}
+                        <span class="up-arrow-indicator"></span>
+                    </span>
+
+                    <a class="transition nav-link" [routerLink]="[ brand['permalink'] ]" *ngIf="(brand['permalink'] != 'show_extra_item') && (brand['permalink'] != 'hide_extra_item')"
                        routerLinkActive="horizontal-active-link"
                        [routerLinkActiveOptions]="{exact:false}">{{brand['name']}}</a>
+
                 </li>
             </ul>
         </mat-expansion-panel>
@@ -76,10 +87,10 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <ul class="panel-content">
-                <li><a class="nav-link" href="/categorie/muurbeugels-133.html">Muurbeugels</a></li>
-                <li><a class="nav-link" href="/categorie/afstandsbedieningen-274.html">Afstandsbedieningen</a></li>
-                <li><a class="nav-link" href="/categorie/aansluitkabels-236.html">Aansluitkabels</a></li>
-                <li><a class="nav-link" href="/categorie/accessoires-195.html">Alle accessoires</a></li>
+                <li><a class="nav-link" href="/meer-categorieen/muurbeugels-tv">Muurbeugels</a></li>
+                <li><a class="nav-link" href="/meer-categorieen/accessoires/afstandsbedieningen">Afstandsbedieningen</a></li>
+                <li><a class="nav-link" href="/meer-categorieen/accessoires/aansluitkabels">Aansluitkabels</a></li>
+                <li><a class="nav-link" href="/meer-categorieen/accessoires">Alle accessoires</a></li>
             </ul>
         </mat-expansion-panel>
 

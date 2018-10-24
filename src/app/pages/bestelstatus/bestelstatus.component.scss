@@ -1,0 +1,87 @@
+
+.main-heading {
+  display: -ms-flexbox!important;
+  display: flex!important;
+  -ms-flex-pack: justify!important;
+  justify-content: space-between!important;
+  -ms-flex-align: center!important;
+  align-items: center!important;
+  width: 100%;
+  background: #212226;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.main-heading h1, .main-heading h2 {
+  font-weight: bold;
+  font-size: 1.625rem;
+  line-height: 2.875rem;
+  font-family: "Gotham Condensed";
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+form {
+  display: block;
+  margin-top: 0em;
+
+  #login-box {
+    .login-col {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+
+      label {
+        width: 10rem;
+        margin-bottom: 0;
+        margin-right: .5rem;
+      }
+
+      input[type="text"] {
+        width: 15rem;
+        border: 1px solid #b6b6b7;
+        font-size: .8125rem;
+        line-height: 1.5;
+        padding: .25rem .5rem;
+      }
+    }
+
+    .login-col+.login-col {
+      margin-top: 1rem;
+    }
+  }
+
+  .user-nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    .dyna_button {
+      line-height: 0;
+    }
+
+    input[type="submit"] {
+      overflow: hidden;
+      display: inline-block;
+      border: none;
+      background: #5AAD49 url(/assets/images/others/icons-circle-arrow.png) right center no-repeat;
+      font-size: .8125rem;
+      line-height: 2.5rem;
+      font-family: "Poppins";
+      color: #fff;
+      text-align: left;
+      padding: 0 2.25rem 0 1rem;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+  }
+}

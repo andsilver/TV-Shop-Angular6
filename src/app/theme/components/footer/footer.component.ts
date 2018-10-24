@@ -10,10 +10,11 @@ export class FooterComponent implements OnInit, OnChanges {
 
   @Input() allCategories: Category[];
   @Input() allBrands: Array<any>;
+  @Input() windowSize: string;
 
   categories: Category[];
   brands = [];
-  windowSize: string;
+  show_brands = [];
 
   popular_categories = [
       {
@@ -153,26 +154,62 @@ export class FooterComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
-      if (this.allCategories) {
-          this.categories = this.allCategories.filter( c => c.parentId === 0 );
-      }
 
-      this.brands = this.allBrands;
-      this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('changes = ', changes);
     if (changes.allCategories) {
         this.categories = this.allCategories.filter( c => c.parentId === 0 );
+        this.categories = this.categories.filter( c => c.id < 99999998 );
     }
 
     if (changes.allBrands) {
         this.brands = this.allBrands;
-        console.log('this.brands = ', this.brands);
+        this.show_brands = [];
+
+        for (let i = 0; i < this.brands.length; i++) {
+            if (i > 7) {
+                this.show_brands.push({
+                    name: 'Alle merken',
+                    permalink: 'show_extra_item'
+                });
+                break;
+            }
+            this.show_brands.push(this.brands[i]);
+        }
+    }
+
+    if (changes.windowSize) {
+        // this.windowSize = changes['windowSize'];
     }
   }
 
   subscribe() { }
+  expandAdditionalBrands() {
+      this.show_brands = [];
+      for (let i = 0; i < this.brands.length; i++) {
+          this.show_brands.push(this.brands[i]);
+      }
 
+      this.show_brands.push({
+          name: 'Toon minder',
+          permalink: 'hide_extra_item'
+      });
+  }
+
+  collapseAdditionalBrands() {
+      this.show_brands = [];
+
+      for (let i = 0; i < this.brands.length; i++) {
+          if (i > 7) {
+              this.show_brands.push({
+                  name: 'Alle merken',
+                  permalink: 'show_extra_item'
+              });
+              break;
+          }
+          this.show_brands.push(this.brands[i]);
+      }
+  }
 }
+
