@@ -1,24 +1,22 @@
 <div class="checkout" fxLayout>
-  <div fxFlex="17" class="pr-2" fxHide.lt-md>
-    <app-filters-list></app-filters-list>
-  </div>
-  <div fxFlex="62">
-    <h2 class="pl-2 mb-3" *ngIf="loaded">
-      <ng-container i18n>STEP </ng-container>
-      {{currentStep.index}} - {{currentStep.title}}
-    </h2>
-    
-    <div class="checkout-steps" fxLayout>
-      <div fxFlex *ngFor="let step of steps" fxLayout="column" fxLayoutAlign="start center" 
-      [ngClass]="{'active-step': step === currentStep}" class="py-1 step-box">
-        <p><ng-container i18n>Step </ng-container>{{step.index}}</p>
-        <div>{{step.title}}</div>
-      </div>
+    <div fxFlex="0 0 187px" fxHide.lt-md>
+        <app-filters-list></app-filters-list>
     </div>
-
-    <router-outlet></router-outlet>
-  </div>
-  <div fxFlex="21" class="pl-2" fxHide.lt-md>
-    <app-extra-info></app-extra-info>
-  </div>
+    <div fxFlex class="px-3">
+        <h2 class="pl-2 mb-3" *ngIf="loaded">
+            <ng-container i18n>STEP </ng-container>
+                {{currentStep.index}} - {{currentStep.title}}
+        </h2>
+        <div class="checkout-steps mb-3" fxLayout>
+            <div fxFlex *ngFor="let step of steps" fxLayout="column" fxLayoutAlign="start center"
+                [ngClass]="{'active-step': step === currentStep}" class="py-1 step-box">
+                <p class="mb-0"><ng-container i18n>Step </ng-container>{{step.index}}</p>
+                <div>{{step.title}}</div>
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+    <div fxFlex="0 0 187px" fxHide.lt-md>
+        <app-extra-info></app-extra-info>
+    </div>
 </div>
