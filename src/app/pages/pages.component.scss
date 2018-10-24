@@ -12,10 +12,18 @@
 .theme-container.wrapper{
 
     .sidenav{
-        width: 300px;
+        width: 75vw;
         position: fixed;
         .sidenav-header {
             padding: 0 8px 0 16px;
+            h3 {
+                font-size: 1.75rem;
+                font-family: "Gotham Condensed";
+            }
+            .close {
+                padding-top: 4px;
+                margin-top: 8px;
+            }
         }
     }
 

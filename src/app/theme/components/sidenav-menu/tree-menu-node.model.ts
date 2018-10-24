@@ -3,4 +3,5 @@ export class TreeMenuNode {
     public children: TreeMenuNode[];
     public name: string;
     public link: string;
+    public extra: boolean;
 }
