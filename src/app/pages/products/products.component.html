@@ -143,18 +143,6 @@
                                     </span>
                                 </mat-menu>
                             </div>
-                            <div fxLayout="row" fxLayoutAlign="center center" fxHide.lt-sm>
-                                <a mat-button [matMenuTriggerFor]="countsMenu" #countsMenuTrigger="matMenuTrigger">
-                                    <ng-container i18n>Show</ng-container> {{count}} <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
-                                </a>
-                                <mat-menu #countsMenu="matMenu" xPosition="before" class="app-dropdown">
-                                    <span (mouseleave)="countsMenuTrigger.closeMenu()">
-                                        <button mat-menu-item *ngFor="let count of counts" (click)="changeCount(count)">
-                                            <span>{{count}}</span>
-                                        </button>
-                                    </span>
-                                </mat-menu>
-                            </div>
                         </div>
                     </div>
 
