@@ -42,6 +42,32 @@ footer {
             a.nav-link {
                 color: #212226;
             }
+
+            .additional-nav {
+                font-weight: bold;
+
+                span.down-arrow-indicator {
+                    color: black;
+                    margin-left: 5px;
+                }
+
+                span.down-arrow-indicator::after {
+                    color: black;
+                    margin-bottom: 5px;
+                    content: "\25be";
+                }
+
+                span.up-arrow-indicator {
+                    color: black;
+                    margin-left: 5px;
+                }
+
+                span.up-arrow-indicator::after {
+                    color: black;
+                    margin-bottom: 5px;
+                    content: "\25b4";
+                }
+            }
         }
     }
 }

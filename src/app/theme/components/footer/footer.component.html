@@ -61,10 +61,21 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <ul class="panel-content">
-                <li *ngFor="let brand of brands">
-                    <a class="transition nav-link" [routerLink]="[ brand['permalink'] ]"
+                <li *ngFor="let brand of show_brands">
+                    <span class="transition nav-link additional-nav" *ngIf="brand['permalink'] == 'show_extra_item'" (click)="expandAdditionalBrands()">
+                        {{brand['name']}}
+                        <span class="down-arrow-indicator"></span>
+                    </span>
+
+                    <span class="transition nav-link additional-nav" *ngIf="brand['permalink'] == 'hide_extra_item'" (click)="collapseAdditionalBrands()">
+                        {{brand['name']}}
+                        <span class="up-arrow-indicator"></span>
+                    </span>
+
+                    <a class="transition nav-link" [routerLink]="[ brand['permalink'] ]" *ngIf="(brand['permalink'] != 'show_extra_item') && (brand['permalink'] != 'hide_extra_item')"
                        routerLinkActive="horizontal-active-link"
                        [routerLinkActiveOptions]="{exact:false}">{{brand['name']}}</a>
+
                 </li>
             </ul>
         </mat-expansion-panel>
