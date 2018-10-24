@@ -20,6 +20,7 @@ export const routes: Routes = [
             { path: 'extrainfo', loadChildren: 'app/pages/extra-info/extra-info.module#ExtraInfoModule' },
             { path: 'psp', loadChildren: 'app/pages/payment/payment.module#PaymentModule'},
             { path: 'stores', loadChildren: 'app/pages/stores/stores.module#StoresModule' },
+            { path: 'bestelstatus', loadChildren: 'app/pages/bestelstatus/bestelstatus.module#BestelStatusModule' },
             { path: '**', loadChildren: 'app/pages/products/products.module#ProductsModule' }
         ]
     }

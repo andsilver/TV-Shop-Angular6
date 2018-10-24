@@ -1,0 +1,42 @@
+<div fxLayout>
+  <div fxFlex="17" class="pr-2" fxHide.lt-md>
+    <app-filters-list></app-filters-list>
+  </div>
+  <div fxFlex>
+    <router-outlet></router-outlet>
+    <div class="main-heading" i18n>
+      <h1>ORDER STATUS</h1>
+    </div>
+    <form name="login" method="post" action="/bestelstatus">
+      <div id="login-box">
+        <div id="login-input">
+          <div class="login-col">
+            <label for="email_address" class="label">enter your email address:</label>
+            <input type="text" name="customer_email" id="email_address" class="input" maxlength="96" value="">
+          </div>
+          <div class="login-col">
+            <label for="password" class="label">order number:</label>
+            <input type="text" name="order_id" id="password" class="input" maxlength="40" value="">
+          </div>
+          <br>
+        </div>
+      </div>
+      <div class="user-nav">
+        <div class="user-nav-l">
+          &nbsp;
+        </div>
+        <div class="user-nav-r">
+          <div class="dyna_button_container nl" id="button-center-continue">
+            <div class="dyna_button">
+              <input type="submit" value="next one">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div fxFlex="21" class="pl-2" fxHide.lt-md>
+    <app-extra-info></app-extra-info>
+  </div>
+</div>
+
