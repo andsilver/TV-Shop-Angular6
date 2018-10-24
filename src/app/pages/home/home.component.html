@@ -5,7 +5,68 @@
     <div fxFlex ngClass.xs="px-2" ngClass.sm="px-4" ngClass.gt-sm="px-3" class="middle-content">
         <ng-container *ngIf="widget">
             <app-main-carousel *ngIf="widget" [slides]="widget[0]"></app-main-carousel>
-            
+                
+            <ng-container *ngIf="windowSize === 'lt-md'">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                        <mat-panel-title>
+                            Beeldformaten
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul class="panel-content">
+                        <li><a class="nav-link" href="/categorie/alle-tvs-894.html#cat=894&so=1&pr=0-15000&op=38:8720;8317;8329;8353;8672;8355;8325;8351&page=1">70 inch en groter</a></li>
+                        <li><a class="nav-link" href="/categorie/alle-tvs-894.html#cat=894&so=1&pr=0-15000&op=38:8306;8334;8313;8315&page=1">55 t/m 65 inch</a></li>
+                        <li><a class="nav-link" href="/categorie/alle-tvs-894.html#cat=894&so=1&pr=0-15000&op=38:8281;8288;8303;8332&page=1">40 t/m 50 inch</a></li>
+                        <li><a class="nav-link" href="/categorie/alle-tvs-894.html#cat=894&so=1&pr=0-15000&op=38:8341;8271;8273;8275&page=1">32 inch en kleiner</a></li>
+                        <li><a class="nav-link" href="/categorie/alle-tvs-894.html">Alle TV's</a></li>
+                    </ul>
+                </mat-expansion-panel>
+        
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                        <mat-panel-title>
+                            Categorieën
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul class="panel-content">
+                        <li *ngFor="let category of categories">
+                            <a class="transition nav-link" [routerLink]="[ category.permalink ]"
+                                routerLinkActive="horizontal-active-link"
+                                [routerLinkActiveOptions]="{exact:false}">{{category.name}}</a>
+                        </li>
+                    </ul>
+                </mat-expansion-panel>
+        
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                        <mat-panel-title>
+                            Merken
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul class="panel-content">
+                        <li *ngFor="let brand of brands">
+                            <a class="transition nav-link" [routerLink]="[ brand['permalink'] ]"
+                                routerLinkActive="horizontal-active-link"
+                                [routerLinkActiveOptions]="{exact:false}">{{brand['name']}}</a>
+                        </li>
+                    </ul>
+                </mat-expansion-panel>
+        
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                        <mat-panel-title>
+                            Accessoires
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul class="panel-content">
+                        <li><a class="nav-link" href="/categorie/muurbeugels-133.html">Muurbeugels</a></li>
+                        <li><a class="nav-link" href="/categorie/afstandsbedieningen-274.html">Afstandsbedieningen</a></li>
+                        <li><a class="nav-link" href="/categorie/aansluitkabels-236.html">Aansluitkabels</a></li>
+                        <li><a class="nav-link" href="/categorie/accessoires-195.html">Alle accessoires</a></li>
+                    </ul>
+                </mat-expansion-panel>
+            </ng-container>
+
             <ng-container *ngIf="windowSize == 'gt-md'">
                 <div *ngFor="let mid of widget[1]" [innerHTML]="mid.content | htmlSanitize" (click)="navigate($event)">
                 </div>

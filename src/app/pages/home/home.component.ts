@@ -22,6 +22,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   windowSize: string;
   widget: any;
   stores = [];
+  categories = [];
+  brands = [];
+
+  subscriptions = [];
 
   constructor(
     public homeService: HomeService,
@@ -37,24 +41,34 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.title.setTitle(this.settings.settings.name);
     this.store.dispatch(new KeywordActions.SetKeyword(''));
 
-    forkJoin([
-      this.homeService.getTopBanner(),
-      this.homeService.getMiddleBanner(),
-      this.homeService.getMostPopular(),
-      this.appService.getStores()
-    ]).subscribe(r => {
-      this.widget = r;
-      setTimeout(() => imgix.init(), 1);
-      console.log(r);
-      this.stores = r[3];
-      console.log(this.stores);
-    });
+    this.subscriptions = [
+      forkJoin([
+        this.homeService.getTopBanner(),
+        this.homeService.getMiddleBanner(),
+        this.homeService.getMostPopular(),
+        this.appService.getStores()
+      ]).subscribe(r => {
+        this.widget = r;
+        setTimeout(() => imgix.init(), 1);
+        console.log(r);
+        this.stores = r[3];
+        console.log(this.stores);
+      }),
 
+      this.store.select(state => state.categories).subscribe(res => {
+        this.categories = res.categories;
+      }),
+
+      this.store.select(state => state.brands).subscribe(res => {
+        this.brands = res.manufacturer;
+      })
+    ];
 
     this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
   }
 
   ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   @HostListener('window:resize')
