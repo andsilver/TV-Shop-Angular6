@@ -8,6 +8,16 @@
     </button>
     <div class="clear"></div>
   </div>
+  <div class="checkout-container top-checkout" *ngIf="productData.length">
+    <div class="checkout-btn-container">
+      <button class="btn btn-shopping" mat-button><span i18n>continue shopping</span>
+        <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
+      </button>
+      <button class="btn btn-checkout" mat-button [routerLink]="['/checkout']"><span i18n>place order</span>
+        <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
+      </button>
+    </div>
+  </div>
   <div *ngIf="productData.length">
     <table class="cart-table" border="0" width="100%" cellspacing="0" cellpadding="2">
       <thead>
@@ -21,7 +31,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let product of productData">
-          <td align="center" valign="top">
+          <td class="product-image" align="center" valign="top">
             <a (click)="navigate(product.permalink)">
               <img class="mr-10" [attr.ix-path]="product.item_image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 123px, (min-width: 320px) 55px, 100vw"  alt="">
             </a>
@@ -51,11 +61,37 @@
             </div>
           </td>
 
-          <td align="right" valign="top"><strong class="price-content">{{ (product.item_price * product.item_qty) | customCurrency }}</strong></td>
+          <td class="price" align="right" valign="top"><strong class="price-content">{{ (product.item_price * product.item_qty) | customCurrency }}</strong></td>
+           <td class="mobile_view">
+            <div class="cell-title">
+              <a (click)="navigate(product.permalink)" class="product-title"><strong>{{product.item_name}}</strong></a>
+              <div class="quantity-price">
+                <div class="quantity-wrapper">
+                  <div class="input-group">
+                    <input type="text" [(ngModel)] ="product.item_qty_copy"  *ngIf="product.item_price != 0" />
+                  </div>
+                </div>
+                <ul>
+                  <li>{{product.stock_indicator}}</li>
+                  <li><a>{{product.shipping_info}}</a></li>
+                </ul>
+                <div *ngIf="product.item_description" [innerHTML]="product.item_description | htmlSanitize"></div>
+                <div class="price-wrapper">
+                  <strong>{{ (product.item_price * product.item_qty) | customCurrency }}</strong>
+                </div>
+              </div>
+            </div>
+            <div class="cell-action">
+                <button class="item-button" title="Remove this product" (click)="removeFromCart(product)" i18n-title>
+                  <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                </button>
+            </div>
+            <br>
+          </td>
 
         </tr>
         <tr>
-          <td colspan="6" class="no-border"><br></td>
+          <td colspan="6" class="no-border line-break"><br></td>
         </tr>
         <tr>
           <td align="right" colspan="6" class="no-border">
