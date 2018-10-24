@@ -1,7 +1,7 @@
 <div class="checkout-step">
   <form [formGroup]="form" (ngSubmit)="submit()">
 
-    <div fxLayout="row" fxLayoutAlign="space-between start" class="form-title">
+    <div fxLayout="row" fxLayoutAlign="space-between start" class="form-title mb-3">
       <h3 i18n>Your data</h3>
       <span i18n>fields with * are obligated</span>
     </div>
@@ -147,7 +147,7 @@
         </div>
         </form>
     </ng-container>
-    <div fxLayout="row" fxLayoutAlign="space-between start" class="mt-4">
+    <div fxLayout="row" fxLayoutAlign="space-between start" class="mt-4 mb-4">
         <button mat-button i18n class="prev-step">
           <fa-icon [icon]="['fas', 'chevron-circle-left']"></fa-icon>Back
         </button>
