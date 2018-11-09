@@ -15,6 +15,7 @@ export class BrandsCarouselComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit() {
+    console.log(this.brands);
     this.config = {
       slidesPerView: 4,
       spaceBetween: 16,
@@ -52,6 +53,7 @@ export class BrandsCarouselComponent implements AfterViewInit {
         }
       }
     };
+    setTimeout(() => imgix.init(), 1);
   }
 
 }

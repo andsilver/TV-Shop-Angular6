@@ -3,7 +3,6 @@ import { AppService } from 'app/app.service';
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import * as CrumbActions from 'app/store/actions/crumb-path.action';
-
 import * as mock from './mock.json';
 
 @Component({
@@ -35,6 +34,7 @@ export class StoresComponent implements OnInit, OnDestroy {
       this.appService.getStores().subscribe(res => {
         console.log(res);
         this.stores = res;
+        setTimeout(() => imgix.init(), 1);
       })
     );
     if (window.innerWidth < 960) {

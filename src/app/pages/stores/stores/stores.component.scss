@@ -2,16 +2,15 @@
     overflow: visible!important;
     float: left;
     left: 0;
-    width: 55vw;
+    width: 75vw;
     padding: 0;
 }
 
 @media (min-width:960px) {
     .filter-sidenav {
         position: static;
-        width: 200px;
+        width: 187px;
         padding: 0;
-        margin-right: 20px;
     }
 }
 

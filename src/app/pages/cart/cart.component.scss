@@ -7,6 +7,9 @@
         padding: 0 15px;
         margin-bottom: 10px;
     }
+    .float-right {
+        float: right;
+    }
     .clear{
         clear: both;
     }
@@ -19,6 +22,7 @@
             }
         }
     }
+
     a {
         color: #014f97;
         font-size: .8125rem;
@@ -117,6 +121,13 @@
                             height: 18px;
                             position: relative;
                             color: #717171;
+                            fa-icon{
+                                font-size: 12px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            
+                            }
                             .mat-icon {
                                 width: 11px;
                                 height: 11px;
@@ -159,18 +170,14 @@
             background: #5AAD49;
             margin-left: 20px;
             color: #fff;
+            fa-icon {
+                color: #fff;
+            }
         }
-        .mat-icon {
-            height: 16px;
-            width: 16px;
+        fa-icon {
             position: absolute;
-            top: 50%;
             right: 8px;
-            transform: translateY(-50%);
-            background: #fff;
             color: #212226;
-            border-radius: 100%;
-            font-size: 16px;
         }
     }
     .checkout-container {
@@ -219,6 +226,11 @@
                     }
                     .btn.add-item-btn {
                         line-height: 22px;
+                        position: relative;
+                        fa-icon {
+                            position: absolute;
+                            right: 7px;
+                        }
                     }
                 }
             }

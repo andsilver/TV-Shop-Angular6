@@ -28,6 +28,7 @@ export class BestPriceDialogComponent implements OnInit {
       residence: [''],
       description: [''],
     });
+    setTimeout(() => imgix.init(), 1);
   }
 
   formSubmit() {

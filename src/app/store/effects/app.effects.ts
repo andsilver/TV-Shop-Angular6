@@ -33,23 +33,6 @@ export class AppEffects {
       );
 
   @Effect()
-  GetCategory: Observable<any>
-    = this.actions
-        .ofType(ProductsActions.MODE_PRODUCTS)
-        .pipe(
-          map((action: any) => action.payload),
-          switchMap(payload => {
-            return this.appService.getProducts(payload)
-              .pipe(
-                map(data => new ProductsActions.SuccessProducts(data)),
-                catchError(err => {
-                  return of(new ProductsActions.FailedProducts({ message: err.message}));
-                })
-              );
-          })
-        );
-
-  @Effect()
   GetBrands: Observable<any>
     = this.actions
       .ofType(BrandsActions.GET_BRANDS)
@@ -83,17 +66,8 @@ export class AppEffects {
         .ofType(CategoriesActions.GET_CATEGORIES)
         .pipe(
           map((action: any) => action.payload),
-          switchMap(payload => {
-            if (payload) {
-              return this.appService.getCategories();
-            } else {
-              return this.appService.getCategories();
-            }
-          }),
-          map(data => {
-            console.log(data);
-            return new CategoriesActions.SuccessGetCategories(data);
-          }),
+          switchMap(payload => this.appService.getCategories(payload)),
+          map(data => new CategoriesActions.SuccessGetCategories(data)),
           catchError(err => of(new CategoriesActions.FailedGetCategories({ message: err.message })))
         );
 

@@ -12,7 +12,10 @@ export function reducer ( state = initialState, action: CategoriesActions.Action
 
     switch (action.type) {
         case CategoriesActions.SUCCESS_GET_CATEGORIES: {
-            return { categories: action.payload, error: null };
+            return {
+                categories: action.payload,
+                error: null
+            };
         }
         case CategoriesActions.FAILED_GET_CATEGORIES: {
             return {

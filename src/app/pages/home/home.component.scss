@@ -1,20 +1,54 @@
 .products-tabs{
     margin-top: 30px;   
 }
-
+.middle-content {
+    min-width: 1px;
+}
 .filter-sidenav {
-    overflow: visible!important;
-    float: left;
-    left: 0;
-    width: 55vw;
+    /*
+    position: static;
+    -ms-flex: 0 0 187px;
+    flex: 0 0 187px;
+    max-width: 187px;
     padding: 0;
+    */
+}
+.misc-sidenav {
+    -ms-flex: 0 0 187px;
+    flex: 0 0 187px;
+    max-width: 187px;
 }
 
-@media (min-width:960px) {
-    .filter-sidenav {
-        position: static;
-        width: 200px;
-        padding: 0;
-        margin-right: 20px;
+.most-popular-wrapper {
+    .most-popular-title {
+        background: #212226;
+        font-weight: bold;
+        font-size: 2rem;
+        line-height: 2.875rem;
+        font-family: "Gotham Condensed Bold";
+        letter-spacing: 1px;
+        color: #fff;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .image-link {
+        height: 130px;
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .most-popular {
+        margin-left: -.5rem;
+        margin-right: -.5rem;
+        .product-item-widget{
+            margin-bottom: 1rem;
+            padding-left: .5rem;
+            padding-right: .5rem;
+        }
     }
 }

@@ -1,100 +1,74 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
-import { AppService } from '../../app.service';
-import { Product } from '../../app.models';
+import {Component, OnInit, OnDestroy, HostListener, ViewEncapsulation} from '@angular/core';
+import { Router } from '@angular/router';
+import { HomeService } from './home.service';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 import { AppSettings } from '../../app.settings';
 import { Title } from '@angular/platform-browser';
-import { Subscription } from 'rxjs/Subscription';
 
 import { Store } from '@ngrx/store';
 import { State } from 'app/store';
 import * as KeywordActions from 'app/store/actions/keyword.action';
 
-import * as data from 'assets/data/banners.json';
+import { AppService } from 'app/app.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  slides = [
-    { title: 'Welkom in onze vernieuwde webwinkel!', subtitle: 'Nu nog meer bestelgemak', image: 'assets/images/carousel/banner1.jpg' },
-    { title: 'Black Friday Deals', subtitle: 'Alleen bij PlatteTV', image: 'assets/images/carousel/banner2.jpg' },
-    { title: 'Kerst Deals', subtitle: 'Alleen bij PlatteTV', image: 'assets/images/carousel/banner3.jpg' },
-    { title: 'Zomer Deals', subtitle: 'Alleen bij PlatteTV', image: 'assets/images/carousel/banner4.jpg' },
-    { title: 'Mega Deals', subtitle: 'Alleen bij PlatteTV', image: 'assets/images/carousel/banner5.jpg' }
-  ];
+  windowSize: string;
+  widget: any;
+  stores = [];
 
-  brands = [];
-  banners = [];
-
-  subscription: Subscription;
-
-  featuredProducts: Array<Product>;
-  onSaleProducts: Array<Product>;
-  topRatedProducts: Array<Product>;
-  newArrivalsProducts: Array<Product>;
-  products: Array<Product>;
-  sidenavOpen = true;
-
-
-  constructor(public appService: AppService, private settings: AppSettings, private title: Title, private store: Store<State>) { }
+  constructor(
+    public homeService: HomeService,
+    private settings: AppSettings,
+    private title: Title,
+    private store: Store<State>,
+    private router: Router,
+    private appService: AppService
+  ) { }
 
   ngOnInit() {
-    // forkJoin([
-    //     this.appService.getBanners(),
-    //     this.appService.getBrandsByCategoryId(0),
-    //     this.appService.getProducts('featured'),
-    //     this.appService.getProducts('sale'),
-    //     this.appService.getProducts('top_rated'),
-    //     this.appService.getProducts('new_arrivals')
-    //   ])
-    //   .subscribe(res => {
-    //     this.brands = res[1].manufacturer;
-    //     this.featuredProducts = res[2].products;
-    //     this.onSaleProducts = res[3].products;
-    //     this.topRatedProducts = res[4].products;
-    //     this.newArrivalsProducts = res[5].products;
-    //     this.products = this.onSaleProducts;
-    //   });
-    this.subscription = this.appService.getBrandsByCategoryId(0).subscribe( res => {
-      this.brands = res.manufacturer;
-    });
-    this.banners = data['banners'];
+
     this.title.setTitle(this.settings.settings.name);
     this.store.dispatch(new KeywordActions.SetKeyword(''));
 
-    if (window.innerWidth < 960) {
-      this.sidenavOpen = false;
-    }
+    forkJoin([
+      this.homeService.getTopBanner(),
+      this.homeService.getMiddleBanner(),
+      this.homeService.getMostPopular(),
+      this.appService.getStores()
+    ]).subscribe(r => {
+      this.widget = r;
+      setTimeout(() => imgix.init(), 1);
+      console.log(r);
+      this.stores = r[3];
+      console.log(this.stores);
+    });
+
+
+    this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
   @HostListener('window:resize')
   public onWindowResize(): void {
-    (window.innerWidth < 960) ? this.sidenavOpen = false : this.sidenavOpen = true;
+    this.windowSize = (window.innerWidth < 960) ? 'lt-md' : 'gt-md';
   }
 
-  onLinkClick(e) {
-    this.getProducts(e.tab.textLabel.toLowerCase());
-  }
-
-  getProducts(type) {
-    // if (type === 'featured') {
-    //   this.products = this.featuredProducts;
-    // }
-    if (type === 'aanbiedingen') {
-      this.products = this.onSaleProducts;
-    }
-    if (type === 'best beoordeeld') {
-      this.products = this.topRatedProducts;
-    }
-    if (type === 'nieuw') {
-      this.products = this.newArrivalsProducts;
+  navigate(event) {
+    console.log(event);
+    const ele = event.target.parentElement;
+    const link = ele.getAttribute('data-routerlink');
+    console.log(ele, link);
+    if (link) {
+      this.router.navigate([link]);
     }
   }
 

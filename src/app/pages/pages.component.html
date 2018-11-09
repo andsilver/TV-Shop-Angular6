@@ -1,11 +1,13 @@
-<mat-sidenav-container class="wrapper theme-container" ngClass="px-0" ngClass.gt-md="px-3">
+<mat-sidenav-container class="wrapper theme-container">
 
     <mat-sidenav [opened]="false" mode="over" #sidenav class="sidenav mat-elevation-z6">
-        <button mat-icon-button color="warn" class="close" (click)="sidenav.close()">
-           <mat-icon color="warn">close</mat-icon>
+        <button mat-icon-button color="warn" class="close" (click)="sidenav.close();sidenavOpened=false;">
+            <fa-icon [icon]="['fas', 'times']" size="lg"></fa-icon>
         </button>
         <div class="divider"></div>
-        <app-sidenav-menu [menuItems]="sidenavMenuItems" [menuParentId]="0"></app-sidenav-menu>
+        <app-sidenav-filters-list *ngIf="sidenavOpened"></app-sidenav-filters-list>
+        <!-- <app-sidenav-menu *ngIf="sidenavOpened" [menuItems]="sidenavMenuItems" [menuParentId]="0"></app-sidenav-menu> -->
+        <!--
         <div class="divider"></div>
         <div class="text-center py-2">                   
             <svg class="social-icon" viewBox="0 0 24 24">
@@ -17,152 +19,83 @@
             <svg class="social-icon" viewBox="0 0 24 24">
                 <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M19.5,12H18V10.5H17V12H15.5V13H17V14.5H18V13H19.5V12M9.65,11.36V12.9H12.22C12.09,13.54 11.45,14.83 9.65,14.83C8.11,14.83 6.89,13.54 6.89,12C6.89,10.46 8.11,9.17 9.65,9.17C10.55,9.17 11.13,9.56 11.45,9.88L12.67,8.72C11.9,7.95 10.87,7.5 9.65,7.5C7.14,7.5 5.15,9.5 5.15,12C5.15,14.5 7.14,16.5 9.65,16.5C12.22,16.5 13.96,14.7 13.96,12.13C13.96,11.81 13.96,11.61 13.89,11.36H9.65Z" />
             </svg>
-        </div> 
+        </div>
+        -->
     </mat-sidenav>
 
-
     <mat-toolbar color="primary">
-        <!-- <mat-toolbar-row fxLayoutAlign="space-between center" class="top-toolbar theme-container">
-             
-            <span fxShow="false" fxShow.gt-xs fxLayoutAlign="center center"><mat-icon class="mat-icon-sm">call</mat-icon>  Hotline: (0418) 82 02 11 </span>
-            <span fxShow="false" fxShow.gt-sm>Welcome to our market!</span>
-            <app-top-menu></app-top-menu>
-        </mat-toolbar-row> -->
         <mat-toolbar-row fxLayout.lt-md="column" fxFlexAlign="center" id="main-header">
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" id="brand">
-                <a routerLink="/" (click)="closeSubMenus()" class="logo mr-4"><img src="assets/images/others/logo_plattetv.svg" alt="PlatteTV"></a>
+                <a fxFlex.gt-sm="0 0 226px" routerLink="/" (click)="closeSubMenus()" class="logo"><img src="assets/images/others/logo_plattetv.svg" alt="PlatteTV"></a>
                 <nav fxLayout="row" fxShow fxHide.gt-sm class="mobilenav">
-                    <a href="/extrainfo/advies-contact-2316.html"><img src="assets/images/others/icon_chat.png" alt="Chat"></a>
+                    <a href="/extrainfo/advies-contact"><img src="assets/images/others/icon_chat.png" alt="Chat"></a>
                     <a href="/extrainfo/winkels-amsterdam-arnhem-breda-doesburg-doetinchem-eindhoven-nijmegen-en-utrecht-885.html"><img src="assets/images/others/icon_locator.png" alt="Locaties"></a>
-                    <a href="/winkelwagen"><img src="assets/images/others/icon_cart.png" alt="Winkelwagen"></a>
+                    <a href="/winkelwagen" style="position: relative;"><img src="assets/images/others/icon_cart.png" alt="Winkelwagen"><div *ngIf="cart" class="cart-badge"></div></a>
                 </nav>
             </div>
-            <div fxFlex="90" fxLayout="column" class="main-header-right">
-                <ul fxFlex fxLayout="row" fxlayoutalign="space-between center" fxShow="false" fxShow.gt-sm id="links_city">
-                    <li class="links_city_amsterdam"><a href="/extrainfo/winkel-amsterdam-6.html"><span class="link_city_top" i18n>Amsterdam</span><span class="link_city_bottom" i18n>020 226 5700</span></a></li>
+            <div fxFlex="90" fxLayout="row" fxLayout.gt-sm="column" class="main-header-right" ngClass.gt-sm="ml-4">
+                <ul *ngIf="windowSize == 'gt-md'" fxFlex fxLayout="row" fxlayoutalign="space-between center" id="links_city">
+                    <li class="links_city_amsterdam"><a [routerLink]="['/stores', 'amsterdam']"><span class="link_city_top" i18n>Amsterdam</span><span class="link_city_bottom" i18n>020 226 5700</span></a></li>
                     <li class="links_city_separator"></li>
-                    <li class="links_city_arnhem"><a href="/extrainfo/winkel-arnhem-1.html"><span class="link_city_top" i18n>Arnhem</span><span class="link_city_bottom" i18n>026 845 4658</span></a></li>
-
+                    <li class="links_city_arnhem"><a [routerLink]="['/stores', 'arnhem']"><span class="link_city_top" i18n>Arnhem</span><span class="link_city_bottom" i18n>026 845 4658</span></a></li>
                     <li class="links_city_separator"></li>
-                    <li class="links_city_breda"><a href="/extrainfo/winkel-breda-3.html"><span class="link_city_top" i18n>Breda</span><span class="link_city_bottom" i18n>076 711 2848</span></a></li>
+                    <li class="links_city_breda"><a [routerLink]="['/stores', 'breda']"><span class="link_city_top" i18n>Breda</span><span class="link_city_bottom" i18n>076 711 2848</span></a></li>
                     <li class="links_city_separator"></li>
-                    <li class="links_city_doetinchem"><a href="/extrainfo/winkel-doetinchem-4.html"><span class="link_city_top" i18n>Doetinchem</span><span class="link_city_bottom" i18n>0314 711 112</span></a></li>
+                    <li class="links_city_doetinchem"><a [routerLink]="['/stores', 'doetinchem']"><span class="link_city_top" i18n>Doetinchem</span><span class="link_city_bottom" i18n>0314 711 112</span></a></li>
                     <li class="links_city_separator"></li>
-                    <li class="links_city_eindhoven"><a href="/extrainfo/winkel-eindhoven-9.html"><span class="link_city_top" i18n>Eindhoven</span><span class="link_city_bottom" i18n>040 200 11 22</span></a></li>
+                    <li class="links_city_eindhoven"><a [routerLink]="['/stores', 'eindhoven']"><span class="link_city_top" i18n>Eindhoven</span><span class="link_city_bottom" i18n>040 200 11 22</span></a></li>
                     <li class="links_city_separator"></li>
-                    <li class="links_city_nijmegen"><a href="/extrainfo/winkel-nijmegen-2.html"><span class="link_city_top" i18n>Nijmegen</span><span class="link_city_bottom" i18n>024 323 0116</span></a></li>
+                    <li class="links_city_nijmegen"><a [routerLink]="['/stores', 'nijmegen']"><span class="link_city_top" i18n>Nijmegen</span><span class="link_city_bottom" i18n>024 323 0116</span></a></li>
                     <li class="links_city_separator"></li>
-                    <li class="links_city_utrecht"><a href="/extrainfo/winkel-utrecht-14.html"><span class="link_city_top" i18n>Utrecht</span><span class="link_city_bottom" i18n>030 310 1045</span></a></li>
+                    <li class="links_city_utrecht"><a [routerLink]="['/stores', 'utrecht']"><span class="link_city_top" i18n>Utrecht</span><span class="link_city_bottom" i18n>030 310 1045</span></a></li>
                 </ul>
                 <div fxFlex fxLayout="row nowrap" fxFlexOffset.gt-sm="0" class="main-header-sub">
-                    <span fxHide="false" fxHide.gt-sm>
-                        <button mat-button (click)="sidenav.toggle()" class="sidenav-toggle" aria-label="sidenav-toggle">
-                            <mat-icon>menu</mat-icon>
-                        </button>
-                    </span>
-                    <form method="get"  class="search-form" fxLayout="row" (ngSubmit)="search($event)">
+                    <button fxFlex="0 0 40px" *ngIf="windowSize == 'lt-md'" mat-button (click)="sidenav.toggle();sidenavOpened = !sidenavOpened;" class="sidenav-toggle" aria-label="sidenav-toggle">
+                        <img src="/assets/images/others/icon_bar.png">
+                    </button>
+                    <form method="get" class="search-form" fxLayout="row" ngClass.gt-sm="pr-5" (ngSubmit)="search($event)">
                         <input type="text" i18n-placeholder placeholder="Type keyword..." name="search_key" [ngModel]="keyword" (keyup)="searchTerm.next($event)" fxFlex aria-label="search_key" autocomplete="off">
                         <button mat-button type="submit" class="search-btn mat-elevation-z0 text-muted" aria-label="search-btn">
-                            <mat-icon>search</mat-icon>
+                            <fa-icon [icon]="['fas', 'search']"></fa-icon>
                         </button>
                     </form>
-                    <div fxLayout="row" fxLayoutAlign="center center" fxHide="true" fxShow.gt-sm class="shopping-cart">
-
-                        <div fxLayoutAlign="center center">
-                            <button mat-button [matMenuTriggerFor]="cartMenu" #cartMenuTrigger="matMenuTrigger" class="flex-row-button">
-                                <mat-icon class="mat-icon-lg">shopping_cart</mat-icon>
-                                <span *ngIf="appService.Data.cartList.length > 0" class="cart-items-count">{{appService.Data.totalQuantity}}</span>
-                                <div fxLayout="column" fxLayoutAlign="center center" fxShow="false" fxShow.gt-xs class="top-cart">
-                                    <span i18n>Shopping Cart</span>
-                                    <span *ngIf="appService.Data.cartList.length > 0">{{appService.Data.totalQuantity}} <ng-container i18n>product</ng-container>
-                                     <span *ngIf="appService.Data.cartList.length > 1" i18n>en</span> -
-                                        <span>{{appService.Data.totalPrice | customCurrency}}</span>
-                                    </span>
-                                </div>
-                                <mat-icon class="mat-icon-sm">arrow_drop_down</mat-icon>
-                            </button>
-                            <mat-menu #cartMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="top-menu-dropdown cart-dropdown">
-                                <span (mouseleave)="cartMenuTrigger.closeMenu()" class="d-block">
-                                    <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted">
-                                        <b><span>{{appService.Data.totalQuantity}} <ng-container i18n>PRODUCT</ng-container><span *ngIf="appService.Data.cartList.length > 1" i18n>EN</span></span></b>
-                                        <b><a [routerLink]="['/cart']" class="text-muted" i18n>VIEW CART CONTENTS</a></b>
-                                    </div>
-                                    <div class="divider mt-1"></div>
-                                    <div *ngIf="appService.Data.cartList.length == 0" class="py-1 text-muted text-center" i18n>YOU HAVE NO ITEMS IN YOUR SHOPPING CART.</div>
-                                    <mat-list>
-                                        <mat-list-item *ngFor="let product of appService.Data.cartList" class="py-1">
-                                            <h3 matLine class="text-muted"> {{product.name}} </h3>
-                                            <p matLine class="text-muted">
-                                                <span> {{product.quantity }} x {{product.newPrice | customCurrency}} </span>
-                                            </p>
-                                            <p matLine class="text-muted" *ngFor="let attribute of product.attributes; let i=index;">
-                                                <ng-container *ngIf="attribute.selected">
-                                                    <span>{{attribute.products_options_name}}:{{getAttributeName(product, i, attribute.selected)}}</span>
-                                                </ng-container>
-                                            </p>
-                                            <img [src]="product.images[0].small" alt="image">
-                                            <span class="cdk-visually-hidden" #translatedTooltipMessage i18n >Back</span>
-                                            <button mat-icon-button color="warn" class="remove" (click)="remove(product);stopClickPropagate($event)"  [matTooltip]="translatedTooltipMessage.innerHTML" matTooltipPosition="before">
-                                                <mat-icon class="mat-icon-sm">close</mat-icon>
-                                            </button>
-                                        </mat-list-item>
-                                    </mat-list>
-                                    <div *ngIf="appService.Data.cartList.length > 0" class="cart-dropdown-footer">
-                                        <div class="divider mt-1"></div>
-                                        <div fxLayout="row" fxLayoutAlign="flex-end center" class="text-muted mt-1">
-                                            <b class="mr-1" i18n>Total:</b>
-                                            <b class="new-price">{{appService.Data.totalPrice | customCurrency}}</b>
-                                        </div>
-                                        <div class="divider mt-1"></div>
-                                        <div fxLayout="row" fxLayoutAlign="flex-end center" class="mt-1">
-                                                <span class="cdk-visually-hidden" i18n #translatedTooltipMessage2>Checkout</span>
-                                            <a [routerLink]="['/checkout']" mat-button mat-primary color="primary" class="cart-dropdown-submit" i18n [matTooltip]="translatedTooltipMessage2.innerHTML">
-                                                check
-                                            </a>
-                                        </div>
-                                    </div>
-                                </span>
-                            </mat-menu>
-                        </div>
-
-                        <!-- <div fxLayoutAlign="center center" fxHide="false" fxHide.gt-sm>
-                            <button mat-icon-button [matMenuTriggerFor]="searchMenu" #searchMenuTrigger="matMenuTrigger" class="search-toggle-btn">
-                                <mat-icon class="mat-icon-lg">search</mat-icon>
-                            </button>
-                            <mat-menu #searchMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="search-dropdown mat-elevation-z8">
-                                <form method="get" fxFlex class="search-form">
-                                    <button mat-raised-button [matMenuTriggerFor]="categories2Menu" #categories2MenuTrigger="matMenuTrigger" type="button" class="mat-elevation-z0 categories text-muted" (click)="stopClickPropagate($event)">{{category?.name}}<mat-icon>arrow_drop_down</mat-icon></button>
-                                    <mat-menu #categories2Menu="matMenu" [overlapTrigger]="false" xPosition="before" class="categories-dropdown">
-                                        <span (mouseleave)="categories2MenuTrigger.closeMenu()">
-                                            <app-category-list [categories]="categories" [categoryParentId]="0" (change)="changeCategory($event)"></app-category-list>
-                                        </span>
-                                    </mat-menu>
-                                    <input type="text" placeholder="Typ zoekopdracht..." fxFlex (click)="stopClickPropagate($event)">
-                                    <button mat-mini-fab (click)="search()" type="button" class="search-btn mat-elevation-z0 text-muted">
-                                        <mat-icon>search</mat-icon>
-                                    </button>
-                                </form>
-                            </mat-menu>
-                        </div> -->
+                    <div fxLayout="row" fxLayoutAlign="center center" *ngIf="windowSize == 'gt-md'" id="miscnav-container">
+                        <button mat-button [matMenuTriggerFor]="cartMenu" #cartMenuTrigger="matMenuTrigger" class="flex-row-button">
+                            SERVICE <fa-icon [icon]="['fas', 'bars']"></fa-icon>
+                        </button>
+                        <mat-menu #cartMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="top-menu-dropdown cart-dropdown">
+                            <span (mouseleave)="cartMenuTrigger.closeMenu()" class="d-block top-menu-dropdown-content">
+                                <div i18n routerLink='/extrainfo/advies-contact'>Contact</div>
+                                <div i18n [routerLink]="['/extrainfo', 'advies-contact', 'klantenservice']">Customer Service</div>
+                                <div i18n>Order Status</div>
+                                <div i18n [routerLink]="['/extrainfo', 'installatie-op-maat-learning-center']">Learning Center</div>
+                                <div i18n [routerLink]="['/extrainfo', 'zakelijk']">For Business</div>
+                                <div i18n [routerLink]="['/extrainfo', 'vacatures']">Vacancies</div>
+                            </span>
+                        </mat-menu>
                     </div>
                 </div>
-
-
             </div>
         </mat-toolbar-row>
-    </mat-toolbar> 
-
-    <app-menu fxShow="false" fxShow.gt-sm></app-menu>  
+    </mat-toolbar>
+    <mat-toolbar fxFlex fxLayoutAlign="space-around center" class="usp-list usp-list-header" ngClass.xs="px-2" ngClass.gt-xs="px-4" ngClass.gt-md="px-5">
+        <div fxHide.lt-md class="mr-4"><a href="https://www.plattetv.nl/" i18n><strong>The TV-store of the Netherlands</strong></a></div>
+        <div class="usp-list-item mr-4"><a routerLink="/extrainfo/advies-contact"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>8 locations</ng-container></a></div>
+        <div fxHide.lt-md class="usp-list-item mr-4"><a routerLink="/extrainfo/installatie-op-maat-learning-center"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>Installation and  en assembly</ng-container></a></div>
+        <div class="usp-list-item"><a routerLink="/extrainfo/verzending-en-bezorging"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>Free delivery</ng-container></a></div>
+        <div fxFlex="0 0 auto" fxLayoutAlign="start center" fxHide.lt-sm class="review ml-auto"><span class="review--score">9,4</span><span class="review--text"><span class="review--label" i18n>CLIENT REVIEWS</span><br><span class="review--total-reviews"><a href="https://www.kieskeurig.nl/winkels/plattetv/reviews" target="_blank" rel="noreferrer" i18n>20.510 reviews</a></span></span></div>
+    </mat-toolbar>
+    <app-menu *ngIf="windowSize =='gt-md' && categories.length" [allCategories]="categories"></app-menu>  
     
-    <div class="theme-container main">
-        <app-crumb-path [categories]="categories"></app-crumb-path>
+    <div class="theme-container main" ngClass.gt-sm="py-3">
+        <app-crumb-path></app-crumb-path>
         <router-outlet></router-outlet>
     </div>
 
-    <app-footer></app-footer>
+    <app-footer [allCategories]="categories" [allBrands]="brands"></app-footer>
 
     <div *ngIf="showBackToTop" fxLayout="row" fxLayoutAlign="center center" class="back-to-top transition" (click)="scrollToTop()">
-        <mat-icon>arrow_upward</mat-icon>
+        <fa-icon [icon]="['fas', 'arrow-up']"></fa-icon>
     </div>
 
  </mat-sidenav-container>

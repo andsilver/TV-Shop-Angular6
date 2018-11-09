@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ScrollToModule } from 'ng2-scroll-to-el';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -14,6 +13,11 @@ import { LayoutComponent } from './layout/layout.component';
 import { NotMatchComponent } from './not-match/not-match.component';
 import { BestPriceDialogComponent } from './best-price-dialog/best-price-dialog.component';
 import { ExchangeComponent } from './exchange/exchange.component';
+import { OutdoorOpportunityDialogComponent } from './outdoor-opportunity-dialog/outdoor-opportunity-dialog.component';
+import { ProductsService } from './products.service';
+import { SubProductDialogComponent } from './sub-product-dialog/sub-product-dialog.component';
+import { RecommendedCombidealDialogComponent } from './recommended-combideal-dialog/recommended-combideal-dialog.component';
+import { CmsContentDialogComponent } from './cms-content-dialog/cms-content-dialog.component';
 
 export const routes = [
   {
@@ -26,8 +30,7 @@ export const routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     NgxPaginationModule,
-    SharedModule,
-    ScrollToModule.forRoot()
+    SharedModule
   ],
   declarations: [
     ProductsComponent,
@@ -36,12 +39,21 @@ export const routes = [
     LayoutComponent,
     NotMatchComponent,
     BestPriceDialogComponent,
-    ExchangeComponent
+    ExchangeComponent,
+    OutdoorOpportunityDialogComponent,
+    SubProductDialogComponent,
+    RecommendedCombidealDialogComponent,
+    CmsContentDialogComponent
   ],
   entryComponents: [
     ProductZoomComponent,
     BestPriceDialogComponent,
-    ExchangeComponent
-  ]
+    ExchangeComponent,
+    OutdoorOpportunityDialogComponent,
+    SubProductDialogComponent,
+    RecommendedCombidealDialogComponent,
+    CmsContentDialogComponent
+  ],
+  providers: [ProductsService]
 })
 export class ProductsModule { }

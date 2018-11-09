@@ -1,0 +1,98 @@
+<div class="page-contact">
+  <div class="top-section page-section">
+    <h1 i18n>ADVICE & CONTACT</h1>
+    <div>
+      <img src="https://www.plattetv.nl/var/images/cmsimages/winkels/advies-en-contact.png" alt="">
+    </div>
+    <div>
+      <ng-container i18n>You can contact our customer service every day of the week! Want to know more about TV and Audio? Curious about how much</ng-container>
+      <u href="/" i18n> trade-in discount </u>
+      <ng-container i18n>you get? We are happy to help you!</ng-container>
+    </div>
+  </div>
+  <div class="page-section contact-customer-service">
+    <strong i18n>CONTACT WITH OUR CUSTOMER SERVICE:</strong>
+    <p>
+      <a href="/" i18n>Open today until 9 p.m.</a>
+    </p>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+
+      <div class="contact-method" fxFlex="49" fxFlex.xs="100" fxLayout fxLayoutAlign="start center">
+        <div class="contact-method-icon">
+          <fa-icon [icon]="['far', 'comment']" size="lg"></fa-icon>
+        </div>
+        <div>
+          <h2 i18n>Chat live</h2>
+          <p i18n>Response within 30 sec.</p>
+        </div>
+      </div>
+
+      <div class="contact-method" fxFlex="50" fxFlex.xs="100" fxLayout fxLayoutAlign="start center">
+        <div class="contact-method-icon">
+          <fa-icon [icon]="['far', 'envelope']" size="lg"></fa-icon>
+        </div>
+        <div>
+          <h2 i18n>Fill form in</h2>
+          <p i18n>Response within 10 min.</p>
+        </div>
+      </div>
+
+      <div class="contact-method" fxFlex="49" fxFlex.xs="100" fxLayout fxLayoutAlign="start center">
+        <div class="contact-method-icon">
+          <fa-icon [icon]="['fab', 'whatsapp']" size="lg"></fa-icon>
+        </div>
+        <div>
+          <h2 i18n>Whatsapp us</h2>
+          <p i18n>Response within 30 sec.</p>
+        </div>
+      </div>
+
+      <div class="contact-method" fxFlex="50" fxFlex.xs="100" fxLayout fxLayoutAlign="start center">
+        <div class="contact-method-icon">
+          <fa-icon [icon]="['fas', 'phone']" size="lg"></fa-icon>
+        </div>
+        <div>
+          <h2 i18n>Bel 026-84 54 658</h2>
+          <p i18n>Direct Reaction.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="page-section stores">
+    <strong>VISIT OUR STORES</strong>
+    <div class="stores-sentences">
+      <ng-container i18n>Open today until 9 p.m.</ng-container><br>
+      <p i18n>Of course you are welcome in one of our eight stores. View the opening hours, directions and other information about our stores here. </p>
+    </div>
+    <br>
+    <div fxLayout="row wrap" fxLayoutAlign="space start" class="stores-individual-store">
+        <div fxFlex="50" fxFlex.gt-sm="33.3333333" *ngFor="let store of stores" class="stores-individual-store-item">
+          <a [routerLink]="['/stores', store.store_location]">
+            <figure><img [attr.ix-path]="store.store_images[0]" ix-params='{"auto":"compress"}' style="height: 160px; object-fit: cover;" sizes="(min-width: 768px) 160px, (min-width: 320px) 160px, 100vw" [routerLink]="['/stores', store.store_location]" alt=""></figure>
+            <figcaption>{{store.store_title}}</figcaption>
+          </a>
+        </div>
+    </div>
+  </div>
+
+  <div class="page-section customer-services" #customer_service>
+    <strong i18n>CUSTOMER SERVICE:</strong>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+      <div fxFlex="33" fxFlex.lt-md="49" fxFlex.xs="100" class="customer-service" *ngFor="let service of customerServices">
+        <div class="service-title">
+          <img [src]="service.image" alt="Image not arrived">
+          <a [routerLink]="service.link">{{service.title}}</a>
+        </div>
+        <div class="service-items">
+          <ul>
+            <li *ngFor="let item of service.items">
+              <a [routerLink]="item.link">{{item.title}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

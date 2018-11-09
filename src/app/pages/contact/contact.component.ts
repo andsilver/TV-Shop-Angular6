@@ -21,7 +21,7 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  public onContactFormSubmit(values:Object):void {
+  public onContactFormSubmit(values: Object): void {
     if (this.contactForm.valid) {
       console.log(values);
     }

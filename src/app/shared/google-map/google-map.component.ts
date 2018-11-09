@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 /// <reference types="@types/googlemaps" />
 
@@ -9,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoogleMapComponent implements OnInit {
 
-  lat = 51.678418;
-  lng = 7.809007;
+  @Input()
+  lat: number;
+
+  @Input()
+  lng: number;
 
   constructor() { }
 

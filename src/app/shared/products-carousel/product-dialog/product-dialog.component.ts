@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, OnInit, Inject, AfterViewInit} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { Data, AppService } from '../../../app.service';
+import { AppService } from '../../../app.service';
 import { Product } from '../../../app.models';
 import { CurrencyService } from 'app/services';
 
@@ -19,6 +19,7 @@ export class ProductDialogComponent implements OnInit, AfterViewInit {
               @Inject(MAT_DIALOG_DATA) public product: Product) { }
 
   ngOnInit() {
+    setTimeout(() => imgix.init(), 1);
     // console.log(this.product);
   }
 

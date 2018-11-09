@@ -1,0 +1,5 @@
+<div class="cms-content">
+  <ng-container *ngIf="widget">
+    <div [innerHTML]="widget.content | htmlSanitize"></div>
+  </ng-container>
+</div>

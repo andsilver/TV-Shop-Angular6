@@ -1,5 +1,5 @@
-$font-family: Poppins, sans-serif;
-$theme-max-width: 1140px;
+$font-family: "Poppins", sans-serif;
+$theme-max-width: 1002px;
 
 $small-screen-up: 577px !default;
 $medium-screen-up: 769px !default;
@@ -24,19 +24,36 @@ $large-only: 'only screen and (min-width : #{$medium-screen-up}) and (max-width 
 
 @font-face {
   font-family: "Gotham Condensed Bold";
-  font-display: auto;
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
   src: local("Gotham Condensed Bold"),
-    url(/assets/fonts/hinted-GothamCondensed-Bold.woff2) format('woff2');
+     url(/assets/fonts/hinted-GothamCondensed-Bold.woff2) format('woff2');
 }
 
 @font-face {
   font-family: "Gotham Condensed";
-  font-display: auto;
-  src: local("Gotham Condensed"), 
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: local("Gotham Condensed"),
     url(/assets/fonts/hinted-GothamCondensed-Medium.woff2) format('woff2');
 }
 
 @font-face {
-  font-family: 'FontAwesome';
-  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2') format("woff2");
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Poppins Regular'), local('Poppins-Regular'), url(https://fonts.gstatic.com/s/poppins/v5/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Poppins Bold'), local('Poppins-Bold'), url(https://fonts.gstatic.com/s/poppins/v5/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }

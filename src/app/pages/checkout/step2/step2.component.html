@@ -1,0 +1,108 @@
+<div class="checkout-step" *ngIf="arrived">
+  <div class="form-title">
+    <h3 i18n>PICK UP OR DELIVER?</h3>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-content">
+      <mat-radio-group #method formControlName="shipping_selected">
+        <div *ngFor="let method of widget?.methods">
+
+          <mat-radio-button [value]="method.input_value" radioGroup="method" (change)="methodChange($event)">
+            <strong class="mr-1">{{method.label}}</strong>
+            <ng-container *ngIf="method.description">{{pickupMethod.description}}</ng-container>
+          </mat-radio-button>
+
+          <div *ngIf="method == pickupMethod && pickupMethod.input_value === currentMethod" class="ml-4">
+            <mat-radio-group #pickup_location formControlName="shipping_selected">
+              <div *ngFor="let location of pickupMethod.pickup_location">
+                <mat-radio-button [value]="location.input_value">{{location.label}}</mat-radio-button>
+              </div>
+            </mat-radio-group>
+          </div>
+
+          <div *ngIf="method == deliverMethod && deliverMethod.input_value === currentMethod" class="py-3">
+            <div>
+              <label for="delivery_dates_select">{{deliverMethod.available_delivery_dates.label}}:</label>
+              <select id="delivery_dates_select" [formControlName]="deliverMethod.available_delivery_dates.input_name" [disableControl]="altDeliver">
+                <option value="" i18n>--choose--</option>
+                <option *ngFor="let value of deliverMethod.available_delivery_dates.input_value" [value]="value.value" [disabled]="value.disabled">
+                  {{value.label}}
+                </option>
+              </select>
+              <a class="text-underline cursor-pointer" *ngIf="!altDeliver" i18n (click)="altDeliver = true">Is your date not between them?</a>
+            </div>
+            <div *ngIf="altDeliver" class="mt-1">
+              <label for="delivery_alt_date" class="mr-2">{{deliverMethod.alt_delivery_dates.label}}:</label>
+              <input id="delivery_alt_date" [formControlName]="deliverMethod.alt_delivery_dates.input_name" required>
+              <span class="ml-2 cursor-pointer color-blue">[<a (click)="altDeliver = false">x</a>]</span>
+            </div>
+          </div>
+        </div>
+      </mat-radio-group>
+    </div>
+
+    <div class="form-title" *ngIf="currentMethod == deliverMethod.input_value">
+      <h3 i18n>CHOOSE YOUR METHOD OF PAYMENT</h3>
+    </div>
+
+    <div class="form-content" *ngIf="currentMethod == deliverMethod.input_value">
+      <mat-radio-group #payment_method formControlName="payment">
+        <mat-radio-button *ngFor="let payment of deliverMethod.payments" radioGroup="payment_method" [value]="payment.input_value">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <img [attr.ix-path]="payment.image" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 54px, (min-width: 320px) 40px, 100vw" alt="">
+                </td>
+                <td class="px-2">
+                  <div>
+                    <strong>{{payment.label}}</strong>
+                    <select *ngIf="payment.banks_list && form.value.payment === payment.input_value" [formControlName]="payment.banks_list.input_name">
+                      <option i18n value="" disabled>Choose your bank:</option>
+                      <option *ngFor="let value of payment.banks_list.input_value" [value]="value.value">
+                        {{value.label}}
+                      </option>
+                    </select>
+      
+                    <select *ngIf="payment.cards_list && form.value.payment === payment.input_value" [formControlName]="payment.cards_list.input_name">
+                      <option i18n value="" disabled>Choose your type:</option>
+                      <option *ngFor="let value of payment.cards_list.input_value" [value]="value.value">
+                        {{value.label}}
+                      </option>
+                    </select>
+                  </div>
+                  <div>{{payment.description}}</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="form-title">
+      <h3 i18n>YOUR DATA</h3>
+    </div>
+
+    <div class="form-content">
+      <p>{{widget.customer_info.name}}</p>
+      <p>{{widget.customer_info.street_address}} {{widget.customer_info.house_number}}</p>
+      <p>{{widget.customer_info.postcode}}, {{widget.customer_info.city}}</p>
+      <p>{{widget.customer_info.country}}</p>
+      <p>E-mail. {{widget.customer_info.email_address}}</p>
+      <p>Telefoon. {{widget.customer_info.telephone}}</p>
+      <button mat-button i18n class="modify-button" (click)="gotoPreviousStep()">modify<fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon></button>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between start" class="mt-4">
+        <button mat-button i18n class="prev-step" (click)="gotoPreviousStep()">
+          <fa-icon [icon]="['fas', 'chevron-circle-left']"></fa-icon>Back
+        </button>
+        <button mat-button type="submit" class="next-step">
+          <ng-container i18n>Step </ng-container>{{nextStep.index + ' ' + nextStep.title}}
+          <fa-icon [icon]="['fas', 'chevron-circle-right']"></fa-icon>
+        </button>
+    </div>
+  </form>
+  
+</div>    

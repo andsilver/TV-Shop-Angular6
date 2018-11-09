@@ -3,6 +3,7 @@ import { Category, Error } from 'app/app.models';
 
 export const GET_CATEGORIES = '[CATEGORIES] Get';
 export const SUCCESS_GET_CATEGORIES = '[CATEGORIES] Success';
+export const SUCCESS_GET_ALL_CATEGORIES = '[CATEGORIES] Success All';
 export const FAILED_GET_CATEGORIES = '[CATEGORIES] Failed';
 
 export class GetCategories implements Action {

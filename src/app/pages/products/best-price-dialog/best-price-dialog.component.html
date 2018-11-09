@@ -1,6 +1,6 @@
 <div class="request-best-price">
   <div class="top-image">
-    <img src="https://www.plattetv.nl/var/images/cmsimages/banners/2017/deal-op-maat.png" alt="Request the best price">
+    <img [attr.ix-path]="'images/cmsimages/banners/2017/deal-op-maat.png'" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 596px, (min-width: 320px) 300px, 100vw" alt="Request the best price">
   </div>
   <div class="introduction">
     <strong i18n>We like to make a custom deal! </strong>
@@ -51,5 +51,5 @@
         formControlName="description" rows="5" aria-label="description"></textarea>
     </mat-form-field>
   </form>
-  <button (click)="formSubmit()" class="control-normal" mat-button i18n>Submit <i class="fas fa fa-chevron-circle-right"></i></button>
+  <button (click)="formSubmit()" class="control-normal" mat-button i18n>Submit <fa-icon [icon]="'chevron-circle-right'"></fa-icon></button>
 </div>

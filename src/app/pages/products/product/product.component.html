@@ -1,35 +1,37 @@
-<mat-sidenav-container>
-    <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
+<mat-sidenav-container class="product-details-page">
+    <mat-sidenav fxFlex="0 0 187px" #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
         <mat-accordion displayMode="flat" multi="true">
             <app-filters-list></app-filters-list>
         </mat-accordion>
     </mat-sidenav>
-    <mat-sidenav-content>   
+    <mat-sidenav-content class="position-static">
         <div fxLayout="row" *ngIf="product">
 
-            <div fxFlex="100" fxFlex.gt-md="73" fxLayout="column">
+            <div fxFlex="100" fxFlex.gt-md="77" fxLayout="column">
 
-                    <div fxLayout="row" fxLayout.lt-md="column">
+                    <div fxLayout="row" fxLayout.lt-md="column" class="px-3">
 
-                        <div fxFlex="100" fxFlex.gt-sm="55">
+                        <div fxFlex class="min-width-fix" ngClass.gt-sm="pr-3">
 
                             <h2 class="product-detail-title">{{product?.name}}</h2>
                             <div class="mb-2">
                                 <app-rating [ratingsCount]="product?.ratingsCount" [ratingsValue]="product?.ratingsValue" [direction]="'row'"></app-rating>
                             </div>
 
-                            <mat-card class="product-image">
-                                <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><mat-icon>fullscreen</mat-icon></button>
+                            <mat-card class="product-image mb-3">
+                                <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><fa-icon [icon]="['fas', 'expand']"></fa-icon></button>
                                 <ng-container *ngIf="selectedImage">
                                     <div *ngIf="product?.specialLabel" class="product-item-image-speciallabel">
                                         {{product.specialLabel}}
                                     </div>
                                     <img
                                         *ngIf="selectedImage.have_image"
-                                        [src]="image"
+                                        [attr.ix-path]="image" ix-params='{"auto":"compress"}' 
                                         (mousemove)="onMouseMove($event)"
+                                        sizes="(min-width: 768px) 360px, (min-width: 320px) 370px, 100vw"
+                                        alt=""
                                         (mouseleave)="onMouseLeave($event)"/>
-                                    <img *ngIf="!selectedImage.have_image" [src]="image" class="no-product-image">
+                                    <img *ngIf="!selectedImage.have_image" [attr.ix-path]="image" ix-params='{"auto":"compress"}'  class="no-product-image" alt="">
                                 </ng-container>
                             </mat-card>
 
@@ -37,194 +39,268 @@
                                 <div class="swiper-container" [swiper]="config">
                                     <div class="swiper-wrapper">
                                         <div *ngFor="let image of product?.images" class="swiper-slide">
-                                            <mat-card (click)="selectImage(image)" class="p-1">
+                                            <mat-card (click)="selectImage(image)">
                                                 <span *ngIf="image.have_image">
-                                                    <img [src]="image.small" class="swiper-lazy"/>
+                                                    <img [attr.ix-path]="image.small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 80px, (min-width: 320px) 90px, 100vw"  class="swiper-lazy" alt=""/>
                                                 </span>
                                             </mat-card>
                                         </div>
                                     </div>
-                                    <button mat-icon-button class="swiper-button-prev swipe-arrow"><mat-icon>keyboard_arrow_left</mat-icon></button>
-                                    <button mat-icon-button class="swiper-button-next swipe-arrow"><mat-icon>keyboard_arrow_right</mat-icon></button>
+                                    <button mat-icon-button class="swiper-button-prev swipe-arrow"><fa-icon [icon]="['fas', 'angle-left']" size="lg"></fa-icon></button>
+                                    <button mat-icon-button class="swiper-button-next swipe-arrow"><fa-icon [icon]="['fas', 'angle-right']" size="lg"></fa-icon></button>
                                 </div>
                             </div>
                         </div>
-                        <div fxFlex ngClass.gt-sm="px-3 m-0" ngClass.md="pl-3" ngClass.sm="mt-2" ngClass.xs="mt-2">
+                        <div fxFlex="100%" fxFlex.gt-sm="0 0 218px" ngClass="mt-4" ngClass.gt-sm="mt-0">
 
                             <h2 class="mb-2 new-price">{{product?.newPrice | customCurrency}}</h2>
-                            <div [innerHTML]="product?.demoUnitText" class="product_deals_wrapper"></div>
+                            <div *ngIf="product.haveDemoUnit" class="demo-unit mb-2">
+                                <a i18n (click)="openDemoUnit(product)">View the Buitenkansje</a>
+                                <strong><ng-container i18n> of</ng-container> {{product.demoUnitStartPrice}}</strong>
+                            </div>
 
                             <div #zoomViewer fxShow="false" fxShow.gt-md>
                                 <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18"></mat-card>
                             </div>
 
-                            <!-- <div class="py-1 lh">
-                                <p><span class="text-muted fw-500">Category: </span><span>{{ product?.category_name }}</span></p>
-                                <p><span class="text-muted fw-500">Availibility: </span><span>{{ (product?.availibilityCount > 0) ? 'In stock':'Unavailable'}}</span></p>
-                            </div>
-                            <div class="divider mt-1"></div>
-
-                            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="details text-muted py-1">
-                                <div *ngFor="let attribute of product?.attributes; let i=index;">
-                                    <ng-container *ngIf="attribute.listtype == 'select'">
-                                        <mat-form-field>
-                                            <mat-select [placeholder]="attribute.products_options_name" (selectionChange)="attributeSelected(i, $event)">
-                                                <mat-option *ngFor="let option of attribute.values" [value]="option.products_options_values_id">
-                                                    {{option.products_options_values_name}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </ng-container>
-                                </div>
-                            </div> -->
-
-                            <div fxLayout="column" class="product-detail-control mb-2">
-                                <!-- <app-controls [product]="product" [type]="'all'"></app-controls> -->
-                                <button class="control-add-to-cart" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)"><ng-container i18n>Add to cart</ng-container> <i class="fas fa fa-shopping-cart"></i></button>
-                                <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
-                                <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
-                                <button class="control-deal" mat-button (click)="exchangeProduct()"><ng-container i18n>SUMMERDEAL</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
-                                <button class="control-normal" mat-button><ng-container i18n>Action: Exchange your TV</ng-container><i class="fas fa fa-chevron-circle-right"></i></button>
+                            <div fxLayout="column" class="product-detail-control">
+                                <button class="control-add-to-cart-big" mat-button *ngIf="product?.availibilityCount > 0" (click)="appService.addToCart(product, 1, true)"><ng-container i18n>Add to cart</ng-container></button>
+                                <button class="control-normal" mat-button><ng-container i18n>Collect in store</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
+                                <button class="control-normal" mat-button (click)="requestBestPrice()"><ng-container i18n>Request best price</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
+                                <button class="control-deal" mat-button (click)="exchangeProduct()"><ng-container i18n>SUMMERDEAL</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
+                                <button class="control-normal" mat-button><ng-container i18n>Action: Exchange your TV</ng-container><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></button>
                             </div>
 
                             <div class="new-stock-info-wrapper">{{product?.stockIndicator}}</div>
 
                             <div class="winkel-stock">
                                 <h3>Bezorgvoorraad</h3>
-                                <div><i class="fa fa-circle"></i><a href='/'>GREEN Voor 18:00 besteld, morgen in huis</a></div>
-
+                                <div>
+                                    <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[product.stockInfo.shippingInfo.stockCode]}"></fa-icon>
+                                    <a (click)="openCmsDialog(product.stockInfo.shippingInfo.permalink)"> {{product.stockInfo.shippingInfo.shippingTitle}}</a>
+                                </div>
                                 <h3>Winkelvoorraad</h3>
                                 <div fxLayout="row wrap">
-                                    <div *ngFor="let store of stores" fxFlex="50">
-                                        <i class="fa fa-circle"></i><a [routerLink]="['/stores', store.store_location]">{{store.store_location}}</a>
+                                    <div *ngFor="let store of product.stockInfo.storeStock" fxFlex="50">
+                                        <fa-icon [icon]="['fas', 'circle']" [ngStyle]="{'color': stockCodeColors[store.storeStockCode]}">
+                                        </fa-icon>
+                                        <a (click)="openCmsDialog(store.permalink)">
+                                            {{store.branchCity}}
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="bezorg-title" i18n>Stock delivery</div>
-                                <div class="new-stock-info-bezorg">
-                                    <div class="bezorg-cms-title">
-                                        <p><a href="#"><i class="fas fa fa-circle"></i><ng-container i18n>Order today, receive tomorrow</ng-container></a></p>
-                                    </div>
-                                </div>
-                                <div class="new-stock-info-winkel">
-                                    <div class="winkel-title" i18n>Stock store</div>
-                                    <div class="r-row r-col-2">
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=amsterdam-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Amsterdam</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=utrecht-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Utrecht</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=breda-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Breda</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=arnhem-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Arnhem</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=doetinchem-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Doetinchem</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=nijmegen-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Nijmegen</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=doesburg-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Doesburg</span></a></div>
-                                        <div class="winkel-branch-city-stock overlib-popup"><i class="fas fa fa-circle"></i> <a href="/pagina_cms?type=eindhoven-voorraadstatus-msg-green" rel="lyteframe" i18n-title title="Click for more info" rev="width: 640px; height: 480px; scrolling: yes;"><span i18n>Eindhoven</span></a></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="divider"></div> 
-
-                        <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted py-1">
-                                <button mat-button><mat-icon>mail_outline</mat-icon> Email to a Friend</button>
-                                <button mat-icon-button><mat-icon>share</mat-icon></button>
-                            </div> --> 
                         </div>
                     </div>
-                    <div class="mt-2" fxLayout fxLayout.lt-md="column" fxLayoutAlign="space-between start">
-                        <div fxFlex="55" fxFlex.lt-md="false">
+                    <div class="mt-2 px-3" fxLayout fxLayout.lt-md="column" fxLayoutAlign.gt-sm="space-between start">
+                        <div fxFlex fxFlex.lt-md="false" ngClass.gt-sm="pr-3">
                             <h3>{{product.name}}</h3>
-                            <div class="shortdesc"><p class="py-1 text-muted lh" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
+                            <div *ngIf="product?.productSizes?.length">
+                                <strong i18n>Available in:</strong>
+                                <div class="product-size">
+                                    <a *ngFor="let size of product?.productSizes"
+                                        [routerLink]="size.permalink"
+                                        routerLinkActive="horizontal-active-link"
+                                        [routerLinkActiveOptions]="{exact:false}">
+                                        <img [attr.ix-path]="size.image" ix-params='{"auto":"compress"}' alt="" sizes="(min-width: 768px) 70px, (min-width: 320px) 70px, 100vw">
+                                    </a>
+                                </div>
+                            </div>
+                            <div *ngIf="product.productColors?.length">
+                                <strong i18n>Available in Colors:</strong>
+                                <div class="product-size">
+                                    <a *ngFor="let color of product.productColors"
+                                        [routerLink]="color.permalink"
+                                        routerLinkActive="horizontal-active-link"
+                                        [routerLinkActiveOptions]="{exact:false}">
+                                        <img [attr.ix-path]="color.image" ix-params='{"auto":"compress"}' alt="" sizes="(min-width: 768px) 70px, (min-width: 320px) 70px, 100vw">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="shortdesc"><p class="mb-3" [innerHTML]="product?.shortdescription | htmlSanitize"></p></div>
                             <ng-container *ngIf="product?.featureHighlights">
-                                <h3>Kenmerken</h3>
-                                <p [innerHTML]="product.featureHighlights | htmlSanitize"></p>
+                                <p class="mb-0"><strong>Kenmerken</strong></p>
+                                <div [innerHTML]="product.featureHighlights | htmlSanitize"></div>
                             </ng-container>
                         </div>
-                        <div fxFlex="44" fxFlex.lt-md="false" ngClass.gt-md="pr-3 m-0" *ngIf="product?.description || product?.extra_description || product?.reviews.length || product?.expertReview">
+                        <div fxFlex="100%" fxFlex.gt-sm="0 0 218px" fxFlex.lt-md="false" *ngIf="product?.description || product?.extra_description || product?.reviews.length || product?.expertReview">
+                            <div class="extra-infos side-points extra-infos-list" *ngIf="product.productSidepoints.length">
+                                <h2>LOPENDE ACTIES</h2>
+                                <div *ngFor="let point of product.productSidepoints" fxLayout="row">
+                                    <fa-icon class="mt-1" [icon]="['fas', 'circle']"></fa-icon><div [innerHTML]="point | htmlSanitize"></div>
+                                </div>
+                            </div>
                             <div class="extra-infos extra-infos-list">
                                 <h2>BEKIJK OOK</h2>
                                 <div class="extra-infos-link">
-                                    <div *ngIf="product?.reviews.length" [scrollTo]="info_reviews" [scrollDuration]="100"><i class="fa fa-circle"></i>Reviews</div>
-                                    <div *ngIf="product?.description" [scrollTo]="info_description" [scrollDuration]="200"><i class="fa fa-circle"></i>Beschrijving</div>
-                                    <div *ngIf="product?.extra_description" [scrollTo]="info_extra_description" [scrollDuration]="300"><i class="fa fa-circle"></i>Specificaties</div>
-                                    <div *ngIf="product?.expertReview" [scrollTo]="info_expert_reviews" [scrollDuration]="400"><i class="fa fa-circle"></i>Plus- en minpunten</div>
+				                    <div *ngIf="product.expertReview.expertAuthor" (click)="scrollToElement(info_expert_reviews)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Plus- en minpunten</div>
+                                    <div *ngIf="product.reviews.length" (click)="scrollToElement(info_reviews)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Reviews</div>
+                                    <div *ngIf="product.productPackages.length" (click)="scrollToElement(info_product_packages)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Aanbevolen combideals</div>
+                                    <div *ngIf="product.description" (click)="scrollToElement(info_description)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Beschrijving</div>
+                                    <div *ngIf="product.productAccesories.length" (click)="scrollToElement(info_product_accesories)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Aanbevolen Accessoires</div>
+                                    <div *ngIf="product.extra_description" (click)="scrollToElement(info_extra_description)"><fa-icon [icon]="['fas', 'circle']"></fa-icon>Specificaties</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-2">
-
-                        <div ngClass.gt-md="pr-3">
-
-                            <div fxFlex class="extra-infos">
-                                <div #info_reviews>
-                                    <div *ngIf="product?.reviews.length">
-                                        <h2>Reviews</h2>
-                                        <div class="mat-tab-reviews" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                            <div [innerHTML]="product?.reviews" class="reviews-item"></div>
+                    <div class="mt-2 px-3">
+                        <div fxFlex class="extra-infos">
+                            <div #info_expert_reviews>
+                                <div *ngIf="product?.expertReview.expertAuthor" class="expert-review">
+                                    <h2>Plus- en minpunten</h2>
+                                    <div ngClass.xs="py-2" fxLayout="column" fxLayout.gt-sm="row">
+                                        <div fxFlex="55" class="mb-3" ngClass.gt-sm="pr-3 mb-0">
+                                            <div *ngIf="product.expertReview.expertPoints.plus.length" class="pb-2">
+                                                <div class="expert-review-title">Pluspunten</div>
+                                                <div *ngFor="let point of product.expertReview.expertPoints.plus" class="pb-1">
+                                                    <fa-icon class="fa-plus" [icon]="'plus'"></fa-icon> {{point}}
+                                                </div>
+                                            </div>
+                                            <div *ngIf="product.expertReview.expertPoints.minus.length">
+                                                <div class="expert-review-title">Minpunten</div>
+                                                <div *ngFor="let point of product.expertReview.expertPoints.minus" class="pb-1">
+                                                    <fa-icon class="fa-minus" [icon]="'minus'"></fa-icon> {{point}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div fxFlex ngClass.gt-sm="pl-3 border-left">
+                                            <div class="expert-review-title">{{product.expertReview.expertAuthor}}</div>
+                                            <div class="expert-review-title font-italic">{{product.expertReview.expertTitle}}</div>
+                                            <img [attr.data-src]="'https://www.plattetv.nl/var/' + product.expertReview.expertImage" alt="">
                                         </div>
                                     </div>
                                 </div>
-                                <div #info_description>
-                                    <div *ngIf="product?.description">
-                                        <h2>Beschrijving</h2>
-                                        <div class="mat-tab-beschrijving" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                            <p [innerHTML]="product?.description | htmlSanitize"></p>
+                            </div>
+                            <div #info_reviews>
+                                <div *ngIf="product?.reviews.length">
+                                    <h2 i18n>Reviews about the {{product.name}}</h2>
+                                    <div ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                        <div class="reviews-item" *ngFor="let review of product.reviews">
+                                            <app-rating [review]="review.reviewScore" [ratingsCount]="1000" [ratingsValue]="review.ratingScore/10" [direction]="'row'"></app-rating>
+                                            <strong>{{review.reviewTitle}}</strong>
+                                            <div class="review-author-date">{{review.reviewAuthor}} | {{review.dateAdded}}</div>
+                                            <br>
+                                            <ng-container *ngIf="review.reviewPoints.plus || review.reviewPoints.plus">
+                                                <div fxLayout>
+                                                    <div fxFlex *ngIf="review.reviewPoints.plus">
+                                                        <div *ngFor="let plus of review.reviewPoints.plus">
+                                                            <fa-icon class="fa-plus" [icon]="'plus'"></fa-icon> {{plus}}
+                                                        </div>
+                                                    </div>
+                                                    <div fxFlex *ngIf="review.reviewPoints.minus">
+                                                        <p *ngFor="let minus of review.reviewPoints.minus">
+                                                            <fa-icon class="fa-minus" [icon]="'minus'"></fa-icon> {{minus}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                            </ng-container>
+                                            <div>{{review.reviewContent}}</div>
+                                            <div class="like-item">
+                                                <a (click)="likeItem(review)"></a>
+                                                <span>
+                                                    <span>{{review.reviewLikeCount}}</span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div #info_extra_description>
-                                    <div *ngIf="product?.extra_description">
-                                        <h2>Specificaties</h2>
-                                        <div class="mat-tab-specificaties" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                            <p [innerHTML]="product?.extra_description | htmlSanitize"></p>
+                            </div>
+                            <div #info_product_packages>
+                                <div *ngIf="product?.productPackages.length">
+                                    <h2>AANBEVOLEN COMBIDEALS</h2>
+                                    <div ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                        <div *ngFor="let package of product.productPackages" class="product-package" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+                                            <div fxLayout fxLayoutAlign="start center" class="product-package-products">
+                                                <a class="cursor-default">
+                                                    <div>
+                                                        <div>
+                                                            <img [attr.data-src]="'https://www.plattetv.nl/var/' + package.main.image" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <p>{{package.main.productName}}</p>
+                                                </a>
+                                                <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+                                                <a (click)="subProductDialog(package.subs[0])">
+                                                    <div>
+                                                        <div>
+                                                            <img [attr.data-src]="'https://www.plattetv.nl/var/' + package.subs[0].image" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <p>{{package.subs[0].productName}}</p>
+                                                </a>
+                                            </div>
+                                            <div class="product-package-price">
+                                                <div class="product-package-price-special">{{integer(package.specialPrice)}}<sup>{{float(package.specialPrice)}}</sup></div>
+                                                <div class="product-package-price-normal">{{integer(package.normalPrice)}}<sup>{{float(package.normalPrice)}}</sup></div>
+                                                <div class="product-package-price-saving">{{integer(package.savingPrice)}}<sup>{{float(package.savingPrice)}}</sup></div>
+                                                <button class="control-add-to-cart-medium" mat-button (click)="addToCartHash(package)">
+                                                    <ng-container i18n>Add to cart</ng-container>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div #info_expert_reviews>
-                                    <div *ngIf="product?.expertReview">
-                                        <h2>Plus- en minpunten</h2>
-                                        <div class="mat-tab-plus-en-min" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                            <p [innerHTML]="product?.expertReview | htmlSanitize"></p>
+                            </div>
+                            <div #info_description fxHide fxShow.gt-sm>
+                                <div *ngIf="product?.description">
+                                    <h2>Beschrijving</h2>
+                                    <div ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                        <p [innerHTML]="product?.description | htmlSanitize"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div #info_product_accesories>
+                                <div *ngIf="product?.productAccesories.length" class="product-accesories">
+                                    <h2>Aanbevolen Accessoires</h2>
+                                    <div class="product-accesories-header" fxLayout>
+                                        <div fxFlex="0 0 59px" class="cell-image mr-3"></div>
+                                        <div fxFlex="42" class="cell-products">producten</div>
+                                        <div fxFlex="11" class="cell-stock text-center">voorraad</div>
+                                        <div fxFlex="0 0 62px" class="ml-3 cell-price text-right text-nowrap">prijs</div>
+                                        <div fxFlex="9" class="cell-quantity ml-3">aantal</div>
+                                        <div fxFlex="0 0 40px" class="cell-submit ml-3"></div>
+                                    </div>
+                                    <div *ngFor="let accesory of product.productAccesories" fxLayout fxLayoutAlign="start center" class="product-accesories-content">
+                                        <div fxFlex="0 0 59px" class="cell-image mr-3">
+                                            <img [attr.ix-path]="accesory.image.small" ix-params='{"auto":"compress"}' sizes="(min-width: 768px) 80px, (min-width: 320px) 80px, 100vw"alt=""/>
+                                        </div>
+                                        <div fxFlex="42" class="cell-products">
+                                            <div>
+                                                <a [routerLink]="accesory.permalink">{{accesory.products_name}}</a>
+                                                <p>{{accesory.shortdescription}}</p>
+                                            </div>
+                                        </div>
+                                        <div fxFlex="11" class="cell-stock text-center">
+                                            <fa-icon [icon]="['fas', 'circle']"></fa-icon>
+                                        </div>
+                                        <div fxFlex="0 0 62px" class="ml-3 cell-price text-right text-nowrap">
+                                            {{accesory.price | customCurrency}}
+                                        </div>
+                                        <div fxFlex="9" class="cell-quantity ml-3">
+                                            <input type="number" [(ngModel)]="accesory.quantity">
+                                        </div>
+                                        <div fxFlex="0 0 40px" class="cell-submit ml-3">
+                                            <button class="control-add-to-cart-small" mat-button (click)="appService.addToCart(accesory, 1)"></button>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <mat-card *ngIf="product?.description || product?.extra_description || product?.reviews.length || product?.expertReview">
-                                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
-                                        <mat-tab label="Beschrijving" class="mat-tab-beschrijving" *ngIf="product?.description">
-                                            <div class="full-desc mat-tab-beschrijving" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                                <p [innerHTML]="product?.description | htmlSanitize"></p>
-                                                <p [innerHTML]="product?.featureHighlights | htmlSanitize"></p>
-                                            </div>
-                                        </mat-tab>
-                                        <mat-tab label="Specificaties" *ngIf="product?.extra_description">
-                                            <div class="full-desc mat-tab-specificaties" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                                <p [innerHTML]="product?.extra_description | htmlSanitize"></p>
-                                            </div>
-                                        </mat-tab>
-                                        <mat-tab label="Reviews" *ngIf="product?.reviews.length">
-                                            <div class="full-desc mat-tab-reviews" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                                <div [innerHTML]="product?.reviews" class="reviews-item"></div>
-                                            </div>
-                                        </mat-tab>
-                                        <mat-tab label="Plus- en minpunten" *ngIf="product?.expertReview">
-                                            <div class="full-desc mat-tab-plus-en-min" ngClass.xs="py-2" ngClass.lt-md="p-2">
-                                                <p [innerHTML]="product?.expertReview | htmlSanitize"></p>
-                                            </div>
-                                        </mat-tab>
-                                    </mat-tab-group>
-                                </mat-card> -->
+                            </div>
+                            <div #info_extra_description>
+                                <div *ngIf="product?.extra_description">
+                                    <h2>Specificaties</h2>
+                                    <div class="mat-tab-specificaties" ngClass.xs="py-2" ngClass.lt-md="p-2">
+                                        <div [innerHTML]="product?.extra_description | htmlSanitize"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
             </div>
-            <div fxFlex fxHide fxShow.gt-md>
+            <div fxFlex="0 0 187px" fxHide fxShow.gt-md>
                 <app-extra-info></app-extra-info>
             </div>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
-<div class="py-2 mt-2">
-    <h2 i18n>Related Products</h2>
-    <div class="divider"></div>
-    <app-products-carousel [products]="relatedProducts"></app-products-carousel>
-</div>
