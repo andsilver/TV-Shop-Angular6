@@ -1,0 +1,266 @@
+.misc-bar .mat-card {
+    box-shadow: none;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+
+.shopping-cart {
+
+    .mat-card-title{
+
+        h3 {
+            position: relative;
+            border-bottom: none;
+            background-color: #212226;
+            background-image:  url(/assets/images/others/icon_cart.png);
+            background-position: right 1rem center;
+            background-repeat: no-repeat;
+            background-size: 21px auto;
+            font-size: .875rem;
+            line-height: 1.125rem;
+            padding: 4px 1rem;
+
+            a{
+                text-transform: uppercase;
+                color: #ffffff;
+                font-weight: 500;
+                fa-icon {
+                    position: absolute;
+                    right: 0px;
+                    font-size: 20px;
+                }
+                &:hover {
+                    text-decoration: underline;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+
+    &-items {
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed #999;
+        a {
+            color: #212126;
+        }
+    }
+
+    &-sub-total >div {
+        line-height: 27px;
+        a {
+            color: #212126;
+        }
+    }
+
+    .btn-checkout {
+        background: #5AAD49;
+        color: #fff;
+        line-height: 27px;
+        font-size: 13px;
+        font-family: "Poppins";
+        position: relative;
+        width: 100%;
+
+        fa-icon {
+            font-size: 17px;
+            position: absolute;
+            right: 5px;
+        }
+    }
+
+}
+
+//::ng-deep .adbox_opening_times {
+//    font-size:14px;
+//    &:nth-child(1) a {
+//        color:#5aad49;
+//    }
+//    &:nth-child(2) {
+//        margin-bottom: 10px;
+//    }
+//}
+
+
+
+::ng-deep .extra_open_hours_box {
+    > div a,
+    > div.special_open_time span { display:block; border:1px solid #E6E6DC; font-weight:600; font-size:16px; line-height:32px; font-family:"Poppins"; text-align:center; margin-bottom:5px; }
+    > div.special_open_time a,
+    > div.special_open_time span { background:#2da6c1; font-weight:bold; font-size:31px; line-height:44px; font-family:"Gotham Condensed Bold"; letter-spacing:.02em; color:#fff; }
+    > div.special_open_time span { cursor:default; }
+    > div.special_open_time a:hover { text-decoration:none; }
+    > div.city_open_time:hover a { background:#212226; color:#fff; text-decoration:none; }
+    > div.store_open_hours a { border:none; font-weight:normal; font-size:12px; line-height:18px; }
+    > div.store_open_hours:hover a { background:none; color:#000; text-decoration:underline; }
+    > div:last-child { margin-bottom:0; }
+}
+
+.reviewbox {
+    display: -ms-flexbox!important;
+    display: flex!important;
+    -ms-flex-align: center!important;
+    align-items: center!important;
+    -ms-flex-pack: center!important;
+    justify-content: center!important;
+    height:73px;
+    border:1px solid #E6E6DC;
+    font-size:.875rem;
+    text-align:center;
+
+    &-tweakers, &-trustpilot {
+        -ms-flex-direction: column!important;
+        flex-direction: column!important;
+    }
+
+    .reviewbox--title { font-weight:700; line-height:1.125rem; margin-bottom:2px; }
+    [class^=reviewbox--star-] {width:114px;height:18px;background:url(/assets/images/others/star-blue.png) no-repeat;background-size: cover;margin-left:auto;margin-right:auto;margin-bottom:3px;}
+    .reviewbox--star-00 { background-position:left top; }
+    .reviewbox--star-05 { background-position:left -18px; }
+    .reviewbox--star-10 { background-position:left -36px; }
+    .reviewbox--star-15 { background-position:left -54px; }
+    .reviewbox--star-20 { background-position:left -72px; }
+    .reviewbox--star-25 { background-position:left -90px; }
+    .reviewbox--star-30 { background-position:left -108px; }
+    .reviewbox--star-35 { background-position:left -126px; }
+    .reviewbox--star-40 { background-position:left -144px; }
+    .reviewbox--star-45 { background-position:left -162px; }
+    .reviewbox--star-50 { background-position:left -180px; }
+}
+
+.reviewbox+.reviewbox { margin-top:5px; }
+
+.reviewbox-kieskeurig {
+    .reviewbox--score { display:inline-block; width:35px; height:35px; background-color:#2da6c1; font-size:1.3125rem; line-height:35px; font-family:"Gotham Condensed"; color:#fff; text-align:center; margin-right:6px; border-radius:50%; }
+    .reviewbox--text { display:inline-block; font-weight:700; line-height:1.125rem; text-align:left; }
+    .reviewbox--text .reviewbox--label { display:block; font-weight:700; margin-bottom:2px; }
+    .reviewbox--text .reviewbox--total-reviews { display:block; font-weight:400; }
+}
+
+::ng-deep .branch_opening_hours_box{
+    position:relative;
+    overflow:hidden;
+    border:1px solid #E6E6DC;
+    padding: .25rem;
+    display: flex!important;
+
+    .branch_opening_hours{
+        font-weight:600;
+        font-size: .75rem;
+        line-height:1.2;
+
+        .adbox_opening_times.city_name {
+            font-size:13px;
+            margin-bottom:4px;
+            margin-top:2px;
+            a {
+                color: #000;
+            }
+        }
+        .adbox_opening_times{
+            &:nth-child(2) > a{
+                color:#66b23e;
+            }
+            &:nth-child(3) > a{
+                color:#686868;
+            }
+        }
+    }
+}
+
+::ng-deep .adbox_opening_times:nth-child(1) a{
+    color:#66b23e !important;
+}
+
+::ng-deep .adbox_opening_times:nth-child(2) {
+    margin-bottom: .5rem;
+}
+
+::ng-deep .branch_img {
+    float:left;
+    margin-right:6px;
+}
+
+::ng-deep .branch_opening_hours_box+.branch_opening_hours_box {
+    margin-top:.5rem;
+}
+
+
+::ng-deep .contact_box {
+    >a {
+        display:block;
+        border:1px solid #E6E6DC;
+        background:#e6e6dc;
+        margin-bottom:5px;
+        padding:10px 0 10px 6px;
+
+        .contact_box_icon {
+            float:left;
+            width:30px;
+            height:30px;
+            background:#fff;
+            font-size:17px;
+            line-height:30px;
+            text-align:center;
+            margin-right:10px;
+            border-radius:50%;
+        }
+
+        i {
+            float: left;
+            width: 1.875rem;
+            height: 1.875rem;
+            background: #fff;
+            font-size: 1.0625rem;
+            line-height: 1.875rem;
+            text-align: center;
+            margin-right: .5rem;
+            border-radius: 50%;
+        }
+
+        &:hover{
+            background:#212226;
+            color:#fff;
+            text-decoration:none;
+            fa-icon {
+                color:#000;
+            }
+            strong {
+                color: #fff;
+            }
+            span {
+                color: #fff;
+            }
+        }
+
+        strong {
+            display:block;
+            line-height:14px;
+            font-weight:bold;
+            font-size:12px;
+            margin-top:2px;
+        }
+
+        >span {
+            font-size:10px;
+        }
+    }
+
+    &:last-child a{
+        margin-bottom:0;
+    }
+}
+
+::ng-deep .mat-card-content {
+    table {
+        table-layout: fixed;
+        width: 100%;
+    }
+}
+
+.image_overlay { position:absolute; left:-27px; top:11px; width:110px; background:#fdc642;font-weight:500; font-size:11px; line-height:1; color:#000; text-align:center; text-transform:uppercase; padding:4px 0; -webkit-transform:rotate(-33deg); transform:rotate(-33deg); z-index:10; }
+.image_overlay > a { color:#000; }
+.image_overlay > a:hover,
+.image_overlay > a:focus { text-decoration:none; }

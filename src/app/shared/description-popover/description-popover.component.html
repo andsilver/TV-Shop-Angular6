@@ -3,6 +3,6 @@
     <h4>{{title}}</h4>
   </div>
   <div class="description-popover-content">
-    <div [innerHTML]="content"></div>
+    <div [innerHTML]="content | htmlSanitize"></div>
   </div>
 </div>

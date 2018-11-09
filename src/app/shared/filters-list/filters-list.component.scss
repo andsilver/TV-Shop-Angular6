@@ -1,39 +1,27 @@
-.filter-brands{
-    button{
-        width: 66px;
-        height: 44px;
-        min-width: 66px;
-        margin: 0 6px 10px 0;
-        padding: 0px;
-        overflow: hidden;
-        img{
-            width: 66px;
-            height: 44px;
-        }
-    }
-}
-
-.mat-expansion-panel {
-    border-bottom: 1px solid #E6E6DC;
-    box-shadow: none !important;
-    .mat-expansion-panel-header {
-        font-size: .875rem;
-        .mat-expansion-panel-header-title {
+.filter-box{
+    margin-bottom: 1rem;
+    .filter-box-heading {
+        border-bottom: 1px solid #212226;
+        margin-bottom: .625rem;
+        padding-bottom: 0.375rem;
+        h3 {
+            font-weight: 700;
+            font-size: .875rem;
+            line-height: 1.125rem;
             text-transform: uppercase;
+            padding-left: 1rem;
         }
+    }
+    .filter-box-content {
+        padding-left: 1rem;
+        a {
+            color: #212126;
+        }
+    }
+    a.show_more_toggle {
+        display: block;
+        color: #212126;
+        padding-left: 1rem;
     }
 }
 
-@media (min-width:960px) {
-    .mat-expansion-panel {
-        .mat-expansion-panel-header {
-            padding: 0;
-        }
-    }
-}
-
-a {
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 5px;
-}

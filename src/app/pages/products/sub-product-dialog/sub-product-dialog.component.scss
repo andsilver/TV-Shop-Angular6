@@ -1,0 +1,30 @@
+.sub-product-detail {
+    max-width: 653px !important;
+    height: 700px;
+
+    .mat-dialog-container {
+        padding: 0;
+    }
+
+    .dialog-main {
+        padding: 25px;
+        .new-price {
+            text-align: right;
+        }
+        ul.listing_attribute,
+        #info-description ul {
+            list-style: none;
+            li {
+                background-image: url(/assets/images/others/content_li.gif);
+                background-position: left 5px;
+                background-repeat: no-repeat;
+                padding-left: .8125rem;
+            }
+        }
+        #info-description ul {
+            li {
+                background-position: left 8px;
+            }
+        }
+    }
+}

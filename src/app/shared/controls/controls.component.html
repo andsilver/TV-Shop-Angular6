@@ -13,10 +13,10 @@
 <span class="cdk-visually-hidden" #translatedTooltipMessage4 i18n>Add to compare</span>
 <span class="cdk-visually-hidden" #translatedTooltipMessage5 i18n>Quick view</span>
 
-        <button mat-icon-button  [matTooltip]="translatedTooltipMessage2.innerHTML" (click)="addToWishList(product)"><mat-icon>favorite</mat-icon></button>
-        <button mat-icon-button  [matTooltip]="translatedTooltipMessage3.innerHTML" *ngIf="product?.availibilityCount > 0" (click)="addToCart(product)"><mat-icon>shopping_cart</mat-icon></button>
-        <button mat-icon-button  [matTooltip]="translatedTooltipMessage4.innerHTML" (click)="addToCompare(product)"><mat-icon>compare</mat-icon></button>
-        <button *ngIf="type!='all'" mat-icon-button   [matTooltip]="translatedTooltipMessage5.innerHTML" (click)="openProductDialog(product)"><mat-icon>remove_red_eye</mat-icon></button>
+        <button mat-icon-button  [matTooltip]="translatedTooltipMessage2.innerHTML" (click)="addToWishList(product)"><fa-icon [icon]="['fas', 'heart']"></fa-icon></button>
+        <button mat-icon-button  [matTooltip]="translatedTooltipMessage3.innerHTML" *ngIf="product?.availibilityCount > 0" (click)="addToCart(product)"><fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon></button>
+        <button mat-icon-button  [matTooltip]="translatedTooltipMessage4.innerHTML" (click)="addToCompare(product)"><fa-icon [icon]="['fas', 'ruler-combined']"></fa-icon></button>
+        <button *ngIf="type!='all'" mat-icon-button   [matTooltip]="translatedTooltipMessage5.innerHTML" (click)="openProductDialog(product)"><fa-icon [icon]="['far', 'eye']"></fa-icon></button>
     </div>
 </div>
 <!-- <div *ngIf="product?.availibilityCount == 0 && type=='all'" class="bg-warn p-1 mt-2">

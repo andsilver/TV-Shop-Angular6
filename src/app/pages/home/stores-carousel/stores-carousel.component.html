@@ -1,0 +1,15 @@
+<div class="stores-carousel mt-1">
+  <div class="stores-title">{{stores.length}} <ng-container i18n>Stores</ng-container></div>
+  <div class="swiper-container h-100" [swiper]="config">
+      <div class="swiper-wrapper h-100">      
+          <div *ngFor="let store of stores" class="swiper-slide">
+              <div class="p-0">
+                  <a [routerLink]="['/stores', store.store_location]" class="store-item">
+                      <img [attr.ix-path]="store.store_image_thumbnail" alt="" class="swiper-lazy">
+                  </a>
+              </div>
+              <div class="text-center py-1">{{store.store_location}}</div>
+          </div>
+      </div>
+    </div>
+</div>

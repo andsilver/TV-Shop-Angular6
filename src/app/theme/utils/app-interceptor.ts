@@ -1,6 +1,5 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs/Observable';
 import { MatSnackBar } from '@angular/material';
 import 'rxjs/add/operator/do';
@@ -9,11 +8,11 @@ import { environment } from 'environments/environment';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
-    constructor( private spinner: NgxSpinnerService, private snackBar: MatSnackBar) {}
+    constructor( private snackBar: MatSnackBar) {}
 
     intercept (req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        this.spinner.show();
+        // this.spinner.show();
 
         const local = 'assets/data';
         const url = req.url.indexOf(environment.apiUrl) > -1 ? req.url : `${environment.apiUrl}${req.url}`;
@@ -21,7 +20,7 @@ export class AppInterceptor implements HttpInterceptor {
 
         return next.handle(req.url.indexOf(local) > -1 ? req : apiReq).do((event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {
-             this.spinner.hide();
+            // this.spinner.hide();
           }
         }, (err: any) => {
           if (err instanceof HttpErrorResponse) {

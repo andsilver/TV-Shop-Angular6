@@ -1,64 +1,61 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatStepper } from '@angular/material/stepper';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from '../../app.service';
+import { CheckoutService } from './checkout.service';
+import { CheckoutStep } from './step';
+import { Store } from '@ngrx/store';
+import { State } from 'app/store';
+import * as CrumbActions from 'app/store/actions/crumb-path.action';
+
+const steps = [
+  {
+    title: 'Uw Gegevens',
+    index: 1,
+    url: 'customers-info'
+  },
+  {
+    title: 'Bezorg/Betaalmethode',
+    index: 2,
+    url: 'methods'
+  },
+  {
+    title: 'Overzicht',
+    index: 3,
+    url: 'order-overviews'
+  },
+  {
+    title: 'Afgerond',
+    index: 4,
+    url: 'order-processing'
+  }
+];
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss']
 })
-export class CheckoutComponent implements OnInit {
-  @ViewChild('horizontalStepper') horizontalStepper: MatStepper;
-  @ViewChild('verticalStepper') verticalStepper: MatStepper;
-  billingForm: FormGroup;
-  deliveryForm: FormGroup;
-  paymentForm: FormGroup;
-  countries = [];
-  months = [];
-  years = [];
-  deliveryMethods = [];
-  grandTotal = 0;
+export class CheckoutComponent extends CheckoutStep implements OnInit {
 
-  constructor(public appService: AppService, public formBuilder: FormBuilder) { }
+  currentStep: any;
+
+  constructor(
+    route: ActivatedRoute,
+    router: Router,
+    checkoutService: CheckoutService,
+    public appService: AppService,
+    private store: Store<State>) {
+      super(checkoutService, router, route);
+    }
 
   ngOnInit() {
-    this.appService.Data.cartList.forEach(product => {
-      this.grandTotal += product.newPrice;
-    });
-    this.countries = this.appService.getCountries();
-    this.months = this.appService.getMonths();
-    this.years = this.appService.getYears();
-    this.deliveryMethods = this.appService.getDeliveryMethods();
-    this.billingForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      middleName: '',
-      company: '',
-      email: ['', Validators.required],
-      phone: ['', Validators.required],
-      country: ['', Validators.required],
-      city: ['', Validators.required],
-      state: '',
-      zip: ['', Validators.required],
-      address: ['', Validators.required]
-    });
-    this.deliveryForm = this.formBuilder.group({
-      deliveryMethod: [this.deliveryMethods[0], Validators.required]
-    });
-    this.paymentForm = this.formBuilder.group({
-      cardHolderName: ['', Validators.required],
-      cardNumber: ['', Validators.required],
-      expiredMonth: ['', Validators.required],
-      expiredYear: ['', Validators.required],
-      cvv: ['', Validators.required]
-    });
-  }
 
-  public placeOrder() {
-    this.horizontalStepper._steps.forEach(step => step.editable = false);
-    this.verticalStepper._steps.forEach(step => step.editable = false);
-    this.appService.Data.cartList.length = 0;
+    this.store.dispatch(new CrumbActions.SaveCrumbPath([{
+      name: 'Checkout',
+      permalink: `/checkout`,
+      static: true,
+      default_title: true
+    }]));
   }
 
 }

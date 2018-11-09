@@ -1,113 +1,228 @@
 <footer class="bg-primary footer">
-    <mat-toolbar class="usp-list top-usp-list" fxLayoutAlign="flex-start center" fxShow="false" fxShow.gt-sm>
-        <mat-toolbar-row class="theme-container" fxLayoutAlign="flex-start center">
-            <div><a href="https://www.plattetv.nl/" i18n>The TV-store of the Netherlands</a></div>
-            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#winkels"><i class="fas fa fa-check-circle"></i><ng-container i18n>8 locations</ng-container></a></div>
-            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/installatie-op-maat-learning-center-1864.html"><i class="fas fa fa-check-circle"></i><ng-container i18n>Installation and  en assembly</ng-container></a></div>
-            <div class="usp-list-item"><a href="https://www.plattetv.nl/extrainfo/verzending-en-bezorging-109.html#gratisbezorgen"><i class="fas fa fa-check-circle"></i><ng-container i18n>Free delivery</ng-container></a></div>
-            <div class="review"><span class="review--score">9,4</span><span class="review--text"><span class="review--label" i18n>CLIENT REVIEWS</span><br><span class="review--total-reviews"><a href="https://www.kieskeurig.nl/winkels/plattetv/reviews" target="_blank" rel="noreferrer" i18n>20.510 reviews</a></span></span></div>
-        </mat-toolbar-row>
+    <mat-toolbar fxFlex fxLayoutAlign="space-around center" class="usp-list usp-list-footer" ngClass.xs="px-2" ngClass.gt-xs="px-4" ngClass.gt-md="px-5">
+        <div fxHide.lt-md class="mr-4"><a href="https://www.plattetv.nl/" i18n><strong>The TV-store of the Netherlands</strong></a></div>
+        <div class="usp-list-item mr-4"><a routerLink="/extrainfo/advies-contact"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>8 locations</ng-container></a></div>
+        <div fxHide.lt-md class="usp-list-item mr-4"><a routerLink="/extrainfo/installatie-op-maat-learning-center"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>Installation and  en assembly</ng-container></a></div>
+        <div class="usp-list-item"><a routerLink="/extrainfo/verzending-en-bezorging"><fa-icon [icon]="['fas', 'check-circle']"></fa-icon><ng-container i18n>Free delivery</ng-container></a></div>
+        <div fxFlex="0 0 auto" fxLayoutAlign="start center" fxHide.lt-sm class="review ml-auto"><span class="review--score">9,4</span><span class="review--text"><span class="review--label" i18n>CLIENT REVIEWS</span><br><span class="review--total-reviews"><a href="https://www.kieskeurig.nl/winkels/plattetv/reviews" target="_blank" rel="noreferrer" i18n>20.510 reviews</a></span></span></div>
     </mat-toolbar>
-    <mat-toolbar class="footer-info" ngClass="px-2" ngClass.md="px-md-4" ngClass.gt-md="px-xl-5">
-        <mat-toolbar-row fxLayout="row wrap" fxLayoutAlign="center flex-start"  ngClass="px-2" ngClass.md="px-md-4" ngClass.gt-md="px-xl-5">
-            <div fxFlex="100" class="footer-info--representative" fxFlex.gt-sm="20" fxHide.lt-md>
-                <a href="#" fxFlex="100"></a>
+
+    <div *ngIf="windowSize == 'lt-md'" class="collapse-menu">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                <mat-panel-title>
+                    Service
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="panel-content">
+                <li><a class="nav-link" href="/extrainfo/advies-contact">Contact</a></li>
+                <li><a class="nav-link" href="/extrainfo/advies-contact/klantenservice">Klantenservice</a></li>
+                <li><a class="nav-link" href="/bestelstatus">Bestelstatus</a></li>
+                <li><a class="nav-link" href="/extrainfo/installatie-op-maat-learning-center">Learning Center</a></li>
+                <li><a class="nav-link" href="/extrainfo/zakelijk">Zakelijk</a></li>
+                <li><a class="nav-link" href="/extrainfo/vacatures">Vacatures</a></li>
+            </ul>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                <mat-panel-title>
+                    Beeldformaten
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="panel-content">
+                <li><a class="nav-link" href="/alle-tv-s?op=38:8329;8317;8325;8720;8672;8353;8355">70 inch en groter</a></li>
+                <li><a class="nav-link" href="/alle-tv-s?op=38:8306;8315;8334;8313">55 t/m 65 inch</a></li>
+                <li><a class="nav-link" href="/alle-tv-s?op=38:8281;8332;8303;8288">40 t/m 50 inch</a></li>
+                <li><a class="nav-link" href="/alle-tv-s?op=38:8341;8273;8271;8275">32 inch en kleiner</a></li>
+                <li><a class="nav-link" href="/alle-tv-s">Alle TV's</a></li>
+            </ul>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                <mat-panel-title>
+                    Categorieën
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="panel-content">
+                <li *ngFor="let category of categories">
+                    <a class="transition nav-link" [routerLink]="[ category.permalink ]"
+                       routerLinkActive="horizontal-active-link"
+                       [routerLinkActiveOptions]="{exact:false}">{{category.name}}</a>
+                </li>
+            </ul>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                <mat-panel-title>
+                    Merken
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="panel-content">
+                <li *ngFor="let brand of show_brands">
+                    <span class="transition nav-link additional-nav" *ngIf="brand['permalink'] == 'show_extra_item'" (click)="expandAdditionalBrands()">
+                        {{brand['name']}}
+                        <span class="down-arrow-indicator"></span>
+                    </span>
+
+                    <span class="transition nav-link additional-nav" *ngIf="brand['permalink'] == 'hide_extra_item'" (click)="collapseAdditionalBrands()">
+                        {{brand['name']}}
+                        <span class="up-arrow-indicator"></span>
+                    </span>
+
+                    <a class="transition nav-link" [routerLink]="[ brand['permalink'] ]" *ngIf="(brand['permalink'] != 'show_extra_item') && (brand['permalink'] != 'hide_extra_item')"
+                       routerLinkActive="horizontal-active-link"
+                       [routerLinkActiveOptions]="{exact:false}">{{brand['name']}}</a>
+
+                </li>
+            </ul>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+                <mat-panel-title>
+                    Accessoires
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="panel-content">
+                <li><a class="nav-link" href="/meer-categorieen/muurbeugels-tv">Muurbeugels</a></li>
+                <li><a class="nav-link" href="/meer-categorieen/accessoires/afstandsbedieningen">Afstandsbedieningen</a></li>
+                <li><a class="nav-link" href="/meer-categorieen/accessoires/aansluitkabels">Aansluitkabels</a></li>
+                <li><a class="nav-link" href="/meer-categorieen/accessoires">Alle accessoires</a></li>
+            </ul>
+        </mat-expansion-panel>
+
+    </div>
+
+    <mat-toolbar class="footer-info" ngClass.xs="px-2" ngClass.gt-xs="px-4" ngClass.gt-md="px-5">
+        <mat-toolbar-row fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center flex-start">
+            <div fxFlexOrder.lt-md="2" class="footer-info--representative" ngClass.md="mr-4" ngClass.gt-md="mr-5">
+                <a href="#"><img src="/assets/images/others/footer_tim_logo.png" class="img-fluid px-4" fxHide.gt-sm></a>
             </div>
-            <div fxFlex="100" class="footer-info--contact" fxFlex.sm="60" fxFlex.gt-sm="45" ngClass.sm="mb-2">
-                <div class="footer-info--text">
+            <div fxFlex="100" fxFlexOrder.lt-md="0" class="footer-info--contact mt-3" ngClass.lt-md="w-100 mt-4 mb-4">
+                <div class="footer-info--text" ngClass.gt-sm="text-nowrap">
                     <strong i18n>NEED HELP?</strong><br>
                     <a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>Customer service today open till 21:00</a>
                 </div>
                 <div class="footer-info--contact-list">
-                    <ul>
-                        <li class="footer-info--chat"><a onclick="LC_API.open_chat_window();return false;" href="https://www.plattetv.nl/"><i class="far fa fa-comment"></i><span><strong i18n>CHAT LIVE</strong><ng-container i18n>Reply within 30 sec.</ng-container></span></a></li>
-                        <li class="footer-info--email"><a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS"><i class="far fa fa-envelope"></i><span><strong i18n>Insert Form</strong><ng-container i18n>Reply within 10 min.</ng-container></span></a></li>
-                        <li class="footer-info--whatsapp"><a href="https://api.whatsapp.com/send?phone=31633444433"><i class="fab fa fa-whatsapp"></i><span><strong i18n>WHATSAPP US</strong><ng-container i18n>Reply within 30 sec.</ng-container></span></a></li>
-                        <li class="footer-info--phone"><a href="tel:0268454658"><i class="fas fa fa-phone"></i><span><strong i18n>CALL 026 - 84 54 658</strong><ng-container i18n>Direct reply</ng-container></span></a></li>
+                    <ul fxFlex fxLayout="row wrap">
+                        <li fxFlex="100" fxFlex.gt-xs="50">
+                            <a href="https://www.plattetv.nl/">
+                                <span>
+                                    <fa-icon [icon]="['far', 'comment']"></fa-icon>
+                                </span>
+                                <span>
+                                    <strong i18n>CHAT LIVE</strong>
+                                    <ng-container i18n>Reply within 30 sec.</ng-container>
+                                </span>
+                            </a>
+                        </li>
+                        <li  fxFlex="100" fxFlex.gt-xs="50">
+                            <a href="https://www.plattetv.nl/extrainfo/contact-formulier-2557.html?popup=true" class="popupCMS">
+                                <span>
+                                    <fa-icon [icon]="['far','envelope']"></fa-icon>
+                                </span>
+                                <span>
+                                    <strong i18n>Insert Form</strong>
+                                    <ng-container i18n>Reply within 10 min.</ng-container>
+                                </span>
+                            </a>
+                        </li>
+                        <li fxFlex="100" fxFlex.gt-xs="50">
+                            <a href="https://api.whatsapp.com/send?phone=31633444433">
+                                <span>
+                                    <fa-icon [icon]="['fab', 'whatsapp']"></fa-icon>
+                                </span>
+                                <span>
+                                    <strong i18n>WHATSAPP US</strong>
+                                    <ng-container i18n>Reply within 30 sec.</ng-container>
+                                </span>
+                            </a>
+                        </li>
+                        <li fxFlex="100" fxFlex.gt-xs="50">
+                            <a href="tel:0268454658">
+                                <span>
+                                    <fa-icon [icon]="['fas', 'phone']"></fa-icon>
+                                </span>
+                                <span>
+                                    <strong i18n>CALL 026 - 84 54 658</strong>
+                                    <ng-container i18n>Direct reply</ng-container>
+                                </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div fxFlex="100" class="footer-info--newsletter" fxFlex.sm="40" fxFlex.gt-sm="35" ngClass.lt-lg="mb-2">
-                <div fxLayout="column">
-                    <div class="footer-info--text">
-                        <strong i18n>SUBSCRIBE NEWSLETTER</strong><br i18n>
-                        Don't miss any specials, news and bonuses
-                    </div>
-                    <form method="get" class="subscribe-search-form" fxLayout="column">
-                        <input type="text"  i18n-placeholder placeholder="Email" fxFlex aria-label="Email">
-                        <button mat-raised-button color="accent" (click)="subscribe()" type="button" class="mat-elevation-z0 text-muted" i18n>Yes, I sign me up</button>
-                    </form>
+            <div fxFlex fxLayout="column" fxFlexOrder.lt-md="1" class="footer-info--newsletter" ngClass.lt-md="w-100 mb-4" ngClass.gt-sm="mt-3 mb-0">
+                <div class="footer-info--text" ngClass.gt-sm="text-nowrap">
+                    <strong i18n>SUBSCRIBE NEWSLETTER</strong><br i18n>
+                    Don't miss any specials, news and bonuses
                 </div>
-            </div>  
-        </mat-toolbar-row>
-    </mat-toolbar>
-    <mat-toolbar class="footer-nav">
-        <mat-toolbar-row class="theme-container" fxLayout="row wrap" fxLayoutAlign="center flex-start">
-            <div fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25" ngClass.lt-md="mb-2">
-                <strong i18n>BVBMedia</strong>
-                <ul>
-                    <li><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html" i18n>Contact</a></li><li>
-                    </li><li><a href="https://www.plattetv.nl/extrainfo/advies-contact-2316.html#klantenservice" i18n>Customer service</a></li>
-                    <li><a href="https://www.plattetv.nl/bestelstatus" i18n>Order status</a></li>
-                    <li><a href="https://www.plattetv.nl/extrainfo/learning-center-1756.html" i18n>Learning Center</a></li>
-                    <li><a href="https://www.plattetv.nl/extrainfo/zakelijk-2019.html" i18n>Business</a></li>
-                    <li><a href="https://www.plattetv.nl/extrainfo/vacatures-2320.html" i18n>Applicants</a></li>
-                </ul>
-            </div>
-            <div fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25" ngClass.lt-md="mb-2">
-                <strong i18n>Our stores</strong>
-                <ul>
-                    <li><a href="/extrainfo/winkel-amsterdam-6.html" i18n>Amsterdam</a></li>
-                    <li><a href="/extrainfo/winkel-arnhem-1.html" i18n>Arnhem</a></li>
-                    <li><a href="/extrainfo/winkel-breda-3.html" i18n>Breda</a></li>
-                    <li><a href="/extrainfo/winkel-doesburg-12.html" i18n>Doesburg</a></li>
-                    <li><a href="/extrainfo/winkel-doetinchem-4.html" i18n>Doetinchem</a></li>
-                    <li><a href="/extrainfo/winkel-eindhoven-9.html" i18n>Eindhoven</a></li>
-                    <li><a href="/extrainfo/winkel-nijmegen-2.html" i18n>Nijmegen</a></li>
-                    <li><a href="/extrainfo/winkel-utrecht-14.html" i18n>Utrecht</a></li>
-                </ul>
-            </div>
-            <div fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25" ngClass.lt-sm="mb-2">
-                <strong i18n>Popular categories</strong>
-                <ul>
-                    <li><a href="https://www.plattetv.nl/categorie/oled-tv-809.html" i18n>OLED TV</a></li>
-                    <li><a href="https://www.plattetv.nl/categorie/4k-uhd-tv-721.html" i18n>4K UHD TV</a></li>
-                    <li><a href="https://www.plattetv.nl/categorie/led-tv-345.html" i18n>LED TV</a></li>
-                    <li><a href="https://www.plattetv.nl/categorie/qled-tv-1202.html" i18n>QLED TV</a></li>
-                    <li><a href="https://www.plattetv.nl/categorie/smart-tv-823.html" i18n>Smart TV</a></li>
-                    <li><a href="https://www.plattetv.nl/categorie/alle-tvs-894.html" i18n>All TV's</a></li>
-                    <li><a href="https://www.plattetv.nl/categorie/soundbars-765.html" i18n>Soundbars</a></li>
-                </ul>
-            </div>
-            <div fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25">
-                <strong i18n>Popular brands</strong>
-                <ul>
-                    <li><a href="https://www.plattetv.nl/leverancier/samsung-18.html" i18n>Samsung</a></li>
-                    <li><a href="https://www.plattetv.nl/leverancier/lg-19.html" i18n>LG</a></li>
-                    <li><a href="https://www.plattetv.nl/leverancier/sony-10.html" i18n>Sony</a></li>
-                    <li><a href="https://www.plattetv.nl/leverancier/philips-9.html" i18n>Philips</a></li>
-                    <li><a href="https://www.plattetv.nl/leverancier/panasonic-5.html" i18n>Panasonic</a></li>
-                    <li><a href="https://www.plattetv.nl/leverancier/sonos-190.html" i18n>Sonos</a></li>
-                    <li><a href="https://www.plattetv.nl/leverancier/heos-by-denon-207.html" i18n>HEOS</a></li>
-                    <li><a href="https://www.plattetv.nl/leverancier/denon-203.html" i18n>Denon</a></li>
-                </ul>
+                <form method="get" class="subscribe-search-form" fxLayout="column">
+                    <input type="text"  i18n-placeholder placeholder="Email" fxFlex aria-label="Email">
+                    <button mat-raised-button color="accent" (click)="subscribe()" type="button" class="mat-elevation-z0 text-left text-muted" i18n>Yes, I sign me up</button>
+                </form>
             </div>
         </mat-toolbar-row>
     </mat-toolbar>
-
-    <mat-toolbar class="footer-payment">
-        <mat-toolbar-row class="theme-container" fxLayout="column" fxLayoutAlign="flex-start center">
-            <ul fxLayout="row wrap" fxLayoutAlign="center center">
-                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_ideal.png" alt="iDEAL"></li>
-                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_bancontact.png" alt="Bancontact"></li>
-                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_mastercard.png" alt="MasterCard"></li>
-                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_visa.png" alt="VISA"></li>
-                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_findio.png" alt="Findio"></li>
-                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_postnl.png" alt="Postnl"></li>
-                <li lazy-load-images><img data-src="/assets/images/others/icons_footer_q.png" alt="Q"></li>
+    <mat-toolbar fxFlex fxLayout="row" fxLayoutAlign="start start" class="footer-nav h-auto" fxHide.lt-md ngClass.md="p-4" ngClass.gt-md="p-5">
+        <div fxFlex="50">
+            <strong i18n>BVBMedia</strong>
+            <ul>
+                <li>
+                    <a routerLink="/extrainfo/advies-contact" i18n>Contact</a>
+                </li>
+                <li>
+                    <a routerLink="/extrainfo/advies-contact/klantenservice" i18n>Customer service</a>
+                </li>
+                <li>
+                    <a href="https://www.plattetv.nl/bestelstatus" i18n>Order status</a>
+                </li>
+                <li>
+                    <a routerLink="/extrainfo/installatie-op-maat-learning-center" i18n>Learning Center</a>
+                </li>
+                <li>
+                    <a routerLink="/extrainfo/zakelijk" i18n>Business</a>
+                </li>
+                <li>
+                    <a routerLink="/extrainfo/vacature" i18n>Applicants</a>
+                </li>
             </ul>
-            <p class="extra-footer-menu-wrapper"><a href="#" i18n>General conditions</a> | <a href="#" i18n>Privacy</a> | <a href="#" i18n>Cookies</a></p>
-            <p i18n>All prices are incl. VAT</p>
-        </mat-toolbar-row>
+        </div>
+        <div fxFlex="50">
+            <strong i18n>Our stores</strong>
+            <ul>
+                <li *ngFor="let store of stores">
+                    <a [routerLink]="store.link">{{store.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <div fxFlex="50">
+            <strong i18n>Popular categories</strong>
+            <ul>
+                <li *ngFor="let category of popular_categories">
+                    <a [routerLink]="[category.link]">{{category.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <div fxFlex="50">
+            <strong i18n>Popular brands</strong>
+            <ul>
+                <li *ngFor="let brand of popular_brands">
+                    <a [href]="brand.link">{{brand.name}}</a>
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar>
+    <mat-toolbar fxFlex fxLayout="column" fxLayoutAlign="start center" class="footer-payment h-auto p-4" fxHide.lt-md>
+        <ul fxLayout="row" fxLayoutAlign="center center">
+            <li lazy-load-images *ngFor="let payment of payments">
+                <img [attr.data-src]="payment.img" [alt]="payment.alt">
+            </li>
+        </ul>
+        <p class="extra-footer-menu-wrapper"><a href="#" i18n>General conditions</a> | <a href="#" i18n>Privacy</a> | <a href="#" i18n>Cookies</a></p>
+        <p class="mb-0" i18n>All prices are incl. VAT</p>
     </mat-toolbar>
 </footer>

@@ -1,0 +1,140 @@
+.page-contact {
+
+    line-height: 28px;
+
+    u {
+        color: #006eda;
+        cursor: pointer;
+    }
+
+    .page-section {
+        padding: 1rem 0;
+        border-top: 1px solid #ececec;
+        &.top-section {
+            border-top: none;
+            padding-top: 0;
+        }
+        strong {
+            margin-bottom: 10px;
+            display: block;
+        }
+    }
+
+    .top-section {
+        h1 {
+            font-weight: bold;
+            font-size: 26px;
+            line-height: normal;
+            font-family: "Gotham Condensed Bold";
+            letter-spacing: 1px;
+            color: #212226;
+            text-align: left;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            padding: 0 15px;
+        }
+        
+        img {
+            width: 100%;
+        }
+    }
+
+    .contact-customer-service {
+        padding: 1rem 0;
+
+        .contact-method {
+
+            cursor: pointer;
+
+            border: 1px solid #E6E6DC;
+            background: #e6e6dc;
+            margin-bottom: 7px;
+            padding: 14px 22px 14px 22px;
+
+            &:hover {
+                background: #212226;
+                h2, p {
+                    color: #fff;
+                }
+            }
+
+            h2 {
+                font-weight: bold;
+                font-size: 19px;
+                line-height: 1.4;
+                margin-top: 2px;
+                text-transform: uppercase;
+            }
+            p {
+                font-size: 1rem;
+                line-height: 1.4;
+                margin-bottom: 0;
+            }
+
+            &-icon {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                background: #fff;
+                border-radius: 50%;
+                margin-right: 16px;
+                line-height: 40px;
+                text-align: center;
+            }
+        }
+    }
+
+    .customer-services {
+        .customer-service{
+            padding-bottom: 4rem;
+            .service-title {
+                img{
+                    vertical-align: middle;
+                }
+                a {
+                    font-weight: 700;
+                }
+
+                border-bottom: 2px solid grey;
+            }
+
+            .service-items {
+                padding-left: 20px;
+            }
+        }
+
+    }
+
+    .mr-5px {
+        margin-right: 5px;
+    }
+
+}
+
+.stores-individual-store {
+    margin-left: -.5rem;
+    margin-right: -.5rem;
+    &-item {
+        margin-bottom: 1rem;
+        padding-left: .5rem;
+        padding-right: .5rem;
+
+        figure {
+            border: 2px solid #D6D6D6;
+            line-height: 0;
+            text-align: center;
+
+            img {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        figcaption {
+            background-color: #f4f4ef;
+            font-size: .875rem;
+            color: #212226;
+            text-align: center;
+            padding: .5rem;
+        }
+    }
+}

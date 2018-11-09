@@ -7,12 +7,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Category, Product, Products } from './app.models';
 import { AddedToCartPopupComponent } from 'app/shared/added-to-cart-popup/added-to-cart-popup.component';
 
-import * as countries from 'assets/data/countries.json';
-import { map } from 'rxjs/operators';
-import { environment } from 'environments/environment';
+import { Store } from '@ngrx/store';
+import { State } from 'app/store';
+import * as CartActions from './store/actions/cart.action';
 
 export class Data {
-    constructor(public categories: Category[],
+    constructor(
+        public categories: Category[],
         public compareList: Product[],
         public wishList: Product[],
         public cartList: Product[],
@@ -22,7 +23,8 @@ export class Data {
 
 @Injectable()
 export class AppService {
-    public Data = new Data(
+
+    Data = new Data(
         [], // categories
         [], // compareList
         [],  // wishList
@@ -30,111 +32,145 @@ export class AppService {
         null, // totalPrice
         0
     );
-    public filter: any = {};
-    public url = 'assets/data/';
-    constructor(public http: HttpClient, public snackBar: MatSnackBar, private dialog: MatDialog) { }
 
-    /***
-    *  ---------------- New Apis -----------------------------------------------------------
-    **/
-    public getCategories(): Observable<Category[]> {
+    constructor(
+        private http: HttpClient,
+        private snackBar: MatSnackBar,
+        private dialog: MatDialog,
+        private store: Store<State>) { }
+
+    /* +------------+
+    *  |    Apis    |
+    *  +------------+
+    */
+
+    getCategories(mode: string = 'tree'): Observable<Category[]> {
         let params = new HttpParams();
-        params = params.append('mode', 'tree');
+        params = params.append('mode', mode);
         return this.http.get<Category[]>('/categories', { params: params });
     }
 
-    public getCategoriesByParentId(parentId, limit: number = 10): Observable<Category[]> {
-        let params = new HttpParams();
-        params = params.append('mode', 'parent');
-        params = params.append('parentId', parentId);
-        params = params.append('limit', `${limit}`);
-        return this.http.get<Category[]>(`/categories`, { params: params });
-    }
 
-    public getProducts(mode: string, limit: number = 10, page: number = 1): Observable<Products> {
-        let params = new HttpParams();
-        params = params.append('mode', mode);
-        return this.productPagination(limit, page, params);
-    }
-
-    public getProductsByCategory(categoryId: number, limit: number = 6, page: number = 1) {
-        let params = new HttpParams();
-        params = params.append('mode', 'category');
-        params = params.append('category_id', `${categoryId}`);
-        return this.productPagination(limit, page, params);
-    }
-
-    public getProductsByFilter(filter: any): Observable<Products> {
+    getProductsByFilter(filter: any): Observable<Products> {
         return this.http.post<Products>('/products/search', filter);
     }
 
-    public getProductsByBrand(brand: string, limit: number = 6, page: number = 1) {
-        let params = new HttpParams();
-        params = params.append('mode', 'brand');
-        params = params.append('brands_name', brand);
-        return this.productPagination(limit, page, params);
-    }
 
-    public productPagination(limit, page, params): Observable<Products> {
+    productPagination(limit, page, params): Observable<Products> {
         params = params.append('limit', `${limit}`);
         params = params.append('page', `${page}`);
         return this.http.get<Products>(`/products/listing`, { params: params });
     }
 
 
-    public getProduct(id, categoryId) {
-        return this.http.post<any>(`/products/listing`, { categoryId: categoryId });
-    }
-
-    public getProductById(id): Observable<Product> {
-        return this.http.get<Product>(`/products/${id}/detail`);
-    }
-
-    public getProdcutByPermallink(permalink: string, categoryId: number = null): Observable<Product> {
-        let param = new HttpParams();
-        param = param.append('permalink', permalink);
+    getProdcutByPermallink(permalink: string, categoryId: number = null): Observable<Product> {
+        let params = new HttpParams();
+        params = params.append('permalink', permalink);
         if (categoryId) {
-            return this.http.post<Product>('/products/detail', { categoryId: categoryId }, { params: param });
+            return this.http.post<Product>('/products/detail', { categoryId: categoryId }, { params: params });
         } else {
-            return this.http.get<Product>('/products/detail', { params: param });
+            return this.http.get<Product>('/products/detail', { params: params });
         }
     }
 
-    public getBrands(limit: number = 100, page: number = 1) {
+    getBrands(limit: number = 100, page: number = 1) {
         let params = new HttpParams();
         params = params.append('limit', `${limit}`);
         params = params.append('page', `${page}`);
         return this.http.get<any>('/manufacturers', { params: params });
     }
 
-    public getBrandsByCategoryId(id: number) {
+    getBrandsByCategoryId(id: number) {
         let params = new HttpParams();
         params = params.append('categoryId', `${id}`);
         return this.http.get<any>('/manufacturers', { params: params });
     }
 
-    public getStores() {
+    getStores() {
         return this.http.get<any>('/getStores');
     }
 
-    public getStoreById(id: number) {
-        return this.http.get<any>(`/getStores/${id}`);
-    }
-
-    public getStoreByName(name: string): Observable<any> {
+    getStoreByName(name: string): Observable<any> {
         return this.http.get<any>(`/getStoreByName/${name}`);
     }
 
-    public _getUserById(id): Observable<any> {
-        return this.http.get<any>(`/users/${id}/info`);
+    getOpenStores() {
+        return this.http.get<any>('/dynaadboxes');
     }
 
-    // ---------------------------------------------------------------------------------------
-    public getBanners(): Observable<any[]> {
-        return this.http.get<any[]>(this.url + 'banners.json');
+    addToCartApi(productData, demoUnit = false): any {
+        let params = new HttpParams();
+        params = params.append('mode', 'add_item');
+        params = params.append('item_id', `${productData.item_id}`);
+        params = params.append('item_qty', `${productData.item_qty || '1'}`);
+        params = params.append('cart_id', `${(localStorage.getItem('cart_id') || '')}`);
+
+        if (demoUnit) {
+            params = params.append('is_demo_unit', '1');
+        }
+
+        return this.http.get('/cart', {params: params});
     }
 
-    public addToCompare(product: Product) {
+    checkCouponCode(couponCode): any {
+        let params = new HttpParams();
+        console.log(couponCode);
+        params = params.append('mode', 'check_coupon');
+        params = params.append('coupon', `${couponCode.coupon}`);
+        params = params.append('cart_id', `${localStorage.getItem('cart_id') || ''}`);
+        return this.http.get('/cart', {params: params});
+    }
+
+    getRelatedProduct(cartId) {
+        let params = new HttpParams();
+        params = params.append('mode', 'get_related_products');
+        params = params.append('cart_id', `${cartId || localStorage.getItem('cart_id')}`);
+        return this.http.get('/cart', {params: params});
+    }
+
+    getCartDetails(cartId): any {
+        let params = new HttpParams();
+        params = params.append('mode', 'cart_details');
+        params = params.append('cart_id', `${cartId || localStorage.getItem('cart_id')}`);
+        return this.http.get('/cart', {params: params});
+    }
+
+    recalculatePrice(productData, item_qty): any {
+        let params = new HttpParams();
+        params = params.append('mode', 'update_item');
+        console.log(productData);
+        params = params.append('item_id', `${productData.item_id}`);
+        params = params.append('item_qty', `${item_qty || '1'}`);
+        params = params.append('cart_id', `${localStorage.getItem('cart_id') || ''}`);
+        return this.http.get('/cart', {params: params});
+    }
+
+    removeFromCartApi(productRemove) {
+        let params = new HttpParams();
+        params = params.append('mode', 'remove_item');
+        params = params.append('cart_id', `${productRemove.cart_id || localStorage.getItem('cart_id')}`);
+        params = params.append('item_id', `${productRemove.item_id}`);
+        return this.http.get('/cart', {params: params});
+    }
+
+    getDemoUnitProduct(productId) {
+        let params = new HttpParams();
+        params = params.append('product_id', `${productId}`);
+        return this.http.get('/products/demounit', {params: params});
+    }
+
+    getFiltersList() {
+        let params = new HttpParams();
+        params = params.append('cms_type', 'adbox-above-merken');
+        return this.http.get('/cms', {params: params});
+    }
+
+    /* +------------+
+    *  |    Util    |
+    *  +------------+
+    */
+
+    addToCompare(product: Product) {
         let message, status;
         if (this.Data.compareList.filter(item => item.id === product.id)[0]) {
             message = 'Product ' + product.name + ' is reeds toegevoegd aan uw vergelijkingslijst.';
@@ -147,7 +183,7 @@ export class AppService {
         this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
     }
 
-    public addToWishList(product: Product) {
+    addToWishList(product: Product) {
         let message, status;
         const index = this.Data.wishList.findIndex(item => item.id === product.id);
         if (index > -1) {
@@ -162,8 +198,9 @@ export class AppService {
         this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
     }
 
-    public addToCart(product: Product, count: number = 1, openPopup: boolean = false) {
+    addToCart(product: Product, count: number = 1, openPopup: boolean = false) {
         let message, status;
+
         if (product.attributes && product.attributes.find(attr => attr.required && !attr.selected)) {
             message = 'Verplichte attributen zijn niet geselecteerd.';
             status = 'error';
@@ -186,65 +223,24 @@ export class AppService {
 
         this.calculateTotalPrice();
 
-        if (openPopup) {
 
-            const dialogRef = this.dialog.open(AddedToCartPopupComponent, {
-                data: product
-            });
+        const dialogRef = this.dialog.open(AddedToCartPopupComponent, {
+            data: product
+        });
 
-            dialogRef.afterClosed().subscribe(res => {
-                const productData: any = { item_id: product.id, item_qty: product.quantity };
-                if (res.isAddTocart !== undefined) {
-                    this.addToCartApi(productData).subscribe((data) => {
-                        localStorage.setItem('cart_id', data.cart_id)
-                    });
-                }
-            });
-        }
+        dialogRef.afterClosed().subscribe(res => {
+
+            const productData: any = { item_id: product.id, item_qty: product.quantity, category_id: product.categoryId };
+
+            this.addToCartApi(productData)
+                .subscribe((data) => {
+                    localStorage.setItem('cart_id', data.cart_id);
+                    this.store.dispatch(new CartActions.SetCartId(data.cart_id));
+                });
+        });
     }
 
-    public addToCartApi(productData): any {
-        return this.http.get(`${environment.apiUrl}/cart?mode=add_item&item_id=${productData.item_id}&item_qty=${(productData.item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}`).pipe(
-            map((body: any) => {
-                return body;
-            })
-        );
-    }
-
-    public checkCouponCode(couponCode): any {
-        return this.http.get(`${environment.apiUrl}/cart?mode=check_coupon&coupon=${couponCode}&cart_id=${(localStorage.getItem('cart_id') || '')}`).pipe(
-            map((body: any) => {
-                return body;
-            })
-        );
-
-    }
-
-    public getRelatedProduct(cartId) {
-        return this.http.get(`${environment.apiUrl}/cart?mode=get_related_products&cart_id=${(cartId || localStorage.getItem('cart_id'))}`).pipe(
-            map((body: any) => {
-                return body;
-            })
-        );
-    }
-
-    public getCartDetails(cartId): any {
-        return this.http.get(`${environment.apiUrl}/cart?mode=cart_details&cart_id=${(cartId || localStorage.getItem('cart_id'))}`).pipe(
-            map((body: any) => {
-                return body;
-            })
-        );
-    }
-
-    public recalculatePrice(productData, item_qty): any {
-        return this.http.get(`${environment.apiUrl}/cart?mode=update_item&item_id=${productData.item_id}&item_qty=${(item_qty || '1')}&cart_id=${(localStorage.getItem('cart_id') || '')}`).pipe(
-            map((body: any) => {
-                return body;
-            })
-        );
-    }
-
-    public removeFromCart(productId) {
+    removeFromCart(productId) {
         const index = this.Data.cartList.findIndex(p => p.id === productId);
         if (index > -1) {
             this.Data.cartList.splice(index, 1);
@@ -252,54 +248,16 @@ export class AppService {
         }
     }
 
-    public removeFromCartApi(productRemove) {
-        return this.http.get(`${environment.apiUrl}/cart?mode=remove_item&cart_id=${(productRemove.cart_id || localStorage.getItem('cart_id'))}&cart_item_id=${productRemove.cart_item_id}`).pipe(
-            map((body: any) => {
-                return body;
-            })
-        );
-    }
-
-    public calculateTotalPrice() {
+    calculateTotalPrice() {
         this.Data.totalPrice = 0;
         this.Data.totalQuantity = 0;
         for (const c of this.Data.cartList) {
             this.Data.totalPrice += Number(c.newPrice) * c.quantity;
             this.Data.totalQuantity += c.quantity;
         }
-        // console.log(this.Data.totalPrice);
     }
 
-    public getCountries() {
-        return countries['countries'];
+    getExtraInfoContent(param) {
+        return this.http.get(`/cms?permalink=${param}`);
     }
-
-    public getMonths() {
-        return [
-            { value: '01', name: 'January' },
-            { value: '02', name: 'February' },
-            { value: '03', name: 'March' },
-            { value: '04', name: 'April' },
-            { value: '05', name: 'May' },
-            { value: '06', name: 'June' },
-            { value: '07', name: 'July' },
-            { value: '08', name: 'August' },
-            { value: '09', name: 'September' },
-            { value: '10', name: 'October' },
-            { value: '11', name: 'November' },
-            { value: '12', name: 'December' }
-        ];
-    }
-
-    public getYears() {
-        return ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'];
-    }
-
-    public getDeliveryMethods() {
-        return [
-            { value: 'free', name: 'Gratis levering via PostNL', desc: '$0.00 / Vandaag besteld, morgen in huis' },
-            { value: 'express', name: 'Spoedlevering via PostNL', desc: '$29.99 / Vandaag besteld, dezelfde dag bezorgd' }
-        ];
-    }
-
 }

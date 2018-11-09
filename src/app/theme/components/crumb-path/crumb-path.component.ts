@@ -8,17 +8,12 @@ import { AppSettings } from '../../../app.settings';
 import { Title } from '@angular/platform-browser';
 import { SidenavMenuService } from '../../../theme/components/sidenav-menu/sidenav-menu.service';
 
-import { Category } from 'app/app.models';
-
 @Component({
   selector: 'app-crumb-path',
   templateUrl: './crumb-path.component.html',
   styleUrls: ['./crumb-path.component.scss']
 })
 export class CrumbPathComponent implements OnInit, OnDestroy {
-
-  @Input()
-  categories: Category[];
 
   breadcrumbs = [];
   subscription: Subscription;
@@ -36,6 +31,7 @@ export class CrumbPathComponent implements OnInit, OnDestroy {
       this.store.select(state => state.crumbPath).subscribe(data => {
 
         const paths = data.crumbPath ? data.crumbPath : [];
+
         if (paths.length && !paths[paths.length - 1].default_title) {
           this.title.setTitle(paths[paths.length - 1].name);
         } else {
@@ -43,14 +39,9 @@ export class CrumbPathComponent implements OnInit, OnDestroy {
         }
 
         this.breadcrumbs = paths.map(path => {
-          let urlPath;
-          if (path.static) {
-            urlPath = path.permalink;
-          }
-          const s = this.categories.find( c => c.id === path.id );
           return {
             name: path.name,
-            url: urlPath ? urlPath : s ? s.permalink : ''
+            url: path.permalink
           };
         });
 
@@ -60,12 +51,6 @@ export class CrumbPathComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.title.setTitle(this.appSettings.settings.name);
     this.subscription.unsubscribe();
-  }
-
-  public closeSubMenus() {
-    if (window.innerWidth < 960) {
-        this.sidenavMenuService.closeAllSubMenus();
-    }
   }
 
 }

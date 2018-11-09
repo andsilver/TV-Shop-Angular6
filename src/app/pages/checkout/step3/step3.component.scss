@@ -1,0 +1,109 @@
+.products-table-header {
+    background-color: #e6e6dc;
+    line-height: 1.384615;
+    padding: .5rem;
+    margin-top: 1rem;
+}
+
+.products-table-content{
+    >div{
+        border-bottom: 1px solid #e6e6dc;
+        padding: .5rem;
+    }   
+}
+
+.form-title{
+    h3 {
+        font-size: .875rem;
+        line-height: 1.125rem;
+        text-transform: uppercase;
+    }
+    span {
+        font-size: .8125rem;
+        color: #999;
+    }
+}
+
+.form-content {
+    padding: 1rem;
+    background: #f4f4ef;
+    color: #212226;
+
+    mat-radio-button {
+        line-height: 24px;
+    }
+
+   select {
+        align-items: center;
+        white-space: pre;
+        color: black;
+        background-color: white;
+        border-radius: 0px;
+        cursor: default;
+        border: 1px solid #b6b6b7;
+        margin-left: .5rem;
+        margin-right: .5rem;
+        padding: .25rem .5rem;
+   }
+}
+
+.mat-button {
+    font-family: "Poppins";
+    text-align: left;
+    position: relative;
+
+    &.next-step {
+        background-color: #5AAD49;
+        font-weight: normal;
+        color:#fff;
+        font-size: .8125rem;
+        line-height: 2.5rem;
+        padding: 0 2.25rem 0 1rem;
+        fa-icon {
+            position: absolute;
+            right: 5px;
+        }
+    }
+    &.prev-step {
+        background-color: #ebebe3;
+        color: #212226;
+        padding-left: 2.25rem;
+        padding-right: 1rem;
+        fa-icon {
+            position: absolute;
+            left: 5px;
+            color: #bbb;
+        }
+    }
+
+    &.modify-button {
+        background-color: #fdc642;
+        font-weight: normal;
+        color:#fff;
+        font-size: .8125rem;
+        line-height: 1.5rem;
+        padding: 0 2.25rem 0 1rem;
+        margin-top: 20px;
+        fa-icon {
+            position: absolute;
+            right: 5px;
+        }
+    }   
+}
+
+.text-underline {
+    text-decoration: underline;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.color-blue {
+    color: #3366ff;
+}
+
+.width-70 {
+    width: 70px;
+    display: inline-block
+}

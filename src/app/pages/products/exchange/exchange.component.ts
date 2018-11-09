@@ -29,6 +29,7 @@ export class ExchangeComponent implements OnInit {
       purchase_items: [''],
       exchange_items: ['']
     });
+    setTimeout(() => imgix.init(), 1);
   }
 
   formSubmit() {

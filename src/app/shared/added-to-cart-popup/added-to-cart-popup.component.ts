@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Product } from 'app/app.models';
-import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-added-to-cart-popup',
@@ -15,11 +14,10 @@ export class AddedToCartPopupComponent implements OnInit {
     private router: Router,
     public dialogRef: MatDialogRef<AddedToCartPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public product: Product) {
-    // console.log(this.appService)
   }
 
   ngOnInit() {
-
+    setTimeout(() => imgix.init(), 1);
   }
 
   navigateToDetail() {
@@ -28,8 +26,14 @@ export class AddedToCartPopupComponent implements OnInit {
   }
 
   navigateToCartList() {
-    this.router.navigate(['/cart']);
     this.dialogRef.close({ isAddTocart: true });
+    setTimeout(() => {
+      this.router.navigate(['/cart']);
+    }, 2000);
+  }
+
+  isNumber(price) {
+    return Number(price) ? true : false;
   }
 
 }

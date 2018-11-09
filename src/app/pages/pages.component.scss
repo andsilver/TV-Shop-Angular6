@@ -1,21 +1,41 @@
+@import '../theme/styles/variables';
+
+.theme-container{
+    max-width: $theme-max-width;
+    margin: 0 auto;
+}
+
+.main.theme-container {
+    background-color: #fff;
+}
+
 .theme-container.wrapper{
-    
-    .main{
-        min-height: 400px;
-        min-height: calc(100vh - 288px);
-        padding: 16px;
-    }
 
     .sidenav{
-        width: 250px;
-        padding: 8px 16px;
+        width: 75vw;
         position: fixed;
-        .close{
-            margin-left: 178px;
+        .sidenav-header {
+            padding: 0 8px 0 16px;
+            h3 {
+                font-size: 1.75rem;
+                font-family: "Gotham Condensed";
+            }
+            .close {
+                padding-top: 4px;
+                margin-top: 8px;
+            }
         }
-        .divider{
-            margin: 8px 0;
-        }
+    }
+
+    .cart-badge {
+        width: 25px;
+        height: 25px;
+        background: #2da6c1;
+        position: absolute;
+        top: -10px;
+        left: calc(50% + 3px);
+        transform: translate(-50%, 0);
+        border-radius: 50%;
     }
 
     .main-header {
@@ -24,29 +44,10 @@
             max-width: 400px;
             padding: 6px 14px;
             font-size: 13px;
-            .mat-list{
-                padding: 0;
-                .mat-list-item{
-                    .mat-list-item-content{
-                        padding: 0;
-                        img{
-                            width: 70px;
-                            margin-left: 10px;
-                        }
-                    }
-                    .mat-list-text>*{
-                        font-size: 14px;
-                        font-weight: 500;
-                    }
-                    .mat-line:nth-child(n+2){
-                        font-size: 13px;
-                        font-weight: 400;
-                    }
-                }
-            }
+
             .cart-dropdown-footer{
                 font-size: 14px;
-        
+
                 .cart-dropdown-submit {
                     background-color: #5AAD49;
                     font-family: "Poppins";
@@ -61,17 +62,17 @@
         margin-bottom: .5rem;
         .logo {
             line-height:0;
-    
+
             img {
                 width: 226px;
                 height: auto;
             }
         }
         .mobilenav {
-    
+
             a {
                 display: block;
-    
+
                 &+a {
                     margin-left: 1rem;
                 }
@@ -79,7 +80,7 @@
                     max-height: 40px;
                 }
             }
-    
+
         }
     }
     @media (max-width: 959px) {
@@ -91,12 +92,22 @@
             min-width: 0;
             margin-right: .5rem;
         }
+        .sidenav-toggle.mat-button img {
+            height: 32px;
+        }
         #brand {
             .mobilenav {
                 a {
                     line-height: 0;
                 }
             }
+        }
+
+        .cart-badge {
+            width: 30px;
+            height: 30px;
+            top: -10px;
+            left: calc(50% + 4px);
         }
     }
     @media (max-width: 599px) {
@@ -110,7 +121,42 @@
         #brand .mobilenav a img {
             max-height: 8vw;
         }
+
+        .cart-badge {
+            width: 35px;
+            height: 35px;
+            top: -10px;
+            left: calc(50% + 4px);
+        }
     }
+
+    @media screen and (max-width:500px) {
+        .cart-badge {
+            width: 25px;
+            height: 25px;
+            top: -10px;
+            left: calc(50% + 3px);
+        }
+    }
+
+    @media screen and (max-width:375px) {
+        .cart-badge {
+            width: 22px;
+            height: 22px;
+            top: -7px;
+            left: calc(50% + 3px);
+        }
+    }
+
+    @media screen and (max-width:320px) {
+        .cart-badge {
+            width: 18px;
+            height: 18px;
+            top: -7px;
+            left: calc(50% + 3px);
+        }
+    }
+
     @media (min-width: 600px) {
         #brand {
             margin-bottom: 1rem;
@@ -134,5 +180,105 @@
         font-size: 11px;
     }
 
-    .shopping-cart { width:200px; }
+    .shopping-cart{
+        .ng-fa-icon {
+            font-size: 16px;
+            margin-left: .25rem;
+        }
+    }
+
+}
+
+
+#links_city {
+    flex: 1 1 100%;
+    justify-content: space-between;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    list-style:none;
+
+    li {
+
+        &.links_city_separator {
+            width: 1px;
+            background-color: #fff;
+        }
+        a {
+            display: block;
+            color: #fff!important;
+            text-align: center;
+            -webkit-transition: color .3s ease;
+            text-decoration: none;
+            transition: color .3s ease;
+
+            &:hover,
+            &:focus {
+                color:#fdc642;
+                text-decoration: none;
+            }
+            span {
+                display: block;
+
+                &.link_city_top {
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 18px;
+                }
+                &.link_city_bottom {
+                    font-size: 12px;
+                    line-height: 17px;
+                }
+            }
+        }
+    }
+}
+
+.top-menu-dropdown-content {
+    width:200px;
+    div {
+        cursor: pointer;
+        line-height: 27px;
+        padding-left: 1rem;
+        transition: all .2s ease-in;
+        &:hover {
+            color: #fdc642;
+        }
+    }
+}
+
+.search-form{
+    width: 100%;
+
+    input[type=text]{
+        border: 0;
+        outline: none;
+        padding: 0 1rem;
+        border-left: 1px solid #ccc;
+    }
+    .search-btn{
+        border: none;
+        width: 40px;
+        height: 40px;
+        min-width: 0;
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+        border-radius: 0;
+        background: #fff !important;
+    }
+}
+
+#miscnav-container {
+    button {
+        border: none;
+        font-weight: 500;
+        font-size: 1.0625rem;
+        line-height: 1;
+        color: #fff;
+        padding: .5rem 0;
+    }
+    .ng-fa-icon {
+        font-size: 1rem;
+        margin-left: .25rem;
+    }
 }
